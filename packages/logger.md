@@ -10,4 +10,4 @@ description: A lightweight logger with level support.
 	description="Use a lightweight logger with level and color support."
 />
 
-<!--@include: ../../packages/logger/README.md{5,}-->
+<!--@include: ../data/readmes/logger/README.md{5,}-->

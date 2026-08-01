@@ -10,4 +10,4 @@ description: Modularize slash subcommands into separate command classes.
 	description="Modularize slash subcommands into separate command classes."
 />
 
-<!--@include: ../projects/plugins/packages/plugin-subcommands-advanced/README.md{3,}-->
+<!--@include: ../data/readmes/plugin-subcommands-advanced/README.md{3,}-->

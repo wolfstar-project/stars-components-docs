@@ -10,4 +10,4 @@ description: Typed i18next integration for the WolfStar HTTP Framework.
 	description="Add typed i18next translations to HTTP Framework interactions."
 />
 
-<!--@include: ../../packages/http-framework-i18n/README.md{5,}-->
+<!--@include: ../data/readmes/http-framework-i18n/README.md{5,}-->

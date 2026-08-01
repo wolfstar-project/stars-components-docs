@@ -10,4 +10,4 @@ description: Fixtures and test utilities for the WolfStar HTTP Framework.
 	description="Test interactions with fixtures, a harness, and Vitest matchers."
 />
 
-<!--@include: ../../packages/http-framework-test-utils/README.md{5,}-->
+<!--@include: ../data/readmes/http-framework-test-utils/README.md{5,}-->

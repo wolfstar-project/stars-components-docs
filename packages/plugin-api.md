@@ -10,4 +10,4 @@ description: Expose a standalone REST API server alongside HTTP Framework intera
 	description="Expose a standalone REST API server alongside HTTP Framework interactions."
 />
 
-<!--@include: ../projects/plugins/packages/plugin-api/README.md{3,}-->
+<!--@include: ../data/readmes/plugin-api/README.md{3,}-->

@@ -10,4 +10,4 @@ description: An ANSI-aware banner generator for command-line applications.
 	description="Render consistent, ANSI-aware startup banners."
 />
 
-<!--@include: ../../packages/start-banner/README.md{5,}-->
+<!--@include: ../data/readmes/start-banner/README.md{5,}-->

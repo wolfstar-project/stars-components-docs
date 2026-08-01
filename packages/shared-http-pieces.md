@@ -10,4 +10,4 @@ description: Shared commands and error listeners for Star Network bots.
 	description="Reuse commands and error listeners across Star Network bots."
 />
 
-<!--@include: ../../packages/shared-http-pieces/README.md{5,}-->
+<!--@include: ../data/readmes/shared-http-pieces/README.md{5,}-->

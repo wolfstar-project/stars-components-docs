@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// Fetches the two things this site needs from other repos, replacing the
-// git submodules the old in-monorepo docs/ package relied on:
+// Fetches the things this site needs from other repos, replacing the git submodules the old
+// in-monorepo docs/ package relied on:
 //   1. Aggregated TypeDoc `--json` output from wolfstar-project/docs (`docs` branch).
 //   2. Just the `package.json` manifests needed for live version numbers on the package
 //      cards (see .vitepress/data/packages.ts), without vendoring full source trees.
+//   3. Just each package's README.md, included into packages/*.md via `<!--@include:-->`.
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -68,4 +69,17 @@ async function fetchPackageVersions() {
 	await writeFile(join(dataDir, 'packages.generated.json'), `${JSON.stringify(versions, null, '\t')}\n`);
 }
 
-await Promise.all([fetchDocsJson(), fetchPackageVersions()]);
+async function fetchReadmes() {
+	await mkdir(join(dataDir, 'readmes'), { recursive: true });
+	await Promise.all(
+		packageManifests.map(async ({ name, repo }) => {
+			const url = `https://raw.githubusercontent.com/${repo}/main/packages/${name}/README.md`;
+			const readme = await fetchText(url);
+			const outDir = join(dataDir, 'readmes', name);
+			await mkdir(outDir, { recursive: true });
+			await writeFile(join(outDir, 'README.md'), readme);
+		})
+	);
+}
+
+await Promise.all([fetchDocsJson(), fetchPackageVersions(), fetchReadmes()]);

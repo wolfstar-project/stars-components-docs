@@ -10,4 +10,4 @@ description: Twitch Helix and EventSub helpers for Star Network bots.
 	description="Call Twitch Helix and validate EventSub requests."
 />
 
-<!--@include: ../../packages/twitch-helpers/README.md{5,}-->
+<!--@include: ../data/readmes/twitch-helpers/README.md{5,}-->
