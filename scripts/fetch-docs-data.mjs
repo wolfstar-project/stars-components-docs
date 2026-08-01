@@ -1,0 +1,71 @@
+#!/usr/bin/env node
+// Fetches the two things this site needs from other repos, replacing the
+// git submodules the old in-monorepo docs/ package relied on:
+//   1. Aggregated TypeDoc `--json` output from wolfstar-project/docs (`docs` branch).
+//   2. Just the `package.json` manifests needed for live version numbers on the package
+//      cards (see .vitepress/data/packages.ts), without vendoring full source trees.
+import { mkdir, writeFile } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = dirname(dirname(fileURLToPath(import.meta.url)));
+const dataDir = join(root, 'data');
+
+const docsProjects = ['stars-components', 'plugins'];
+
+const packageManifests = [
+	...[
+		'create-http-framework',
+		'env-utilities',
+		'http-framework',
+		'http-framework-i18n',
+		'http-framework-test-utils',
+		'i18next-backend',
+		'influx-utilities',
+		'logger',
+		'reddit-helpers',
+		'safe-fetch',
+		'shared-http-pieces',
+		'shared-influx-pieces',
+		'start-banner',
+		'twitch-helpers',
+		'weather-helpers'
+	].map((name) => ({ name, repo: 'wolfstar-project/stars-components' })),
+	...['plugin-api', 'plugin-subcommands-advanced'].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
+];
+
+async function fetchText(url) {
+	const response = await fetch(url);
+	if (!response.ok) {
+		throw new Error(`Failed to fetch ${url}: ${response.status} ${response.statusText}`);
+	}
+	return response.text();
+}
+
+async function fetchDocsJson() {
+	await mkdir(join(dataDir, 'docs'), { recursive: true });
+	await Promise.all(
+		docsProjects.map(async (project) => {
+			const url = `https://raw.githubusercontent.com/wolfstar-project/docs/docs/${project}/main.json`;
+			const json = await fetchText(url);
+			const outDir = join(dataDir, 'docs', project);
+			await mkdir(outDir, { recursive: true });
+			await writeFile(join(outDir, 'main.json'), json);
+		})
+	);
+}
+
+async function fetchPackageVersions() {
+	const versions = {};
+	await Promise.all(
+		packageManifests.map(async ({ name, repo }) => {
+			const url = `https://raw.githubusercontent.com/${repo}/main/packages/${name}/package.json`;
+			const manifest = JSON.parse(await fetchText(url));
+			versions[name] = manifest.version;
+		})
+	);
+	await mkdir(dataDir, { recursive: true });
+	await writeFile(join(dataDir, 'packages.generated.json'), `${JSON.stringify(versions, null, '\t')}\n`);
+}
+
+await Promise.all([fetchDocsJson(), fetchPackageVersions()]);

@@ -1,0 +1,46 @@
+{
+	"name": "@wolfstar/website",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"fetch-docs-data": "node scripts/fetch-docs-data.mjs",
+		"api": "typedoc --options typedoc.json",
+		"predev": "pnpm fetch-docs-data",
+		"dev": "pnpm api && vitepress dev .",
+		"prebuild": "pnpm fetch-docs-data",
+		"build": "pnpm api && vitepress build .",
+		"serve": "vitepress serve",
+		"pretypecheck": "pnpm fetch-docs-data",
+		"typecheck": "vue-tsc --noEmit -p tsconfig.json",
+		"generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
+	},
+	"devDependencies": {
+		"@sapphire/ts-config": "^5.0.3",
+		"@shikijs/vitepress-twoslash": "^4.3.1",
+		"@discordjs/builders": "^1.14.1",
+		"@vite-pwa/assets-generator": "^1.0.2",
+		"@vite-pwa/vitepress": "^1.1.0",
+		"@wolfstar/env-utilities": "^2.0.3",
+		"@wolfstar/http-framework": "^3.1.0",
+		"@wolfstar/http-framework-test-utils": "^3.0.1",
+		"@wolfstar/shared-http-pieces": "^1.2.6",
+		"@wolfstar/shared-influx-pieces": "^1.1.3",
+		"discord-api-types": "^0.38.8",
+		"markdown-it-image-size": "^15.0.1",
+		"typedoc": "^0.28.20",
+		"typedoc-plugin-markdown": "^4.12.0",
+		"typedoc-vitepress-theme": "^1.1.3",
+		"typescript": "~5.8.3",
+		"vite-plugin-pwa": "^1.3.0",
+		"vitepress": "^2.0.0-alpha.18",
+		"vitepress-plugin-group-icons": "^1.7.5",
+		"vitepress-plugin-llms": "^1.13.3",
+		"vitest": "^4.1.9",
+		"vue": "^3.5.40",
+		"vue-tsc": "^3.3.8"
+	},
+	"packageManager": "pnpm@11.5.0",
+	"engines": {
+		"node": ">=20"
+	}
+}
