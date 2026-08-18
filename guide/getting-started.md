@@ -101,15 +101,17 @@ const client = new Client({
 await client.load();
 ```
 
-If your commands live somewhere other than a `commands` directory next to the entry file (for example, a custom
-build output layout), pass `baseUserDirectory` explicitly:
+If your commands don't live in a `commands` directory next to the entry file, pass `baseUserDirectory` explicitly.
+It's the _root_ directory — `client.load()` appends the store name (`commands`, `interaction-handlers`, ...) to it
+for you, so don't include `commands` in the path yourself. For example, if your build puts everything under a `bot/`
+subdirectory next to the entry file (`bot/commands`, `bot/interaction-handlers`, ...):
 
 ```typescript
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 await client.load({
-	baseUserDirectory: join(dirname(fileURLToPath(import.meta.url)), 'commands')
+	baseUserDirectory: join(dirname(fileURLToPath(import.meta.url)), 'bot')
 });
 ```
 
