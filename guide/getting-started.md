@@ -74,16 +74,43 @@ Never commit this file or expose either value in logs.
 The generated entry point creates a client, loads commands from `src/commands`, and starts the HTTP server:
 
 ```typescript
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { Client } from '@wolfstar/http-framework';
 
 const client = new Client();
 
+await client.load();
+await client.listen({ port: 3000 });
+```
+
+`client.load()` accepts no arguments here: it auto-detects the `commands` directory next to your entry file, so
+there's no manual path resolution to write. `discordToken` and `discordPublicKey` are picked up from the
+`DISCORD_TOKEN` and `DISCORD_PUBLIC_KEY` environment variables the same way, so you don't need to pass them to `new
+Client()` either. This is the same pattern used in production bots such as
+[`wolfstar-project/staryl`](https://github.com/wolfstar-project/staryl/blob/main/src/main.ts) and
+[`wolfstar-project/ring`](https://github.com/wolfstar-project/ring/blob/main/src/main.ts):
+
+```typescript
+const client = new Client({
+	api: {
+		listenOptions: {
+			host: envParseString('API_ADDRESS'),
+			port: envParseInteger('API_PORT')
+		}
+	}
+});
+await client.load();
+```
+
+If your commands live somewhere other than a `commands` directory next to the entry file (for example, a custom
+build output layout), pass `baseUserDirectory` explicitly:
+
+```typescript
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 await client.load({
 	baseUserDirectory: join(dirname(fileURLToPath(import.meta.url)), 'commands')
 });
-await client.listen({ port: 3000 });
 ```
 
 ## Next steps
