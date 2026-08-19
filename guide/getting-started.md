@@ -74,16 +74,49 @@ Never commit this file or expose either value in logs.
 The generated entry point creates a client, loads commands from `src/commands`, and starts the HTTP server:
 
 ```typescript
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { Client } from '@wolfstar/http-framework';
 
 const client = new Client();
 
-await client.load({
-	baseUserDirectory: join(dirname(fileURLToPath(import.meta.url)), 'commands')
-});
+await client.load();
 await client.listen({ port: 3000 });
+```
+
+`client.load()` accepts no arguments here: it reads your `package.json`'s `main` field (`dist/index.js` in the
+generated project) and looks for a `commands` directory next to it, so there's no manual path resolution to write —
+as long as you run the app from the project root (as `pnpm start`/`node .` does) and `main` points at the file you
+actually run. `discordToken` and `discordPublicKey` are picked up from the `DISCORD_TOKEN` and `DISCORD_PUBLIC_KEY`
+environment variables the same way, so you don't need to pass them to `new Client()` either. This is the same
+pattern used in production bots such as
+[`wolfstar-project/staryl`](https://github.com/wolfstar-project/staryl/blob/main/src/main.ts) and
+[`wolfstar-project/ring`](https://github.com/wolfstar-project/ring/blob/main/src/main.ts), whose `package.json`
+files set `main` to their built entry point the same way:
+
+```typescript
+const client = new Client({
+	api: {
+		listenOptions: {
+			host: envParseString('API_ADDRESS'),
+			port: envParseInteger('API_PORT')
+		}
+	}
+});
+await client.load();
+```
+
+If you can't rely on `main` — no `package.json` (e.g. tests), a different working directory, or commands that don't
+live in a `commands` directory next to the entry point — pass `baseUserDirectory` explicitly. It's the _root_
+directory — `client.load()` appends the store name (`commands`, `interaction-handlers`, ...) to it for you, so
+don't include `commands` in the path yourself. For example, if your build puts everything under a `bot/`
+subdirectory next to the entry file (`bot/commands`, `bot/interaction-handlers`, ...):
+
+```typescript
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+await client.load({
+	baseUserDirectory: join(dirname(fileURLToPath(import.meta.url)), 'bot')
+});
 ```
 
 ## Next steps
