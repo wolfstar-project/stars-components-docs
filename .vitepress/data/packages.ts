@@ -127,6 +127,13 @@ export const packages: PackageInfo[] = [
 		description: 'Expose a standalone REST API server alongside HTTP Framework interactions.'
 	},
 	{
+		name: '@wolfstar/plugin-i18next',
+		path: 'plugin-i18next',
+		version: versions['plugin-i18next'],
+		category: 'Plugins',
+		description: 'Add i18next-powered internationalization to HTTP Framework interactions.'
+	},
+	{
 		name: '@wolfstar/plugin-subcommands-advanced',
 		path: 'plugin-subcommands-advanced',
 		version: versions['plugin-subcommands-advanced'],

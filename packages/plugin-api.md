@@ -7,6 +7,7 @@ description: Expose a standalone REST API server alongside HTTP Framework intera
 	name="@wolfstar/plugin-api"
 	version="1.1.2"
 	path="plugin-api"
+	repository="plugins"
 	description="Expose a standalone REST API server alongside HTTP Framework interactions."
 />
 
