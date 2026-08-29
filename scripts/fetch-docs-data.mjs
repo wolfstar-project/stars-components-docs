@@ -32,7 +32,7 @@ const packageManifests = [
 		'twitch-helpers',
 		'weather-helpers'
 	].map((name) => ({ name, repo: 'wolfstar-project/stars-components' })),
-	...['plugin-api', 'plugin-subcommands-advanced'].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
+	...['plugin-api', 'plugin-i18next', 'plugin-subcommands-advanced'].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
 ];
 
 async function fetchText(url) {
