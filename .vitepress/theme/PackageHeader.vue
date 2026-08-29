@@ -5,8 +5,11 @@ const props = defineProps<{
 	description: string;
 	name: string;
 	path: string;
+	repository?: 'stars-components' | 'plugins';
 	version: string;
 }>();
+
+const repo = props.repository ?? 'stars-components';
 
 const copied = ref(false);
 const installCommand = `pnpm add ${props.name}`;
@@ -31,7 +34,7 @@ async function copyInstallCommand() {
 				<span>{{ copied ? 'Copied!' : 'Copy' }}</span>
 			</button>
 			<a :href="`https://npmx.dev/package/${name}`">npm</a>
-			<a :href="`https://github.com/wolfstar-project/stars-components/tree/main/packages/${path}`">Source</a>
+			<a :href="`https://github.com/wolfstar-project/${repo}/tree/main/packages/${path}`">Source</a>
 		</div>
 	</header>
 </template>

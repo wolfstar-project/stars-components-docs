@@ -7,6 +7,7 @@ description: Add i18next-powered internationalization to HTTP Framework interact
 	name="@wolfstar/plugin-i18next"
 	version="1.0.0"
 	path="plugin-i18next"
+	repository="plugins"
 	description="Add i18next-powered internationalization to HTTP Framework interactions."
 />
 

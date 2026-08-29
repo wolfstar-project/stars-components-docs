@@ -7,6 +7,7 @@ description: Modularize slash subcommands into separate command classes.
 	name="@wolfstar/plugin-subcommands-advanced"
 	version="1.0.0"
 	path="plugin-subcommands-advanced"
+	repository="plugins"
 	description="Modularize slash subcommands into separate command classes."
 />
 
