@@ -55,6 +55,10 @@ The surrounding packages add optional capabilities:
 [migration guide](/guide/migration).
 :::
 
+`@wolfstar/plugin-i18next`, along with the other optional framework extensions, is released independently from its
+own [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) repository — see the
+[Plugins guide](/guide/plugins).
+
 ## Shared Pieces
 
 Shared pieces are opinionated application modules. Importing their `/register` entry point loads commands or listeners

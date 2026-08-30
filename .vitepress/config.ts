@@ -133,6 +133,7 @@ Stars Components is a TypeScript monorepo of focused packages for Discord HTTP i
 						text: 'Guides',
 						items: [
 							{ text: 'Architecture', link: '/guide/architecture' },
+							{ text: 'Plugins', link: '/guide/plugins' },
 							{ text: 'Migration Guide', link: '/guide/migration' }
 						]
 					},

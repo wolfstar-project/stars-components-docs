@@ -50,6 +50,11 @@ Services  │
 Adopting [`@wolfstar/safe-fetch`](/packages/safe-fetch) or [`@wolfstar/logger`](/packages/logger) in an existing
 service costs one dependency and no framework buy-in. See [Architecture](/guide/architecture) for how the layers relate.
 
+The split goes further than one repository. Optional `@wolfstar/http-framework` extensions — a REST API server, i18n,
+modular subcommands — live in their own [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins)
+repository and release independently of the core framework, so picking one up never bumps
+`@wolfstar/http-framework` itself. See the [Plugins](/guide/plugins) guide.
+
 ## Types as the Contract
 
 Every package exposes its supported API through `src/index.ts` and explicit `package.json` export maps, so private

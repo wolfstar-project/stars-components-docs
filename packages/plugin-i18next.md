@@ -15,4 +15,8 @@ description: Add i18next-powered internationalization to HTTP Framework interact
 Follow the [migration guide](/guide/migration).
 :::
 
+::: tip Plugin
+See the [Plugins guide](/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.
+:::
+
 <!--@include: ../data/readmes/plugin-i18next/README.md{3,}-->
