@@ -11,4 +11,8 @@ description: Expose a standalone REST API server alongside HTTP Framework intera
 	description="Expose a standalone REST API server alongside HTTP Framework interactions."
 />
 
+::: tip Plugin
+See the [Plugins guide](/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.
+:::
+
 <!--@include: ../data/readmes/plugin-api/README.md{3,}-->

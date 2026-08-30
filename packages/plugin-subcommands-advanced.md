@@ -11,4 +11,8 @@ description: Modularize slash subcommands into separate command classes.
 	description="Modularize slash subcommands into separate command classes."
 />
 
+::: tip Plugin
+See the [Plugins guide](/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.
+:::
+
 <!--@include: ../data/readmes/plugin-subcommands-advanced/README.md{3,}-->

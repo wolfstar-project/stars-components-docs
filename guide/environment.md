@@ -1,13 +1,13 @@
 ---
-title: Environment variables
+title: Environment Variables
 description: Load and parse typed environment variables with @wolfstar/env-utilities.
 ---
 
-# Environment variables
+# Environment Variables
 
 `@wolfstar/env-utilities` loads layered dotenv files and provides strict parsers for application configuration.
 
-## Load dotenv files
+## Load Dotenv Files
 
 Use the side-effect entry point when the default `.env` path is enough:
 
@@ -32,7 +32,7 @@ The loader applies environment-specific files with the most specific value first
 
 `.env.local` is intentionally skipped in the test environment.
 
-## Type application keys
+## Type Application Keys
 
 Augment the package's `Env` interface so parsers accept your keys:
 
@@ -48,7 +48,7 @@ declare module '@wolfstar/env-utilities' {
 }
 ```
 
-## Parse values
+## Parse Values
 
 ```typescript
 import { envParseBoolean, envParseInteger, envParseString } from '@wolfstar/env-utilities';
@@ -60,7 +60,7 @@ const discordToken = envParseString('DISCORD_TOKEN');
 
 Missing required keys throw `ReferenceError`. Invalid values throw `TypeError`. A provided default is returned as-is.
 
-## Configure the loader itself
+## Configure the Loader Itself
 
 You can set `DOTENV_PATH`, `DOTENV_ENV`, `DOTENV_PREFIX`, `DOTENV_ENCODING`, and `DOTENV_DEBUG` before setup. Keep secrets
 outside source control and configure them through your deployment platform.

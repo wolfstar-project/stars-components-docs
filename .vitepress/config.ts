@@ -99,7 +99,7 @@ Stars Components is a TypeScript monorepo of focused packages for Discord HTTP i
 			},
 			siteTitle: 'Stars Components',
 			nav: [
-				{ text: 'Guide', link: '/guide/getting-started', activeMatch: '/guide/' },
+				{ text: 'Guides', link: '/guide/', activeMatch: '/guide/' },
 				{ text: 'Packages', link: '/packages/', activeMatch: '/packages/' },
 				{ text: 'API', link: '/api/', activeMatch: '/api/' },
 				{
@@ -116,21 +116,26 @@ Stars Components is a TypeScript monorepo of focused packages for Discord HTTP i
 					{
 						text: 'Introduction',
 						items: [
-							{ text: 'Getting started', link: '/guide/getting-started' },
-							{ text: 'Architecture', link: '/guide/architecture' }
+							{ text: 'Why Stars Components', link: '/guide/why' },
+							{ text: 'Getting Started', link: '/guide/' },
+							{ text: 'Features', link: '/guide/features' }
+						]
+					},
+					{
+						text: 'Learn',
+						items: [
+							{ text: 'Build a Command', link: '/guide/commands' },
+							{ text: 'Environment Variables', link: '/guide/environment' },
+							{ text: 'Testing Interactions', link: '/guide/testing' }
 						]
 					},
 					{
 						text: 'Guides',
 						items: [
-							{ text: 'Build a command', link: '/guide/commands' },
-							{ text: 'Environment variables', link: '/guide/environment' },
-							{ text: 'Testing interactions', link: '/guide/testing' }
+							{ text: 'Architecture', link: '/guide/architecture' },
+							{ text: 'Plugins', link: '/guide/plugins' },
+							{ text: 'Migration Guide', link: '/guide/migration' }
 						]
-					},
-					{
-						text: 'Migrations',
-						items: [{ text: 'To @wolfstar/plugin-i18next', link: '/guide/migrating-to-plugin-i18next' }]
 					},
 					{
 						text: 'Project',

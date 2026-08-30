@@ -1,9 +1,9 @@
 ---
-title: Testing interactions
+title: Testing Interactions
 description: Test HTTP Framework commands with Vitest fixtures and custom matchers.
 ---
 
-# Testing interactions
+# Testing Interactions
 
 `@wolfstar/http-framework-test-utils` dispatches Discord interaction payloads through a testable client. Tests exercise the
 real router and command classes without opening a port or calling Discord.
@@ -14,7 +14,7 @@ real router and command classes without opening a port or calling Discord.
 pnpm add --save-dev @wolfstar/http-framework-test-utils vitest
 ```
 
-## Register matchers
+## Register Matchers
 
 Add the package's optional Vitest entry point to your setup file:
 
@@ -26,7 +26,7 @@ import { expect } from 'vitest';
 expect.extend(httpFrameworkMatchers);
 ```
 
-## Create a harness
+## Create a Harness
 
 ```typescript
 import { ChatInputApplicationCommandInteractionData, createTestHarness } from '@wolfstar/http-framework-test-utils';
@@ -56,7 +56,7 @@ describe('ping command', () => {
 });
 ```
 
-## Choose the right assertion
+## Choose the Right Assertion
 
 | Matcher                           | Use it for                                    |
 | --------------------------------- | --------------------------------------------- |
@@ -68,7 +68,7 @@ describe('ping command', () => {
 `toHaveJsonBody` compares every nested key. Prefer `toMatchObject` when the interaction response contains unrelated
 metadata.
 
-## Available fixtures
+## Available Fixtures
 
 The package provides fixtures for chat-input, user, and message commands; autocomplete; buttons; every select-menu
 variant; and modal submissions. Base user, guild member, message, and interaction data are also exported for composing
