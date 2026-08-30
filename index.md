@@ -10,23 +10,29 @@ hero:
         alt: WolfStar
     actions:
         - theme: brand
-          text: Get started
-          link: /guide/getting-started
+          text: Get Started
+          link: /guide/
         - theme: alt
-          text: Explore packages
-          link: /packages/
+          text: Features
+          link: /guide/features
+        - theme: alt
+          text: Why Stars Components?
+          link: /guide/why
+        - theme: alt
+          text: View on GitHub
+          link: https://github.com/wolfstar-project/stars-components
 
 features:
     - icon: ⚡
-      title: HTTP-first Discord bots
+      title: HTTP-First Discord Bots
       details: Handle Discord interactions without a gateway connection and register commands through typed decorators.
       link: /packages/http-framework
     - icon: 🧩
-      title: Composable packages
+      title: Composable Packages
       details: Adopt one focused utility or combine the framework, i18n, shared pieces, and metrics as a complete stack.
       link: /guide/architecture
     - icon: 🧪
-      title: Interaction testing
+      title: Interaction Testing
       details: Exercise commands with typed fixtures, a local test harness, and dedicated Vitest matchers.
       link: /guide/testing
     - icon: 🌍
@@ -34,7 +40,7 @@ features:
       details: Load locale resources from disk and resolve typed translations for users and guilds.
       link: /packages/http-framework-i18n
     - icon: 🛡️
-      title: Safer infrastructure
+      title: Safer Infrastructure
       details: Parse environment variables, wrap fetch in Result values, and reuse structured logging utilities.
       link: /packages/env-utilities
     - icon: 📚
@@ -43,12 +49,12 @@ features:
       link: /api/
 ---
 
-## One workspace, fifteen focused packages
+## One Workspace, Focused Packages
 
 Stars Components contains the shared building blocks used across the Star Network. Start with the scaffolding CLI for a
 new bot, or add only the utility your project needs.
 
-::: tip Recommended path
+::: tip Recommended Path
 Create a project with `pnpm create @wolfstar/http-framework my-bot`, then continue with the
-[getting started guide](/guide/getting-started).
+[getting started guide](/guide/).
 :::

@@ -10,7 +10,7 @@ public on npm and supports Node.js 20 or newer.
 
 <PackageGrid />
 
-::: info API reference
+::: info API Reference
 Package guides focus on setup and practical examples. For every exported class, function, interface, and type, use the
 [generated API reference](/api/).
 :::

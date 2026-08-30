@@ -7,7 +7,7 @@ description: Develop packages and documentation in the Stars Components monorepo
 
 Contributions should start from `main` and stay focused on utilities that are broadly useful to Star Network projects.
 
-## Set up the repository
+## Set Up the Repository
 
 ```bash
 git clone https://github.com/wolfstar-project/stars-components.git
@@ -18,7 +18,7 @@ pnpm install --frozen-lockfile
 
 Node.js 24 matches CI, while packages support Node.js 20 and newer.
 
-## Run the quality gates
+## Run the Quality Gates
 
 Build before typechecking because cross-package type resolution uses generated declarations:
 
@@ -37,7 +37,7 @@ pnpm changeset
 
 Documentation-only changes can use an empty changeset.
 
-## Work on the documentation
+## Work on the Documentation
 
 ```bash
 pnpm docs
@@ -52,7 +52,7 @@ Verify a production documentation build with:
 pnpm docs-build
 ```
 
-## Project guidelines
+## Project Guidelines
 
 - Keep additions useful across projects rather than tied to one bot.
 - Preserve sharding compatibility.

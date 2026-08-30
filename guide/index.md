@@ -1,20 +1,32 @@
 ---
-title: Getting started
+title: Getting Started
 description: Create and run a Discord bot with the WolfStar HTTP Framework.
 ---
 
-# Getting started
+# Getting Started
 
-The fastest way to start is the `@wolfstar/create-http-framework` CLI. It creates the entry point, an example command,
-environment files, TypeScript or JavaScript configuration, and your preferred quality tools.
+## Overview
 
-## Requirements
+Stars Components is a set of focused TypeScript packages powering the Star Network. The core of it is
+[`@wolfstar/http-framework`](/packages/http-framework): an HTTP-first framework for Discord applications that answers
+interactions over a webhook endpoint instead of holding a gateway connection open.
+
+Around it sit optional packages for internationalization, environment parsing, logging, metrics, platform helpers, and
+interaction testing. Adopt one of them on its own, or combine them into a complete bot stack — see
+[Features](/guide/features) for the full picture and [Why Stars Components](/guide/why) for the reasoning behind it.
+
+::: tip Prerequisites
 
 - Node.js 20 or newer
 - A [Discord application](https://discord.com/developers/applications) with its token and public key
 - A public HTTPS endpoint that Discord can use as the application's interactions endpoint
 
-## Create a project
+:::
+
+## Adding Stars Components to Your Project
+
+The fastest way to start is the `@wolfstar/create-http-framework` CLI. It creates the entry point, an example command,
+environment files, TypeScript or JavaScript configuration, and your preferred quality tools.
 
 ::: code-group
 
@@ -58,7 +70,7 @@ pnpm create @wolfstar/http-framework my-discord-bot \
   --no-i18n
 ```
 
-## Configure credentials
+### Configuring Credentials
 
 Open the generated `.env` file and provide the credentials from the Discord developer portal:
 
@@ -67,9 +79,11 @@ DISCORD_TOKEN=your_application_token
 DISCORD_PUBLIC_KEY=your_application_public_key
 ```
 
+::: danger
 Never commit this file or expose either value in logs.
+:::
 
-## Understand the generated app
+## Writing Your First Command
 
 The generated entry point creates a client, loads commands from `src/commands`, and starts the HTTP server:
 
@@ -82,12 +96,18 @@ await client.load();
 await client.listen({ port: 3000 });
 ```
 
-`client.load()` accepts no arguments here: it reads your `package.json`'s `main` field (`dist/index.js` in the
+Commands are regular classes discovered by the store. Head to [Build a Command](/guide/commands) for decorators,
+options, and subcommands, then to [Testing Interactions](/guide/testing) to exercise them without a network server.
+
+## Configuring the Client
+
+`client.load()` accepts no arguments above: it reads your `package.json`'s `main` field (`dist/index.js` in the
 generated project) and looks for a `commands` directory next to it, so there's no manual path resolution to write —
 as long as you run the app from the project root (as `pnpm start`/`node .` does) and `main` points at the file you
 actually run. `discordToken` and `discordPublicKey` are picked up from the `DISCORD_TOKEN` and `DISCORD_PUBLIC_KEY`
-environment variables the same way, so you don't need to pass them to `new Client()` either. This is the same
-pattern used in production bots such as
+environment variables the same way, so you don't need to pass them to `new Client()` either.
+
+This is the same pattern used in production bots such as
 [`wolfstar-project/staryl`](https://github.com/wolfstar-project/staryl/blob/main/src/main.ts) and
 [`wolfstar-project/ring`](https://github.com/wolfstar-project/ring/blob/main/src/main.ts), whose `package.json`
 files set `main` to their built entry point the same way:
@@ -119,10 +139,25 @@ await client.load({
 });
 ```
 
-## Next steps
+Environment variables get their own guide: [Environment Variables](/guide/environment).
 
-1. Follow [Build a command](/guide/commands) to understand decorators and interactions.
+## Examples
+
+| Example                 | Source                                                                                                 |
+| ----------------------- | ------------------------------------------------------------------------------------------------------ |
+| Runnable samples        | [`stars-components/examples`](https://github.com/wolfstar-project/stars-components/tree/main/examples) |
+| Production bot — Staryl | [`wolfstar-project/staryl`](https://github.com/wolfstar-project/staryl)                                |
+| Production bot — Ring   | [`wolfstar-project/ring`](https://github.com/wolfstar-project/ring)                                    |
+
+## Next Steps
+
+1. Follow [Build a Command](/guide/commands) to understand decorators and interactions.
 2. Configure your public URL as the Discord application's interactions endpoint.
 3. Add [interaction tests](/guide/testing) before expanding the command set.
 4. Browse the [`@wolfstar/http-framework` package guide](/packages/http-framework) and [API reference](/api/).
-5. Explore the runnable samples in the repository [`examples/`](https://github.com/wolfstar-project/stars-components/tree/main/examples) folder.
+
+## Community
+
+- [GitHub — wolfstar-project/stars-components](https://github.com/wolfstar-project/stars-components)
+- [Contributing guide](/guide/contributing)
+- [wolfstar.rocks](https://wolfstar.rocks)

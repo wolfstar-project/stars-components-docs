@@ -1,13 +1,13 @@
 ---
-title: Build a command
+title: Build a Command
 description: Register and handle Discord commands with the HTTP Framework.
 ---
 
-# Build a command
+# Build a Command
 
 Commands extend `Command` and use decorators to describe the application command Discord should register.
 
-## Create a chat input command
+## Create a Chat Input Command
 
 ```typescript
 import { Command, RegisterCommand } from '@wolfstar/http-framework';
@@ -31,7 +31,7 @@ export class PingCommand extends Command {
 Place the class in the command directory passed to `client.load()`. The loader discovers the class and adds its builder
 to the application-command registry.
 
-## Add subcommands
+## Add Subcommands
 
 Use `@RegisterSubcommand` on methods that should receive a specific subcommand:
 
@@ -57,7 +57,7 @@ export class MathCommand extends Command {
 Subcommand groups, user context-menu commands, message context-menu commands, and guild restrictions use the matching
 registration decorators exposed by the package.
 
-## Publish command definitions
+## Publish Command Definitions
 
 After loading pieces, push the registry to Discord:
 
@@ -71,7 +71,7 @@ await client.listen({ port: 3000 });
 Global command changes can take time to propagate. Use guild-restricted commands while iterating when you need changes to
 appear immediately.
 
-## Test before publishing
+## Test Before Publishing
 
 The testing package can run the same command class against a local interaction fixture without contacting Discord. See
 [Testing interactions](/guide/testing) for a complete example.

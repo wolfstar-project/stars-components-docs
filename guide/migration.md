@@ -1,9 +1,12 @@
 ---
-title: 'Migrating to @wolfstar/plugin-i18next'
-description: Move from the deprecated @wolfstar/http-framework-i18n package to the @wolfstar/plugin-i18next plugin.
+title: Migration Guide
+description: Upgrade paths between Stars Components packages and their replacements.
+outline: deep
 ---
 
-# Migrating to `@wolfstar/plugin-i18next`
+# Migration Guide
+
+## Migrating to `@wolfstar/plugin-i18next` {#i18next}
 
 [`@wolfstar/http-framework-i18n`](/packages/http-framework-i18n) is **deprecated**. Its successor is
 [`@wolfstar/plugin-i18next`](/packages/plugin-i18next), an official plugin for
@@ -11,11 +14,15 @@ description: Move from the deprecated @wolfstar/http-framework-i18n package to t
 [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-i18next)
 repository. No further releases are planned for the old package.
 
-The new plugin keeps the same typed-key philosophy (`T` / `FT`, `resolveKey`, `applyLocalizedBuilder`) but replaces the
+::: warning Prerequisites
+`@wolfstar/plugin-i18next` requires `@wolfstar/http-framework` >= 3.1.0 and pulls in `i18next` >= 25.8.18.
+:::
+
+The plugin keeps the same typed-key philosophy (`T` / `FT`, `resolveKey`, `applyLocalizedBuilder`) but replaces the
 manual `load()` + `init()` bootstrap with the framework's plugin lifecycle, and moves the loaded state onto
 `container.i18n`.
 
-## What changes
+### Overview of the Changes
 
 | Area                   | `@wolfstar/http-framework-i18n`                 | `@wolfstar/plugin-i18next`                                      |
 | ---------------------- | ----------------------------------------------- | --------------------------------------------------------------- |
@@ -28,7 +35,7 @@ manual `load()` + `init()` bootstrap with the framework's plugin lifecycle, and 
 | `i18next`              | `^22.5.1`                                       | `^25.8.18`                                                      |
 | Relationship to client | Standalone module                               | Framework plugin, requires `@wolfstar/http-framework@^3.1.0`    |
 
-## 1. Swap the dependency
+### Swapping the Dependency
 
 ::: code-group
 
@@ -56,7 +63,7 @@ bun add @wolfstar/plugin-i18next
 
 `@wolfstar/http-framework` is a peer dependency of the plugin, so keep it in your `dependencies`.
 
-## 2. Replace the bootstrap
+### Bootstrap Moved to the Plugin Lifecycle
 
 The old package required you to load the locales and initialize `i18next` yourself, before registering commands:
 
@@ -100,10 +107,12 @@ const client = new Client({
 await client.load();
 ```
 
+::: tip
 The plugin registers a `preLoad` hook that awaits `container.i18n.init()` **before** the stores load, so command
 builders can still be localized at registration time — the ordering the manual `await init()` used to guarantee.
+:::
 
-## 3. Rename the locales directory
+### Locales Directory Renamed to `languages`
 
 The old package took whatever path you passed to `load()`; the plugin defaults to `<root>/languages`. Either rename the
 directory or keep your own path via `defaultLanguageDirectory`.
@@ -122,7 +131,7 @@ languages/
         └── ping.json
 ```
 
-## 4. Update the imports
+### Module Specifier Renamed
 
 `T`, `FT`, `resolveKey`, `resolveUserKey`, `getSupportedLanguageName`, `getSupportedUserLanguageName`,
 `getSupportedLanguageT`, `getSupportedUserLanguageT`, `supportedLanguages`, `isSupportedDiscordLocale`,
@@ -135,7 +144,7 @@ find-and-replace of the module specifier:
 +import { FT, T, resolveKey } from '@wolfstar/plugin-i18next';
 ```
 
-### Removed exports
+### Removed APIs
 
 | Removed                        | Replacement                                                                  |
 | ------------------------------ | ---------------------------------------------------------------------------- |
@@ -159,7 +168,7 @@ find-and-replace of the module specifier:
 +const isLoaded = container.i18n.languages.has('es-ES');
 ```
 
-### New exports
+### New APIs
 
 | Added                   | What it does                                                                 |
 | ----------------------- | ---------------------------------------------------------------------------- |
@@ -169,7 +178,7 @@ find-and-replace of the module specifier:
 | `createLocalizedChoice` | Localized `APIApplicationCommandOptionChoice` for `setChoices`               |
 | `container.i18n`        | The `InternationalizationHandler` instance                                   |
 
-## 5. Optional — per-guild languages
+### Per-Guild Languages <Badge type="tip" text="optional" />
 
 The old package could only read the locales Discord puts on the interaction payload. If you store a language per guild,
 you can now plug a resolver in and use the asynchronous `fetch*` helpers:
@@ -191,7 +200,7 @@ const content = await fetchKey(interaction, 'commands/ping:success');
 `resolveKey` and `resolveUserKey` stay synchronous and keep reading the interaction payload only, so existing call sites
 do not change behaviour.
 
-## 6. Optional — hot module replacement
+### Hot Module Replacement <Badge type="tip" text="optional" />
 
 ```typescript
 const client = new Client({
@@ -204,14 +213,14 @@ const client = new Client({
 When enabled, the languages directory is watched with chokidar and `container.i18n.reloadResources()` runs on every
 change or deletion.
 
-## i18next 22 → 25
+### Upgrading `i18next` from 22 to 25
 
 The plugin depends on `i18next@^25`. If your project pins `i18next` itself, bump it and review the
 [i18next migration notes](https://www.i18next.com/misc/migration-guide). In practice the typed-key helpers absorb most
 of the surface, but note that `TFunction` is now generic over namespace and key prefix, so explicitly annotated
 `TFunction` variables may need their type arguments updated.
 
-## Checklist
+### Checklist
 
 - [ ] `@wolfstar/http-framework-i18n` removed from `package.json`
 - [ ] `@wolfstar/plugin-i18next` added, `@wolfstar/http-framework` on `^3.1.0` or newer

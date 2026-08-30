@@ -1,0 +1,27 @@
+---
+title: Features
+description: What ships across the Stars Components packages.
+---
+
+# Features
+
+- [HTTP-first Discord interactions](/packages/http-framework) — signature verification, routing, and the
+  application-command registry, with no gateway connection
+- [Project scaffolding](/packages/create-http-framework) — `pnpm create @wolfstar/http-framework` generates the entry
+  point, an example command, environment files, and your linter/formatter of choice
+- [Typed commands and subcommands](/guide/commands) — decorators over regular classes, discovered by piece stores
+- [Internationalization](/packages/plugin-i18next) — typed keys (`T` / `FT`, `resolveKey`), localized command builders,
+  per-guild language resolution, and optional hot reload
+- [Locale loading](/packages/i18next-backend) — loads and merges locale files across directories
+- [Interaction testing](/packages/http-framework-test-utils) — typed fixtures, a local harness, and dedicated Vitest
+  matchers, with no network server involved
+- [Typed environment variables](/packages/env-utilities) — dotenv loading plus parsers that fail loudly on bad input
+- [Result-based fetch](/packages/safe-fetch) — HTTP errors as values instead of thrown exceptions
+- [Structured logging](/packages/logger) and [Influx metrics](/packages/influx-utilities)
+- [Shared pieces](/packages/shared-http-pieces) — drop-in commands and listeners via a `/register` import
+- [Platform helpers](/packages/reddit-helpers) for Reddit, [Twitch](/packages/twitch-helpers), and
+  [weather](/packages/weather-helpers)
+- [Generated API reference](/api/) — built from every public entry point on each documentation build
+
+Browse the full list on the [packages index](/packages/), or read [Why Stars Components](/guide/why) for the
+reasoning behind the split.

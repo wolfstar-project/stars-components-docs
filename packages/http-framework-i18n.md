@@ -12,7 +12,7 @@ description: Typed i18next integration for the WolfStar HTTP Framework.
 
 ::: danger Deprecated
 This package has been replaced by [`@wolfstar/plugin-i18next`](/packages/plugin-i18next). No further releases are
-planned. See the [migration guide](/guide/migrating-to-plugin-i18next).
+planned. See the [migration guide](/guide/migration).
 :::
 
 <!--@include: ../data/readmes/http-framework-i18n/README.md{3,}-->

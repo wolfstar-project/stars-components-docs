@@ -12,7 +12,7 @@ description: Add i18next-powered internationalization to HTTP Framework interact
 />
 
 ::: tip Coming from `@wolfstar/http-framework-i18n`?
-Follow the [migration guide](/guide/migrating-to-plugin-i18next).
+Follow the [migration guide](/guide/migration).
 :::
 
 <!--@include: ../data/readmes/plugin-i18next/README.md{3,}-->
