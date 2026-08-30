@@ -15,7 +15,7 @@ outline: deep
 repository. No further releases are planned for the old package.
 
 ::: warning Prerequisites
-`@wolfstar/plugin-i18next` requires `@wolfstar/http-framework` >= 3.1.0 and pulls in `i18next` >= 25.8.18.
+`@wolfstar/plugin-i18next` requires `@wolfstar/http-framework@^3.1.0` and pulls in `i18next@^25.8.18`.
 :::
 
 The plugin keeps the same typed-key philosophy (`T` / `FT`, `resolveKey`, `applyLocalizedBuilder`) but replaces the
