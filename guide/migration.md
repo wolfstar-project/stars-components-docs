@@ -30,7 +30,7 @@ manual `load()` + `init()` bootstrap with the framework's plugin lifecycle, and 
 | State                  | Module-level sets (`loadedLocales`, …)          | `container.i18n` (`InternationalizationHandler`)                |
 | Locales directory      | Any path passed to `load()`                     | `i18n.defaultLanguageDirectory`, defaults to `<root>/languages` |
 | Formatters             | `addFormatters(...)`                            | `i18n.formatters` client option                                 |
-| Language resolution    | Interaction payload only                        | Interaction payload **or** `container.i18n.fetchLanguage`       |
+| Language resolution    | Interaction payload only                        | Interaction payload **or** `i18n.fetchLanguage`                 |
 | Hot reload             | Not available                                   | `i18n.hmr.enabled`                                              |
 | `i18next`              | `^22.5.1`                                       | `^25.8.18`                                                      |
 | Relationship to client | Standalone module                               | Framework plugin, requires `@wolfstar/http-framework@^3.1.0`    |
@@ -181,17 +181,44 @@ find-and-replace of the module specifier:
 ### Per-Guild Languages <Badge type="tip" text="optional" />
 
 The old package could only read the locales Discord puts on the interaction payload. If you store a language per guild,
-you can now plug a resolver in and use the asynchronous `fetch*` helpers:
+you can now plug a resolver in and use the asynchronous `fetch*` helpers.
+
+The resolver can be declared up-front as part of the `i18n` client option:
+
+```typescript
+import '@wolfstar/plugin-i18next/register';
+import { Client } from '@wolfstar/http-framework';
+
+const client = new Client({
+	i18n: {
+		fetchLanguage: async (context) => {
+			if (!context.guildId) return null;
+			const guild = await database.getGuild(context.guildId);
+			return guild?.language ?? null;
+		}
+	}
+});
+await client.load();
+```
+
+Or assigned later on the handler, which is handy when the resolver depends on something only available after the client
+is created (a database connection, for example):
 
 ```typescript
 import { container } from '@wolfstar/http-framework';
-import { fetchKey, fetchT } from '@wolfstar/plugin-i18next';
 
 container.i18n.fetchLanguage = async (context) => {
 	if (!context.guildId) return null;
 	const guild = await database.getGuild(context.guildId);
 	return guild?.language ?? null;
 };
+```
+
+Both forms feed the same hook — the client option is applied to the handler on creation, and a later assignment
+overwrites it. Either way the asynchronous helpers pick it up:
+
+```typescript
+import { fetchKey, fetchT } from '@wolfstar/plugin-i18next';
 
 const t = await fetchT(interaction);
 const content = await fetchKey(interaction, 'commands/ping:success');
