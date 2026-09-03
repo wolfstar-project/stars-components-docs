@@ -10,4 +10,4 @@ description: Shared InfluxDB analytics pieces for HTTP-only bots.
 	description="Collect interaction metrics through reusable Influx pieces."
 />
 
-<!--@include: ../data/readmes/shared-influx-pieces/README.md{5,}-->
+<!--@include: ../data/readmes/shared-influx-pieces/README.md{16,}-->

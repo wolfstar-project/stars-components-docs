@@ -10,4 +10,4 @@ description: Weather data and unit helpers for Star Network bots.
 	description="Fetch weather data and convert common units."
 />
 
-<!--@include: ../data/readmes/weather-helpers/README.md{5,}-->
+<!--@include: ../data/readmes/weather-helpers/README.md{16,}-->

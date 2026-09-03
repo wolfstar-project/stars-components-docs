@@ -10,4 +10,4 @@ description: Helpers for fetching and normalizing Reddit posts.
 	description="Fetch and normalize Reddit posts for Star bots."
 />
 
-<!--@include: ../data/readmes/reddit-helpers/README.md{5,}-->
+<!--@include: ../data/readmes/reddit-helpers/README.md{16,}-->

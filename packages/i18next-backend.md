@@ -10,4 +10,4 @@ description: A filesystem-based i18next backend for Node.js.
 	description="Load and merge i18next resources from the filesystem."
 />
 
-<!--@include: ../data/readmes/i18next-backend/README.md{5,}-->
+<!--@include: ../data/readmes/i18next-backend/README.md{16,}-->

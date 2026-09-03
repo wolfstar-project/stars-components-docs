@@ -10,4 +10,4 @@ description: Scaffold a WolfStar HTTP Framework bot project.
 	description="Scaffold a production-ready HTTP Framework bot."
 />
 
-<!--@include: ../data/readmes/create-http-framework/README.md{5,}-->
+<!--@include: ../data/readmes/create-http-framework/README.md{16,}-->
