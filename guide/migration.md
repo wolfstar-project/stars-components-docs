@@ -142,7 +142,8 @@ No existing import changes: the root subpath keeps the same specifier and the sa
 | `stars build`             | Calling `tsdown` or `tsc -b` directly                                     |
 | `stars info [--json]`     | Nothing — prints the resolved configuration, auto imports and environment |
 | `stars codegen [--check]` | A hand-written `i18next-type-generator` invocation                        |
-| `stars prepare [--check]` | Nothing — generates the auto imports declaration file                     |
+| `stars prepare`           | Nothing — generates the auto imports declaration file                     |
+| `stars prepare --check`   | Nothing — verifies the file on disk matches, without writing it           |
 | `stars commands`          | Ad-hoc scripts deleting stale application commands from Discord           |
 
 `--config <file>` points at a configuration file and `--cwd <dir>` changes the working directory; both work on every
@@ -228,8 +229,11 @@ export default defineConfig({
 `Client`, `Message`, `Plugin` and `Store` are never auto-imported, even when a preset exports them: the names are
 generic enough that project code likely declares its own. Import them explicitly, as today.
 
-Run `stars prepare` to generate `.stars/imports.d.ts`, include it in the project's `tsconfig.json`, and check it in CI
-with `stars prepare --check`.
+Run `stars prepare` to generate `.stars/imports.d.ts` and include it in the project's `tsconfig.json`. `--check` only
+verifies that the file on disk is up to date — it never writes it — so run plain `stars prepare` at least once (a
+`postinstall` script, or the first step of `dev`/`build`/CI) before typechecking a fresh checkout: `.stars/` is
+gitignored, so the declaration does not exist yet and `tsc` fails on the missing include. Reserve `stars prepare
+--check` for CI, after that generation step, to catch a declaration that drifted from a committed diff.
 
 ### Ignoring `.stars/`
 
