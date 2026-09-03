@@ -10,4 +10,4 @@ description: An opinionated InfluxDB client for a single organization.
 	description="Work with a single InfluxDB organization through a small client."
 />
 
-<!--@include: ../data/readmes/influx-utilities/README.md{5,}-->
+<!--@include: ../data/readmes/influx-utilities/README.md{16,}-->

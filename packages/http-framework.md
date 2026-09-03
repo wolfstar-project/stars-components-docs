@@ -10,4 +10,4 @@ description: The framework for Star Network HTTP-only Discord bots.
 	description="Build Discord bots around fast, HTTP-only interactions."
 />
 
-<!--@include: ../data/readmes/http-framework/README.md{5,}-->
+<!--@include: ../data/readmes/http-framework/README.md{16,}-->

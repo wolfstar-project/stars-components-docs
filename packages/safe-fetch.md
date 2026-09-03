@@ -10,4 +10,4 @@ description: A native fetch wrapper powered by Result values.
 	description="Wrap native fetch responses in Result values."
 />
 
-<!--@include: ../data/readmes/safe-fetch/README.md{5,}-->
+<!--@include: ../data/readmes/safe-fetch/README.md{16,}-->
