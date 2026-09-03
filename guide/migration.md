@@ -1,10 +1,256 @@
 ---
 title: Migration Guide
-description: Upgrade paths between Stars Components packages and their replacements.
+description: Upgrade paths between Stars Components versions and package replacements.
 outline: deep
 ---
 
 # Migration Guide
+
+This page collects the upgrade paths between Stars Components packages and their versions. Every section is
+self-contained — read the one matching the move you are making.
+
+- [`@wolfstar/http-framework` v3 → v4](#v4) <Badge type="warning" text="unreleased" />
+- [`@wolfstar/http-framework-i18n` → `@wolfstar/plugin-i18next`](#i18next)
+
+## Migrating from v3 to v4 {#v4}
+
+::: danger Work in progress — v4 is not released
+`@wolfstar/http-framework@3.3.0` is the current stable release; there is no `4.0.0` on npm yet. This section is a
+living document, written as the changes destined for v4 land on `main` — starting with
+[stars-components#158](https://github.com/wolfstar-project/stars-components/pull/158) — so the upgrade is already
+documented by the time the major is tagged. Everything below can still change before the release.
+:::
+
+### Changes Tracked So Far
+
+| Landed in                                                             | Change                                                                 | Breaking today                      |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------- |
+| [#158](https://github.com/wolfstar-project/stars-components/pull/158) | `stars` CLI, typed `stars.config.*`, auto imports, `stars dev` tooling | No — additive, ships in a 3.x minor |
+
+::: tip Why migrate before the major
+The pieces below are published as **minor** releases on the 3.x line, so you can adopt them today without waiting for
+v4. v4 is where they become _the_ way a framework project is developed: hand-wired `watch` / `watch:start` /
+`tsc-watch` scripts stop being what the scaffold and the documentation describe. Moving now turns the major into a
+version bump instead of a rewrite.
+:::
+
+### Adding the `stars` CLI
+
+The developer workflow moves into a separate package, `@wolfstar/cli`, which ships the `stars` binary. The framework
+itself keeps owning the configuration — the same split Nuxt has between `nuxt`/`defineNuxtConfig` and `nuxi`.
+
+::: code-group
+
+```bash [pnpm]
+pnpm add -D @wolfstar/cli
+```
+
+```bash [npm]
+npm install --save-dev @wolfstar/cli
+```
+
+```bash [yarn]
+yarn add --dev @wolfstar/cli
+```
+
+```bash [bun]
+bun add --dev @wolfstar/cli
+```
+
+:::
+
+::: warning Node requirement
+`@wolfstar/http-framework` still supports Node.js 20 or newer. `@wolfstar/cli` requires **Node.js 22 or newer**,
+inherited from [Ink](https://github.com/vadimdemedes/ink), which renders the interactive `stars dev` UI. It is a
+`devDependency`, so it constrains the development environment, not the deployed bot.
+:::
+
+### Creating `stars.config.ts`
+
+Add a `stars.config.{ts,mts,cts,js,mjs,cjs}` file at the project root. `defineConfig` comes from the framework's new
+`config` subpath, not from the CLI:
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	entry: 'src/main.ts',
+	build: { tool: 'tsdown' }
+});
+```
+
+Every option has a default: `entry` falls back to the first of `src/main.ts`, `src/main.js`, `src/index.ts`,
+`src/index.js` that exists, and `build.tool` defaults to `auto` (detected from the project). A minimal project can
+export `defineConfig({})`.
+
+`@wolfstar/http-framework/config` is side-effect free — importing it, or a `stars.config.ts` that imports it, never
+starts the bot. Invalid options raise a `ConfigError` carrying a stable `code`, the offending option `path`, the
+`file` it came from, and an actionable `hint`; `stars` exits with code `2` on those.
+
+The resolved configuration is readable from any tool, without depending on the CLI:
+
+```typescript
+import { loadStarsConfig } from '@wolfstar/http-framework/config';
+
+const config = await loadStarsConfig({ cwd: process.cwd() });
+console.log(config.entry, config.build.output);
+```
+
+### Replacing the `package.json` Scripts
+
+The per-language, per-build-tool script wiring collapses into two commands that read `stars.config.*`:
+
+```diff
+ {
+ 	"scripts": {
+-		"build": "tsdown",
+-		"dev": "pnpm run build --onSuccess \"pnpm run start\"",
+-		"watch": "pnpm run build --watch",
+-		"watch:start": "pnpm run build --watch --onSuccess \"pnpm run start\"",
++		"build": "stars build",
++		"dev": "stars dev",
+ 		"start": "node dist/main.js",
+-		"generate:i18n": "i18next-type-generator ./src/locales/en-US/ ./src/@types/i18next.d.ts"
++		"generate:i18n": "stars codegen"
+ 	}
+ }
+```
+
+TypeScript projects built with `tsc` drop `tsc-watch` from their `devDependencies` — `stars dev` runs `tsc -b --watch`
+itself. JavaScript projects drop `node --watch src/main.js` and keep no `build` script at all (`build.tool: 'none'`).
+
+`start` is unchanged: production still runs the built entry point directly, `stars` is a development-only tool.
+
+### The New Framework Subpaths
+
+v3 exposed a single entry point. The package now has three export subpaths:
+
+| Subpath                                 | What it exports                                                    |
+| --------------------------------------- | ------------------------------------------------------------------ |
+| `@wolfstar/http-framework`              | Unchanged — `Client`, pieces, container, everything you use today  |
+| `@wolfstar/http-framework/config`       | `defineConfig`, `loadStarsConfig`, `ConfigError`, the config types |
+| `@wolfstar/http-framework/auto-imports` | `autoImports()`, the `tsdown` plugin backing auto imports          |
+
+No existing import changes: the root subpath keeps the same specifier and the same exports.
+
+### `stars` Commands
+
+| Command                   | What it replaces                                                          |
+| ------------------------- | ------------------------------------------------------------------------- |
+| `stars dev`               | `watch` / `watch:start` / `tsc-watch` / `node --watch` wiring             |
+| `stars build`             | Calling `tsdown` or `tsc -b` directly                                     |
+| `stars info [--json]`     | Nothing — prints the resolved configuration, auto imports and environment |
+| `stars codegen [--check]` | A hand-written `i18next-type-generator` invocation                        |
+| `stars prepare [--check]` | Nothing — generates the auto imports declaration file                     |
+| `stars commands`          | Ad-hoc scripts deleting stale application commands from Discord           |
+
+`--config <file>` points at a configuration file and `--cwd <dir>` changes the working directory; both work on every
+command. `stars --help` and `stars --version` never load the configuration machinery, so they stay fast.
+
+`stars dev` builds, starts the bot, and restarts it after every successful build. Failed builds keep the previous
+process alive and wait for the next change. On a terminal it renders an interactive UI (lifecycle, uptime, restart
+reason, build state, URL, health, filtered logs, `r` restart, `c` clear, `f`/`e` filters, `h` help, `q` quit); it falls
+back to plain prefixed lines with `--no-tui`, `STARS_TUI=plain`, in CI, or when stdout is not a TTY. Both modes honour
+`NO_COLOR` and stop the bot cleanly on `SIGINT`/`SIGTERM`.
+
+::: warning `hmr` and `stars dev` overlap
+The bot runs as a child `node` process with `STARS_DEV=1` in its environment, and `stars dev` restarts the whole
+process on every build. Leave the framework's own `hmr` client option **disabled** while using `stars dev`.
+:::
+
+`stars commands` covers the gap the registry cannot: renamed or deleted commands stay deployed on Discord until
+something removes them.
+
+```bash
+stars commands list                 # global commands
+stars commands list --guild 1234    # a guild's commands
+stars commands clean                # checklist wizard, then a confirmation
+stars commands clean --name ping    # delete one, asking first
+```
+
+It reads `DISCORD_TOKEN` and `DISCORD_APPLICATION_ID` (or `APPLICATION_ID`) from the environment or the project's
+`.env`, the same place the bot reads them from. Outside a terminal, `clean` refuses to run without `--yes` or `--name`.
+
+### Dev Loop Options <Badge type="tip" text="optional" />
+
+Three `dev` options round out the loop, all off by default except the log file:
+
+```typescript
+export default defineConfig({
+	entry: 'src/main.ts',
+	build: { tool: 'tsdown' },
+	dev: {
+		// A type checker next to the bot, reported on the UI's `tsc` channel. Never blocks a build.
+		typecheck: { checker: 'golar' },
+		// A cloudflared quick tunnel so Discord can reach the interactions endpoint.
+		tunnel: true,
+		// Where the session's logs are mirrored; `false` disables it.
+		logFile: '.stars/dev.log'
+	}
+});
+```
+
+- **`dev.typecheck`** brings back the type safety a `tsdown` build skips. `checker` is `tsc` (watch mode), `golar`
+  (`golar tsc`, watch mode), `tsz` (no watch mode, so re-run after every build), or `auto` — the default, `golar` when
+  the project depends on it and `tsc` otherwise. Type errors are reported without blocking builds or restarts.
+- **`dev.tunnel`** exposes the interactions endpoint publicly: `true` opens a `cloudflared` quick tunnel (a new
+  hostname on every run), a string is an https URL you already serve and the CLI only probes.
+  `dev.tunnel.updateEndpoint` writes that URL to the Discord application's `interactions_endpoint_url` — opt-in,
+  because it edits a live application.
+- **`dev.logFile`** (default `.stars/dev.log`) mirrors the session's logs to disk, so a run can be read back once the
+  terminal UI is gone.
+
+`dev.url` needs no configuration: it is detected from `HTTP_PORT` (environment variable, `.env.local`/`.env`, or
+`dev.env`) or `3000`, the way Vite's and Nuxt's dev servers do, and `localhost` is swapped for `127.0.0.1` when that is
+what is actually reachable. Set it explicitly only to override, e.g. `dev: { url: 'http://192.168.1.5:3000' }`.
+
+### Auto Imports <Badge type="tip" text="optional" />
+
+Nuxt-style auto imports make the framework's exports and the project's own modules usable without an `import`
+statement. They are injected at build time by the `autoImports()` rolldown plugin, so they **require the `tsdown`
+build tool** — `tsc` and `none` have no transform step to hook into. They are on by default with `tsdown`, and
+`imports: false` turns them off.
+
+```typescript
+export default defineConfig({
+	entry: 'src/main.ts',
+	build: { tool: 'tsdown' },
+	imports: {
+		dirs: ['src/lib/**', 'src/utils/**'],
+		presets: ['@wolfstar/http-framework', '@wolfstar/env-utilities'],
+		exclude: [],
+		dts: '.stars/imports.d.ts'
+	}
+});
+```
+
+`Client`, `Message`, `Plugin` and `Store` are never auto-imported, even when a preset exports them: the names are
+generic enough that project code likely declares its own. Import them explicitly, as today.
+
+Run `stars prepare` to generate `.stars/imports.d.ts`, include it in the project's `tsconfig.json`, and check it in CI
+with `stars prepare --check`.
+
+### Ignoring `.stars/`
+
+The CLI writes into a `.stars/` directory at the project root — the dev log and the auto imports declaration file.
+Add it to `.gitignore`:
+
+```gitignore
+.stars/
+```
+
+### Checklist
+
+- [ ] `@wolfstar/cli` added as a `devDependency`, development environment on Node.js 22 or newer
+- [ ] `stars.config.ts` created with `defineConfig` from `@wolfstar/http-framework/config`
+- [ ] `dev` / `build` scripts replaced with `stars dev` / `stars build`
+- [ ] `watch`, `watch:start` and the `tsc-watch` dependency removed
+- [ ] `generate:i18n` replaced with `stars codegen`, verified with `stars codegen --check`
+- [ ] The framework's `hmr` client option disabled while developing with `stars dev`
+- [ ] `.stars/` added to `.gitignore`
+- [ ] `stars info` output reviewed — it prints the configuration exactly as the commands resolve it
+- [ ] Optional: `dev.typecheck`, `dev.tunnel`, auto imports (`stars prepare`) enabled
 
 ## Migrating to `@wolfstar/plugin-i18next` {#i18next}
 
