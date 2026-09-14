@@ -1,0 +1,155 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/twitch-helpers](../index.md) / TwitchHelixStreamsResult
+
+# Interface: TwitchHelixStreamsResult
+
+Defined in: [types.ts:55](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L55)
+
+## Properties
+
+### game_box_art_url?
+
+> `optional` **game_box_art_url?**: `string`
+
+Defined in: [types.ts:57](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L57)
+
+Template URL for the game’s box art.
+
+---
+
+### game_id
+
+> **game_id**: `string`
+
+Defined in: [types.ts:60](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L60)
+
+ID of the game being played on the stream.
+
+---
+
+### game_name
+
+> **game_name**: `string`
+
+Defined in: [types.ts:63](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L63)
+
+Name of the game being played.
+
+---
+
+### id
+
+> **id**: `string`
+
+Defined in: [types.ts:66](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L66)
+
+Stream ID.
+
+---
+
+### is_mature
+
+> **is_mature**: `boolean`
+
+Defined in: [types.ts:69](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L69)
+
+Indicates if the broadcaster has specified their channel contains mature content that may be inappropriate for younger audiences.
+
+---
+
+### language
+
+> **language**: `string`
+
+Defined in: [types.ts:72](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L72)
+
+Stream language. A language value is either the [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) two-letter code for a [supported stream language](https://help.twitch.tv/s/article/languages-on-twitch#streamlang) or “other”.
+
+---
+
+### started_at
+
+> **started_at**: `Date`
+
+Defined in: [types.ts:75](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L75)
+
+UTC timestamp.
+
+---
+
+### tag_ids
+
+> **tag_ids**: `string`[]
+
+Defined in: [types.ts:78](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L78)
+
+Shows tag IDs that apply to the stream.
+
+---
+
+### thumbnail_url
+
+> **thumbnail_url**: `string`
+
+Defined in: [types.ts:81](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L81)
+
+Thumbnail URL of the stream. All image URLs have variable width and height. You can replace `{width}` and `{height}` with any values to get that size image
+
+---
+
+### title
+
+> **title**: `string`
+
+Defined in: [types.ts:84](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L84)
+
+Stream title.
+
+---
+
+### type
+
+> **type**: `string`
+
+Defined in: [types.ts:87](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L87)
+
+Stream type: "live" or "" (in case of error).
+
+---
+
+### user_id
+
+> **user_id**: `string`
+
+Defined in: [types.ts:90](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L90)
+
+ID of the user who is streaming.
+
+---
+
+### user_login
+
+> **user_login**: `string`
+
+Defined in: [types.ts:93](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L93)
+
+Login of the user who is streaming.
+
+---
+
+### user_name
+
+> **user_name**: `string`
+
+Defined in: [types.ts:96](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L96)
+
+Display name corresponding to [TwitchHelixStreamsResult.user_id](#user-id).
+
+---
+
+### viewer_count
+
+> **viewer_count**: `number`
+
+Defined in: [types.ts:99](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/twitch-helpers/src/lib/types.ts#L99)
+
+Number of viewers watching the stream at the time of the query.

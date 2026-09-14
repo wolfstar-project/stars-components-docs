@@ -1,0 +1,331 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/influx-utilities](../index.md) / Point
+
+# Class: Point
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:492
+
+Point defines values of a single measurement.
+
+## Constructors
+
+### Constructor
+
+> **new Point**(`measurementName?`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:505
+
+Create a new Point with specified a measurement name.
+
+#### Parameters
+
+##### measurementName?
+
+`string`
+
+the measurement name
+
+#### Returns
+
+`Point`
+
+## Properties
+
+### fields
+
+> **fields**: `object`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:496
+
+escaped field values
+
+#### Index Signature
+
+\[`key`: `string`\]: `string`
+
+## Methods
+
+### booleanField()
+
+> **booleanField**(`name`, `value`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:529
+
+Adds a boolean field.
+
+#### Parameters
+
+##### name
+
+`string`
+
+##### value
+
+`any`
+
+field value
+
+#### Returns
+
+`Point`
+
+this
+
+---
+
+### floatField()
+
+> **floatField**(`name`, `value`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:556
+
+Adds a number field.
+
+#### Parameters
+
+##### name
+
+`string`
+
+field name
+
+##### value
+
+`any`
+
+field value
+
+#### Returns
+
+`Point`
+
+this
+
+#### Throws
+
+NaN/Infinity/-Infinity is supplied
+
+---
+
+### intField()
+
+> **intField**(`name`, `value`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:538
+
+Adds an integer field.
+
+#### Parameters
+
+##### name
+
+`string`
+
+field name
+
+##### value
+
+`any`
+
+field value
+
+#### Returns
+
+`Point`
+
+this
+
+#### Throws
+
+NaN or out of int64 range value is supplied
+
+---
+
+### measurement()
+
+> **measurement**(`name`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:512
+
+Sets point's measurement.
+
+#### Parameters
+
+##### name
+
+`string`
+
+measurement name
+
+#### Returns
+
+`Point`
+
+this
+
+---
+
+### stringField()
+
+> **stringField**(`name`, `value`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:564
+
+Adds a string field.
+
+#### Parameters
+
+##### name
+
+`string`
+
+field name
+
+##### value
+
+`any`
+
+field value
+
+#### Returns
+
+`Point`
+
+this
+
+---
+
+### tag()
+
+> **tag**(`name`, `value`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:521
+
+Adds a tag. The caller has to ensure that both name and value are not empty
+and do not end with backslash.
+
+#### Parameters
+
+##### name
+
+`string`
+
+tag name
+
+##### value
+
+`string`
+
+tag value
+
+#### Returns
+
+`Point`
+
+this
+
+---
+
+### timestamp()
+
+> **timestamp**(`value`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:583
+
+Sets point timestamp. Timestamp can be specified as a Date (preferred), number, string
+or an undefined value. An undefined value instructs to assign a local timestamp using
+the client's clock. An empty string can be used to let the server assign
+the timestamp. A number value represents time as a count of time units since epoch, the
+exact time unit then depends on the [precision](InfluxDB.md#getwriteapi) of the API
+that writes the point.
+
+Beware that the current time in nanoseconds can't precisely fit into a JS number,
+which can hold at most 2^53 integer number. Nanosecond precision numbers are thus supplied as
+a (base-10) string. An application can also use ES2020 BigInt to represent nanoseconds,
+BigInt's `toString()` returns the required high-precision string.
+
+Note that InfluxDB requires the timestamp to fit into int64 data type.
+
+#### Parameters
+
+##### value
+
+`string` \| `number` \| `Date` \| `undefined`
+
+point time
+
+#### Returns
+
+`Point`
+
+this
+
+---
+
+### toLineProtocol()
+
+> **toLineProtocol**(`settings?`): `string` \| `undefined`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:590
+
+Creates an InfluxDB protocol line out of this instance.
+
+#### Parameters
+
+##### settings?
+
+`Partial`\<`PointSettings`\>
+
+settings control serialization of a point timestamp and can also add default tags,
+nanosecond timestamp precision is used when no `settings` or no `settings.convertTime` is supplied.
+
+#### Returns
+
+`string` \| `undefined`
+
+an InfluxDB protocol line out of this instance
+
+---
+
+### toString()
+
+> **toString**(): `string`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:591
+
+#### Returns
+
+`string`
+
+---
+
+### uintField()
+
+> **uintField**(`name`, `value`): `Point`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:547
+
+Adds an unsigned integer field.
+
+#### Parameters
+
+##### name
+
+`string`
+
+field name
+
+##### value
+
+`any`
+
+field value
+
+#### Returns
+
+`Point`
+
+this
+
+#### Throws
+
+NaN out of range value is supplied

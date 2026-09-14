@@ -1,0 +1,187 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/shared-influx-pieces](../index.md) / InfluxClient
+
+# Class: InfluxClient
+
+Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:7](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L7)
+
+## theme_extends
+
+- `Client`
+
+## Constructors
+
+### Constructor
+
+> **new InfluxClient**(`options?`): `InfluxClient`
+
+Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:18](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L18)
+
+#### Parameters
+
+##### options?
+
+[`ConnectionOptions`](../../influx-utilities/interfaces/ConnectionOptions.md) = `{}`
+
+#### Returns
+
+`InfluxClient`
+
+#### Overrides
+
+`Client.constructor`
+
+## Properties
+
+### influx
+
+> `readonly` **influx**: [`InfluxDB`](../../influx-utilities/classes/InfluxDB.md)
+
+Defined in: packages/influx-utilities/dist/esm/index.d.ts:23
+
+#### Inherited from
+
+`Client.influx`
+
+---
+
+### interactionCounters
+
+> **interactionCounters**: `Record`\<[`InteractionCounterKey`](../type-aliases/InteractionCounterKey.md), `number`\>
+
+Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:11](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L11)
+
+Represents the count of different types of interactions.
+
+---
+
+### queryApi
+
+> `readonly` **queryApi**: [`QueryApi`](../../influx-utilities/interfaces/QueryApi.md)
+
+Defined in: packages/influx-utilities/dist/esm/index.d.ts:24
+
+#### Inherited from
+
+`Client.queryApi`
+
+---
+
+### writeApi
+
+> `readonly` **writeApi**: [`WriteApi`](../../influx-utilities/interfaces/WriteApi.md)
+
+Defined in: packages/influx-utilities/dist/esm/index.d.ts:25
+
+#### Inherited from
+
+`Client.writeApi`
+
+## Methods
+
+### addInjectTag()
+
+> **addInjectTag**(`name`, `value`): `void`
+
+Defined in: packages/influx-utilities/dist/esm/index.d.ts:33
+
+Adds a tag that will be injected in all points.
+
+#### Parameters
+
+##### name
+
+`string`
+
+The name of the tag to inject.
+
+##### value
+
+`string`
+
+The value of the tag to inject.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+`Client.addInjectTag`
+
+---
+
+### flush()
+
+> **flush**(`withRetryBuffer?`): `Promise`\<`void`\>
+
+Defined in: packages/influx-utilities/dist/esm/index.d.ts:48
+
+Flushes the pending writes to the server.
+
+#### Parameters
+
+##### withRetryBuffer?
+
+`boolean`
+
+Whether or not it should flush the scheduled retries
+
+#### Returns
+
+`Promise`\<`void`\>
+
+#### Inherited from
+
+`Client.flush`
+
+---
+
+### writePoint()
+
+> **writePoint**(`point`): `void`
+
+Defined in: packages/influx-utilities/dist/esm/index.d.ts:38
+
+Writes a point into the write buffer.
+
+#### Parameters
+
+##### point
+
+[`Point`](../../influx-utilities/classes/Point.md)
+
+The point to write.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+`Client.writePoint`
+
+---
+
+### writePoints()
+
+> **writePoints**(`points`): `void`
+
+Defined in: packages/influx-utilities/dist/esm/index.d.ts:43
+
+Writes multiple points into the write buffer.
+
+#### Parameters
+
+##### points
+
+readonly [`Point`](../../influx-utilities/classes/Point.md)[]
+
+The points to write.
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+`Client.writePoints`

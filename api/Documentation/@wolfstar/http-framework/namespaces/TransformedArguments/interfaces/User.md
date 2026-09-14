@@ -1,0 +1,37 @@
+[@wolfstar/website](../../../../../../index.md) / [Documentation](../../../../../index.md) / [@wolfstar/http-framework](../../../index.md) / [TransformedArguments](../index.md) / User
+
+# Interface: User
+
+Defined in: [packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:158](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L158)
+
+## theme_extends
+
+- [`BasePartial`](BasePartial.md)
+
+## Properties
+
+### id
+
+> **id**: `string`
+
+Defined in: [packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:151](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L151)
+
+#### Inherited from
+
+[`BasePartial`](BasePartial.md).[`id`](BasePartial.md#id)
+
+---
+
+### member
+
+> **member**: `APIInteractionDataResolvedGuildMember` \| `null`
+
+Defined in: [packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:160](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L160)
+
+---
+
+### user
+
+> **user**: `APIUser`
+
+Defined in: [packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:159](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L159)

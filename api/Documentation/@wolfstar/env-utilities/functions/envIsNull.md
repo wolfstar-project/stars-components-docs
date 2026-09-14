@@ -1,0 +1,26 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/env-utilities](../index.md) / envIsNull
+
+# Function: envIsNull()
+
+> **envIsNull**(`key`): `boolean`
+
+Defined in: [packages/env-utilities/src/lib/utils.ts:76](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/env-utilities/src/lib/utils.ts#L76)
+
+Checks if the value of the specified environment variable is null.
+
+## Parameters
+
+### key
+
+keyof [`Env`](../interfaces/Env.md)
+
+The name of the environment variable.
+
+## Returns
+
+`boolean`
+
+Whether the value of the specified environment variable is:
+
+- The string `"0"`
+- The string `"null"`, case insensitive

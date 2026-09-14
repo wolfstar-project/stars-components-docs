@@ -1,0 +1,333 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/logger](../index.md) / Colorette
+
+# Interface: Colorette
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:4
+
+## Properties
+
+### bgBlack
+
+> **bgBlack**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:22
+
+---
+
+### bgBlackBright
+
+> **bgBlackBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:38
+
+---
+
+### bgBlue
+
+> **bgBlue**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:26
+
+---
+
+### bgBlueBright
+
+> **bgBlueBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:42
+
+---
+
+### bgCyan
+
+> **bgCyan**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:28
+
+---
+
+### bgCyanBright
+
+> **bgCyanBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:44
+
+---
+
+### bgGreen
+
+> **bgGreen**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:24
+
+---
+
+### bgGreenBright
+
+> **bgGreenBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:40
+
+---
+
+### bgMagenta
+
+> **bgMagenta**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:27
+
+---
+
+### bgMagentaBright
+
+> **bgMagentaBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:43
+
+---
+
+### bgRed
+
+> **bgRed**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:23
+
+---
+
+### bgRedBright
+
+> **bgRedBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:39
+
+---
+
+### bgWhite
+
+> **bgWhite**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:29
+
+---
+
+### bgWhiteBright
+
+> **bgWhiteBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:45
+
+---
+
+### bgYellow
+
+> **bgYellow**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:25
+
+---
+
+### bgYellowBright
+
+> **bgYellowBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:41
+
+---
+
+### black
+
+> **black**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:13
+
+---
+
+### blackBright
+
+> **blackBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:30
+
+---
+
+### blue
+
+> **blue**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:17
+
+---
+
+### blueBright
+
+> **blueBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:34
+
+---
+
+### bold
+
+> **bold**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:6
+
+---
+
+### cyan
+
+> **cyan**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:19
+
+---
+
+### cyanBright
+
+> **cyanBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:36
+
+---
+
+### dim
+
+> **dim**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:7
+
+---
+
+### gray
+
+> **gray**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:21
+
+---
+
+### green
+
+> **green**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:15
+
+---
+
+### greenBright
+
+> **greenBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:32
+
+---
+
+### hidden
+
+> **hidden**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:11
+
+---
+
+### inverse
+
+> **inverse**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:10
+
+---
+
+### italic
+
+> **italic**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:8
+
+---
+
+### magenta
+
+> **magenta**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:18
+
+---
+
+### magentaBright
+
+> **magentaBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:35
+
+---
+
+### red
+
+> **red**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:14
+
+---
+
+### redBright
+
+> **redBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:31
+
+---
+
+### reset
+
+> **reset**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:5
+
+---
+
+### strikethrough
+
+> **strikethrough**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:12
+
+---
+
+### underline
+
+> **underline**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:9
+
+---
+
+### white
+
+> **white**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:20
+
+---
+
+### whiteBright
+
+> **whiteBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:37
+
+---
+
+### yellow
+
+> **yellow**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:16
+
+---
+
+### yellowBright
+
+> **yellowBright**: [`Color`](../type-aliases/Color.md)
+
+Defined in: node_modules/.pnpm/colorette@2.0.20/node_modules/colorette/index.d.ts:33

@@ -1,0 +1,319 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/weather-helpers](../index.md) / Hourly
+
+# Interface: Hourly
+
+Defined in: [types.ts:137](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L137)
+
+Represents hourly weather data
+
+## Properties
+
+### chanceoffog
+
+> **chanceoffog**: `` `${bigint}` ``
+
+Defined in: [types.ts:148](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L148)
+
+---
+
+### chanceoffrost
+
+> **chanceoffrost**: `` `${bigint}` ``
+
+Defined in: [types.ts:149](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L149)
+
+---
+
+### chanceofhightemp
+
+> **chanceofhightemp**: `` `${bigint}` ``
+
+Defined in: [types.ts:150](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L150)
+
+---
+
+### chanceofovercast
+
+> **chanceofovercast**: `` `${bigint}` ``
+
+Defined in: [types.ts:151](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L151)
+
+---
+
+### chanceofrain
+
+> **chanceofrain**: `` `${bigint}` ``
+
+Defined in: [types.ts:152](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L152)
+
+---
+
+### chanceofremdry
+
+> **chanceofremdry**: `` `${bigint}` ``
+
+Defined in: [types.ts:153](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L153)
+
+---
+
+### chanceofsnow
+
+> **chanceofsnow**: `` `${bigint}` ``
+
+Defined in: [types.ts:154](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L154)
+
+---
+
+### chanceofsunshine
+
+> **chanceofsunshine**: `` `${bigint}` ``
+
+Defined in: [types.ts:155](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L155)
+
+---
+
+### chanceofthunder
+
+> **chanceofthunder**: `` `${bigint}` ``
+
+Defined in: [types.ts:156](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L156)
+
+---
+
+### chanceofwindy
+
+> **chanceofwindy**: `` `${bigint}` ``
+
+Defined in: [types.ts:157](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L157)
+
+---
+
+### cloudcover
+
+> **cloudcover**: `` `${bigint}` ``
+
+Defined in: [types.ts:158](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L158)
+
+---
+
+### DewPointC
+
+> **DewPointC**: `` `${bigint}` ``
+
+Defined in: [types.ts:138](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L138)
+
+---
+
+### DewPointF
+
+> **DewPointF**: `` `${bigint}` ``
+
+Defined in: [types.ts:139](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L139)
+
+---
+
+### FeelsLikeC
+
+> **FeelsLikeC**: `` `${bigint}` ``
+
+Defined in: [types.ts:140](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L140)
+
+---
+
+### FeelsLikeF
+
+> **FeelsLikeF**: `` `${bigint}` ``
+
+Defined in: [types.ts:141](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L141)
+
+---
+
+### HeatIndexC
+
+> **HeatIndexC**: `` `${bigint}` ``
+
+Defined in: [types.ts:142](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L142)
+
+---
+
+### HeatIndexF
+
+> **HeatIndexF**: `` `${bigint}` ``
+
+Defined in: [types.ts:143](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L143)
+
+---
+
+### humidity
+
+> **humidity**: `` `${bigint}` ``
+
+Defined in: [types.ts:159](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L159)
+
+---
+
+### precipInches
+
+> **precipInches**: `` `${number}` ``
+
+Defined in: [types.ts:160](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L160)
+
+---
+
+### precipMM
+
+> **precipMM**: `` `${number}` ``
+
+Defined in: [types.ts:161](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L161)
+
+---
+
+### pressure
+
+> **pressure**: `` `${bigint}` ``
+
+Defined in: [types.ts:162](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L162)
+
+---
+
+### pressureInches
+
+> **pressureInches**: `` `${number}` ``
+
+Defined in: [types.ts:163](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L163)
+
+---
+
+### tempC
+
+> **tempC**: `` `${bigint}` ``
+
+Defined in: [types.ts:164](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L164)
+
+---
+
+### tempF
+
+> **tempF**: `` `${bigint}` ``
+
+Defined in: [types.ts:165](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L165)
+
+---
+
+### time
+
+> **time**: `` `${bigint}` ``
+
+Defined in: [types.ts:166](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L166)
+
+---
+
+### uvIndex
+
+> **uvIndex**: `` `${bigint}` ``
+
+Defined in: [types.ts:167](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L167)
+
+---
+
+### visibility
+
+> **visibility**: `` `${bigint}` ``
+
+Defined in: [types.ts:168](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L168)
+
+---
+
+### visibilityMiles
+
+> **visibilityMiles**: `` `${bigint}` ``
+
+Defined in: [types.ts:169](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L169)
+
+---
+
+### weatherCode
+
+> **weatherCode**: [`WeatherCode`](../enumerations/WeatherCode.md)
+
+Defined in: [types.ts:170](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L170)
+
+---
+
+### weatherDesc
+
+> **weatherDesc**: [`WeatherDescription`](WeatherDescription.md)[]
+
+Defined in: [types.ts:171](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L171)
+
+---
+
+### weatherIconUrl
+
+> **weatherIconUrl**: [`Url`](Url.md)[]
+
+Defined in: [types.ts:172](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L172)
+
+---
+
+### WindChillC
+
+> **WindChillC**: `` `${bigint}` ``
+
+Defined in: [types.ts:144](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L144)
+
+---
+
+### WindChillF
+
+> **WindChillF**: `` `${bigint}` ``
+
+Defined in: [types.ts:145](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L145)
+
+---
+
+### winddir16Point
+
+> **winddir16Point**: [`WindDirection`](../type-aliases/WindDirection.md)
+
+Defined in: [types.ts:173](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L173)
+
+---
+
+### winddirDegree
+
+> **winddirDegree**: `` `${bigint}` ``
+
+Defined in: [types.ts:174](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L174)
+
+---
+
+### WindGustKmph
+
+> **WindGustKmph**: `` `${bigint}` ``
+
+Defined in: [types.ts:146](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L146)
+
+---
+
+### WindGustMiles
+
+> **WindGustMiles**: `` `${bigint}` ``
+
+Defined in: [types.ts:147](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L147)
+
+---
+
+### windspeedKmph
+
+> **windspeedKmph**: `` `${bigint}` ``
+
+Defined in: [types.ts:175](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L175)
+
+---
+
+### windspeedMiles
+
+> **windspeedMiles**: `` `${bigint}` ``
+
+Defined in: [types.ts:176](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/types.ts#L176)

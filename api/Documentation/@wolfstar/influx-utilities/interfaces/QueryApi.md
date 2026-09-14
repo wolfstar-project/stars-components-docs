@@ -1,0 +1,306 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/influx-utilities](../index.md) / QueryApi
+
+# Interface: QueryApi
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1057
+
+Query InfluxDB. Provides methods that notify about result lines of the executed query.
+See [https://docs.influxdata.com/influxdb/latest/api/#operation/PostQuery](https://docs.influxdata.com/influxdb/latest/api/#operation/PostQuery)
+
+## Methods
+
+### collectLines()
+
+> **collectLines**(`query`): `Promise`\<`string`[]\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1148
+
+CollectLines executes the query and collects all result lines in the returned Promise.
+This method is suitable to collect simple results. Use with caution,
+a possibly huge stream of lines is copied to memory.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+#### Returns
+
+`Promise`\<`string`[]\>
+
+Promise of returned csv lines
+
+---
+
+### collectRows()
+
+> **collectRows**\<`T`\>(`query`, `rowMapper?`): `Promise`\<`T`[]\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1139
+
+CollectRows executes the query and collects all the results in the returned Promise.
+This method is suitable to collect simple results. Use with caution,
+a possibly huge stream of results is copied to memory.
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+##### rowMapper?
+
+(`values`, `tableMeta`) => `T` \| `undefined`
+
+maps the supplied row to an item that is then collected,
+undefined return values are not collected. If no rowMapper is supplied,
+`row => tableMeta.toObject(row.values)` is used.
+
+#### Returns
+
+`Promise`\<`T`[]\>
+
+Promise of mapped results
+
+---
+
+### iterateLines()
+
+> **iterateLines**(`query`): `AsyncIterable`\<`string`\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1081
+
+IterateLines executes the supplied query and returns results in
+an async iterable of annotated CSV lines.
+Async iterables are best consumed by `for-await` loop.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+#### Returns
+
+`AsyncIterable`\<`string`\>
+
+async iterable of CSV result lines
+
+---
+
+### iterateRows()
+
+> **iterateRows**(`query`): `AsyncIterable`\<`Row`\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1090
+
+IterateRows executes the supplied query and returns results in
+an async iterable of row data and table metadata pairs.
+Async iterables are best consumed by `for-await` loop.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+#### Returns
+
+`AsyncIterable`\<`Row`\>
+
+async iterable of CSV result lines
+
+---
+
+### lines()
+
+> **lines**(`query`): `Observable`\<`string`\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1097
+
+Creates a cold observable of the lines returned by the given query.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+#### Returns
+
+`Observable`\<`string`\>
+
+observable of CSV result lines
+
+---
+
+### queryLines()
+
+> **queryLines**(`query`, `consumer`): `void`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1112
+
+Executes the query and receives result lines (including empty and annotation lines)
+through the supplied consumer. See [annotated-csv](https://docs.influxdata.com/influxdb/latest/reference/syntax/annotated-csv/).
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+##### consumer
+
+`CommunicationObserver`\<`string`\>
+
+csv result lines and error consumer
+
+#### Returns
+
+`void`
+
+---
+
+### queryRaw()
+
+> **queryRaw**(`query`): `Promise`\<`string`\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1127
+
+QueryRaw executes a query and returns the full response as a string.
+Use with caution, a possibly huge stream is copied to memory.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+#### Returns
+
+`Promise`\<`string`\>
+
+Promise of response text
+
+---
+
+### queryRows()
+
+> **queryRows**(`query`, `consumer`): `void`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1119
+
+Executes the query and receives table metadata and rows through the supplied consumer.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+##### consumer
+
+`FluxResultObserver`\<`string`[]\>
+
+result rows and error consumer
+
+#### Returns
+
+`void`
+
+---
+
+### response()
+
+> **response**(`query`): `AnnotatedCSVResponse`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1072
+
+Response returns an AnnotatedCSVResponse instance that executes
+the query when asked for data.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+#### Returns
+
+`AnnotatedCSVResponse`
+
+response with various methods to process data from the returned annotated
+CSV response data stream
+
+---
+
+### rows()
+
+> **rows**(`query`): `Observable`\<`Row`\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1104
+
+Creates a cold observable of the rows returned by the given query.
+
+#### Parameters
+
+##### query
+
+`string` \| `ParameterizedQuery`
+
+query
+
+#### Returns
+
+`Observable`\<`Row`\>
+
+observable of result rows
+
+---
+
+### with()
+
+> **with**(`options`): `QueryApi`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1063
+
+Returns a new query API with extra options applied.
+
+#### Parameters
+
+##### options
+
+`Partial`\<`QueryOptions`\>
+
+query options to use
+
+#### Returns
+
+`QueryApi`
+
+queryApi instance with the supplied options

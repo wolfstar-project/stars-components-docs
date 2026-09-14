@@ -1,20 +1,18 @@
 {
-	"extends": [
-		"@sapphire/ts-config",
-		"@sapphire/ts-config/extra-strict",
-		"@sapphire/ts-config/bundler",
-		"@sapphire/ts-config/verbatim",
-		"@sapphire/ts-config/decorators"
-	],
+	"extends": ["@sapphire/ts-config", "@sapphire/ts-config/bundler", "@sapphire/ts-config/verbatim", "@sapphire/ts-config/decorators"],
 	"compilerOptions": {
+		"plugins": [{ "name": "next" }],
 		"noEmit": true,
 		"incremental": false,
 		"skipLibCheck": true,
 		"allowJs": true,
+		"jsx": "preserve",
 		"lib": ["ESNext", "DOM", "DOM.Iterable"],
 		"moduleResolution": "Bundler",
 		"resolveJsonModule": true,
-		"types": ["node", "vite-plugin-pwa/client"]
+		"types": ["node"],
+		"paths": { "@/*": ["./*"] }
 	},
-	"include": [".vitepress/**/*.ts", ".vitepress/**/*.vue"]
+	"include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts", ".source/**/*.ts"],
+	"exclude": ["node_modules", ".vitepress"]
 }

@@ -2,6 +2,8 @@ packages:
     - '.'
 
 allowBuilds:
+    '@swc/core': true
+    esbuild: true
     sharp: true
 
 overrides:
@@ -20,3 +22,7 @@ overrides:
     '@wolfstar/start-banner': '^2.0.4'
     '@wolfstar/twitch-helpers': '^2.0.4'
     '@wolfstar/weather-helpers': '^1.1.3'
+    # Force a single zod install: fumadocs-mdx/fumadocs-core each resolve their own compatible-but-distinct
+    # zod instance under pnpm's strict node_modules, which breaks TS's ability to name the inferred type of
+    # `defineDocs(...)` in source.config.ts (TS2742).
+    zod: '^4.6.4'

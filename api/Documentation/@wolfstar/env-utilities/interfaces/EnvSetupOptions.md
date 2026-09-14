@@ -1,0 +1,155 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/env-utilities](../index.md) / EnvSetupOptions
+
+# Interface: EnvSetupOptions
+
+Defined in: [packages/env-utilities/src/lib/setup.ts:36](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/env-utilities/src/lib/setup.ts#L36)
+
+## theme_extends
+
+- `Omit`\<`EnvLoaderOptions`, `"path"`\>
+
+## Properties
+
+### debug?
+
+> `optional` **debug?**: `boolean`
+
+Defined in: node_modules/.pnpm/dotenv@17.4.2/node_modules/dotenv/lib/main.d.ts:62
+
+Default: `false`
+
+Turn on logging to help debug why certain keys or values are not being set as you expect.
+
+example: `require('dotenv').config({ debug: process.env.DEBUG })`
+
+#### Inherited from
+
+`Omit.debug`
+
+---
+
+### DOTENV_KEY?
+
+> `optional` **DOTENV_KEY?**: `string`
+
+Defined in: node_modules/.pnpm/dotenv@17.4.2/node_modules/dotenv/lib/main.d.ts:89
+
+Default: `undefined`
+
+Pass the DOTENV_KEY directly to config options. Defaults to looking for process.env.DOTENV_KEY environment variable. Note this only applies to decrypting .env.vault files. If passed as null or undefined, or not passed at all, dotenv falls back to its traditional job of parsing a .env file.
+
+example: `require('dotenv').config({ DOTENV_KEY: 'dotenv://:key_1234…@dotenvx.com/vault/.env.vault?environment=production' })`
+
+#### Inherited from
+
+`Omit.DOTENV_KEY`
+
+---
+
+### encoding?
+
+> `optional` **encoding?**: `string`
+
+Defined in: node_modules/.pnpm/dotenv@17.4.2/node_modules/dotenv/lib/main.d.ts:44
+
+Default: `utf8`
+
+Specify the encoding of your file containing environment variables.
+
+example: `require('dotenv').config({ encoding: 'latin1' })`
+
+#### Inherited from
+
+`Omit.encoding`
+
+---
+
+### env?
+
+> `optional` **env?**: `string`
+
+Defined in: [packages/env-utilities/src/lib/env-loader.ts:10](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/env-utilities/src/lib/env-loader.ts#L10)
+
+You may specify a custom environment if `NODE_ENV` isn't sufficient.
+
+#### Inherited from
+
+`Omit.env`
+
+---
+
+### override?
+
+> `optional` **override?**: `boolean`
+
+Defined in: node_modules/.pnpm/dotenv@17.4.2/node_modules/dotenv/lib/main.d.ts:71
+
+Default: `false`
+
+Override any environment variables that have already been set on your machine with values from your .env file.
+
+example: `require('dotenv').config({ override: true })`
+
+#### Inherited from
+
+`Omit.override`
+
+---
+
+### path?
+
+> `optional` **path?**: `string` \| `URL`
+
+Defined in: [packages/env-utilities/src/lib/setup.ts:40](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/env-utilities/src/lib/setup.ts#L40)
+
+You may specify a custom path if your file containing environment variables is located elsewhere.
+
+---
+
+### prefix?
+
+> `optional` **prefix?**: `string`
+
+Defined in: [packages/env-utilities/src/lib/env-loader.ts:14](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/env-utilities/src/lib/env-loader.ts#L14)
+
+You may specify a required prefix for your dotenv variables (ex. `APP_`).
+
+#### Inherited from
+
+`Omit.prefix`
+
+---
+
+### processEnv?
+
+> `optional` **processEnv?**: `DotenvPopulateInput`
+
+Defined in: node_modules/.pnpm/dotenv@17.4.2/node_modules/dotenv/lib/main.d.ts:80
+
+Default: `process.env`
+
+Specify an object to write your secrets to. Defaults to process.env environment variables.
+
+example: `const processEnv = {}; require('dotenv').config({ processEnv: processEnv })`
+
+#### Inherited from
+
+`Omit.processEnv`
+
+---
+
+### quiet?
+
+> `optional` **quiet?**: `boolean`
+
+Defined in: node_modules/.pnpm/dotenv@17.4.2/node_modules/dotenv/lib/main.d.ts:53
+
+Default: `false`
+
+Suppress all output (except errors).
+
+example: `require('dotenv').config({ quiet: true })`
+
+#### Inherited from
+
+`Omit.quiet`

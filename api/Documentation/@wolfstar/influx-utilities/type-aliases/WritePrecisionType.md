@@ -1,0 +1,10 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/influx-utilities](../index.md) / WritePrecisionType
+
+# Type Alias: WritePrecisionType
+
+> **WritePrecisionType** = `"ns"` \| `"us"` \| `"ms"` \| `"s"`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:800
+
+Timestamp precision used in write operations.
+See [https://docs.influxdata.com/influxdb/latest/api/#operation/PostWrite](https://docs.influxdata.com/influxdb/latest/api/#operation/PostWrite)

@@ -2,14 +2,21 @@
 	"$schema": "https://typedoc.org/schema.json",
 	"entryPoints": ["./data/docs/stars-components/main.json", "./data/docs/plugins/main.json"],
 	"entryPointStrategy": "merge",
-	"plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
-	"out": "./api",
-	"docsRoot": ".",
+	"plugin": ["typedoc-plugin-markdown"],
+	"name": "API reference",
+	"out": "./content/api",
 	"readme": "none",
 	"cleanOutputDir": true,
 	"sanitizeComments": true,
-	"sidebar": {
-		"collapsed": true,
-		"pretty": true
-	}
+	"entryFileName": "index",
+	"fileExtension": ".md",
+	"hideBreadcrumbs": true,
+	"hidePageHeader": true,
+	"useHTMLAnchors": false,
+	"useCodeBlocks": true,
+	"expandObjects": false,
+	"expandParameters": false,
+	"preserveAnchorCasing": false,
+	"mergeReadme": false,
+	"flattenOutputFiles": false
 }

@@ -1,0 +1,392 @@
+[@wolfstar/website](../../../../index.md) / [Documentation](../../../index.md) / [@wolfstar/weather-helpers](../index.md) / WeatherCode
+
+# Enumeration: WeatherCode
+
+Defined in: [enums.ts:5](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L5)
+
+Enum representing weather codes.
+Each weather condition is associated with a specific code.
+
+## Enumeration Members
+
+### Blizzard
+
+> **Blizzard**: `"230"`
+
+Defined in: [enums.ts:17](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L17)
+
+---
+
+### BlowingSnow
+
+> **BlowingSnow**: `"227"`
+
+Defined in: [enums.ts:16](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L16)
+
+---
+
+### ClearOrSunny
+
+> **ClearOrSunny**: `"113"`
+
+Defined in: [enums.ts:6](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L6)
+
+---
+
+### Cloudy
+
+> **Cloudy**: `"119"`
+
+Defined in: [enums.ts:8](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L8)
+
+---
+
+### Fog
+
+> **Fog**: `"248"`
+
+Defined in: [enums.ts:18](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L18)
+
+---
+
+### FreezingDrizzle
+
+> **FreezingDrizzle**: `"281"`
+
+Defined in: [enums.ts:22](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L22)
+
+---
+
+### FreezingFog
+
+> **FreezingFog**: `"260"`
+
+Defined in: [enums.ts:19](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L19)
+
+---
+
+### HeavyFreezingDrizzle
+
+> **HeavyFreezingDrizzle**: `"284"`
+
+Defined in: [enums.ts:23](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L23)
+
+---
+
+### HeavyRain
+
+> **HeavyRain**: `"308"`
+
+Defined in: [enums.ts:29](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L29)
+
+---
+
+### HeavyRainAtTimes
+
+> **HeavyRainAtTimes**: `"305"`
+
+Defined in: [enums.ts:28](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L28)
+
+---
+
+### HeavySnow
+
+> **HeavySnow**: `"338"`
+
+Defined in: [enums.ts:39](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L39)
+
+---
+
+### IcePellets
+
+> **IcePellets**: `"350"`
+
+Defined in: [enums.ts:40](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L40)
+
+---
+
+### LightDrizzle
+
+> **LightDrizzle**: `"266"`
+
+Defined in: [enums.ts:21](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L21)
+
+---
+
+### LightFreezingRain
+
+> **LightFreezingRain**: `"311"`
+
+Defined in: [enums.ts:30](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L30)
+
+---
+
+### LightRain
+
+> **LightRain**: `"296"`
+
+Defined in: [enums.ts:25](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L25)
+
+---
+
+### LightRainShower
+
+> **LightRainShower**: `"353"`
+
+Defined in: [enums.ts:41](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L41)
+
+---
+
+### LightShowersOfIcePellets
+
+> **LightShowersOfIcePellets**: `"374"`
+
+Defined in: [enums.ts:48](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L48)
+
+---
+
+### LightSleet
+
+> **LightSleet**: `"317"`
+
+Defined in: [enums.ts:32](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L32)
+
+---
+
+### LightSleetShowers
+
+> **LightSleetShowers**: `"362"`
+
+Defined in: [enums.ts:44](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L44)
+
+---
+
+### LightSnow
+
+> **LightSnow**: `"326"`
+
+Defined in: [enums.ts:35](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L35)
+
+---
+
+### LightSnowShowers
+
+> **LightSnowShowers**: `"368"`
+
+Defined in: [enums.ts:46](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L46)
+
+---
+
+### Mist
+
+> **Mist**: `"143"`
+
+Defined in: [enums.ts:10](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L10)
+
+---
+
+### ModerateOrHeavyFreezingRain
+
+> **ModerateOrHeavyFreezingRain**: `"314"`
+
+Defined in: [enums.ts:31](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L31)
+
+---
+
+### ModerateOrHeavyRainInAreaWithThunder
+
+> **ModerateOrHeavyRainInAreaWithThunder**: `"389"`
+
+Defined in: [enums.ts:51](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L51)
+
+---
+
+### ModerateOrHeavyRainShower
+
+> **ModerateOrHeavyRainShower**: `"356"`
+
+Defined in: [enums.ts:42](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L42)
+
+---
+
+### ModerateOrHeavyShowersOfIcePellets
+
+> **ModerateOrHeavyShowersOfIcePellets**: `"377"`
+
+Defined in: [enums.ts:49](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L49)
+
+---
+
+### ModerateOrHeavySleet
+
+> **ModerateOrHeavySleet**: `"320"`
+
+Defined in: [enums.ts:33](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L33)
+
+---
+
+### ModerateOrHeavySleetShowers
+
+> **ModerateOrHeavySleetShowers**: `"365"`
+
+Defined in: [enums.ts:45](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L45)
+
+---
+
+### ModerateOrHeavySnowInAreaWithThunder
+
+> **ModerateOrHeavySnowInAreaWithThunder**: `"395"`
+
+Defined in: [enums.ts:53](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L53)
+
+---
+
+### ModerateOrHeavySnowShowers
+
+> **ModerateOrHeavySnowShowers**: `"371"`
+
+Defined in: [enums.ts:47](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L47)
+
+---
+
+### ModerateRain
+
+> **ModerateRain**: `"302"`
+
+Defined in: [enums.ts:27](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L27)
+
+---
+
+### ModerateRainAtTimes
+
+> **ModerateRainAtTimes**: `"299"`
+
+Defined in: [enums.ts:26](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L26)
+
+---
+
+### ModerateSnow
+
+> **ModerateSnow**: `"332"`
+
+Defined in: [enums.ts:37](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L37)
+
+---
+
+### Overcast
+
+> **Overcast**: `"122"`
+
+Defined in: [enums.ts:9](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L9)
+
+---
+
+### PartlyCloudy
+
+> **PartlyCloudy**: `"116"`
+
+Defined in: [enums.ts:7](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L7)
+
+---
+
+### PatchyFreezingDrizzleNearby
+
+> **PatchyFreezingDrizzleNearby**: `"185"`
+
+Defined in: [enums.ts:14](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L14)
+
+---
+
+### PatchyHeavySnow
+
+> **PatchyHeavySnow**: `"335"`
+
+Defined in: [enums.ts:38](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L38)
+
+---
+
+### PatchyLightDrizzle
+
+> **PatchyLightDrizzle**: `"263"`
+
+Defined in: [enums.ts:20](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L20)
+
+---
+
+### PatchyLightRain
+
+> **PatchyLightRain**: `"293"`
+
+Defined in: [enums.ts:24](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L24)
+
+---
+
+### PatchyLightRainInAreaWithThunder
+
+> **PatchyLightRainInAreaWithThunder**: `"386"`
+
+Defined in: [enums.ts:50](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L50)
+
+---
+
+### PatchyLightSnow
+
+> **PatchyLightSnow**: `"323"`
+
+Defined in: [enums.ts:34](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L34)
+
+---
+
+### PatchyLightSnowInAreaWithThunder
+
+> **PatchyLightSnowInAreaWithThunder**: `"392"`
+
+Defined in: [enums.ts:52](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L52)
+
+---
+
+### PatchyModerateSnow
+
+> **PatchyModerateSnow**: `"329"`
+
+Defined in: [enums.ts:36](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L36)
+
+---
+
+### PatchyRainNearby
+
+> **PatchyRainNearby**: `"176"`
+
+Defined in: [enums.ts:11](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L11)
+
+---
+
+### PatchySleetNearby
+
+> **PatchySleetNearby**: `"182"`
+
+Defined in: [enums.ts:13](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L13)
+
+---
+
+### PatchySnowNearby
+
+> **PatchySnowNearby**: `"179"`
+
+Defined in: [enums.ts:12](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L12)
+
+---
+
+### ThunderyOutbreaksInNearby
+
+> **ThunderyOutbreaksInNearby**: `"200"`
+
+Defined in: [enums.ts:15](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L15)
+
+---
+
+### TorrentialRainShower
+
+> **TorrentialRainShower**: `"359"`
+
+Defined in: [enums.ts:43](https://github.com/wolfstar-project/stars-components/blob/f7b31cc0eb5f9a284e64590e28eadbf470e88f64/packages/weather-helpers/src/lib/enums.ts#L43)
