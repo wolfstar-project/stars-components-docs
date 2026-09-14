@@ -4,7 +4,7 @@
 
 > `const` **googleGenAIIntegration**: (`options?`) => `Integration` & `object`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/tracing/google-genai/index.d.ts:59
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/tracing/google-genai/index.d.ts:59
 
 Adds Sentry tracing instrumentation for the Google Generative AI SDK.
 

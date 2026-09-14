@@ -2,7 +2,7 @@
 
 # Interface: NodeRuntimeMetricsOptions
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/nodeRuntimeMetrics.d.ts:8
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/nodeRuntimeMetrics.d.ts:8
 
 ## Properties
 
@@ -10,7 +10,7 @@ Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.
 
 > `optional` **collect?**: `object`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/nodeRuntimeMetrics.d.ts:27
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/nodeRuntimeMetrics.d.ts:27
 
 Which metrics to collect.
 
@@ -93,7 +93,7 @@ Default off (opt-in):
 
 > `optional` **collectionIntervalMs?**: `number`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/nodeRuntimeMetrics.d.ts:49
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/nodeRuntimeMetrics.d.ts:49
 
 How often to collect metrics, in milliseconds.
 Minimum allowed value is 1000ms.

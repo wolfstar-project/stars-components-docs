@@ -2,7 +2,7 @@
 
 # Class: NodeClient
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:7
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:7
 
 A client for using Sentry with Node & OpenTelemetry.
 
@@ -16,7 +16,7 @@ A client for using Sentry with Node & OpenTelemetry.
 
 > **new NodeClient**(`options`): `NodeClient`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:14
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:14
 
 #### Parameters
 
@@ -172,7 +172,7 @@ Defined in: node_modules/.pnpm/@sentry+core@10.71.0/node_modules/@sentry/core/bu
 
 > **asyncLocalStorageLookup**: `AsyncLocalStorageLookup` \| `undefined`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:9
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:9
 
 ---
 
@@ -180,7 +180,7 @@ Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.
 
 > **traceProvider**: `OpenTelemetryTracerProvider` \| `undefined`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:8
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:8
 
 ## Accessors
 
@@ -190,7 +190,7 @@ Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.
 
 > **get** **tracer**(): `Tracer`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:16
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:16
 
 Get the OTEL tracer.
 
@@ -276,7 +276,7 @@ Sends client reports as an envelope.
 
 > `protected` **\_getTraceInfoFromScope**(`scope`): \[`Partial`\<`DynamicSamplingContext`\>, `TraceContext`\]
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:32
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:32
 
 Custom implementation for OTEL, so we can handle scope-span linking.
 
@@ -464,7 +464,7 @@ A SyncPromise that resolves with the event or rejects in case event was/will not
 
 > `protected` **\_setupIntegrations**(): `void`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:30
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:30
 
 #### Returns
 
@@ -722,7 +722,7 @@ Captures a session.
 
 > **close**(`timeout?`): `PromiseLike`\<`boolean`\>
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:20
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:20
 
 #### Parameters
 
@@ -1961,7 +1961,7 @@ Defined in: node_modules/.pnpm/@sentry+core@10.71.0/node_modules/@sentry/core/bu
 
 > **flush**(`timeout?`): `PromiseLike`\<`boolean`\>
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:18
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:18
 
 #### Parameters
 
@@ -3434,7 +3434,7 @@ Send a session or session aggregrates to Sentry.
 
 > **startClientReportTracking**(): `void`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:28
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/sdk/client.d.ts:28
 
 Will start tracking client reports for this client.
 

@@ -2,7 +2,7 @@
 
 # Interface: NodeOptions
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:67
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:67
 
 Configuration options for the Sentry Node SDK
 
@@ -715,7 +715,7 @@ If the event filters integration is not installed, the `ignoreTransactions` opti
 
 > `optional` **includeLocalVariables?**: `boolean`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:52
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:52
 
 Include local variables with stack traces.
 
@@ -897,7 +897,7 @@ Used when normalizing an event before sending, on all of the listed attributes:
 
 > `optional` **openTelemetryBasicTracerProvider?**: `boolean`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:47
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:47
 
 By default, the SDK uses Sentry's minimal OpenTelemetry tracer provider, which creates native
 Sentry spans directly instead of going through the full OpenTelemetry SDK span pipeline.
@@ -924,7 +924,7 @@ false;
 
 > `optional` **openTelemetryInstrumentations?**: `Instrumentation`\<`InstrumentationConfig`\>[]
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:26
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:26
 
 Provide an array of OpenTelemetry Instrumentations that should be registered.
 
@@ -940,7 +940,7 @@ Use this option if you want to register OpenTelemetry instrumentation that the S
 
 > `optional` **openTelemetrySpanProcessors?**: `SpanProcessor`[]
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:34
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:34
 
 Provide an array of additional OpenTelemetry SpanProcessors that should be registered.
 
@@ -997,7 +997,7 @@ To solve this, in these environments we'll by default enable this option.
 
 > `optional` **profileLifecycle?**: `"manual"` \| `"trace"`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:46
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:46
 
 Set the lifecycle mode of the profiler.
 
@@ -1023,7 +1023,7 @@ Set the lifecycle mode of the profiler.
 
 > `optional` **profileSessionSampleRate?**: `number`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:35
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:35
 
 Sets profiling session sample rate for the entire profiling session (evaluated once per SDK initialization).
 
@@ -1043,7 +1043,7 @@ Sets profiling session sample rate for the entire profiling session (evaluated o
 
 > `optional` **profilesSampler?**: (`samplingContext`) => `number` \| `boolean`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:29
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:29
 
 Function to compute profiling sample rate dynamically and filter unwanted profiles.
 
@@ -1077,7 +1077,7 @@ equivalent to returning 1 and returning `false` is equivalent to returning 0.
 
 > `optional` **profilesSampleRate?**: `number`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:15
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:15
 
 Sets profiling sample rate when @sentry/profiling-node is installed
 
@@ -1122,7 +1122,7 @@ false;
 
 > `optional` **registerEsmLoaderHooks?**: `boolean`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:61
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/types.d.ts:61
 
 Whether to register ESM loader hooks to automatically instrument libraries.
 This is necessary to auto instrument libraries that are loaded via ESM imports, but it can cause issues
@@ -1271,7 +1271,7 @@ problems.
 
 > `optional` **skipOpenTelemetrySetup?**: `boolean`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:20
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/types.d.ts:20
 
 If this is set to true, the SDK will not set up OpenTelemetry automatically.
 In this case, you _have_ to ensure to set it up correctly yourself, including:

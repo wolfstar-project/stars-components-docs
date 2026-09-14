@@ -2,7 +2,7 @@
 
 # Class: OpenFeatureIntegrationHook
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:11
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:11
 
 This is a shim for the OpenFeature integration hook.
 
@@ -12,7 +12,7 @@ This is a shim for the OpenFeature integration hook.
 
 > **new OpenFeatureIntegrationHook**(): `OpenFeatureIntegrationHookShim`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:15
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:15
 
 #### Returns
 
@@ -24,7 +24,7 @@ Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_s
 
 > **after**(): `void`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:19
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:19
 
 #### Returns
 
@@ -36,7 +36,7 @@ Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_s
 
 > **error**(): `void`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:23
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/featureFlagShims/openFeature.d.ts:23
 
 #### Returns
 

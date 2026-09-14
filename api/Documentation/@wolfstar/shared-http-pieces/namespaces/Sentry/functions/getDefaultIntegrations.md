@@ -4,7 +4,7 @@
 
 > **getDefaultIntegrations**(`options`): `Integration`[]
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/sdk/index.d.ts:9
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/sdk/index.d.ts:9
 
 Get the default integrations for the Node SDK.
 

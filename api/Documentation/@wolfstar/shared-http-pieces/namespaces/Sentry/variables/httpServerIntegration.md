@@ -4,7 +4,7 @@
 
 > `const` **httpServerIntegration**: (`options?`) => `Integration` & `object`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/http/httpServerIntegration.d.ts:63
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/integrations/http/httpServerIntegration.d.ts:63
 
 This integration handles request isolation, trace continuation and other core Sentry functionality around incoming http requests
 handled via the node `http` module.

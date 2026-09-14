@@ -4,7 +4,7 @@
 
 > `const` **langGraphIntegration**: (`options?`) => `Integration` & `object`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/tracing/langgraph/index.d.ts:74
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/tracing/langgraph/index.d.ts:74
 
 Adds Sentry tracing instrumentation for LangGraph.
 

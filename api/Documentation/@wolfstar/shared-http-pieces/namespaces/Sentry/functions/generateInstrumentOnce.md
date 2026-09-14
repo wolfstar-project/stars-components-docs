@@ -6,7 +6,7 @@
 
 > **generateInstrumentOnce**\<`Options`, `InstrumentationClass`\>(`name`, `instrumentationClass`, `optionsCallback`): (`options`) => `InstanceType`\<`InstrumentationClass`\> & `object`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/otel/instrument.d.ts:4
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/otel/instrument.d.ts:4
 
 ### Type Parameters
 
@@ -40,7 +40,7 @@ Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.
 
 > **generateInstrumentOnce**\<`Options`, `InstrumentationInstance`\>(`name`, `creator`): (`options?`) => `InstrumentationInstance` & `object`
 
-Defined in: node_modules/.pnpm/@sentry+node-core@10.71.0_@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/otel/instrument.d.ts:7
+Defined in: node*modules/.pnpm/@sentry+node-core@10.71.0*@opentelemetry+api@1.9.1_@opentelemetry+core@2.10.0_@opentele_7442c4ce560fd457e5b8f798e43d1911/node_modules/@sentry/node-core/build/types/otel/instrument.d.ts:7
 
 ### Type Parameters
 

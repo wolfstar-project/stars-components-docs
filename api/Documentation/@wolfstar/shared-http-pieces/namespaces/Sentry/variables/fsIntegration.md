@@ -4,7 +4,7 @@
 
 > `const` **fsIntegration**: (`options?`) => `Integration` & `object`
 
-Defined in: node_modules/.pnpm/@sentry+node@10.71.0_@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/fs/index.d.ts:11
+Defined in: node*modules/.pnpm/@sentry+node@10.71.0*@opentelemetry+core@2.10.0_supports-color@7.2.0/node_modules/@sentry/node/build/types/integrations/fs/index.d.ts:11
 
 This integration will create spans for `fs` API operations, like reading and writing files.
 
