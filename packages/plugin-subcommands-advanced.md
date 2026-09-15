@@ -15,4 +15,4 @@ description: Modularize slash subcommands into separate command classes.
 See the [Plugins guide](/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.
 :::
 
-<!--@include: ../data/readmes/plugin-subcommands-advanced/README.md{3,}-->
+<!--@include: ../data/readmes/plugin-subcommands-advanced/README.md{15,}-->
