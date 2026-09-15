@@ -22,6 +22,13 @@ export const packages: PackageInfo[] = [
 		description: 'Build Discord bots around fast, HTTP-only interactions.'
 	},
 	{
+		name: '@wolfstar/cli',
+		path: 'cli',
+		version: versions['cli'],
+		category: 'Core framework',
+		description: 'Develop, build, inspect, and maintain HTTP Framework bots.'
+	},
+	{
 		name: '@wolfstar/create-http-framework',
 		path: 'create-http-framework',
 		version: versions['create-http-framework'],

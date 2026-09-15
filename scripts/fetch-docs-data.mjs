@@ -16,6 +16,7 @@ const docsProjects = ['stars-components', 'plugins'];
 
 const packageManifests = [
 	...[
+		'cli',
 		'create-http-framework',
 		'env-utilities',
 		'http-framework',
@@ -34,6 +35,7 @@ const packageManifests = [
 	].map((name) => ({ name, repo: 'wolfstar-project/stars-components' })),
 	...['plugin-api', 'plugin-i18next', 'plugin-subcommands-advanced'].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
 ];
+const packageNames = new Set(packageManifests.map(({ name }) => name));
 
 async function fetchText(url) {
 	const response = await fetch(url);
@@ -74,11 +76,17 @@ async function fetchReadmes() {
 	await Promise.all(
 		packageManifests.map(async ({ name, repo }) => {
 			const url = `https://raw.githubusercontent.com/${repo}/main/packages/${name}/README.md`;
-			const readme = await fetchText(url);
+			const readme = normalizePackageReadmeLinks(await fetchText(url));
 			const outDir = join(dataDir, 'readmes', name);
 			await mkdir(outDir, { recursive: true });
 			await writeFile(join(outDir, 'README.md'), readme);
 		})
+	);
+}
+
+function normalizePackageReadmeLinks(readme) {
+	return readme.replaceAll(/\]\(\.\.\/([^/)#]+)([^)]*)\)/g, (link, packageName, suffix) =>
+		packageNames.has(packageName) ? `](/packages/${packageName}${suffix})` : link
 	);
 }
 
