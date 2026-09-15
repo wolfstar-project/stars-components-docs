@@ -11,6 +11,7 @@ self-contained — read the one matching the move you are making.
 
 - [`@wolfstar/http-framework` v3 → v4](#v4) <Badge type="tip" text="stable" />
 - [`@wolfstar/http-framework-i18n` → `@wolfstar/plugin-i18next`](#i18next)
+- [`@wolfstar/logger` → `@wolfstar/plugin-logger`](#logger)
 
 ## Migrating from v3 to v4 {#v4}
 
@@ -588,3 +589,179 @@ of the surface, but note that `TFunction` is now generic over namespace and key 
 - [ ] Locales directory named `languages`, or `defaultLanguageDirectory` set
 - [ ] Module specifiers updated across the codebase
 - [ ] `getT` / `loadedLocales` call sites moved to `container.i18n`
+
+## Migrating to `@wolfstar/plugin-logger` {#logger}
+
+`@wolfstar/logger` is deprecated. Replace it with
+[`@wolfstar/plugin-logger`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-logger), which
+provides the same framework logger interface through the plugin lifecycle and adds support for multiple transports.
+
+::: warning Prerequisites
+`@wolfstar/plugin-logger` requires Node.js 20 or newer and `@wolfstar/http-framework@^3.4.0`.
+:::
+
+If console output is all you need, `@wolfstar/http-framework` already provides `container.logger`; remove the old
+package without installing the plugin. Install `@wolfstar/plugin-logger` when you need transport configuration,
+Sentry integration, or a Consola, Evlog, or Winston backend.
+
+### Overview of the Changes
+
+| Area              | `@wolfstar/logger`                          | `@wolfstar/plugin-logger`                                    |
+| ----------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| Setup             | Construct `Logger` directly                 | Configure `logger` when constructing `Client`                |
+| Logger access     | Keep the constructed instance               | Use `container.logger`                                       |
+| `LogLevel` import | `@wolfstar/logger`                          | `@wolfstar/http-framework`                                   |
+| Output            | Built-in console output                     | One or more configurable transports                          |
+| Colours           | Re-exported helpers from `colorette`        | No colour-helper re-exports                                  |
+| Optional backends | Not available                               | Sentry, Consola, Evlog, and Winston                          |
+| Custom logger     | Construct and manage it in application code | `logger.instance` remains supported and is never overwritten |
+
+The `ILogger` methods and level ordering are unchanged: existing `trace`, `debug`, `info`, `warn`, `error`, and
+`fatal` calls can keep their arguments.
+
+### Swapping the Dependency
+
+::: code-group
+
+```bash [pnpm]
+pnpm remove @wolfstar/logger
+pnpm add @wolfstar/plugin-logger
+```
+
+```bash [npm]
+npm uninstall @wolfstar/logger
+npm install @wolfstar/plugin-logger
+```
+
+```bash [yarn]
+yarn remove @wolfstar/logger
+yarn add @wolfstar/plugin-logger
+```
+
+```bash [bun]
+bun remove @wolfstar/logger
+bun add @wolfstar/plugin-logger
+```
+
+:::
+
+Keep the plugin in `dependencies`, not `devDependencies`: it changes the logger at runtime. The backend integrations
+are optional peer dependencies, so install only the ones used by your configured transports.
+
+### Moving Logger Setup into `Client`
+
+Replace the manually constructed logger with the `logger` client option, and read the active instance from the
+framework container:
+
+```diff
+-import { Logger, LogLevel } from '@wolfstar/logger';
+-import { Client } from '@wolfstar/http-framework';
++import '@wolfstar/plugin-logger/register';
++import { Client, LogLevel, container } from '@wolfstar/http-framework';
+
+-const logger = new Logger({ level: LogLevel.Debug });
+-const client = new Client();
++const client = new Client({
++  logger: { level: LogLevel.Debug }
++});
+
+-logger.info('Bot starting');
++container.logger.info('Bot starting');
+```
+
+The plugin installs its logger during `preGenericsInitialization`, before the rest of the client initializes. An
+explicit `logger.instance` is preserved, so applications with their own `ILogger` implementation can keep it:
+
+```typescript
+const client = new Client({
+	logger: {
+		level: LogLevel.Info,
+		instance: myLogger
+	}
+});
+```
+
+### Registering the Plugin
+
+The explicit side-effect import must run before `new Client()` when the application is built with `tsc`, uses
+`build.tool: 'none'`, or does not use the Stars CLI:
+
+```typescript
+import '@wolfstar/plugin-logger/register';
+```
+
+With `@wolfstar/cli@0.6.0` or newer and a `tsdown` build, installed `@wolfstar/plugin-*` packages are discovered from
+runtime dependencies and their `/register` entrypoints are activated automatically. In that setup, remove the manual
+import to avoid registering the plugin twice.
+
+### Configuring Transports <Badge type="tip" text="optional" />
+
+Without a `transports` option, the plugin uses `ConsoleTransport`. Pass an array to send every log payload to multiple
+destinations:
+
+```typescript
+import * as Sentry from '@sentry/node';
+import { Client, LogLevel } from '@wolfstar/http-framework';
+import { ConsoleTransport, SentryTransport } from '@wolfstar/plugin-logger';
+
+Sentry.init({ dsn: process.env.SENTRY_DSN });
+
+const client = new Client({
+	logger: {
+		level: LogLevel.Debug,
+		transports: [new ConsoleTransport(), new SentryTransport({ client: Sentry, level: LogLevel.Error })]
+	}
+});
+```
+
+Each transport can have its own minimum `level`; messages below it are skipped for that destination. The Sentry SDK
+and alternative logger backends are not installed automatically.
+
+| Backend | Install        | Transport import                  |
+| ------- | -------------- | --------------------------------- |
+| Sentry  | `@sentry/node` | `@wolfstar/plugin-logger`         |
+| Consola | `consola`      | `@wolfstar/plugin-logger/consola` |
+| Evlog   | `evlog`        | `@wolfstar/plugin-logger/evlog`   |
+| Winston | `winston`      | `@wolfstar/plugin-logger/winston` |
+
+For example, a Winston transport is configured with the Winston logger instance you already own:
+
+```typescript
+import { createLogger, format, transports as winstonTransports } from 'winston';
+import { WinstonTransport } from '@wolfstar/plugin-logger/winston';
+
+const winston = createLogger({
+	format: format.json(),
+	transports: [new winstonTransports.Console()]
+});
+
+const client = new Client({
+	logger: {
+		transports: [new WinstonTransport({ instance: winston })]
+	}
+});
+```
+
+Evlog exposes four levels and Winston's default `npm` levels do not include `fatal`. On those adapters, `trace` is
+mapped to `debug` and `fatal` to `error`.
+
+### Updating Colour Helper Imports
+
+The old package re-exported `colorette` helpers. The plugin does not. If the application uses helpers such as `red`,
+`bold`, or `stripColor`, depend on `colorette` directly and update the module specifier:
+
+```diff
+-import { bold, red } from '@wolfstar/logger';
++import { bold, red } from 'colorette';
+```
+
+### Checklist
+
+- [ ] `@wolfstar/logger` removed from `package.json`
+- [ ] `@wolfstar/plugin-logger` added to runtime dependencies when custom transports are needed
+- [ ] `@wolfstar/http-framework` on `^3.4.0` or newer and Node.js 20 or newer
+- [ ] Manual `new Logger(...)` replaced with the `logger` client option
+- [ ] Logger call sites use `container.logger`
+- [ ] `/register` imported before `new Client()`, or omitted when the Stars bundler auto-registers plugins
+- [ ] Optional backend peer dependencies installed for every configured transport
+- [ ] Colour helpers imported directly from `colorette`
