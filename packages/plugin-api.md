@@ -15,4 +15,4 @@ description: Expose a standalone REST API server alongside HTTP Framework intera
 See the [Plugins guide](/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.
 :::
 
-<!--@include: ../data/readmes/plugin-api/README.md{3,}-->
+<!--@include: ../data/readmes/plugin-api/README.md{15,}-->
