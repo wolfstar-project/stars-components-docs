@@ -16,6 +16,7 @@ const docsProjects = ['stars-components', 'plugins'];
 
 const packageManifests = [
 	...[
+		'cli',
 		'create-http-framework',
 		'env-utilities',
 		'http-framework',
