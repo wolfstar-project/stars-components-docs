@@ -127,16 +127,10 @@ itself. JavaScript projects drop `node --watch src/main.js` and keep no `build` 
 
 `start` is unchanged: production still runs the built entry point directly, `stars` is a development-only tool.
 
-Add a `postinstall` script so a fresh checkout has its generated TypeScript configuration before an editor or CI runs
-the type checker:
-
-```diff
- {
-  "scripts": {
-+    "postinstall": "stars prepare"
-  }
- }
-```
+Run `stars prepare` explicitly after installing development dependencies and before a standalone typecheck on a fresh
+checkout. Do not put it in a root `postinstall`: production-only installs such as `npm ci --omit=dev` still run that
+lifecycle script after omitting the development-only `@wolfstar/cli`, so the install would fail because `stars` is not
+available. `stars dev` and `stars build` already regenerate the files they need.
 
 ### Move `tsdown` Configuration into `stars.config.ts`
 
@@ -290,8 +284,8 @@ Replace manually duplicated compiler defaults, `include` entries and alias paths
 
 Keep project-specific `compilerOptions` next to `extends`. An explicit `include` or `compilerOptions.paths` replaces
 the inherited value, so remove those keys unless that is intentional. Do not edit `.stars/tsconfig.json`; `stars dev`
-and `stars build` regenerate it, and `postinstall: "stars prepare"` covers fresh checkouts. Use `stars prepare --check`
-in CI only after generation.
+and `stars build` regenerate it. Run `stars prepare` explicitly before editor/typecheck use on a fresh checkout. Use
+`stars prepare --check` in CI only after generation.
 
 ### Plugin Registration and the Built-in Logger
 
@@ -332,7 +326,7 @@ directory at the project root. Add it to `.gitignore`:
 - [ ] Standalone `tsdown.config.*` or `package.json#tsdown` removed; custom options moved to `stars.config.ts`
 - [ ] `dev` / `build` scripts replaced with `stars dev` / `stars build`
 - [ ] `watch`, `watch:start` and the `tsc-watch` dependency removed
-- [ ] `postinstall: "stars prepare"` added
+- [ ] `stars prepare` runs before standalone typechecking on a fresh checkout, without a production `postinstall`
 - [ ] `generate:i18n` replaced with `stars codegen`, verified with `stars codegen --check`
 - [ ] The framework's `hmr` client option disabled while developing with `stars dev`
 - [ ] `tsconfig.json` extends `./.stars/tsconfig.json`; duplicated generated aliases/options removed
