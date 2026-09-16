@@ -1,6 +1,6 @@
 ---
-title: "Introduction"
-description: "Welcome to your project"
+title: 'Introduction'
+description: 'Welcome to your project'
 ---
 
 Stars Components is a set of focused TypeScript packages powering the Star Network — build the HTTP-first Discord bot stack behind WolfStar, Staryl, and Ring, or adopt one package on its own.
@@ -26,7 +26,7 @@ Stars Components is a set of focused TypeScript packages powering the Star Netwo
 <Tip>
   **Recommended path**
 
-  Create a project with `pnpm create @wolfstar/http-framework my-bot`, then continue with the [getting started guide](/quickstart).
+Create a project with `pnpm create @wolfstar/http-framework my-bot`, then continue with the [getting started guide](/quickstart).
 </Tip>
 
 ## One workspace, focused packages

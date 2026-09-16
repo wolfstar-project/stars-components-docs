@@ -3,7 +3,6 @@ title: Architecture
 description: Understand how Stars Components packages fit together.
 ---
 
-
 Stars Components is a monorepo of focused packages. You can use infrastructure helpers independently, while the framework
 packages form an optional stack for HTTP-only Discord bots.
 
@@ -43,16 +42,13 @@ tested independently.
 The surrounding packages add optional capabilities:
 
 | Package                               | Responsibility                                           |
-| -------------------------------------- | ---------------------------------------------------------- |
+| ------------------------------------- | -------------------------------------------------------- |
 | `@wolfstar/create-http-framework`     | Creates a complete starter project                       |
 | `@wolfstar/plugin-i18next`            | Resolves translations for users and guilds               |
-| `@wolfstar/i18next-backend`           | Loads and merges locale files                             |
+| `@wolfstar/i18next-backend`           | Loads and merges locale files                            |
 | `@wolfstar/http-framework-test-utils` | Dispatches interaction fixtures without a network server |
 
-<Warning>
-`@wolfstar/http-framework-i18n` is deprecated in favour of `@wolfstar/plugin-i18next`. See the
-[migration guide](/guide/migration).
-</Warning>
+<Warning>`@wolfstar/http-framework-i18n` is deprecated in favour of `@wolfstar/plugin-i18next`. See the [migration guide](/guide/migration).</Warning>
 
 `@wolfstar/plugin-i18next`, along with the other optional framework extensions, is released independently from its
 own [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) repository — see the
