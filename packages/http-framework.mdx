@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/http-framework'
-description: "Build Discord bots around fast, HTTP-only interactions."
+description: 'Build Discord bots around fast, HTTP-only interactions.'
 ---
 
 <CodeGroup>
@@ -24,10 +24,13 @@ bun add @wolfstar/http-framework
 </CodeGroup>
 
 <CardGroup cols={2}>
-  <Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework">
-  </Card>
-  <Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework">
-  </Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework"></Card>
+	<Card
+		title="Source"
+		icon="github"
+		horizontal
+		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework"
+	></Card>
 </CardGroup>
 
 ## Description
@@ -374,7 +377,7 @@ client.on(Events.CommandError, (error, context) => {
 ```
 
 | Enum member                            | Event name                      | Arguments                                     |
-| --------------------------------------- | -------------------------------- | ----------------------------------------------- |
+| -------------------------------------- | ------------------------------- | --------------------------------------------- |
 | `Events.Error`                         | `error`                         | `error: unknown`                              |
 | `Events.PluginLoaded`                  | `pluginLoaded`                  | `hook: PluginHook, name: string \| undefined` |
 | `Events.CommandNameMissing`            | `commandNameMissing`            | `interaction, response`                       |
@@ -433,7 +436,7 @@ await client.load();
 The `hmr` option accepts [all of chokidar's options][all of chokidar's options], plus:
 
 | Option    | Default | Description                                                                                |
-| --------- | ------- | -------------------------------------------------------------------------------------------- |
+| --------- | ------- | ------------------------------------------------------------------------------------------ |
 | `enabled` | `true`  | Whether HMR is started. Omitting the `hmr` option entirely also leaves the reloader unset. |
 | `silent`  | `false` | Whether the reloader refrains from writing to the console. Events are always emitted.      |
 
@@ -463,7 +466,7 @@ client.on(Events.HmrPieceReloaded, async (piece) => {
 ```
 
 | Enum member               | Event              | Arguments               | Description                                          |
-| -------------------------- | ------------------- | ------------------------- | ------------------------------------------------------ |
+| ------------------------- | ------------------ | ----------------------- | ---------------------------------------------------- |
 | `Events.HmrStart`         | `hmrStart`         | `paths: string[]`       | The reloader started watching the given store paths. |
 | `Events.HmrStop`          | `hmrStop`          | —                       | The reloader stopped and closed all of its watchers. |
 | `Events.HmrPiecesLoaded`  | `hmrPiecesLoaded`  | `pieces: Piece[], path` | A new file was created and its pieces were loaded.   |
@@ -533,7 +536,7 @@ export default defineConfig({});
 The defaults are the configuration a bot would otherwise write out by hand:
 
 | Option                     | Default                                                        | Why                                                                         |
-| --------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| -------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `entry`                    | every source file next to `entry`, minus `*.test.*`/`*.spec.*` | pieces are found by the stores, not imported by the entry                   |
 | `unbundle`                 | `true`                                                         | keeps `dist/commands/…` loadable one file at a time at runtime              |
 | `format` / `platform`      | `'esm'` / `'node'`                                             | what the framework and `node dist/…` expect                                 |

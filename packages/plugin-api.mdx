@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/plugin-api'
-description: "Expose a standalone REST API server alongside HTTP Framework interactions."
+description: 'Expose a standalone REST API server alongside HTTP Framework interactions.'
 ---
 
 <CodeGroup>
@@ -24,15 +24,11 @@ bun add @wolfstar/plugin-api
 </CodeGroup>
 
 <CardGroup cols={2}>
-  <Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-api">
-  </Card>
-  <Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-api">
-  </Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-api"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-api"></Card>
 </CardGroup>
 
-<Tip>
-See the [Plugins guide](/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.
-</Tip>
+<Tip>See the [Plugins guide](/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
 
 ## Description
 
@@ -56,14 +52,14 @@ pnpm add @wolfstar/plugin-api
 Import the side-effecting `register` entrypoint **before** you create your `Client`:
 
 ```ts
-import "@wolfstar/plugin-api/register";
-import { Client } from "@wolfstar/http-framework";
+import '@wolfstar/plugin-api/register';
+import { Client } from '@wolfstar/http-framework';
 
 const client = new Client({
-  api: {
-    listenOptions: { port: 4000 },
-    origin: "*",
-  },
+	api: {
+		listenOptions: { port: 4000 },
+		origin: '*'
+	}
 });
 
 await client.load();
@@ -76,13 +72,13 @@ Routes are `Route` pieces loaded from a `routes` directory, exactly like `comman
 
 ```ts
 // src/routes/health.get.ts
-import { HttpCodes } from "@wolfstar/http-framework";
-import { Route } from "@wolfstar/plugin-api";
+import { HttpCodes } from '@wolfstar/http-framework';
+import { Route } from '@wolfstar/plugin-api';
 
 export class HealthRoute extends Route {
-  public run(_request: Route.Request, response: Route.Response) {
-    response.json({ status: "ok" }, HttpCodes.OK);
-  }
+	public run(_request: Route.Request, response: Route.Response) {
+		response.json({ status: 'ok' }, HttpCodes.OK);
+	}
 }
 ```
 
@@ -92,13 +88,13 @@ The route's path and method are inferred from its location: `src/routes/health.g
 
 ```ts
 export class HealthRoute extends Route {
-  public constructor(context: Route.LoaderContext) {
-    super(context, { route: "/status", methods: ["GET", "HEAD"] });
-  }
+	public constructor(context: Route.LoaderContext) {
+		super(context, { route: '/status', methods: ['GET', 'HEAD'] });
+	}
 
-  public run(request: Route.Request, response: Route.Response) {
-    response.json({ status: "ok", method: request.method });
-  }
+	public run(request: Route.Request, response: Route.Response) {
+		response.json({ status: 'ok', method: request.method });
+	}
 }
 ```
 
@@ -109,17 +105,17 @@ Middlewares are `Middleware` pieces loaded from a `middlewares` directory, run i
 
 ```ts
 // src/middlewares/requestId.ts
-import { Middleware } from "@wolfstar/plugin-api";
-import { randomUUID } from "node:crypto";
+import { Middleware } from '@wolfstar/plugin-api';
+import { randomUUID } from 'node:crypto';
 
 export class RequestIdMiddleware extends Middleware {
-  public constructor(context: Middleware.LoaderContext) {
-    super(context, { position: 15 });
-  }
+	public constructor(context: Middleware.LoaderContext) {
+		super(context, { position: 15 });
+	}
 
-  public run(request: Middleware.Request, response: Middleware.Response) {
-    response.setHeader("X-Request-Id", randomUUID());
-  }
+	public run(request: Middleware.Request, response: Middleware.Response) {
+		response.setHeader('X-Request-Id', randomUUID());
+	}
 }
 ```
 
@@ -130,7 +126,7 @@ pre-flight requests) and `body` (position 20, rejects requests whose `Content-Le
 ## `ApiServerOptions`
 
 | Option                 | Default            | Description                                              |
-| ----------------------- | -------------------- | ------------------------------------------------------------ |
+| ---------------------- | ------------------ | -------------------------------------------------------- |
 | `prefix`               | `undefined`        | Path segment prefix applied to every route.              |
 | `origin`               | `'*'`              | `Access-Control-Allow-Origin` header value.              |
 | `maximumBodyLength`    | `1024 * 1024 * 50` | Maximum accepted `Content-Length`, in bytes.             |

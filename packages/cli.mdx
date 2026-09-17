@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/cli'
-description: "Develop, build, inspect, and maintain HTTP Framework bots."
+description: 'Develop, build, inspect, and maintain HTTP Framework bots.'
 ---
 
 <CodeGroup>
@@ -24,10 +24,8 @@ bun add @wolfstar/cli
 </CodeGroup>
 
 <CardGroup cols={2}>
-  <Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/cli">
-  </Card>
-  <Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/cli">
-  </Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/cli"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/cli"></Card>
 </CardGroup>
 
 calls into it), the typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/packages/http-framework)
@@ -103,7 +101,7 @@ not count as individual errors. `READY` reports process state unless `dev.health
 that every application plugin loaded successfully. Logged errors switch the badge to `ERROR`.
 
 | Key            | Action                                                       |
-| --------------- | --------------------------------------------------------------- |
+| -------------- | ------------------------------------------------------------ |
 | `r` / `Ctrl+R` | restart the bot                                              |
 | `o`            | open the local URL in a browser                              |
 | `t`            | toggle a public `cloudflared` tunnel                         |
@@ -202,7 +200,7 @@ and which options the block sets.
 [framework README](/packages/http-framework#compatibility-version) for the full reference):
 
 | Version       | What it changes                                                                                                     |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| ------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `3`           | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for                           |
 | `4` (default) | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
 
@@ -212,7 +210,7 @@ and which options the block sets.
 [framework README](/packages/http-framework#experimental-flags) for the full reference):
 
 | Flag                 | What it changes                                                                                        |
-| --------------------- | ----------------------------------------------------------------------------------------------------------- |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
 | `enableVite`         | Builds through the project's own `vite` (and allows `build.tool: 'vite'`) instead of `tsdown`          |
 | `enableExternalVite` | The project runs Vite itself; `stars dev` only watches the build output and restarts the bot           |
 | `enableNitro`        | Declared, not implemented: `stars dev`/`stars build` fail with `EXPERIMENT_UNAVAILABLE` until it lands |
@@ -222,7 +220,7 @@ and which options the block sets.
 ### Exit codes
 
 | Code  | Meaning                                              |
-| ----- | ------------------------------------------------------ |
+| ----- | ---------------------------------------------------- |
 | `0`   | success                                              |
 | `1`   | generic error (including `codegen --check` failures) |
 | `2`   | invalid or missing configuration                     |

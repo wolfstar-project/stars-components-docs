@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/http-framework-i18n'
-description: "Add typed i18next translations to HTTP Framework interactions."
+description: 'Add typed i18next translations to HTTP Framework interactions.'
 ---
 
 <CodeGroup>
@@ -24,16 +24,20 @@ bun add @wolfstar/http-framework-i18n
 </CodeGroup>
 
 <CardGroup cols={2}>
-  <Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework-i18n">
-  </Card>
-  <Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-i18n">
-  </Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework-i18n"></Card>
+	<Card
+		title="Source"
+		icon="github"
+		horizontal
+		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-i18n"
+	></Card>
 </CardGroup>
 
 <Danger>
 **Deprecated**
 
 This package has been replaced by [`@wolfstar/plugin-i18next`](/packages/plugin-i18next). No further releases are planned. See the [migration guide](/guide/migration).
+
 </Danger>
 
 > [!WARNING]
@@ -191,7 +195,7 @@ const name = t('commands/ping:name');
 ### Exports
 
 | Removed                                | Replacement                                                                  |
-| ----------------------------------------- | --------------------------------------------------------------------------------- |
+| -------------------------------------- | ---------------------------------------------------------------------------- |
 | `T(key)` / `FT<Args>(key)`             | The key itself, typed by the generated `CustomTypeOptions` augmentation      |
 | `load(directory)`                      | `i18n.defaultLanguageDirectory` client option                                |
 | `init(options)`                        | Handled by the plugin's `preLoad` hook; raw options go to `i18n.i18next`     |

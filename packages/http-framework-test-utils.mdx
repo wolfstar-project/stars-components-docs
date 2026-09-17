@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/http-framework-test-utils'
-description: "Test interactions with fixtures, a harness, and Vitest matchers."
+description: 'Test interactions with fixtures, a harness, and Vitest matchers.'
 ---
 
 <CodeGroup>
@@ -24,10 +24,13 @@ bun add @wolfstar/http-framework-test-utils
 </CodeGroup>
 
 <CardGroup cols={2}>
-  <Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework-test-utils">
-  </Card>
-  <Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-test-utils">
-  </Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework-test-utils"></Card>
+	<Card
+		title="Source"
+		icon="github"
+		horizontal
+		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-test-utils"
+	></Card>
 </CardGroup>
 
 ## Description
@@ -100,7 +103,7 @@ expect(result).toHaveJsonBody({ type: 4, data: { content: 'Pong!' } });
 Pre-built interaction payloads for all interaction types:
 
 | Export                                             | Type                         |
-| ------------------------------------------------------ | -------------------------------- |
+| -------------------------------------------------- | ---------------------------- |
 | `ChatInputApplicationCommandInteractionData`       | Chat input command           |
 | `MessageApplicationCommandInteractionData`         | Message context menu command |
 | `UserApplicationCommandInteractionData`            | User context menu command    |
@@ -133,7 +136,7 @@ const entry = getAndDelete(MyCommand);
 ## Exports
 
 | Entry point                                  | Contents                                         |
-| ----------------------------------------------- | ----------------------------------------------------- |
+| -------------------------------------------- | ------------------------------------------------ |
 | `@wolfstar/http-framework-test-utils`        | All utilities, fixtures, runners, and types      |
 | `@wolfstar/http-framework-test-utils/vitest` | Custom Vitest matchers (`httpFrameworkMatchers`) |
 
