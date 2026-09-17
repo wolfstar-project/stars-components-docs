@@ -1,0 +1,198 @@
+---
+title: "Interface: ILogger"
+hidden: true
+---
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:54](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L54)
+
+The contract every logger must fulfill to be usable as `container.logger`.
+
+The framework ships a minimal [Logger](../classes/Logger) that writes to the console, and expects richer implementations
+(file transports, structured output, and alike) to be provided by a plugin through
+[ClientLoggerOptions.instance](ClientLoggerOptions#instance).
+
+## Since
+
+3.4.0
+
+## Methods
+
+### debug()
+
+> **debug**(...`values`): `void`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:71](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L71)
+
+Writes the values at [LogLevel.Debug](../enumerations/LogLevel#debug) level.
+
+#### Parameters
+
+##### values
+
+...readonly `unknown`[]
+
+The values to log.
+
+#### Returns
+
+`void`
+
+***
+
+### error()
+
+> **error**(...`values`): `void`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:89](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L89)
+
+Writes the values at [LogLevel.Error](../enumerations/LogLevel#error) level.
+
+#### Parameters
+
+##### values
+
+...readonly `unknown`[]
+
+The values to log.
+
+#### Returns
+
+`void`
+
+***
+
+### fatal()
+
+> **fatal**(...`values`): `void`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:95](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L95)
+
+Writes the values at [LogLevel.Fatal](../enumerations/LogLevel#fatal) level.
+
+#### Parameters
+
+##### values
+
+...readonly `unknown`[]
+
+The values to log.
+
+#### Returns
+
+`void`
+
+***
+
+### has()
+
+> **has**(`level`): `boolean`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:59](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L59)
+
+Whether or not the logger writes entries at the given level.
+
+#### Parameters
+
+##### level
+
+[`LogLevel`](../enumerations/LogLevel)
+
+The level to check for.
+
+#### Returns
+
+`boolean`
+
+***
+
+### info()
+
+> **info**(...`values`): `void`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:77](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L77)
+
+Writes the values at [LogLevel.Info](../enumerations/LogLevel#info) level.
+
+#### Parameters
+
+##### values
+
+...readonly `unknown`[]
+
+The values to log.
+
+#### Returns
+
+`void`
+
+***
+
+### trace()
+
+> **trace**(...`values`): `void`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:65](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L65)
+
+Writes the values at [LogLevel.Trace](../enumerations/LogLevel#trace) level.
+
+#### Parameters
+
+##### values
+
+...readonly `unknown`[]
+
+The values to log.
+
+#### Returns
+
+`void`
+
+***
+
+### warn()
+
+> **warn**(...`values`): `void`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:83](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L83)
+
+Writes the values at [LogLevel.Warn](../enumerations/LogLevel#warn) level.
+
+#### Parameters
+
+##### values
+
+...readonly `unknown`[]
+
+The values to log.
+
+#### Returns
+
+`void`
+
+***
+
+### write()
+
+> **write**(`level`, ...`values`): `void`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:102](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L102)
+
+Writes the values at the given level, skipping them when [ILogger.has](#has) returns `false`.
+
+#### Parameters
+
+##### level
+
+[`LogLevel`](../enumerations/LogLevel)
+
+The level to write the values at.
+
+##### values
+
+...readonly `unknown`[]
+
+The values to log.
+
+#### Returns
+
+`void`
