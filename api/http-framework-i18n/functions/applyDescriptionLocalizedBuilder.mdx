@@ -2,3 +2,35 @@
 title: "Function: applyDescriptionLocalizedBuilder()"
 hidden: true
 ---
+
+> **applyDescriptionLocalizedBuilder**\<`T`\>(`builder`, `key`): `T`
+
+Defined in: [packages/http-framework-i18n/src/lib/utils.ts:75](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-i18n/src/lib/utils.ts#L75)
+
+Applies the localized descriptions on the builder, calling `setDescription` and `setDescriptionLocalizations`.
+
+## Type Parameters
+
+### T
+
+`T` *extends* [`BuilderWithDescription`](../interfaces/BuilderWithDescription)
+
+## Parameters
+
+### builder
+
+`T`
+
+The builder to apply the localizations to.
+
+### key
+
+`` `${string}:${string}` ``
+
+The key to get the localizations from.
+
+## Returns
+
+`T`
+
+The updated builder.
