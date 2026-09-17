@@ -1,0 +1,25 @@
+---
+title: "GenerateSnowflake"
+---
+
+Utility that generates a new snowflake.
+
+import InfoReaderCallout from '/snippets/http-framework-test-utils/info-reader-callout.mdx';
+
+<InfoReaderCallout />
+
+## generateSnowflake() function
+
+```typescript
+function generateSnowflake(): string
+```
+
+## Returns
+
+A string encoded [BigInt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) 64bit integer represented as a [number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) in a [float](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat) 64 representation.
+
+## Defined in
+[projects/framework/packages/http-framework-test-utils/src/lib/interactions/util/snowflake.ts:49](https://github.com/sapphiredev/framework/blob/11afb8dfdb6a6e60da964d692ec4af43f7ab2b7e/projects/framework/packages/http-framework-test-utils/src/lib/interactions/util/snowflake.ts#L49)
+
+## See
+- [createSnowflakeGenerator](/api/http-framework-test-utils/functions/createSnowflakeGenerator)

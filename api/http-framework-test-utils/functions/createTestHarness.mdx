@@ -1,0 +1,34 @@
+---
+title: "CreateTestHarness"
+---
+
+Creates a test harness for a [ChatInputCommand](github.mdx#chatinputcommand), [ContextMenuCommand](github.mdx#contextmenucommand), [Listener](github.mdx#listener), or [AutocompleteInteraction](github.mdx#autocompleteinteraction).
+
+## createTestHarness() function
+
+```typescript
+function createTestHarness<T extends Piece>(store: T, options?: Piece.Options): TestHarness<T>
+```
+
+## Type Parameters
+
+| Type Parameter | Constraints | Description |
+| :------ | :------ | :------ |
+| `T` | extends [`Piece`](https://sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire#creating-a-piece) | The [Piece](https://sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire#creating-a-piece) to create a test harness for |
+
+## Parameters
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| store | T | The store to create the test harness for |
+| options | Piece.Options | The options for the piece |
+
+## Returns
+
+A test harness for the given [Piece](https://sapphirejs.dev/docs/Guide/getting-started/getting-started-with-sapphire#creating-a-piece).
+
+## Defined in
+[projects/framework/packages/http-framework-test-utils/src/lib/interactions/util/createHarness.ts:13](https://github.com/sapphiredev/framework/blob/11afb8dfdb6a6e60da964d692ec4af43f7ab2b7e/projects/framework/packages/http-framework-test-utils/src/lib/interactions/util/createHarness.ts#L13)
+
+## See
+- [TestHarness](/api/http-framework-test-utils/type-aliases/TestHarness)
