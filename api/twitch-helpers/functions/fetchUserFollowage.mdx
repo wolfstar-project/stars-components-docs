@@ -1,0 +1,30 @@
+---
+title: "Function: fetchUserFollowage()"
+hidden: true
+---
+
+> **fetchUserFollowage**(`followerId`, `streamerId`): `Promise`\<`FetchResult`\<[`TwitchHelixResponse`](../interfaces/TwitchHelixResponse)\<[`TwitchHelixUserFollowsResult`](../interfaces/TwitchHelixUserFollowsResult)\> & `object`\>\>
+
+Defined in: [twitch.ts:77](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L77)
+
+Check if followerId follows streamerId and returns the followage data.
+
+## Parameters
+
+### followerId
+
+`string`
+
+The Twitch User ID of the user of whom you want to check if they are following streamerId.
+
+### streamerId
+
+`string`
+
+The Twitch User ID of the user of whom you want to check if they are followed by followerId.
+
+## Returns
+
+`Promise`\<`FetchResult`\<[`TwitchHelixResponse`](../interfaces/TwitchHelixResponse)\<[`TwitchHelixUserFollowsResult`](../interfaces/TwitchHelixUserFollowsResult)\> & `object`\>\>
+
+A FetchResult that contains the object with details of whether followerId follows streamerId

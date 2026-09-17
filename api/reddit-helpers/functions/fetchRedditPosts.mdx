@@ -1,0 +1,30 @@
+---
+title: "Function: fetchRedditPosts()"
+hidden: true
+---
+
+> **fetchRedditPosts**(`subreddit`, `limit?`): `Promise`\<`Ok`\<[`CacheHit`](../interfaces/CacheHit), `any`\> \| `Result`\<[`CacheHit`](../interfaces/CacheHit), `FetchError`, `boolean`\>\>
+
+Defined in: [packages/reddit-helpers/src/lib/reddit.ts:36](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/reddit.ts#L36)
+
+Fetches Reddit posts from a specified subreddit.
+
+## Parameters
+
+### subreddit
+
+`string`
+
+The name of the subreddit to fetch posts from.
+
+### limit?
+
+`number` = `30`
+
+The amount of posts to fetch, defaults to `30`
+
+## Returns
+
+`Promise`\<`Ok`\<[`CacheHit`](../interfaces/CacheHit), `any`\> \| `Result`\<[`CacheHit`](../interfaces/CacheHit), `FetchError`, `boolean`\>\>
+
+A promise that resolves to the RedditResponse object containing the fetched posts.

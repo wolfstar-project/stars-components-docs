@@ -1,0 +1,24 @@
+---
+title: "Function: fetchStream()"
+hidden: true
+---
+
+> **fetchStream**(`streamerId`): `Promise`\<[`TwitchHelixStreamsResult`](../interfaces/TwitchHelixStreamsResult) \| `null`\>
+
+Defined in: [twitch.ts:48](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L48)
+
+Retrieves the data of the current stream of a channel.
+
+## Parameters
+
+### streamerId
+
+`string`
+
+The Twitch User ID of the streamer.
+
+## Returns
+
+`Promise`\<[`TwitchHelixStreamsResult`](../interfaces/TwitchHelixStreamsResult) \| `null`\>
+
+Either the data of the current stream if online, or `null` if the streamer is offline.

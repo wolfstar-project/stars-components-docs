@@ -1,0 +1,31 @@
+---
+title: "Function: getRequest()"
+hidden: true
+---
+
+> **getRequest**\<`T`\>(`path`): `Promise`\<`FetchResult`\<`T`\>\>
+
+Defined in: [packages/reddit-helpers/src/lib/reddit.ts:89](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/reddit.ts#L89)
+
+A tiny wrapper around Json(safeFetch) that implements [fetchBearer](fetchBearer) to set the proper headers
+and adds the [BaseUrl](../variables/BaseUrl) for the base path.
+
+## Type Parameters
+
+### T
+
+`T` *extends* `object`
+
+## Parameters
+
+### path
+
+`string`
+
+The Reddit Path to fetch
+
+## Returns
+
+`Promise`\<`FetchResult`\<`T`\>\>
+
+The response to the request

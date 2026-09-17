@@ -1,0 +1,31 @@
+---
+title: "Function: getRequest()"
+hidden: true
+---
+
+> **getRequest**\<`T`\>(`path`): `Promise`\<`FetchResult`\<`T`\>\>
+
+Defined in: [twitch.ts:185](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L185)
+
+A tiny wrapper around Json(safeFetch) that implements [fetchBearer](fetchBearer) to set the proper headers
+and adds the [BaseUrlHelix](../variables/BaseUrlHelix) for the base path.
+
+## Type Parameters
+
+### T
+
+`T` *extends* `object`
+
+## Parameters
+
+### path
+
+`string`
+
+The Twitch Path to fetch
+
+## Returns
+
+`Promise`\<`FetchResult`\<`T`\>\>
+
+The response to the request

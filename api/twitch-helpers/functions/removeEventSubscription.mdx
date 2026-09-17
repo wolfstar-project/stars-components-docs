@@ -1,0 +1,26 @@
+---
+title: "Function: removeEventSubscription()"
+hidden: true
+---
+
+> **removeEventSubscription**(`subscriptionId`): `Promise`\<`void`\>
+
+Defined in: [twitch.ts:163](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L163)
+
+Removes a Twitch subscription based on its ID.
+
+## Parameters
+
+### subscriptionId
+
+`string`
+
+the ID to remove. This ID should be saved from [addEventSubscription](addEventSubscription)
+
+## Returns
+
+`Promise`\<`void`\>
+
+## Remarks
+
+This requires `process.env.TWITCH_EVENTSUB_SECRET` to be set.
