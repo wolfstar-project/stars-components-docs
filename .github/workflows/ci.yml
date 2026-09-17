@@ -19,6 +19,31 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
+    docs-checks:
+        name: 📚 Check documentation
+        runs-on: ubuntu-24.04-arm
+        timeout-minutes: 15
+
+        steps:
+            - name: Checkout Project
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              with:
+                  persist-credentials: false
+
+            - name: Install the Mintlify CLI
+              run: npm install --global mint
+
+            - name: Check formatting
+              run: |
+                  mint format
+                  if [ -n "$(git status --porcelain)" ]; then
+                      echo "Files are not formatted. Run 'mint format' locally and commit the changes."
+                      exit 1
+                  fi
+
+            - name: Validate the build
+              run: mint validate
+
     lint:
         name: 🔠 Lint project
         runs-on: ubuntu-24.04-arm
