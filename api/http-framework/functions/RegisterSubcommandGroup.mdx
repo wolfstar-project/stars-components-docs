@@ -1,0 +1,58 @@
+---
+title: "Function: RegisterSubcommandGroup()"
+hidden: true
+---
+
+> **RegisterSubcommandGroup**\<`Options`\>(`data`): (`target`, `method`) => `void`
+
+Defined in: [packages/http-framework/src/lib/interactions/decorators/RegisterSubcommandGroup.ts:35](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RegisterSubcommandGroup.ts#L35)
+
+Registers a subcommand group for a chat input command.
+
+## Type Parameters
+
+### Options
+
+`Options` *extends* [`PieceOptions`](../interfaces/PieceOptions) = [`PieceOptions`](../interfaces/PieceOptions)
+
+The options type for the command.
+
+## Parameters
+
+### data
+
+`SubcommandGroupData`
+
+The subcommand group data.
+
+## Returns
+
+(`target`, `method`) => `void`
+
+## Remarks
+
+This decorator must be used in conjunction with [RegisterSubcommand](RegisterSubcommand).
+
+## Example
+
+```typescript
+import { Command, RegisterCommand, RegisterSubcommand, RegisterSubcommandGroup } from '@wolfstar/http-framework';
+
+(at)RegisterCommand({
+	name: 'ping',
+	description: 'A simple ping pong command'
+})
+export class UserCommand extends Command {
+	(at)RegisterSubcommandGroup({
+		name: 'subcommand-group',
+		description: 'A simple subcommand group'
+	})
+	(at)RegisterSubcommand(
+		{ name: 'subcommand', description: 'A simple subcommand' },
+		'subcommand-group'
+	)
+	public async run(interaction: Command.ChatInputInteraction) {
+		return interaction.reply('Pong!');
+	}
+}
+```

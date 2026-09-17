@@ -1,0 +1,47 @@
+---
+title: "Function: RestrictGuildIds()"
+hidden: true
+---
+
+> **RestrictGuildIds**\<`Options`\>(`guildIds`): (`target`) => `void`
+
+Defined in: [packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts:28](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts#L28)
+
+Decorator that restricts the guild IDs for a command.
+
+## Type Parameters
+
+### Options
+
+`Options` *extends* [`PieceOptions`](../interfaces/PieceOptions) = [`PieceOptions`](../interfaces/PieceOptions)
+
+## Parameters
+
+### guildIds
+
+readonly `string`[]
+
+An array of guild IDs to restrict the command to.
+
+## Returns
+
+A decorator function.
+
+(`target`) => `void`
+
+## Example
+
+```typescript
+import { Command, RegisterCommand, RestrictGuildIds } from '@wolfstar/http-framework';
+
+(at)RegisterCommand({
+	name: 'ping',
+	description: 'A simple ping pong command'
+})
+(at)RestrictGuildIds(['123456789012345678', '123456789012345679'])
+export class UserCommand extends Command {
+	public async run(interaction: Command.ChatInputInteraction) {
+		return interaction.reply('Pong!');
+	}
+}
+```

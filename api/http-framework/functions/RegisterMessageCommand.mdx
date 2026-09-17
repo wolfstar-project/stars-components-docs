@@ -2,3 +2,42 @@
 title: "Function: RegisterMessageCommand()"
 hidden: true
 ---
+
+> **RegisterMessageCommand**\<`Options`\>(`data`): (`target`, `method`) => `void`
+
+Defined in: [packages/http-framework/src/lib/interactions/decorators/RegisterMessageCommand.ts:23](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RegisterMessageCommand.ts#L23)
+
+Registers a message command.
+
+## Type Parameters
+
+### Options
+
+`Options` *extends* [`PieceOptions`](../interfaces/PieceOptions) = [`PieceOptions`](../interfaces/PieceOptions)
+
+The options type for the command.
+
+## Parameters
+
+### data
+
+`CommandData`
+
+The command to register.
+
+## Returns
+
+A method decorator function, does not override the method.
+
+(`target`, `method`) => `void`
+
+## Example
+
+```typescript
+export class UserCommand extends Command {
+	(at)RegisterMessageCommand(createData())
+	public run(interaction: Command.MessageInteraction, data: TransformedArguments.Message) {
+		// ...
+	}
+}
+```
