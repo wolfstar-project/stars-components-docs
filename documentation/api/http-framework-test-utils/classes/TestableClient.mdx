@@ -1,0 +1,62 @@
+---
+title: "Class: TestableClient"
+hidden: true
+---
+
+Defined in: [packages/http-framework-test-utils/src/TestableClient.ts:10](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/TestableClient.ts#L10)
+
+## Extends
+
+- `Client`
+
+<Note>
+This class extends `Client` from `@wolfstar/http-framework`. Its inherited surface (properties like `options`, `logger`, `server`, `plugins`, the `registry` accessor, and `EventEmitter`-style methods like `on`/`once`/`emit`/`use`) isn't reproduced here — see the [http-framework API reference](/api/http-framework) for that class's full documentation. Only the members this class adds or overrides are listed below.
+</Note>
+
+## Constructors
+
+### Constructor
+
+> **new TestableClient**(`options?`): `TestableClient`
+
+Defined in: [packages/http-framework-test-utils/src/TestableClient.ts:11](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/TestableClient.ts#L11)
+
+#### Parameters
+
+##### options?
+
+`Partial`\<`ClientOptions`\> = `{}`
+
+#### Returns
+
+`TestableClient`
+
+#### Overrides
+
+`Client.constructor`
+
+## Methods
+
+### handleHttpMessage()
+
+> **handleHttpMessage**(`interaction`, `response`): `Promise`\<`ServerResponse`\<`IncomingMessage`\>\>
+
+Defined in: [packages/http-framework-test-utils/src/TestableClient.ts:15](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/TestableClient.ts#L15)
+
+#### Parameters
+
+##### interaction
+
+`APIApplicationCommandAutocompleteInteraction` \| `APIChatInputApplicationCommandInteraction` \| `APIModalSubmitInteraction` \| `APIContextMenuInteraction` \| `APIMessageComponentInteraction` \| `APIPingInteraction`
+
+##### response
+
+`ServerResponse`
+
+#### Returns
+
+`Promise`\<`ServerResponse`\<`IncomingMessage`\>\>
+
+#### Overrides
+
+`Client.handleHttpMessage`

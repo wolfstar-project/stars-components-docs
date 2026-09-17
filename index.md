@@ -1,60 +1,54 @@
----
-layout: home
+# Stars Components
 
-hero:
-    name: Stars Components
-    text: Build the Star Network
-    tagline: Typed, composable packages for Discord interactions, infrastructure, integrations, and testing.
-    image:
-        src: /logo.svg
-        alt: WolfStar
-    actions:
-        - theme: brand
-          text: Get Started
-          link: /guide/
-        - theme: alt
-          text: Features
-          link: /guide/features
-        - theme: alt
-          text: Why Stars Components?
-          link: /guide/why
-        - theme: alt
-          text: View on GitHub
-          link: https://github.com/wolfstar-project/stars-components
+## Build the Star Network
 
-features:
-    - icon: ⚡
-      title: HTTP-First Discord Bots
-      details: Handle Discord interactions without a gateway connection and register commands through typed decorators.
-      link: /packages/http-framework
-    - icon: 🧩
-      title: Composable Packages
-      details: Adopt one focused utility or combine the framework, i18n, shared pieces, and metrics as a complete stack.
-      link: /guide/architecture
-    - icon: 🧪
-      title: Interaction Testing
-      details: Exercise commands with typed fixtures, a local test harness, and dedicated Vitest matchers.
-      link: /guide/testing
-    - icon: 🌍
-      title: Internationalization
-      details: Load locale resources from disk and resolve typed translations for users and guilds.
-      link: /packages/http-framework-i18n
-    - icon: 🛡️
-      title: Safer Infrastructure
-      details: Parse environment variables, wrap fetch in Result values, and reuse structured logging utilities.
-      link: /packages/env-utilities
-    - icon: 📚
-      title: Searchable API
-      details: Browse an API reference generated directly from every public TypeScript export.
-      link: /api/
----
+Typed, composable TypeScript packages for Discord interactions, infrastructure, integrations, and testing.
 
-## One Workspace, Focused Packages
+<CardGroup cols={2}>
+  <Card title="Get Started" icon="rocket" href="/quickstart">
+    Create and run your first HTTP-first Discord bot.
+  </Card>
+  <Card title="Features" icon="stars" href="/guide/features">
+    Explore the building blocks available across the Star Network.
+  </Card>
+  <Card title="Why Stars Components?" icon="circle-question" href="/guide/why">
+    Learn why an HTTP-first architecture is a natural fit for Discord interactions.
+  </Card>
+  <Card title="View on GitHub" icon="github" href="https://github.com/wolfstar-project/stars-components">
+    Browse the source, report issues, and contribute to the project.
+  </Card>
+</CardGroup>
+
+## One workspace, focused packages
 
 Stars Components contains the shared building blocks used across the Star Network. Start with the scaffolding CLI for a
 new bot, or add only the utility your project needs.
 
-::: tip Recommended Path
-Create a project with `pnpm create @wolfstar/http-framework my-bot`, then continue with the
-[getting started guide](/guide/).
-:::
+<CardGroup cols={2}>
+  <Card title="HTTP-First Discord Bots" icon="bolt" href="/packages/http-framework">
+    Handle Discord interactions without a gateway connection and register commands through typed decorators.
+  </Card>
+  <Card title="Composable Packages" icon="puzzle-piece" href="/guide/architecture">
+    Adopt one focused utility or combine the framework, i18n, shared pieces, and metrics as a complete stack.
+  </Card>
+  <Card title="Interaction Testing" icon="flask" href="/guide/testing">
+    Exercise commands with typed fixtures, a local test harness, and dedicated Vitest matchers.
+  </Card>
+  <Card title="Internationalization" icon="earth-americas" href="/packages/http-framework-i18n">
+    Load locale resources from disk and resolve typed translations for users and guilds.
+  </Card>
+  <Card title="Safer Infrastructure" icon="shield" href="/packages/env-utilities">
+    Parse environment variables, wrap fetch in Result values, and reuse structured logging utilities.
+  </Card>
+  <Card title="Searchable API" icon="book-open" href="/api/index">
+    Browse an API reference generated directly from every public TypeScript export.
+  </Card>
+</CardGroup>
+
+<Tip>
+  **Recommended path**
+
+Create a project with `pnpm create @wolfstar/http-framework my-bot`, then continue with the [getting started guide](/quickstart).
+</Tip>
+
+Released under the Apache-2.0 License.

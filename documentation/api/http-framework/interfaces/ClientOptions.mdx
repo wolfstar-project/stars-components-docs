@@ -1,0 +1,156 @@
+---
+title: "Interface: ClientOptions"
+hidden: true
+---
+
+Defined in: [packages/http-framework/src/lib/Client.ts:249](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L249)
+
+## Properties
+
+### authPrefix?
+
+> `optional` **authPrefix?**: `"Bearer"` \| `"Bot"`
+
+Defined in: [packages/http-framework/src/lib/Client.ts:294](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L294)
+
+The prefix to use for authentication in REST calls.
+
+#### Default
+
+```ts
+'Bot'
+```
+
+#### Since
+
+2.0.0
+
+***
+
+### bodySizeLimit?
+
+> `optional` **bodySizeLimit?**: `number`
+
+Defined in: [packages/http-framework/src/lib/Client.ts:274](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L274)
+
+The body size limit in bytes.
+
+#### Default
+
+```ts
+1024 * 1024 // (1 MiB)
+```
+
+***
+
+### clientId?
+
+> `optional` **clientId?**: `string`
+
+Defined in: [packages/http-framework/src/lib/Client.ts:287](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L287)
+
+The ID of the client.
+
+#### Default
+
+```ts
+process.env.DISCORD_CLIENT_ID ?? Buffer.from(token.split('.')[0], 'base64').toString()
+```
+
+***
+
+### discordPublicKey?
+
+> `optional` **discordPublicKey?**: `string`
+
+Defined in: [packages/http-framework/src/lib/Client.ts:256](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L256)
+
+The public key from Discord, available under "General Information" after opening an application from
+[Discord's applications](https://discord.com/developers/applications).
+
+#### Default
+
+```ts
+process.env.DISCORD_PUBLIC_KEY
+```
+
+***
+
+### discordToken?
+
+> `optional` **discordToken?**: `string`
+
+Defined in: [packages/http-framework/src/lib/Client.ts:263](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L263)
+
+The Discord token used for authenticating requests outside of interaction responses.
+
+#### Default
+
+```ts
+process.env.DISCORD_TOKEN
+```
+
+***
+
+### hmr?
+
+> `optional` **hmr?**: [`HMROptions`](HMROptions)
+
+Defined in: [packages/http-framework/src/lib/Client.ts:304](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L304)
+
+The Hot Module Reloading options. When [HMROptions.enabled](HMROptions#enabled) is `true`, [Client#load](../classes/Client#load) starts a
+[HotModuleReloader](../classes/HotModuleReloader) that watches every store path and reloads pieces as their files change.
+
+#### Remarks
+
+HMR is meant for development only, keep it disabled in production.
+
+#### Default
+
+```ts
+undefined // HMR is not started
+```
+
+#### Since
+
+3.3.0
+
+***
+
+### httpReplyOnError?
+
+> `optional` **httpReplyOnError?**: `boolean`
+
+Defined in: [packages/http-framework/src/lib/Client.ts:280](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L280)
+
+Whether to reply with a 500 status code to Discord if an error occurs while processing an interaction.
+
+#### Default
+
+```ts
+true
+```
+
+***
+
+### logger?
+
+> `optional` **logger?**: [`ClientLoggerOptions`](ClientLoggerOptions)
+
+Defined in: [packages/http-framework/src/lib/Client.ts:311](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L311)
+
+The options for [Client#logger](../classes/Client#logger), which is also exposed as `container.logger`.
+
+#### Since
+
+3.4.0
+
+***
+
+### restOptions?
+
+> `optional` **restOptions?**: `Partial`\<`RESTOptions`\>
+
+Defined in: [packages/http-framework/src/lib/Client.ts:268](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L268)
+
+The options to be passed to the underlying REST library.

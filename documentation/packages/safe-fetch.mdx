@@ -1,0 +1,51 @@
+---
+title: '@wolfstar/safe-fetch'
+description: 'Wrap native fetch responses in Result values.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/safe-fetch
+```
+
+```bash pnpm
+pnpm add @wolfstar/safe-fetch
+```
+
+```bash yarn
+yarn add @wolfstar/safe-fetch
+```
+
+```bash bun
+bun add @wolfstar/safe-fetch
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/safe-fetch"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/safe-fetch"></Card>
+</CardGroup>
+
+## Description
+
+A fetch wrapper on top of Rust's Result, powered by [`@sapphire/result`](https://www.npmjs.com/package/@sapphire/result).
+
+## Features
+
+- Powered by the native `fetch` function
+- CJS and ESM support
+
+## Usage
+
+```typescript
+import { Json, safeFetch } from '@wolfstar/safe-fetch';
+
+const result = await Json<{ id: number; name: string }>(safeFetch('https://api.example.org/users/1'));
+
+result.match({
+	ok: (user) => console.log(user.name),
+	err: (error) => console.error(error)
+});
+```

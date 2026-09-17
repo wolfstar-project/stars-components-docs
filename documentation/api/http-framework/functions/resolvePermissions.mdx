@@ -1,0 +1,35 @@
+---
+title: "Function: resolvePermissions()"
+hidden: true
+---
+
+> **resolvePermissions**(`resolvable`): `bigint`
+
+Defined in: [packages/http-framework/src/lib/utils/permissions.ts:29](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/permissions.ts#L29)
+
+Resolves any [`PermissionResolvable`](../type-aliases/PermissionResolvable) into a single permission bitfield.
+
+## Parameters
+
+### resolvable
+
+[`PermissionResolvable`](../type-aliases/PermissionResolvable)
+
+The value to resolve.
+
+## Returns
+
+`bigint`
+
+The resolved bitfield.
+
+## Throws
+
+`TypeError` If a string was given that is not a known permission flag.
+
+## Example
+
+```typescript
+resolvePermissions(['BanMembers', PermissionFlagsBits.KickMembers]);
+// 6n
+```

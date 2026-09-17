@@ -1,0 +1,46 @@
+---
+title: "Function: createMethodDecorator()"
+hidden: true
+---
+
+> **createMethodDecorator**\<`TFunction`\>(`fn`): `TFunction`
+
+Defined in: [packages/http-framework/src/lib/decorators/utils.ts:18](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/utils.ts#L18)
+
+Utility to make a method decorator from a function.
+
+## Type Parameters
+
+### TFunction
+
+`TFunction` *extends* (...`args`) => `unknown`
+
+## Parameters
+
+### fn
+
+`TFunction`
+
+The method to decorate.
+
+## Returns
+
+`TFunction`
+
+The decorator.
+
+## Remarks
+
+The decorator is returned with the signature it was given, rather than widened to `MethodDecorator`, so a
+decorator built on top of this keeps whatever constraint it declares on its target.
+
+## Example
+
+```typescript
+// Enumerable function that will not append the property to the prototype:
+function enumerableMethod(value: boolean) {
+	return createMethodDecorator((_target: unknown, _propertyKey: string, descriptor: PropertyDescriptor) => {
+		descriptor.enumerable = value;
+	});
+}
+```

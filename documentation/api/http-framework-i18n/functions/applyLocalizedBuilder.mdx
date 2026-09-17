@@ -1,0 +1,42 @@
+---
+title: "Function: applyLocalizedBuilder()"
+hidden: true
+---
+
+> **applyLocalizedBuilder**\<`T`\>(`builder`, ...`params`): `T`
+
+Defined in: [packages/http-framework-i18n/src/lib/utils.ts:89](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-i18n/src/lib/utils.ts#L89)
+
+Applies the localized names and descriptions on the builder, calling [applyNameLocalizedBuilder](applyNameLocalizedBuilder) and
+[applyDescriptionLocalizedBuilder](applyDescriptionLocalizedBuilder).
+
+## Type Parameters
+
+### T
+
+`T` *extends* [`BuilderWithNameAndDescription`](../type-aliases/BuilderWithNameAndDescription)
+
+## Parameters
+
+### builder
+
+`T`
+
+The builder to apply the localizations to.
+
+### params
+
+\[`` `${string}:${string}` ``\] \| \[`` `${string}:${string}` ``, `` `${string}:${string}` ``\]
+
+The root key or the key for the name and description keys.
+
+## Returns
+
+`T`
+
+The updated builder.
+
+## Remarks
+
+If only 2 parameters were passed, `name` will be defined as `${root}Name` and `description` as
+`${root}Description`, being `root` the second parameter in the function, after `builder`.

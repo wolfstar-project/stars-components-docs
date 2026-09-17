@@ -1,0 +1,227 @@
+---
+title: "~~Class: Logger~~"
+hidden: true
+---
+
+Defined in: [packages/logger/src/lib/Logger.ts:8](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L8)
+
+## Deprecated
+
+Use `@wolfstar/plugin-logger` instead once available (see wolfstar-project/plugins). This package
+remains functional but will not receive new features.
+
+## Constructors
+
+### Constructor
+
+> **new Logger**(`options?`): `Logger`
+
+Defined in: [packages/logger/src/lib/Logger.ts:24](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L24)
+
+#### Parameters
+
+##### options?
+
+[`Options`](../namespaces/Logger/interfaces/Options) = `{}`
+
+#### Returns
+
+`Logger`
+
+## Properties
+
+### ~~depth~~
+
+> `readonly` **depth**: `number`
+
+Defined in: [packages/logger/src/lib/Logger.ts:17](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L17)
+
+The inspect depth when logging objects.
+
+***
+
+### ~~level~~
+
+> `readonly` **level**: [`Level`](../namespaces/Logger/enumerations/Level)
+
+Defined in: [packages/logger/src/lib/Logger.ts:12](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L12)
+
+The depth of the inspect.
+
+***
+
+### ~~levels~~
+
+> `readonly` **levels**: `Readonly`\<`Record`\<[`Level`](../namespaces/Logger/enumerations/Level), `Readonly`\<[`LevelContext`](../namespaces/Logger/interfaces/LevelContext)\>\>\>
+
+Defined in: [packages/logger/src/lib/Logger.ts:22](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L22)
+
+The context for each logging level.
+
+## Methods
+
+### ~~debug()~~
+
+> **debug**(`value`, ...`args`): `void`
+
+Defined in: [packages/logger/src/lib/Logger.ts:50](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L50)
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+##### args
+
+...readonly `unknown`[]
+
+#### Returns
+
+`void`
+
+***
+
+### ~~disabled()~~
+
+> **disabled**(`level`): `boolean`
+
+Defined in: [packages/logger/src/lib/Logger.ts:42](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L42)
+
+#### Parameters
+
+##### level
+
+[`Level`](../namespaces/Logger/enumerations/Level)
+
+#### Returns
+
+`boolean`
+
+***
+
+### ~~enabled()~~
+
+> **enabled**(`level`): `boolean`
+
+Defined in: [packages/logger/src/lib/Logger.ts:38](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L38)
+
+#### Parameters
+
+##### level
+
+[`Level`](../namespaces/Logger/enumerations/Level)
+
+#### Returns
+
+`boolean`
+
+***
+
+### ~~error()~~
+
+> **error**(`value`, ...`args`): `void`
+
+Defined in: [packages/logger/src/lib/Logger.ts:62](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L62)
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+##### args
+
+...readonly `unknown`[]
+
+#### Returns
+
+`void`
+
+***
+
+### ~~fatal()~~
+
+> **fatal**(`value`, ...`args`): `void`
+
+Defined in: [packages/logger/src/lib/Logger.ts:66](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L66)
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+##### args
+
+...readonly `unknown`[]
+
+#### Returns
+
+`void`
+
+***
+
+### ~~info()~~
+
+> **info**(`value`, ...`args`): `void`
+
+Defined in: [packages/logger/src/lib/Logger.ts:54](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L54)
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+##### args
+
+...readonly `unknown`[]
+
+#### Returns
+
+`void`
+
+***
+
+### ~~trace()~~
+
+> **trace**(`value`, ...`args`): `void`
+
+Defined in: [packages/logger/src/lib/Logger.ts:46](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L46)
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+##### args
+
+...readonly `unknown`[]
+
+#### Returns
+
+`void`
+
+***
+
+### ~~warn()~~
+
+> **warn**(`value`, ...`args`): `void`
+
+Defined in: [packages/logger/src/lib/Logger.ts:58](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/logger/src/lib/Logger.ts#L58)
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+##### args
+
+...readonly `unknown`[]
+
+#### Returns
+
+`void`

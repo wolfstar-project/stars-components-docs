@@ -1,0 +1,37 @@
+---
+title: "Function: EnumerableMethod()"
+hidden: true
+---
+
+> **EnumerableMethod**(`value`): (`_target`, `_key`, `descriptor`) => `void`
+
+Defined in: [packages/http-framework/src/lib/decorators/Enumerable.ts:57](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/Enumerable.ts#L57)
+
+Decorator that sets the `enumerable` property of a class method to the given value.
+
+## Parameters
+
+### value
+
+`boolean`
+
+Whether the method should be enumerable or not.
+
+## Returns
+
+A method decorator.
+
+(`_target`, `_key`, `descriptor`) => `void`
+
+## Example
+
+```typescript
+import { Command, EnumerableMethod } from '@wolfstar/http-framework';
+
+export class UserCommand extends Command {
+	(at)EnumerableMethod(true)
+	public getCacheKey(id: string) {
+		return `user:${id}`;
+	}
+}
+```

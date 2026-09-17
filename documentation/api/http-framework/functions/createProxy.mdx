@@ -1,0 +1,36 @@
+---
+title: "Function: createProxy()"
+hidden: true
+---
+
+> **createProxy**\<`T`\>(`target`, `handler`): `T`
+
+Defined in: [packages/http-framework/src/lib/decorators/utils.ts:43](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/utils.ts#L43)
+
+Creates a new proxy to efficiently add properties to a class without creating subclasses.
+
+## Type Parameters
+
+### T
+
+`T` *extends* `object`
+
+## Parameters
+
+### target
+
+`T`
+
+The constructor of the class to modify.
+
+### handler
+
+`Omit`\<`ProxyHandler`\<`T`\>, `"get"`\>
+
+The handler function to modify the constructor behavior for the target.
+
+## Returns
+
+`T`
+
+The proxy.

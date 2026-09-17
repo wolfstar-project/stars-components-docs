@@ -1,0 +1,255 @@
+---
+title: "Interface: ClientEvents"
+hidden: true
+---
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:73](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L73)
+
+## Properties
+
+### autocompleteError
+
+> **autocompleteError**: \[`unknown`, [`ClientEventAutocompleteContext`](ClientEventAutocompleteContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:97](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L97)
+
+***
+
+### autocompleteFinish
+
+> **autocompleteFinish**: \[[`ClientEventAutocompleteContext`](ClientEventAutocompleteContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:98](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L98)
+
+***
+
+### autocompleteRun
+
+> **autocompleteRun**: \[[`ClientEventAutocompleteContext`](ClientEventAutocompleteContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:95](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L95)
+
+***
+
+### autocompleteSuccess
+
+> **autocompleteSuccess**: \[[`ClientEventAutocompleteContext`](ClientEventAutocompleteContext), `unknown`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:96](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L96)
+
+***
+
+### commandError
+
+> **commandError**: \[`unknown`, [`ClientEventCommandContext`](ClientEventCommandContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:93](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L93)
+
+***
+
+### commandFinish
+
+> **commandFinish**: \[[`ClientEventCommandContext`](ClientEventCommandContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:94](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L94)
+
+***
+
+### commandMethodUnknown
+
+> **commandMethodUnknown**: \[[`ClientEventCommandContext`](ClientEventCommandContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:90](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L90)
+
+***
+
+### commandNameMissing
+
+> **commandNameMissing**: \[`APIApplicationCommandAutocompleteInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:88](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L88)
+
+***
+
+### commandNameUnknown
+
+> **commandNameUnknown**: \[`APIApplicationCommandAutocompleteInteraction` \| `APIApplicationCommandInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:89](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L89)
+
+***
+
+### commandRun
+
+> **commandRun**: \[[`ClientEventCommandContext`](ClientEventCommandContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:91](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L91)
+
+***
+
+### commandSuccess
+
+> **commandSuccess**: \[[`ClientEventCommandContext`](ClientEventCommandContext), `unknown`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:92](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L92)
+
+***
+
+### error
+
+> **error**: \[`unknown`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:74](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L74)
+
+***
+
+### hmrError
+
+> **hmrError**: \[`unknown`, `string`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:141](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L141)
+
+Emitted when the Hot Module Reloader fails to load, reload, or unload the pieces of a file. The error is not
+rethrown: saving the file again retries the operation.
+
+#### Since
+
+3.3.0
+
+***
+
+### hmrPieceReloaded
+
+> **hmrPieceReloaded**: \[[`Piece`](../classes/Piece)\<[`PieceOptions`](PieceOptions), keyof [`StoreRegistryEntries`](StoreRegistryEntries)\>, `string`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:128](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L128)
+
+Emitted when the Hot Module Reloader reloads an already loaded piece after its file changed.
+
+#### Since
+
+3.3.0
+
+***
+
+### hmrPiecesLoaded
+
+> **hmrPiecesLoaded**: \[[`Piece`](../classes/Piece)\<[`PieceOptions`](PieceOptions), keyof [`StoreRegistryEntries`](StoreRegistryEntries)\>[], `string`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:122](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L122)
+
+Emitted when the Hot Module Reloader loads the pieces of a newly created file.
+
+#### Since
+
+3.3.0
+
+***
+
+### hmrPieceUnloaded
+
+> **hmrPieceUnloaded**: \[[`Piece`](../classes/Piece)\<[`PieceOptions`](PieceOptions), keyof [`StoreRegistryEntries`](StoreRegistryEntries)\>, `string`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:134](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L134)
+
+Emitted when the Hot Module Reloader unloads a piece after its file was deleted.
+
+#### Since
+
+3.3.0
+
+***
+
+### hmrStart
+
+> **hmrStart**: \[`string`[]\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:110](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L110)
+
+Emitted when the Hot Module Reloader starts watching, with the list of watched store paths.
+
+#### Since
+
+3.3.0
+
+***
+
+### hmrStop
+
+> **hmrStop**: \[\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:116](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L116)
+
+Emitted when the Hot Module Reloader stops watching and all of its watchers have been closed.
+
+#### Since
+
+3.3.0
+
+***
+
+### interactionHandlerError
+
+> **interactionHandlerError**: \[`unknown`, [`ClientEventInteractionHandlerContext`](ClientEventInteractionHandlerContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:103](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L103)
+
+***
+
+### interactionHandlerFinish
+
+> **interactionHandlerFinish**: \[[`ClientEventInteractionHandlerContext`](ClientEventInteractionHandlerContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:104](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L104)
+
+***
+
+### interactionHandlerNameInvalid
+
+> **interactionHandlerNameInvalid**: \[`APIMessageComponentInteraction` \| `APIModalSubmitInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:99](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L99)
+
+***
+
+### interactionHandlerNameUnknown
+
+> **interactionHandlerNameUnknown**: \[`APIMessageComponentInteraction` \| `APIModalSubmitInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:100](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L100)
+
+***
+
+### interactionHandlerRun
+
+> **interactionHandlerRun**: \[[`ClientEventInteractionHandlerContext`](ClientEventInteractionHandlerContext)\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:101](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L101)
+
+***
+
+### interactionHandlerSuccess
+
+> **interactionHandlerSuccess**: \[[`ClientEventInteractionHandlerContext`](ClientEventInteractionHandlerContext), `unknown`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:102](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L102)
+
+***
+
+### pluginLoaded
+
+> **pluginLoaded**: \[[`PluginHook`](../enumerations/PluginHook), `string`\]
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:87](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L87)
+
+Emitted after a plugin hook runs, providing the hook's [PluginHook](../enumerations/PluginHook) and the plugin's name
+(or `undefined` when the registering plugin did not provide one).
+
+#### Remarks
+
+The `PreGenericsInitialization`, `PreInitialization`, and `PostInitialization` hooks run
+synchronously inside the `Client` constructor, so their emissions fire before `new Client()`
+returns. A listener attached afterwards cannot observe them (not even one added by a subclass,
+whose constructor body only runs after `super()` has already executed those hooks), so only the
+`PreLoad` (during `Client#load`) and `PostListen` (during `Client#listen`) emissions are
+observable. To react to the constructor-phase hooks, use the plugin hooks themselves.
