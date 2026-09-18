@@ -1,0 +1,8 @@
+---
+title: "Week of September 18, 2026"
+description: "TypeScript overload fix for @wolfstar/plugin-i18next translation helpers."
+---
+
+## Bug fixes
+
+- **`@wolfstar/plugin-i18next` 2.0.4** — Fixed TypeScript overload resolution in `getSupportedLanguageT`, `getSupportedUserLanguageT`, and `fetchKey` when the `key` argument is a union type (for example, a ternary expression). Options objects are no longer misread as a positional `defaultValue` string. Each call shape is now its own overload, and the previous generic signature is kept as a deprecated trailing overload for full backward compatibility. See [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next).
