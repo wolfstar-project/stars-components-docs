@@ -102,6 +102,7 @@ Stars Components is a TypeScript monorepo of focused packages for Discord HTTP i
 				{ text: 'Guides', link: '/guide/', activeMatch: '/guide/' },
 				{ text: 'Packages', link: '/packages/', activeMatch: '/packages/' },
 				{ text: 'API', link: '/api/', activeMatch: '/api/' },
+				{ text: 'Errors', link: '/docs/cli/errors', activeMatch: '/docs/' },
 				{
 					text: 'Community',
 					items: [
@@ -157,6 +158,15 @@ Stars Components is a TypeScript monorepo of focused packages for Discord HTTP i
 						text: 'API reference',
 						items: typedocSidebar
 					}
+				],
+				'/docs/': [
+					{
+						text: 'Errors',
+						items: [
+							{ text: 'CLI errors', link: '/docs/cli/errors' },
+							{ text: 'Configuration errors', link: '/docs/config/errors' }
+						]
+					}
 				]
 			},
 			search: {
@@ -168,6 +178,7 @@ Stars Components is a TypeScript monorepo of focused packages for Discord HTTP i
 							boostDocument(documentId) {
 								if (documentId.startsWith('/guide/')) return 2;
 								if (documentId.startsWith('/packages/')) return 1.5;
+								if (documentId.startsWith('/docs/')) return 1.5;
 								if (documentId.startsWith('/api/')) return 0.75;
 								return 1;
 							}

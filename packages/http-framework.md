@@ -11,3 +11,5 @@ description: The framework for Star Network HTTP-only Discord bots.
 />
 
 <!--@include: ../data/readmes/http-framework/README.md{16,}-->
+
+See [Configuration Errors](/docs/config/errors) for every `stars.config.*` diagnostic code.
