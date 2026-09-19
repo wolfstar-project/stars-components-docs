@@ -1,4 +1,7 @@
-# Stars Components
+---
+title: "index"
+description: "Typed, composable packages for Discord interactions, infrastructure, integrations, and testing."
+---
 
 ## Build the Star Network
 
