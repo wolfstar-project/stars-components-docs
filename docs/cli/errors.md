@@ -1,0 +1,100 @@
+---
+title: CLI Errors
+description: Diagnostic codes reported by the stars CLI.
+---
+
+# CLI Errors
+
+The `stars` CLI reports every failure as a structured diagnostic: a stable code, a short explanation of why it
+happened, and — when there's something you can do about it — a concrete fix. This page documents every code
+`@wolfstar/cli` can raise on its own; `stars.config.*` loading and validation errors are documented separately under
+[Configuration Errors](/docs/config/errors).
+
+## Exit codes
+
+| Exit code | Meaning                                                                   |
+| --------- | ------------------------------------------------------------------------- |
+| `0`       | Success                                                                   |
+| `1`       | Generic error                                                             |
+| `2`       | Invalid `stars.config.*` (any [configuration error](/docs/config/errors)) |
+| `3`       | `BUILD_FAILED`                                                            |
+| `130`     | Interrupted (`Ctrl+C`)                                                    |
+| `143`     | Terminated                                                                |
+
+## PREPARE_OUTDATED {#prepare_outdated}
+
+The generated project files are out of date.
+
+**Fix:** run `stars prepare` to update them.
+
+## DISCORD_TOKEN_MISSING {#discord_token_missing}
+
+`DISCORD_TOKEN` is not set.
+
+**Fix:** set `DISCORD_TOKEN` in the environment or in the project's `.env` file.
+
+## DISCORD_APPLICATION_ID_MISSING {#discord_application_id_missing}
+
+The Discord application id is not set.
+
+**Fix:** set `DISCORD_APPLICATION_ID` (or `APPLICATION_ID`) in the environment or in the project's `.env` file.
+
+## DISCORD_REQUEST_FAILED {#discord_request_failed}
+
+Discord answered with an error status while the CLI was calling the Discord API (for example while pushing or
+listing commands).
+
+**Fix:** a `401` status means the token is wrong — check `DISCORD_TOKEN`. Any other status means the application id
+or the bot's permissions are wrong.
+
+## BUILD_FAILED {#build_failed}
+
+The build step failed, optionally with the underlying build tool's own error message attached. This is the one CLI
+error with its own exit code: `3`.
+
+## COMMAND_NOT_FOUND {#command_not_found}
+
+No deployed command matches the name(s) passed to `stars commands`.
+
+**Fix:** run `stars commands list` to see what's currently deployed.
+
+## ABORTED {#aborted}
+
+An interactive prompt was cancelled.
+
+## CONFIRMATION_REQUIRED {#confirmation_required}
+
+`stars commands delete` refuses to delete commands without an explicit confirmation.
+
+**Fix:** pass `--yes` to delete them without prompting, or `--name` to pick a single command, when running from a
+script.
+
+## INVALID_THEME {#invalid_theme}
+
+`stars dev` was given a theme it doesn't know.
+
+**Fix:** use one of the themes it lists as available.
+
+## CODEGEN_OUTDATED {#codegen_outdated}
+
+Generated files (i18n types, etc.) are out of date.
+
+**Fix:** run `stars codegen` to update them.
+
+## DEPENDENCY_MISSING {#dependency_missing}
+
+A dependency the current configuration needs (for example `tsdown` or `vite`) isn't installed in the project root.
+
+**Fix:** the message names the missing package and where to install it.
+
+## CODEGEN_FAILED {#codegen_failed}
+
+`i18next-type-generator` exited with a non-zero code, optionally with its `stderr` output attached.
+
+## EXPERIMENT_UNAVAILABLE {#experiment_unavailable}
+
+`experimental.enableNitro` is not implemented yet.
+
+**Fix:** Nitro needs the framework's Fetch adapter
+([wolfstar-project/stars-components#81](https://github.com/wolfstar-project/stars-components/issues/81)); until it
+lands, set `build.tool` to `'tsdown'`, `'vite'`, or `'tsc'`.

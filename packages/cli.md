@@ -11,3 +11,5 @@ description: Develop and build WolfStar HTTP Framework bots.
 />
 
 <!--@include: ../data/readmes/cli/README.md{16,}-->
+
+See [CLI Errors](/docs/cli/errors) for every diagnostic code `stars` can raise.
