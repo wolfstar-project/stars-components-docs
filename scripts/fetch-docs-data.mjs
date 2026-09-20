@@ -20,7 +20,6 @@ const packageManifests = [
 		'create-http-framework',
 		'env-utilities',
 		'http-framework',
-		'http-framework-i18n',
 		'http-framework-test-utils',
 		'i18next-backend',
 		'influx-utilities',
@@ -33,7 +32,7 @@ const packageManifests = [
 		'twitch-helpers',
 		'weather-helpers'
 	].map((name) => ({ name, repo: 'wolfstar-project/stars-components' })),
-	...['plugin-api', 'plugin-i18next', 'plugin-subcommands-advanced'].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
+	...['plugin-api', 'plugin-i18next', 'plugin-subcommands-advanced', 'plugin-logger'].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
 ];
 const packageNames = new Set(packageManifests.map(({ name }) => name));
 
