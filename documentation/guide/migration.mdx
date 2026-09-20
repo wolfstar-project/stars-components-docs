@@ -7,9 +7,174 @@ outline: deep
 This page collects the upgrade paths between Stars Components packages and their versions. Every section is
 self-contained — read the one matching the move you are making.
 
+- [`@wolfstar/http-framework` v4 → v5](#v5) <Badge type="tip" text="stable" />
 - [`@wolfstar/http-framework` v3 → v4](#v4) <Badge type="tip" text="stable" />
 - [`@wolfstar/http-framework-i18n` → `@wolfstar/plugin-i18next`](#i18next)
 - [`@wolfstar/logger` → `@wolfstar/plugin-logger`](#logger)
+
+## Migrating from v4 to v5 {#v5}
+
+::: info Current releases
+The v5 build defaults are stable in `@wolfstar/http-framework@5.0.0`. The matching developer tooling is
+`@wolfstar/cli@1.0.0`.
+:::
+
+v5 is a small, mostly opt-in release. The only breaking change to the framework's public API is the removal of the
+previously-unannounced `@wolfstar/http-framework/fetch` submodule, replaced by a `fetch()` method on `Client` itself.
+Everything else is either purely additive (`experimental.enableNitro`) or an internal error-handling change
+(`nostics` diagnostics) that only matters to code that caught `ConfigError`/`CliError` by name.
+
+### Changes Included in v5
+
+| Landed in                                                             | Change                                                                                                                |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| [#207](https://github.com/wolfstar-project/stars-components/pull/207) | `Client#fetch`, the Fetch-based counterpart of `listen()`; `experimental.enableNitro` builds and serves through Nitro |
+| [#205](https://github.com/wolfstar-project/stars-components/pull/205) | `ConfigError`/`CliError` replaced by `nostics` `Diagnostic`s (`configDiagnostics`/`cliDiagnostics`)                   |
+
+### Upgrading the Packages
+
+::: code-group
+
+```bash [pnpm]
+pnpm add @wolfstar/http-framework@^5
+pnpm add -D @wolfstar/cli@^1
+```
+
+```bash [npm]
+npm install @wolfstar/http-framework@^5
+npm install --save-dev @wolfstar/cli@^1
+```
+
+```bash [yarn]
+yarn add @wolfstar/http-framework@^5
+yarn add --dev @wolfstar/cli@^1
+```
+
+```bash [bun]
+bun add @wolfstar/http-framework@^5
+bun add --dev @wolfstar/cli@^1
+```
+
+:::
+
+No `stars.config.*` changes are required to move from v4 to v5 — the configuration shape is unchanged.
+
+### Replacing `@wolfstar/http-framework/fetch` with `Client#fetch`
+
+The experimental, previously-unannounced `@wolfstar/http-framework/fetch` submodule is removed. Projects that imported
+`createFetchHandler`, `FetchHandler` or `FetchHandlerOptions` from it to adapt `Client` to a Fetch-based runtime switch
+to the new `fetch()` method on `Client` itself — a method on the instance you already have, rather than a separate
+adapter module to import and wire up:
+
+```diff
+-import { createFetchHandler } from '@wolfstar/http-framework/fetch';
+-import { Client } from '@wolfstar/http-framework';
++import { Client } from '@wolfstar/http-framework';
+
+ const client = new Client({ discordToken, discordPublicKey });
+ await client.load();
+
+-const handler = createFetchHandler(client, { postPath: '/interactions' });
+ export default {
+-	fetch: handler
++	fetch: (request: Request) => client.fetch(request, { postPath: '/interactions' })
+ };
+```
+
+`Client#fetch(request, options?)` runs the exact same signature verification, routing and replies `listen()`'s
+`node:http` server runs, without binding a port. The Discord public key given at construction is imported once and
+reused across every call, the same lifetime `listen()` gives its own signing key — use it for anything that speaks
+Fetch instead of `node:http` (Nitro, a Worker, `Bun.serve`, `Deno.serve`, Vite's own dev middleware).
+
+### Building Through Nitro <Badge type="tip" text="optional" />
+
+`experimental.enableNitro` is now implemented: `stars dev`/`stars build` build and serve the bot through
+[Nitro](https://nitro.build) v3's own Vite plugin instead of refusing with `EXPERIMENT_UNAVAILABLE`. It is purely
+opt-in and requires `experimental.enableVite` as well, since Nitro v3 is itself a Vite plugin rather than a separate
+build step:
+
+```typescript
+export default defineConfig({
+	experimental: {
+		enableVite: true,
+		enableNitro: true,
+		nitro: {
+			// 'node-server' by default; deployable to anything Nitro targets — 'cloudflare-module', 'aws-lambda',
+			// 'vercel', 'netlify', 'bun', 'deno-deploy', and more.
+			preset: 'node-server'
+		}
+	}
+});
+```
+
+Install `vite` and `nitro` as `devDependencies`. `stars build` now produces `build.outDir` (`.output` by default
+under Nitro, instead of `dist`) laid out for the configured preset rather than a `node:http` process; `stars dev`
+rebuilds and restarts on every change, the same as the other build tools.
+
+::: warning The entry's default export changes
+The generated Nitro server entry imports the entry file's **default export** and calls `.fetch(request)` on it — the
+entry must export the already-`load()`ed `Client` instance, not call `listen()`:
+
+```typescript
+import { Client } from '@wolfstar/http-framework';
+
+const client = new Client({
+	discordToken: process.env.DISCORD_TOKEN,
+	discordPublicKey: process.env.DISCORD_PUBLIC_KEY
+});
+await client.load();
+
+export default client;
+```
+
+:::
+
+Vite's native `resolve.tsconfigPaths` is turned on automatically under Nitro (see
+[Nitro's import alias guide](https://nitro.build/examples/import-alias)), so a project's own
+`tsconfig.json#paths`/package.json `imports` aliases — including the ones `stars prepare`'s generated
+`.stars/tsconfig.json` adds — keep working without a `vite-tsconfig-paths` plugin.
+
+### Catching Configuration and CLI Errors <Badge type="tip" text="optional" />
+
+`ConfigError`/`ConfigErrorOptions` (from `@wolfstar/http-framework/config`) and `CliError`/`CliErrorOptions` (from
+`@wolfstar/cli`) are removed. Every `stars.config.*` validation and load failure, and every condition `@wolfstar/cli`
+itself rejects, is now built from a catalog (`configDiagnostics`, `cliDiagnostics`, both still exported) and thrown as
+a [`nostics`](https://github.com/vercel-labs/nostics) `Diagnostic` — a stable, typed code with a `why`, an actionable
+`fix`, and a docs link, instead of ad hoc `code`/`hint`/`path`/`file` fields:
+
+```diff
+-import { ConfigError } from '@wolfstar/http-framework/config';
++import { Diagnostic } from 'nostics';
+ import { loadStarsConfig } from '@wolfstar/http-framework/config';
+
+ try {
+  await loadStarsConfig({ cwd: process.cwd() });
+ } catch (error) {
+-	if (error instanceof ConfigError) {
+-		console.error(error.code, error.path, error.file, error.hint);
++	if (error instanceof Diagnostic) {
++		console.error(error.code, error.message, error.sources);
+  }
+ }
+```
+
+The option path that used to live on `.path` is folded directly into the diagnostic's message; the configuration file
+that used to live on `.file` is now in `.sources`. `@wolfstar/cli` itself still renders these the same way it always
+has (`formatError`/`exitCodeOf` keep their existing exports and behaviour) and still exits with code `2` for every
+`stars.config.*` diagnostic and `3` for `BUILD_FAILED`, unchanged from v4 — this only matters for code that imported
+`ConfigError`/`CliError` by name. See the [configuration error reference](/documentation/errors/config) and
+[CLI error reference](/documentation/errors/cli) for the full code catalogs.
+
+### Checklist
+
+- [ ] `@wolfstar/http-framework` upgraded to v5 and `@wolfstar/cli` upgraded to v1
+- [ ] `createFetchHandler`/`FetchHandler`/`FetchHandlerOptions` imports from `@wolfstar/http-framework/fetch` replaced
+      with `client.fetch(request, options?)`
+- [ ] `instanceof ConfigError` / `instanceof CliError` checks replaced with `instanceof Diagnostic` (from `nostics`)
+- [ ] `.path`/`.file` reads on caught errors replaced with `.message`/`.sources`
+- [ ] Optional: `experimental.enableVite` and `experimental.enableNitro` configured, `vite` and `nitro` installed as
+      `devDependencies`, and the entry's default export changed from calling `listen()` to the loaded `Client`
+      instance
 
 ## Migrating from v3 to v4 {#v4}
 

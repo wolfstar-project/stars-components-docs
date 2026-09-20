@@ -84,6 +84,11 @@
 				"href": "https://github.com/wolfstar-project/stars-components/releases"
 			},
 			{
+				"tab": "Errors",
+				"icon": "triangle-exclamation",
+				"pages": ["documentation/errors/cli", "documentation/errors/config"]
+			},
+			{
 				"tab": "API Reference",
 				"icon": "code",
 				"groups": [
@@ -91,37 +96,41 @@
 						"group": "Core framework",
 						"root": "documentation/api/index",
 						"pages": [
-							"documentation/api/http-framework",
-							"documentation/api/http-framework-i18n",
-							"documentation/api/i18next-backend",
-							"documentation/api/http-framework-test-utils"
+							"documentation/api/http-framework/index",
+							"documentation/api/http-framework-i18n/index",
+							"documentation/api/i18next-backend/index",
+							"documentation/api/http-framework-test-utils/index"
 						]
 					},
 					{
 						"group": "Infrastructure",
 						"pages": [
-							"documentation/api/env-utilities",
-							"documentation/api/logger",
-							"documentation/api/safe-fetch",
-							"documentation/api/start-banner"
+							"documentation/api/env-utilities/index",
+							"documentation/api/logger/index",
+							"documentation/api/safe-fetch/index",
+							"documentation/api/start-banner/index"
 						]
 					},
 					{
 						"group": "Shared pieces",
-						"pages": ["documentation/api/shared-http-pieces", "documentation/api/shared-influx-pieces"]
+						"pages": ["documentation/api/shared-http-pieces/index", "documentation/api/shared-influx-pieces/index"]
 					},
 					{
 						"group": "Platform helpers",
 						"pages": [
-							"documentation/api/influx-utilities",
-							"documentation/api/reddit-helpers",
-							"documentation/api/twitch-helpers",
-							"documentation/api/weather-helpers"
+							"documentation/api/influx-utilities/index",
+							"documentation/api/reddit-helpers/index",
+							"documentation/api/twitch-helpers/index",
+							"documentation/api/weather-helpers/index"
 						]
 					},
 					{
 						"group": "Plugins",
-						"pages": ["documentation/api/plugin-api", "documentation/api/plugin-i18next", "documentation/api/plugin-subcommands-advanced"]
+						"pages": [
+							"documentation/api/plugin-api/index",
+							"documentation/api/plugin-i18next/index",
+							"documentation/api/plugin-subcommands-advanced/index"
+						]
 					}
 				]
 			},
@@ -187,6 +196,14 @@
 		{
 			"source": "/docs/library",
 			"destination": "/documentation/packages"
+		},
+		{
+			"source": "/docs/cli/errors",
+			"destination": "/documentation/errors/cli"
+		},
+		{
+			"source": "/docs/config/errors",
+			"destination": "/documentation/errors/config"
 		},
 		{
 			"source": "/quickstart",
