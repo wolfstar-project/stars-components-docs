@@ -480,7 +480,7 @@ client.on(Events.HmrPieceReloaded, async (piece) => {
 
 ### Project configuration (`stars.config.*`)
 
-`@wolfstar/http-framework` owns the typed project configuration consumed by the [`stars` CLI](/packages/cli) — the
+`@wolfstar/http-framework` owns the typed project configuration consumed by the [`stars` CLI](/documentation/packages/cli) — the
 `defineConfig` helper and the config loader live here, not in the CLI, so any tool can resolve a project's
 configuration without pulling in `@wolfstar/cli`.
 
@@ -653,7 +653,7 @@ console.log(config.entry, config.build.output);
 ```
 
 Invalid options raise a `ConfigError` with a stable `code`, the offending option `path`, the `file` it came from, and
-an actionable `hint`. See the [`@wolfstar/cli` README](/packages/cli#configuration) for the full option reference and how the
+an actionable `hint`. See the [`@wolfstar/cli` README](/documentation/packages/cli#configuration) for the full option reference and how the
 `stars` commands (`dev`, `build`, `info`, `codegen`, `prepare`, `commands`) use it.
 
 See [Configuration Errors](/documentation/errors/config) for every `stars.config.*` diagnostic code.
