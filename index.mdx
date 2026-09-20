@@ -1,0 +1,93 @@
+---
+title: 'Stars Components'
+description: 'Typed, composable packages for Discord interactions, infrastructure, integrations, and testing.'
+mode: 'custom'
+---
+
+<div className="ws-home">
+  <section className="ws-hero" aria-labelledby="ws-home-title">
+    <div className="ws-shell ws-hero-grid">
+      <div className="ws-hero-copy">
+        <h1 id="ws-home-title" className="ws-hero-title">
+          <span>Stars Components</span>
+          Build the Star Network
+        </h1>
+        <p className="ws-hero-description">
+          Typed, composable packages for Discord interactions, infrastructure, integrations, and testing.
+        </p>
+        <div className="ws-actions" aria-label="Get started with Stars Components">
+          <a className="ws-button ws-button-primary" href="/quickstart">
+            Get Started
+          </a>
+          <a className="ws-button" href="/documentation/guide/features">
+            Features
+          </a>
+          <a className="ws-button" href="/documentation/guide/why">
+            Why Stars Components?
+          </a>
+          <a className="ws-button" href="https://github.com/wolfstar-project/stars-components">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <div className="ws-star-stage" aria-hidden="true">
+        <div className="ws-star-orbit"></div>
+        <img className="ws-star" src="/logo/dark.svg" alt="" />
+      </div>
+    </div>
+
+  </section>
+
+  <section className="ws-features" aria-label="Stars Components features">
+    <div className="ws-shell ws-feature-grid">
+      <a className="ws-feature-card" href="/documentation/packages/http-framework">
+        <span className="ws-feature-icon" aria-hidden="true">⚡️</span>
+        <h2>HTTP-First Discord Bots</h2>
+        <p>Handle Discord interactions without a gateway connection and register commands through typed decorators.</p>
+      </a>
+
+      <a className="ws-feature-card" href="/documentation/guide/architecture">
+        <span className="ws-feature-icon" aria-hidden="true">🧩</span>
+        <h2>Composable Packages</h2>
+        <p>Adopt one focused utility or combine the framework, i18n, shared pieces, and metrics as a complete stack.</p>
+      </a>
+
+      <a className="ws-feature-card" href="/documentation/guide/testing">
+        <span className="ws-feature-icon" aria-hidden="true">🧪</span>
+        <h2>Interaction Testing</h2>
+        <p>Exercise commands with typed fixtures, a local test harness, and dedicated Vitest matchers.</p>
+      </a>
+
+      <a className="ws-feature-card" href="/documentation/packages/http-framework-i18n">
+        <span className="ws-feature-icon" aria-hidden="true">🌍</span>
+        <h2>Internationalization</h2>
+        <p>Load locale resources from disk and resolve typed translations for users and guilds.</p>
+      </a>
+
+      <a className="ws-feature-card" href="/documentation/packages/env-utilities">
+        <span className="ws-feature-icon" aria-hidden="true">🛡️</span>
+        <h2>Safer Infrastructure</h2>
+        <p>Parse environment variables, wrap fetch in Result values, and reuse structured logging utilities.</p>
+      </a>
+
+      <a className="ws-feature-card" href="/documentation/api">
+        <span className="ws-feature-icon" aria-hidden="true">📚</span>
+        <h2>Searchable API</h2>
+        <p>Browse an API reference generated directly from every public TypeScript export.</p>
+      </a>
+    </div>
+
+  </section>
+
+  <section className="ws-start">
+    <div className="ws-shell ws-start-inner">
+      <div>
+        <p className="ws-start-label">Recommended path</p>
+        <h2>Start with a fully scaffolded bot.</h2>
+      </div>
+      <code>pnpm create @wolfstar/http-framework my-bot</code>
+      <a href="/quickstart">Read the quickstart <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</div>
