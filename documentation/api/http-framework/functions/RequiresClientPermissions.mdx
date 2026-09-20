@@ -1,5 +1,5 @@
 ---
-title: "Function: RequiresClientPermissions()"
+title: 'Function: RequiresClientPermissions()'
 hidden: true
 ---
 
@@ -14,7 +14,7 @@ the interaction was sent from, as reported by the interaction's `app_permissions
 
 ### permissions
 
-...[`PermissionResolvable`](../type-aliases/PermissionResolvable)[]
+...`PermissionResolvable`[]
 
 The permissions the application must have.
 
@@ -26,8 +26,8 @@ A method decorator.
 
 ## Remarks
 
-When the fallback is omitted, a [`PreconditionError`](../classes/PreconditionError) identified by
-[`Identifiers.PreconditionClientPermissions`](../enumerations/Identifiers#preconditionclientpermissions) is thrown, which the client emits as `commandError` (or
+When the fallback is omitted, a `PreconditionError` identified by
+[`Identifiers.PreconditionClientPermissions`](/documentation/api/http-framework/enumerations/Identifiers#preconditionclientpermissions) is thrown, which the client emits as `commandError` (or
 `interactionHandlerError`) for a `Listener` to turn into a user-facing reply.
 
 ## Example

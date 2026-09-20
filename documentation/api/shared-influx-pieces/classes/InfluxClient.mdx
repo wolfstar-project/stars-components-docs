@@ -1,5 +1,5 @@
 ---
-title: "Class: InfluxClient"
+title: 'Class: InfluxClient'
 hidden: true
 ---
 
@@ -21,7 +21,7 @@ Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:18](https://g
 
 ##### options?
 
-[`ConnectionOptions`](../../influx-utilities/interfaces/ConnectionOptions) = `{}`
+[`ConnectionOptions`](/documentation/api/influx-utilities/interfaces/ConnectionOptions) = `{}`
 
 #### Returns
 
@@ -35,7 +35,7 @@ Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:18](https://g
 
 ### influx
 
-> `readonly` **influx**: [`InfluxDB`](../../influx-utilities/classes/InfluxDB)
+> `readonly` **influx**: [`InfluxDB`](/documentation/api/influx-utilities/classes/InfluxDB)
 
 Defined in: packages/influx-utilities/dist/esm/index.d.ts:23
 
@@ -43,21 +43,21 @@ Defined in: packages/influx-utilities/dist/esm/index.d.ts:23
 
 `Client.influx`
 
-***
+---
 
 ### interactionCounters
 
-> **interactionCounters**: `Record`\<[`InteractionCounterKey`](../type-aliases/InteractionCounterKey), `number`\>
+> **interactionCounters**: `Record`\<[`InteractionCounterKey`](/documentation/api/shared-influx-pieces/type-aliases/InteractionCounterKey), `number`\>
 
 Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:11](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L11)
 
 Represents the count of different types of interactions.
 
-***
+---
 
 ### queryApi
 
-> `readonly` **queryApi**: [`QueryApi`](../../influx-utilities/interfaces/QueryApi)
+> `readonly` **queryApi**: [`QueryApi`](/documentation/api/influx-utilities/interfaces/QueryApi)
 
 Defined in: packages/influx-utilities/dist/esm/index.d.ts:24
 
@@ -65,11 +65,11 @@ Defined in: packages/influx-utilities/dist/esm/index.d.ts:24
 
 `Client.queryApi`
 
-***
+---
 
 ### writeApi
 
-> `readonly` **writeApi**: [`WriteApi`](../../influx-utilities/interfaces/WriteApi)
+> `readonly` **writeApi**: [`WriteApi`](/documentation/api/influx-utilities/interfaces/WriteApi)
 
 Defined in: packages/influx-utilities/dist/esm/index.d.ts:25
 
@@ -109,7 +109,7 @@ The value of the tag to inject.
 
 `Client.addInjectTag`
 
-***
+---
 
 ### flush()
 
@@ -135,7 +135,7 @@ Whether or not it should flush the scheduled retries
 
 `Client.flush`
 
-***
+---
 
 ### writePoint()
 
@@ -149,7 +149,7 @@ Writes a point into the write buffer.
 
 ##### point
 
-[`Point`](../../influx-utilities/classes/Point)
+[`Point`](/documentation/api/influx-utilities/classes/Point)
 
 The point to write.
 
@@ -161,7 +161,7 @@ The point to write.
 
 `Client.writePoint`
 
-***
+---
 
 ### writePoints()
 
@@ -175,7 +175,7 @@ Writes multiple points into the write buffer.
 
 ##### points
 
-readonly [`Point`](../../influx-utilities/classes/Point)[]
+readonly [`Point`](/documentation/api/influx-utilities/classes/Point)[]
 
 The points to write.
 

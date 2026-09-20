@@ -1,9 +1,9 @@
 ---
-title: "Class: InfluxDB"
+title: 'Class: InfluxDB'
 hidden: true
 ---
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:1155
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1155
 
 InfluxDB entry point that configures communication with InfluxDB server
 and provide APIs to write and query data.
@@ -14,7 +14,7 @@ and provide APIs to write and query data.
 
 > **new InfluxDB**(`options`): `InfluxDB`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:1163
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1163
 
 Creates influxdb client options from an options object or url.
 
@@ -36,7 +36,7 @@ client options
 
 > `readonly` **processCSVResponse**: (`executor`, `iterableResultExecutor`) => `AnnotatedCSVResponse`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:1158
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1158
 
 #### Parameters
 
@@ -52,21 +52,21 @@ Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules
 
 `AnnotatedCSVResponse`
 
-***
+---
 
 ### transport
 
 > `readonly` **transport**: `Transport`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:1157
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1157
 
 ## Methods
 
 ### getQueryApi()
 
-> **getQueryApi**(`org`): [`QueryApi`](../interfaces/QueryApi)
+> **getQueryApi**(`org`): [`QueryApi`](/documentation/api/influx-utilities/interfaces/QueryApi)
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:1195
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1195
 
 Creates QueryApi for the supplied organization .
 
@@ -80,7 +80,7 @@ organization or query options
 
 #### Returns
 
-[`QueryApi`](../interfaces/QueryApi)
+[`QueryApi`](/documentation/api/influx-utilities/interfaces/QueryApi)
 
 QueryApi instance
 
@@ -91,13 +91,13 @@ See also [query.ts example](https://github.com/influxdata/influxdb-client-js/blo
 [rxjs-query.ts example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/rxjs-query.ts),
 and [browser example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/index.html),
 
-***
+---
 
 ### getWriteApi()
 
-> **getWriteApi**(`org`, `bucket`, `precision?`, `writeOptions?`): [`WriteApi`](../interfaces/WriteApi)
+> **getWriteApi**(`org`, `bucket`, `precision?`, `writeOptions?`): [`WriteApi`](/documentation/api/influx-utilities/interfaces/WriteApi)
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:1182
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:1182
 
 Creates WriteApi for the supplied organization and bucket. BEWARE that returned instances must be closed
 in order to flush the remaining data and close already scheduled retry executions.
@@ -118,7 +118,7 @@ The destination bucket for writes.
 
 ##### precision?
 
-[`WritePrecisionType`](../type-aliases/WritePrecisionType)
+[`WritePrecisionType`](/documentation/api/influx-utilities/type-aliases/WritePrecisionType)
 
 Timestamp precision for line items.
 
@@ -130,14 +130,14 @@ Custom write options.
 
 #### Returns
 
-[`WriteApi`](../interfaces/WriteApi)
+[`WriteApi`](/documentation/api/influx-utilities/interfaces/WriteApi)
 
 WriteApi instance
 
 #### Remarks
 
 Use WriteOptions to customize retry strategy options, data chunking
-and flushing options. See DEFAULT\_WriteOptions to see the defaults.
+and flushing options. See DEFAULT_WriteOptions to see the defaults.
 
 See also [write example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/write.mjs),
 [writeAdvanced example](https://github.com/influxdata/influxdb-client-js/blob/master/examples/writeAdvanced.mjs),

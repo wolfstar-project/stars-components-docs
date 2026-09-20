@@ -1,5 +1,5 @@
 ---
-title: "Function: createClassDecorator()"
+title: 'Function: createClassDecorator()'
 hidden: true
 ---
 
@@ -13,7 +13,7 @@ Utility to make a class decorator from a function.
 
 ### TFunction
 
-`TFunction` *extends* (...`args`) => `unknown`
+`TFunction` _extends_ (...`args`) => `unknown`
 
 ## Parameters
 
@@ -33,8 +33,8 @@ The decorator.
 
 The decorator is returned with the signature it was given, rather than widened to `ClassDecorator`, so a
 decorator built on top of this keeps whatever constraint it declares on its target. This is what lets
-[`RegisterCommand`](RegisterCommand) and its siblings reject a target that is not a `Command`.
+[`RegisterCommand`](/documentation/api/http-framework/functions/RegisterCommand) and its siblings reject a target that is not a `Command`.
 
 ## See
 
-[`ApplyOptions`](ApplyOptions)
+[`ApplyOptions`](/documentation/api/http-framework/functions/ApplyOptions)

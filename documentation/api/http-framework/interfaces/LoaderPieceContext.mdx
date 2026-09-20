@@ -1,22 +1,22 @@
 ---
-title: "Interface: LoaderPieceContext<StoreName>"
+title: 'Interface: LoaderPieceContext<StoreName>'
 hidden: true
 ---
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:170
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:170
 
 The context for the piece, contains extra information from the store,
 the piece's path, and the store that loaded it.
 
 ## Extended by
 
-- [`PieceContext`](PieceContext)
+- [`PieceContext`](/documentation/api/http-framework/interfaces/PieceContext)
 
 ## Type Parameters
 
 ### StoreName
 
-`StoreName` *extends* `StoreRegistryKey` = `StoreRegistryKey`
+`StoreName` _extends_ `StoreRegistryKey` = `StoreRegistryKey`
 
 ## Properties
 
@@ -24,36 +24,36 @@ the piece's path, and the store that loaded it.
 
 > `readonly` **name**: `string`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:182
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:182
 
 The module's name extracted from the path.
 
-***
+---
 
 ### path
 
 > `readonly` **path**: `string`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:178
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:178
 
 The path the module was loaded from, relative to [LoaderPieceContext.root](#root).
 
-***
+---
 
 ### root
 
 > `readonly` **root**: `string`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:174
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:174
 
 The root directory the piece was loaded from.
 
-***
+---
 
 ### store
 
-> `readonly` **store**: [`StoreRegistryEntries`](StoreRegistryEntries)\[`StoreName`\]
+> `readonly` **store**: [`StoreRegistryEntries`](/documentation/api/http-framework/interfaces/StoreRegistryEntries)\[`StoreName`\]
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:186
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:186
 
 The store that loaded the piece.

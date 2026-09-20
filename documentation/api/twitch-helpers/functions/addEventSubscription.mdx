@@ -1,9 +1,9 @@
 ---
-title: "Function: addEventSubscription()"
+title: 'Function: addEventSubscription()'
 hidden: true
 ---
 
-> **addEventSubscription**(`streamerId`, `subscriptionType?`): `Promise`\<[`TwitchEventSubResult`](../interfaces/TwitchEventSubResult)\>
+> **addEventSubscription**(`streamerId`, `subscriptionType?`): `Promise`\<[`TwitchEventSubResult`](/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult)\>
 
 Defined in: [twitch.ts:131](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L131)
 
@@ -15,17 +15,17 @@ Adds a new Twitch subscription.
 
 `string`
 
-The Twitch ID of the streamer to subscribe to. You can use [fetchUsers](fetchUsers) to get the user information.
+The Twitch ID of the streamer to subscribe to. You can use [fetchUsers](/documentation/api/twitch-helpers/functions/fetchUsers) to get the user information.
 
 ### subscriptionType?
 
-[`TwitchEventSubTypes`](../enumerations/TwitchEventSubTypes) = `TwitchEventSubTypes.StreamOnline`
+[`TwitchEventSubTypes`](/documentation/api/twitch-helpers/enumerations/TwitchEventSubTypes) = `TwitchEventSubTypes.StreamOnline`
 
 The type of subscription to add.
 
 ## Returns
 
-`Promise`\<[`TwitchEventSubResult`](../interfaces/TwitchEventSubResult)\>
+`Promise`\<[`TwitchEventSubResult`](/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult)\>
 
 If successful the result of the Twitch subscription, this contains the `id` that can be stored in a database
 for reference. Otherwise an HttpError is thrown.

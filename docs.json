@@ -49,7 +49,7 @@
 				{
 					"anchor": "Documentation",
 					"icon": "book-open-cover",
-					"href": "/documentation"
+					"href": "/documentation/guide"
 				}
 			]
 		},
@@ -57,24 +57,165 @@
 			{
 				"tab": "Guides",
 				"icon": "book-open",
-				"pages": ["docs/guides", "quickstart", "documentation/guide/index", "documentation/index"]
+				"groups": [
+					{
+						"group": "Start here",
+						"root": "documentation/guide/index",
+						"pages": ["documentation/guide/features", "documentation/guide/why", "documentation/guide/architecture"]
+					},
+					{
+						"group": "Build",
+						"pages": [
+							"documentation/guide/commands",
+							"documentation/guide/environment",
+							"documentation/guide/plugins",
+							"documentation/guide/testing"
+						]
+					},
+					{
+						"group": "Project",
+						"pages": ["documentation/guide/migration", "documentation/guide/contributing"]
+					}
+				]
 			},
 			{
 				"tab": "Changelog",
 				"icon": "list",
-				"pages": ["docs/changelog"]
+				"href": "https://github.com/wolfstar-project/stars-components/releases"
 			},
 			{
 				"tab": "API Reference",
 				"icon": "code",
-				"pages": ["docs/api-reference", "documentation/api/index"]
+				"groups": [
+					{
+						"group": "Core framework",
+						"root": "documentation/api/index",
+						"pages": [
+							"documentation/api/http-framework",
+							"documentation/api/http-framework-i18n",
+							"documentation/api/i18next-backend",
+							"documentation/api/http-framework-test-utils"
+						]
+					},
+					{
+						"group": "Infrastructure",
+						"pages": [
+							"documentation/api/env-utilities",
+							"documentation/api/logger",
+							"documentation/api/safe-fetch",
+							"documentation/api/start-banner"
+						]
+					},
+					{
+						"group": "Shared pieces",
+						"pages": ["documentation/api/shared-http-pieces", "documentation/api/shared-influx-pieces"]
+					},
+					{
+						"group": "Platform helpers",
+						"pages": [
+							"documentation/api/influx-utilities",
+							"documentation/api/reddit-helpers",
+							"documentation/api/twitch-helpers",
+							"documentation/api/weather-helpers"
+						]
+					},
+					{
+						"group": "Plugins",
+						"pages": ["documentation/api/plugin-api", "documentation/api/plugin-i18next", "documentation/api/plugin-subcommands-advanced"]
+					}
+				]
 			},
 			{
 				"tab": "Library",
 				"icon": "boxes-stacked",
-				"pages": ["docs/library", "documentation/packages/index"]
+				"groups": [
+					{
+						"group": "Core framework",
+						"root": "documentation/packages/index",
+						"pages": [
+							"documentation/packages/http-framework",
+							"documentation/packages/cli",
+							"documentation/packages/create-http-framework",
+							"documentation/packages/http-framework-i18n",
+							"documentation/packages/i18next-backend",
+							"documentation/packages/http-framework-test-utils"
+						]
+					},
+					{
+						"group": "Infrastructure",
+						"pages": [
+							"documentation/packages/env-utilities",
+							"documentation/packages/logger",
+							"documentation/packages/safe-fetch",
+							"documentation/packages/start-banner"
+						]
+					},
+					{
+						"group": "Shared pieces",
+						"pages": ["documentation/packages/shared-http-pieces", "documentation/packages/shared-influx-pieces"]
+					},
+					{
+						"group": "Platform helpers",
+						"pages": [
+							"documentation/packages/influx-utilities",
+							"documentation/packages/reddit-helpers",
+							"documentation/packages/twitch-helpers",
+							"documentation/packages/weather-helpers"
+						]
+					},
+					{
+						"group": "Plugins",
+						"pages": [
+							"documentation/packages/plugin-api",
+							"documentation/packages/plugin-i18next",
+							"documentation/packages/plugin-subcommands-advanced"
+						]
+					}
+				]
 			}
 		]
 	},
+	"redirects": [
+		{
+			"source": "/docs/guides",
+			"destination": "/documentation/guide"
+		},
+		{
+			"source": "/docs/api-reference",
+			"destination": "/documentation/api"
+		},
+		{
+			"source": "/docs/library",
+			"destination": "/documentation/packages"
+		},
+		{
+			"source": "/quickstart",
+			"destination": "/documentation/guide"
+		},
+		{
+			"source": "/guide",
+			"destination": "/documentation/guide"
+		},
+		{
+			"source": "/guide/:slug*",
+			"destination": "/documentation/guide/:slug*"
+		},
+		{
+			"source": "/packages",
+			"destination": "/documentation/packages"
+		},
+		{
+			"source": "/packages/:slug*",
+			"destination": "/documentation/packages/:slug*"
+		},
+		{
+			"source": "/api",
+			"destination": "/documentation/api"
+		},
+		{
+			"source": "/api/:slug*",
+			"destination": "/documentation/api/:slug*"
+		}
+	],
 	"description": "Build own star network"
 }

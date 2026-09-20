@@ -1,5 +1,5 @@
 ---
-title: "Abstract Class: InfluxListener"
+title: 'Abstract Class: InfluxListener'
 hidden: true
 ---
 
@@ -57,7 +57,7 @@ Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1997
 
 `Listener._listener`
 
-***
+---
 
 ### emitter
 
@@ -69,13 +69,13 @@ Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1995
 
 `Listener.emitter`
 
-***
+---
 
 ### enabled
 
 > **enabled**: `boolean`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:234
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:234
 
 Whether or not the piece is enabled.
 
@@ -83,7 +83,7 @@ Whether or not the piece is enabled.
 
 `Listener.enabled`
 
-***
+---
 
 ### event
 
@@ -95,13 +95,13 @@ Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1996
 
 `Listener.event`
 
-***
+---
 
 ### location
 
 > `readonly` **location**: `PieceLocation`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:226
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:226
 
 The location metadata for the piece's file.
 
@@ -109,13 +109,13 @@ The location metadata for the piece's file.
 
 `Listener.location`
 
-***
+---
 
 ### name
 
 > `readonly` **name**: `string`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:230
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:230
 
 The name of the piece.
 
@@ -123,27 +123,27 @@ The name of the piece.
 
 `Listener.name`
 
-***
+---
 
 ### options
 
 > `readonly` **options**: `Options`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:238
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:238
 
-The raw options passed to this [Piece](../../http-framework/classes/Piece)
+The raw options passed to this Piece
 
 #### Inherited from
 
 `Listener.options`
 
-***
+---
 
 ### store
 
 > `readonly` **store**: `ListenerStore`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:222
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:222
 
 The store that contains the piece.
 
@@ -151,7 +151,7 @@ The store that contains the piece.
 
 `Listener.store`
 
-***
+---
 
 ### tags
 
@@ -167,7 +167,7 @@ Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:
 
 > **get** **container**(): `Container`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:244
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:244
 
 A reference to the Container object for ease of use.
 
@@ -195,7 +195,7 @@ Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### initTags()
 
@@ -207,11 +207,11 @@ Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:
 
 `void`
 
-***
+---
 
 ### injectTags()
 
-> `protected` **injectTags**(`point`): [`Point`](../../influx-utilities/classes/Point)
+> `protected` **injectTags**(`point`): [`Point`](/documentation/api/influx-utilities/classes/Point)
 
 Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:31](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L31)
 
@@ -219,13 +219,13 @@ Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:
 
 ##### point
 
-[`Point`](../../influx-utilities/classes/Point)
+[`Point`](/documentation/api/influx-utilities/classes/Point)
 
 #### Returns
 
-[`Point`](../../influx-utilities/classes/Point)
+[`Point`](/documentation/api/influx-utilities/classes/Point)
 
-***
+---
 
 ### onLoad()
 
@@ -244,13 +244,13 @@ Useful to set-up asynchronous initialization tasks.
 
 `Listener.onLoad`
 
-***
+---
 
 ### onUnload()
 
 > **onUnload**(): `unknown`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:254
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:254
 
 Per-piece listener that is called when the piece is unloaded from the store.
 Useful to set-up clean-up tasks.
@@ -263,13 +263,13 @@ Useful to set-up clean-up tasks.
 
 `Listener.onUnload`
 
-***
+---
 
 ### reload()
 
 > **reload**(): `Promise`\<`void`\>
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:262
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:262
 
 Reloads the piece by loading the same path in the store.
 
@@ -281,7 +281,7 @@ Reloads the piece by loading the same path in the store.
 
 `Listener.reload`
 
-***
+---
 
 ### run()
 
@@ -303,13 +303,13 @@ Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1999
 
 `Listener.run`
 
-***
+---
 
 ### toJSON()
 
 > **toJSON**(): `PieceJSON`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:266
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:266
 
 Defines the `JSON.stringify` behavior of this piece.
 
@@ -321,13 +321,13 @@ Defines the `JSON.stringify` behavior of this piece.
 
 `Listener.toJSON`
 
-***
+---
 
 ### unload()
 
 > **unload**(): `Promise`\<`void`\>
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:258
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:258
 
 Unloads and disables the piece.
 
@@ -339,7 +339,7 @@ Unloads and disables the piece.
 
 `Listener.unload`
 
-***
+---
 
 ### writePoint()
 
@@ -351,13 +351,13 @@ Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:
 
 ##### point
 
-[`Point`](../../influx-utilities/classes/Point)
+[`Point`](/documentation/api/influx-utilities/classes/Point)
 
 #### Returns
 
 `void`
 
-***
+---
 
 ### writePoints()
 
@@ -369,7 +369,7 @@ Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:
 
 ##### points
 
-readonly [`Point`](../../influx-utilities/classes/Point)[]
+readonly [`Point`](/documentation/api/influx-utilities/classes/Point)[]
 
 #### Returns
 

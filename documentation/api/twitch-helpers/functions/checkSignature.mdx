@@ -1,5 +1,5 @@
 ---
-title: "Function: checkSignature()"
+title: 'Function: checkSignature()'
 hidden: true
 ---
 
@@ -48,7 +48,7 @@ if (!isObject(request.body)) return response.badRequest('Malformed data received
 
 // If any of the headers is missing tell Twitch they are sending invalid data
 if (!twitchEventSubMessageSignature || !twitchEventSubMessageId || !twitchEventSubMessageTimestamp) {
- return response.badRequest('Missing required Twitch Eventsub headers');
+	return response.badRequest('Missing required Twitch Eventsub headers');
 }
 
 // Construct the verification signature

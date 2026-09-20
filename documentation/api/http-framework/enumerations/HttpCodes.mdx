@@ -1,5 +1,5 @@
 ---
-title: "Enumeration: HttpCodes"
+title: 'Enumeration: HttpCodes'
 hidden: true
 ---
 
@@ -17,7 +17,7 @@ The request has been accepted for processing, but the processing has not
 been completed. The request might or might not be eventually acted upon,
 and may be disallowed when processing occurs.
 
-***
+---
 
 ### AlreadyReported
 
@@ -29,7 +29,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:66](https://github
 enumerated in a preceding part of the (multistatus) response, and are not
 being included again.
 
-***
+---
 
 ### BadGateway
 
@@ -40,7 +40,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:388](https://githu
 The server was acting as a gateway or proxy and received an invalid
 response from the upstream server.
 
-***
+---
 
 ### BadRequest
 
@@ -52,7 +52,7 @@ The server cannot or will not process the request due to an apparent
 client error (e.g., malformed request syntax, size too large, invalid
 request message framing, or deceptive request routing).
 
-***
+---
 
 ### Conflict
 
@@ -64,7 +64,7 @@ Indicates that the request could not be processed because of conflict in
 the current state of the resource, such as an edit conflict between
 multiple simultaneous updates.
 
-***
+---
 
 ### Created
 
@@ -75,7 +75,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:18](https://github
 The request has been fulfilled, resulting in the creation of a new
 resource.
 
-***
+---
 
 ### EnhanceYourCalm
 
@@ -88,7 +88,7 @@ The text is a quote from 'Demolition Man' and the '420' code is likely a referen
 to this number's association with marijuana. Other services may wish to implement
 the 429 Too Many Requests response code instead.
 
-***
+---
 
 ### ExpectationFailed
 
@@ -99,7 +99,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:286](https://githu
 The server cannot meet the requirements of the Expect request-header
 field.
 
-***
+---
 
 ### FailedDependency
 
@@ -110,7 +110,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:327](https://githu
 (WebDAV; RFC 4918) The request failed because it depended on another
 request and that request failed (e.g., a PROPPATCH).
 
-***
+---
 
 ### Forbidden
 
@@ -127,7 +127,7 @@ request provided authentication by answering the WWW-Authenticate header
 field challenge, but the server did not accept that authentication. The
 request should not be repeated.
 
-***
+---
 
 ### Found
 
@@ -145,7 +145,7 @@ Other. Therefore, HTTP/1.1 added status codes 303 and 307 to distinguish
 between the two behaviours. However, some Web applications and frameworks
 use the 302 status code as if it were the 303.
 
-***
+---
 
 ### GatewayTimeout
 
@@ -156,7 +156,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:400](https://githu
 The server was acting as a gateway or proxy and did not receive a timely
 response from the upstream server.
 
-***
+---
 
 ### Gone
 
@@ -172,7 +172,7 @@ Clients such as search engines should remove the resource from their
 indices. Most use cases do not require clients and search engines to
 purge the resource, and a "404 Not Found" may be used instead.
 
-***
+---
 
 ### HTTPVersionNotSupported
 
@@ -182,7 +182,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:405](https://githu
 
 The server does not support the HTTP protocol version used in the request.
 
-***
+---
 
 ### IAmATeapot
 
@@ -197,7 +197,7 @@ servers. The RFC specifies this code should be returned by teapots
 requested to brew coffee. This HTTP status is used as an Easter egg in
 some websites, such as Google.com's I'm a teapot easter egg.
 
-***
+---
 
 ### IMUsed
 
@@ -209,7 +209,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:73](https://github
 response is a representation of the result of one or more
 instance-manipulations applied to the current instance.
 
-***
+---
 
 ### InsufficientStorage
 
@@ -220,7 +220,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:417](https://githu
 (WebDAV; RFC 4918) The server is unable to store the representation
 needed to complete the request.
 
-***
+---
 
 ### InternalServerError
 
@@ -231,7 +231,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:375](https://githu
 A generic error message, given when an unexpected condition was
 encountered and no more specific message is suitable.
 
-***
+---
 
 ### LengthRequired
 
@@ -242,7 +242,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:245](https://githu
 The request did not specify the length of its content, which is required
 by the requested resource.
 
-***
+---
 
 ### Locked
 
@@ -252,7 +252,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:321](https://githu
 
 (WebDAV; RFC 4918) The resource that is being accessed is locked.
 
-***
+---
 
 ### LoopDetected
 
@@ -263,7 +263,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:423](https://githu
 (WebDAV; RFC 5842) The server detected an infinite loop while processing
 the request (sent instead of 208 Already Reported).
 
-***
+---
 
 ### MethodNotAllowed
 
@@ -275,7 +275,7 @@ A request method is not supported for the requested resource; for example,
 a GET request on a form that requires data to be presented via POST, or a
 PUT request on a read-only resource.
 
-***
+---
 
 ### MisdirectedRequest
 
@@ -286,7 +286,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:310](https://githu
 (RFC 7540) The request was directed at a server that is not able to
 produce a response (for example because of connection reuse).
 
-***
+---
 
 ### MovedPermanently
 
@@ -296,7 +296,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:87](https://github
 
 This and all future requests should be directed to the given URI.
 
-***
+---
 
 ### MultipleChoices
 
@@ -310,7 +310,7 @@ could be used to present multiple video format options, to list files
 with different filename extensions, or to suggest word-sense
 disambiguation.
 
-***
+---
 
 ### MultiStatus
 
@@ -322,7 +322,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:59](https://github
 message and can contain a number of separate response codes, depending on
 how many sub-requests were made.
 
-***
+---
 
 ### NetworkAuthenticationRequired
 
@@ -335,7 +335,7 @@ Intended for use by intercepting proxies used to control access to the
 network (e.g., "captive portals" used to require agreement to Terms of
 Service before granting full Internet access via a Wi-Fi hotspot).
 
-***
+---
 
 ### NoContent
 
@@ -346,7 +346,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:38](https://github
 The server successfully processed the request, and is not returning any
 content.
 
-***
+---
 
 ### NonAuthoritativeInformation
 
@@ -358,7 +358,7 @@ The server is a transforming proxy (e.g. a Web accelerator) that received
 a 200 OK from its origin, but is returning a modified version of the
 origin's response.
 
-***
+---
 
 ### NotAcceptable
 
@@ -369,7 +369,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:208](https://githu
 The requested resource is capable of generating only content not
 acceptable according to the Accept headers sent in the request. See Content negotiation.
 
-***
+---
 
 ### NotExtended
 
@@ -380,7 +380,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:429](https://githu
 (RFC 2774) Further extensions to the request are required for the server
 to fulfil it.
 
-***
+---
 
 ### NotFound
 
@@ -391,7 +391,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:195](https://githu
 The requested resource could not be found but may be available in the
 future. Subsequent requests by the client are permissible.
 
-***
+---
 
 ### NotImplemented
 
@@ -403,7 +403,7 @@ The server either does not recognize the request method, or it lacks the
 ability to fulfil the request. Usually this implies future availability
 (e.g., a new feature of a web-service API).
 
-***
+---
 
 ### NotModified
 
@@ -416,7 +416,7 @@ version specified by the request headers If-Modified-Since or
 If-None-Match. In such case, there is no need to retransmit the resource
 since the client still has a previously-downloaded copy.
 
-***
+---
 
 ### OK
 
@@ -430,7 +430,7 @@ contain an entity corresponding to the requested resource. In a POST
 request, the response will contain an entity describing or containing the
 result of the action.
 
-***
+---
 
 ### PartialContent
 
@@ -443,7 +443,7 @@ serving) due to a range header sent by the client. The range header is
 used by HTTP clients to enable resuming of interrupted downloads, or
 split a download into multiple simultaneous streams.
 
-***
+---
 
 ### PayloadTooLarge
 
@@ -454,7 +454,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:257](https://githu
 (RFC 7231) The request is larger than the server is willing or able to
 process. Previously called "Request Entity Too Large".
 
-***
+---
 
 ### PaymentRequired
 
@@ -472,7 +472,7 @@ call. Shopify uses this code when the store has not paid their fees and
 is temporarily disabled. Stripe uses this code for failed payments where
 parameters were correct, for example blocked fraudulent payments.
 
-***
+---
 
 ### PermanentRedirect
 
@@ -485,7 +485,7 @@ another URI. 307 and 308 parallel the behaviors of 302 and 301, but do
 not allow the HTTP method to change. So, for example, submitting a form
 to a permanently redirected resource may continue smoothly.
 
-***
+---
 
 ### PreconditionFailed
 
@@ -496,7 +496,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:251](https://githu
 (RFC 7232) The server does not meet one of the preconditions that the
 requester put on the request header fields.
 
-***
+---
 
 ### PreconditionRequired
 
@@ -510,7 +510,7 @@ resource's state, modifies it, and PUTs it back to the server, when
 meanwhile a third party has modified the state on the server, leading to
 a conflict.
 
-***
+---
 
 ### ProxyAuthenticationRequired
 
@@ -520,7 +520,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:213](https://githu
 
 (RFC 7235) The client must first authenticate itself with the proxy.
 
-***
+---
 
 ### RangeNotSatisfiable
 
@@ -533,7 +533,7 @@ but the server cannot supply that portion. For example, if the client
 asked for a part of the file that lies beyond the end of the file. Called
 "Requested Range Not Satisfiable" previously.
 
-***
+---
 
 ### RequestHeaderFieldsTooLarge
 
@@ -545,7 +545,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:361](https://githu
 an individual header field, or all the header fields collectively, are
 too large.
 
-***
+---
 
 ### RequestTimeout
 
@@ -558,7 +558,7 @@ specifications: "The client did not produce a request within the time
 that the server was prepared to wait. The client MAY repeat the request
 without modifications at any later time."
 
-***
+---
 
 ### ResetContent
 
@@ -569,7 +569,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:44](https://github
 The server successfully processed the request, asks that the requester
 reset its document view, and is not returning any content.
 
-***
+---
 
 ### SeeOther
 
@@ -582,7 +582,7 @@ method. When received in response to a POST (or PUT/DELETE), the client
 should presume that the server has received the data and should issue a
 new GET request to the given URI.
 
-***
+---
 
 ### ServiceUnavailable
 
@@ -593,7 +593,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:394](https://githu
 The server cannot handle the request (because it is overloaded or down
 for maintenance). Generally, this is a temporary state.
 
-***
+---
 
 ### SwitchProxy
 
@@ -604,7 +604,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:129](https://githu
 No longer used. Originally meant "Subsequent requests should use the
 specified proxy.".
 
-***
+---
 
 ### TemporaryRedirect
 
@@ -618,7 +618,7 @@ was historically implemented, the request method is not allowed to be
 changed when reissuing the original request. For example, a POST request
 should be repeated using another POST request.
 
-***
+---
 
 ### TooEarly
 
@@ -629,7 +629,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:333](https://githu
 (RFC 8470) Indicates that the server is unwilling to risk processing a
 request that might be replayed.
 
-***
+---
 
 ### TooManyRequests
 
@@ -640,7 +640,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:354](https://githu
 (RFC 6585) The user has sent too many requests in a given amount of time.
 Intended for use with rate-limiting schemes.
 
-***
+---
 
 ### Unauthorized
 
@@ -656,7 +656,7 @@ authentication and Digest access authentication. 401 semantically means
 "unauthorised", the user does not have valid authentication credentials
 for the target resource.
 
-***
+---
 
 ### UnavailableForLegalReasons
 
@@ -669,7 +669,7 @@ to a resource or to a set of resources that includes the requested
 resource. The code 451 was chosen as a reference to the novel Fahrenheit
 451 (see the Acknowledgements in the RFC).
 
-***
+---
 
 ### UnprocessableEntity
 
@@ -680,7 +680,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:316](https://githu
 (WebDAV; RFC 4918) The request was well-formed but was unable to be
 followed due to semantic errors.
 
-***
+---
 
 ### UnsupportedMediaType
 
@@ -692,7 +692,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:272](https://githu
 resource does not support. For example, the client uploads an image as
 image/svg+xml, but the server requires that images use a different format.
 
-***
+---
 
 ### UpgradeRequired
 
@@ -703,7 +703,7 @@ Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:339](https://githu
 The client should switch to a different protocol such as TLS/1.0, given
 in the Upgrade header field.
 
-***
+---
 
 ### URITooLong
 
@@ -716,7 +716,7 @@ the result of too much data being encoded as a query-string of a GET
 request, in which case it should be converted to a POST request. Called
 "Request-URI Too Long" previously.
 
-***
+---
 
 ### UseProxy
 
@@ -729,7 +729,7 @@ which is provided in the response. For security reasons, many HTTP
 clients (such as Mozilla Firefox and Internet Explorer) do not obey this
 status code.
 
-***
+---
 
 ### VariantAlsoNegotiates
 

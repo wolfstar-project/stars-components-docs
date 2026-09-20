@@ -1,11 +1,11 @@
 ---
-title: "Enumeration: LogLevel"
+title: 'Enumeration: LogLevel'
 hidden: true
 ---
 
 Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:8](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L8)
 
-The available log levels, ordered from the most verbose to the least. A [ILogger](../interfaces/ILogger) only writes the entries
+The available log levels, ordered from the most verbose to the least. A [ILogger](/documentation/api/http-framework/interfaces/ILogger) only writes the entries
 whose level is greater than or equal to its configured one, which makes [LogLevel.None](#none) a way to silence
 every entry.
 
@@ -23,7 +23,7 @@ Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:17](https:/
 
 The level used for information that is useful while developing, but noisy in production.
 
-***
+---
 
 ### Error
 
@@ -33,7 +33,7 @@ Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:32](https:/
 
 The level used for errors that were handled but interrupted an operation.
 
-***
+---
 
 ### Fatal
 
@@ -43,7 +43,7 @@ Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:37](https:/
 
 The level used for errors the process cannot recover from.
 
-***
+---
 
 ### Info
 
@@ -53,7 +53,7 @@ Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:22](https:/
 
 The default level, used for lifecycle information such as the HTTP server starting.
 
-***
+---
 
 ### None
 
@@ -63,7 +63,7 @@ Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:42](https:/
 
 A level no entry can reach, silencing the logger entirely.
 
-***
+---
 
 ### Trace
 
@@ -73,7 +73,7 @@ Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:12](https:/
 
 The lowest level, used for very fine-grained information such as per-interaction traces.
 
-***
+---
 
 ### Warn
 

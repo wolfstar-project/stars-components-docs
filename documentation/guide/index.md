@@ -3,8 +3,6 @@ title: Getting Started
 description: Create and run a Discord bot with the WolfStar HTTP Framework.
 ---
 
-# Getting Started
-
 ## Overview
 
 Stars Components is a set of focused TypeScript packages powering the Star Network. The core of it is
@@ -15,38 +13,39 @@ Around it sit optional packages for internationalization, environment parsing, l
 interaction testing. Adopt one of them on its own, or combine them into a complete bot stack — see
 [Features](/guide/features) for the full picture and [Why Stars Components](/guide/why) for the reasoning behind it.
 
-::: tip Prerequisites
+<Tip>
+**Prerequisites**
 
 - Node.js 20 or newer
 - A [Discord application](https://discord.com/developers/applications) with its token and public key
 - A public HTTPS endpoint that Discord can use as the application's interactions endpoint
 
-:::
+</Tip>
 
 ## Adding Stars Components to Your Project
 
 The fastest way to start is the `@wolfstar/create-http-framework` CLI. It creates the entry point, an example command,
 environment files, TypeScript or JavaScript configuration, and your preferred quality tools.
 
-::: code-group
+<CodeGroup>
 
-```bash [pnpm]
+```bash pnpm
 pnpm create @wolfstar/http-framework my-discord-bot
 ```
 
-```bash [npm]
+```bash npm
 npm create @wolfstar/http-framework@latest my-discord-bot
 ```
 
-```bash [yarn]
+```bash yarn
 yarn create @wolfstar/http-framework my-discord-bot
 ```
 
-```bash [bun]
+```bash bun
 bun create @wolfstar/http-framework my-discord-bot
 ```
 
-:::
+</CodeGroup>
 
 The interactive wizard lets you select:
 
@@ -79,9 +78,7 @@ DISCORD_TOKEN=your_application_token
 DISCORD_PUBLIC_KEY=your_application_public_key
 ```
 
-::: danger
-Never commit this file or expose either value in logs.
-:::
+<Danger>Never commit this file or expose either value in logs.</Danger>
 
 ## Writing Your First Command
 

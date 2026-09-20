@@ -1,9 +1,9 @@
 ---
-title: "Interface: StoreOptions<T, StoreName>"
+title: 'Interface: StoreOptions<T, StoreName>'
 hidden: true
 ---
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:419
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:419
 
 The options for the store, this features both hooks (changes the behaviour) and handlers (similar to event listeners).
 
@@ -11,11 +11,11 @@ The options for the store, this features both hooks (changes the behaviour) and 
 
 ### T
 
-`T` *extends* [`Piece`](../classes/Piece)
+`T` _extends_ `Piece`
 
 ### StoreName
 
-`StoreName` *extends* `StoreRegistryKey` = `StoreRegistryKey`
+`StoreName` _extends_ `StoreRegistryKey` = `StoreRegistryKey`
 
 ## Properties
 
@@ -23,38 +23,38 @@ The options for the store, this features both hooks (changes the behaviour) and 
 
 > `readonly` **name**: `StoreName`
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:423
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:423
 
 The name for this store.
 
-***
+---
 
 ### paths?
 
 > `readonly` `optional` **paths?**: readonly `string`[]
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:428
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:428
 
 The paths to load pieces from, should be absolute.
 
 #### Default
 
 ```ts
-[]
+[];
 ```
 
-***
+---
 
 ### strategy?
 
 > `readonly` `optional` **strategy?**: `ILoaderStrategy`\<`T`\>
 
-Defined in: node\_modules/.pnpm/@sapphire+pieces@4.4.1/node\_modules/@sapphire/pieces/dist/esm/index.d.mts:433
+Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:433
 
 The strategy to be used for the loader.
 
 #### Default
 
 ```ts
-Store.defaultStrategy
+Store.defaultStrategy;
 ```

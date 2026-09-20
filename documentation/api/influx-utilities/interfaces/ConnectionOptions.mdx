@@ -1,5 +1,5 @@
 ---
-title: "Interface: ConnectionOptions"
+title: 'Interface: ConnectionOptions'
 hidden: true
 ---
 
@@ -15,7 +15,7 @@ Defined in: [packages/influx-utilities/src/lib/types.ts:3](https://github.com/wo
 
 > `optional` **headers?**: `Record`\<`string`, `string`\>
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:690
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:690
 
 Default HTTP headers to send with every request.
 
@@ -23,7 +23,7 @@ Default HTTP headers to send with every request.
 
 `Partial.headers`
 
-***
+---
 
 ### org?
 
@@ -36,16 +36,16 @@ The URL to connect to.
 #### Default
 
 ```ts
-process.env.INFLUX_ORG
+process.env.INFLUX_ORG;
 ```
 
-***
+---
 
 ### proxyUrl?
 
 > `optional` **proxyUrl?**: `string`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:694
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:694
 
 Full HTTP web proxy URL including schema, for example http://your-proxy:8080.
 
@@ -53,33 +53,33 @@ Full HTTP web proxy URL including schema, for example http://your-proxy:8080.
 
 `Partial.proxyUrl`
 
-***
+---
 
 ### timeout?
 
 > `optional` **timeout?**: `number`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:671
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:671
 
 socket timeout, 10000 milliseconds by default in node.js
 
 #### Default Value
 
 ```ts
-10000
+10000;
 ```
 
 #### Inherited from
 
 `Partial.timeout`
 
-***
+---
 
 ### token?
 
 > `optional` **token?**: `string`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:666
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:666
 
 authentication token
 
@@ -87,13 +87,13 @@ authentication token
 
 `Partial.token`
 
-***
+---
 
 ### transport?
 
 > `optional` **transport?**: `Transport`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:794
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:794
 
 specifies custom transport
 
@@ -101,13 +101,13 @@ specifies custom transport
 
 `Partial.transport`
 
-***
+---
 
 ### transportOptions?
 
 > `optional` **transportOptions?**: `object`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:684
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:684
 
 TransportOptions supply extra options for the transport layer, they differ between node.js and browser/deno.
 Node.js transport accepts options specified in [http.request](https://nodejs.org/api/http.html#http_http_request_options_callback) or
@@ -128,13 +128,13 @@ For example,
 
 `Partial.transportOptions`
 
-***
+---
 
 ### url?
 
 > `optional` **url?**: `string`
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:664
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:664
 
 base URL
 
@@ -142,7 +142,7 @@ base URL
 
 `Partial.url`
 
-***
+---
 
 ### writeBucket?
 
@@ -155,16 +155,16 @@ The bucket to write to.
 #### Default
 
 ```ts
-process.env.INFLUX_BUCKET
+process.env.INFLUX_BUCKET;
 ```
 
-***
+---
 
 ### writeOptions?
 
 > `optional` **writeOptions?**: `Partial`\<`WriteOptions`\>
 
-Defined in: node\_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node\_modules/@influxdata/influxdb-client/dist/index.d.ts:792
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:792
 
 supplies and overrides default writing options
 
@@ -172,11 +172,11 @@ supplies and overrides default writing options
 
 `Partial.writeOptions`
 
-***
+---
 
 ### writePrecision?
 
-> `optional` **writePrecision?**: [`WritePrecisionType`](../type-aliases/WritePrecisionType)
+> `optional` **writePrecision?**: [`WritePrecisionType`](/documentation/api/influx-utilities/type-aliases/WritePrecisionType)
 
 Defined in: [packages/influx-utilities/src/lib/types.ts:20](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/types.ts#L20)
 
@@ -185,5 +185,5 @@ The precision of the timestamp.
 #### Default
 
 ```ts
-'s'
+'s';
 ```

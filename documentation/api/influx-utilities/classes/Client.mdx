@@ -1,5 +1,5 @@
 ---
-title: "Class: Client"
+title: 'Class: Client'
 hidden: true
 ---
 
@@ -17,7 +17,7 @@ Defined in: [packages/influx-utilities/src/lib/Client.ts:12](https://github.com/
 
 ##### options?
 
-[`ConnectionOptions`](../interfaces/ConnectionOptions) = `{}`
+[`ConnectionOptions`](/documentation/api/influx-utilities/interfaces/ConnectionOptions) = `{}`
 
 #### Returns
 
@@ -27,23 +27,23 @@ Defined in: [packages/influx-utilities/src/lib/Client.ts:12](https://github.com/
 
 ### influx
 
-> `readonly` **influx**: [`InfluxDB`](InfluxDB)
+> `readonly` **influx**: [`InfluxDB`](/documentation/api/influx-utilities/classes/InfluxDB)
 
 Defined in: [packages/influx-utilities/src/lib/Client.ts:6](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L6)
 
-***
+---
 
 ### queryApi
 
-> `readonly` **queryApi**: [`QueryApi`](../interfaces/QueryApi)
+> `readonly` **queryApi**: [`QueryApi`](/documentation/api/influx-utilities/interfaces/QueryApi)
 
 Defined in: [packages/influx-utilities/src/lib/Client.ts:7](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L7)
 
-***
+---
 
 ### writeApi
 
-> `readonly` **writeApi**: [`WriteApi`](../interfaces/WriteApi)
+> `readonly` **writeApi**: [`WriteApi`](/documentation/api/influx-utilities/interfaces/WriteApi)
 
 Defined in: [packages/influx-utilities/src/lib/Client.ts:8](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L8)
 
@@ -75,7 +75,7 @@ The value of the tag to inject.
 
 `void`
 
-***
+---
 
 ### flush()
 
@@ -97,7 +97,7 @@ Whether or not it should flush the scheduled retries
 
 `Promise`\<`void`\>
 
-***
+---
 
 ### writePoint()
 
@@ -111,7 +111,7 @@ Writes a point into the write buffer.
 
 ##### point
 
-[`Point`](Point)
+[`Point`](/documentation/api/influx-utilities/classes/Point)
 
 The point to write.
 
@@ -119,7 +119,7 @@ The point to write.
 
 `void`
 
-***
+---
 
 ### writePoints()
 
@@ -133,7 +133,7 @@ Writes multiple points into the write buffer.
 
 ##### points
 
-readonly [`Point`](Point)[]
+readonly [`Point`](/documentation/api/influx-utilities/classes/Point)[]
 
 The points to write.
 
