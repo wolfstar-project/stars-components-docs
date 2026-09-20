@@ -1,0 +1,105 @@
+---
+title: 'Class: MockServerResponse'
+hidden: true
+---
+
+Defined in: [packages/http-framework-test-utils/src/MockServerResponse.ts:4](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/MockServerResponse.ts#L4)
+
+## Extends
+
+- `Writable`
+
+<Note>
+	This class extends Node's [`stream.Writable`](https://nodejs.org/api/stream.html#class-streamwritable). Its full inherited surface (constructor
+	options, `write`/`end`/`cork`/`pipe`, `EventEmitter` methods like `on`/`once`/`emit`, and properties like `writableEnded`) isn't reproduced here
+	since it's Node's own API, not part of this package's surface — see the [Node.js Writable stream
+	docs](https://nodejs.org/api/stream.html#class-streamwritable) for those. Only the members this class adds or overrides are listed below.
+</Note>
+
+## Constructors
+
+### Constructor
+
+> **new MockServerResponse**(`opts?`): `MockServerResponse`
+
+Inherited from `Writable`'s constructor. Accepts the same `WritableOptions` Node's `Writable` stream accepts.
+
+#### Returns
+
+`MockServerResponse`
+
+## Properties
+
+### headers
+
+> `readonly` **headers**: `Record`\<`string`, `string`\> = `{}`
+
+Defined in: [packages/http-framework-test-utils/src/MockServerResponse.ts:6](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/MockServerResponse.ts#L6)
+
+---
+
+### statusCode
+
+> **statusCode**: `number` = `200`
+
+Defined in: [packages/http-framework-test-utils/src/MockServerResponse.ts:5](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/MockServerResponse.ts#L5)
+
+## Methods
+
+### \_write()
+
+> **\_write**(`chunk`, `_encoding`, `callback`): `void`
+
+Defined in: [packages/http-framework-test-utils/src/MockServerResponse.ts:13](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/MockServerResponse.ts#L13)
+
+#### Parameters
+
+##### chunk
+
+`unknown`
+
+##### \_encoding
+
+`BufferEncoding`
+
+##### callback
+
+(`error?`) => `void`
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+`Writable._write`
+
+---
+
+### getBody()
+
+> **getBody**(): `string`
+
+Defined in: [packages/http-framework-test-utils/src/MockServerResponse.ts:18](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/MockServerResponse.ts#L18)
+
+#### Returns
+
+`string`
+
+---
+
+### getBodyAsJson()
+
+> **getBodyAsJson**\<`T`\>(): `T`
+
+Defined in: [packages/http-framework-test-utils/src/MockServerResponse.ts:22](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/MockServerResponse.ts#L22)
+
+#### Type Parameters
+
+##### T
+
+`T` = `unknown`
+
+#### Returns
+
+`T`

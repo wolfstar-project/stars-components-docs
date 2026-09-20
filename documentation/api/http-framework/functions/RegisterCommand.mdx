@@ -1,0 +1,46 @@
+---
+title: 'Function: RegisterCommand()'
+hidden: true
+---
+
+> **RegisterCommand**\<`Options`\>(`data`): (`target`) => `void`
+
+Defined in: [packages/http-framework/src/lib/interactions/decorators/RegisterCommand.ts:26](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RegisterCommand.ts#L26)
+
+Registers a command for the chat input.
+
+## Type Parameters
+
+### Options
+
+`Options` _extends_ [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions) = [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions)
+
+The options type for the command.
+
+## Parameters
+
+### data
+
+`CommandData`
+
+The command data.
+
+## Returns
+
+(`target`) => `void`
+
+## Example
+
+```typescript
+import { Command, RegisterCommand } from '@wolfstar/http-framework';
+
+(at)RegisterCommand({
+	name: 'ping',
+	description: 'A simple ping pong command'
+})
+export class UserCommand extends Command {
+	public async run(interaction: Command.ChatInputInteraction) {
+		return interaction.reply('Pong!');
+	}
+}
+```

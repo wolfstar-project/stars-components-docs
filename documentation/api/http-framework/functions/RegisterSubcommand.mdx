@@ -1,0 +1,60 @@
+---
+title: 'Function: RegisterSubcommand()'
+hidden: true
+---
+
+> **RegisterSubcommand**\<`Options`\>(`data`, `subCommandGroupName?`): (`target`, `method`) => `void`
+
+Defined in: [packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts:32](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts#L32)
+
+Registers a subcommand for a chat input command.
+
+## Type Parameters
+
+### Options
+
+`Options` _extends_ [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions) = [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions)
+
+## Parameters
+
+### data
+
+`SubcommandData`
+
+The subcommand data.
+
+### subCommandGroupName?
+
+`string` \| `null`
+
+Optional name of the subcommand group.
+
+## Returns
+
+A decorator function that adds the subcommand to the target command.
+
+(`target`, `method`) => `void`
+
+## Remarks
+
+This decorator must be used in conjunction with RegisterSubcommand.
+
+## Example
+
+```typescript
+import { Command, RegisterCommand, RegisterSubcommand, RegisterSubcommandGroup } from '@wolfstar/http-framework';
+
+(at)RegisterCommand({
+	name: 'ping',
+	description: 'A simple ping pong command'
+})
+export class UserCommand extends Command {
+	(at)RegisterSubcommand({
+		name: 'subcommand',
+		description: 'A simple subcommand'
+	})
+	public async run(interaction: Command.ChatInputInteraction) {
+		return interaction.reply('Pong!');
+	}
+}
+```

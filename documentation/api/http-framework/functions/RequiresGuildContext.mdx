@@ -1,0 +1,41 @@
+---
+title: 'Function: RequiresGuildContext()'
+hidden: true
+---
+
+> **RequiresGuildContext**(`fallback?`): `MethodDecorator`
+
+Defined in: [packages/http-framework/src/lib/decorators/RequiresContext.ts:30](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/RequiresContext.ts#L30)
+
+Decorator that only runs the decorated method when the interaction was received from a guild.
+
+## Parameters
+
+### fallback?
+
+`ContextFallback` = `...`
+
+The fallback to run when the interaction did not come from a guild. Defaults to a no-op, which
+silently skips the method.
+
+## Returns
+
+`MethodDecorator`
+
+A method decorator.
+
+## Example
+
+```typescript
+import { Command, RegisterCommand, RequiresGuildContext } from '@wolfstar/http-framework';
+
+(at)RegisterCommand({ name: 'kick', description: 'Kicks a member' })
+export class UserCommand extends Command {
+	(at)RequiresGuildContext((interaction: Command.ChatInputInteraction) =>
+		interaction.reply({ content: 'This command can only be used in a server.' })
+	)
+	public override chatInputRun(interaction: Command.ChatInputInteraction) {
+		return interaction.reply({ content: `Hello from ${interaction.guildId}!` });
+	}
+}
+```

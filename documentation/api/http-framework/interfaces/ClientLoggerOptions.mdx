@@ -1,0 +1,48 @@
+---
+title: 'Interface: ClientLoggerOptions'
+hidden: true
+---
+
+Defined in: [packages/http-framework/src/lib/Client.ts:314](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L314)
+
+## Properties
+
+### instance?
+
+> `optional` **instance?**: [`ILogger`](/documentation/api/http-framework/interfaces/ILogger)
+
+Defined in: [packages/http-framework/src/lib/Client.ts:331](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L331)
+
+The [ILogger](/documentation/api/http-framework/interfaces/ILogger) to use instead of the built-in Logger. Plugins set this from a
+[PluginHook.PreGenericsInitialization](/documentation/api/http-framework/enumerations/PluginHook#pregenericsinitialization) hook to extend the framework's logging.
+
+#### Default
+
+```ts
+undefined; // a new Logger is created
+```
+
+#### Since
+
+3.4.0
+
+---
+
+### level?
+
+> `optional` **level?**: [`LogLevel`](/documentation/api/http-framework/enumerations/LogLevel)
+
+Defined in: [packages/http-framework/src/lib/Client.ts:322](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L322)
+
+The lowest [LogLevel](/documentation/api/http-framework/enumerations/LogLevel) the built-in Logger writes. Ignored when
+[ClientLoggerOptions.instance](#instance) is set.
+
+#### Default
+
+```ts
+LogLevel.Info;
+```
+
+#### Since
+
+3.4.0

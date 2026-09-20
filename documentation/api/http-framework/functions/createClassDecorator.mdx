@@ -1,0 +1,40 @@
+---
+title: 'Function: createClassDecorator()'
+hidden: true
+---
+
+> **createClassDecorator**\<`TFunction`\>(`fn`): `TFunction`
+
+Defined in: [packages/http-framework/src/lib/decorators/utils.ts:32](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/utils.ts#L32)
+
+Utility to make a class decorator from a function.
+
+## Type Parameters
+
+### TFunction
+
+`TFunction` _extends_ (...`args`) => `unknown`
+
+## Parameters
+
+### fn
+
+`TFunction`
+
+The class to decorate.
+
+## Returns
+
+`TFunction`
+
+The decorator.
+
+## Remarks
+
+The decorator is returned with the signature it was given, rather than widened to `ClassDecorator`, so a
+decorator built on top of this keeps whatever constraint it declares on its target. This is what lets
+[`RegisterCommand`](/documentation/api/http-framework/functions/RegisterCommand) and its siblings reject a target that is not a `Command`.
+
+## See
+
+[`ApplyOptions`](/documentation/api/http-framework/functions/ApplyOptions)

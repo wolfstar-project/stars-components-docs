@@ -1,0 +1,45 @@
+---
+title: 'Function: RequiresClientPermissions()'
+hidden: true
+---
+
+> **RequiresClientPermissions**(...`permissions`): `MethodDecorator`
+
+Defined in: [packages/http-framework/src/lib/decorators/RequiresPermissions.ts:41](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/RequiresPermissions.ts#L41)
+
+Decorator that only runs the decorated method when the application has all of the given permissions in the channel
+the interaction was sent from, as reported by the interaction's `app_permissions` field.
+
+## Parameters
+
+### permissions
+
+...`PermissionResolvable`[]
+
+The permissions the application must have.
+
+## Returns
+
+`MethodDecorator`
+
+A method decorator.
+
+## Remarks
+
+When the fallback is omitted, a `PreconditionError` identified by
+[`Identifiers.PreconditionClientPermissions`](/documentation/api/http-framework/enumerations/Identifiers#preconditionclientpermissions) is thrown, which the client emits as `commandError` (or
+`interactionHandlerError`) for a `Listener` to turn into a user-facing reply.
+
+## Example
+
+```typescript
+import { Command, RegisterCommand, RequiresClientPermissions } from '@wolfstar/http-framework';
+
+(at)RegisterCommand({ name: 'purge', description: 'Deletes messages' })
+export class UserCommand extends Command {
+	(at)RequiresClientPermissions('ManageMessages')
+	public override chatInputRun(interaction: Command.ChatInputInteraction) {
+		return interaction.reply({ content: 'Purging!' });
+	}
+}
+```

@@ -1,0 +1,237 @@
+---
+title: 'Interface: WriteApi'
+hidden: true
+---
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:600
+
+Asynchronous API that writes time-series data into InfluxDB.
+This API always buffers points/lines to create batches under the hood
+to optimize data transfer to InfluxDB server, use `flush` to send
+the buffered data to InfluxDB immediately.
+
+## Extends
+
+- `PointSettings`
+
+## Properties
+
+### convertTime?
+
+> `optional` **convertTime?**: (`value`) => `string` \| `undefined`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:487
+
+convertTime serializes Point's timestamp to a line protocol value
+
+#### Parameters
+
+##### value
+
+`string` \| `number` \| `Date` \| `undefined`
+
+#### Returns
+
+`string` \| `undefined`
+
+#### Inherited from
+
+`PointSettings.convertTime`
+
+---
+
+### defaultTags?
+
+> `optional` **defaultTags?**: `object`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:483
+
+default tags to add to every point
+
+#### Index Signature
+
+\[`key`: `string`\]: `string`
+
+#### Inherited from
+
+`PointSettings.defaultTags`
+
+---
+
+### path
+
+> **path**: `string`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:656
+
+HTTP path and query parameters of InfluxDB query API. It is
+automatically initialized to `/api/v2/write?org=...`,
+but it can be changed after the API is obtained.
+
+## Methods
+
+### close()
+
+> **close**(): `Promise`\<`void`\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:644
+
+Flushes this writer and cancels retries of write operations that failed.
+
+#### Returns
+
+`Promise`\<`void`\>
+
+completition promise
+
+---
+
+### dispose()
+
+> **dispose**(): `number`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:650
+
+Unlike close, dispose simply quits without trying to flush
+the buffered data.
+
+#### Returns
+
+`number`
+
+count of points that were not written to InfluxDB
+
+---
+
+### flush()
+
+> **flush**(`withRetryBuffer?`): `Promise`\<`void`\>
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:639
+
+Flushes pending writes to the server.
+
+#### Parameters
+
+##### withRetryBuffer?
+
+`boolean`
+
+flush also all the scheduled retries
+
+#### Returns
+
+`Promise`\<`void`\>
+
+completition promise
+
+---
+
+### useDefaultTags()
+
+> **useDefaultTags**(`tags`): `WriteApi`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:607
+
+Instructs to use the following default tags when writing points.
+Not applicable for writing records/lines.
+
+#### Parameters
+
+##### tags
+
+default tags
+
+#### Returns
+
+`WriteApi`
+
+this
+
+---
+
+### writePoint()
+
+> **writePoint**(`point`): `void`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:627
+
+Write point.
+
+#### Parameters
+
+##### point
+
+[`Point`](/documentation/api/influx-utilities/classes/Point)
+
+point to write
+
+#### Returns
+
+`void`
+
+---
+
+### writePoints()
+
+> **writePoints**(`points`): `void`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:633
+
+Write points.
+
+#### Parameters
+
+##### points
+
+`ArrayLike`\<[`Point`](/documentation/api/influx-utilities/classes/Point)\>
+
+points to write
+
+#### Returns
+
+`void`
+
+---
+
+### writeRecord()
+
+> **writeRecord**(`record`): `void`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:615
+
+Write a line of [Line Protocol](https://bit.ly/2QL99fu).
+
+#### Parameters
+
+##### record
+
+`string`
+
+line of InfluxDB Line Protocol
+
+#### Returns
+
+`void`
+
+---
+
+### writeRecords()
+
+> **writeRecords**(`records`): `void`
+
+Defined in: node_modules/.pnpm/@influxdata+influxdb-client@1.35.0/node_modules/@influxdata/influxdb-client/dist/index.d.ts:621
+
+Write lines of [Line Protocol](https://bit.ly/2QL99fu).
+
+#### Parameters
+
+##### records
+
+`string`[]
+
+lines in InfluxDB Line Protocol
+
+#### Returns
+
+`void`

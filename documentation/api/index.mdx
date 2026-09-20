@@ -1,0 +1,88 @@
+---
+title: API Reference
+description: Generated API reference for every public export in stars-components and plugins.
+---
+
+Every exported class, function, interface, and type across the Stars Components ecosystem, generated directly from
+source. Each package's reference is fully cross-linked — browse from a package's own index, or use search.
+
+<Note>
+	`@wolfstar/cli` and `@wolfstar/create-http-framework` are CLI-only — no library exports, so there's no generated API reference for them. See the
+	[package guide](/packages/cli) instead.
+</Note>
+
+## Core framework
+
+<CardGroup cols={2}>
+	<Card title="@wolfstar/http-framework" href="/api/http-framework">
+		Build Discord bots around fast, HTTP-only interactions.
+	</Card>
+	<Card title="@wolfstar/http-framework-i18n" href="/api/http-framework-i18n">
+		Add typed i18next translations to HTTP Framework interactions.
+	</Card>
+	<Card title="@wolfstar/i18next-backend" href="/api/i18next-backend">
+		Load and merge i18next resources from the filesystem.
+	</Card>
+	<Card title="@wolfstar/http-framework-test-utils" href="/api/http-framework-test-utils">
+		Test interactions with fixtures, a harness, and Vitest matchers.
+	</Card>
+</CardGroup>
+
+## Infrastructure
+
+<CardGroup cols={2}>
+	<Card title="@wolfstar/env-utilities" href="/api/env-utilities">
+		Load, type, and parse environment variables safely.
+	</Card>
+	<Card title="@wolfstar/logger" href="/api/logger">
+		Use a lightweight logger with level and color support.
+	</Card>
+	<Card title="@wolfstar/safe-fetch" href="/api/safe-fetch">
+		Wrap native fetch responses in Result values.
+	</Card>
+	<Card title="@wolfstar/start-banner" href="/api/start-banner">
+		Render consistent, ANSI-aware startup banners.
+	</Card>
+</CardGroup>
+
+## Shared pieces
+
+<CardGroup cols={2}>
+	<Card title="@wolfstar/shared-http-pieces" href="/api/shared-http-pieces">
+		Reuse commands and error listeners across Star Network bots.
+	</Card>
+	<Card title="@wolfstar/shared-influx-pieces" href="/api/shared-influx-pieces">
+		Collect interaction metrics through reusable Influx pieces.
+	</Card>
+</CardGroup>
+
+## Platform helpers
+
+<CardGroup cols={2}>
+	<Card title="@wolfstar/influx-utilities" href="/api/influx-utilities">
+		Work with a single InfluxDB organization through a small client.
+	</Card>
+	<Card title="@wolfstar/reddit-helpers" href="/api/reddit-helpers">
+		Fetch and normalize Reddit posts for Star bots.
+	</Card>
+	<Card title="@wolfstar/twitch-helpers" href="/api/twitch-helpers">
+		Call Twitch Helix and validate EventSub requests.
+	</Card>
+	<Card title="@wolfstar/weather-helpers" href="/api/weather-helpers">
+		Fetch weather data and convert common units.
+	</Card>
+</CardGroup>
+
+## Plugins
+
+<CardGroup cols={2}>
+	<Card title="@wolfstar/plugin-api" href="/api/plugin-api">
+		Expose a standalone REST API server alongside HTTP Framework interactions.
+	</Card>
+	<Card title="@wolfstar/plugin-i18next" href="/api/plugin-i18next">
+		Add i18next-powered internationalization to HTTP Framework interactions.
+	</Card>
+	<Card title="@wolfstar/plugin-subcommands-advanced" href="/api/plugin-subcommands-advanced">
+		Modularize slash subcommands into separate command classes.
+	</Card>
+</CardGroup>

@@ -1,0 +1,223 @@
+---
+title: 'Enumeration: Events'
+hidden: true
+---
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:45](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L45)
+
+The name of every event emitted by the Client, mirroring the keys of [ClientEvents](/documentation/api/http-framework/interfaces/ClientEvents).
+
+## Remarks
+
+Each member's value is the plain event name, so they are interchangeable with the string literals
+accepted by `Client#on`, `Client#emit`, and Listener.Options.event.
+
+## Example
+
+```typescript
+client.on(Events.CommandError, (error, context) => console.error(context.command.name, error));
+```
+
+## Since
+
+3.4.0
+
+## Enumeration Members
+
+### AutocompleteError
+
+> **AutocompleteError**: `"autocompleteError"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:57](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L57)
+
+---
+
+### AutocompleteFinish
+
+> **AutocompleteFinish**: `"autocompleteFinish"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:58](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L58)
+
+---
+
+### AutocompleteRun
+
+> **AutocompleteRun**: `"autocompleteRun"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:55](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L55)
+
+---
+
+### AutocompleteSuccess
+
+> **AutocompleteSuccess**: `"autocompleteSuccess"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:56](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L56)
+
+---
+
+### CommandError
+
+> **CommandError**: `"commandError"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:53](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L53)
+
+---
+
+### CommandFinish
+
+> **CommandFinish**: `"commandFinish"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:54](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L54)
+
+---
+
+### CommandMethodUnknown
+
+> **CommandMethodUnknown**: `"commandMethodUnknown"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:50](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L50)
+
+---
+
+### CommandNameMissing
+
+> **CommandNameMissing**: `"commandNameMissing"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:48](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L48)
+
+---
+
+### CommandNameUnknown
+
+> **CommandNameUnknown**: `"commandNameUnknown"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:49](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L49)
+
+---
+
+### CommandRun
+
+> **CommandRun**: `"commandRun"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:51](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L51)
+
+---
+
+### CommandSuccess
+
+> **CommandSuccess**: `"commandSuccess"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:52](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L52)
+
+---
+
+### Error
+
+> **Error**: `"error"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:46](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L46)
+
+---
+
+### HmrError
+
+> **HmrError**: `"hmrError"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:70](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L70)
+
+---
+
+### HmrPieceReloaded
+
+> **HmrPieceReloaded**: `"hmrPieceReloaded"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:68](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L68)
+
+---
+
+### HmrPiecesLoaded
+
+> **HmrPiecesLoaded**: `"hmrPiecesLoaded"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:67](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L67)
+
+---
+
+### HmrPieceUnloaded
+
+> **HmrPieceUnloaded**: `"hmrPieceUnloaded"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:69](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L69)
+
+---
+
+### HmrStart
+
+> **HmrStart**: `"hmrStart"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:65](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L65)
+
+---
+
+### HmrStop
+
+> **HmrStop**: `"hmrStop"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:66](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L66)
+
+---
+
+### InteractionHandlerError
+
+> **InteractionHandlerError**: `"interactionHandlerError"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:63](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L63)
+
+---
+
+### InteractionHandlerFinish
+
+> **InteractionHandlerFinish**: `"interactionHandlerFinish"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:64](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L64)
+
+---
+
+### InteractionHandlerNameInvalid
+
+> **InteractionHandlerNameInvalid**: `"interactionHandlerNameInvalid"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:59](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L59)
+
+---
+
+### InteractionHandlerNameUnknown
+
+> **InteractionHandlerNameUnknown**: `"interactionHandlerNameUnknown"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:60](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L60)
+
+---
+
+### InteractionHandlerRun
+
+> **InteractionHandlerRun**: `"interactionHandlerRun"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:61](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L61)
+
+---
+
+### InteractionHandlerSuccess
+
+> **InteractionHandlerSuccess**: `"interactionHandlerSuccess"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:62](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L62)
+
+---
+
+### PluginLoaded
+
+> **PluginLoaded**: `"pluginLoaded"`
+
+Defined in: [packages/http-framework/src/lib/ClientEvents.ts:47](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L47)

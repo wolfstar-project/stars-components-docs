@@ -1,0 +1,238 @@
+{
+	"$schema": "https://mintlify.com/docs.json",
+	"theme": "palm",
+	"name": "Stars Components",
+	"colors": {
+		"primary": "#5865f2",
+		"light": "#798df9",
+		"dark": "#5865f2"
+	},
+	"logo": {
+		"light": "/logo/light.svg",
+		"dark": "/logo/dark.svg"
+	},
+	"favicon": "/favicon.svg",
+	"navbar": {
+		"links": [
+			{
+				"type": "discord",
+				"label": "Community",
+				"href": "https://join.wolfstar.rocks"
+			}
+		],
+		"primary": {
+			"type": "github",
+			"href": "https://github.com/wolfstar-project/stars-components"
+		}
+	},
+	"appearance": {
+		"default": "dark"
+	},
+	"styling": {
+		"codeblocks": "system",
+		"eyebrows": "breadcrumbs"
+	},
+	"background": {
+		"color": {
+			"light": "#ffffff",
+			"dark": "#202024"
+		},
+		"decoration": "gradient"
+	},
+	"contextual": {
+		"options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"],
+		"display": "header"
+	},
+	"navigation": {
+		"global": {
+			"anchors": [
+				{
+					"anchor": "Documentation",
+					"icon": "book-open-cover",
+					"href": "/documentation/guide"
+				}
+			]
+		},
+		"tabs": [
+			{
+				"tab": "Guides",
+				"icon": "book-open",
+				"groups": [
+					{
+						"group": "Start here",
+						"root": "documentation/guide/index",
+						"pages": ["documentation/guide/features", "documentation/guide/why", "documentation/guide/architecture"]
+					},
+					{
+						"group": "Build",
+						"pages": [
+							"documentation/guide/commands",
+							"documentation/guide/environment",
+							"documentation/guide/plugins",
+							"documentation/guide/testing"
+						]
+					},
+					{
+						"group": "Project",
+						"pages": ["documentation/guide/migration", "documentation/guide/contributing"]
+					}
+				]
+			},
+			{
+				"tab": "Changelog",
+				"icon": "list",
+				"href": "https://github.com/wolfstar-project/stars-components/releases"
+			},
+			{
+				"tab": "Errors",
+				"icon": "triangle-exclamation",
+				"pages": ["documentation/errors/cli", "documentation/errors/config"]
+			},
+			{
+				"tab": "API Reference",
+				"icon": "code",
+				"groups": [
+					{
+						"group": "Core framework",
+						"root": "documentation/api/index",
+						"pages": [
+							"documentation/api/http-framework/index",
+							"documentation/api/http-framework-i18n/index",
+							"documentation/api/i18next-backend/index",
+							"documentation/api/http-framework-test-utils/index"
+						]
+					},
+					{
+						"group": "Infrastructure",
+						"pages": [
+							"documentation/api/env-utilities/index",
+							"documentation/api/logger/index",
+							"documentation/api/safe-fetch/index",
+							"documentation/api/start-banner/index"
+						]
+					},
+					{
+						"group": "Shared pieces",
+						"pages": ["documentation/api/shared-http-pieces/index", "documentation/api/shared-influx-pieces/index"]
+					},
+					{
+						"group": "Platform helpers",
+						"pages": [
+							"documentation/api/influx-utilities/index",
+							"documentation/api/reddit-helpers/index",
+							"documentation/api/twitch-helpers/index",
+							"documentation/api/weather-helpers/index"
+						]
+					},
+					{
+						"group": "Plugins",
+						"pages": [
+							"documentation/api/plugin-api/index",
+							"documentation/api/plugin-i18next/index",
+							"documentation/api/plugin-subcommands-advanced/index"
+						]
+					}
+				]
+			},
+			{
+				"tab": "Library",
+				"icon": "boxes-stacked",
+				"groups": [
+					{
+						"group": "Core framework",
+						"root": "documentation/packages/index",
+						"pages": [
+							"documentation/packages/http-framework",
+							"documentation/packages/cli",
+							"documentation/packages/create-http-framework",
+							"documentation/packages/http-framework-i18n",
+							"documentation/packages/i18next-backend",
+							"documentation/packages/http-framework-test-utils"
+						]
+					},
+					{
+						"group": "Infrastructure",
+						"pages": [
+							"documentation/packages/env-utilities",
+							"documentation/packages/logger",
+							"documentation/packages/safe-fetch",
+							"documentation/packages/start-banner"
+						]
+					},
+					{
+						"group": "Shared pieces",
+						"pages": ["documentation/packages/shared-http-pieces", "documentation/packages/shared-influx-pieces"]
+					},
+					{
+						"group": "Platform helpers",
+						"pages": [
+							"documentation/packages/influx-utilities",
+							"documentation/packages/reddit-helpers",
+							"documentation/packages/twitch-helpers",
+							"documentation/packages/weather-helpers"
+						]
+					},
+					{
+						"group": "Plugins",
+						"pages": [
+							"documentation/packages/plugin-api",
+							"documentation/packages/plugin-i18next",
+							"documentation/packages/plugin-subcommands-advanced"
+						]
+					}
+				]
+			}
+		]
+	},
+	"redirects": [
+		{
+			"source": "/docs/guides",
+			"destination": "/documentation/guide"
+		},
+		{
+			"source": "/docs/api-reference",
+			"destination": "/documentation/api"
+		},
+		{
+			"source": "/docs/library",
+			"destination": "/documentation/packages"
+		},
+		{
+			"source": "/docs/cli/errors",
+			"destination": "/documentation/errors/cli"
+		},
+		{
+			"source": "/docs/config/errors",
+			"destination": "/documentation/errors/config"
+		},
+		{
+			"source": "/quickstart",
+			"destination": "/documentation/guide"
+		},
+		{
+			"source": "/guide",
+			"destination": "/documentation/guide"
+		},
+		{
+			"source": "/guide/:slug*",
+			"destination": "/documentation/guide/:slug*"
+		},
+		{
+			"source": "/packages",
+			"destination": "/documentation/packages"
+		},
+		{
+			"source": "/packages/:slug*",
+			"destination": "/documentation/packages/:slug*"
+		},
+		{
+			"source": "/api",
+			"destination": "/documentation/api"
+		},
+		{
+			"source": "/api/:slug*",
+			"destination": "/documentation/api/:slug*"
+		}
+	],
+	"description": "Build own star network"
+}

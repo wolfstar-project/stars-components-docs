@@ -1,0 +1,741 @@
+---
+title: 'Enumeration: HttpCodes'
+hidden: true
+---
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:4](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L4)
+
+## Enumeration Members
+
+### Accepted
+
+> **Accepted**: `202`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:25](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L25)
+
+The request has been accepted for processing, but the processing has not
+been completed. The request might or might not be eventually acted upon,
+and may be disallowed when processing occurs.
+
+---
+
+### AlreadyReported
+
+> **AlreadyReported**: `208`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:66](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L66)
+
+(WebDAV; RFC 5842) The members of a DAV binding have already been
+enumerated in a preceding part of the (multistatus) response, and are not
+being included again.
+
+---
+
+### BadGateway
+
+> **BadGateway**: `502`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:388](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L388)
+
+The server was acting as a gateway or proxy and received an invalid
+response from the upstream server.
+
+---
+
+### BadRequest
+
+> **BadRequest**: `400`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:153](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L153)
+
+The server cannot or will not process the request due to an apparent
+client error (e.g., malformed request syntax, size too large, invalid
+request message framing, or deceptive request routing).
+
+---
+
+### Conflict
+
+> **Conflict**: `409`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:228](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L228)
+
+Indicates that the request could not be processed because of conflict in
+the current state of the resource, such as an edit conflict between
+multiple simultaneous updates.
+
+---
+
+### Created
+
+> **Created**: `201`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:18](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L18)
+
+The request has been fulfilled, resulting in the creation of a new
+resource.
+
+---
+
+### EnhanceYourCalm
+
+> **EnhanceYourCalm**: `420`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:304](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L304)
+
+Returned by the Twitter Search and Trends API when the client is being rate limited.
+The text is a quote from 'Demolition Man' and the '420' code is likely a reference
+to this number's association with marijuana. Other services may wish to implement
+the 429 Too Many Requests response code instead.
+
+---
+
+### ExpectationFailed
+
+> **ExpectationFailed**: `417`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:286](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L286)
+
+The server cannot meet the requirements of the Expect request-header
+field.
+
+---
+
+### FailedDependency
+
+> **FailedDependency**: `424`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:327](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L327)
+
+(WebDAV; RFC 4918) The request failed because it depended on another
+request and that request failed (e.g., a PROPPATCH).
+
+---
+
+### Forbidden
+
+> **Forbidden**: `403`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:189](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L189)
+
+The request contained valid data and was understood by the server, but
+the server is refusing action. This may be due to the user not having the
+necessary permissions for a resource or needing an account of some sort,
+or attempting a prohibited action (e.g. creating a duplicate record
+where only one is allowed). This code is also typically used if the
+request provided authentication by answering the WWW-Authenticate header
+field challenge, but the server did not accept that authentication. The
+request should not be repeated.
+
+---
+
+### Found
+
+> **Found**: `302`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:100](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L100)
+
+(Previously "Moved temporarily") Tells the client to look at (browse to)
+another URL. 302 has been superseded by 303 and 307. This is an example
+of industry practice contradicting the standard. The HTTP/1.0
+specification (RFC 1945) required the client to perform a temporary
+redirect (the original describing phrase was "Moved Temporarily"), but
+popular browsers implemented 302 with the functionality of a 303 See
+Other. Therefore, HTTP/1.1 added status codes 303 and 307 to distinguish
+between the two behaviours. However, some Web applications and frameworks
+use the 302 status code as if it were the 303.
+
+---
+
+### GatewayTimeout
+
+> **GatewayTimeout**: `504`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:400](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L400)
+
+The server was acting as a gateway or proxy and did not receive a timely
+response from the upstream server.
+
+---
+
+### Gone
+
+> **Gone**: `410`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:239](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L239)
+
+Indicates that the resource requested is no longer available and will not
+be available again. This should be used when a resource has been
+intentionally removed and the resource should be purged. Upon receiving a
+410 status code, the client should not request the resource in the future.
+Clients such as search engines should remove the resource from their
+indices. Most use cases do not require clients and search engines to
+purge the resource, and a "404 Not Found" may be used instead.
+
+---
+
+### HTTPVersionNotSupported
+
+> **HTTPVersionNotSupported**: `505`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:405](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L405)
+
+The server does not support the HTTP protocol version used in the request.
+
+---
+
+### IAmATeapot
+
+> **IAmATeapot**: `418`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:296](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L296)
+
+(RFC 2324, RFC 7168) This code was defined in 1998 as one of the
+traditional IETF April Fools' jokes, in RFC 2324, Hyper Text Coffee Pot
+Control Protocol, and is not expected to be implemented by actual HTTP
+servers. The RFC specifies this code should be returned by teapots
+requested to brew coffee. This HTTP status is used as an Easter egg in
+some websites, such as Google.com's I'm a teapot easter egg.
+
+---
+
+### IMUsed
+
+> **IMUsed**: `226`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:73](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L73)
+
+(RFC 3229) The server has fulfilled a request for the resource, and the
+response is a representation of the result of one or more
+instance-manipulations applied to the current instance.
+
+---
+
+### InsufficientStorage
+
+> **InsufficientStorage**: `507`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:417](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L417)
+
+(WebDAV; RFC 4918) The server is unable to store the representation
+needed to complete the request.
+
+---
+
+### InternalServerError
+
+> **InternalServerError**: `500`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:375](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L375)
+
+A generic error message, given when an unexpected condition was
+encountered and no more specific message is suitable.
+
+---
+
+### LengthRequired
+
+> **LengthRequired**: `411`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:245](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L245)
+
+The request did not specify the length of its content, which is required
+by the requested resource.
+
+---
+
+### Locked
+
+> **Locked**: `423`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:321](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L321)
+
+(WebDAV; RFC 4918) The resource that is being accessed is locked.
+
+---
+
+### LoopDetected
+
+> **LoopDetected**: `508`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:423](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L423)
+
+(WebDAV; RFC 5842) The server detected an infinite loop while processing
+the request (sent instead of 208 Already Reported).
+
+---
+
+### MethodNotAllowed
+
+> **MethodNotAllowed**: `405`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:202](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L202)
+
+A request method is not supported for the requested resource; for example,
+a GET request on a form that requires data to be presented via POST, or a
+PUT request on a read-only resource.
+
+---
+
+### MisdirectedRequest
+
+> **MisdirectedRequest**: `421`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:310](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L310)
+
+(RFC 7540) The request was directed at a server that is not able to
+produce a response (for example because of connection reuse).
+
+---
+
+### MovedPermanently
+
+> **MovedPermanently**: `301`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:87](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L87)
+
+This and all future requests should be directed to the given URI.
+
+---
+
+### MultipleChoices
+
+> **MultipleChoices**: `300`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:82](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L82)
+
+Indicates multiple options for the resource from which the client may
+choose (via agent-driven content negotiation). For example, this code
+could be used to present multiple video format options, to list files
+with different filename extensions, or to suggest word-sense
+disambiguation.
+
+---
+
+### MultiStatus
+
+> **MultiStatus**: `207`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:59](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L59)
+
+(WebDAV; RFC 4918) The message body that follows is by default an XML
+message and can contain a number of separate response codes, depending on
+how many sub-requests were made.
+
+---
+
+### NetworkAuthenticationRequired
+
+> **NetworkAuthenticationRequired**: `511`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:437](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L437)
+
+(RFC 6585) The client needs to authenticate to gain network access.
+Intended for use by intercepting proxies used to control access to the
+network (e.g., "captive portals" used to require agreement to Terms of
+Service before granting full Internet access via a Wi-Fi hotspot).
+
+---
+
+### NoContent
+
+> **NoContent**: `204`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:38](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L38)
+
+The server successfully processed the request, and is not returning any
+content.
+
+---
+
+### NonAuthoritativeInformation
+
+> **NonAuthoritativeInformation**: `203`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:32](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L32)
+
+The server is a transforming proxy (e.g. a Web accelerator) that received
+a 200 OK from its origin, but is returning a modified version of the
+origin's response.
+
+---
+
+### NotAcceptable
+
+> **NotAcceptable**: `406`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:208](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L208)
+
+The requested resource is capable of generating only content not
+acceptable according to the Accept headers sent in the request. See Content negotiation.
+
+---
+
+### NotExtended
+
+> **NotExtended**: `510`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:429](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L429)
+
+(RFC 2774) Further extensions to the request are required for the server
+to fulfil it.
+
+---
+
+### NotFound
+
+> **NotFound**: `404`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:195](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L195)
+
+The requested resource could not be found but may be available in the
+future. Subsequent requests by the client are permissible.
+
+---
+
+### NotImplemented
+
+> **NotImplemented**: `501`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:382](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L382)
+
+The server either does not recognize the request method, or it lacks the
+ability to fulfil the request. Usually this implies future availability
+(e.g., a new feature of a web-service API).
+
+---
+
+### NotModified
+
+> **NotModified**: `304`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:116](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L116)
+
+(RFC 7232) Indicates that the resource has not been modified since the
+version specified by the request headers If-Modified-Since or
+If-None-Match. In such case, there is no need to retransmit the resource
+since the client still has a previously-downloaded copy.
+
+---
+
+### OK
+
+> **OK**: `200`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:12](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L12)
+
+Standard response for successful HTTP requests. The actual response will
+depend on the request method used. In a GET request, the response will
+contain an entity corresponding to the requested resource. In a POST
+request, the response will contain an entity describing or containing the
+result of the action.
+
+---
+
+### PartialContent
+
+> **PartialContent**: `206`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:52](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L52)
+
+(RFC 7233) The server is delivering only part of the resource (byte
+serving) due to a range header sent by the client. The range header is
+used by HTTP clients to enable resuming of interrupted downloads, or
+split a download into multiple simultaneous streams.
+
+---
+
+### PayloadTooLarge
+
+> **PayloadTooLarge**: `413`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:257](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L257)
+
+(RFC 7231) The request is larger than the server is willing or able to
+process. Previously called "Request Entity Too Large".
+
+---
+
+### PaymentRequired
+
+> **PaymentRequired**: `402`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:177](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L177)
+
+Reserved for future use. The original intention was that this code might
+be used as part of some form of digital cash or micropayment scheme, as
+proposed, for example, by GNU Taler, but that has not yet happened, and
+this code is not widely used. Google Developers API uses this status if a
+particular developer has exceeded the daily limit on requests. Sipgate
+uses this code if an account does not have sufficient funds to start a
+call. Shopify uses this code when the store has not paid their fees and
+is temporarily disabled. Stripe uses this code for failed payments where
+parameters were correct, for example blocked fraudulent payments.
+
+---
+
+### PermanentRedirect
+
+> **PermanentRedirect**: `308`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:146](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L146)
+
+(RFC 7538) The request and all future requests should be repeated using
+another URI. 307 and 308 parallel the behaviors of 302 and 301, but do
+not allow the HTTP method to change. So, for example, submitting a form
+to a permanently redirected resource may continue smoothly.
+
+---
+
+### PreconditionFailed
+
+> **PreconditionFailed**: `412`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:251](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L251)
+
+(RFC 7232) The server does not meet one of the preconditions that the
+requester put on the request header fields.
+
+---
+
+### PreconditionRequired
+
+> **PreconditionRequired**: `428`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:348](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L348)
+
+(RFC 6585) The origin server requires the request to be conditional.
+Intended to prevent the 'lost update' problem, where a client GETs a
+resource's state, modifies it, and PUTs it back to the server, when
+meanwhile a third party has modified the state on the server, leading to
+a conflict.
+
+---
+
+### ProxyAuthenticationRequired
+
+> **ProxyAuthenticationRequired**: `407`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:213](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L213)
+
+(RFC 7235) The client must first authenticate itself with the proxy.
+
+---
+
+### RangeNotSatisfiable
+
+> **RangeNotSatisfiable**: `416`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:280](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L280)
+
+(RFC 7233) The client has asked for a portion of the file (byte serving),
+but the server cannot supply that portion. For example, if the client
+asked for a part of the file that lies beyond the end of the file. Called
+"Requested Range Not Satisfiable" previously.
+
+---
+
+### RequestHeaderFieldsTooLarge
+
+> **RequestHeaderFieldsTooLarge**: `431`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:361](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L361)
+
+(RFC 6585) The server is unwilling to process the request because either
+an individual header field, or all the header fields collectively, are
+too large.
+
+---
+
+### RequestTimeout
+
+> **RequestTimeout**: `408`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:221](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L221)
+
+The server timed out waiting for the request. According to HTTP
+specifications: "The client did not produce a request within the time
+that the server was prepared to wait. The client MAY repeat the request
+without modifications at any later time."
+
+---
+
+### ResetContent
+
+> **ResetContent**: `205`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:44](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L44)
+
+The server successfully processed the request, asks that the requester
+reset its document view, and is not returning any content.
+
+---
+
+### SeeOther
+
+> **SeeOther**: `303`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:108](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L108)
+
+The response to the request can be found under another URI using the GET
+method. When received in response to a POST (or PUT/DELETE), the client
+should presume that the server has received the data and should issue a
+new GET request to the given URI.
+
+---
+
+### ServiceUnavailable
+
+> **ServiceUnavailable**: `503`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:394](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L394)
+
+The server cannot handle the request (because it is overloaded or down
+for maintenance). Generally, this is a temporary state.
+
+---
+
+### SwitchProxy
+
+> **SwitchProxy**: `306`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:129](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L129)
+
+No longer used. Originally meant "Subsequent requests should use the
+specified proxy.".
+
+---
+
+### TemporaryRedirect
+
+> **TemporaryRedirect**: `307`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:138](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L138)
+
+In this case, the request should be repeated with another URI; however,
+future requests should still use the original URI. In contrast to how 302
+was historically implemented, the request method is not allowed to be
+changed when reissuing the original request. For example, a POST request
+should be repeated using another POST request.
+
+---
+
+### TooEarly
+
+> **TooEarly**: `425`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:333](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L333)
+
+(RFC 8470) Indicates that the server is unwilling to risk processing a
+request that might be replayed.
+
+---
+
+### TooManyRequests
+
+> **TooManyRequests**: `429`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:354](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L354)
+
+(RFC 6585) The user has sent too many requests in a given amount of time.
+Intended for use with rate-limiting schemes.
+
+---
+
+### Unauthorized
+
+> **Unauthorized**: `401`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:164](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L164)
+
+(RFC 7235) Similar to 403 Forbidden, but specifically for use when
+authentication is required and has failed or has not yet been provided.
+The response must include a WWW-Authenticate header field containing a
+challenge applicable to the requested resource. See Basic access
+authentication and Digest access authentication. 401 semantically means
+"unauthorised", the user does not have valid authentication credentials
+for the target resource.
+
+---
+
+### UnavailableForLegalReasons
+
+> **UnavailableForLegalReasons**: `451`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:369](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L369)
+
+(RFC 7725) A server operator has received a legal demand to deny access
+to a resource or to a set of resources that includes the requested
+resource. The code 451 was chosen as a reference to the novel Fahrenheit
+451 (see the Acknowledgements in the RFC).
+
+---
+
+### UnprocessableEntity
+
+> **UnprocessableEntity**: `422`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:316](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L316)
+
+(WebDAV; RFC 4918) The request was well-formed but was unable to be
+followed due to semantic errors.
+
+---
+
+### UnsupportedMediaType
+
+> **UnsupportedMediaType**: `415`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:272](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L272)
+
+(RFC 7231) The request entity has a media type which the server or
+resource does not support. For example, the client uploads an image as
+image/svg+xml, but the server requires that images use a different format.
+
+---
+
+### UpgradeRequired
+
+> **UpgradeRequired**: `426`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:339](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L339)
+
+The client should switch to a different protocol such as TLS/1.0, given
+in the Upgrade header field.
+
+---
+
+### URITooLong
+
+> **URITooLong**: `414`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:265](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L265)
+
+(RFC 7231) The URI provided was too long for the server to process. Often
+the result of too much data being encoded as a query-string of a GET
+request, in which case it should be converted to a POST request. Called
+"Request-URI Too Long" previously.
+
+---
+
+### UseProxy
+
+> **UseProxy**: `305`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:124](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L124)
+
+The requested resource is available only through a proxy, the address for
+which is provided in the response. For security reasons, many HTTP
+clients (such as Mozilla Firefox and Internet Explorer) do not obey this
+status code.
+
+---
+
+### VariantAlsoNegotiates
+
+> **VariantAlsoNegotiates**: `506`
+
+Defined in: [packages/http-framework/src/lib/api/HttpCodes.ts:411](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/api/HttpCodes.ts#L411)
+
+(RFC 2295) Transparent content negotiation for the request results in a
+circular reference.

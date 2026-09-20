@@ -1,0 +1,84 @@
+---
+title: 'Enumeration: LogLevel'
+hidden: true
+---
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:8](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L8)
+
+The available log levels, ordered from the most verbose to the least. A [ILogger](/documentation/api/http-framework/interfaces/ILogger) only writes the entries
+whose level is greater than or equal to its configured one, which makes [LogLevel.None](#none) a way to silence
+every entry.
+
+## Since
+
+3.4.0
+
+## Enumeration Members
+
+### Debug
+
+> **Debug**: `20`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:17](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L17)
+
+The level used for information that is useful while developing, but noisy in production.
+
+---
+
+### Error
+
+> **Error**: `50`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:32](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L32)
+
+The level used for errors that were handled but interrupted an operation.
+
+---
+
+### Fatal
+
+> **Fatal**: `60`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:37](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L37)
+
+The level used for errors the process cannot recover from.
+
+---
+
+### Info
+
+> **Info**: `30`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:22](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L22)
+
+The default level, used for lifecycle information such as the HTTP server starting.
+
+---
+
+### None
+
+> **None**: `100`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:42](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L42)
+
+A level no entry can reach, silencing the logger entirely.
+
+---
+
+### Trace
+
+> **Trace**: `10`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:12](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L12)
+
+The lowest level, used for very fine-grained information such as per-interaction traces.
+
+---
+
+### Warn
+
+> **Warn**: `40`
+
+Defined in: [packages/http-framework/src/lib/utils/logger/ILogger.ts:27](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/logger/ILogger.ts#L27)
+
+The level used for recoverable issues that should be looked at.
