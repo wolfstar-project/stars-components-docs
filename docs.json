@@ -15,18 +15,6 @@
 	"navbar": {
 		"links": [
 			{
-				"href": "/documentation/guide",
-				"label": "Guides"
-			},
-			{
-				"href": "/documentation/packages",
-				"label": "Packages"
-			},
-			{
-				"href": "/documentation/api",
-				"label": "API"
-			},
-			{
 				"type": "discord",
 				"label": "Community",
 				"href": "https://join.wolfstar.rocks"
@@ -65,7 +53,28 @@
 				}
 			]
 		},
-		"pages": ["index", "documentation/index", "documentation/guide/index", "documentation/packages/index", "documentation/api/index"]
+		"tabs": [
+			{
+				"tab": "Guides",
+				"icon": "book-open",
+				"pages": ["docs/guides", "quickstart", "documentation/guide/index", "documentation/index"]
+			},
+			{
+				"tab": "Changelog",
+				"icon": "list",
+				"pages": ["docs/changelog"]
+			},
+			{
+				"tab": "API Reference",
+				"icon": "code",
+				"pages": ["docs/api-reference", "documentation/api/index"]
+			},
+			{
+				"tab": "Library",
+				"icon": "boxes-stacked",
+				"pages": ["docs/library", "documentation/packages/index"]
+			}
+		]
 	},
 	"description": "Build own star network"
 }
