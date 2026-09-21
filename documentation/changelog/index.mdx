@@ -1,0 +1,26 @@
+---
+title: Changelog
+description: Weekly product updates for Stars Components.
+---
+
+Weekly summaries of user-facing changes to Stars Components. For per-package history, see each package's `CHANGELOG.md` in the [monorepo](https://github.com/wolfstar-project/stars-components), or the full [release history](https://github.com/wolfstar-project/stars-components/releases).
+
+## 2026-09-17
+
+Conventions land in the CLI: v4 is the new default, projects auto-register their plugins, and a quick tunnel now works out of the box.
+
+### New features
+
+- **Convention-first `stars` workflow** — Compatibility version 4 is now the default in [`@wolfstar/cli`](/documentation/packages/cli) and [`@wolfstar/http-framework`](/documentation/packages/http-framework). `stars dev` forces development mode, `src/locales` is copied and watched automatically, and environment files are discovered under both `src/` and the project root. The interactive dev UI adds a `t` shortcut to open or close a public quick tunnel without configuring `dev.tunnel`.
+- **Auto-registered WolfStar plugins** — Bundler builds now inject the `/register` side-effect entrypoint of every installed `@wolfstar/plugin-*` dependency before your app entry, so plugins activate without manual `import '@wolfstar/plugin-x/register'` lines. See [Plugins](/documentation/guide/plugins).
+- **Generated TypeScript alias config** — `stars prepare`, `stars dev`, and `stars build` write an extendable `.stars/tsconfig.json` whose paths match the `tsdown` aliases. Scaffolded projects extend it and pick up Sapphire base, extra-strict, and decorators options automatically. See [`@wolfstar/create-http-framework`](/documentation/packages/create-http-framework).
+
+### Updates
+
+- **HTTP-framework `4.0.x`** — Structured, leveled logging replaces raw `console` calls for HMR events and command-router warnings. `@wolfstar/env-utilities` `2.1.x` follows the same move, using `container.logger` from `@sapphire/pieces` when available and falling back to `console.debug` for standalone consumers.
+
+### Bug fixes
+
+- **Quick tunnel reliability** — `dev.tunnel` now opens the `cloudflared` tunnel through `untun` instead of spawning `cloudflared` and scraping stdout. `untun` manages the binary (downloading it if missing) and exposes the URL and lifecycle programmatically, which also fixes the tunnel never closing when the spawn failed silently.
+- **`@wolfstar/shared-http-pieces`** — Consumer locale paths are preserved and the bundled `commands/shared` namespace loads correctly when using the register entrypoint. See [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces).
+- **`@wolfstar/plugin-subcommands-advanced`** — Subcommand builder callbacks are now deferred until every command piece has been constructed, fixing crashes when builders referenced not-yet-loaded siblings. See [`@wolfstar/plugin-subcommands-advanced`](/documentation/api/plugin-subcommands-advanced).
