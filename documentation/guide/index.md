@@ -6,12 +6,12 @@ description: Create and run a Discord bot with the WolfStar HTTP Framework.
 ## Overview
 
 Stars Components is a set of focused TypeScript packages powering the Star Network. The core of it is
-[`@wolfstar/http-framework`](/packages/http-framework): an HTTP-first framework for Discord applications that answers
+[`@wolfstar/http-framework`](/documentation/packages/http-framework): an HTTP-first framework for Discord applications that answers
 interactions over a webhook endpoint instead of holding a gateway connection open.
 
 Around it sit optional packages for internationalization, environment parsing, logging, metrics, platform helpers, and
 interaction testing. Adopt one of them on its own, or combine them into a complete bot stack — see
-[Features](/guide/features) for the full picture and [Why Stars Components](/guide/why) for the reasoning behind it.
+[Features](/documentation/guide/features) for the full picture and [Why Stars Components](/documentation/guide/why) for the reasoning behind it.
 
 <Tip>
 **Prerequisites**
@@ -93,8 +93,8 @@ await client.load();
 await client.listen({ port: 3000 });
 ```
 
-Commands are regular classes discovered by the store. Head to [Build a Command](/guide/commands) for decorators,
-options, and subcommands, then to [Testing Interactions](/guide/testing) to exercise them without a network server.
+Commands are regular classes discovered by the store. Head to [Build a Command](/documentation/guide/commands) for decorators,
+options, and subcommands, then to [Testing Interactions](/documentation/guide/testing) to exercise them without a network server.
 
 ## Configuring the Client
 
@@ -136,7 +136,7 @@ await client.load({
 });
 ```
 
-Environment variables get their own guide: [Environment Variables](/guide/environment).
+Environment variables get their own guide: [Environment Variables](/documentation/guide/environment).
 
 ## Examples
 
@@ -148,13 +148,13 @@ Environment variables get their own guide: [Environment Variables](/guide/enviro
 
 ## Next Steps
 
-1. Follow [Build a Command](/guide/commands) to understand decorators and interactions.
+1. Follow [Build a Command](/documentation/guide/commands) to understand decorators and interactions.
 2. Configure your public URL as the Discord application's interactions endpoint.
-3. Add [interaction tests](/guide/testing) before expanding the command set.
-4. Browse the [`@wolfstar/http-framework` package guide](/packages/http-framework) and [API reference](/api/).
+3. Add [interaction tests](/documentation/guide/testing) before expanding the command set.
+4. Browse the [`@wolfstar/http-framework` package guide](/documentation/packages/http-framework) and [API reference](/documentation/api).
 
 ## Community
 
 - [GitHub — wolfstar-project/stars-components](https://github.com/wolfstar-project/stars-components)
-- [Contributing guide](/guide/contributing)
+- [Contributing guide](/documentation/guide/contributing)
 - [wolfstar.rocks](https://wolfstar.rocks)

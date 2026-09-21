@@ -28,7 +28,7 @@ bun add @wolfstar/cli
 	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/cli"></Card>
 </CardGroup>
 
-calls into it), the typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/packages/http-framework)
+calls into it), the typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/documentation/packages/http-framework)
 (`@wolfstar/http-framework/config`) — this package only consumes it to drive its commands:
 
 - `stars dev` builds the project, starts the bot, restarts it on changes and shows what is happening in an interactive terminal UI (or plain logs).
@@ -46,11 +46,11 @@ Everything is driven by a typed `stars.config.ts` file.
 pnpm add -D @wolfstar/cli
 ```
 
-Projects scaffolded with [`@wolfstar/create-http-framework`](/packages/create-http-framework) come with `@wolfstar/cli`, a `stars.config.ts` file and `dev`/`build` scripts already wired up.
+Projects scaffolded with [`@wolfstar/create-http-framework`](/documentation/packages/create-http-framework) come with `@wolfstar/cli`, a `stars.config.ts` file and `dev`/`build` scripts already wired up.
 
 ## Configuration
 
-`stars.config.{ts,mts,cts,js,mjs,cjs}` is defined and loaded by [`@wolfstar/http-framework`](/packages/http-framework#project-configuration-starsconfig), not by this package — see its README for the full option reference (`root`, `entry`, `build`, `dev`, `codegen`) and the `defineConfig` helper. `stars` looks for it in the working directory (`--config <file>` overrides it, `--cwd <dir>` changes the working directory) and passes `ConfigError`s from the framework through as exit code `2`, with the offending option path and a hint printed to the terminal.
+`stars.config.{ts,mts,cts,js,mjs,cjs}` is defined and loaded by [`@wolfstar/http-framework`](/documentation/packages/http-framework#project-configuration-starsconfig), not by this package — see its README for the full option reference (`root`, `entry`, `build`, `dev`, `codegen`) and the `defineConfig` helper. `stars` looks for it in the working directory (`--config <file>` overrides it, `--cwd <dir>` changes the working directory) and passes `ConfigError`s from the framework through as exit code `2`, with the offending option path and a hint printed to the terminal.
 
 ```ts
 // stars.config.ts
@@ -156,7 +156,7 @@ else.
 ### Type checking, tunnel and logs
 
 Three `dev` options round out the dev loop (all documented in
-[`@wolfstar/http-framework`](/packages/http-framework#project-configuration-starsconfig)):
+[`@wolfstar/http-framework`](/documentation/packages/http-framework#project-configuration-starsconfig)):
 
 - `dev.typecheck: true` runs a type checker next to the bot and reports type errors on the UI's `tsc` channel,
   without ever blocking a build or a restart — useful when building with `tsdown`, which does not type-check.
@@ -175,7 +175,7 @@ Three `dev` options round out the dev loop (all documented in
 file per source file, ESM on Node, `build.outDir`, the tsconfig (`src/tsconfig.json` or `tsconfig.json`), the
 extension `build.output` implies, sourcemaps, unbundled dependencies, Nuxt's `~`/`@`/`~~`/`@@` alias prefixes and
 the auto imports plugin, and copying `src/locales` to `dist/locales` are all filled in
-(the [framework README](/packages/http-framework#the-build-tsdown) lists every default). The `tsdown` block is for what they
+(the [framework README](/documentation/packages/http-framework#the-build-tsdown) lists every default). The `tsdown` block is for what they
 cannot know:
 
 Every `@wolfstar/plugin-*` package listed in the project's `dependencies` or `optionalDependencies` is activated
@@ -197,7 +197,7 @@ and which options the block sets.
 ### Compatibility version
 
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
-[framework README](/packages/http-framework#compatibility-version) for the full reference):
+[framework README](/documentation/packages/http-framework#compatibility-version) for the full reference):
 
 | Version       | What it changes                                                                                                     |
 | ------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -207,7 +207,7 @@ and which options the block sets.
 ### Experimental flags
 
 `experimental` in `stars.config.*` turns on work that is still landing (see the
-[framework README](/packages/http-framework#experimental-flags) for the full reference):
+[framework README](/documentation/packages/http-framework#experimental-flags) for the full reference):
 
 | Flag                 | What it changes                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------ |

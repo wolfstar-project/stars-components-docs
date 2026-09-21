@@ -1,79 +1,165 @@
 ---
-title: Architecture
-description: Understand how Stars Components packages fit together.
+title: Bot Architecture
+description: How an HTTP Framework bot is built, from the incoming Discord request to the command that answers it.
 ---
 
-Stars Components is a monorepo of focused packages. You can use infrastructure helpers independently, while the framework
-packages form an optional stack for HTTP-only Discord bots.
+A bot built with [`@wolfstar/http-framework`](/documentation/packages/http-framework) is a small Node.js HTTP server plus a
+set of classes, called pieces, that the framework discovers on disk. This guide walks through the moving parts so you know
+where each piece of your bot belongs.
 
-## Package Layers
+<Tip>
+	Want the package-level view instead? See [Why Stars Components](/documentation/guide/why) for how the packages stack, or the [packages
+	index](/documentation/packages) for the full list.
+</Tip>
+
+## Request Flow
+
+Discord does not hold a connection to your bot. It sends every interaction as an HTTPS `POST` to the interactions endpoint
+you configured, and expects a reply to that same request.
 
 ```text
-Application
-├─ @wolfstar/shared-http-pieces
-├─ @wolfstar/shared-influx-pieces
-└─ your commands and listeners
-          │
-Framework │
-├─ @wolfstar/http-framework
-├─ @wolfstar/plugin-i18next
-├─ @wolfstar/i18next-backend
-└─ @wolfstar/http-framework-test-utils
-          │
-Utilities │
-├─ @wolfstar/env-utilities
-├─ @wolfstar/influx-utilities
-├─ @wolfstar/logger
-├─ @wolfstar/safe-fetch
-└─ @wolfstar/start-banner
-          │
-Services  │
-├─ @wolfstar/reddit-helpers
-├─ @wolfstar/twitch-helpers
-└─ @wolfstar/weather-helpers
+Discord ──POST──▶ Client (node:http)
+                    │  1. verify the request signature with DISCORD_PUBLIC_KEY
+                    │  2. parse the interaction payload
+                    ▼
+                  Router
+                    │  3. pick the piece that owns the interaction
+                    ▼
+      Command / InteractionHandler   ──▶ your code runs
+                    │
+                    ▼
+                  reply ──▶ HTTP response (or a follow-up through @discordjs/rest)
 ```
 
-## Core Framework
+The framework emits an event at each step (`commandRun`, `commandSuccess`, `commandError`, `commandFinish`, and the
+matching `interactionHandler*` and `autocomplete*` events), so cross-cutting concerns such as logging and error replies live
+in listeners instead of being repeated in every command.
 
-`@wolfstar/http-framework` owns the HTTP server, Discord request verification, interaction routing, piece stores, and
-application-command registry. Commands and listeners remain regular classes so they can be discovered, reloaded, and
-tested independently.
+## Project Layout
 
-The surrounding packages add optional capabilities:
+A project scaffolded with [`@wolfstar/create-http-framework`](/documentation/packages/create-http-framework) looks like this:
 
-| Package                               | Responsibility                                           |
-| ------------------------------------- | -------------------------------------------------------- |
-| `@wolfstar/create-http-framework`     | Creates a complete starter project                       |
-| `@wolfstar/plugin-i18next`            | Resolves translations for users and guilds               |
-| `@wolfstar/i18next-backend`           | Loads and merges locale files                            |
-| `@wolfstar/http-framework-test-utils` | Dispatches interaction fixtures without a network server |
+```text
+my-discord-bot/
+├─ src/
+│  ├─ commands/           # Command pieces: slash and context-menu commands
+│  ├─ interaction-handlers/  # Buttons, select menus, modals
+│  ├─ listeners/          # Reactions to client events (errors, HMR, ...)
+│  ├─ lib/
+│  │  └─ setup/           # Side-effect setup: logger, plugins, augmentations
+│  ├─ locales/            # Translation files (when i18n is enabled)
+│  └─ main.ts             # Entry point
+├─ tests/                 # Interaction tests (when testing is enabled)
+├─ stars.config.ts        # Build and dev configuration
+└─ .env                   # DISCORD_TOKEN, DISCORD_PUBLIC_KEY
+```
 
-<Warning>`@wolfstar/http-framework-i18n` is deprecated in favour of `@wolfstar/plugin-i18next`. See the [migration guide](/guide/migration).</Warning>
+Each directory under the entry point's folder is a **store**. `client.load()` scans every store, imports each file, and
+registers the exported classes. You never register a command by hand: creating the file is enough.
 
-`@wolfstar/plugin-i18next`, along with the other optional framework extensions, is released independently from its
-own [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) repository — see the
-[Plugins guide](/guide/plugins).
+<Note>
+	The scaffold generates `commands/` (and `lib/`, `locales/`, `tests/` depending on your choices). Add `interaction-handlers/` and `listeners/` when
+	you need them — see [Pieces](#pieces) below.
+</Note>
 
-## Shared Pieces
+## Entry Point
 
-Shared pieces are opinionated application modules. Importing their `/register` entry point loads commands or listeners
-into the framework:
+`src/main.ts` wires the pieces together. It runs the setup imports first, creates the client, loads the stores, publishes
+the command definitions, and starts the server:
 
 ```typescript
-import '@wolfstar/shared-http-pieces/register';
-import '@wolfstar/shared-influx-pieces/register';
+import './lib/setup/all.js';
+
+import { Client } from '@wolfstar/http-framework';
+
+const client = new Client();
+
+await client.load();
+await client.registry.pushGlobalCommands();
+await client.listen({ port: 3000 });
 ```
 
-Because these imports have side effects, configure environment variables and shared clients first. See each package page
-for the required setup.
+Order matters here. Anything with side effects — plugin `/register` imports, module augmentations, logger configuration —
+must be imported **before** `new Client()`, because the client reads that state while it is constructed. See
+[Configuring the Client](/documentation/guide#configuring-the-client) for how `client.load()` finds your stores.
 
-## Utility Packages
+## Pieces
 
-Infrastructure and platform helpers do not require the HTTP Framework unless their package page says otherwise. This
-makes it safe to adopt `@wolfstar/safe-fetch`, `@wolfstar/logger`, or a service helper in an existing Node.js application.
+Everything your bot does is a piece: a class that extends a base type, lives in a store directory, and is loaded by the
+framework. The three you will use most:
 
-## Public API Source
+| Piece                | Store                  | Runs when                                                      |
+| -------------------- | ---------------------- | -------------------------------------------------------------- |
+| `Command`            | `commands`             | A slash command, context-menu command, or autocomplete arrives |
+| `InteractionHandler` | `interaction-handlers` | A component (button, select menu) or modal submit arrives      |
+| `Listener`           | `listeners`            | The client or another emitter fires a named event              |
+
+Pieces are regular classes, which is what makes them easy to test in isolation and to reload without restarting the
+process. Configure them with `@ApplyOptions` and gate them with the `Requires*` decorators instead of writing constructors
+and `if` checks. The [Build a Command](/documentation/guide/commands) guide covers commands in depth.
+
+### Commands and the Registry
+
+A command describes its Discord definition with `@RegisterCommand`, and the framework collects every definition in the
+application-command registry. Pushing the registry is what makes commands appear in Discord:
+
+```typescript
+await client.registry.pushGlobalCommands();
+await client.registry.pushGuildRestrictedCommands();
+```
+
+Because definitions and handlers sit in the same class, the shape Discord sees and the code that answers it cannot drift
+apart.
+
+### Listeners
+
+A listener subscribes to a client event. The most common use is turning errors into replies and log lines in one place:
+
+```typescript
+import { ApplyOptions, Events, Listener, type ClientEventCommandContext } from '@wolfstar/http-framework';
+
+@ApplyOptions<Listener.Options>({ event: Events.CommandError })
+export class UserListener extends Listener {
+	public run(error: unknown, context: ClientEventCommandContext) {
+		this.container.logger.error(`Failed to run ${context.command.name}`, error);
+	}
+}
+```
+
+## The Container
+
+Pieces reach shared services through `container` instead of importing singletons or receiving them through constructors.
+`container.logger`, the client, and the stores are available as soon as `@wolfstar/http-framework` is imported. Your own
+services join them by augmenting the `Container` interface and assigning the value during setup, so a command can use
+`this.container.database` with full type safety.
+
+## Extending the Bot
+
+Optional capabilities are added as plugins, imported through a `/register` entry point during setup:
+
+| Need                                    | Add                                                                                            |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Translations for users and guilds       | [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next)                           |
+| A REST API next to interaction handling | [`@wolfstar/plugin-api`](/documentation/packages/plugin-api)                                   |
+| Modular subcommands in separate classes | [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) |
+| Typed environment variables             | [`@wolfstar/env-utilities`](/documentation/packages/env-utilities)                             |
+| Drop-in commands and listeners          | [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces)                   |
+
+Plugins are released from the [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) repository; the
+[Plugins guide](/documentation/guide/plugins) explains how registration works.
+
+<Warning>
+	`@wolfstar/http-framework-i18n` is deprecated in favour of `@wolfstar/plugin-i18next`. See the [migration guide](/documentation/guide/migration).
+</Warning>
+
+## Testing the Bot
+
+Since a command is a plain class, `@wolfstar/http-framework-test-utils` can dispatch a typed interaction fixture at it and
+assert on the reply, with no HTTP server and no Discord. Follow [Testing Interactions](/documentation/guide/testing) to add
+tests as the command set grows.
+
+## Public API
 
 Every package exposes its supported API through `src/index.ts` and explicit `package.json` export maps. The
-[API reference](/api/index) is generated from those entry points during every documentation build, so private implementation
-files do not become accidental public contracts.
+[API reference](/documentation/api) is generated from those entry points on every documentation build, so private
+implementation files do not become accidental public contracts.
