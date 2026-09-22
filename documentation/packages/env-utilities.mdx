@@ -85,7 +85,7 @@ To add new entries, you augment `Env` from `@wolfstar/env-utilities/dist/lib/typ
 - `NumberString`: can be parsed with `envParseNumber`.
 - `string`: can be parsed with `envParseString` and `envParseArray`.
 
-The above 5 functions will throw an `ReferenceError` instance if a key is missing (unless a default is passed in the second parameter) as well as a `TypeError` instance if a key could not be parsed. The default value is returned as-is and is not validated.
+The above 5 functions will throw a `ReferenceError` instance if a key is missing (unless a default is passed in the second parameter) as well as a `TypeError` instance if a key could not be parsed. The default value is returned as-is and is not validated.
 
 An example of adding more keys is as it follows:
 
