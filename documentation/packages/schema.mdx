@@ -1,0 +1,116 @@
+---
+title: '@wolfstar/schema'
+description: 'Typed stars.config schema, defineConfig helper, and loader shared by @wolfstar/http-framework and @wolfstar/cli via a Nuxt-style split.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/schema
+```
+
+```bash pnpm
+pnpm add @wolfstar/schema
+```
+
+```bash yarn
+yarn add @wolfstar/schema
+```
+
+```bash bun
+bun add @wolfstar/schema
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/schema"></Card>
+	<Card
+		title="Source"
+		icon="github"
+		horizontal
+		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/schema"
+	></Card>
+</CardGroup>
+
+## Description
+
+`@wolfstar/schema` owns the typed `stars.config.*` schema, the `defineConfig` helper, and the loader that discovers,
+validates, and resolves `stars.config.{ts,mts,cts,js,mjs,cjs}`. It sits between
+[`@wolfstar/http-framework`](/documentation/packages/http-framework) and
+[`@wolfstar/cli`](/documentation/packages/cli) — both depend on it, neither depends on the other — the same way
+`@nuxt/schema` sits between `nuxt` and `@nuxt/cli`.
+
+The package is intentionally side-effect free: importing it from a `stars.config.ts` file never starts a bot or pulls
+in the CLI runtime.
+
+## When to use it
+
+Most projects should keep importing `defineConfig` from `@wolfstar/http-framework/config`. The framework re-exports
+this package's public surface unchanged, so existing configuration files keep working with no changes needed.
+
+Depend on `@wolfstar/schema` directly when:
+
+- You are building tooling that reads a `stars.config.*` without needing the framework runtime.
+- You want the lightweight `@wolfstar/schema/config` entry point in your `stars.config.ts` (just `defineConfig`, no
+  loader or diagnostics).
+
+## Usage
+
+The two entry points map to two different needs.
+
+### Configuration files (`@wolfstar/schema/config`)
+
+Use this in a project's `stars.config.ts`. It only exposes the `defineConfig` identity helper and the input types, so
+importing it costs nothing at runtime:
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/schema/config';
+
+export default defineConfig({});
+```
+
+### Tooling and programmatic loading (`@wolfstar/schema`)
+
+The root entry point adds the discovery, validation, and resolution machinery. Use it when a tool needs to load a
+project's resolved configuration:
+
+```typescript
+import { loadStarsConfig } from '@wolfstar/schema';
+
+const config = await loadStarsConfig({ cwd: process.cwd() });
+console.log(config.entry, config.build.output);
+```
+
+`loadStarsConfig` discovers the config file, applies the built-in defaults, validates every option, and resolves all
+paths to absolute ones. Invalid options raise a diagnostic whose `code`, `path`, `sources`, and `hint` describe the
+problem — see [Configuration Errors](/documentation/errors/config) for the full catalog.
+
+For type-only imports of the input and resolved shapes:
+
+```typescript
+import type { StarsConfig, ResolvedStarsConfig, BuilderContext } from '@wolfstar/schema';
+```
+
+## Framework facades
+
+`@wolfstar/http-framework` exposes two facades that forward this package's exports unchanged, matching Nuxt's
+package layout:
+
+- `@wolfstar/http-framework/config` — the historical entry point; keep using it in `stars.config.*` files.
+- `@wolfstar/http-framework/schema` — the type-focused entry point, mirroring `nuxt/schema`.
+
+Both preserve the same exports and function identities as `@wolfstar/schema`, so existing imports continue to work
+without modification.
+
+## Server integration contract
+
+`@wolfstar/schema` exports the `Builder` contract and `BuilderContext` type used by the optional build integrations:
+
+- [`@wolfstar/vite-server`](/documentation/packages/vite-server) — Vite build and dev server.
+- [`@wolfstar/nitro-server`](/documentation/packages/nitro-server) — Nitro build and dev server.
+
+Both integrations implement the same lifecycle (`watch`, `close`, `start`/`success`/`failure`/`log` events) so
+`@wolfstar/cli` can load them on demand behind the existing experimental flags without depending on either package
+at install time.
