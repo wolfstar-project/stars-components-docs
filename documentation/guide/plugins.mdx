@@ -5,7 +5,7 @@ description: Optional @wolfstar/http-framework extensions maintained in the wolf
 
 Plugins are opt-in extensions for [`@wolfstar/http-framework`](/documentation/packages/http-framework). They live outside this
 repository, in [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins), and release on their own
-schedule — adding one never bumps the core framework, and the framework has no required dependency on any of them.
+schedule. Adding one never bumps the core framework, and the framework has no required dependency on any of them.
 
 <Tip>
 **Prerequisites**
@@ -62,7 +62,7 @@ const client = new Client({
 await client.load();
 ```
 
-Check each plugin's package page for its exact registration entry point and options — see
+Check each plugin's package page for its exact registration entry point and options. See
 [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), [`@wolfstar/plugin-api`](/documentation/packages/plugin-api), and
 [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced).
 
@@ -72,7 +72,7 @@ That package is deprecated in favor of `@wolfstar/plugin-i18next`. Follow the [m
 
 ## Writing Your Own Plugin
 
-Plugins are regular `@wolfstar/http-framework` consumers — there is no separate plugin API to learn beyond the
+Plugins are regular `@wolfstar/http-framework` consumers. There is no separate plugin API to learn beyond the
 client's lifecycle hooks (`preLoad`, and the piece stores). Read an existing plugin's source, such as
 [`plugin-i18next`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-i18next), as a template, and
 open a pull request against [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) to have it
