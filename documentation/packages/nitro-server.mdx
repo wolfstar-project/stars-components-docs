@@ -1,0 +1,113 @@
+---
+title: '@wolfstar/nitro-server'
+description: 'Nitro server integration for Stars projects.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/nitro-server vite nitro
+```
+
+```bash pnpm
+pnpm add @wolfstar/nitro-server vite nitro
+```
+
+```bash yarn
+yarn add @wolfstar/nitro-server vite nitro
+```
+
+```bash bun
+bun add @wolfstar/nitro-server vite nitro
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/nitro-server"></Card>
+	<Card
+		title="Source"
+		icon="github"
+		horizontal
+		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/nitro-server"
+	></Card>
+</CardGroup>
+
+## Description
+
+`@wolfstar/nitro-server` is the Nitro build and dev server integration for Stars projects. The
+[`stars` CLI](/documentation/packages/cli) loads it on demand when `experimental.enableNitro` is enabled, so existing
+`stars.config` options and CLI commands are unchanged. Install `vite` and `nitro` in the consuming project; the
+integration uses the project's own versions and Vite configuration.
+
+## When to use it
+
+Enable the integration through `stars.config.ts` — the CLI handles loading and lifecycle for you:
+
+```typescript
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	experimental: {
+		enableNitro: true
+	}
+});
+```
+
+Depend on this package directly only when you are embedding the builder or the dev server into your own tooling.
+
+## Programmatic build usage
+
+The package exports `NitroBuilder`. Pass a resolved `StarsConfig` and a `BuilderContext` from
+[`@wolfstar/schema`](/documentation/packages/schema):
+
+```typescript
+import { NitroBuilder } from '@wolfstar/nitro-server';
+import type { BuilderContext, ResolvedStarsConfig } from '@wolfstar/schema';
+
+export async function build(config: ResolvedStarsConfig, context: BuilderContext) {
+	const builder = new NitroBuilder(config, context);
+	try {
+		return await builder.build();
+	} finally {
+		await builder.close();
+	}
+}
+```
+
+The host supplies `importFromProject` (project-relative dependency loading with diagnostics) and
+`pluginRegistrations` (the entry transform that activates installed plugins). This explicit boundary keeps the
+integration independent of the CLI and framework runtimes.
+
+`watch()` and `close()` implement the shared builder lifecycle. `start`, `success`, `failure`, and `log` events
+expose build status.
+
+Nitro uses `nitro/vite` with a virtual server entry forwarding requests to the application default export's `fetch`
+method. The configured preset and output directory are preserved.
+
+## Programmatic development server
+
+The package also exports `createNitroServer`, a native Nitro development server through the same `nitro/vite`
+integration. Server routes and Nitro's own HMR reload without a production build:
+
+```typescript
+import { createNitroServer } from '@wolfstar/nitro-server';
+import type { ResolvedStarsConfig } from '@wolfstar/schema';
+
+export async function dev(config: ResolvedStarsConfig) {
+	const server = await createNitroServer(config);
+	await server.listen();
+	return server; // { vite, nitro, fetch(request), listen(port?), close() }
+}
+```
+
+A Nitro instance is created upfront and handed to `nitro/vite` through its `_nitro` option — the same extension
+point framework integrations like Nuxt use to own the instance. Two things follow from this:
+
+- `server.fetch(request)` dispatches straight through Nitro's router without a listening socket. Useful for tests
+  and for embedding the dev server behind another transport.
+- `server.close()` also calls `nitro.close()`. Nitro's own file watchers and hooks — registered by its Vite plugin —
+  only run when Nitro closes; closing just the Vite server would leak them.
+
+`server.nitro` exposes the underlying `Nitro` instance (`hooks`, `logger`, `routing`, `updateConfig`) for advanced
+use. `server.vite` is the underlying `ViteDevServer`.

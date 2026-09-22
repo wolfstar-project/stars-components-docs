@@ -1,0 +1,88 @@
+---
+title: '@wolfstar/vite-server'
+description: 'Vite build and watch integration for Stars projects.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/vite-server vite
+```
+
+```bash pnpm
+pnpm add @wolfstar/vite-server vite
+```
+
+```bash yarn
+yarn add @wolfstar/vite-server vite
+```
+
+```bash bun
+bun add @wolfstar/vite-server vite
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/vite-server"></Card>
+	<Card
+		title="Source"
+		icon="github"
+		horizontal
+		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/vite-server"
+	></Card>
+</CardGroup>
+
+## Description
+
+`@wolfstar/vite-server` is the Vite build and watch integration for Stars projects. The
+[`stars` CLI](/documentation/packages/cli) loads it on demand when `build.tool` resolves to `'vite'`, so existing
+`stars.config` options and CLI commands are unchanged. Install `vite` in the consuming project; the integration
+uses the project's own versions and Vite configuration.
+
+## When to use it
+
+Enable the integration through `stars.config.ts` — the CLI handles loading and lifecycle for you:
+
+```typescript
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	build: { tool: 'vite' },
+	experimental: {
+		enableVite: true
+	}
+});
+```
+
+Depend on this package directly only when you are embedding the builder into your own tooling. In every other case
+the CLI resolves and loads it for you.
+
+## Programmatic usage
+
+The package exports `ViteBuilder`. Pass a resolved `StarsConfig` and a `BuilderContext` from
+[`@wolfstar/schema`](/documentation/packages/schema):
+
+```typescript
+import { ViteBuilder } from '@wolfstar/vite-server';
+import type { BuilderContext, ResolvedStarsConfig } from '@wolfstar/schema';
+
+export async function build(config: ResolvedStarsConfig, context: BuilderContext) {
+	const builder = new ViteBuilder(config, context);
+	try {
+		return await builder.build();
+	} finally {
+		await builder.close();
+	}
+}
+```
+
+The host supplies `importFromProject` (project-relative dependency loading with diagnostics) and
+`pluginRegistrations` (the entry transform that activates installed plugins). This explicit boundary keeps the
+integration independent of the CLI and framework runtimes.
+
+`watch()` and `close()` implement the shared builder lifecycle. `start`, `success`, `failure`, and `log` events
+expose build status.
+
+Vite builds the application and uses its build watcher for rebuilds. Process supervision remains the responsibility
+of the host CLI.
