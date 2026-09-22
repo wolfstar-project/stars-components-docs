@@ -1,6 +1,6 @@
 ---
 title: 'CLI Errors'
-description: 'Diagnostic codes reported by the stars CLI.'
+description: 'Diagnostic codes the stars CLI raises for build failures, missing dependencies, codegen issues, exit codes, and other command errors.'
 ---
 
 The `stars` CLI reports every failure as a structured diagnostic: a stable code, a short explanation of why it
@@ -88,11 +88,3 @@ A dependency the current configuration needs (for example `tsdown` or `vite`) is
 ## CODEGEN_FAILED {#codegen_failed}
 
 `i18next-type-generator` exited with a non-zero code, optionally with its `stderr` output attached.
-
-## EXPERIMENT_UNAVAILABLE {#experiment_unavailable}
-
-`experimental.enableNitro` is not implemented yet.
-
-**Fix:** Nitro needs the framework's Fetch adapter
-([wolfstar-project/stars-components#81](https://github.com/wolfstar-project/stars-components/issues/81)); until it
-lands, set `build.tool` to `'tsdown'`, `'vite'`, or `'tsc'`.
