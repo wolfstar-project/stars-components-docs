@@ -5,6 +5,32 @@ description: Weekly summaries of user-facing changes across every @wolfstar pack
 
 Weekly summaries of user-facing changes to Stars Components. For per-package history, see each package's `CHANGELOG.md` in the [monorepo](https://github.com/wolfstar-project/stars-components), or the full [release history](https://github.com/wolfstar-project/stars-components/releases).
 
+## 2026-09-24
+
+Nitro deploys, themed dev UI, and clearer diagnostics. This week also brings the `http-framework` `5.x` release and a new `@wolfstar/schema` package.
+
+### New features
+
+- **Nitro builds (experimental)** — Set `experimental.enableNitro` to build your bot with [Nitro](https://nitro.build) v3. `stars build` outputs `.output/` for the configured `experimental.nitro.preset` (`node-server` by default), so you can deploy to Cloudflare, AWS Lambda, Vercel, Netlify, Bun, Deno Deploy, and more. Install `nitro` and `vite` (Vite 8) as dev dependencies. See [`@wolfstar/cli`](/documentation/packages/cli).
+- **`Client.fetch()`** — `@wolfstar/http-framework` `5.0.0` adds `client.fetch(request)`, the Web `Request`/`Response` counterpart of `listen()`. It runs the same signature verification and routing without binding a port, for Workers, `Bun.serve`, `Deno.serve`, and similar runtimes. See [`@wolfstar/http-framework`](/documentation/packages/http-framework).
+- **`stars dev` colour themes** — Press `T` in the interactive UI to pick `dark`, `light`, colour-blind friendly `dark-daltonized`/`light-daltonized`, terminal-palette `dark-ansi`/`light-ansi`, or `auto`. `stars dev` saves your choice between runs. Use `--theme <name>` or `STARS_THEME` to override it for one run.
+- **varlock support (experimental)** — `@wolfstar/env-utilities` `2.2.0` can load environment files with [varlock](https://varlock.dev) instead of `dotenv`. Opt in with `loader: 'varlock'` or the `DOTENV_LOADER` environment variable. See [Environment](/documentation/guide/environment).
+- **`stars` binary ships with `http-framework`** — Installing `@wolfstar/http-framework` now gives you the `stars` command, with no separate `@wolfstar/cli` install.
+
+### Updates
+
+- **Structured diagnostics** — Config and CLI errors are now [`nostics`](https://github.com/vercel-labs/nostics) diagnostics with stable codes, a reason, an actionable fix, and a docs link. `ConfigError` and `CliError` are removed. Catch errors with `instanceof Diagnostic` instead. Exit codes are unchanged. See [Config errors](/documentation/errors/config) and [CLI errors](/documentation/errors/cli).
+- **Readable crash reports** — Unexpected errors and `stars dev` startup crashes now render as sourcemapped, syntax-highlighted reports instead of raw stack traces.
+- **Faster `stars dev` exit** — The first `Ctrl+C` stops your bot gracefully. A second one kills the bot and its helper processes immediately, without waiting for `dev.killTimeout`.
+- **New `@wolfstar/schema` package** — The `stars.config.*` schema and loader now live in `@wolfstar/schema`. Imports from `@wolfstar/http-framework/config` keep working unchanged. If you install `@wolfstar/cli` without `@wolfstar/http-framework`, add `@wolfstar/http-framework` yourself. Scaffolded projects are unaffected.
+- **Optional Vite and Nitro builders** — The Vite and Nitro builders now ship as separate `@wolfstar/vite-server` and `@wolfstar/nitro-server` packages. They load only when you use them. Your CLI configuration is unchanged.
+- **Oxc configs as TypeScript** — `@wolfstar/oxfmt-config` and `@wolfstar/oxlint-config` `0.2.0` now default-export `defineConfig` objects. Spread the formatter config into `oxfmt.config.ts` and pass the linter config to `extends` in `oxlint.config.ts`. The `index.json` and `.oxlintrc.json` entry points are removed.
+- **Plugins support `http-framework` 5** — [`@wolfstar/plugin-api`](/documentation/packages/plugin-api), [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), [`@wolfstar/plugin-logger`](https://github.com/wolfstar-project/plugins), and [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) now target `@wolfstar/http-framework` `5.x`.
+
+### Bug fixes
+
+- **`stars dev` readability on light terminals** — The dev UI now uses semantic theme colours, so body text keeps your terminal's foreground colour and stays readable on light backgrounds.
+
 ## 2026-09-17
 
 Conventions land in the CLI: v4 is the new default, projects auto-register their plugins, and a quick tunnel now works out of the box.
