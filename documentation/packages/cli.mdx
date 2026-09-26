@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/cli'
-description: 'Develop, build, inspect, and maintain HTTP Framework bots.'
+description: 'The stars CLI that runs dev, build, info, codegen, prepare, and commands for HTTP Framework bots driven by a typed stars.config.ts file.'
 ---
 
 <CodeGroup>
@@ -28,8 +28,8 @@ bun add @wolfstar/cli
 	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/cli"></Card>
 </CardGroup>
 
-calls into it), the typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/documentation/packages/http-framework)
-(`@wolfstar/http-framework/config`) — this package only consumes it to drive its commands:
+The typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/documentation/packages/http-framework)
+(`@wolfstar/http-framework/config`). This package only consumes it to drive its commands:
 
 - `stars dev` builds the project, starts the bot, restarts it on changes and shows what is happening in an interactive terminal UI (or plain logs).
 - `stars build` runs the configured build tool once.

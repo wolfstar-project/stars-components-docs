@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/reddit-helpers'
-description: 'Fetch and normalize Reddit posts for Star bots.'
+description: 'Shared Reddit helpers for Star bots that fetch posts through Reddit application-only OAuth without duplicating request or caching code.'
 ---
 
 <CodeGroup>
@@ -56,4 +56,4 @@ After this, you can use the functions exported from this package to interact wit
 
 ### What value should I use for device_id?
 
-You should generate and save unique ID on your client. The ID should be unique per-client. A randomized or pseudo-randomized value is acceptable for generating the ID; however, you should retain and re-use the same device_id when renewing your access token.
+You should generate and save a unique ID on your client. The ID should be unique per-client. You can use a randomized or pseudo-randomized value for the ID. However, you should retain and re-use the same device_id when renewing your access token.

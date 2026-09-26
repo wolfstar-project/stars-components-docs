@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/shared-influx-pieces'
-description: 'Collect interaction metrics through reusable Influx pieces.'
+description: 'Reusable Influx pieces used by Star Networks HTTP-only bots to record interaction counters and other metrics without duplicating listener code.'
 ---
 
 <CodeGroup>
@@ -65,4 +65,4 @@ container.influx = new InfluxClient({
 ```
 
 > [!IMPORTANT]
-> In order to manual registering to work as intended, you must register the instance in `container.influx` as shown above.
+> For manual registration to work as intended, you must register the instance in `container.influx` as shown above.
