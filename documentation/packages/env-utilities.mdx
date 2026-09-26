@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/env-utilities'
-description: 'Functional utilities that load dotenv files and parse environment variables into typed strings, numbers, integers, booleans, and arrays.'
+description: 'Load .env files with dotenv or varlock, augment the Env interface, and parse booleans, integers, numbers, and arrays with type safety.'
 ---
 
 <CodeGroup>
@@ -75,6 +75,56 @@ Files on the left have more priority than files on the right:
 - `npm test`: `.env.test.local`, `.env.test`, `.env` (note `.env.local` is missing)
 
 [CRA Reference](https://create-react-app.dev/docs/adding-custom-environment-variables/#what-other-env-files-can-be-used)
+
+### Experimental: varlock support
+
+`@wolfstar/env-utilities` can optionally delegate environment variable resolution to [varlock](https://varlock.dev), a schema-based alternative to `dotenv` with built-in validation, type-safety, and secret protection. Support for varlock is **experimental**.
+
+Use it when you want varlock's `.env.schema` validation instead of the built-in `dotenv` discovery. Stick with the default `dotenv` loader if you rely on the file-precedence rules above or on the `encoding`, `path`, and `env` options.
+
+First, set up varlock in your project and install the optional `varlock` peer dependency:
+
+<CodeGroup>
+
+```bash npm
+npx varlock init
+npm install varlock
+```
+
+```bash pnpm
+pnpm dlx varlock init
+pnpm add varlock
+```
+
+```bash yarn
+yarn dlx varlock init
+yarn add varlock
+```
+
+```bash bun
+bunx varlock init
+bun add varlock
+```
+
+</CodeGroup>
+
+Then opt in via the `loader` field on `EnvSetupOptions` (or `EnvLoaderOptions`):
+
+```typescript
+import { setup } from '@wolfstar/env-utilities';
+
+setup({ loader: 'varlock' });
+```
+
+Or via the `DOTENV_LOADER` environment variable:
+
+```bash
+DOTENV_LOADER=varlock
+```
+
+When `loader: 'varlock'` is set, varlock resolves your checked-in `.env.schema` (with its own `.env*` file discovery and validation) and injects the result into `process.env`. The dotenv-specific options `encoding`, `path`, and `env` are ignored in favour of the schema. `prefix` still applies to the resolved variables.
+
+If you select the varlock loader without installing the `varlock` package, `setup()` throws an error asking you to install it (for example, `pnpm add varlock`).
 
 ### Typing Environment Variables
 
