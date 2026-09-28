@@ -5,9 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"prepare": "husky",
-		"fetch-docs-data": "node scripts/fetch-docs-data.mjs",
-		"lint": "oxlint . && oxfmt --check .",
-		"lint:fix": "oxlint --fix . && oxfmt --write ."
+		"lint": "oxlint --no-error-on-unmatched-pattern . && oxfmt --check .",
+		"lint:fix": "oxlint --fix --no-error-on-unmatched-pattern . && oxfmt --write ."
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^21.2.0",

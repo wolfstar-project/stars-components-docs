@@ -1,23 +1,34 @@
 content:guide:
     - changed-files:
           - any-glob-to-any-file:
-                - guide/*
-                - guide/**/*
+                - documentation/guide/**
 
 content:packages:
     - changed-files:
           - any-glob-to-any-file:
-                - packages/*
-                - packages/**/*
+                - documentation/packages/**
 
-theme:
+content:api:
     - changed-files:
           - any-glob-to-any-file:
-                - .vitepress/*
-                - .vitepress/**/*
+                - documentation/api/**
+
+content:reference:
+    - changed-files:
+          - any-glob-to-any-file:
+                - documentation/changelog/**
+                - documentation/errors/**
+
+config:
+    - changed-files:
+          - any-glob-to-any-file:
+                - docs.json
+                - index.mdx
+                - style.css
+                - logo/**
+                - favicon.svg
 
 ci:
     - changed-files:
           - any-glob-to-any-file:
-                - .github/workflows/*
-                - scripts/*
+                - .github/**
