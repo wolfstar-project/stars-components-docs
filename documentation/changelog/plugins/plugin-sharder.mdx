@@ -1,0 +1,25 @@
+---
+title: "@wolfstar/plugin-sharder"
+sidebarTitle: "plugin-sharder"
+description: "Changelog for @wolfstar/plugin-sharder: multi-process and multi-machine sharding for @wolfstar/plugin-gateway."
+---
+
+Changes to [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder). The plugin spreads gateway shards across processes, cluster workers, worker threads, and machines. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.1.1`
+
+### Bug fixes
+
+- **`./register` export** — Adds a no-op `./register` subpath export. The Stars CLI build imports `<name>/register` for every `@wolfstar/plugin-*` dependency, so the package crashed consumers at startup with `ERR_PACKAGE_PATH_NOT_EXPORTED`.
+
+## `0.1.0`
+
+### New features
+
+- **New package** — `@wolfstar/plugin-sharder` implements the discord.js sharder RFC ([discordjs/discord.js#8084](https://github.com/discordjs/discord.js/issues/8084)).
+- **`ShardManager`** — Spawns shards as child processes, cluster workers, worker threads, or on other machines through `ShardManagerProxy` (`NetworkStrategy`, over TLS). It lays gateway shards out automatically, paces identifies across every process, and restarts or reshards with rolling spawns.
+- **Crash supervision** — Supervises crashes after Erlang/OTP: intensity, period, and one-for-one, one-for-all, or rest-for-one restarts.
+- **`ShardManagerProxy`** — Serves one manager with failover, or several at once, and routes messages between shards directly, locally or to peer proxies.
+- **`ShardClient`** — The shard's side: statuses, messages, requests with timeouts, abort and partial broadcasts, gateway shard control, and `gatewayOptions` and `identifyThrottler` for [`GatewayClient`](/documentation/changelog/plugins/plugin-gateway).
+- **`try*` twins** — Every fallible operation has a `try*` twin returning a `Result<T, E>` from `@sapphire/result`, and request handlers may return one.
+- **Message handlers and transformers** — Messages go through named, registrable handlers (JSON, V8, raw) and transformers (gzip, Brotli).
