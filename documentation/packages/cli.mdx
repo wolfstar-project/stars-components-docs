@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/cli'
-description: 'Develop, build, inspect, and maintain HTTP Framework bots.'
+description: 'The stars CLI that runs dev, build, info, codegen, prepare, and commands for HTTP Framework bots driven by a typed stars.config.ts file.'
 ---
 
 <CodeGroup>
@@ -28,19 +28,8 @@ bun add @wolfstar/cli
 	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/cli"></Card>
 </CardGroup>
 
-## Description
-
-`stars` is a small, fast CLI that owns the developer workflow of a bot built with
-[`@wolfstar/http-framework`](/documentation/packages/http-framework). Like Nuxt splits
-`nuxt.config`/`defineNuxtConfig` (owned by `@nuxt/schema`, which both `nuxt` and the separate `@nuxt/cli` package
-depend on) from `nuxi`, the typed `stars.config.*` schema and loader live in their own package,
-[`@wolfstar/schema`](/documentation/packages/schema), which both `@wolfstar/http-framework` (re-exported as
-`@wolfstar/http-framework/config`) and this package depend on. This package only consumes it to drive its commands.
-
-`@wolfstar/http-framework` also depends on this package and exposes it as its own `stars` binary, the way `nuxt`
-exposes `nuxi`'s, so installing the framework is enough to get `stars` without a separate `@wolfstar/cli` install.
-This package has no install-time dependency on `@wolfstar/http-framework` in return, the same way `@nuxt/cli` has
-none on `nuxt`. Its own commands:
+The typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/documentation/packages/http-framework)
+(`@wolfstar/http-framework/config`). This package only consumes it to drive its commands:
 
 - `stars dev` builds the project, starts the bot, restarts it on changes and shows what is happening in an interactive terminal UI (or plain logs).
 - `stars build` runs the configured build tool once.
