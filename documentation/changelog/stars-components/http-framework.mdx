@@ -1,0 +1,29 @@
+---
+title: "@wolfstar/http-framework"
+sidebarTitle: "http-framework"
+description: "Changelog for @wolfstar/http-framework: releases, new features, and fixes."
+---
+
+Changes to [`@wolfstar/http-framework`](/documentation/packages/http-framework). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## 2026-09-24 — `5.0.0`
+
+### New features
+
+- **`Client.fetch()`** — `client.fetch(request)` is the Web `Request`/`Response` counterpart of `listen()`. It runs the same signature verification and routing without binding a port, for Workers, `Bun.serve`, `Deno.serve`, and similar runtimes.
+- **`stars` binary ships with `http-framework`** — Installing `@wolfstar/http-framework` now gives you the `stars` command, with no separate `@wolfstar/cli` install.
+
+### Updates
+
+- **Config schema moved to `@wolfstar/schema`** — The `stars.config.*` schema and loader now live in [`@wolfstar/schema`](/documentation/changelog/stars-components/schema). Imports from `@wolfstar/http-framework/config` keep working unchanged.
+- **Plugin support** — [`@wolfstar/plugin-api`](/documentation/changelog/plugins/plugin-api), [`@wolfstar/plugin-i18next`](/documentation/changelog/plugins/plugin-i18next), [`@wolfstar/plugin-logger`](/documentation/changelog/plugins/plugin-logger), and [`@wolfstar/plugin-subcommands-advanced`](/documentation/changelog/plugins/plugin-subcommands-advanced) now target `5.x`.
+
+## 2026-09-17 — `4.0.x`
+
+### New features
+
+- **Compatibility version 4 by default** — Convention-first `stars` workflow: `stars dev` forces development mode, `src/locales` is copied and watched automatically, and environment files are discovered under both `src/` and the project root.
+
+### Updates
+
+- **Structured logging** — Leveled logging replaces raw `console` calls for HMR events and command-router warnings.

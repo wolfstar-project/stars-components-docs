@@ -1,0 +1,17 @@
+---
+title: "@wolfstar/schema"
+sidebarTitle: "schema"
+description: "Changelog for @wolfstar/schema: the stars.config schema and loader."
+---
+
+Changes to [`@wolfstar/schema`](/documentation/packages/schema). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## 2026-09-24
+
+### New features
+
+- **New package** — The `stars.config.*` schema and loader now live in `@wolfstar/schema`. Imports from `@wolfstar/http-framework/config` keep working unchanged. If you install `@wolfstar/cli` without `@wolfstar/http-framework`, add `@wolfstar/http-framework` yourself. Scaffolded projects are unaffected.
+
+### Updates
+
+- **Structured diagnostics** — Config errors are now [`nostics`](https://github.com/vercel-labs/nostics) diagnostics with stable codes. `ConfigError` is removed. Catch errors with `instanceof Diagnostic` instead. See [Config errors](/documentation/errors/config).

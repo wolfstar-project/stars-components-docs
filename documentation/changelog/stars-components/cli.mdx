@@ -1,0 +1,38 @@
+---
+title: "@wolfstar/cli"
+sidebarTitle: "cli"
+description: "Changelog for @wolfstar/cli: the stars command, dev UI, builders, and diagnostics."
+---
+
+Changes to [`@wolfstar/cli`](/documentation/packages/cli). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## 2026-09-24
+
+### New features
+
+- **Nitro builds (experimental)** — Set `experimental.enableNitro` to build your bot with [Nitro](https://nitro.build) v3. `stars build` outputs `.output/` for the configured `experimental.nitro.preset` (`node-server` by default), so you can deploy to Cloudflare, AWS Lambda, Vercel, Netlify, Bun, Deno Deploy, and more. Install `nitro` and `vite` (Vite 8) as dev dependencies.
+- **`stars dev` colour themes** — Press `T` in the interactive UI to pick `dark`, `light`, colour-blind friendly `dark-daltonized`/`light-daltonized`, terminal-palette `dark-ansi`/`light-ansi`, or `auto`. `stars dev` saves your choice between runs. Use `--theme <name>` or `STARS_THEME` to override it for one run.
+
+### Updates
+
+- **Structured diagnostics** — Config and CLI errors are now [`nostics`](https://github.com/vercel-labs/nostics) diagnostics with stable codes, a reason, an actionable fix, and a docs link. `ConfigError` and `CliError` are removed. Catch errors with `instanceof Diagnostic` instead. Exit codes are unchanged. See [Config errors](/documentation/errors/config) and [CLI errors](/documentation/errors/cli).
+- **Readable crash reports** — Unexpected errors and `stars dev` startup crashes now render as sourcemapped, syntax-highlighted reports instead of raw stack traces.
+- **Faster `stars dev` exit** — The first `Ctrl+C` stops your bot gracefully. A second one kills the bot and its helper processes immediately, without waiting for `dev.killTimeout`.
+- **Config schema moved to `@wolfstar/schema`** — If you install `@wolfstar/cli` without `@wolfstar/http-framework`, add `@wolfstar/http-framework` yourself. Scaffolded projects are unaffected.
+- **Optional Vite and Nitro builders** — The builders now ship as separate [`@wolfstar/vite-server`](/documentation/changelog/stars-components/vite-server) and [`@wolfstar/nitro-server`](/documentation/changelog/stars-components/nitro-server) packages. They load only when you use them. Your CLI configuration is unchanged.
+
+### Bug fixes
+
+- **`stars dev` readability on light terminals** — The dev UI now uses semantic theme colours, so body text keeps your terminal's foreground colour and stays readable on light backgrounds.
+
+## 2026-09-17
+
+### New features
+
+- **Convention-first `stars` workflow** — Compatibility version 4 is now the default. `stars dev` forces development mode, `src/locales` is copied and watched automatically, and environment files are discovered under both `src/` and the project root. The interactive dev UI adds a `t` shortcut to open or close a public quick tunnel without configuring `dev.tunnel`.
+- **Auto-registered WolfStar plugins** — Bundler builds now inject the `/register` side-effect entrypoint of every installed `@wolfstar/plugin-*` dependency before your app entry, so plugins activate without manual `import '@wolfstar/plugin-x/register'` lines. See [Plugins](/documentation/guide/plugins).
+- **Generated TypeScript alias config** — `stars prepare`, `stars dev`, and `stars build` write an extendable `.stars/tsconfig.json` whose paths match the `tsdown` aliases.
+
+### Bug fixes
+
+- **Quick tunnel reliability** — `dev.tunnel` now opens the `cloudflared` tunnel through `untun` instead of spawning `cloudflared` and scraping stdout. `untun` manages the binary (downloading it if missing) and exposes the URL and lifecycle programmatically, which also fixes the tunnel never closing when the spawn failed silently.
