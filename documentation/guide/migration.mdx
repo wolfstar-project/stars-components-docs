@@ -172,6 +172,10 @@ has (`formatError`/`exitCodeOf` keep their existing exports and behaviour) and s
       with `client.fetch(request, options?)`
 - [ ] `instanceof ConfigError` / `instanceof CliError` checks replaced with `instanceof Diagnostic` (from `nostics`)
 - [ ] `.path`/`.file` reads on caught errors replaced with `.message`/`.sources`
+- [ ] CLI-only consumers (projects that depend on `@wolfstar/cli` without `@wolfstar/http-framework`) added
+      `@wolfstar/http-framework` to their `dependencies` — the CLI no longer depends on the framework transitively.
+      Projects scaffolded by `@wolfstar/create-http-framework`, or that already depend on `@wolfstar/http-framework`,
+      are unaffected.
 - [ ] Optional: `experimental.enableVite` and `experimental.enableNitro` configured, `vite` and `nitro` installed as
       `devDependencies`, and the entry's default export changed from calling `listen()` to the loaded `Client`
       instance
