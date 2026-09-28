@@ -3,3 +3,105 @@ title: "@wolfstar/plugin-gateway"
 sidebarTitle: "plugin-gateway"
 description: "Changelog for @wolfstar/plugin-gateway: gateway events, Discord structures, and API managers for @wolfstar/http-framework."
 ---
+
+Changes to [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway). The plugin extends the `@wolfstar/http-framework` client with Discord gateway events, structures, and API managers. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.7.0`
+
+### New features
+
+- **Component structures** — Adds discord.js-style component classes, all extending a common `Component`: `ActionRow`, the button components (`InteractiveButtonComponent`, `LinkButtonComponent`, `PremiumButtonComponent`), the five select menus, `TextInputComponent`, and the layout and media components (`ContainerComponent`, `SectionComponent`, `TextDisplayComponent`, `ThumbnailComponent`, `MediaGalleryComponent`, `FileComponent`, `SeparatorComponent`), plus `LabelComponent`, `FileUploadComponent`, `RadioGroupComponent`, `CheckboxGroupComponent`, and `CheckboxComponent`. `createComponent()` builds the matching class for raw component data, and `findComponentByCustomId()` searches a component tree.
+- **discord.js-style errors** — Every error thrown or emitted by the package is now a `GatewayError`, `GatewayTypeError`, or `GatewayRangeError` carrying a `code` from `GatewayErrorCodes`, with its message in `GatewayErrorMessages`. `DispatchTimeoutError`, `GuildMembersTimeoutError`, `GuildMembersRateLimitError`, and `GatewaySessionStoreError` extend `GatewayError`, so their `name` now includes the code, for example `GuildMembersTimeoutError [GuildMembersTimeout]`.
+
+### Breaking changes
+
+- **`Message#components`** — Now returns the component structures instead of raw API data. Call `toJSON()` on them to get the raw components back.
+
+## `0.6.0`
+
+Aligns the managers with the discord.js RFC [#11426](https://github.com/wolfstar-project/plugins/issues/11426) (zero caching, complete flexibility), together with [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) `0.5.0`.
+
+### New features
+
+- **`makeCache`, `policies`, and `cacheErrors` options** — `makeCache(entity)` creates the store of each entity kind, or returns `null` not to cache it. `policies` decide entry by entry what gets cached and for how long, for dispatches and managers alike. `cacheErrors` (`"miss"` by default, or `"throw"`) decides what the managers do when a store fails, and a new `cacheError` event is always emitted.
+- **Works with any subset of caches** — Every feature now works with any subset of entity caches, or none. `GUILD_EMOJIS_UPDATE` and `GUILD_STICKERS_UPDATE` always emit the new `guildEmojisUpdate` and `guildStickersUpdate` events. The granular diff events still need a cache.
+
+### Updates
+
+- **Manager construction** — Managers build structures with `construct` (`createStructure` is kept as a deprecated alias) and write through the store's `upsert`. `CachedManager` is also exported as `BaseManager`.
+
+### Migration
+
+`thread.joined` is now `boolean | null`. `listCached` throws a `TypeError` for a store that cannot enumerate its entries.
+
+## `0.5.0`
+
+### New features
+
+- **`dispatch` event** — `GatewayEvents.Dispatch` is emitted for every gateway dispatch once it is written to the cache, before the matching event. Unlike `raw`, a listener reading the cache sees the dispatch applied. [`@wolfstar/plugin-broker`](/documentation/changelog/plugins/plugin-broker)'s `forwardGatewayDispatches` relies on it.
+
+## `0.4.0`
+
+### New features
+
+- **`GatewayEvents` enum** — Mirrors the keys of `GatewayEventMap`, like `Events` in `@wolfstar/http-framework`. `client.on(GatewayEvents.MessageCreate, ...)` is interchangeable with `client.on("messageCreate", ...)`.
+- **`clientReady` event** — Emitted once, after every shard the client manages has connected and every guild listed as initially unavailable became available, or the new `waitGuildTimeout` option (`15_000` ms by default) elapses. `GatewayClient` gains `clientReadyTimestamp`, `clientReadyAt`, and `isClientReady()`.
+
+## `0.3.0`
+
+### New features
+
+- **`client` on structures** — Every structure exposes the `GatewayClient` whose manager built it, like discord.js's `Base#client`.
+- **`MessagePayload`** — Normalizes message options like discord.js: camel case options, builders, `reply` and `forward` shortcuts, stickers, polls, and files from paths, URLs, streams, or buffers. Every `send`, `edit`, and `reply` accepts either the options or a `MessagePayload`.
+- **`WebhookMixin`** — The token-based members that `Webhook` posts through (`send`, `editMessage`, `deleteMessage`, `fetchMessage`, `url`).
+- **`client.rest`** — Exposes the `REST` manager that the gateway and every manager's API calls go through.
+- **Relations from the cache** — Related structures resolve from the cache as synchronous getters, like discord.js, alongside the existing `fetch*()` methods. This covers channels, guilds, members, messages, reactions, polls, audit log entries, auto moderation executions, invites, and onboarding.
+- **Partials** — Adds `Partials` and the `partials` client option. With a partial enabled, an event about an uncached message, user, member, thread member, scheduled event, soundboard sound, poll, or direct message receives a structure built from the dispatch's IDs (`partial` is `true`, `fetch()` completes it) instead of `null`.
+
+### Bug fixes
+
+- **`Message#reply()`** — No longer hardcodes `failIfNotExists` to `false`. It defaults like every other `reply`, to `GatewayClientOptions.failIfNotExists ?? true`.
+
+### Breaking changes
+
+- **`GatewayClient#core` is protected** — Use `client.api` (the same `@discordjs/core` `API`), `client.rest`, and `client.gateway` instead of `client.core.api`, `client.core.rest`, and `client.core.gateway`.
+- **Type changes** — `BaseInvite.channel` is `AnyChannel | APIInviteChannel | null`. `MessageReaction.emoji`, `PollAnswer.emoji`, `SoundboardSound.emoji`, `WelcomeChannel.emoji`, and `GuildOnboardingPromptOption.emoji` may be a `GuildEmoji`.
+
+## `0.2.0`
+
+### New features
+
+- **`container.gatewayClient`** — Every `GatewayClient` is registered as `container.gatewayClient`, typed as `GatewayClient`, so pieces reach its managers through `this.container.gatewayClient` without a cast.
+- **Request guild members** — `client.members.request(guildId, options)` and `guild.requestMembers(options)` send `REQUEST_GUILD_MEMBERS` for every member, a `query`, or up to 100 `userIds`. The call rejects with `GuildMembersTimeoutError` when chunks stop arriving, or `GuildMembersRateLimitError` when Discord answers with `RATE_LIMITED`. Every chunk is also emitted as the new `guildMembersChunk` event.
+- **Resume sessions across restarts** — `GatewayClient` gains a `sessionStore` option (and `sessionStoreTimeout`). `GatewayClient#destroy({ resumable: true })` closes the shards with a resumable code and keeps their sessions stored for the next process. Store failures are reported as `GatewaySessionStoreError`s and fall back to identifying. See [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache).
+- **Synchronous cache reads** — Every `CachedManager` gains `cached(...ids)`, which returns the structure without a promise, for example `client.members.cached(guildId, userId)`. It returns `undefined` on a miss, and throws a `TypeError` on an asynchronous cache.
+
+### Updates
+
+- **Structures extend `@discordjs/structures`** — `User`, `Message`, `Attachment`, `Embed`, `MessageReaction`, `Poll`, `Emoji`, `BaseInvite`, `Presence`, `VoiceState`, `Webhook`, `Sticker`, and every channel type now inherit from their `@discordjs/structures` counterparts. The source is organised in one folder per domain.
+
+### Breaking changes
+
+- Getters that now come from `@discordjs/structures` return `undefined` rather than `null` when the field is absent.
+- `Channel.flags` is a frozen `ChannelFlagsBitField` rather than a `number`.
+- `Embed.timestamp` is the timestamp in milliseconds rather than the ISO string.
+- `MessageReaction.burstColors` holds numbers rather than `#rrggbb` strings.
+- `VoiceState.requestToSpeakTimestamp` is the raw ISO string rather than milliseconds. Use `requestToSpeakAt` for a `Date`.
+
+### Bug fixes
+
+- **`./register` export** — Adds a no-op `./register` subpath export, fixing `ERR_PACKAGE_PATH_NOT_EXPORTED` crashes at startup with the Stars CLI build.
+
+## `0.1.1`
+
+### Updates
+
+- Updated to [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) `0.2.0`.
+
+## `0.1.0`
+
+### New features
+
+- **New package** — `@wolfstar/plugin-gateway` adds gateway actions and a unified `GatewayClient.start()` startup method, uses `@discordjs/core` for API operations, and provides a standalone gateway cache adapter.
+- **Discord parity for structures and managers** — Users, guild members, roles, guilds, guild channels, threads, messages, reactions, polls, emojis, stickers, invites, webhooks, voice states, presences, scheduled events, stage instances, soundboard sounds, integrations, guild templates, welcome screens, widgets, onboarding, and moderation (bans, audit logs, auto moderation), each with their gateway events.
+- **Relations from the cache** — `guild` and `channel` resolve from the cache on guild structures and messages, with `fetchGuild()` for when the guild is not cached.
