@@ -4,29 +4,36 @@
 
 1. Fork and clone this repository.
 2. Create a new branch in your fork based off the **main** branch.
-3. Run `pnpm install`, then `pnpm dev` to preview the site (this fetches the aggregated API JSON and package
-   versions first — see [README.md](../README.md)).
+3. Install the Mintlify CLI with `npm install --global mint`, then run `mint dev` to preview the site (see
+   [README.md](../README.md)).
 4. Make your changes.
 5. Commit your changes, and push them.
 6. Submit a Pull Request [here]!
 
-## Contributing to the site
+## Contributing to the docs
 
 **The issue tracker is only for issue reporting or proposals/suggestions. If you have a question, you can find us in
 our [Discord Server][discord server]**.
 
-We highly suggest [Oxlint] to be installed in your text editor or IDE of your choice to ensure builds from GitHub
-Actions do not fail.
+**_Before committing and pushing your changes, please make sure the checks CI runs pass locally:_**
 
-**_Before committing and pushing your changes, please ensure that you do not have any linting errors by running
-`pnpm lint`!_**
+```bash
+mint format     # must leave no diff
+mint validate
+pnpm install
+pnpm lint
+```
 
-- Guide pages live under [`guide/`](/guide); hand-written package landing pages live under [`packages/`](/packages).
-- The generated API reference under `api/` is never edited by hand — it's produced by `pnpm api` from JSON published
-  by [wolfstar-project/docs](https://github.com/wolfstar-project/docs).
+- Guide pages live under [`documentation/guide/`](../documentation/guide) and package landing pages under
+  [`documentation/packages/`](../documentation/packages).
+- Add every new page to the `navigation` section of [`docs.json`](../docs.json), or it will not appear on the site.
+- The API reference under `documentation/api/` is generated. Do not edit it by hand; fix the source comments in
+  [stars-components](https://github.com/wolfstar-project/stars-components) or
+  [plugins](https://github.com/wolfstar-project/plugins) instead.
+- Pull request titles follow [Conventional Commits](https://www.conventionalcommits.org), for example
+  `docs(guide): explain plugin loading order`.
 
 <!-- Link Dump -->
 
 [discord server]: https://join.wolfstar.rocks
-[here]: https://github.com/wolfstar-project/website/pulls
-[oxlint]: https://oxc.rs/docs/guide/usage/linter.html
+[here]: https://github.com/wolfstar-project/stars-components-docs/pulls
