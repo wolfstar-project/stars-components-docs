@@ -481,10 +481,9 @@ be a runtime dependency. Projects using `build.tool: 'tsc'` or `'none'` do not h
 explicit `/register` imports.
 
 <Warning>
-	If `stars build` or `stars dev` fails with `ERR_PACKAGE_PATH_NOT_EXPORTED` for a package such as
-	`@wolfstar/plugin-cache`, your project resolves an older `@wolfstar/vite-server` that injects `/register` for every
-	plugin. Upgrade to `@wolfstar/cli@2.0.2` or newer (or `@wolfstar/http-framework@5.1.2` or newer), or refresh your
-	lockfile so it resolves `@wolfstar/vite-server@0.2.2` or newer.
+	If `stars build` or `stars dev` fails with `ERR_PACKAGE_PATH_NOT_EXPORTED` for a package such as `@wolfstar/plugin-cache`, your project resolves
+	an older `@wolfstar/vite-server` that injects `/register` for every plugin. Upgrade to `@wolfstar/cli@2.0.2` or newer (or
+	`@wolfstar/http-framework@5.1.2` or newer), or refresh your lockfile so it resolves `@wolfstar/vite-server@0.2.2` or newer.
 </Warning>
 
 The framework also provides `container.logger` without `@wolfstar/logger`. Remove the deprecated package and custom
