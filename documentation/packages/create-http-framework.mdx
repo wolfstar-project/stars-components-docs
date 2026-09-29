@@ -68,26 +68,26 @@ The CLI will guide you through the following prompts:
 
 ## Options
 
-| Flag                                 | Alias | Description                                                                |
-| ------------------------------------ | ----- | -------------------------------------------------------------------------- |
-| `--overwrite`                        |       | Overwrite the target directory if it already exists                        |
-| `--no-interactive`                   |       | Skip all prompts and use defaults / flags                                  |
-| `--interactive`                      | `-i`  | Force interactive prompts even when an AI agent is detected                |
-| `--package-manager <pm>`             |       | Choose npm, yarn, pnpm, or bun                                             |
-| `--language <lang>`                  |       | Choose TypeScript (`ts`) or JavaScript (`js`)                              |
+| Flag                                 | Alias | Description                                                                                                                                               |
+| ------------------------------------ | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--overwrite`                        |       | Overwrite the target directory if it already exists                                                                                                       |
+| `--no-interactive`                   |       | Skip all prompts and use defaults / flags                                                                                                                 |
+| `--interactive`                      | `-i`  | Force interactive prompts even when an AI agent is detected                                                                                               |
+| `--package-manager <pm>`             |       | Choose npm, yarn, pnpm, or bun                                                                                                                            |
+| `--language <lang>`                  |       | Choose TypeScript (`ts`) or JavaScript (`js`)                                                                                                             |
 | `--build <tool>`                     |       | Choose `tsc6`, `tsc7`, `tsdown`, `vite`, or `vite-nitro` for TypeScript. `vite` and `vite-nitro` are experimental (see [Vite and Nitro](#vite-and-nitro)) |
-| `--lint <linter>`                    |       | Choose `none`, `eslint`, or `oxlint`                                       |
-| `--format <formatter>`               |       | Choose `none`, `prettier`, or `oxfmt`                                      |
-| `--port <number>`                    |       | Set the HTTP port (default: `3000`)                                        |
-| `--i18n` / `--no-i18n`               |       | Enable or disable `@wolfstar/plugin-i18next` scaffolding                   |
-| `--subcommands` / `--no-subcommands` |       | Enable or disable the example subcommand command                           |
-| `--testing` / `--no-testing`         |       | Enable or disable the Vitest + `@wolfstar/http-framework-test-utils` setup |
-| `--gateway` / `--no-gateway`         |       | Enable or disable `@wolfstar/plugin-gateway` scaffolding                   |
-| `--cache` / `--no-cache`             |       | Enable or disable `@wolfstar/plugin-cache` (turns `--gateway` on)          |
-| `--redis` / `--no-redis`             |       | Cache in Redis instead of memory (turns `--cache` and `--gateway` on)      |
-| `--sharder` / `--no-sharder`         |       | Enable or disable `@wolfstar/plugin-sharder` (turns `--gateway` on). Can't be combined with `--build vite-nitro` |
-| `--install` / `--no-install`         |       | Enable or disable dependency installation                                  |
-| `--help`                             | `-h`  | Print usage and exit                                                       |
+| `--lint <linter>`                    |       | Choose `none`, `eslint`, or `oxlint`                                                                                                                      |
+| `--format <formatter>`               |       | Choose `none`, `prettier`, or `oxfmt`                                                                                                                     |
+| `--port <number>`                    |       | Set the HTTP port (default: `3000`)                                                                                                                       |
+| `--i18n` / `--no-i18n`               |       | Enable or disable `@wolfstar/plugin-i18next` scaffolding                                                                                                  |
+| `--subcommands` / `--no-subcommands` |       | Enable or disable the example subcommand command                                                                                                          |
+| `--testing` / `--no-testing`         |       | Enable or disable the Vitest + `@wolfstar/http-framework-test-utils` setup                                                                                |
+| `--gateway` / `--no-gateway`         |       | Enable or disable `@wolfstar/plugin-gateway` scaffolding                                                                                                  |
+| `--cache` / `--no-cache`             |       | Enable or disable `@wolfstar/plugin-cache` (turns `--gateway` on)                                                                                         |
+| `--redis` / `--no-redis`             |       | Cache in Redis instead of memory (turns `--cache` and `--gateway` on)                                                                                     |
+| `--sharder` / `--no-sharder`         |       | Enable or disable `@wolfstar/plugin-sharder` (turns `--gateway` on). Can't be combined with `--build vite-nitro`                                          |
+| `--install` / `--no-install`         |       | Enable or disable dependency installation                                                                                                                 |
+| `--help`                             | `-h`  | Print usage and exit                                                                                                                                      |
 
 ## Non-interactive / AI agent mode
 
