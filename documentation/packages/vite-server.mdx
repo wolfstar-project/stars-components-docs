@@ -78,7 +78,9 @@ export async function build(config: ResolvedStarsConfig, context: BuilderContext
 ```
 
 The host supplies `importFromProject` (project-relative dependency loading with diagnostics) and
-`pluginRegistrations` (the entry transform that activates installed plugins). This explicit boundary keeps the
+`pluginRegistrations` (the entry transform that activates installed plugins). Since `0.2.2`, `pluginRegistrations`
+only injects `<name>/register` for `@wolfstar/plugin-*` dependencies whose `exports` map defines `./register`, so
+library plugins such as `@wolfstar/plugin-cache` no longer fail with `ERR_PACKAGE_PATH_NOT_EXPORTED`. This explicit boundary keeps the
 integration independent of the CLI and framework runtimes.
 
 `watch()` and `close()` implement the shared builder lifecycle. `start`, `success`, `failure`, and `log` events

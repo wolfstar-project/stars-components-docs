@@ -192,6 +192,13 @@ automatically in bundler builds. `stars` injects its `/register` side-effect ent
 so projects do not need to maintain bare imports such as `import '@wolfstar/plugin-i18next/register'`. Packages used
 only for development are intentionally not activated from `devDependencies`.
 
+`stars` injects `<name>/register` only when the installed package's `exports` map defines a `./register` subpath.
+Library plugins without that entrypoint, such as `@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway`, and
+`@wolfstar/plugin-sharder`, are skipped, and you import them directly. A package that is not installed, or that
+declares no `exports`, is still injected so a missing install surfaces as a resolution error. If a build fails with
+`ERR_PACKAGE_PATH_NOT_EXPORTED` on a library plugin, upgrade to `@wolfstar/cli@2.0.2` or newer, or refresh your
+lockfile so it resolves `@wolfstar/vite-server@0.2.2` or newer.
+
 ```typescript
 export default defineConfig({
 	tsdown: { dts: true }
