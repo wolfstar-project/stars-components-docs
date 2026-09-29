@@ -101,8 +101,8 @@ export async function dev(config: ResolvedStarsConfig) {
 }
 ```
 
-A Nitro instance is created upfront and handed to `nitro/vite` through its `_nitro` option — the same extension
-point framework integrations like Nuxt use to own the instance. Two things follow from this:
+`createNitroServer` creates a Nitro instance upfront and hands it to `nitro/vite` through its `_nitro` option. This is
+the same extension point framework integrations like Nuxt use to own the instance. Two things follow from this:
 
 - `server.fetch(request)` dispatches straight through Nitro's router without a listening socket. Useful for tests
   and for embedding the dev server behind another transport.
