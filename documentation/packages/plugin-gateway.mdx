@@ -43,10 +43,7 @@ sharding, reconnects, and session resumes. Actions turn dispatches into events c
 [`@wolfstar/plugin-cache`](https://npmx.dev/package/@wolfstar/plugin-cache) cache and fetch missing data through
 `@discordjs/core`, which is also available as `client.api`.
 
-<Note>
-	A gateway connection is long-lived. A `GatewayClient` needs a persistent process, unlike a bot that only serves HTTP
-	interactions.
-</Note>
+<Note>A gateway connection is long-lived. A `GatewayClient` needs a persistent process, unlike a bot that only serves HTTP interactions.</Note>
 
 ## Requirements
 
@@ -91,22 +88,22 @@ underlying `WebSocketManager`, for example to send presence updates.
 
 `GatewayClient` accepts every `Client` option, plus:
 
-| Option                | Default     | Description                                                                                                         |
-| --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------- |
-| `intents`             | None        | The gateway intents.                                                                                                |
-| `cache`               | `undefined` | A `Cache` from `@wolfstar/plugin-cache`. See [Caching](#caching).                                                   |
-| `makeCache`           | `undefined` | A function returning a store per entity kind, or `null` not to cache it. Takes precedence over `cache`.            |
-| `policies`            | `undefined` | Per-entity `filter` and `ttl` rules applied to dispatches and managers.                                             |
-| `cacheErrors`         | `"miss"`    | `"miss"` treats a failing store as a cache miss reported through `cacheError`. `"throw"` rejects instead.           |
-| `shardCount`          | `null`      | Total shards across every process. `null` uses Discord's recommendation.                                            |
-| `shardIds`            | `null`      | The shards this client runs, as an array or a `{ start, end }` range. `null` runs all of them.                      |
-| `gateway`             | `{}`        | Extra `@discordjs/ws` `WebSocketManager` options, such as `compression` or `initialPresence`.                       |
-| `cacheFailure`        | `"skip"`    | On a cache read or write failure, `"skip"` drops the event and `"emitUncached"` emits it from the payload.          |
-| `dispatchTimeout`     | `30_000`    | Milliseconds after which a dispatch still processing is reported as a `DispatchTimeoutError`. `null` disables it.   |
+| Option                | Default     | Description                                                                                                                     |
+| --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `intents`             | None        | The gateway intents.                                                                                                            |
+| `cache`               | `undefined` | A `Cache` from `@wolfstar/plugin-cache`. See [Caching](#caching).                                                               |
+| `makeCache`           | `undefined` | A function returning a store per entity kind, or `null` not to cache it. Takes precedence over `cache`.                         |
+| `policies`            | `undefined` | Per-entity `filter` and `ttl` rules applied to dispatches and managers.                                                         |
+| `cacheErrors`         | `"miss"`    | `"miss"` treats a failing store as a cache miss reported through `cacheError`. `"throw"` rejects instead.                       |
+| `shardCount`          | `null`      | Total shards across every process. `null` uses Discord's recommendation.                                                        |
+| `shardIds`            | `null`      | The shards this client runs, as an array or a `{ start, end }` range. `null` runs all of them.                                  |
+| `gateway`             | `{}`        | Extra `@discordjs/ws` `WebSocketManager` options, such as `compression` or `initialPresence`.                                   |
+| `cacheFailure`        | `"skip"`    | On a cache read or write failure, `"skip"` drops the event and `"emitUncached"` emits it from the payload.                      |
+| `dispatchTimeout`     | `30_000`    | Milliseconds after which a dispatch still processing is reported as a `DispatchTimeoutError`. `null` disables it.               |
 | `sessionStore`        | `undefined` | A `GatewaySessionStore` that keeps shard sessions across restarts. See [Resuming sessions](#resuming-sessions-across-restarts). |
-| `sessionStoreTimeout` | `5_000`     | Milliseconds a shard waits for `sessionStore` to read its session before identifying. `null` waits forever.         |
-| `partials`            | `[]`        | The structures to build partially for uncached entities, such as `Partials.Message` or `Partials.User`.             |
-| `waitGuildTimeout`    | `15_000`    | Milliseconds `clientReady` waits for initially unavailable guilds before emitting anyway.                           |
+| `sessionStoreTimeout` | `5_000`     | Milliseconds a shard waits for `sessionStore` to read its session before identifying. `null` waits forever.                     |
+| `partials`            | `[]`        | The structures to build partially for uncached entities, such as `Partials.Message` or `Partials.User`.                         |
+| `waitGuildTimeout`    | `15_000`    | Milliseconds `clientReady` waits for initially unavailable guilds before emitting anyway.                                       |
 
 ### Access the client from pieces
 
@@ -437,12 +434,12 @@ try {
 
 These errors extend `GatewayError` and carry extra data:
 
-| Error                        | When                                                                          | Extra properties                                 |
-| ---------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------ |
-| `DispatchTimeoutError`       | A dispatch is still processing after `dispatchTimeout`. It is not cancelled.  | `type`, `shardId`, `partition`, `timeout`        |
-| `GuildMembersTimeoutError`   | A member request receives no chunk for `time` milliseconds.                   | `guildId`, `nonce`, `timeout`                    |
-| `GuildMembersRateLimitError` | Discord rate limits a member request.                                         | `guildId`, `nonce`, `retryAfter`                 |
-| `GatewaySessionStoreError`   | A `sessionStore` read or write fails or times out.                            | `operation`, `shardId`, `cause`                  |
+| Error                        | When                                                                         | Extra properties                          |
+| ---------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- |
+| `DispatchTimeoutError`       | A dispatch is still processing after `dispatchTimeout`. It is not cancelled. | `type`, `shardId`, `partition`, `timeout` |
+| `GuildMembersTimeoutError`   | A member request receives no chunk for `time` milliseconds.                  | `guildId`, `nonce`, `timeout`             |
+| `GuildMembersRateLimitError` | Discord rate limits a member request.                                        | `guildId`, `nonce`, `retryAfter`          |
+| `GatewaySessionStoreError`   | A `sessionStore` read or write fails or times out.                           | `operation`, `shardId`, `cause`           |
 
 The client reports dispatch, cache, and session store failures through its `error` event.
 
