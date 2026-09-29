@@ -4,7 +4,7 @@ description: Index of every @wolfstar package, grouped by core framework, infras
 ---
 
 Choose a focused utility or combine the framework packages into a complete HTTP-only Discord bot stack. Every package is
-public on npm and supports Node.js 20 or newer.
+public on npm and supports Node.js 20 or newer, except `@wolfstar/plugin-gateway`, which requires Node.js 24.17 or newer.
 
 <Info>
 	Package guides focus on setup and practical examples. For every exported class, function, interface, and type, use the [generated API
@@ -93,6 +93,9 @@ public on npm and supports Node.js 20 or newer.
 <CardGroup cols={2}>
 	<Card title="@wolfstar/plugin-api" href="/documentation/packages/plugin-api">
 		Expose a standalone REST API server alongside HTTP Framework interactions.
+	</Card>
+	<Card title="@wolfstar/plugin-gateway" href="/documentation/packages/plugin-gateway">
+		Add gateway events, cached structures, and API managers to HTTP Framework bots.
 	</Card>
 	<Card title="@wolfstar/plugin-i18next" href="/documentation/packages/plugin-i18next">
 		Add i18next-powered internationalization to HTTP Framework interactions.
