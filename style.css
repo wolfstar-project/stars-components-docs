@@ -377,46 +377,25 @@ body:has(.ws-home) #navbar {
 
 /* <InstallPackage /> — snippets/install-package.jsx */
 .ws-install {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
 	margin: 1rem 0;
-	overflow: hidden;
+	padding: 0.75rem 1rem;
 	border: 1px solid rgb(128 128 128 / 0.3);
 	border-radius: 0.75rem;
 	background: rgb(128 128 128 / 0.06);
 }
 
-.ws-install-tabs {
-	display: flex;
-	overflow-x: auto;
-	border-bottom: 1px solid rgb(128 128 128 / 0.3);
-}
-
-.ws-install-tab {
-	flex: none;
-	padding: 0.5rem 0.875rem;
-	border-bottom: 2px solid transparent;
-	background: none;
-	color: inherit;
-	font-size: 0.8125rem;
-	font-weight: 500;
-	opacity: 0.65;
-	cursor: pointer;
-}
-
-.ws-install-tab:hover {
-	opacity: 1;
-}
-
-.ws-install-tab[aria-selected='true'] {
-	border-bottom-color: #5865f2;
-	opacity: 1;
-}
-
 .ws-install-body {
 	display: flex;
+	flex: 1;
+	min-width: 0;
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.75rem;
-	padding: 0.75rem 1rem;
 }
 
 .ws-install-command {
@@ -431,17 +410,99 @@ body:has(.ws-home) #navbar {
 	user-select: none;
 }
 
-.ws-install-copy {
+.ws-install-copy,
+.ws-install-trigger {
 	flex: none;
-	padding: 0.125rem 0.5rem;
 	border: 1px solid rgb(128 128 128 / 0.3);
-	border-radius: 0.375rem;
+	border-radius: 0.5rem;
 	background: none;
 	color: inherit;
-	font-size: 0.75rem;
 	cursor: pointer;
 }
 
-.ws-install-copy:hover {
+.ws-install-copy {
+	padding: 0.125rem 0.5rem;
+	font-size: 0.75rem;
+}
+
+.ws-install-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.25rem 0.625rem;
+	font-size: 0.8125rem;
+	font-weight: 500;
+}
+
+.ws-install-copy:hover,
+.ws-install-trigger:hover,
+.ws-install-trigger[aria-expanded='true'] {
 	background: rgb(128 128 128 / 0.15);
+}
+
+.ws-install-select {
+	flex: none;
+}
+
+.ws-install-badge {
+	display: inline-flex;
+	width: 1.125rem;
+	height: 1.125rem;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.25rem;
+	background: #5865f2;
+	color: #fff;
+	font-size: 0.6875rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.ws-install-chevron {
+	font-size: 0.75rem;
+	transition: transform 0.15s;
+}
+
+.ws-install-chevron-open {
+	transform: rotate(180deg);
+}
+
+.ws-install-menu {
+	position: absolute;
+	top: calc(100% + 0.25rem);
+	right: 0;
+	z-index: 20;
+	min-width: 10rem;
+	margin: 0;
+	padding: 0.25rem;
+	list-style: none;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.625rem;
+	background: var(--ws-surface, #29292e);
+	color: var(--ws-heading, #e5e5df);
+	box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
+}
+
+.ws-install-option {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.375rem 0.5rem;
+	border-radius: 0.375rem;
+	background: none;
+	color: inherit;
+	font-size: 0.8125rem;
+	text-align: left;
+	cursor: pointer;
+}
+
+.ws-install-option:hover,
+.ws-install-menu [aria-selected='true'] .ws-install-option {
+	background: rgb(128 128 128 / 0.2);
+}
+
+.ws-install-check {
+	margin-left: auto;
+	color: #ff7a6a;
 }

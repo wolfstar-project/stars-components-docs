@@ -10,7 +10,7 @@
  *   <InstallPackage packages="@wolfstar/cli" type="exec" />
  *
  * `type`: "add" (default) | "dev" (dev dependency) | "exec" (run a CLI once, no install).
- * The selected package manager is remembered across pages (localStorage).
+ * A dropdown (like npmx.dev) picks the package manager, which is remembered across pages (localStorage).
  */
 export const InstallPackage = ({ packages, type = 'add' }) => {
 	const list = (Array.isArray(packages) ? packages : String(packages).split(/\s+/)).filter(Boolean);
@@ -36,7 +36,9 @@ export const InstallPackage = ({ packages, type = 'add' }) => {
 
 	const STORAGE_KEY = 'ws-install-package-manager';
 	const [selected, setSelected] = useState(managers[0].id);
+	const [open, setOpen] = useState(false);
 	const [copied, setCopied] = useState(false);
+	const rootRef = useRef(null);
 
 	useEffect(() => {
 		try {
@@ -45,10 +47,27 @@ export const InstallPackage = ({ packages, type = 'add' }) => {
 		} catch {}
 	}, []);
 
+	useEffect(() => {
+		if (!open) return;
+		const onPointerDown = (event) => {
+			if (rootRef.current && !rootRef.current.contains(event.target)) setOpen(false);
+		};
+		const onKeyDown = (event) => {
+			if (event.key === 'Escape') setOpen(false);
+		};
+		document.addEventListener('pointerdown', onPointerDown);
+		document.addEventListener('keydown', onKeyDown);
+		return () => {
+			document.removeEventListener('pointerdown', onPointerDown);
+			document.removeEventListener('keydown', onKeyDown);
+		};
+	}, [open]);
+
 	const active = managers.find((manager) => manager.id === selected) ?? managers[0];
 
 	const select = (id) => {
 		setSelected(id);
+		setOpen(false);
 		setCopied(false);
 		try {
 			window.localStorage.setItem(STORAGE_KEY, id);
@@ -64,21 +83,7 @@ export const InstallPackage = ({ packages, type = 'add' }) => {
 	};
 
 	return (
-		<div className="ws-install">
-			<div className="ws-install-tabs" role="tablist" aria-label="Package manager">
-				{managers.map((manager) => (
-					<button
-						key={manager.id}
-						type="button"
-						role="tab"
-						aria-selected={manager.id === active.id}
-						className="ws-install-tab"
-						onClick={() => select(manager.id)}
-					>
-						{manager.id}
-					</button>
-				))}
-			</div>
+		<div className="ws-install" ref={rootRef}>
 			<div className="ws-install-body">
 				<code className="ws-install-command">
 					<span className="ws-install-prompt" aria-hidden="true">
@@ -89,6 +94,43 @@ export const InstallPackage = ({ packages, type = 'add' }) => {
 				<button type="button" className="ws-install-copy" onClick={copy} aria-label="Copy command">
 					{copied ? 'Copied' : 'Copy'}
 				</button>
+			</div>
+			<div className="ws-install-select">
+				<button
+					type="button"
+					className="ws-install-trigger"
+					aria-haspopup="listbox"
+					aria-expanded={open}
+					aria-label="Package manager"
+					onClick={() => setOpen(!open)}
+				>
+					<span className="ws-install-badge" aria-hidden="true">
+						{active.id.slice(0, 1)}
+					</span>
+					{active.id}
+					<span className={open ? 'ws-install-chevron ws-install-chevron-open' : 'ws-install-chevron'} aria-hidden="true">
+						▾
+					</span>
+				</button>
+				{open && (
+					<ul className="ws-install-menu" role="listbox" aria-label="Package manager">
+						{managers.map((manager) => (
+							<li key={manager.id} role="option" aria-selected={manager.id === active.id}>
+								<button type="button" className="ws-install-option" onClick={() => select(manager.id)}>
+									<span className="ws-install-badge" aria-hidden="true">
+										{manager.id.slice(0, 1)}
+									</span>
+									{manager.id}
+									{manager.id === active.id && (
+										<span className="ws-install-check" aria-hidden="true">
+											✓
+										</span>
+									)}
+								</button>
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 		</div>
 	);
