@@ -38,8 +38,8 @@ bun add @wolfstar/schema
 `@wolfstar/schema` owns the typed `stars.config.*` schema, the `defineConfig` helper, and the loader that discovers,
 validates, and resolves `stars.config.{ts,mts,cts,js,mjs,cjs}`. It sits between
 [`@wolfstar/http-framework`](/documentation/packages/http-framework) and
-[`@wolfstar/cli`](/documentation/packages/cli) — both depend on it, neither depends on the other — the same way
-`@nuxt/schema` sits between `nuxt` and `@nuxt/cli`.
+[`@wolfstar/cli`](/documentation/packages/cli), the same way `@nuxt/schema` sits between `nuxt` and `@nuxt/cli`.
+Both depend on it, and neither depends on the other.
 
 The package is intentionally side-effect free: importing it from a `stars.config.ts` file never starts a bot or pulls
 in the CLI runtime.
