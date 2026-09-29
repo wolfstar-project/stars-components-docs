@@ -1,0 +1,337 @@
+---
+title: '@wolfstar/plugin-cache'
+description: 'Cache Discord gateway entities in memory or in Redis behind one storage-agnostic interface.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-cache
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-cache
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-cache
+```
+
+```bash bun
+bun add @wolfstar/plugin-cache
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-cache"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+`@wolfstar/plugin-cache` is the entity cache behind the managers of
+[`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway). Use it when your
+bot receives gateway dispatches and you want to keep guilds, channels, members, messages, and other entities around between
+events.
+
+A `Cache` holds one Map-like `EntityCache` per Discord entity kind (`guilds`, `users`, `channels`, `messages`, `members`,
+`roles`, and so on). It stores raw, JSON-serializable API data only. The gateway managers build structures on top of that
+data, so the same data can live in a `Map` or in Redis. Swapping the store never changes your call sites.
+
+| Store                 | Backed by | Extras                                                    |
+| --------------------- | --------- | --------------------------------------------------------- |
+| `createInMemoryCache` | `Map`s    | Optional LRU bound, global or per entity                  |
+| `createRedisCache`    | Redis     | Per-entity TTL, optional gzip or brotli compression       |
+| Your own              | Anything  | Implement `Cache`. Every method may return a promise.     |
+
+The package is a storage library, not an HTTP Framework plugin. Its `@wolfstar/plugin-cache/register` entrypoint is a no-op
+that exists only so the [Stars CLI](/documentation/packages/cli) can import it like every other `@wolfstar/plugin-*` package.
+You pass the cache to `GatewayClient` explicitly.
+
+## Usage with `GatewayClient`
+
+Pass a cache to the `cache` option of `GatewayClient`. The client writes every dispatch into it:
+
+```ts
+import { createInMemoryCache } from '@wolfstar/plugin-cache';
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { GatewayIntentBits } from 'discord-api-types/v10';
+
+const client = new GatewayClient({
+	intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMessages,
+	// Keep at most 1000 messages. Every other entity cache is unbounded.
+	cache: createInMemoryCache({ maxSize: { messages: 1_000 } })
+});
+```
+
+`GatewayClient` reports cache read and write failures as an `error` event.
+
+## Usage without the gateway client
+
+Use `attachCacheToGateway` to feed the cache from any gateway dispatch source:
+
+```ts
+import { attachCacheToGateway, createInMemoryCache } from '@wolfstar/plugin-cache';
+
+const cache = createInMemoryCache();
+const detach = attachCacheToGateway(gateway, cache, {
+	onError: (error) => console.error(error)
+});
+
+const guild = await cache.guilds?.get(guildId);
+```
+
+To apply a single payload yourself, call `applyGatewayDispatch`:
+
+```ts
+import { applyGatewayDispatch } from '@wolfstar/plugin-cache';
+
+await applyGatewayDispatch(cache, payload, { clientUserId: botId });
+```
+
+`applyGatewayDispatch` handles cascading deletes. A `CHANNEL_DELETE` drops that channel's messages, and a `GUILD_DELETE`
+drops every entity of that guild. It relies only on the `Cache` interface, so custom stores get the cascades for free.
+
+Reactions and poll votes update the cached message's counts, `me`, and `me_voted` flags. Their dispatches only carry the
+voter's ID, so pass the bot's user ID as `clientUserId` to set the `me` flags correctly. The cache ignores a reaction or vote
+on a message it does not hold.
+
+`applyGatewayDispatch` and `applyCacheOperations` resolve to one result per entry written or deleted:
+`{ entity, key, type, existing, added }`. You get the previous state without a second read.
+
+## In-memory cache
+
+`createInMemoryCache` stores each entity kind in a `MemoryEntityCache`. Set `maxSize` to a number to bound every entity cache,
+or to an object to bound specific ones. When an entity cache is full, it evicts the least recently used entry.
+
+```ts
+import { createInMemoryCache } from '@wolfstar/plugin-cache';
+
+const cache = createInMemoryCache({
+	// Only cache these entity kinds.
+	entities: ['guilds', 'channels', 'roles', 'users', 'messages'],
+	maxSize: { messages: 1_000 },
+	// Time-to-live in milliseconds, per entity cache.
+	ttl: { messages: 3_600_000 },
+	// Remove expired entries every minute.
+	sweepInterval: 60_000,
+	// Do not cache bots.
+	policies: { users: { filter: (user) => !user.bot } }
+});
+```
+
+Every entity cache is optional. An entity kind the cache does not hold is not cached, and an empty cache is a supported
+configuration.
+
+## Redis cache
+
+`createRedisCache` accepts any client that implements the commands listed in `RedisClientLike`. An
+[`ioredis`](https://github.com/redis/ioredis) `Redis` or `Cluster` instance works as is.
+
+```ts
+import { createRedisCache } from '@wolfstar/plugin-cache';
+import { Redis } from 'ioredis';
+
+const cache = createRedisCache({
+	redis: new Redis(process.env.REDIS_URL!),
+	prefix: 'my-bot:cache',
+	compression: 'gzip',
+	compressionThreshold: 1024,
+	// Time-to-live in seconds, per entity cache.
+	ttl: { guilds: 60 * 60, users: 30 * 60 }
+});
+```
+
+| Option                 | Default            | Description                                                                          |
+| ---------------------- | ------------------ | ------------------------------------------------------------------------------------ |
+| `redis`                | —                  | The client to use.                                                                   |
+| `prefix`               | `'wolfstar:cache'` | Prefix of every key. Entries live at `<prefix>:<entity>:<key>`.                      |
+| `compression`          | `'none'`           | `'gzip'`, `'brotli'`, or `'none'`.                                                   |
+| `compressionThreshold` | `1024`             | Minimum serialized size, in bytes, for a value to be compressed.                     |
+| `codec`                | `jsonCodec()`      | Encodes and decodes values before compression. See [Codecs](#codecs).                |
+| `legacyCodecs`         | `[]`               | Former `codec` values still tagging stored entries. See [Codecs](#codecs).           |
+| `ttl`                  | `{}`               | Time-to-live in seconds, per entity cache. Entity caches left out never expire.      |
+| `indexGuilds`          | `true`             | Index guild-scoped entity caches by guild. See [Guild indexes](#guild-indexes).      |
+
+`createRedisCache` also accepts the same `entities` and `policies` options as `createInMemoryCache`.
+
+<Note>
+	The `ttl` options use different units depending on the store. `createRedisCache` takes seconds, while `createInMemoryCache` and
+	cache policies take milliseconds.
+</Note>
+
+Compressed values are tagged, so turning compression on or off never breaks reading values already stored.
+
+### Atomic writes
+
+Each entity cache keeps a sorted set index at `<prefix>:<entity>:@index`. The `keys`, `entries`, `getSize`, and `clear`
+methods use it. `createRedisCache` writes and deletes a value and its index entry in one `MULTI` transaction, so the two never
+drift apart. With a `ttl`, every write also prunes expired index entries, so the index stays bounded even when nothing
+enumerates it. Your client must support `multi()`, which `ioredis` does.
+
+### Errors
+
+A missing value is not an error: `get` resolves to `undefined`. A value that cannot be read back, such as invalid JSON or
+compressed bytes that fail to decompress, rejects with a `CacheValueError`. The error carries the Redis `key` and the original
+error as `cause`. Connection errors are not wrapped. They propagate as the client throws them.
+
+### Guild indexes
+
+With `indexGuilds` enabled, the entity caches holding guild data (channels, messages, members, roles, and others) also keep
+one sorted set per guild at `<prefix>:<entity>:@guild:<guildId>`. A `GUILD_DELETE` then reads the guild's keys from that set.
+Without it, the cache scans every entry of every entity cache, which on a large cache means reading and decompressing every
+stored message.
+
+Each write costs one extra index write, and each delete costs one extra read. When the transaction exposes `pexpire`, as
+`ioredis` does, the guild indexes of an entity cache with a `ttl` expire with their entries.
+
+<Warning>
+	Entries written while `indexGuilds` was off are not indexed. If you turn it on for a populated cache, a `GUILD_DELETE`
+	leaves those entries behind until they expire or you clear the cache.
+</Warning>
+
+## Codecs
+
+A `CacheCodec` controls how `createRedisCache` encodes values before compressing them. The default is `jsonCodec()`.
+
+For a denser, still lossless format, use `msgpackCodec()` from the `@wolfstar/plugin-cache/msgpack` subpath. It requires the
+optional peer dependency [`msgpackr`](https://github.com/kriszyp/msgpackr) and natively preserves `bigint` and binary values.
+
+```ts
+import { createRedisCache } from '@wolfstar/plugin-cache';
+import { msgpackCodec } from '@wolfstar/plugin-cache/msgpack';
+
+const cache = createRedisCache({ redis, codec: msgpackCodec() });
+```
+
+Encoded values are tagged with the codec's name. Switching to a new codec never breaks reading entries written with the
+default `jsonCodec()`. Switching away from a non-default codec is different, because nothing else records which codec wrote
+an entry. List the previous codec in `legacyCodecs` to keep reading its entries:
+
+```ts
+import { createRedisCache, jsonCodec } from '@wolfstar/plugin-cache';
+import { msgpackCodec } from '@wolfstar/plugin-cache/msgpack';
+
+const cache = createRedisCache({ redis, codec: jsonCodec(), legacyCodecs: [msgpackCodec()] });
+```
+
+To support another format, implement `CacheCodec` with a `name`, an `encode` method, and a `decode` method. The names `'gz'`,
+`'br'`, and `'b64'` are reserved because they collide with the compression and raw-binary markers. A codec named `'json'` is
+always treated as the untagged default.
+
+## Gateway sessions
+
+`createRedisSessionStore` stores gateway shard sessions for the `sessionStore` option of `GatewayClient`. A restarted process
+then resumes its sessions instead of identifying again. The store only needs `get`, `set`, and `del`, so it can share the
+cache's Redis client:
+
+```ts
+import { createRedisCache, createRedisSessionStore } from '@wolfstar/plugin-cache';
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { Redis } from 'ioredis';
+
+const redis = new Redis(process.env.REDIS_URL!);
+
+const client = new GatewayClient({
+	intents,
+	cache: createRedisCache({ redis }),
+	sessionStore: createRedisSessionStore({ redis, prefix: 'my-bot:sessions' })
+});
+```
+
+| Option   | Default               | Description                                                                         |
+| -------- | --------------------- | ----------------------------------------------------------------------------------- |
+| `redis`  | —                     | The client to use.                                                                  |
+| `prefix` | `'wolfstar:sessions'` | Prefix of every key. Sessions live at `<prefix>:<shardId>` as JSON.                 |
+| `ttl`    | `600`                 | Seconds a session is kept after its last write. Set `null` to keep it until dropped. |
+
+Discord only allows resuming a session for a limited time after its connection closes. The `ttl` spares a restart from trying
+to resume a session that is long gone, and keeps Redis tidy. The gateway writes the session on every dispatch, and each write
+pushes the expiration back. Only a shard that receives no dispatch for longer than the `ttl` identifies again on the next
+restart. A stored value that is not valid JSON rejects with a `CacheValueError`, which the gateway reports before identifying.
+
+Any object implementing `GatewaySessionStore` works as a session store:
+
+```ts
+interface GatewaySessionStore {
+	get(shardId: number): Awaitable<GatewaySessionInfo | null>;
+	// `null` once the session can no longer be resumed.
+	set(shardId: number, info: GatewaySessionInfo | null): Awaitable<void>;
+}
+```
+
+`GatewaySessionInfo` has the same shape as the `SessionInfo` type of `@discordjs/ws`.
+
+## Cache policies and custom factories
+
+A `CachePolicy` decides what gets cached and for how long, entry by entry:
+
+- `filter` returns `false` to skip a write. It also deletes an entry already cached under the same key, so the cache never
+  serves outdated data.
+- `ttl` returns the entry's time-to-live in milliseconds, or `null` for none.
+
+Use `withPolicy(store, policy)` to apply a policy to a single store. Use `createCache` with `makeCache` to choose a store per
+entity kind. Return `null` to skip an entity kind entirely:
+
+```ts
+import { createCache, MemoryEntityCache } from '@wolfstar/plugin-cache';
+
+const cache = createCache({
+	makeCache: (entity) => (entity === 'messages' ? null : new MemoryEntityCache()),
+	policies: { roles: { ttl: () => 600_000 } }
+});
+```
+
+## Custom stores
+
+Implement `EntityCache` to back an entity kind with any storage:
+
+```ts
+interface EntityCache<Raw> {
+	// Optional: `true` when no method ever returns a promise.
+	readonly synchronous?: boolean;
+	get(key: string): Awaitable<Raw | undefined>;
+	// `ttl` in milliseconds, `null` for none, `undefined` for the store's default.
+	set(key: string, value: Raw, options?: { ttl?: number | null }): Awaitable<void>;
+	// Shallow-merges `data` into the entry unless `overwrite`, and returns both.
+	upsert(
+		key: string,
+		data: Partial<Raw>,
+		options?: { overwrite?: boolean; ttl?: number | null }
+	): Awaitable<{ existing?: Raw; added: Raw }>;
+	has(key: string): Awaitable<boolean>;
+	delete(key: string): Awaitable<boolean>;
+	clear(): Awaitable<void>;
+	getSize(): Awaitable<number>;
+	// Optional: `null` when the store does not index its entries by guild.
+	deleteGuild?(guildId: string): Awaitable<number | null>;
+}
+
+// Optional extension, see `isIterableCache`.
+interface IterableEntityCache<Raw> extends EntityCache<Raw> {
+	keys(): Awaitable<string[]>;
+	values(): Awaitable<Raw[]>;
+	entries(): Awaitable<[key: string, value: Raw][]>;
+}
+```
+
+Enumerating a store is optional, since a remote store may not do it cheaply. `keys`, `values`, and `entries` return snapshots
+rather than live iterators, so synchronous and asynchronous stores behave the same. If your store implements `deleteGuild`,
+`applyGatewayDispatch` skips the scans of a `GUILD_DELETE`. When `deleteGuild` is missing or resolves to `null`, the scans run
+instead. A store that cannot enumerate its entries is not scanned at all.
+
+### The `synchronous` flag
+
+An `Awaitable` cannot be told apart from a promise without calling the method. A store sets `synchronous` to `true` to tell
+consumers that it never returns a promise. `createInMemoryCache` sets it to `true` on its `MemoryEntityCache`s, and
+`createRedisCache` sets it to `false` on its `RedisEntityCache`s. A store that leaves it out is treated as asynchronous.
+
+The `cached` accessors of `@wolfstar/plugin-gateway` rely on this flag to read the cache without awaiting it.
+
+## Keys
+
+Entities are keyed by their ID. Entities scoped to a guild or a channel use `guildId:id` or `channelId:id` keys. Build them
+with the helpers the package exports, such as `memberKey`, `messageKey`, and `roleKey`.
