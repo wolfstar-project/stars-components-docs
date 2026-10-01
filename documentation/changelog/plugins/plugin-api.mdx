@@ -6,6 +6,23 @@ description: 'Changelog for @wolfstar/plugin-api: the standalone REST API server
 
 Changes to [`@wolfstar/plugin-api`](/documentation/packages/plugin-api). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## 2026-10-01
+
+### Breaking changes
+
+- **`2.0.0`: Sapphire 8.3.1 parity** — The plugin now matches `@sapphire/plugin-api` 8.3.1, except for authentication. `ApiServer` is renamed `Server`, `ApiServerOptions`/`ApiServerEvents`/`ApiServerEvent` are `ServerOptions`/`ServerEvents`/`ServerEvent`, `ApiPlugin` is `Api`, and `HttpMethod` is `MethodName`. Use `response.status(code).json(data)` instead of `json(data, code)`. `readBodyJson()` returns `unknown` and takes its limit from `maximumBodyLength`. `request.query` is a plain record. A route with no methods now answers `404` instead of defaulting to `GET`, and `OPTIONS` answers `200` with an empty body instead of `204`. Requires Node.js `>=20.18.1`. See [Migrating from 1.x](/documentation/packages/plugin-api#migrating-from-1x). ([plugins#161](https://github.com/wolfstar-project/plugins/pull/161))
+
+### New features
+
+- **Cookies** — The new `cookies` middleware exposes `response.cookies`, a `CookieStore` that writes `Set-Cookie` headers. See [Cookies](/documentation/packages/plugin-api#cookies).
+- **Body readers** — `readBody*`, `readValidatedBody*`, and `asWeb()` on `ApiRequest`. See [Reading the request](/documentation/packages/plugin-api#reading-the-request).
+- **More response helpers and `HttpCodes`** — The full `ApiResponse` helper set (`created`, `notFound`, `text`, `html`, and more), plus a `HttpCodes` re-export.
+- **`ServerOptions.prefix`, per-route `maximumBodyLength`, and `version`** — Prefix every route path, override the body limit per route, and read the installed version from the `version` export.
+
+### Bug fixes
+
+- Router path, route removal, and `supportedMethods` bugs inherited from upstream are fixed. `Server#connect()` now rejects instead of throwing uncaught when the port is in use, and malformed `Cookie` headers no longer crash parsing.
+
 ## 2026-09-24
 
 ### Updates
