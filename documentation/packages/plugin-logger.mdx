@@ -34,8 +34,8 @@ bun add @wolfstar/plugin-logger
 
 `@wolfstar/plugin-logger` replaces the built-in console logger of [`@wolfstar/http-framework`](/documentation/packages/http-framework)
 with one that fans every entry out to a list of transports. It implements the same `ILogger` contract, so code that
-already writes through `container.logger` keeps working. It supersedes the deprecated
-[`@wolfstar/logger`](/documentation/packages/logger).
+already writes through `container.logger` keeps working. It replaces
+`@wolfstar/logger`, which has been removed.
 
 Every logging backend is an optional peer dependency. Install only the ones you use:
 
