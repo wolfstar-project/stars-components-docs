@@ -1,0 +1,422 @@
+---
+title: '@wolfstar/http-framework-utilities'
+description: 'Type guards, app_permissions helpers, MessageBuilder, PaginatedMessage, MessagePrompter, and session stores for @wolfstar/http-framework bots.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/http-framework-utilities
+```
+
+```bash pnpm
+pnpm add @wolfstar/http-framework-utilities
+```
+
+```bash yarn
+yarn add @wolfstar/http-framework-utilities
+```
+
+```bash bun
+bun add @wolfstar/http-framework-utilities
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework-utilities"></Card>
+	<Card
+		title="Source"
+		icon="github"
+		horizontal
+		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-utilities"
+	></Card>
+</CardGroup>
+
+## Description
+
+`@wolfstar/http-framework-utilities` is the `@wolfstar/http-framework` counterpart of
+[`@sapphire/discord.js-utilities`](https://npmx.dev/package/@sapphire/discord.js-utilities). It provides:
+
+- Type guards over raw channel and interaction payloads.
+- Permission helpers based on the interaction's `app_permissions`.
+- A `MessageBuilder` that validates bodies against Discord's limits.
+- `PaginatedMessage`, with lazy and embed-field variants.
+- `MessagePrompter`, with `confirm` and `number` prompts.
+- Pluggable session stores for paginated messages and prompts.
+
+Everything is built for HTTP interactions instead of a gateway connection and its caches. The package re-exports
+everything from [`@wolfstar/discord-utilities`](/documentation/packages/discord-utilities), so a single import covers
+both packages.
+
+`@wolfstar/http-framework` and `discord-api-types` are peer dependencies.
+
+## Setup
+
+Import the `/register` entrypoint in your setup module, before you construct the client:
+
+```typescript
+import '@wolfstar/http-framework-utilities/register';
+```
+
+This registers the `wolfstar-pm` (paginated message) and `wolfstar-mp` (message prompter) interaction handlers on
+every process, not only on the process that first calls `PaginatedMessage#run` or `MessagePrompter#run`.
+
+<Warning>
+	This import is required, including when you build with the `stars` CLI. CLI [auto-registration](/documentation/guide/plugins) only
+	discovers `@wolfstar/plugin-*` packages, so it does not register `@wolfstar/http-framework-utilities`.
+</Warning>
+
+## Usage
+
+### Type guards and permissions
+
+```typescript
+import { canSendEmbeds, isTextBasedChannel } from '@wolfstar/http-framework-utilities';
+import type { Interactions } from '@wolfstar/http-framework';
+
+function canReplyWithEmbeds(interaction: Interactions.ApplicationCommand) {
+	return isTextBasedChannel(interaction.channel) && canSendEmbeds(interaction);
+}
+```
+
+The `can*` helpers read the application's permissions from the interaction's `app_permissions`. There is no channel
+cache to fall back on. A helper that cannot decide from the payload returns `false` instead of throwing.
+
+### `MessageBuilder`
+
+```typescript
+import { MessageBuilder } from '@wolfstar/http-framework-utilities';
+
+const body = new MessageBuilder()
+	.setContent('Done!')
+	.setEmbeds([{ title: 'Result' }])
+	.toJSON();
+
+await interaction.reply(body);
+```
+
+`toJSON()` validates the body against Discord's limits and throws a `RangeError` naming the offending field.
+`MessageBuilder` has no `setFiles`, because the framework's `reply` and `update` do not upload files. Only `followup`
+does.
+
+### `PaginatedMessage`
+
+```typescript
+import { PaginatedMessage } from '@wolfstar/http-framework-utilities';
+import type { Interactions } from '@wolfstar/http-framework';
+
+export function run(interaction: Interactions.ApplicationCommand) {
+	return new PaginatedMessage()
+		.addPageEmbed({ title: 'Page 1', description: 'First page' })
+		.addPageEmbed({ title: 'Page 2', description: 'Second page' })
+		.run(interaction);
+}
+```
+
+`run` sends the first page and stores a session. The built-in `first`, `previous`, `next`, `last`, `stop`, and
+`select` controls use that session to browse pages. The package's own interaction handlers resolve later clicks.
+
+Use `LazyPaginatedMessage` to resolve function pages only when they are first displayed. Lazy pages exist only on the
+process that started the message.
+
+#### Custom actions
+
+Custom actions with a `run` callback must use ids other than the built-in ones listed in
+`PaginatedMessageBuiltinActionIds`. `addAction` throws a `TypeError` otherwise. You can pass an action with a built-in
+id and no `run` to restyle a default button:
+
+```typescript
+new PaginatedMessage().addAction({ id: 'next', type: 'button', emoji: { name: '👉' } });
+```
+
+#### Concurrent clicks
+
+Each process handles clicks on the same message one at a time, so two quick `next` clicks both apply. A click that
+waits for a previous one is acknowledged at once with `deferUpdate`, then applied by editing the original response.
+A custom action `run` on such a click receives an interaction that is already acknowledged (`interaction.replied` is
+`true`). Use `followup` in that case, not `reply` or `update`.
+
+`stop` leaves a `{ stopped: true }` tombstone in the store until the session would have expired. A click already in
+progress re-reads the session before saving, so it cannot bring the stopped session back.
+
+If saving a click fails, the message keeps its current page and the user gets an ephemeral notice. Set the notice
+process-wide with `setDefaultSaveFailedReply`. It defaults to `DefaultSaveFailedReply`
+(`'Something went wrong, please try again.'`).
+
+#### Deferred replies and follow-ups
+
+`run` always sends a fresh reply. For a deferred reply or a follow-up, call `start(ownerId)` instead. It creates the
+session without sending anything and returns `{ sessionId, payload }`, so you send `payload` yourself:
+
+```typescript
+export async function run(interaction: Interactions.ApplicationCommand) {
+	await interaction.defer();
+
+	const { payload } = await new PaginatedMessage()
+		.addPageEmbed({ title: 'Page 1' })
+		.addPageEmbed({ title: 'Page 2' })
+		.start(interaction.user.id);
+
+	await interaction.followup(payload);
+}
+```
+
+Pass `null` as `ownerId` to let anyone use the components, even when `ownerOnly` is `true` (the default).
+
+### `PaginatedFieldMessageEmbed`
+
+Build pages of embed fields from a list of items:
+
+```typescript
+import { PaginatedFieldMessageEmbed } from '@wolfstar/http-framework-utilities';
+
+const message = new PaginatedFieldMessageEmbed<string>()
+	.setTemplate({ color: 0x5865f2 })
+	.setTitleField('Members')
+	.setItems(memberNames)
+	.formatItems((name, index) => `${index + 1}. ${name}`)
+	.setItemsPerPage(10)
+	.make();
+
+await message.run(interaction);
+```
+
+`make()` builds the pages from the current items, formatter, and items per page, and replaces any pages added before
+it. Call it after you configure the setters.
+
+### `MessagePrompter`
+
+```typescript
+import { MessagePrompter } from '@wolfstar/http-framework-utilities';
+
+const confirmed = await new MessagePrompter('Delete?').run(interaction);
+if (confirmed) await interaction.followup({ content: 'Deleted' });
+```
+
+The prompter supports two strategies:
+
+| Strategy            | Resolves with                                                          |
+| ------------------- | ---------------------------------------------------------------------- |
+| `confirm` (default) | `boolean`, from yes and no buttons                                     |
+| `number`            | `number`, from numbered buttons between `start` (`0`) and `end` (`10`) |
+
+The prompter uses the response to the button click to remove its buttons, because an HTTP interaction gets exactly one
+response. Send any message about the user's answer with `followup`, not `reply`.
+
+`run` resolves with the answer, or `null` when `timeout` (default `60_000` ms) elapses first. `timeout` must be at
+most `MaximumTokenLifetime`, because a prompt always edits its own `'@original'` reply with the interaction token.
+
+`MessagePrompter` requires a process-scoped session store. `run` throws a `TypeError` before replying if the
+configured store's `scope` is `'shared'`. See [What a shared store rejects](#what-a-shared-store-rejects).
+
+## Session stores
+
+By default, `PaginatedMessage` sessions live in an in-memory `MemorySessionStore` with `scope: 'process'`. If your bot
+runs several replicas behind a load balancer, a click may land on a process that did not create the session. Use
+`setSessionStore` with a `RedisSessionStore` (`scope: 'shared'`) to share sessions across processes:
+
+```typescript
+import { RedisSessionStore, setSessionStore } from '@wolfstar/http-framework-utilities';
+import Redis from 'ioredis';
+
+setSessionStore(new RedisSessionStore({ redis: new Redis(process.env.REDIS_URL) }));
+```
+
+`RedisSessionStore` only needs `get`, `set(key, value, 'PX', ms)`, and `del`. An `ioredis` `Redis` or `Cluster`
+instance satisfies it, and the package does not depend on `ioredis` itself.
+
+`setSessionStore` sets the store for everything that does not pass its own `store` option. If you pass `store` to a
+single `PaginatedMessage`, register that store with `registerSessionStore` on every replica. Otherwise, clicks that
+reach another replica expire:
+
+```typescript
+import { PaginatedMessage, RedisSessionStore, registerSessionStore } from '@wolfstar/http-framework-utilities';
+
+export const menuStore = new RedisSessionStore({ redis, prefix: 'menus' });
+registerSessionStore(menuStore); // At startup, on every replica.
+
+new PaginatedMessage({ store: menuStore }); // Later, on any replica.
+```
+
+With a shared store, the [`/register`](#setup) import matters on every process. A click can land on a process that
+never called `run`, and only a process with registered handlers can answer it.
+
+### What a shared store rejects
+
+A shared store only holds JSON-serializable, eager pagination state. Before replying, `PaginatedMessage#run` and
+`#start` throw a `TypeError` naming the offending field for:
+
+- Lazy page functions. Use eager pages with a shared store.
+- Custom action `run` callbacks. Only the built-in action ids are supported with a shared store.
+- Values that do not survive a JSON round trip: functions, symbols, `bigint`s, `NaN`, `Infinity`, class instances
+  other than plain objects and arrays, and circular references.
+
+`MessagePrompter` rejects a shared store outright, because the answer goes to an in-process waiter. If your default
+store is shared, you can still prompt by passing a process-scoped store. This works only if your load balancer routes
+the click back to the process that called `run`:
+
+```typescript
+import { MemorySessionStore, MessagePrompter } from '@wolfstar/http-framework-utilities';
+
+const confirmed = await new MessagePrompter('Delete?', 'confirm', { store: new MemorySessionStore() }).run(interaction);
+```
+
+For anything that must survive a click landing on another process, prefer an eager-page `PaginatedMessage` with no
+`run` callbacks over `MessagePrompter`.
+
+## Timeout cleanup
+
+`PaginatedMessage#run` and `MessagePrompter#run` schedule a best-effort cleanup of the message's controls when the
+session times out (`idle` for `PaginatedMessage`, `timeout` for `MessagePrompter`). `start(ownerId)` flows have no
+timeout cleanup.
+
+- `timeoutBehavior: 'disable' | 'remove'` (default `'disable'`) sets what cleanup does. `'disable'` greys out every
+  button and select menu. `'remove'` deletes the action rows. `stop` always disables.
+- Cleanup edits the message through the interaction webhook while the token is valid. `MaximumTokenLifetime` (14
+  minutes) bounds sessions whose only edit credential is the interaction token: ephemeral replies, or replies with no
+  channel id. A longer `idle` or `timeout` throws a `RangeError` in those cases.
+- For a non-ephemeral `PaginatedMessage#run` reply, `idle` can exceed `MaximumTokenLifetime`. After the token expires,
+  cleanup falls back to the bot's REST client (`container.rest`). This needs the bot to access the channel. For a
+  user-installed app or a guild the bot is not in, the edit fails, is logged, and the controls stay visible.
+- `MessagePrompter#run` always caps `timeout` at `MaximumTokenLifetime`.
+- Interaction tokens are never persisted or logged. They live only in an in-process registry, independent of any
+  session store.
+
+## Expired or unknown sessions
+
+When a click's session is missing or expired, the built-in handlers `update` the clicked message with every component
+disabled. They then send an ephemeral `followup` with the expiry notice, which defaults to `DefaultExpiredReply`
+(`'This interaction has expired.'`).
+
+Set the notice once at startup with `setDefaultExpiredReply`, and read it with `getDefaultExpiredReply`. It applies to
+both paginated messages and prompters:
+
+```typescript
+import { setDefaultExpiredReply } from '@wolfstar/http-framework-utilities';
+
+setDefaultExpiredReply('This menu is no longer available.');
+```
+
+`PaginatedMessage` also takes an `expiredReply` option (or `setExpiredReply`). It applies only while the session is
+still readable but this process cannot handle the click, for example a custom action or lazy page that only exists on
+another process. `MessagePrompter` has no `expiredReply` option.
+
+## Gateway
+
+The optional `@wolfstar/http-framework-utilities/gateway` subpath adds gateway-only helpers built on
+[`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway) structures. The main entrypoint never imports it.
+
+```bash
+pnpm add @wolfstar/plugin-gateway
+```
+
+`@wolfstar/plugin-gateway` (`^0.8.0`) is an optional peer dependency and requires Node.js 24.17 or newer. Gateway bots
+must still serve their HTTP interactions endpoint (`GatewayClient.start({ listen })`), because button and select clicks
+arrive as interactions. They must also import [`@wolfstar/http-framework-utilities/register`](#setup).
+
+### Type guards and permissions
+
+`isTextBasedChannel`, `isGuildBasedChannel`, `isThreadChannel`, `isVoiceBasedChannel`, `isNsfwChannel`,
+`isMessageInstance`, `isGuildMember`, and the per-type guards (`isTextChannel`, `isDMChannel`, `isNewsChannel`, and
+others) take gateway structures instead of raw payloads.
+
+The async `can*` helpers compute the bot's permissions in a channel structure. They resolve `false` when they cannot
+decide, for example with no channel, no bot user, no gateway client, or a failed fetch. In DMs they resolve `true`,
+except `canRemoveAllReactions` and `canJoinVoiceChannel`, which resolve `false`.
+
+```typescript
+import { canSendEmbeds } from '@wolfstar/http-framework-utilities/gateway';
+
+if (await canSendEmbeds(message.channel)) await message.reply({ embeds: [{ title: 'Hello' }] });
+```
+
+Available helpers: `canReadMessages`, `canSendMessages`, `canSendEmbeds`, `canSendAttachments`, `canReact`,
+`canRemoveAllReactions`, and `canJoinVoiceChannel`.
+
+### Collectors
+
+`awaitMessages(channel, { time, max, filter })` and `awaitReactions(message, { time, max, filter })` resolve once
+`max` (default `1`) values pass `filter`, or when `time` (milliseconds, required) elapses. `time` and `max` must be
+positive integers. Both reject without a `GatewayClient`.
+
+Filters run concurrently, but results are committed in arrival order. When `time` elapses, every event whose filter
+already passed is returned. Events still being filtered are dropped.
+
+`awaitReactions` collects `{ reaction, user, userId }`. `user` is `null` when the gateway plugin knows the user neither
+from the payload nor from its cache, so filter on `userId`, which is always set.
+
+```typescript
+import { awaitMessages } from '@wolfstar/http-framework-utilities/gateway';
+
+const [answer] = await awaitMessages(message.channel, {
+	time: 30_000,
+	filter: (candidate) => candidate.author.id === message.author.id
+});
+```
+
+### `GatewayPaginatedMessage`
+
+A `PaginatedMessage` whose `run(target, author?)` also accepts a gateway `Message` (replied to) or a text-based channel
+(sent to). `author` is the user allowed to use the controls. It defaults to the message's author for a `Message`, and
+to anyone for a channel. It is ignored for an interaction.
+
+```typescript
+import { GatewayPaginatedMessage } from '@wolfstar/http-framework-utilities/gateway';
+
+await new GatewayPaginatedMessage().addPageEmbed({ title: 'Page 1' }).addPageEmbed({ title: 'Page 2' }).run(message);
+```
+
+Gateway targets are bot-owned, non-ephemeral messages. Their timeout cleanup uses the bot's REST credentials, so `idle`
+can exceed `MaximumTokenLifetime`.
+
+### `GatewayMessagePrompter`
+
+A `MessagePrompter` with two more strategies, whose `run(target, author?)` accepts the same targets. `author` defaults
+to the interaction's user or the message's author, and is required for a channel target.
+
+| Strategy   | Resolves with                                  | Required intents (guild / DM)                                            |
+| ---------- | ---------------------------------------------- | ------------------------------------------------------------------------ |
+| `confirm`  | `boolean`, from yes and no buttons             | None                                                                     |
+| `number`   | `number`, from numbered buttons                | None                                                                     |
+| `message`  | The author's next `Message` in the channel     | `GuildMessages` + `MessageContent` / `DirectMessages` + `MessageContent` |
+| `reaction` | The chosen entry of `reactions`, as configured | `GuildMessageReactions` / `DirectMessageReactions`                       |
+
+The `message` and `reaction` strategies throw before sending when the gateway client lacks their intents. `reaction`
+reacts with `reactions` (default `['✅', '❌']`) in order. Custom emojis use the `name:id` form. Unicode matching is
+exact, including variation selectors, so configure the form Discord sends for the emoji.
+
+```typescript
+import { GatewayMessagePrompter } from '@wolfstar/http-framework-utilities/gateway';
+
+const confirmed = await new GatewayMessagePrompter('Delete this?', 'confirm').run(message);
+
+const reply = await new GatewayMessagePrompter('What is your name?', 'message', { timeout: 30_000 }).run(channel, message.author);
+
+const choice = await new GatewayMessagePrompter('Proceed?', 'reaction', { reactions: ['✅', '❌'] }).run(message);
+```
+
+On gateway targets, the button strategies' timeout is not bound by `MaximumTokenLifetime`. On an HTTP interaction it
+is, for every strategy. `timeout` must be a positive integer, and at most 2^31 − 1 ms for `message` and `reaction`.
+Every strategy needs a process-scoped session store.
+
+## Limitations
+
+- `flags` are not applied. `PaginatedMessage` and `MessagePrompter` only read `content`, `embeds`, and
+  `allowed_mentions` from a page or `MessageBuilder`. `flags` such as `MessageFlags.Ephemeral` are dropped. For an
+  ephemeral paginated message or prompt, pass `flags` in the `reply` or `update` call yourself.
+- A shared store is last-write-wins for simultaneous clicks on the same message across replicas. The re-read before
+  saving narrows the window in which a click can undo a `stop`, but cannot close it.
+- Timeout cleanup is best effort. Process shutdown, serverless suspension, missing permissions, or API failures can
+  leave expired controls visible.
+- `MessagePrompter` only works with a process-scoped store, so its answer cannot move to another process.
+
+## Migrating from `@sapphire/discord.js-utilities`
+
+- The `message` and `reaction` prompter strategies are not on the main entrypoint, because an HTTP interactions bot
+  receives neither messages nor reactions. Use [`GatewayMessagePrompter`](#gatewaymessageprompter).
+- Type guards take raw payloads (`APIChannel`, `APIInteractionDataResolvedChannel`, or interaction structures) instead
+  of discord.js class instances.
+- `can*` permission helpers take the interaction and use its `app_permissions` bitfield instead of a cached channel.
+- `isMessageInstance` and `isGuildBasedChannelByGuildKey` are not on the main entrypoint. They existed only for
+  discord.js structures.

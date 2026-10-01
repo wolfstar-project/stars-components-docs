@@ -1,0 +1,99 @@
+---
+title: '@wolfstar/discord-utilities'
+description: 'Library-agnostic Discord limits, regexes, and option resolvers for raw API payloads, with the same exports as @sapphire/discord-utilities.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/discord-utilities discord-api-types
+```
+
+```bash pnpm
+pnpm add @wolfstar/discord-utilities discord-api-types
+```
+
+```bash yarn
+yarn add @wolfstar/discord-utilities discord-api-types
+```
+
+```bash bun
+bun add @wolfstar/discord-utilities discord-api-types
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/discord-utilities"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/discord-utilities"></Card>
+</CardGroup>
+
+## Description
+
+`@wolfstar/discord-utilities` is a drop-in replacement for
+[`@sapphire/discord-utilities`](https://npmx.dev/package/@sapphire/discord-utilities). It ships the same exports: limits
+namespaces, regexes, and option resolvers. They work only on the raw Discord API, with no dependency on `discord.js`,
+`@discordjs/*`, or `@sapphire/*`.
+
+The package has no runtime dependencies of its own. You can use it from a gateway bot, an HTTP interactions bot, a
+worker, or a test suite. `discord-api-types` is a peer dependency.
+
+<Tip>
+	[`@wolfstar/http-framework-utilities`](/documentation/packages/http-framework-utilities) re-exports everything from this package. If you
+	already use it, you don't need a separate import.
+</Tip>
+
+## Usage
+
+### Limits and regexes
+
+Use the limits namespaces to validate content against Discord's limits, and the regexes to match snowflakes, mentions,
+emojis, and other Discord formats.
+
+```typescript
+import { MessageLimits, SnowflakeRegex } from '@wolfstar/discord-utilities';
+
+function isValidContent(content: string): boolean {
+	return content.length <= MessageLimits.MaximumLength;
+}
+
+function isSnowflake(value: string): boolean {
+	return SnowflakeRegex.test(value);
+}
+```
+
+### Option resolvers over a raw payload
+
+The package exports four resolvers that read options from raw interaction payloads:
+
+- `ChatInputInteractionOptionResolver`
+- `AutocompleteInteractionOptionResolver`
+- `ContextMenuInteractionOptionResolver`
+- `ModalInteractionOptionResolver`
+
+```typescript
+import { ChatInputInteractionOptionResolver } from '@wolfstar/discord-utilities';
+import type { APIChatInputApplicationCommandInteraction } from 'discord-api-types/v10';
+
+function handle(interaction: APIChatInputApplicationCommandInteraction) {
+	const options = new ChatInputInteractionOptionResolver(interaction);
+	const user = options.getUser('user', true);
+	const reason = options.getString('reason') ?? 'No reason provided';
+
+	return { user, reason };
+}
+```
+
+## Migrating from `@sapphire/discord-utilities`
+
+Change the import specifier. Every limits namespace, regex, and resolver keeps its original name.
+
+```diff
+- import { MessageLimits } from '@sapphire/discord-utilities';
++ import { MessageLimits } from '@wolfstar/discord-utilities';
+```
+
+## License
+
+Licensed under the Apache-2.0 license. Portions are ported from `@sapphire/discord-utilities`, © 2020 The Sapphire
+Community and its contributors, under the MIT License.

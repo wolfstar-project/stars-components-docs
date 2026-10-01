@@ -10,6 +10,15 @@ Looking for one package? Each has its own changelog page:
 - **Stars Components** — [`http-framework`](/documentation/changelog/stars-components/http-framework), [`cli`](/documentation/changelog/stars-components/cli), [`schema`](/documentation/changelog/stars-components/schema), [`env-utilities`](/documentation/changelog/stars-components/env-utilities), [`vite-server`](/documentation/changelog/stars-components/vite-server), [`nitro-server`](/documentation/changelog/stars-components/nitro-server), [`create-http-framework`](/documentation/changelog/stars-components/create-http-framework), [`shared-http-pieces`](/documentation/changelog/stars-components/shared-http-pieces), [`oxfmt-config`](/documentation/changelog/stars-components/oxfmt-config), and [`oxlint-config`](/documentation/changelog/stars-components/oxlint-config).
 - **Plugins** — [`plugin-api`](/documentation/changelog/plugins/plugin-api), [`plugin-broker`](/documentation/changelog/plugins/plugin-broker), [`plugin-cache`](/documentation/changelog/plugins/plugin-cache), [`plugin-gateway`](/documentation/changelog/plugins/plugin-gateway), [`plugin-i18next`](/documentation/changelog/plugins/plugin-i18next), [`plugin-logger`](/documentation/changelog/plugins/plugin-logger), [`plugin-sharder`](/documentation/changelog/plugins/plugin-sharder), and [`plugin-subcommands-advanced`](/documentation/changelog/plugins/plugin-subcommands-advanced).
 
+## 2026-10-01
+
+Two new packages bring Sapphire-style Discord utilities to HTTP-only bots.
+
+### New features
+
+- **`@wolfstar/discord-utilities`** — Discord limits, regexes, and option resolvers for raw API payloads, with no dependency on `discord.js` or `@sapphire/*`. Export names match `@sapphire/discord-utilities`, so migrating is an import-specifier change. See [`@wolfstar/discord-utilities`](/documentation/packages/discord-utilities).
+- **`@wolfstar/http-framework-utilities`** — Type guards over raw payloads, `app_permissions`-based permission helpers, `MessageBuilder`, `PaginatedMessage` (with lazy and embed-field variants), and `MessagePrompter` `confirm`/`number` prompts. Sessions live in a process-scoped `MemorySessionStore` by default, or a shared `RedisSessionStore` across replicas. Import `@wolfstar/http-framework-utilities/register` to register the interaction handlers. The `stars` CLI does not register them for you. An optional `/gateway` subpath adds `@wolfstar/plugin-gateway` guards, `awaitMessages`/`awaitReactions` collectors, `GatewayPaginatedMessage`, and `GatewayMessagePrompter`. See [`@wolfstar/http-framework-utilities`](/documentation/packages/http-framework-utilities).
+
 ## 2026-09-24
 
 Nitro deploys, themed dev UI, and clearer diagnostics. This week also brings the `http-framework` `5.x` release and a new `@wolfstar/schema` package.
