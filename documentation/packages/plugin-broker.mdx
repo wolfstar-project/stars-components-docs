@@ -85,16 +85,16 @@ const client = new Client({
 ## Delivery guarantees
 
 An entry is acknowledged once every listener for its event has resolved. A listener that throws leaves the entry
-pending, and it is delivered again to a restarted consumer of the same name, or, with `claimIdle` set, to whichever
-consumer claims it after it has been idle that long.
+pending. A restarted consumer of the same name receives it again. With `claimIdle` set, whichever consumer claims the
+entry after it has been idle that long receives it instead.
 
 <Warning>
 	Idle time counts from an entry's last delivery. Set `claimIdle` well above your slowest listener's run time, or another consumer can claim and
 	handle an entry that is still running.
 </Warning>
 
-With `maxDeliveries` set, an entry delivered more than that many times moves to the dead-letter stream, keeping its
-`event` and `payload` fields plus the original `id`, `stream`, `group`, `consumer`, and `deliveries`. Without it, a
+With `maxDeliveries` set, an entry delivered more than that many times moves to the dead-letter stream. The dead-letter
+entry keeps its `event` and `payload` fields plus the original `id`, `stream`, `group`, `consumer`, and `deliveries`. Without it, a
 failing entry is retried forever.
 
 ## Graceful shutdown
