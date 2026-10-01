@@ -5,7 +5,7 @@ hidden: true
 
 > **EnumerableMethod**(`value`): (`_target`, `_key`, `descriptor`) => `void`
 
-Defined in: [packages/http-framework/src/lib/decorators/Enumerable.ts:57](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/Enumerable.ts#L57)
+Defined in: [packages/decorators/src/Enumerable.ts:59](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/Enumerable.ts#L59)
 
 Decorator that sets the `enumerable` property of a class method to the given value.
 
@@ -26,7 +26,8 @@ A method decorator.
 ## Example
 
 ```typescript
-import { Command, EnumerableMethod } from '@wolfstar/http-framework';
+import { EnumerableMethod } from '@wolfstar/decorators';
+import { Command } from '@wolfstar/http-framework';
 
 export class UserCommand extends Command {
 	(at)EnumerableMethod(true)

@@ -7,10 +7,81 @@ outline: deep
 This page collects the upgrade paths between Stars Components packages and their versions. Every section is
 self-contained — read the one matching the move you are making.
 
+- [`@wolfstar/http-framework` v5 → v6](#v6)
 - [`@wolfstar/http-framework` v4 → v5](#v5) <Badge type="tip" text="stable" />
 - [`@wolfstar/http-framework` v3 → v4](#v4) <Badge type="tip" text="stable" />
 - [`@wolfstar/http-framework-i18n` → `@wolfstar/plugin-i18next`](#i18next)
 - [`@wolfstar/logger` → `@wolfstar/plugin-logger`](#logger)
+
+## Migrating from v5 to v6 {#v6}
+
+v6 moves the utility decorators out of `@wolfstar/http-framework` into a new package,
+[`@wolfstar/decorators`](/documentation/packages/decorators), mirroring the split between `@sapphire/framework` and
+`@sapphire/decorators`. Their behaviour is unchanged. Only the package you import them from changes.
+
+### Changes Included in v6
+
+| Landed in                                                             | Change                                                                                   |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [#238](https://github.com/wolfstar-project/stars-components/pull/238) | Utility decorators moved to `@wolfstar/decorators`; added to the default `imports.presets` |
+
+### Upgrading the Packages
+
+`@wolfstar/decorators` declares `@wolfstar/http-framework` as a peer dependency. Install it next to the framework:
+
+::: code-group
+
+```bash [pnpm]
+pnpm add @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+```bash [npm]
+npm install @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+```bash [yarn]
+yarn add @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+```bash [bun]
+bun add @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+:::
+
+### Moving Decorator Imports
+
+`@wolfstar/http-framework` no longer exports the following. Import them from `@wolfstar/decorators` instead:
+
+- `ApplyOptions`
+- `RequiresGuildContext` and `RequiresDMContext`
+- `RequiresUserPermissions` and `RequiresClientPermissions`
+- `Enumerable` and `EnumerableMethod`
+- `createClassDecorator`, `createMethodDecorator`, `createProxy`, and `createFunctionPrecondition`
+- The `PieceConstructor` and `ContextFallback` types
+
+The `Register*` decorators and `RestrictGuildIds` stay in `@wolfstar/http-framework`.
+
+```diff
+-import { ApplyOptions, Command, RegisterCommand, RequiresGuildContext } from '@wolfstar/http-framework';
++import { ApplyOptions, RequiresGuildContext } from '@wolfstar/decorators';
++import { Command, RegisterCommand } from '@wolfstar/http-framework';
+```
+
+### Auto Imports
+
+`@wolfstar/decorators` is now one of the default `imports.presets` in `@wolfstar/schema`. Projects that rely on the
+`stars` CLI's auto imports keep getting the decorators without an explicit `import` once `@wolfstar/decorators` is
+installed. If your `stars.config.*` sets `imports.presets` explicitly, add `'@wolfstar/decorators'` to the list. Run
+`stars prepare` to regenerate the auto imports declaration file.
+
+### Checklist
+
+- [ ] `@wolfstar/http-framework` upgraded to v6 and `@wolfstar/decorators` installed
+- [ ] Imports of `ApplyOptions`, `Requires*`, `Enumerable`, `EnumerableMethod`, and the decorator factories moved
+      from `@wolfstar/http-framework` to `@wolfstar/decorators`
+- [ ] `PieceConstructor` and `ContextFallback` type imports moved to `@wolfstar/decorators`
+- [ ] `'@wolfstar/decorators'` added to a custom `imports.presets` list, if the project sets one
 
 ## Migrating from v4 to v5 {#v5}
 
@@ -434,7 +505,7 @@ export default defineConfig({
 	build: { tool: 'tsdown' },
 	imports: {
 		dirs: ['src/lib/**', 'src/utils/**'],
-		presets: ['@wolfstar/http-framework', '@wolfstar/env-utilities'],
+		presets: ['@wolfstar/http-framework', '@wolfstar/decorators', '@wolfstar/env-utilities'],
 		exclude: [],
 		dts: '.stars/imports.d.ts'
 	}

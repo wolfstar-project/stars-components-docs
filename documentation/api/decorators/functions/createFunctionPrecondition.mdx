@@ -5,7 +5,7 @@ hidden: true
 
 > **createFunctionPrecondition**(`precondition`, `fallback?`): `MethodDecorator`
 
-Defined in: [packages/http-framework/src/lib/decorators/utils.ts:72](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/utils.ts#L72)
+Defined in: [packages/decorators/src/utils.ts:73](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/utils.ts#L73)
 
 Utility to make a method decorator with lighter syntax and inferred types.
 
@@ -38,7 +38,8 @@ precondition and the original method are synchronous.
 ## Example
 
 ```typescript
-import { Command, RegisterCommand, createFunctionPrecondition } from '@wolfstar/http-framework';
+import { createFunctionPrecondition } from '@wolfstar/decorators';
+import { Command, RegisterCommand } from '@wolfstar/http-framework';
 
 const RequiresOwner = createFunctionPrecondition(
 	(interaction: Command.ChatInputInteraction) => interaction.user.id === process.env.OWNER_ID,
