@@ -651,8 +651,7 @@ export default defineConfig({
 		enableVite: true,
 		// The project runs Vite itself: `stars dev` only watches the output and restarts the bot.
 		enableExternalVite: false,
-		// Build and serve through Nitro. Needs the framework's Fetch adapter, so `stars dev`/`stars build` still
-		// refuse it with an actionable error for now.
+		// Build and serve through Nitro v3's Vite plugin, deployable to any Nitro preset. Requires `enableVite`.
 		enableNitro: false
 	}
 });
