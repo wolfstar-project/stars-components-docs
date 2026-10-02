@@ -35,7 +35,6 @@ Framework │
 Utilities │
 ├─ @wolfstar/env-utilities
 ├─ @wolfstar/influx-utilities
-├─ @wolfstar/logger
 ├─ @wolfstar/safe-fetch
 └─ @wolfstar/start-banner
           │
@@ -45,7 +44,7 @@ Services  │
 └─ @wolfstar/weather-helpers
 ```
 
-Adopting [`@wolfstar/safe-fetch`](/documentation/packages/safe-fetch) or [`@wolfstar/logger`](/documentation/packages/logger) in an existing
+Adopting [`@wolfstar/safe-fetch`](/documentation/packages/safe-fetch) or [`@wolfstar/env-utilities`](/documentation/packages/env-utilities) in an existing
 service costs one dependency and no framework buy-in. See [Bot Architecture](/documentation/guide/architecture) for how a bot is put together.
 
 The split goes further than one repository. Optional `@wolfstar/http-framework` extensions — a REST API server, i18n,

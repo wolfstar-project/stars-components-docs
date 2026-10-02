@@ -131,7 +131,6 @@
 						"root": "documentation/api/index",
 						"pages": [
 							"documentation/api/http-framework/index",
-							"documentation/api/http-framework-i18n/index",
 							"documentation/api/i18next-backend/index",
 							"documentation/api/http-framework-test-utils/index"
 						]
@@ -140,7 +139,6 @@
 						"group": "Infrastructure",
 						"pages": [
 							"documentation/api/env-utilities/index",
-							"documentation/api/logger/index",
 							"documentation/api/safe-fetch/index",
 							"documentation/api/start-banner/index"
 						]
@@ -182,19 +180,13 @@
 							"documentation/packages/vite-server",
 							"documentation/packages/nitro-server",
 							"documentation/packages/create-http-framework",
-							"documentation/packages/http-framework-i18n",
 							"documentation/packages/i18next-backend",
 							"documentation/packages/http-framework-test-utils"
 						]
 					},
 					{
 						"group": "Infrastructure",
-						"pages": [
-							"documentation/packages/env-utilities",
-							"documentation/packages/logger",
-							"documentation/packages/safe-fetch",
-							"documentation/packages/start-banner"
-						]
+						"pages": ["documentation/packages/env-utilities", "documentation/packages/safe-fetch", "documentation/packages/start-banner"]
 					},
 					{
 						"group": "Shared pieces",
@@ -227,6 +219,14 @@
 		]
 	},
 	"redirects": [
+		{
+			"source": "/documentation/api/http-framework-i18n/:slug*",
+			"destination": "/documentation/api/plugin-i18next"
+		},
+		{
+			"source": "/documentation/api/logger/:slug*",
+			"destination": "/documentation/packages/plugin-logger"
+		},
 		{
 			"source": "/docs/guides",
 			"destination": "/documentation/guide"

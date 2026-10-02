@@ -49,7 +49,7 @@ Plugin for [`@wolfstar/http-framework`](https://www.npmjs.com/package/@wolfstar/
 
 It merges two upstream implementations:
 
-- [`@wolfstar/http-framework-i18n`](https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-i18n) — the HTTP-interaction helpers (`getSupportedLanguageT`, `applyLocalizedBuilder`, localized builders).
+- `@wolfstar/http-framework-i18n` (now removed) — the HTTP-interaction helpers (`getSupportedLanguageT`, `applyLocalizedBuilder`, localized builders).
 - [`@sapphire/plugin-i18next`](https://github.com/sapphiredev/plugins/tree/main/packages/i18next) — the plugin architecture (`container.i18n`, `InternationalizationHandler`, custom `fetchLanguage`, formatters, HMR).
 
 Interactions arrive over HTTP as raw payloads, so every helper operates on `discord-api-types` structures instead of `discord.js` class instances.
@@ -281,8 +281,8 @@ await I18nextPlugin.watcher?.close();
 
 ## Migrating from `@wolfstar/http-framework-i18n`
 
-[`@wolfstar/http-framework-i18n`](https://www.npmjs.com/package/@wolfstar/http-framework-i18n) is deprecated in favour
-of this plugin. The upstream changes are documented in
+`@wolfstar/http-framework-i18n` has been removed and is no longer maintained. This plugin
+replaces it. The upstream changes are documented in
 [wolfstar-project/stars-components#30](https://github.com/wolfstar-project/stars-components/pull/30); the short version:
 
 ```bash
@@ -377,4 +377,4 @@ returns but does not type them.
 
 ## Credits
 
-Adapted from [`@wolfstar/http-framework-i18n`](https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-i18n) and [`@sapphire/plugin-i18next`](https://github.com/sapphiredev/plugins/tree/main/packages/i18next) (MIT).
+Adapted from `@wolfstar/http-framework-i18n` and [`@sapphire/plugin-i18next`](https://github.com/sapphiredev/plugins/tree/main/packages/i18next) (MIT).
