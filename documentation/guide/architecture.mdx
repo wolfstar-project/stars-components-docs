@@ -95,7 +95,8 @@ framework. The three you will use most:
 | `Listener`           | `listeners`            | The client or another emitter fires a named event              |
 
 Pieces are regular classes, which is what makes them easy to test in isolation and to reload without restarting the
-process. Configure them with `@ApplyOptions` and gate them with the `Requires*` decorators instead of writing constructors
+process. Configure them with `@ApplyOptions` and gate them with the `Requires*` decorators from
+[`@wolfstar/decorators`](/documentation/packages/decorators) instead of writing constructors
 and `if` checks. The [Build a Command](/documentation/guide/commands) guide covers commands in depth.
 
 ### Commands and the Registry
@@ -116,7 +117,8 @@ apart.
 A listener subscribes to a client event. The most common use is turning errors into replies and log lines in one place:
 
 ```typescript
-import { ApplyOptions, Events, Listener, type ClientEventCommandContext } from '@wolfstar/http-framework';
+import { ApplyOptions } from '@wolfstar/decorators';
+import { Events, Listener, type ClientEventCommandContext } from '@wolfstar/http-framework';
 
 @ApplyOptions<Listener.Options>({ event: Events.CommandError })
 export class UserListener extends Listener {

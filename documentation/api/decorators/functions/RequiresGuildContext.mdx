@@ -5,7 +5,7 @@ hidden: true
 
 > **RequiresGuildContext**(`fallback?`): `MethodDecorator`
 
-Defined in: [packages/http-framework/src/lib/decorators/RequiresContext.ts:30](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/RequiresContext.ts#L30)
+Defined in: [packages/decorators/src/RequiresContext.ts:31](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/RequiresContext.ts#L31)
 
 Decorator that only runs the decorated method when the interaction was received from a guild.
 
@@ -27,7 +27,8 @@ A method decorator.
 ## Example
 
 ```typescript
-import { Command, RegisterCommand, RequiresGuildContext } from '@wolfstar/http-framework';
+import { RequiresGuildContext } from '@wolfstar/decorators';
+import { Command, RegisterCommand } from '@wolfstar/http-framework';
 
 (at)RegisterCommand({ name: 'kick', description: 'Kicks a member' })
 export class UserCommand extends Command {

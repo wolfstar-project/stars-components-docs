@@ -88,6 +88,20 @@ For type-only imports of the input and resolved shapes:
 import type { StarsConfig, ResolvedStarsConfig, BuilderContext } from '@wolfstar/schema';
 ```
 
+### Default auto imports presets
+
+When a project does not set `imports.presets`, `@wolfstar/schema` resolves it to `@wolfstar/http-framework`,
+[`@wolfstar/decorators`](/documentation/packages/decorators), and `@wolfstar/env-utilities`. Presets that are not
+installed in the project are skipped when auto imports are generated. The resolved list is available on
+`config.imports.presets`:
+
+```typescript
+import { loadStarsConfig } from '@wolfstar/schema';
+
+const config = await loadStarsConfig({ cwd: process.cwd() });
+console.log(config.imports.presets);
+```
+
 ## Framework facades
 
 `@wolfstar/http-framework` exposes two facades that forward this package's exports unchanged, matching Nuxt's

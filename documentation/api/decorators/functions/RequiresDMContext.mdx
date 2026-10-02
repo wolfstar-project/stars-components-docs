@@ -5,7 +5,7 @@ hidden: true
 
 > **RequiresDMContext**(`fallback?`): `MethodDecorator`
 
-Defined in: [packages/http-framework/src/lib/decorators/RequiresContext.ts:56](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/RequiresContext.ts#L56)
+Defined in: [packages/decorators/src/RequiresContext.ts:58](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/RequiresContext.ts#L58)
 
 Decorator that only runs the decorated method when the interaction was **not** received from a guild, that is, from a
 DM or from a user-installed app context.
@@ -28,7 +28,8 @@ A method decorator.
 ## Example
 
 ```typescript
-import { Command, RegisterCommand, RequiresDMContext } from '@wolfstar/http-framework';
+import { RequiresDMContext } from '@wolfstar/decorators';
+import { Command, RegisterCommand } from '@wolfstar/http-framework';
 
 (at)RegisterCommand({ name: 'private', description: 'Only usable outside of servers' })
 export class UserCommand extends Command {

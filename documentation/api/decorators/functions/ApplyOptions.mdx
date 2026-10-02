@@ -5,7 +5,7 @@ hidden: true
 
 > **ApplyOptions**\<`Options`\>(`optionsOrFn`): `ClassDecorator`
 
-Defined in: [packages/http-framework/src/lib/decorators/ApplyOptions.ts:41](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/decorators/ApplyOptions.ts#L41)
+Defined in: [packages/decorators/src/ApplyOptions.ts:42](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/ApplyOptions.ts#L42)
 
 Decorator that sets the options of a `Piece`, such as a `Command`, a `Listener`, or an `InteractionHandler`.
 
@@ -38,7 +38,8 @@ options through `super(context, options)` will have the decorator's values win o
 ## Examples
 
 ```typescript
-import { ApplyOptions, Command, RegisterCommand } from '@wolfstar/http-framework';
+import { ApplyOptions } from '@wolfstar/decorators';
+import { Command, RegisterCommand } from '@wolfstar/http-framework';
 
 (at)ApplyOptions<Command.Options>({ name: 'ping', enabled: true })
 (at)RegisterCommand({ name: 'ping', description: 'A simple ping pong command' })

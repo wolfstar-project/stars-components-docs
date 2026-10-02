@@ -1,0 +1,40 @@
+---
+title: 'Function: createClassDecorator()'
+hidden: true
+---
+
+> **createClassDecorator**\<`TFunction`\>(`fn`): `TFunction`
+
+Defined in: [packages/decorators/src/utils.ts:32](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/utils.ts#L32)
+
+Utility to make a class decorator from a function.
+
+## Type Parameters
+
+### TFunction
+
+`TFunction` _extends_ (...`args`) => `unknown`
+
+## Parameters
+
+### fn
+
+`TFunction`
+
+The class to decorate.
+
+## Returns
+
+`TFunction`
+
+The decorator.
+
+## Remarks
+
+The decorator is returned with the signature it was given, rather than widened to `ClassDecorator`, so a
+decorator built on top of this keeps whatever constraint it declares on its target, such as only accepting a
+`Command` subclass.
+
+## See
+
+[`ApplyOptions`](/documentation/api/decorators/functions/ApplyOptions)

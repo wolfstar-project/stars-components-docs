@@ -210,6 +210,29 @@ over it (values from `stars.config` win, `plugins` are appended); with `4` the b
 `vite` block works the same way for `build.tool: 'vite'`. `stars info` shows which file the build is configured from
 and which options the block sets.
 
+### Auto imports
+
+With the `tsdown` build tool, `stars` wires the `autoImports()` plugin into the build, so the exports of every
+package in `imports.presets` are usable without an `import` statement. The default presets are
+`@wolfstar/http-framework`, [`@wolfstar/decorators`](/documentation/packages/decorators), and
+`@wolfstar/env-utilities`. `stars` scans each preset from the project's own `node_modules` and skips packages that are
+not installed, so `ApplyOptions` and the other decorators are auto-imported once you add `@wolfstar/decorators` to
+your dependencies.
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	imports: {
+		presets: ['@wolfstar/http-framework', '@wolfstar/decorators', '@wolfstar/env-utilities']
+	}
+});
+```
+
+Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorators` in it when you customize presets.
+`stars prepare` regenerates the auto imports declaration file after you install or remove a preset.
+
 ### Compatibility version
 
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
