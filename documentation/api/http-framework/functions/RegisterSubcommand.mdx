@@ -1,45 +1,68 @@
 ---
 title: 'Function: RegisterSubcommand()'
+description: 'Registers a subcommand for a chat input command. (@wolfstar/http-framework)'
 hidden: true
 ---
 
-> **RegisterSubcommand**\<`Options`\>(`data`, `subCommandGroupName?`): (`target`, `method`) => `void`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts:32](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts#L32)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts#L32',
+		label: 'packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts:32'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
 Registers a subcommand for a chat input command.
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'RegisterSubcommand<Options extends PieceOptions = PieceOptions>(\n  data: SubcommandData,\n  subCommandGroupName?: string | null\n): (target: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<Options>, method: string) => void'
+	]}
+/>
 
-### Options
+Registers a subcommand for a chat input command.
 
-`Options` _extends_ [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions) = [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions)
+This decorator must be used in conjunction with [RegisterSubcommand](/documentation/api/http-framework/functions/RegisterSubcommand).
 
-## Parameters
+<ApiParams title="Type Parameters">
 
-### data
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
 
-`SubcommandData`
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['SubcommandData']}>
 
 The subcommand data.
 
-### subCommandGroupName?
+</ApiParam>
 
-`string` \| `null`
+<ApiParam name="subCommandGroupName" type={['string | null']} optional>
 
 Optional name of the subcommand group.
 
-## Returns
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['(target: ', ['Command', '/documentation/api/http-framework/classes/Command'], '<Options>, method: string) => void']}>
 
 A decorator function that adds the subcommand to the target command.
 
-(`target`, `method`) => `void`
+</ApiParam>
 
-## Remarks
+</ApiParams>
 
-This decorator must be used in conjunction with RegisterSubcommand.
-
-## Example
+**Example**
 
 ```typescript
 import { Command, RegisterCommand, RegisterSubcommand, RegisterSubcommandGroup } from '@wolfstar/http-framework';

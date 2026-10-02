@@ -1,0 +1,124 @@
+---
+title: 'Class: ArgumentError'
+description: 'Errors thrown while resolving the options (arguments) of an interaction. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 3.2.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L20',
+		label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:20'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Errors thrown while resolving the options (arguments) of an interaction.
+
+<ApiSignature tokens={['class ArgumentError<T = unknown> extends ', ['UserError', '/documentation/api/http-framework/classes/UserError']]} />
+
+<ApiHierarchy extends={[[['UserError', '/documentation/api/http-framework/classes/UserError']]]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="unknown" />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+throw new ArgumentError({
+	argument: 'amount',
+	parameter: interaction.options.getInteger('amount'),
+	identifier: Identifiers.ArgumentIntegerTooSmall,
+	message: 'The amount must be at least 1.',
+	context: { minimum: 1 }
+});
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L39', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:39' }}>
+
+<ApiSignature
+	tokens={[
+		'new ArgumentError<T = unknown>(options: ',
+		['Options', '/documentation/api/http-framework/namespaces/ArgumentError/interfaces/Options'],
+		'<T>): ',
+		['ArgumentError', '/documentation/api/http-framework/classes/ArgumentError'],
+		'<T>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['Options', '/documentation/api/http-framework/namespaces/ArgumentError/interfaces/Options'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### argument
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly argument: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L25', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:25' }}>
+
+The name of the option that caused the error.
+
+</ApiMember>
+
+### context
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L30', label: 'packages/http-framework/src/lib/errors/UserError.ts:30' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
+
+User-provided context.
+
+</ApiMember>
+
+### identifier
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L24', label: 'packages/http-framework/src/lib/errors/UserError.ts:24' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
+
+An identifier, useful to localize emitted errors.
+
+</ApiMember>
+
+### parameter
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly parameter: T']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L37', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:37' }}>
+
+The value that failed to be resolved.
+
+</ApiMember>
+
+### type
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly type: ', ['ApplicationCommandOptionType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationCommandOptionType'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L31', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:31' }}>
+
+The type of the option that caused the error, if known.
+
+</ApiMember>
+
+## Accessors
+
+### name
+
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L46', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:46' }}>
+
+This will be `'ArgumentError'` and can be used to distinguish the type of error when any error gets thrown.
+
+</ApiMember>

@@ -1,0 +1,240 @@
+---
+title: 'Class: PartialMessage'
+description: 'API reference for PartialMessage, a class exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L17',
+		label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:17'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'class PartialMessage<I extends ',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		' = ',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy extendedBy={[[['Message', '/documentation/api/http-framework/classes/Message']]]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="I"
+	type={['extends ', ['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction']]}
+	defaultValue="BaseInteraction"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L20', label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:20' }}>
+
+<ApiSignature
+	tokens={[
+		'new PartialMessage<I extends ',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'<',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'> = ',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'<',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'>>(interaction: I): ',
+		['PartialMessage', '/documentation/api/http-framework/classes/PartialMessage'],
+		'<I>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="I"
+	type={[
+		'extends ',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'<',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'>'
+	]}
+	defaultValue={'BaseInteraction<BaseInteractionType>'}
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={['I']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### interaction
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly interaction: I']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L18',
+		label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:18'
+	}}
+/>
+
+## Accessors
+
+### id
+
+<ApiMember kind="accessor" signature={['get id(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L27', label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:27' }}>
+
+The ID of the message.
+
+</ApiMember>
+
+### thread
+
+<ApiMember kind="accessor" signature={['get thread(): ', ['APIChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChannel'], ' | undefined']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L34', label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:34' }}>
+
+The thread, if the message started one.
+
+</ApiMember>
+
+## Methods
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L70', label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:70' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(): ',
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['PartialMessage', '/documentation/api/http-framework/classes/PartialMessage'],
+		'<I>>'
+	]}
+/>
+
+Deletes the message.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['PartialMessage', '/documentation/api/http-framework/classes/PartialMessage'],
+		'<I>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L41', label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:41' }}>
+
+<ApiSignature
+	tokens={[
+		'get(): ',
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['Message', '/documentation/api/http-framework/classes/Message'],
+		'<',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'<',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'>>>'
+	]}
+/>
+
+Retrieves the message from Discord, returns a clone of the instance.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['Message', '/documentation/api/http-framework/classes/Message'],
+		'<',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'<',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### update()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/Message.ts#L55', label: 'packages/http-framework/src/lib/interactions/structures/Message.ts:55' }}>
+
+<ApiSignature
+	tokens={[
+		'update(data: ',
+		['UpdateResponseOptions', '/documentation/api/http-framework/type-aliases/UpdateResponseOptions'],
+		'): ',
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['Message', '/documentation/api/http-framework/classes/Message'],
+		'<',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'<',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'>>>'
+	]}
+/>
+
+Updates the message, returns a clone of the instance.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['UpdateResponseOptions', '/documentation/api/http-framework/type-aliases/UpdateResponseOptions']]}>
+
+The data to be sent.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['Message', '/documentation/api/http-framework/classes/Message'],
+		'<',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'<',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

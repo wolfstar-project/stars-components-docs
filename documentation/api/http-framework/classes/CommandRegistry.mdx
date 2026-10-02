@@ -1,0 +1,340 @@
+---
+title: 'Class: CommandRegistry'
+description: 'A per-command registry passed to Command.registerApplicationCommands, allowing commands to be registered imperatively, without relying on decorators. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 3.1.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L18',
+		label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:18'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+A per-command registry passed to [`Command.registerApplicationCommands`](/documentation/api/http-framework/classes/Command#registerapplicationcommands), allowing commands to be
+registered imperatively, without relying on decorators.
+
+<ApiSignature
+	tokens={[
+		'class CommandRegistry<Options extends ',
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		' = ',
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options']]}
+	defaultValue="Command.Options"
+/>
+
+</ApiParams>
+
+This is the decorator-free equivalent of [RegisterCommand](/documentation/api/http-framework/functions/RegisterCommand), [RegisterSubcommand](/documentation/api/http-framework/functions/RegisterSubcommand),
+[RegisterSubcommandGroup](/documentation/api/http-framework/functions/RegisterSubcommandGroup), [RegisterMessageCommand](/documentation/api/http-framework/functions/RegisterMessageCommand), [RegisterUserCommand](/documentation/api/http-framework/functions/RegisterUserCommand), and
+[RestrictGuildIds](/documentation/api/http-framework/functions/RestrictGuildIds); both approaches can be used interchangeably as they share the same underlying
+[`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry).
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L21', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:21' }}>
+
+<ApiSignature
+	tokens={[
+		'new CommandRegistry<Options extends PieceOptions = PieceOptions>(target: typeof ',
+		['Command', '/documentation/api/http-framework/namespaces/Command'],
+		'): ',
+		['CommandRegistry', '/documentation/api/http-framework/classes/CommandRegistry'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={['typeof ', ['Command', '/documentation/api/http-framework/namespaces/Command']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### registerChatInputCommand()
+
+<ApiMember kind="method" badges={['since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L40', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:40' }}>
+
+<ApiSignature tokens={['registerChatInputCommand(data: CommandData): this']} />
+
+Registers the chat input (slash) command for this command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['CommandData']}>
+
+The command data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This registry, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+public override registerApplicationCommands(registry: Command.Registry) {
+	registry.registerChatInputCommand((builder) =>
+		builder.setName('ping').setDescription('A simple ping pong command')
+	);
+}
+```
+
+</ApiMember>
+
+### registerContextMenuCommand()
+
+<ApiMember kind="method" badges={['since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L81', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:81' }}>
+
+<ApiSignature tokens={['registerContextMenuCommand(\n  data: CommandData,\n  type: User | Message,\n  method?: string | null\n): this']} />
+
+Registers a context menu command for this command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['CommandData']}>
+
+The command data.
+
+</ApiParam>
+
+<ApiParam name="type" type={['User | Message']}>
+
+The type of context menu command to register.
+
+</ApiParam>
+
+<ApiParam name="method" type={['string | null']} optional>
+
+The name of the method that handles this context menu command, if any.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This registry, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### registerMessageCommand()
+
+<ApiMember kind="method" badges={['since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L98', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:98' }}>
+
+<ApiSignature tokens={['registerMessageCommand(data: CommandData, method?: string | null): this']} />
+
+Registers a "Message" context menu command for this command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['CommandData']}>
+
+The command data.
+
+</ApiParam>
+
+<ApiParam name="method" type={['string | null']} optional>
+
+The name of the method that handles this context menu command, if any.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This registry, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### registerSubcommand()
+
+<ApiMember kind="method" badges={['since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L54', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:54' }}>
+
+<ApiSignature tokens={['registerSubcommand(data: SubcommandData, method: string, groupName?: string | null): this']} />
+
+Registers a subcommand for the chat input command of this command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['SubcommandData']}>
+
+The subcommand data.
+
+</ApiParam>
+
+<ApiParam name="method" type={['string']}>
+
+The name of the method that handles this subcommand.
+
+</ApiParam>
+
+<ApiParam name="groupName" type={['string | null']} optional>
+
+The name of the subcommand group this subcommand belongs to, if any.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This registry, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### registerSubcommandGroup()
+
+<ApiMember kind="method" badges={['since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L67', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:67' }}>
+
+<ApiSignature tokens={['registerSubcommandGroup(data: SubcommandGroupData, method?: string | null): this']} />
+
+Registers a subcommand group for the chat input command of this command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['SubcommandGroupData']}>
+
+The subcommand group data.
+
+</ApiParam>
+
+<ApiParam name="method" type={['string | null']} optional>
+
+The name of the method that handles this subcommand group, if any.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This registry, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### registerUserCommand()
+
+<ApiMember kind="method" badges={['since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L110', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:110' }}>
+
+<ApiSignature tokens={['registerUserCommand(data: CommandData, method?: string | null): this']} />
+
+Registers a "User" context menu command for this command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['CommandData']}>
+
+The command data.
+
+</ApiParam>
+
+<ApiParam name="method" type={['string | null']} optional>
+
+The name of the method that handles this context menu command, if any.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This registry, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setGuildIds()
+
+<ApiMember kind="method" badges={['since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts#L121', label: 'packages/http-framework/src/lib/interactions/shared/CommandRegistry.ts:121' }}>
+
+<ApiSignature tokens={['setGuildIds(guildIds: readonly string[]): this']} />
+
+Restricts this command to the given guild IDs, so it is only registered there instead of globally.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildIds" type={['readonly string[]']}>
+
+The guild IDs to restrict this command to.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This registry, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

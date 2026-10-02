@@ -1,0 +1,33 @@
+---
+title: 'Type Alias: PermissionResolvable'
+description: 'Anything that can be resolved into a permission bitfield: - A bigint, such as the values of PermissionFlagsBits. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/permissions.ts#L15',
+		label: 'packages/http-framework/src/lib/utils/permissions.ts:15'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Anything that can be resolved into a permission bitfield:
+
+- A `bigint`, such as the values of [`PermissionFlagsBits`](https://discord-api-types.dev/api/discord-api-types-v10#PermissionFlagsBits).
+- A [`PermissionString`](/documentation/api/http-framework/type-aliases/PermissionString), such as `'BanMembers'`.
+- An arbitrarily nested (readonly) array of the above.
+
+<ApiSignature
+	tokens={[
+		'type PermissionResolvable = bigint | ',
+		['PermissionString', '/documentation/api/http-framework/type-aliases/PermissionString'],
+		' | readonly ',
+		['PermissionResolvable', '/documentation/api/http-framework/type-aliases/PermissionResolvable'],
+		'[]'
+	]}
+/>

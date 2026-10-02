@@ -1,64 +1,145 @@
 ---
 title: 'Class: TestableClient'
+description: 'API reference for TestableClient, a class exported by @wolfstar/http-framework-test-utils.'
 hidden: true
 ---
 
-Defined in: [packages/http-framework-test-utils/src/TestableClient.ts:10](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/TestableClient.ts#L10)
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-## Extends
-
-- `Client`
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework-test-utils/src/TestableClient.ts#L10',
+		label: 'packages/http-framework-test-utils/src/TestableClient.ts:10'
+	}}
+	packageName="@wolfstar/http-framework-test-utils"
+	packageHref="/documentation/api/http-framework-test-utils"
+/>
 
 <Note>
-	This class extends `Client` from `@wolfstar/http-framework`. Its inherited surface (properties like `options`, `logger`, `server`, `plugins`, the
-	`registry` accessor, and `EventEmitter`-style methods like `on`/`once`/`emit`/`use`) isn't reproduced here — see the [http-framework API
-	reference](/documentation/api/http-framework) for that class's full documentation. Only the members this class adds or overrides are listed below.
+
+This class extends `Client` from `@wolfstar/http-framework`. Its inherited surface (properties like `options`, `logger`, `server`, `plugins`, the `registry` accessor, and `EventEmitter`-style methods like `on`/`once`/`emit`/`use`) isn't reproduced here — see the [http-framework API reference](/documentation/api/http-framework) for that class's full documentation. Only the members this class adds or overrides are listed below.
+
 </Note>
+
+<ApiSignature tokens={['class TestableClient extends ', ['Client', '/documentation/api/http-framework/classes/Client']]} />
+
+<ApiHierarchy extends={[[['Client', '/documentation/api/http-framework/classes/Client']]]} />
 
 ## Constructors
 
 ### Constructor
 
-> **new TestableClient**(`options?`): `TestableClient`
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework-test-utils/src/TestableClient.ts#L11', label: 'packages/http-framework-test-utils/src/TestableClient.ts:11' }}>
 
-Defined in: [packages/http-framework-test-utils/src/TestableClient.ts:11](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/TestableClient.ts#L11)
+<ApiSignature
+	tokens={[
+		'new TestableClient(options: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		'> = {}): ',
+		['TestableClient', '/documentation/api/http-framework-test-utils/classes/TestableClient']
+	]}
+/>
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### options?
+<ApiParam
+	name="options"
+	type={[
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		'>'
+	]}
+	defaultValue={'{}'}
+/>
 
-`Partial`\<`ClientOptions`\> = `{}`
+</ApiParams>
 
-#### Returns
-
-`TestableClient`
-
-#### Overrides
-
-`Client.constructor`
+</ApiMember>
 
 ## Methods
 
 ### handleHttpMessage()
 
-> **handleHttpMessage**(`interaction`, `response`): `Promise`\<`ServerResponse`\<`IncomingMessage`\>\>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework-test-utils/src/TestableClient.ts#L15', label: 'packages/http-framework-test-utils/src/TestableClient.ts:15' }}>
 
-Defined in: [packages/http-framework-test-utils/src/TestableClient.ts:15](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/TestableClient.ts#L15)
+<ApiSignature
+	tokens={[
+		'handleHttpMessage(\n  interaction: ',
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		' | ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		' | ',
+		['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction'],
+		' | ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIPingInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIPingInteraction'],
+		',\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### interaction
+<ApiParam
+	name="interaction"
+	type={[
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		' | ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		' | ',
+		['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction'],
+		' | ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIPingInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIPingInteraction']
+	]}
+/>
 
-`APIApplicationCommandAutocompleteInteraction` \| `APIChatInputApplicationCommandInteraction` \| `APIModalSubmitInteraction` \| `APIContextMenuInteraction` \| `APIMessageComponentInteraction` \| `APIPingInteraction`
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]} />
 
-##### response
+</ApiParams>
 
-`ServerResponse`
+<ApiParams title="Returns">
 
-#### Returns
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
 
-`Promise`\<`ServerResponse`\<`IncomingMessage`\>\>
+</ApiParams>
 
-#### Overrides
-
-`Client.handleHttpMessage`
+</ApiMember>

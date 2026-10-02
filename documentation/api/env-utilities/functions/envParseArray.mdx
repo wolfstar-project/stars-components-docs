@@ -1,44 +1,61 @@
 ---
 title: 'Function: envParseArray()'
+description: 'API reference for envParseArray, a function exported by @wolfstar/env-utilities.'
 hidden: true
 ---
 
-## Call Signature
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-> **envParseArray**(`key`, `defaultValue?`): `string`[]
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/utils.ts#L57',
+		label: 'packages/env-utilities/src/lib/utils.ts:57'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:57](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L57)
+<Tabs>
 
-### Parameters
+<Tab title="Overload 1">
 
-#### key
+<ApiSignature tokens={['envParseArray(key: never, defaultValue?: string[]): string[]']} />
 
-`never`
+<ApiParams title="Parameters">
 
-#### defaultValue?
+<ApiParam name="key" type={['never']} />
 
-`string`[]
+<ApiParam name="defaultValue" type={['string[]']} optional />
 
-### Returns
+</ApiParams>
 
-`string`[]
+<ApiParams title="Returns">
 
-## Call Signature
+<ApiParam type={['string[]']} />
 
-> **envParseArray**(`key`, `defaultValue`): `string`[] \| `null`
+</ApiParams>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:58](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L58)
+</Tab>
 
-### Parameters
+<Tab title="Overload 2">
 
-#### key
+<ApiSignature tokens={['envParseArray(key: never, defaultValue: string[] | null): string[] | null']} />
 
-`never`
+<ApiParams title="Parameters">
 
-#### defaultValue
+<ApiParam name="key" type={['never']} />
 
-`string`[] \| `null`
+<ApiParam name="defaultValue" type={['string[] | null']} />
 
-### Returns
+</ApiParams>
 
-`string`[] \| `null`
+<ApiParams title="Returns">
+
+<ApiParam type={['string[] | null']} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>

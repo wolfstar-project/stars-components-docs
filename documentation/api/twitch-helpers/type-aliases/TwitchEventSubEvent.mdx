@@ -1,28 +1,29 @@
 ---
-title: 'Type Alias: TwitchEventSubEvent<T>'
+title: 'Type Alias: TwitchEventSubEvent'
+description: 'API reference for TwitchEventSubEvent, a type alias exported by @wolfstar/twitch-helpers.'
 hidden: true
 ---
 
-> **TwitchEventSubEvent**\<`T`\> = `T` & `object`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [types.ts:124](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/types.ts#L124)
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/types.ts#L124',
+		label: 'types.ts:124'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
-## Type Declaration
+<ApiSignature
+	tokens={[
+		'type TwitchEventSubEvent<T = object> = T & {\n  broadcaster_user_id: string;\n  broadcaster_user_login: string;\n  broadcaster_user_name: string;\n}'
+	]}
+/>
 
-### broadcaster_user_id
+<ApiParams title="Type Parameters">
 
-> **broadcaster_user_id**: `string`
+<ApiParam name="T" defaultValue="object" />
 
-### broadcaster_user_login
-
-> **broadcaster_user_login**: `string`
-
-### broadcaster_user_name
-
-> **broadcaster_user_name**: `string`
-
-## Type Parameters
-
-### T
-
-`T` = `object`
+</ApiParams>

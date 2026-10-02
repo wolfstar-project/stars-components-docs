@@ -1,41 +1,60 @@
 ---
 title: 'Function: checkSignature()'
+description: 'This method can be used to verify the Twitch signature when receiving an event sub request. (@wolfstar/twitch-helpers)'
 hidden: true
 ---
 
-> **checkSignature**(`algorithm`, `signature`, `data`): `boolean`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [twitch.ts:117](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L117)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/twitch.ts#L117',
+		label: 'twitch.ts:117'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
 This method can be used to verify the Twitch signature when receiving an event sub request.
 
-## Parameters
+<ApiSignature tokens={['checkSignature(algorithm: string, signature: string, data: BinaryLike): boolean']} />
 
-### algorithm
+This method can be used to verify the Twitch signature when receiving an event sub request.
 
-`string`
+<ApiParams title="Parameters">
+
+<ApiParam name="algorithm" type={['string']}>
 
 The algorithm to use
 
-### signature
+</ApiParam>
 
-`string`
+<ApiParam name="signature" type={['string']}>
 
 The signature to verify
 
-### data
+</ApiParam>
 
-`BinaryLike`
+<ApiParam name="data" type={['BinaryLike']}>
 
 The data to verify
 
-## Returns
+</ApiParam>
 
-`boolean`
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
 
 Whether or not the signature is valid
 
-## Example
+</ApiParam>
+
+</ApiParams>
+
+**Example**
 
 ```typescript
 // Grab the headers that we need to use for verification

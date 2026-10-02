@@ -1,0 +1,420 @@
+---
+title: 'Class: PluginManager'
+description: 'API reference for PluginManager, a class exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L23',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:23'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['class PluginManager']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new PluginManager(): ', ['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} />
+
+</ApiMember>
+
+## Properties
+
+### registry
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={[
+		'readonly registry: ',
+		['Set', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set'],
+		'<',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		' | ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		'>>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L24',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:24'
+	}}
+/>
+
+## Methods
+
+### registerHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L26', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:26' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'registerHook(hook: ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		', type: ',
+		['SyncPluginHooks', '/documentation/api/http-framework/type-aliases/SyncPluginHooks'],
+		', name?: string): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook']]} />
+
+<ApiParam name="type" type={[['SyncPluginHooks', '/documentation/api/http-framework/type-aliases/SyncPluginHooks']]} />
+
+<ApiParam name="name" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'registerHook(\n  hook: ',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		',\n  type: ',
+		['AsyncPluginHooks', '/documentation/api/http-framework/type-aliases/AsyncPluginHooks'],
+		',\n  name?: string\n): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook']]} />
+
+<ApiParam name="type" type={[['AsyncPluginHooks', '/documentation/api/http-framework/type-aliases/AsyncPluginHooks']]} />
+
+<ApiParam name="name" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### registerPostInitializationHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L42', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:42' }}>
+
+<ApiSignature
+	tokens={[
+		'registerPostInitializationHook(\n  hook: ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		',\n  name?: string\n): ',
+		['PluginManager', '/documentation/api/http-framework/classes/PluginManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook']]} />
+
+<ApiParam name="name" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### registerPostListenHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L50', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:50' }}>
+
+<ApiSignature
+	tokens={[
+		'registerPostListenHook(hook: ',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		', name?: string): ',
+		['PluginManager', '/documentation/api/http-framework/classes/PluginManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook']]} />
+
+<ApiParam name="name" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### registerPreGenericsInitializationHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L34', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:34' }}>
+
+<ApiSignature
+	tokens={[
+		'registerPreGenericsInitializationHook(\n  hook: ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		',\n  name?: string\n): ',
+		['PluginManager', '/documentation/api/http-framework/classes/PluginManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook']]} />
+
+<ApiParam name="name" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### registerPreInitializationHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L38', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:38' }}>
+
+<ApiSignature
+	tokens={[
+		'registerPreInitializationHook(hook: ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		', name?: string): ',
+		['PluginManager', '/documentation/api/http-framework/classes/PluginManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook']]} />
+
+<ApiParam name="name" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### registerPreLoadHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L46', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'registerPreLoadHook(hook: ',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		', name?: string): ',
+		['PluginManager', '/documentation/api/http-framework/classes/PluginManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook']]} />
+
+<ApiParam name="name" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### use()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L54', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:54' }}>
+
+<ApiSignature
+	tokens={[
+		'use(plugin: typeof ',
+		['Plugin', '/documentation/api/http-framework/classes/Plugin'],
+		'): ',
+		['PluginManager', '/documentation/api/http-framework/classes/PluginManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="plugin" type={['typeof ', ['Plugin', '/documentation/api/http-framework/classes/Plugin']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### values()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L70', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:70' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'values(): ',
+		['Generator', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator'],
+		'<',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		' | ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		'>, void, unknown>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Generator', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator'],
+		'<',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		' | ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		'>, void, unknown>'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'values(hook: ',
+		['SyncPluginHooks', '/documentation/api/http-framework/type-aliases/SyncPluginHooks'],
+		'): ',
+		['Generator', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator'],
+		'<',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		'>, void, unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['SyncPluginHooks', '/documentation/api/http-framework/type-aliases/SyncPluginHooks']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Generator', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator'],
+		'<',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		'>, void, unknown>'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 3">
+
+<ApiSignature
+	tokens={[
+		'values(hook: ',
+		['AsyncPluginHooks', '/documentation/api/http-framework/type-aliases/AsyncPluginHooks'],
+		'): ',
+		['Generator', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator'],
+		'<',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		'>, void, unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['AsyncPluginHooks', '/documentation/api/http-framework/type-aliases/AsyncPluginHooks']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Generator', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator'],
+		'<',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		'>, void, unknown>'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>

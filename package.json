@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"prepare": "husky",
+		"generate:api": "node scripts/generate-api.mjs",
 		"lint": "oxlint --no-error-on-unmatched-pattern . && oxfmt --check .",
 		"lint:fix": "oxlint --fix --no-error-on-unmatched-pattern . && oxfmt --write ."
 	},

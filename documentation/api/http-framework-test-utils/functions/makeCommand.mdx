@@ -1,24 +1,45 @@
 ---
 title: 'Function: makeCommand()'
+description: 'API reference for makeCommand, a function exported by @wolfstar/http-framework-test-utils.'
 hidden: true
 ---
 
-> **makeCommand**\<`Options`\>(`CommandClass`): `Command`\<`Options`\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework-test-utils/src/commands.ts:18](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/commands.ts#L18)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework-test-utils/src/commands.ts#L18',
+		label: 'packages/http-framework-test-utils/src/commands.ts:18'
+	}}
+	packageName="@wolfstar/http-framework-test-utils"
+	packageHref="/documentation/api/http-framework-test-utils"
+/>
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'makeCommand<Options extends PieceOptions>(CommandClass: Constructor<',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<Options>>): ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<Options>'
+	]}
+/>
 
-### Options
+<ApiParams title="Type Parameters">
 
-`Options` _extends_ [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions)
+<ApiParam name="Options" type={['extends PieceOptions']} />
 
-## Parameters
+</ApiParams>
 
-### CommandClass
+<ApiParams title="Parameters">
 
-`Constructor`\<`Command`\<`Options`\>\>
+<ApiParam name="CommandClass" type={['Constructor<', ['Command', '/documentation/api/http-framework/classes/Command'], '<Options>>']} />
 
-## Returns
+</ApiParams>
 
-`Command`\<`Options`\>
+<ApiParams title="Returns">
+
+<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<Options>']} />
+
+</ApiParams>

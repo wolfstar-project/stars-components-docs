@@ -1,0 +1,96 @@
+---
+title: 'Class: PreconditionError'
+description: 'Errors thrown by preconditions, that is, any check that runs before a command or an interaction handler is executed, such as the guild restrictions a… (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 3.2.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L20',
+		label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:20'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Errors thrown by preconditions, that is, any check that runs before a command or an interaction
+handler is executed, such as the guild restrictions applied by
+[RestrictGuildIds](/documentation/api/http-framework/functions/RestrictGuildIds).
+
+<ApiSignature tokens={['class PreconditionError extends ', ['UserError', '/documentation/api/http-framework/classes/UserError']]} />
+
+<ApiHierarchy extends={[[['UserError', '/documentation/api/http-framework/classes/UserError']]]} />
+
+**Example**
+
+```typescript
+throw new PreconditionError({
+	precondition: 'GuildIds',
+	identifier: Identifiers.PreconditionGuildIds,
+	message: 'This command can only be used in specific guilds.',
+	context: { guildIds: ['737141877803057244'] }
+});
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L27', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:27' }}>
+
+<ApiSignature
+	tokens={[
+		'new PreconditionError(options: ',
+		['Options', '/documentation/api/http-framework/namespaces/PreconditionError/interfaces/Options'],
+		'): ',
+		['PreconditionError', '/documentation/api/http-framework/classes/PreconditionError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['Options', '/documentation/api/http-framework/namespaces/PreconditionError/interfaces/Options']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### context
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L30', label: 'packages/http-framework/src/lib/errors/UserError.ts:30' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
+
+User-provided context.
+
+</ApiMember>
+
+### identifier
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L24', label: 'packages/http-framework/src/lib/errors/UserError.ts:24' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
+
+An identifier, useful to localize emitted errors.
+
+</ApiMember>
+
+### precondition
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly precondition: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L25', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:25' }}>
+
+The name of the precondition that caused the error.
+
+</ApiMember>
+
+## Accessors
+
+### name
+
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L32', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:32' }}>
+
+This will be `'PreconditionError'` and can be used to distinguish the type of error when any error gets thrown.
+
+</ApiMember>

@@ -1,44 +1,61 @@
 ---
 title: 'Function: envParseInteger()'
+description: 'API reference for envParseInteger, a function exported by @wolfstar/env-utilities.'
 hidden: true
 ---
 
-## Call Signature
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-> **envParseInteger**(`key`, `defaultValue?`): `number`
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/utils.ts#L3',
+		label: 'packages/env-utilities/src/lib/utils.ts:3'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:3](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L3)
+<Tabs>
 
-### Parameters
+<Tab title="Overload 1">
 
-#### key
+<ApiSignature tokens={['envParseInteger(key: never, defaultValue?: number): number']} />
 
-`never`
+<ApiParams title="Parameters">
 
-#### defaultValue?
+<ApiParam name="key" type={['never']} />
 
-`number`
+<ApiParam name="defaultValue" type={['number']} optional />
 
-### Returns
+</ApiParams>
 
-`number`
+<ApiParams title="Returns">
 
-## Call Signature
+<ApiParam type={['number']} />
 
-> **envParseInteger**(`key`, `defaultValue`): `number` \| `null`
+</ApiParams>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:4](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L4)
+</Tab>
 
-### Parameters
+<Tab title="Overload 2">
 
-#### key
+<ApiSignature tokens={['envParseInteger(key: never, defaultValue: number | null): number | null']} />
 
-`never`
+<ApiParams title="Parameters">
 
-#### defaultValue
+<ApiParam name="key" type={['never']} />
 
-`number` \| `null`
+<ApiParam name="defaultValue" type={['number | null']} />
 
-### Returns
+</ApiParams>
 
-`number` \| `null`
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>

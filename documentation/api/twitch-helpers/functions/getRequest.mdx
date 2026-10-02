@@ -1,31 +1,59 @@
 ---
 title: 'Function: getRequest()'
+description: 'A tiny wrapper around Json(safeFetch) that implements fetchBearer to set the proper headers and adds the BaseUrlHelix for the base path. (@wolfstar/twitch-helpers)'
 hidden: true
 ---
 
-> **getRequest**\<`T`\>(`path`): `Promise`\<`FetchResult`\<`T`\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [twitch.ts:185](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L185)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/twitch.ts#L185',
+		label: 'twitch.ts:185'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
-A tiny wrapper around Json(safeFetch) that implements [fetchBearer](/documentation/api/twitch-helpers/functions/fetchBearer) to set the proper headers
+A tiny wrapper around [Json](/documentation/api/safe-fetch/functions/Json)([safeFetch](/documentation/api/safe-fetch/functions/safeFetch)) that implements [fetchBearer](/documentation/api/twitch-helpers/functions/fetchBearer) to set the proper headers
 and adds the [BaseUrlHelix](/documentation/api/twitch-helpers/variables/BaseUrlHelix) for the base path.
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'getRequest<T extends object>(path: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<T>>'
+	]}
+/>
 
-### T
+A tiny wrapper around [Json](/documentation/api/safe-fetch/functions/Json)([safeFetch](/documentation/api/safe-fetch/functions/safeFetch)) that implements [fetchBearer](/documentation/api/twitch-helpers/functions/fetchBearer) to set the proper headers
+and adds the [BaseUrlHelix](/documentation/api/twitch-helpers/variables/BaseUrlHelix) for the base path.
 
-`T` _extends_ `object`
+<ApiParams title="Type Parameters">
 
-## Parameters
+<ApiParam name="T" type={['extends object']} />
 
-### path
+</ApiParams>
 
-`string`
+<ApiParams title="Parameters">
+
+<ApiParam name="path" type={['string']}>
 
 The Twitch Path to fetch
 
-## Returns
+</ApiParam>
 
-`Promise`\<`FetchResult`\<`T`\>\>
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'], '<T>>']}>
 
 The response to the request
+
+</ApiParam>
+
+</ApiParams>

@@ -1,0 +1,232 @@
+---
+title: 'Class: Command'
+description: 'The piece to be stored in Store instances. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L7',
+		label: 'packages/http-framework/src/lib/structures/Command.ts:7'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The piece to be stored in `Store` instances.
+
+<ApiSignature
+	tokens={[
+		'abstract class Command<Options extends ',
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		' = ',
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		'> extends Piece<Options, "commands">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Piece<Options, "commands">']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options']]}
+	defaultValue="Command.Options"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L14', label: 'packages/http-framework/src/lib/structures/Command.ts:14' }}>
+
+<ApiSignature
+	tokens={[
+		'new Command<Options extends PieceOptions = PieceOptions>(\n  context: ',
+		['LoaderContext', '/documentation/api/http-framework/namespaces/Command/type-aliases/LoaderContext'],
+		',\n  options: Options = ...\n): ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['LoaderContext', '/documentation/api/http-framework/namespaces/Command/type-aliases/LoaderContext']]} />
+
+<ApiParam name="options" type={['Options']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### router
+
+<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly router: ', ['CommandRouter', '/documentation/api/http-framework/classes/CommandRouter'], '<Options>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L12', label: 'packages/http-framework/src/lib/structures/Command.ts:12' }}>
+
+The router for the command.
+
+</ApiMember>
+
+## Accessors
+
+### registry
+
+<ApiMember kind="accessor" signature={['get registry(): ', ['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L25', label: 'packages/http-framework/src/lib/structures/Command.ts:25' }}>
+
+Gets the registry for this command.
+
+</ApiMember>
+
+## Methods
+
+### autocompleteRun()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L78', label: 'packages/http-framework/src/lib/structures/Command.ts:78' }}>
+
+<ApiSignature
+	tokens={[
+		'autocompleteRun(interaction: ',
+		['AutocompleteInteraction', '/documentation/api/http-framework/classes/AutocompleteInteraction'],
+		', args: any): unknown'
+	]}
+/>
+
+Responds to an auto completable option for this command
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['AutocompleteInteraction', '/documentation/api/http-framework/classes/AutocompleteInteraction']]}>
+
+The interaction to be handled.
+
+</ApiParam>
+
+<ApiParam name="args" type={['any']}>
+
+The parsed arguments for this autocomplete interaction.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']}>
+
+The response to the autocomplete interaction.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### chatInputRun()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L66', label: 'packages/http-framework/src/lib/structures/Command.ts:66' }}>
+
+<ApiSignature
+	tokens={[
+		'chatInputRun(interaction: ',
+		['ApplicationCommand', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/ApplicationCommand'],
+		', args: object): unknown'
+	]}
+/>
+
+Responds to the chat input command for this command
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['ApplicationCommand', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/ApplicationCommand']]}>
+
+The interaction to be handled.
+
+</ApiParam>
+
+<ApiParam name="args" type={['object']}>
+
+The parsed arguments for this autocomplete interaction.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### registerApplicationCommands()
+
+<ApiMember kind="method" badges={['optional', 'since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L58', label: 'packages/http-framework/src/lib/structures/Command.ts:58' }}>
+
+<ApiSignature
+	tokens={[
+		'registerApplicationCommands(registry: ',
+		['Registry', '/documentation/api/http-framework/namespaces/Command/type-aliases/Registry'],
+		'): unknown'
+	]}
+/>
+
+Registers this command's application commands imperatively, without relying on decorators.
+
+This is invoked once, synchronously, from the base [`Command`](/documentation/api/http-framework/classes/Command) constructor, right before this
+command's router is built, and therefore before any subclass field initializers or subclass constructor body have
+run. Because of this it must be declared as a method (not a class-field arrow function, which would not yet be
+assigned at this point and would be silently skipped) and it must not read subclass instance state, which is still
+uninitialized; it should register commands using only the provided `registry`. This matches the static, class-level
+nature of the decorators: it is the decorator-free equivalent of [RegisterCommand](/documentation/api/http-framework/functions/RegisterCommand) and its siblings, and a
+command should use either this method or the decorators, not both.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="registry" type={[['Registry', '/documentation/api/http-framework/namespaces/Command/type-aliases/Registry']]}>
+
+The registry to register this command's application commands with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { Command } from '@wolfstar/http-framework';
+
+export class UserCommand extends Command {
+	public override registerApplicationCommands(registry: Command.Registry) {
+		registry.registerChatInputCommand((builder) => builder.setName('ping').setDescription('Runs a network connection test with me'));
+	}
+
+	public override chatInputRun(interaction: Command.ChatInputInteraction) {
+		return interaction.reply({ content: 'Pong!' });
+	}
+}
+```
+
+</ApiMember>
