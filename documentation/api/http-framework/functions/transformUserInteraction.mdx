@@ -1,18 +1,49 @@
 ---
 title: 'Function: transformUserInteraction()'
+description: 'API reference for transformUserInteraction, a function exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-> **transformUserInteraction**(`data`): `User`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:141](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L141)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L141',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:141'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'transformUserInteraction(data: ',
+		[
+			'APIUserApplicationCommandInteractionData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIUserApplicationCommandInteractionData'
+		],
+		'): ',
+		['User', '/documentation/api/http-framework/namespaces/TransformedArguments/interfaces/User']
+	]}
+/>
 
-### data
+<ApiParams title="Parameters">
 
-`APIUserApplicationCommandInteractionData`
+<ApiParam
+	name="data"
+	type={[
+		[
+			'APIUserApplicationCommandInteractionData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIUserApplicationCommandInteractionData'
+		]
+	]}
+/>
 
-## Returns
+</ApiParams>
 
-`User`
+<ApiParams title="Returns">
+
+<ApiParam type={[['User', '/documentation/api/http-framework/namespaces/TransformedArguments/interfaces/User']]} />
+
+</ApiParams>

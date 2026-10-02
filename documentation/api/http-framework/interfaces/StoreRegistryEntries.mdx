@@ -1,36 +1,48 @@
 ---
 title: 'Interface: StoreRegistryEntries'
+description: "The StoreRegistry's registry, use module augmentation against this interface when adding new stores. (@wolfstar/http-framework)"
 hidden: true
 ---
 
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:739
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
 
-The StoreRegistry's registry, use module augmentation against this interface when adding new stores.
+<ApiHeader kind="interface" badges={['since 2.1.0']} packageName="@wolfstar/http-framework" packageHref="/documentation/api/http-framework" />
 
-## Since
+The `StoreRegistry`'s registry, use module augmentation against this interface when adding new stores.
 
-2.1.0
+<ApiSignature tokens={['interface StoreRegistryEntries']} />
 
 ## Properties
 
 ### commands
 
-> **commands**: `CommandStore`
-
-Defined in: [packages/http-framework/src/lib/Client.ts:375](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L375)
-
----
+<ApiMember
+	kind="property"
+	signature={['commands: ', ['CommandStore', '/documentation/api/http-framework/classes/CommandStore']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L409',
+		label: 'packages/http-framework/src/lib/Client.ts:409'
+	}}
+/>
 
 ### interaction-handlers
 
-> **interaction-handlers**: `InteractionHandlerStore`
-
-Defined in: [packages/http-framework/src/lib/Client.ts:376](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L376)
-
----
+<ApiMember
+	kind="property"
+	signature={['interaction-handlers: ', ['InteractionHandlerStore', '/documentation/api/http-framework/classes/InteractionHandlerStore']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L410',
+		label: 'packages/http-framework/src/lib/Client.ts:410'
+	}}
+/>
 
 ### listeners
 
-> **listeners**: `ListenerStore`
-
-Defined in: [packages/http-framework/src/lib/Client.ts:377](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L377)
+<ApiMember
+	kind="property"
+	signature={['listeners: ', ['ListenerStore', '/documentation/api/http-framework/classes/ListenerStore']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L411',
+		label: 'packages/http-framework/src/lib/Client.ts:411'
+	}}
+/>

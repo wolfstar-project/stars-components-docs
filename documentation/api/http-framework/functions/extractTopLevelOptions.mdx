@@ -1,18 +1,51 @@
 ---
 title: 'Function: extractTopLevelOptions()'
+description: 'API reference for extractTopLevelOptions, a function exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-> **extractTopLevelOptions**(`options`): [`ExtractedOptions`](/documentation/api/http-framework/interfaces/ExtractedOptions)
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:65](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L65)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L65',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:65'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'extractTopLevelOptions(options: readonly ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'[]): ',
+		['ExtractedOptions', '/documentation/api/http-framework/interfaces/ExtractedOptions']
+	]}
+/>
 
-### options
+<ApiParams title="Parameters">
 
-readonly `APIApplicationCommandInteractionDataOption`[]
+<ApiParam
+	name="options"
+	type={[
+		'readonly ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'[]'
+	]}
+/>
 
-## Returns
+</ApiParams>
 
-[`ExtractedOptions`](/documentation/api/http-framework/interfaces/ExtractedOptions)
+<ApiParams title="Returns">
+
+<ApiParam type={[['ExtractedOptions', '/documentation/api/http-framework/interfaces/ExtractedOptions']]} />
+
+</ApiParams>

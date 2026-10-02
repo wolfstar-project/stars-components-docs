@@ -1,0 +1,107 @@
+---
+title: 'Class: InteractionHandler'
+description: 'The piece to be stored in Store instances. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandler.ts#L4',
+		label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:4'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The piece to be stored in `Store` instances.
+
+<ApiSignature
+	tokens={[
+		'abstract class InteractionHandler<Options extends ',
+		['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/Options'],
+		' = ',
+		['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/Options'],
+		'> extends Piece<Options, "interaction-handlers">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Piece<Options, "interaction-handlers">']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/Options']]}
+	defaultValue="InteractionHandler.Options"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandler.ts#L8', label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:8' }}>
+
+<ApiSignature
+	tokens={[
+		'new InteractionHandler<Options extends PieceOptions = PieceOptions>(\n  context: ',
+		['LoaderContext', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/LoaderContext'],
+		',\n  options: Options = ...\n): ',
+		['InteractionHandler', '/documentation/api/http-framework/classes/InteractionHandler'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['LoaderContext', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/LoaderContext']]} />
+
+<ApiParam name="options" type={['Options']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### run()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandler.ts#L12', label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:12' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract run(interaction: ',
+		['MessageComponent', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/MessageComponent'],
+		', customIdValue: unknown): unknown'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[['MessageComponent', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/MessageComponent']]}
+/>
+
+<ApiParam name="customIdValue" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

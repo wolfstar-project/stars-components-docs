@@ -1,22 +1,39 @@
 ---
 title: 'Function: setInfluxVariables()'
+description: 'Sets the variables required to interact with the Influx API. (@wolfstar/influx-utilities)'
 hidden: true
 ---
 
-> **setInfluxVariables**(`variables`): `void`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/influx-utilities/src/lib/variables.ts:13](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/variables.ts#L13)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/variables.ts#L13',
+		label: 'packages/influx-utilities/src/lib/variables.ts:13'
+	}}
+	packageName="@wolfstar/influx-utilities"
+	packageHref="/documentation/api/influx-utilities"
+/>
 
 Sets the variables required to interact with the Influx API.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'setInfluxVariables(variables: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<InfluxVariables>): void'
+	]}
+/>
 
-### variables
+Sets the variables required to interact with the Influx API.
 
-`Readonly`\<`InfluxVariables`\>
+<ApiParams title="Parameters">
+
+<ApiParam name="variables" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<InfluxVariables>']}>
 
 The variables to set
 
-## Returns
+</ApiParam>
 
-`void`
+</ApiParams>

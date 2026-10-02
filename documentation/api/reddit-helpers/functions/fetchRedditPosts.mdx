@@ -1,30 +1,63 @@
 ---
 title: 'Function: fetchRedditPosts()'
+description: 'Fetches Reddit posts from a specified subreddit. (@wolfstar/reddit-helpers)'
 hidden: true
 ---
 
-> **fetchRedditPosts**(`subreddit`, `limit?`): `Promise`\<`Ok`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `any`\> \| `Result`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `FetchError`, `boolean`\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/reddit-helpers/src/lib/reddit.ts:36](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/reddit.ts#L36)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/reddit.ts#L36',
+		label: 'packages/reddit-helpers/src/lib/reddit.ts:36'
+	}}
+	packageName="@wolfstar/reddit-helpers"
+	packageHref="/documentation/api/reddit-helpers"
+/>
 
 Fetches Reddit posts from a specified subreddit.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'fetchRedditPosts(\n  subreddit: string,\n  limit: number = 30\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Ok<',
+		['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'],
+		', any> | ',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<',
+		['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'],
+		', ',
+		['FetchError', '/documentation/api/safe-fetch/type-aliases/FetchError'],
+		', boolean>>'
+	]}
+/>
 
-### subreddit
+Fetches Reddit posts from a specified subreddit.
 
-`string`
+<ApiParams title="Parameters">
+
+<ApiParam name="subreddit" type={['string']}>
 
 The name of the subreddit to fetch posts from.
 
-### limit?
+</ApiParam>
 
-`number` = `30`
+<ApiParam name="limit" type={['number']} defaultValue="30">
 
 The amount of posts to fetch, defaults to `30`
 
-## Returns
+</ApiParam>
 
-`Promise`\<`Ok`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `any`\> \| `Result`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `FetchError`, `boolean`\>\>
+</ApiParams>
 
-A promise that resolves to the RedditResponse object containing the fetched posts.
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Ok<', ['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'], ', any> | ', ['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'], '<', ['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'], ', ', ['FetchError', '/documentation/api/safe-fetch/type-aliases/FetchError'], ', boolean>>']}>
+
+A promise that resolves to the `RedditResponse` object containing the fetched posts.
+
+</ApiParam>
+
+</ApiParams>

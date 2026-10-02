@@ -1,376 +1,153 @@
 ---
-title: 'Abstract Class: InfluxListener'
+title: 'Class: InfluxListener'
+description: 'API reference for InfluxListener, a class exported by @wolfstar/shared-influx-pieces.'
 hidden: true
 ---
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:6](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L6)
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-## Extends
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L6',
+		label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:6'
+	}}
+	packageName="@wolfstar/shared-influx-pieces"
+	packageHref="/documentation/api/shared-influx-pieces"
+/>
 
-- `Listener`
+<ApiSignature tokens={['abstract class InfluxListener extends ', ['Listener', '/documentation/api/http-framework/classes/Listener']]} />
+
+<ApiHierarchy extends={[[['Listener', '/documentation/api/http-framework/classes/Listener']]]} />
 
 ## Constructors
 
 ### Constructor
 
-> **new InfluxListener**(`context`, `options`): `InfluxListener`
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L9', label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:9' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:9](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L9)
+<ApiSignature
+	tokens={[
+		'new InfluxListener(context: ',
+		['LoaderContext', '/documentation/api/http-framework/namespaces/Listener/type-aliases/LoaderContext'],
+		', options: ',
+		['Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options'],
+		'): ',
+		['InfluxListener', '/documentation/api/shared-influx-pieces/classes/InfluxListener']
+	]}
+/>
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### context
+<ApiParam name="context" type={[['LoaderContext', '/documentation/api/http-framework/namespaces/Listener/type-aliases/LoaderContext']]} />
 
-`LoaderContext`
+<ApiParam name="options" type={[['Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options']]} />
 
-##### options
+</ApiParams>
 
-`Options`
-
-#### Returns
-
-`InfluxListener`
-
-#### Overrides
-
-`Listener.constructor`
+</ApiMember>
 
 ## Properties
 
-### \_listener
-
-> `protected` **\_listener**: (...`args`) => `unknown`
-
-Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1997
-
-#### Parameters
-
-##### args
-
-...readonly `any`[]
-
-#### Returns
-
-`unknown`
-
-#### Inherited from
-
-`Listener._listener`
-
----
-
-### emitter
-
-> **emitter**: `Emitter`
-
-Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1995
-
-#### Inherited from
-
-`Listener.emitter`
-
----
-
-### enabled
-
-> **enabled**: `boolean`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:234
-
-Whether or not the piece is enabled.
-
-#### Inherited from
-
-`Listener.enabled`
-
----
-
-### event
-
-> **event**: `string`
-
-Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1996
-
-#### Inherited from
-
-`Listener.event`
-
----
-
-### location
-
-> `readonly` **location**: `PieceLocation`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:226
-
-The location metadata for the piece's file.
-
-#### Inherited from
-
-`Listener.location`
-
----
-
-### name
-
-> `readonly` **name**: `string`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:230
-
-The name of the piece.
-
-#### Inherited from
-
-`Listener.name`
-
----
-
-### options
-
-> `readonly` **options**: `Options`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:238
-
-The raw options passed to this Piece
-
-#### Inherited from
-
-`Listener.options`
-
----
-
-### store
-
-> `readonly` **store**: `ListenerStore`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:222
-
-The store that contains the piece.
-
-#### Inherited from
-
-`Listener.store`
-
----
-
 ### tags
 
-> **tags**: \[`Tags`, `string`\][] = `[]`
-
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:7](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L7)
-
-## Accessors
-
-### container
-
-#### Get Signature
-
-> **get** **container**(): `Container`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:244
-
-A reference to the Container object for ease of use.
-
-##### See
-
-container
-
-##### Returns
-
-`Container`
-
-#### Inherited from
-
-`Listener.container`
+<ApiMember
+	kind="property"
+	signature={['tags: [Tags, string][]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L7',
+		label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:7'
+	}}
+/>
 
 ## Methods
 
 ### flush()
 
-> **flush**(): `Promise`\<`void`\>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L27', label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:27' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:27](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L27)
+<ApiSignature
+	tokens={['flush(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
 
-#### Returns
+<ApiParams title="Returns">
 
-`Promise`\<`void`\>
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
 
----
+</ApiParams>
+
+</ApiMember>
 
 ### initTags()
 
-> `protected` **initTags**(): `void`
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L38', label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:38' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:38](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L38)
+<ApiSignature tokens={['protected initTags(): void']} />
 
-#### Returns
-
-`void`
-
----
+</ApiMember>
 
 ### injectTags()
 
-> `protected` **injectTags**(`point`): [`Point`](/documentation/api/influx-utilities/classes/Point)
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L31', label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:31' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:31](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L31)
+<ApiSignature tokens={['protected injectTags(point: Point): Point']} />
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### point
+<ApiParam name="point" type={['Point']} />
 
-[`Point`](/documentation/api/influx-utilities/classes/Point)
+</ApiParams>
 
-#### Returns
+<ApiParams title="Returns">
 
-[`Point`](/documentation/api/influx-utilities/classes/Point)
+<ApiParam type={['Point']} />
 
----
+</ApiParams>
+
+</ApiMember>
 
 ### onLoad()
 
-> **onLoad**(): `unknown`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L13', label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:13' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:13](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L13)
+<ApiSignature tokens={['onLoad(): unknown']} />
 
 Per-piece listener that is called when the piece is loaded into the store.
 Useful to set-up asynchronous initialization tasks.
 
-#### Returns
+<ApiParams title="Returns">
 
-`unknown`
+<ApiParam type={['unknown']} />
 
-#### Overrides
+</ApiParams>
 
-`Listener.onLoad`
-
----
-
-### onUnload()
-
-> **onUnload**(): `unknown`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:254
-
-Per-piece listener that is called when the piece is unloaded from the store.
-Useful to set-up clean-up tasks.
-
-#### Returns
-
-`unknown`
-
-#### Inherited from
-
-`Listener.onUnload`
-
----
-
-### reload()
-
-> **reload**(): `Promise`\<`void`\>
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:262
-
-Reloads the piece by loading the same path in the store.
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Inherited from
-
-`Listener.reload`
-
----
-
-### run()
-
-> `abstract` **run**(...`args`): `unknown`
-
-Defined in: packages/http-framework/dist/esm/Client-Mni9tJr6.d.ts:1999
-
-#### Parameters
-
-##### args
-
-...readonly `any`[]
-
-#### Returns
-
-`unknown`
-
-#### Inherited from
-
-`Listener.run`
-
----
-
-### toJSON()
-
-> **toJSON**(): `PieceJSON`
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:266
-
-Defines the `JSON.stringify` behavior of this piece.
-
-#### Returns
-
-`PieceJSON`
-
-#### Inherited from
-
-`Listener.toJSON`
-
----
-
-### unload()
-
-> **unload**(): `Promise`\<`void`\>
-
-Defined in: node_modules/.pnpm/@sapphire+pieces@4.4.1/node_modules/@sapphire/pieces/dist/esm/index.d.mts:258
-
-Unloads and disables the piece.
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Inherited from
-
-`Listener.unload`
-
----
+</ApiMember>
 
 ### writePoint()
 
-> **writePoint**(`point`): `void`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L18', label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:18' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:18](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L18)
+<ApiSignature tokens={['writePoint(point: Point): void']} />
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### point
+<ApiParam name="point" type={['Point']} />
 
-[`Point`](/documentation/api/influx-utilities/classes/Point)
+</ApiParams>
 
-#### Returns
-
-`void`
-
----
+</ApiMember>
 
 ### writePoints()
 
-> **writePoints**(`points`): `void`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L22', label: 'packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:22' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts:22](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/structures/InfluxListener.ts#L22)
+<ApiSignature tokens={['writePoints(points: readonly Point[]): void']} />
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### points
+<ApiParam name="points" type={['readonly Point[]']} />
 
-readonly [`Point`](/documentation/api/influx-utilities/classes/Point)[]
+</ApiParams>
 
-#### Returns
-
-`void`
+</ApiMember>

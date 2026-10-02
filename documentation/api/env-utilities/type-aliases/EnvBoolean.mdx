@@ -1,8 +1,31 @@
 ---
 title: 'Type Alias: EnvBoolean'
+description: 'API reference for EnvBoolean, a type alias exported by @wolfstar/env-utilities.'
 hidden: true
 ---
 
-> **EnvBoolean** = \{ \[K in EnvAny\]: Env\[K\] extends BooleanString \| undefined ? K : never \}\[[`EnvAny`](/documentation/api/env-utilities/type-aliases/EnvAny)\]
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/env-utilities/src/lib/types.ts:8](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/types.ts#L8)
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/types.ts#L8',
+		label: 'packages/env-utilities/src/lib/types.ts:8'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
+
+<ApiSignature
+	tokens={[
+		'type EnvBoolean = { [K in ',
+		['EnvAny', '/documentation/api/env-utilities/type-aliases/EnvAny'],
+		']: ',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K] extends ',
+		['BooleanString', '/documentation/api/env-utilities/type-aliases/BooleanString'],
+		' | undefined ? K : never }[',
+		['EnvAny', '/documentation/api/env-utilities/type-aliases/EnvAny'],
+		']'
+	]}
+/>

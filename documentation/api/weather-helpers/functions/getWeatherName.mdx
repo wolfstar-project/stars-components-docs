@@ -1,28 +1,60 @@
 ---
 title: 'Function: getWeatherName()'
+description: 'Retrieves the name of the weather based on the provided weather code. (@wolfstar/weather-helpers)'
 hidden: true
 ---
 
-> **getWeatherName**(`code`): [`WeatherName`](/documentation/api/weather-helpers/type-aliases/WeatherName)
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [weather.ts:64](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/weather-helpers/src/lib/weather.ts#L64)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/weather-helpers/src/lib/weather.ts#L64',
+		label: 'weather.ts:64'
+	}}
+	packageName="@wolfstar/weather-helpers"
+	packageHref="/documentation/api/weather-helpers"
+/>
 
 Retrieves the name of the weather based on the provided weather code.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'getWeatherName(code: ',
+		['WeatherCode', '/documentation/api/weather-helpers/enumerations/WeatherCode'],
+		'): ',
+		['WeatherName', '/documentation/api/weather-helpers/type-aliases/WeatherName']
+	]}
+/>
 
-### code
+Retrieves the name of the weather based on the provided weather code.
 
-[`WeatherCode`](/documentation/api/weather-helpers/enumerations/WeatherCode)
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={[['WeatherCode', '/documentation/api/weather-helpers/enumerations/WeatherCode']]}>
 
 The weather code.
 
-## Returns
+</ApiParam>
 
-[`WeatherName`](/documentation/api/weather-helpers/type-aliases/WeatherName)
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['WeatherName', '/documentation/api/weather-helpers/type-aliases/WeatherName']]}>
 
 The name of the weather.
 
-## Throws
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
 
 Error if the provided code is not available.
+
+</ApiParam>
+
+</ApiParams>

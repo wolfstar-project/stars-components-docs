@@ -1,28 +1,47 @@
 ---
 title: 'Function: makeInteraction()'
+description: 'API reference for makeInteraction, a function exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-> **makeInteraction**\<`T`\>(`response`, `interaction`): `TransformRaw`\<`T`\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/interactions/utils/util.ts:32](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/utils/util.ts#L32)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/utils/util.ts#L32',
+		label: 'packages/http-framework/src/lib/interactions/utils/util.ts:32'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'makeInteraction<T extends ',
+		['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType'],
+		'>(\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		',\n  interaction: T\n): TransformRaw<T>'
+	]}
+/>
 
-### T
+<ApiParams title="Type Parameters">
 
-`T` _extends_ [`BaseInteractionType`](/documentation/api/http-framework/type-aliases/BaseInteractionType)
+<ApiParam name="T" type={['extends ', ['BaseInteractionType', '/documentation/api/http-framework/type-aliases/BaseInteractionType']]} />
 
-## Parameters
+</ApiParams>
 
-### response
+<ApiParams title="Parameters">
 
-`ServerResponse`
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]} />
 
-### interaction
+<ApiParam name="interaction" type={['T']} />
 
-`T`
+</ApiParams>
 
-## Returns
+<ApiParams title="Returns">
 
-`TransformRaw`\<`T`\>
+<ApiParam type={['TransformRaw<T>']} />
+
+</ApiParams>

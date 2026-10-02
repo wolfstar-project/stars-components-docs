@@ -1,142 +1,180 @@
 ---
 title: 'Class: Client'
+description: 'API reference for Client, a class exported by @wolfstar/influx-utilities.'
 hidden: true
 ---
 
-Defined in: [packages/influx-utilities/src/lib/Client.ts:5](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L5)
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L5',
+		label: 'packages/influx-utilities/src/lib/Client.ts:5'
+	}}
+	packageName="@wolfstar/influx-utilities"
+	packageHref="/documentation/api/influx-utilities"
+/>
+
+<ApiSignature tokens={['class Client']} />
 
 ## Constructors
 
 ### Constructor
 
-> **new Client**(`options?`): `Client`
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L12', label: 'packages/influx-utilities/src/lib/Client.ts:12' }}>
 
-Defined in: [packages/influx-utilities/src/lib/Client.ts:12](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L12)
+<ApiSignature
+	tokens={[
+		'new Client(options: ',
+		['ConnectionOptions', '/documentation/api/influx-utilities/interfaces/ConnectionOptions'],
+		' = {}): ',
+		['Client', '/documentation/api/influx-utilities/classes/Client']
+	]}
+/>
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### options?
+<ApiParam name="options" type={[['ConnectionOptions', '/documentation/api/influx-utilities/interfaces/ConnectionOptions']]} defaultValue={'{}'} />
 
-[`ConnectionOptions`](/documentation/api/influx-utilities/interfaces/ConnectionOptions) = `{}`
+</ApiParams>
 
-#### Returns
-
-`Client`
+</ApiMember>
 
 ## Properties
 
 ### influx
 
-> `readonly` **influx**: [`InfluxDB`](/documentation/api/influx-utilities/classes/InfluxDB)
-
-Defined in: [packages/influx-utilities/src/lib/Client.ts:6](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L6)
-
----
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly influx: InfluxDB']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L6',
+		label: 'packages/influx-utilities/src/lib/Client.ts:6'
+	}}
+/>
 
 ### queryApi
 
-> `readonly` **queryApi**: [`QueryApi`](/documentation/api/influx-utilities/interfaces/QueryApi)
-
-Defined in: [packages/influx-utilities/src/lib/Client.ts:7](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L7)
-
----
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly queryApi: QueryApi']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L7',
+		label: 'packages/influx-utilities/src/lib/Client.ts:7'
+	}}
+/>
 
 ### writeApi
 
-> `readonly` **writeApi**: [`WriteApi`](/documentation/api/influx-utilities/interfaces/WriteApi)
-
-Defined in: [packages/influx-utilities/src/lib/Client.ts:8](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L8)
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly writeApi: WriteApi']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L8',
+		label: 'packages/influx-utilities/src/lib/Client.ts:8'
+	}}
+/>
 
 ## Methods
 
 ### addInjectTag()
 
-> **addInjectTag**(`name`, `value`): `void`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L28', label: 'packages/influx-utilities/src/lib/Client.ts:28' }}>
 
-Defined in: [packages/influx-utilities/src/lib/Client.ts:28](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L28)
+<ApiSignature tokens={['addInjectTag(name: string, value: string): void']} />
 
 Adds a tag that will be injected in all points.
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### name
-
-`string`
+<ApiParam name="name" type={['string']}>
 
 The name of the tag to inject.
 
-##### value
+</ApiParam>
 
-`string`
+<ApiParam name="value" type={['string']}>
 
 The value of the tag to inject.
 
-#### Returns
+</ApiParam>
 
-`void`
+</ApiParams>
 
----
+</ApiMember>
 
 ### flush()
 
-> **flush**(`withRetryBuffer?`): `Promise`\<`void`\>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L52', label: 'packages/influx-utilities/src/lib/Client.ts:52' }}>
 
-Defined in: [packages/influx-utilities/src/lib/Client.ts:52](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L52)
+<ApiSignature
+	tokens={[
+		'flush(withRetryBuffer?: boolean): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
 
 Flushes the pending writes to the server.
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### withRetryBuffer?
-
-`boolean`
+<ApiParam name="withRetryBuffer" type={['boolean']} optional>
 
 Whether or not it should flush the scheduled retries
 
-#### Returns
+</ApiParam>
 
-`Promise`\<`void`\>
+</ApiParams>
 
----
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
 
 ### writePoint()
 
-> **writePoint**(`point`): `void`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L36', label: 'packages/influx-utilities/src/lib/Client.ts:36' }}>
 
-Defined in: [packages/influx-utilities/src/lib/Client.ts:36](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L36)
+<ApiSignature tokens={['writePoint(point: Point): void']} />
 
 Writes a point into the write buffer.
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### point
-
-[`Point`](/documentation/api/influx-utilities/classes/Point)
+<ApiParam name="point" type={['Point']}>
 
 The point to write.
 
-#### Returns
+</ApiParam>
 
-`void`
+</ApiParams>
 
----
+</ApiMember>
 
 ### writePoints()
 
-> **writePoints**(`points`): `void`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/influx-utilities/src/lib/Client.ts#L44', label: 'packages/influx-utilities/src/lib/Client.ts:44' }}>
 
-Defined in: [packages/influx-utilities/src/lib/Client.ts:44](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/influx-utilities/src/lib/Client.ts#L44)
+<ApiSignature tokens={['writePoints(points: readonly Point[]): void']} />
 
 Writes multiple points into the write buffer.
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### points
-
-readonly [`Point`](/documentation/api/influx-utilities/classes/Point)[]
+<ApiParam name="points" type={['readonly Point[]']}>
 
 The points to write.
 
-#### Returns
+</ApiParam>
 
-`void`
+</ApiParams>
+
+</ApiMember>
