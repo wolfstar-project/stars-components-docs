@@ -1,56 +1,111 @@
 ---
 title: 'Function: envParseString()'
+description: 'API reference for envParseString, a function exported by @wolfstar/env-utilities.'
 hidden: true
 ---
 
-## Call Signature
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-> **envParseString**\<`K`\>(`key`, `defaultValue?`): `NonNullable`\<[`Env`](/documentation/api/env-utilities/interfaces/Env)\[`K`\]\>
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/utils.ts#L45',
+		label: 'packages/env-utilities/src/lib/utils.ts:45'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:45](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L45)
+<Tabs>
 
-### Type Parameters
+<Tab title="Overload 1">
 
-#### K
+<ApiSignature
+	tokens={[
+		'envParseString<K extends ',
+		['EnvString', '/documentation/api/env-utilities/type-aliases/EnvString'],
+		'>(key: K, defaultValue?: ',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K]): ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K]>'
+	]}
+/>
 
-`K` _extends_ [`EnvString`](/documentation/api/env-utilities/type-aliases/EnvString)
+<ApiParams title="Type Parameters">
 
-### Parameters
+<ApiParam name="K" type={['extends ', ['EnvString', '/documentation/api/env-utilities/type-aliases/EnvString']]} />
 
-#### key
+</ApiParams>
 
-`K`
+<ApiParams title="Parameters">
 
-#### defaultValue?
+<ApiParam name="key" type={['K']} />
 
-[`Env`](/documentation/api/env-utilities/interfaces/Env)\[`K`\]
+<ApiParam name="defaultValue" type={[['Env', '/documentation/api/env-utilities/interfaces/Env'], '[K]']} optional />
 
-### Returns
+</ApiParams>
 
-`NonNullable`\<[`Env`](/documentation/api/env-utilities/interfaces/Env)\[`K`\]\>
+<ApiParams title="Returns">
 
-## Call Signature
+<ApiParam
+	type={[
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K]>'
+	]}
+/>
 
-> **envParseString**\<`K`\>(`key`, `defaultValue`): `NonNullable`\<[`Env`](/documentation/api/env-utilities/interfaces/Env)\[`K`\]\> \| `null`
+</ApiParams>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:46](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L46)
+</Tab>
 
-### Type Parameters
+<Tab title="Overload 2">
 
-#### K
+<ApiSignature
+	tokens={[
+		'envParseString<K extends ',
+		['EnvString', '/documentation/api/env-utilities/type-aliases/EnvString'],
+		'>(\n  key: K,\n  defaultValue: ',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K] | null\n): ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K]> | null'
+	]}
+/>
 
-`K` _extends_ [`EnvString`](/documentation/api/env-utilities/type-aliases/EnvString)
+<ApiParams title="Type Parameters">
 
-### Parameters
+<ApiParam name="K" type={['extends ', ['EnvString', '/documentation/api/env-utilities/type-aliases/EnvString']]} />
 
-#### key
+</ApiParams>
 
-`K`
+<ApiParams title="Parameters">
 
-#### defaultValue
+<ApiParam name="key" type={['K']} />
 
-[`Env`](/documentation/api/env-utilities/interfaces/Env)\[`K`\] \| `null`
+<ApiParam name="defaultValue" type={[['Env', '/documentation/api/env-utilities/interfaces/Env'], '[K] | null']} />
 
-### Returns
+</ApiParams>
 
-`NonNullable`\<[`Env`](/documentation/api/env-utilities/interfaces/Env)\[`K`\]\> \| `null`
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K]> | null'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>

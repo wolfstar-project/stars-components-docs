@@ -1,30 +1,69 @@
 ---
 title: 'Function: fetchRedditPost()'
+description: 'Fetches a Reddit post from a specified subreddit. (@wolfstar/reddit-helpers)'
 hidden: true
 ---
 
-> **fetchRedditPost**(`subreddit`, `key`): `Promise`\<`Ok`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `any`\> \| `Result`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), [`RedditParseException`](/documentation/api/reddit-helpers/classes/RedditParseException), `false`\> \| `Result`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `FetchError`, `false`\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/reddit-helpers/src/lib/reddit.ts:61](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/reddit.ts#L61)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/reddit.ts#L61',
+		label: 'packages/reddit-helpers/src/lib/reddit.ts:61'
+	}}
+	packageName="@wolfstar/reddit-helpers"
+	packageHref="/documentation/api/reddit-helpers"
+/>
 
 Fetches a Reddit post from a specified subreddit.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'fetchRedditPost(\n  subreddit: string,\n  key: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Ok<',
+		['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'],
+		', any> | ',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<',
+		['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'],
+		', ',
+		['RedditParseException', '/documentation/api/reddit-helpers/classes/RedditParseException'],
+		', false> | ',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<',
+		['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'],
+		', ',
+		['FetchError', '/documentation/api/safe-fetch/type-aliases/FetchError'],
+		', false>>'
+	]}
+/>
 
-### subreddit
+Fetches a Reddit post from a specified subreddit.
 
-`string`
+<ApiParams title="Parameters">
+
+<ApiParam name="subreddit" type={['string']}>
 
 The name of the subreddit this post belongs to.
 
-### key
+</ApiParam>
 
-`string`
+<ApiParam name="key" type={['string']}>
 
 The key of the post to fetch.
 
-## Returns
+</ApiParam>
 
-`Promise`\<`Ok`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `any`\> \| `Result`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), [`RedditParseException`](/documentation/api/reddit-helpers/classes/RedditParseException), `false`\> \| `Result`\<[`CacheHit`](/documentation/api/reddit-helpers/interfaces/CacheHit), `FetchError`, `false`\>\>
+</ApiParams>
 
-A promise that resolves to the RedditResponse object contained the fetched post.
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Ok<', ['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'], ', any> | ', ['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'], '<', ['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'], ', ', ['RedditParseException', '/documentation/api/reddit-helpers/classes/RedditParseException'], ', false> | ', ['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'], '<', ['CacheHit', '/documentation/api/reddit-helpers/interfaces/CacheHit'], ', ', ['FetchError', '/documentation/api/safe-fetch/type-aliases/FetchError'], ', false>>']}>
+
+A promise that resolves to the `RedditResponse` object contained the fetched post.
+
+</ApiParam>
+
+</ApiParams>

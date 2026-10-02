@@ -1,191 +1,463 @@
 ---
 title: '@wolfstar/http-framework'
-description: 'Generated API reference for @wolfstar/http-framework: Command and Client namespaces, Register decorators, permission helpers, and interaction types.'
+description: 'Generated API reference for @wolfstar/http-framework: Command and Client namespaces, Register decorators, precondition helpers, and interaction types.'
 ---
 
-## Namespaces
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- AliasPiece
-- ApplicationCommandRegistry
-- ApplicationCommandRegistryEntry
-- ArgumentError
-- AutocompleteInteraction
-- ChatInputCommandInteraction
-- Client
-- Command
-- HotModuleReloader
-- InteractionHandler
-- Interactions
-- Listener
-- MessageComponentButtonInteraction
-- MessageComponentChannelSelectInteraction
-- MessageComponentMentionableSelectInteraction
-- MessageComponentRoleSelectInteraction
-- MessageComponentStringSelectInteraction
-- MessageComponentUserSelectInteraction
-- MessageContextMenuCommandInteraction
-- ModalSubmitInteraction
-- Piece
-- PreconditionError
-- Store
-- TransformedArguments
-- UserContextMenuCommandInteraction
-- UserError
+<ApiPackageHeader
+	name="@wolfstar/http-framework"
+	version="6.0.1"
+	guideHref="/documentation/packages/http-framework"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework"
+/>
 
-## Enumerations
+<InstallPackage packages="@wolfstar/http-framework" />
 
-- [Events](/documentation/api/http-framework/enumerations/Events)
-- [HttpCodes](/documentation/api/http-framework/enumerations/HttpCodes)
-- [Identifiers](/documentation/api/http-framework/enumerations/Identifiers)
-- [LogLevel](/documentation/api/http-framework/enumerations/LogLevel)
-- [PluginHook](/documentation/api/http-framework/enumerations/PluginHook)
-
-## Classes
-
-- AliasPiece
-- AliasStore
-- ApplicationCommandRegistry
-- ApplicationCommandRegistryEntry
-- ArgumentError
-- AutocompleteInteraction
-- BaseInteraction
-- ChatInputCommandInteraction
-- ChatInputRouterError
-- Client
-- Command
-- CommandInteraction
-- CommandLoaderStrategy
-- CommandRegistry
-- CommandRouter
-- CommandStore
-- CommandStoreRouter
-- HotModuleReloader
-- InteractionHandler
-- InteractionHandlerStore
-- Listener
-- ListenerLoaderStrategy
-- ListenerStore
-- LoaderError
-- Logger
-- Message
-- MessageComponentButtonInteraction
-- MessageComponentChannelSelectInteraction
-- MessageComponentInteraction
-- MessageComponentMentionableSelectInteraction
-- MessageComponentRoleSelectInteraction
-- MessageComponentStringSelectInteraction
-- MessageComponentUserSelectInteraction
-- MessageContextMenuCommandInteraction
-- MissingExportsError
-- ModalSubmitInteraction
-- PartialMessage
-- Piece
-- Plugin
-- PluginManager
-- PreconditionError
-- Store
-- StoreRegistry
-- StringIdParser
-- UserContextMenuCommandInteraction
-- UserError
-
-## Interfaces
-
-- [AliasPieceOptions](/documentation/api/http-framework/interfaces/AliasPieceOptions)
-- [ArgumentTypes](/documentation/api/http-framework/interfaces/ArgumentTypes)
-- [ClientEventAutocompleteContext](/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext)
-- [ClientEventCommandContext](/documentation/api/http-framework/interfaces/ClientEventCommandContext)
-- [ClientEventInteractionHandlerContext](/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext)
-- [ClientEvents](/documentation/api/http-framework/interfaces/ClientEvents)
-- [ClientLoggerOptions](/documentation/api/http-framework/interfaces/ClientLoggerOptions)
-- [ClientOptions](/documentation/api/http-framework/interfaces/ClientOptions)
-- [ExtractedOptions](/documentation/api/http-framework/interfaces/ExtractedOptions)
-- [HMROptions](/documentation/api/http-framework/interfaces/HMROptions)
-- [HttpFrameworkPluginAsyncHook](/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook)
-- [HttpFrameworkPluginHook](/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook)
-- [HttpFrameworkPluginHookEntry](/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry)
-- [IdParserRead](/documentation/api/http-framework/interfaces/IdParserRead)
-- [IIdParser](/documentation/api/http-framework/interfaces/IIdParser)
-- [ILogger](/documentation/api/http-framework/interfaces/ILogger)
-- [ListenOptions](/documentation/api/http-framework/interfaces/ListenOptions)
-- [LoaderPieceContext](/documentation/api/http-framework/interfaces/LoaderPieceContext)
-- [LoadOptions](/documentation/api/http-framework/interfaces/LoadOptions)
-- [~~PieceContext~~](/documentation/api/http-framework/interfaces/PieceContext)
-- [PieceOptions](/documentation/api/http-framework/interfaces/PieceOptions)
-- [StoreOptions](/documentation/api/http-framework/interfaces/StoreOptions)
-- [StoreRegistryEntries](/documentation/api/http-framework/interfaces/StoreRegistryEntries)
-
-## Type Aliases
-
-- AbortError
-- AddFiles
-- AsyncDiscordResult
-- [AsyncPluginHooks](/documentation/api/http-framework/type-aliases/AsyncPluginHooks)
-- AutocompleteInteractionArguments
-- [AutocompleteResponseData](/documentation/api/http-framework/type-aliases/AutocompleteResponseData)
-- [AutocompleteResponseOptions](/documentation/api/http-framework/type-aliases/AutocompleteResponseOptions)
-- [BaseCommandInteractionType](/documentation/api/http-framework/type-aliases/BaseCommandInteractionType)
-- [BaseInteractionType](/documentation/api/http-framework/type-aliases/BaseInteractionType)
-- ClientEventName
-- [DeferResponseData](/documentation/api/http-framework/type-aliases/DeferResponseData)
-- [DeferResponseOptions](/documentation/api/http-framework/type-aliases/DeferResponseOptions)
-- [DeferUpdateResult](/documentation/api/http-framework/type-aliases/DeferUpdateResult)
-- [DiscordError](/documentation/api/http-framework/type-aliases/DiscordError)
-- DiscordResult
-- [FollowupOptions](/documentation/api/http-framework/type-aliases/FollowupOptions)
-- InGuild
-- [Interaction](/documentation/api/http-framework/type-aliases/Interaction)
-- InteractionArguments
-- LoggerConsoleMethod
-- MakeArguments
-- [MappedClientEvents](/documentation/api/http-framework/type-aliases/MappedClientEvents)
-- [MessageComponentInteractionType](/documentation/api/http-framework/type-aliases/MessageComponentInteractionType)
-- [MessageResponseData](/documentation/api/http-framework/type-aliases/MessageResponseData)
-- [MessageResponseOptions](/documentation/api/http-framework/type-aliases/MessageResponseOptions)
-- [ModalResponseData](/documentation/api/http-framework/type-aliases/ModalResponseData)
-- [ModalResponseOptions](/documentation/api/http-framework/type-aliases/ModalResponseOptions)
-- [NonPingInteraction](/documentation/api/http-framework/type-aliases/NonPingInteraction)
-- PermissionResolvable
-- PermissionString
-- [RequestAuthPrefix](/documentation/api/http-framework/type-aliases/RequestAuthPrefix)
-- [SyncPluginHooks](/documentation/api/http-framework/type-aliases/SyncPluginHooks)
-- [UpdateData](/documentation/api/http-framework/type-aliases/UpdateData)
-- UpdateOptions
-- UpdateResponseOptions
-- UpdateResponseResult
-
-## Variables
-
-- applicationCommandRegistry
-- ChatInputRouterErrors
-- container
-- postInitialization
-- postListen
-- preGenericsInitialization
-- preInitialization
-- preLoad
-- restrictedGuildIdRegistry
-
-## Functions
-
-- [extractTopLevelOptions](/documentation/api/http-framework/functions/extractTopLevelOptions)
-- [getMissingPermissions](/documentation/api/http-framework/functions/getMissingPermissions)
-- [makeInteraction](/documentation/api/http-framework/functions/makeInteraction)
-- [RegisterCommand](/documentation/api/http-framework/functions/RegisterCommand)
-- [RegisterMessageCommand](/documentation/api/http-framework/functions/RegisterMessageCommand)
-- [RegisterSubcommand](/documentation/api/http-framework/functions/RegisterSubcommand)
-- [RegisterSubcommandGroup](/documentation/api/http-framework/functions/RegisterSubcommandGroup)
-- [RegisterUserCommand](/documentation/api/http-framework/functions/RegisterUserCommand)
-- [resolvePermissions](/documentation/api/http-framework/functions/resolvePermissions)
-- [RestrictGuildIds](/documentation/api/http-framework/functions/RestrictGuildIds)
-- [toPermissionNames](/documentation/api/http-framework/functions/toPermissionNames)
-- [transformAutocompleteInteraction](/documentation/api/http-framework/functions/transformAutocompleteInteraction)
-- [transformInteraction](/documentation/api/http-framework/functions/transformInteraction)
-- [transformMessageInteraction](/documentation/api/http-framework/functions/transformMessageInteraction)
-- [transformUserInteraction](/documentation/api/http-framework/functions/transformUserInteraction)
-
-## References
-
-### MessageComponentSelectMenuInteraction
-
-Renames and re-exports MessageComponentStringSelectInteraction
+<ApiSymbolList
+	symbols={[
+		{ name: 'ApplicationCommandRegistry', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry' },
+		{
+			name: 'ApplicationCommandRegistryEntry',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry'
+		},
+		{ name: 'ArgumentError', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/ArgumentError' },
+		{ name: 'AutocompleteInteraction', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/AutocompleteInteraction' },
+		{ name: 'ChatInputCommandInteraction', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/ChatInputCommandInteraction' },
+		{ name: 'Client', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/Client' },
+		{ name: 'Command', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/Command' },
+		{ name: 'HotModuleReloader', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/HotModuleReloader' },
+		{ name: 'InteractionHandler', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/InteractionHandler' },
+		{ name: 'Interactions', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/Interactions' },
+		{ name: 'Listener', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/Listener' },
+		{
+			name: 'MessageComponentButtonInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/MessageComponentButtonInteraction'
+		},
+		{
+			name: 'MessageComponentChannelSelectInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/MessageComponentChannelSelectInteraction'
+		},
+		{
+			name: 'MessageComponentMentionableSelectInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/MessageComponentMentionableSelectInteraction'
+		},
+		{
+			name: 'MessageComponentRoleSelectInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/MessageComponentRoleSelectInteraction'
+		},
+		{
+			name: 'MessageComponentStringSelectInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/MessageComponentStringSelectInteraction'
+		},
+		{
+			name: 'MessageComponentUserSelectInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/MessageComponentUserSelectInteraction'
+		},
+		{
+			name: 'MessageContextMenuCommandInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/MessageContextMenuCommandInteraction'
+		},
+		{ name: 'ModalSubmitInteraction', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/ModalSubmitInteraction' },
+		{ name: 'PreconditionError', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/PreconditionError' },
+		{ name: 'TransformedArguments', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/TransformedArguments' },
+		{
+			name: 'UserContextMenuCommandInteraction',
+			kind: 'namespace',
+			href: '/documentation/api/http-framework/namespaces/UserContextMenuCommandInteraction'
+		},
+		{ name: 'UserError', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/UserError' },
+		{
+			name: 'Events',
+			kind: 'enum',
+			href: '/documentation/api/http-framework/enumerations/Events',
+			summary: 'The name of every event emitted by the Client, mirroring the keys of ClientEvents.'
+		},
+		{ name: 'HttpCodes', kind: 'enum', href: '/documentation/api/http-framework/enumerations/HttpCodes' },
+		{
+			name: 'Identifiers',
+			kind: 'enum',
+			href: '/documentation/api/http-framework/enumerations/Identifiers',
+			summary: 'The identifiers of the errors the framework may throw, useful to localize them.'
+		},
+		{
+			name: 'LogLevel',
+			kind: 'enum',
+			href: '/documentation/api/http-framework/enumerations/LogLevel',
+			summary: 'The available log levels, ordered from the most verbose to the least.'
+		},
+		{ name: 'PluginHook', kind: 'enum', href: '/documentation/api/http-framework/enumerations/PluginHook' },
+		{
+			name: 'ApplicationCommandRegistry',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/ApplicationCommandRegistry',
+			summary: 'Represents a registry for application commands.'
+		},
+		{
+			name: 'ApplicationCommandRegistryEntry',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry',
+			summary: 'Represents an entry in the application command registry.'
+		},
+		{
+			name: 'ArgumentError',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/ArgumentError',
+			summary: 'Errors thrown while resolving the options (arguments) of an interaction.'
+		},
+		{ name: 'AutocompleteInteraction', kind: 'class', href: '/documentation/api/http-framework/classes/AutocompleteInteraction' },
+		{ name: 'BaseInteraction', kind: 'class', href: '/documentation/api/http-framework/classes/BaseInteraction' },
+		{ name: 'ChatInputCommandInteraction', kind: 'class', href: '/documentation/api/http-framework/classes/ChatInputCommandInteraction' },
+		{
+			name: 'ChatInputRouterError',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/ChatInputRouterError',
+			summary: 'Represents an error that is thrown when a ChatInputRouter encounters an error.'
+		},
+		{ name: 'Client', kind: 'class', href: '/documentation/api/http-framework/classes/Client' },
+		{
+			name: 'Command',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/Command',
+			summary: 'The piece to be stored in Store instances.'
+		},
+		{ name: 'CommandInteraction', kind: 'class', href: '/documentation/api/http-framework/classes/CommandInteraction' },
+		{
+			name: 'CommandLoaderStrategy',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/CommandLoaderStrategy',
+			summary: 'Represents a strategy for loading and unloading commands.'
+		},
+		{
+			name: 'CommandRegistry',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/CommandRegistry',
+			summary:
+				'A per-command registry passed to Command.registerApplicationCommands, allowing commands to be registered imperatively, without relying on d…'
+		},
+		{
+			name: 'CommandRouter',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/CommandRouter',
+			summary: 'Represents a command router that handles routing of interactions for a specific command.'
+		},
+		{
+			name: 'CommandStore',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/CommandStore',
+			summary: 'The store class which contains Pieces.'
+		},
+		{
+			name: 'CommandStoreRouter',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/CommandStoreRouter',
+			summary: 'Represents a router for mapping commands to chat inputs and context menus.'
+		},
+		{
+			name: 'HotModuleReloader',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/HotModuleReloader',
+			summary: 'Hot Module Reloading for every Store registered in container.stores.'
+		},
+		{
+			name: 'InteractionHandler',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/InteractionHandler',
+			summary: 'The piece to be stored in Store instances.'
+		},
+		{
+			name: 'InteractionHandlerStore',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/InteractionHandlerStore',
+			summary: 'The store class which contains Pieces.'
+		},
+		{
+			name: 'Listener',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/Listener',
+			summary: 'The piece to be stored in Store instances.'
+		},
+		{
+			name: 'ListenerLoaderStrategy',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/ListenerLoaderStrategy',
+			summary: 'Represents a strategy for loading and unloading listeners.'
+		},
+		{
+			name: 'ListenerStore',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/ListenerStore',
+			summary: 'The store class which contains Pieces.'
+		},
+		{
+			name: 'Logger',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/Logger',
+			summary: 'The default ILogger implementation, writing every entry to the matching console method.'
+		},
+		{ name: 'Message', kind: 'class', href: '/documentation/api/http-framework/classes/Message' },
+		{
+			name: 'MessageComponentButtonInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/MessageComponentButtonInteraction'
+		},
+		{
+			name: 'MessageComponentChannelSelectInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/MessageComponentChannelSelectInteraction'
+		},
+		{ name: 'MessageComponentInteraction', kind: 'class', href: '/documentation/api/http-framework/classes/MessageComponentInteraction' },
+		{
+			name: 'MessageComponentMentionableSelectInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/MessageComponentMentionableSelectInteraction'
+		},
+		{
+			name: 'MessageComponentRoleSelectInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/MessageComponentRoleSelectInteraction'
+		},
+		{
+			name: 'MessageComponentStringSelectInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/MessageComponentStringSelectInteraction'
+		},
+		{
+			name: 'MessageComponentUserSelectInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/MessageComponentUserSelectInteraction'
+		},
+		{
+			name: 'MessageContextMenuCommandInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/MessageContextMenuCommandInteraction'
+		},
+		{ name: 'ModalSubmitInteraction', kind: 'class', href: '/documentation/api/http-framework/classes/ModalSubmitInteraction' },
+		{ name: 'PartialMessage', kind: 'class', href: '/documentation/api/http-framework/classes/PartialMessage' },
+		{ name: 'Plugin', kind: 'class', href: '/documentation/api/http-framework/classes/Plugin', summary: 'The base class for all plugins.' },
+		{ name: 'PluginManager', kind: 'class', href: '/documentation/api/http-framework/classes/PluginManager' },
+		{
+			name: 'PreconditionError',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/PreconditionError',
+			summary:
+				'Errors thrown by preconditions, that is, any check that runs before a command or an interaction handler is executed, such as the guild rest…'
+		},
+		{ name: 'StringIdParser', kind: 'class', href: '/documentation/api/http-framework/classes/StringIdParser' },
+		{
+			name: 'UserContextMenuCommandInteraction',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/UserContextMenuCommandInteraction'
+		},
+		{
+			name: 'UserError',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/UserError',
+			summary: 'The UserError class to be thrown and emitted by the pieces of the framework.'
+		},
+		{
+			name: 'ArgumentTypes',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/ArgumentTypes',
+			summary: 'A map of the argument types to their respective resolved values.'
+		},
+		{
+			name: 'ClientEventAutocompleteContext',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext'
+		},
+		{ name: 'ClientEventCommandContext', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ClientEventCommandContext' },
+		{
+			name: 'ClientEventInteractionHandlerContext',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext'
+		},
+		{ name: 'ClientEvents', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ClientEvents' },
+		{ name: 'ClientLoggerOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ClientLoggerOptions' },
+		{ name: 'ClientOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ClientOptions' },
+		{ name: 'ExtractedOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ExtractedOptions' },
+		{ name: 'FetchOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/FetchOptions' },
+		{ name: 'HMROptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/HMROptions' },
+		{
+			name: 'HttpFrameworkPluginAsyncHook',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'
+		},
+		{ name: 'HttpFrameworkPluginHook', kind: 'interface', href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook' },
+		{
+			name: 'HttpFrameworkPluginHookEntry',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'
+		},
+		{ name: 'IdParserRead', kind: 'interface', href: '/documentation/api/http-framework/interfaces/IdParserRead' },
+		{ name: 'IIdParser', kind: 'interface', href: '/documentation/api/http-framework/interfaces/IIdParser' },
+		{
+			name: 'ILogger',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/ILogger',
+			summary: 'The contract every logger must fulfill to be usable as container.logger.'
+		},
+		{ name: 'ListenOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ListenOptions' },
+		{ name: 'LoadOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/LoadOptions' },
+		{
+			name: 'StoreRegistryEntries',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/StoreRegistryEntries',
+			summary: "The StoreRegistry's registry, use module augmentation against this interface when adding new stores."
+		},
+		{ name: 'AbortError', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/AbortError' },
+		{ name: 'AddFiles', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/AddFiles' },
+		{ name: 'AsyncDiscordResult', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/AsyncDiscordResult' },
+		{ name: 'AsyncPluginHooks', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/AsyncPluginHooks' },
+		{
+			name: 'AutocompleteInteractionArguments',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/AutocompleteInteractionArguments'
+		},
+		{ name: 'AutocompleteResponseData', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/AutocompleteResponseData' },
+		{
+			name: 'AutocompleteResponseOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/AutocompleteResponseOptions'
+		},
+		{ name: 'BaseCommandInteractionType', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/BaseCommandInteractionType' },
+		{ name: 'BaseInteractionType', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/BaseInteractionType' },
+		{
+			name: 'ClientEventName',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/ClientEventName',
+			summary: 'The name of any of the events emitted by the Client, either as a plain string literal or as an Events member.'
+		},
+		{ name: 'DeferResponseData', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/DeferResponseData' },
+		{ name: 'DeferResponseOptions', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/DeferResponseOptions' },
+		{ name: 'DeferUpdateResult', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/DeferUpdateResult' },
+		{ name: 'DiscordError', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/DiscordError' },
+		{ name: 'DiscordResult', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/DiscordResult' },
+		{ name: 'FollowupOptions', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/FollowupOptions' },
+		{ name: 'InGuild', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/InGuild' },
+		{ name: 'Interaction', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/Interaction' },
+		{ name: 'InteractionArguments', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/InteractionArguments' },
+		{
+			name: 'LoggerConsoleMethod',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/LoggerConsoleMethod',
+			summary: 'The console methods Logger can write to.'
+		},
+		{
+			name: 'MakeArguments',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/MakeArguments',
+			summary: 'Convenience type for creating arguments out of strings.'
+		},
+		{ name: 'MappedClientEvents', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/MappedClientEvents' },
+		{
+			name: 'MessageComponentInteractionType',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/MessageComponentInteractionType'
+		},
+		{ name: 'MessageResponseData', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/MessageResponseData' },
+		{ name: 'MessageResponseOptions', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/MessageResponseOptions' },
+		{ name: 'ModalResponseData', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/ModalResponseData' },
+		{ name: 'ModalResponseOptions', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/ModalResponseOptions' },
+		{ name: 'NonPingInteraction', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/NonPingInteraction' },
+		{
+			name: 'PermissionResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PermissionResolvable',
+			summary: 'Anything that can be resolved into a permission bitfield: - A bigint, such as the values of PermissionFlagsBits.'
+		},
+		{
+			name: 'PermissionString',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PermissionString',
+			summary: 'The name of a Discord permission flag, as defined by PermissionFlagsBits.'
+		},
+		{ name: 'RequestAuthPrefix', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/RequestAuthPrefix' },
+		{ name: 'SyncPluginHooks', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/SyncPluginHooks' },
+		{ name: 'UpdateData', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/UpdateData' },
+		{ name: 'UpdateOptions', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/UpdateOptions' },
+		{ name: 'UpdateResponseOptions', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/UpdateResponseOptions' },
+		{ name: 'UpdateResponseResult', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/UpdateResponseResult' },
+		{ name: 'applicationCommandRegistry', kind: 'variable', href: '/documentation/api/http-framework/variables/applicationCommandRegistry' },
+		{ name: 'ChatInputRouterErrors', kind: 'variable', href: '/documentation/api/http-framework/variables/ChatInputRouterErrors' },
+		{ name: 'postInitialization', kind: 'variable', href: '/documentation/api/http-framework/variables/postInitialization' },
+		{ name: 'postListen', kind: 'variable', href: '/documentation/api/http-framework/variables/postListen' },
+		{ name: 'preGenericsInitialization', kind: 'variable', href: '/documentation/api/http-framework/variables/preGenericsInitialization' },
+		{ name: 'preInitialization', kind: 'variable', href: '/documentation/api/http-framework/variables/preInitialization' },
+		{ name: 'preLoad', kind: 'variable', href: '/documentation/api/http-framework/variables/preLoad' },
+		{ name: 'restrictedGuildIdRegistry', kind: 'variable', href: '/documentation/api/http-framework/variables/restrictedGuildIdRegistry' },
+		{ name: 'extractTopLevelOptions', kind: 'function', href: '/documentation/api/http-framework/functions/extractTopLevelOptions' },
+		{
+			name: 'getMissingPermissions',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/getMissingPermissions',
+			summary: 'Computes the permissions from required that are missing in granted.'
+		},
+		{ name: 'makeInteraction', kind: 'function', href: '/documentation/api/http-framework/functions/makeInteraction' },
+		{
+			name: 'RegisterCommand',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/RegisterCommand',
+			summary: 'Registers a command for the chat input.'
+		},
+		{
+			name: 'RegisterMessageCommand',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/RegisterMessageCommand',
+			summary: 'Registers a message command.'
+		},
+		{
+			name: 'RegisterSubcommand',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/RegisterSubcommand',
+			summary: 'Registers a subcommand for a chat input command.'
+		},
+		{
+			name: 'RegisterSubcommandGroup',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/RegisterSubcommandGroup',
+			summary: 'Registers a subcommand group for a chat input command.'
+		},
+		{
+			name: 'RegisterUserCommand',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/RegisterUserCommand',
+			summary: 'Registers a user command.'
+		},
+		{
+			name: 'resolvePermissions',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/resolvePermissions',
+			summary: 'Resolves any PermissionResolvable into a single permission bitfield.'
+		},
+		{
+			name: 'RestrictGuildIds',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/RestrictGuildIds',
+			summary: 'Decorator that restricts the guild IDs for a command.'
+		},
+		{
+			name: 'toPermissionNames',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/toPermissionNames',
+			summary: 'Converts a permission bitfield into the list of the flag names it contains.'
+		},
+		{
+			name: 'transformAutocompleteInteraction',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/transformAutocompleteInteraction'
+		},
+		{ name: 'transformInteraction', kind: 'function', href: '/documentation/api/http-framework/functions/transformInteraction' },
+		{ name: 'transformMessageInteraction', kind: 'function', href: '/documentation/api/http-framework/functions/transformMessageInteraction' },
+		{ name: 'transformUserInteraction', kind: 'function', href: '/documentation/api/http-framework/functions/transformUserInteraction' }
+	]}
+/>

@@ -1,28 +1,65 @@
 ---
 title: 'Function: transformInteraction()'
+description: 'API reference for transformInteraction, a function exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-> **transformInteraction**\<`T`\>(`resolved`, `options`): `InteractionArguments`\<`T`\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:20](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L20)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L20',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:20'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'transformInteraction<T extends object>(\n  resolved: ',
+		['APIInteractionDataResolved', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolved'],
+		',\n  options: readonly ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'[]\n): ',
+		['InteractionArguments', '/documentation/api/http-framework/type-aliases/InteractionArguments'],
+		'<T>'
+	]}
+/>
 
-### T
+<ApiParams title="Type Parameters">
 
-`T` _extends_ `object`
+<ApiParam name="T" type={['extends object']} />
 
-## Parameters
+</ApiParams>
 
-### resolved
+<ApiParams title="Parameters">
 
-`APIInteractionDataResolved`
+<ApiParam
+	name="resolved"
+	type={[['APIInteractionDataResolved', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolved']]}
+/>
 
-### options
+<ApiParam
+	name="options"
+	type={[
+		'readonly ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'[]'
+	]}
+/>
 
-readonly `APIApplicationCommandInteractionDataOption`[]
+</ApiParams>
 
-## Returns
+<ApiParams title="Returns">
 
-`InteractionArguments`\<`T`\>
+<ApiParam type={[['InteractionArguments', '/documentation/api/http-framework/type-aliases/InteractionArguments'], '<T>']} />
+
+</ApiParams>

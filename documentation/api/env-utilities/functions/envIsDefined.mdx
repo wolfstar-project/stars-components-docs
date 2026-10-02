@@ -1,22 +1,39 @@
 ---
 title: 'Function: envIsDefined()'
+description: 'Checks if any of the specified environment variables is defined. (@wolfstar/env-utilities)'
 hidden: true
 ---
 
-> **envIsDefined**(...`keys`): `boolean`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:111](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L111)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/utils.ts#L111',
+		label: 'packages/env-utilities/src/lib/utils.ts:111'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
 
 Checks if any of the specified environment variables is defined.
 
-## Parameters
+<ApiSignature tokens={['envIsDefined(...keys: readonly (keyof ', ['Env', '/documentation/api/env-utilities/interfaces/Env'], ')[]): boolean']} />
 
-### keys
+Checks if any of the specified environment variables is defined.
 
-...readonly keyof [`Env`](/documentation/api/env-utilities/interfaces/Env)[]
+<ApiParams title="Parameters">
 
-## Returns
+<ApiParam name="keys" type={['readonly (keyof ', ['Env', '/documentation/api/env-utilities/interfaces/Env'], ')[]']} rest />
 
-`boolean`
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
 
 Whether the value of any of the specified environment variables is a non-empty string
+
+</ApiParam>
+
+</ApiParams>

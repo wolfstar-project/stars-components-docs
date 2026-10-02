@@ -1,48 +1,51 @@
 ---
 title: 'Interface: ClientLoggerOptions'
+description: 'API reference for ClientLoggerOptions, an interface exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-Defined in: [packages/http-framework/src/lib/Client.ts:314](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L314)
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L339',
+		label: 'packages/http-framework/src/lib/Client.ts:339'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['interface ClientLoggerOptions']} />
 
 ## Properties
 
 ### instance?
 
-> `optional` **instance?**: [`ILogger`](/documentation/api/http-framework/interfaces/ILogger)
+<ApiMember kind="property" badges={['optional', 'since 3.4.0']} signature={['instance?: ', ['ILogger', '/documentation/api/http-framework/interfaces/ILogger']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L356', label: 'packages/http-framework/src/lib/Client.ts:356' }}>
 
-Defined in: [packages/http-framework/src/lib/Client.ts:331](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L331)
+The [ILogger](/documentation/api/http-framework/interfaces/ILogger) to use instead of the built-in [Logger](/documentation/api/http-framework/classes/Logger). Plugins set this from a
+[PluginHook.PreGenericsInitialization](/documentation/api/http-framework/enumerations/PluginHook#member-pregenericsinitialization) hook to extend the framework's logging.
 
-The [ILogger](/documentation/api/http-framework/interfaces/ILogger) to use instead of the built-in Logger. Plugins set this from a
-[PluginHook.PreGenericsInitialization](/documentation/api/http-framework/enumerations/PluginHook#pregenericsinitialization) hook to extend the framework's logging.
-
-#### Default
+**Default**
 
 ```ts
 undefined; // a new Logger is created
 ```
 
-#### Since
-
-3.4.0
-
----
+</ApiMember>
 
 ### level?
 
-> `optional` **level?**: [`LogLevel`](/documentation/api/http-framework/enumerations/LogLevel)
+<ApiMember kind="property" badges={['optional', 'since 3.4.0']} signature={['level?: ', ['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L347', label: 'packages/http-framework/src/lib/Client.ts:347' }}>
 
-Defined in: [packages/http-framework/src/lib/Client.ts:322](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/Client.ts#L322)
+The lowest [LogLevel](/documentation/api/http-framework/enumerations/LogLevel) the built-in [Logger](/documentation/api/http-framework/classes/Logger) writes. Ignored when
+[ClientLoggerOptions.instance](/documentation/api/http-framework/interfaces/ClientLoggerOptions#instance) is set.
 
-The lowest [LogLevel](/documentation/api/http-framework/enumerations/LogLevel) the built-in Logger writes. Ignored when
-[ClientLoggerOptions.instance](#instance) is set.
-
-#### Default
+**Default**
 
 ```ts
 LogLevel.Info;
 ```
 
-#### Since
-
-3.4.0
+</ApiMember>

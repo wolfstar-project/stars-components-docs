@@ -1,24 +1,57 @@
 ---
 title: 'Function: fetchUsers()'
+description: 'Fetches the user data for lists of User IDs and/or login names. (@wolfstar/twitch-helpers)'
 hidden: true
 ---
 
-> **fetchUsers**(`params?`): `Promise`\<`FetchResult`\<[`TwitchHelixResponse`](/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse)\<[`TwitchHelixUsersSearchResult`](/documentation/api/twitch-helpers/interfaces/TwitchHelixUsersSearchResult)\>\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [twitch.ts:35](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L35)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/twitch.ts#L35',
+		label: 'twitch.ts:35'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
 Fetches the user data for lists of User IDs and/or login names.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'fetchUsers(params: ',
+		['TwitchFetchUsersParameters', '/documentation/api/twitch-helpers/interfaces/TwitchFetchUsersParameters'],
+		' = ...): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<',
+		['TwitchHelixResponse', '/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse'],
+		'<',
+		['TwitchHelixUsersSearchResult', '/documentation/api/twitch-helpers/interfaces/TwitchHelixUsersSearchResult'],
+		'>>>'
+	]}
+/>
 
-### params?
+Fetches the user data for lists of User IDs and/or login names.
 
-[`TwitchFetchUsersParameters`](/documentation/api/twitch-helpers/interfaces/TwitchFetchUsersParameters) = `...`
+<ApiParams title="Parameters">
+
+<ApiParam name="params" type={[['TwitchFetchUsersParameters', '/documentation/api/twitch-helpers/interfaces/TwitchFetchUsersParameters']]} defaultValue="...">
 
 An object with lists of Twitch User IDs and/or Twitch User Logins.
 
-## Returns
+</ApiParam>
 
-`Promise`\<`FetchResult`\<[`TwitchHelixResponse`](/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse)\<[`TwitchHelixUsersSearchResult`](/documentation/api/twitch-helpers/interfaces/TwitchHelixUsersSearchResult)\>\>\>
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'], '<', ['TwitchHelixResponse', '/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse'], '<', ['TwitchHelixUsersSearchResult', '/documentation/api/twitch-helpers/interfaces/TwitchHelixUsersSearchResult'], '>>>']}>
 
 The Twitch user data for every provided ID and/or login that matches a valid user.
+
+</ApiParam>
+
+</ApiParams>

@@ -1,30 +1,59 @@
 ---
 title: 'Interface: ClientEventInteractionHandlerContext'
+description: 'API reference for ClientEventInteractionHandlerContext, an interface exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:25](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L25)
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L25',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:25'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['interface ClientEventInteractionHandlerContext']} />
 
 ## Properties
 
 ### handler
 
-> **handler**: `InteractionHandler`
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:26](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L26)
-
----
+<ApiMember
+	kind="property"
+	signature={['handler: ', ['InteractionHandler', '/documentation/api/http-framework/classes/InteractionHandler']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L26',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:26'
+	}}
+/>
 
 ### interaction
 
-> **interaction**: `APIMessageComponentInteraction` \| `APIModalSubmitInteraction`
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:27](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L27)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'interaction: ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L27',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:27'
+	}}
+/>
 
 ### response
 
-> **response**: `ServerResponse`
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:28](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L28)
+<ApiMember
+	kind="property"
+	signature={['response: ', ['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L28',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:28'
+	}}
+/>

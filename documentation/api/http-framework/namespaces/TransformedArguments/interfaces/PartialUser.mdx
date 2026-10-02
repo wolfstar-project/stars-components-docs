@@ -1,0 +1,79 @@
+---
+title: 'Interface: PartialUser'
+description: 'API reference for PartialUser, an interface exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L175',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:175'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'interface PartialUser extends ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['User', '/documentation/api/http-framework/namespaces/TransformedArguments/interfaces/User'],
+		', "user">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+			'<',
+			['User', '/documentation/api/http-framework/namespaces/TransformedArguments/interfaces/User'],
+			', "user">'
+		]
+	]}
+/>
+
+## Properties
+
+### id
+
+<ApiMember
+	kind="property"
+	signature={['id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L151',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:151'
+	}}
+	inheritedFrom={[['Omit.id', '/documentation/api/http-framework/namespaces/TransformedArguments/interfaces/BasePartial#id']]}
+/>
+
+### member
+
+<ApiMember
+	kind="property"
+	signature={[
+		'member: ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L160',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:160'
+	}}
+	inheritedFrom={[['Omit.member', '/documentation/api/http-framework/namespaces/TransformedArguments/interfaces/User#member']]}
+/>
+
+### user
+
+<ApiMember
+	kind="property"
+	signature={['user: ', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L176',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:176'
+	}}
+/>

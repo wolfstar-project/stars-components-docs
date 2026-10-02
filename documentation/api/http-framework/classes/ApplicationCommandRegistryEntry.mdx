@@ -1,0 +1,224 @@
+---
+title: 'Class: ApplicationCommandRegistryEntry'
+description: 'Represents an entry in the application command registry. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 2.0.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L18',
+		label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:18'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Represents an entry in the application command registry.
+
+This class provides methods to manage and manipulate application command data.
+
+<ApiSignature
+	tokens={[
+		'class ApplicationCommandRegistryEntry implements JSONEncodable<',
+		[
+			'ApplicationCommandRegistryEntry.Command',
+			'/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'
+		],
+		'[]>'
+	]}
+/>
+
+<ApiHierarchy
+	implements={[
+		[
+			'JSONEncodable<',
+			[
+				'ApplicationCommandRegistryEntry.Command',
+				'/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'
+			],
+			'[]>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature
+	tokens={[
+		'new ApplicationCommandRegistryEntry(): ',
+		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry']
+	]}
+/>
+
+</ApiMember>
+
+## Accessors
+
+### chatInput
+
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get chatInput(): ChatInputCommandResolver | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L75', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:75' }}>
+
+Gets the chat input command resolver.
+
+</ApiMember>
+
+### contextMenu
+
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get contextMenu(): ContextMenuCommandResolver[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L85', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:85' }}>
+
+Gets the context menu commands associated with this registry entry.
+
+</ApiMember>
+
+## Methods
+
+### getGlobalId()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L29', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:29' }}>
+
+<ApiSignature tokens={['getGlobalId(): string | null']} />
+
+Retrieves the loaded global ID of the [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry).
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The loaded global ID of the [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry), or `null` if it's not set.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### getGuildId()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L52', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:52' }}>
+
+<ApiSignature tokens={['getGuildId(guildId: string): string | null']} />
+
+Retrieves the loaded guild ID associated with the given guild ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The guild ID to retrieve.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The associated guild ID, or null if not found.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setGlobalId()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L40', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:40' }}>
+
+<ApiSignature
+	tokens={[
+		'setGlobalId(value: string): ',
+		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry']
+	]}
+/>
+
+Sets the loaded global ID for the [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string']}>
+
+The Snowflake value to set as the global ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry']]}>
+
+The updated [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry) instance.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setGuildId()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L64', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:64' }}>
+
+<ApiSignature tokens={['setGuildId(guildId: string, value: string): this']} />
+
+Sets the loaded guild ID for the registry entry.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The guild ID to set.
+
+</ApiParam>
+
+<ApiParam name="value" type={['string']}>
+
+The value to associate with the guild ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The updated registry entry.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts#L95', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistryEntry.ts:95' }}>
+
+<ApiSignature
+	tokens={['toJSON(): ', ['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'], '[]']}
+/>
+
+Converts the [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry) to a JSON representation.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'], '[]']}>
+
+An array of Command objects in JSON format.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

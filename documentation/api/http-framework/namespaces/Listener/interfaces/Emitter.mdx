@@ -1,0 +1,143 @@
+---
+title: 'Interface: Emitter'
+description: 'API reference for Emitter, an interface exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L34',
+		label: 'packages/http-framework/src/lib/structures/Listener.ts:34'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['interface Emitter']} />
+
+## Methods
+
+### emit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L40', label: 'packages/http-framework/src/lib/structures/Listener.ts:40' }}>
+
+<ApiSignature tokens={['emit(eventName: string, ...args: any[]): boolean']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="args" type={['any[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getMaxListeners()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L39', label: 'packages/http-framework/src/lib/structures/Listener.ts:39' }}>
+
+<ApiSignature tokens={['getMaxListeners(): number']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### off()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L37', label: 'packages/http-framework/src/lib/structures/Listener.ts:37' }}>
+
+<ApiSignature tokens={['off(eventName: string, listener: (...args: any[]) => void): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="listener" type={['(...args: any[]) => void']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### on()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L35', label: 'packages/http-framework/src/lib/structures/Listener.ts:35' }}>
+
+<ApiSignature tokens={['on(eventName: string, listener: (...args: any[]) => void): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="listener" type={['(...args: any[]) => void']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### once()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L36', label: 'packages/http-framework/src/lib/structures/Listener.ts:36' }}>
+
+<ApiSignature tokens={['once(eventName: string, listener: (...args: any[]) => void): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="listener" type={['(...args: any[]) => void']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setMaxListeners()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L38', label: 'packages/http-framework/src/lib/structures/Listener.ts:38' }}>
+
+<ApiSignature tokens={['setMaxListeners(n: number): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="n" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
