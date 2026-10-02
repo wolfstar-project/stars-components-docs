@@ -33,19 +33,26 @@ bun add @wolfstar/plugin-api
 ## Description
 
 A plugin for [`@wolfstar/http-framework`](https://www.npmjs.com/package/@wolfstar/http-framework),
-ported from [`@sapphire/plugin-api`](https://github.com/sapphiredev/plugins/tree/main/packages/api).
-It exposes a **standalone** REST API server — for health checks, dashboards, or webhooks from other
-services — built on the same `@sapphire/pieces` `Route`/`Middleware` conventions.
+ported from [`@sapphire/plugin-api`](https://github.com/sapphiredev/plugins/tree/main/packages/api) 8.3.1.
+It exposes a **standalone** REST API server for health checks, dashboards, or webhooks from other
+services. It is built on the same `@sapphire/pieces` `Route`/`Middleware` conventions.
 
-It is intentionally independent from `Client#server` (the interactions webhook): that server already
-claims every path on its port and 404s anything that doesn't match, so this plugin binds its own
-`ApiServer` on a separate port instead of trying to share the same listener.
+The plugin is intentionally independent from `Client#server` (the interactions webhook). That server already
+claims every path on its port and answers 404 for anything that doesn't match. This plugin binds its own
+`Server` on a separate port instead of sharing the same listener.
+
+<Note>
+	Version 2.0.0 matches `@sapphire/plugin-api` 8.3.1 except for authentication, and renames most exports. If you are upgrading, see [Migrating from
+	1.x](#migrating-from-1x).
+</Note>
 
 ## Installation
 
 ```bash
 pnpm add @wolfstar/plugin-api
 ```
+
+Requires Node.js `>=20.18.1` and `@wolfstar/http-framework` `^3.6.0 || ^5.0.0`.
 
 ## Usage
 
@@ -57,6 +64,7 @@ import { Client } from '@wolfstar/http-framework';
 
 const client = new Client({
 	api: {
+		prefix: 'v1',
 		listenOptions: { port: 4000 },
 		origin: '*'
 	}
@@ -66,30 +74,46 @@ await client.load();
 await client.listen({ port: 8080 }); // interactions webhook; the API server starts right after
 ```
 
+`container.server` is the running `Server`. It is an `AsyncEventEmitter` (see [Events](#events)).
+
+The package also exports `version`, a string with the installed `@wolfstar/plugin-api` version:
+
+```ts
+import { version } from '@wolfstar/plugin-api';
+
+console.log(`plugin-api v${version}`);
+```
+
 ## Writing a route
 
 Routes are `Route` pieces loaded from a `routes` directory, exactly like `commands`/`listeners`:
 
 ```ts
 // src/routes/health.get.ts
-import { HttpCodes } from '@wolfstar/http-framework';
 import { Route } from '@wolfstar/plugin-api';
 
 export class HealthRoute extends Route {
 	public run(_request: Route.Request, response: Route.Response) {
-		response.json({ status: 'ok' }, HttpCodes.OK);
+		response.json({ status: 'ok' });
 	}
 }
 ```
 
-The route's path and method are inferred from its location: `src/routes/health.get.ts` registers
-`GET /health`. A folder named `[id]` becomes a dynamic segment (`request.params.id`), and a
-`(group)`-style folder is skipped when building the path. Both can be overridden explicitly:
+The route's path and method are inferred from its location. `src/routes/health.get.ts` registers
+`GET /health`, and a file named `index` maps to its directory. A folder named `[id]` becomes a dynamic
+segment (`request.params.id`), and a `(group)`-style folder is skipped when building the path. You can
+override the path, methods, and body limit explicitly:
 
 ```ts
+import { Route } from '@wolfstar/plugin-api';
+
 export class HealthRoute extends Route {
 	public constructor(context: Route.LoaderContext) {
-		super(context, { route: '/status', methods: ['GET', 'HEAD'] });
+		super(context, {
+			route: '/status',
+			methods: ['GET', 'HEAD'],
+			maximumBodyLength: 1024 // overrides ServerOptions.maximumBodyLength for this route
+		});
 	}
 
 	public run(request: Route.Request, response: Route.Response) {
@@ -98,10 +122,91 @@ export class HealthRoute extends Route {
 }
 ```
 
+`ServerOptions.prefix` is prepended to every route path, so with `prefix: 'v1'` the route above answers
+`GET /v1/status`. Params are percent-decoded. A malformed sequence (for example `%E0%A4%A`) falls back to
+the raw value instead of failing the request.
+
+<Warning>
+	A route declared with **no methods** matches nothing, and its path answers `404`. There is no implicit `GET`. A route whose file name has no
+	method suffix and that passes no `methods` option is never reachable. Name the file `health.get.ts` or pass `methods`.
+</Warning>
+
+## Reading the request
+
+`ApiRequest` (`Route.Request`) extends `IncomingMessage`:
+
+| Member                                                                                                             | Description                                                                |
+| ------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------- |
+| `query`                                                                                                            | Parsed query string, `Record<string, string \| string[]>`.                 |
+| `params`                                                                                                           | Dynamic segments of the matched route.                                     |
+| `route`, `routerNode`                                                                                              | The matched `Route` / `RouterNode` (`null` when nothing matched).          |
+| `readBody()`                                                                                                       | Parses the body according to its `Content-Type`.                           |
+| `readBodyJson()`, `readBodyText()`, `readBodyFormData()`                                                           | Typed readers (JSON, text, `application/x-www-form-urlencoded`/multipart). |
+| `readBodyArrayBuffer()`, `readBodyBlob()`                                                                          | Raw readers.                                                               |
+| `readValidatedBody(fn)`, `readValidatedBodyJson(fn)`, `readValidatedBodyText(fn)`, `readValidatedBodyFormData(fn)` | Read the body, then run your validator. Its return value is the result.    |
+| `asWeb()`                                                                                                          | A web-standard `Request` view of the same message.                         |
+
+Readers return `unknown`. Narrow the result with your own validator. Any function works, so Zod, Valibot,
+or a hand-written guard are all valid:
+
+```ts
+// src/routes/users.post.ts
+import { HttpCodes, Route } from '@wolfstar/plugin-api';
+import { z } from 'zod';
+
+const User = z.object({ name: z.string() });
+
+export class CreateUserRoute extends Route {
+	public async run(request: Route.Request, response: Route.Response) {
+		const user = await request.readValidatedBodyJson((data) => User.parse(data));
+		response.status(HttpCodes.Created).json(user);
+	}
+}
+```
+
+A malformed body rejects. An uncaught rejection becomes a generic `500`. The plugin logs the parser
+message and never sends it to the client.
+
+## Writing the response
+
+`ApiResponse` (`Route.Response`) extends `ServerResponse`. Every helper returns `void` except `status`
+and `setContentType`, which return `this` so they chain:
+
+```ts
+response.status(HttpCodes.Created).json({ id });
+response.ok(); // 200, body "OK"
+response.noContent(); // 204
+response.badRequest({ error: 'Missing name' });
+response.text('hello');
+response.html(200, '<h1>hi</h1>');
+response.error(500); // generic JSON error for a status code
+```
+
+Available helpers: `ok`, `created`, `noContent`, `badRequest`, `unauthorized`, `forbidden`, `notFound`,
+`methodNotAllowed`, `conflict`, `error`, `respond`, `status`, `json`, `text`, `image`, `html`, and
+`setContentType`. `HttpCodes` is re-exported from `@wolfstar/http-framework`, so you can import it from
+either package.
+
+### Cookies
+
+The built-in `cookies` middleware creates `response.cookies`, a `CookieStore`. It is a `Map` of the parsed
+`Cookie` header. Cookies you `add` or `remove` are written to `Set-Cookie` when the response is sent. They
+are marked `Secure` when `NODE_ENV=production`.
+
+```ts
+const session = response.cookies.get('session');
+response.cookies.add('session', 'abc', { domain: 'example.com', maxAge: 3600 });
+response.cookies.remove('old');
+```
+
+The `CookieStore` skips malformed `Cookie` pairs (bad percent-encoding or a missing `=`). When the request
+`Host` is an IP address there is no default cookie domain, so pass `domain` explicitly.
+
 ## Writing a middleware
 
-Middlewares are `Middleware` pieces loaded from a `middlewares` directory, run in ascending
-`position` order before route dispatch; a middleware stops the chain by ending the response:
+Middlewares are `Middleware` pieces loaded from a `middlewares` directory. They run in ascending
+`position` order (default `1000`) before route dispatch. A middleware stops the chain by ending the
+response:
 
 ```ts
 // src/middlewares/requestId.ts
@@ -119,28 +224,97 @@ export class RequestIdMiddleware extends Middleware {
 }
 ```
 
-Built-in middlewares: `headers` (position 10, sets CORS headers and short-circuits `OPTIONS`
-pre-flight requests) and `body` (position 20, rejects requests whose `Content-Length` exceeds
-`maximumBodyLength`).
+Built-in middlewares:
 
-## `ApiServerOptions`
+| Name      | Position | Behavior                                                                                                                                           |
+| --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `headers` | 10       | Sets `Date` and the CORS headers. Ends the response early with an empty `200` for `OPTIONS` (unless the route handles `OPTIONS`), `404`, or `405`. |
+| `body`    | 20       | Answers `413` when the declared `Content-Length` exceeds the route's `maximumBodyLength`.                                                          |
+| `cookies` | 30       | Creates `response.cookies`.                                                                                                                        |
 
-| Option                 | Default            | Description                                              |
-| ---------------------- | ------------------ | -------------------------------------------------------- |
-| `prefix`               | `undefined`        | Path segment prefix applied to every route.              |
-| `origin`               | `'*'`              | `Access-Control-Allow-Origin` header value.              |
-| `maximumBodyLength`    | `1024 * 1024 * 50` | Maximum accepted `Content-Length`, in bytes.             |
-| `server`               | `undefined`        | Raw options forwarded to `node:http`'s `createServer`.   |
-| `listenOptions`        | `{ port: 4000 }`   | Raw options forwarded to `server.listen()`.              |
-| `automaticallyConnect` | `true`             | Whether to start listening during the `postListen` hook. |
+## `ServerOptions`
+
+Pass these under the `api` key of your `ClientOptions`:
+
+| Option                 | Default            | Description                                                          |
+| ---------------------- | ------------------ | -------------------------------------------------------------------- |
+| `prefix`               | `undefined`        | Path segment prefix applied to every route.                          |
+| `origin`               | `'*'`              | `Access-Control-Allow-Origin` header value.                          |
+| `maximumBodyLength`    | `1024 * 1024 * 50` | Default maximum `Content-Length`, in bytes. A route can override it. |
+| `server`               | `undefined`        | Raw options forwarded to `node:http`'s `createServer`.               |
+| `listenOptions`        | `{ port: 4000 }`   | Raw options forwarded to `server.listen()`.                          |
+| `automaticallyConnect` | `true`             | Whether to start listening during the `postListen` hook.             |
+
+`Server#connect()` rejects (for example with `EADDRINUSE`) instead of throwing uncaught.
+
+## Events
+
+`container.server` emits `ServerEvent` members. The built-in listeners implement the pipeline
+`request` → middlewares → `routerFound` / `routerBranchNotFound` / `routerBranchMethodNotAllowed`.
+`routerFound` then emits `middlewareSuccess` (the route runs) or `middlewareFailure` (a middleware
+already ended the response). Errors surface as `middlewareError` or `routeError`. Both built-in listeners
+log with `container.logger.fatal(error)` and answer a generic `500`. `ServerEvent.Error` carries an
+optional request and response.
+
+Listener piece names are PascalCase (for example `PluginServerRequest`).
+
+## Migrating from 1.x
+
+Version 2.0.0 contains breaking changes. Update your code as follows:
+
+| 1.x                              | 2.x                                                                         |
+| -------------------------------- | --------------------------------------------------------------------------- |
+| `ApiServer`                      | `Server`                                                                    |
+| `ApiServerOptions`               | `ServerOptions`                                                             |
+| `ApiServerEvents`                | `ServerEvents`                                                              |
+| `ApiServerEvent`                 | `ServerEvent`                                                               |
+| `ApiPlugin`                      | `Api`                                                                       |
+| `HttpMethod`                     | `MethodName`                                                                |
+| `response.json(data, code)`      | `response.status(code).json(data)`                                          |
+| `request.readBodyJson<T>(limit)` | `request.readBodyJson()` (returns `unknown`) or `readValidatedBodyJson(fn)` |
+| `request.query.get('key')`       | `request.query.key`                                                         |
+
+Behavior changes:
+
+- **No implicit `GET`.** A route without methods matches nothing, and its path answers `404`. Add a method
+  suffix to the file name or pass `methods` (see [Writing a route](#writing-a-route)).
+- **Response helpers return `void`.** Only `status` and `setContentType` chain.
+- **Body limit.** `readBodyJson()` no longer takes a `limit` argument. Set `maximumBodyLength` in
+  `ServerOptions` or per route instead.
+- **`request.query`** is a plain `Record<string, string | string[]>`, no longer a `URLSearchParams`.
+- **`OPTIONS`** pre-flight requests answer `200` with an empty body instead of `204`. `404` and `405`
+  responses from the `headers` middleware also have empty bodies.
+- **Listener piece names** are PascalCase, and `ServerEvent.Error` carries an optional request and response.
+- **Requirements.** Node.js `>=20.18.1` and `@wolfstar/http-framework` `^3.6.0 || ^5.0.0`.
 
 ## Scope
 
-Ported faithfully: the `Route`/`RouteStore` piece conventions, the filesystem-routing/dynamic-segment
-trie router (`RouterRoot`/`RouterBranch`/`RouterNode`), the position-ordered `Middleware`/`MiddlewareStore`
-chain, and the listener-driven request dispatch pipeline (`request` → middlewares → `routerFound` /
-`routerBranchNotFound` / `routerBranchMethodNotAllowed` → route `run`).
+The plugin matches `@sapphire/plugin-api` 8.3.1 except for authentication.
 
-**Not ported** (out of scope for this webhook-only framework, kept for a future release): cookies,
-OAuth2/session auth, and the built-in `oauth/callback`, `oauth/logout` routes from the original
-`@sapphire/plugin-api`. Add your own auth middleware/routes as needed.
+<Warning>
+	**Authentication and OAuth2 are not ported.** `Auth`, `ServerOptions.auth`, `ApiRequest.auth`, the `auth` middleware, and the built-in OAuth
+	routes (`loadRoutes`) do not exist in this plugin. Write your own auth middleware and routes as needed.
+</Warning>
+
+Also not ported: the `Client.server` augmentation (that is the interactions server here) and the CommonJS
+build. The framework's `postListen` hook replaces `preLogin`.
+
+### Known limitations
+
+These behaviors are kept as they are upstream:
+
+- Chunked request bodies without a `Content-Length` are not length-limited by the `body` middleware.
+- A request with a `Content-Length` but no `Content-Type` bypasses the body limit.
+- The IPv6 `Host` header edge case is not fixed.
+- `response.cookies.add()` without an explicit `domain` throws when the request `Host` is an IP address.
+  The error surfaces as a route error and a generic `500`.
+
+### Fixed relative to upstream
+
+- `RouterBranch#path` no longer drops ancestor segments.
+- Removing a route no longer deletes sibling methods or indexes the wrong branch.
+- `supportedMethods` includes grandchildren.
+- `CookieStore` no longer crashes on malformed `Cookie` headers.
+- A `:8080` `Host` header no longer produces a `NaN` port.
+- `Server#connect()` rejects instead of throwing uncaught when the port is in use.
+- The request stream is closed when a client disconnects mid-body.

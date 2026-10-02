@@ -88,11 +88,3 @@ A dependency the current configuration needs (for example `tsdown` or `vite`) is
 ## CODEGEN_FAILED {#codegen_failed}
 
 `i18next-type-generator` exited with a non-zero code, optionally with its `stderr` output attached.
-
-## EXPERIMENT_UNAVAILABLE {#experiment_unavailable}
-
-`experimental.enableNitro` is not implemented yet.
-
-**Fix:** Nitro needs the framework's Fetch adapter
-([wolfstar-project/stars-components#81](https://github.com/wolfstar-project/stars-components/issues/81)); until it
-lands, set `build.tool` to `'tsdown'`, `'vite'`, or `'tsc'`.
