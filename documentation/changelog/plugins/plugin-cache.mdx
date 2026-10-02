@@ -1,0 +1,66 @@
+---
+title: '@wolfstar/plugin-cache'
+sidebarTitle: 'plugin-cache'
+description: 'Changelog for @wolfstar/plugin-cache: a storage-agnostic Discord entity cache, in memory or in Redis.'
+---
+
+Changes to [`@wolfstar/plugin-cache`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache). The plugin is a storage-agnostic Discord entity cache, in memory or in Redis, and the cache behind the managers of [`@wolfstar/plugin-gateway`](/documentation/changelog/plugins/plugin-gateway). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.5.0`
+
+Aligns the cache with the discord.js RFC [#11426](https://github.com/wolfstar-project/plugins/issues/11426) (zero caching, complete flexibility).
+
+### New features
+
+- **Partial caches** — Every entity cache is now optional, and an entity kind the cache does not hold is not cached. `createInMemoryCache` and `createRedisCache` take `entities` to pick them. `createCache({ makeCache, policies })` builds a cache out of any store per entity kind.
+- **Policies** — Set `{ filter(value, key), ttl(value, key) }` per entity kind and apply it to any store with `withPolicy(store, policy)`. A `filter` returning `false` skips the write and deletes the cached entry. `ttl` sets the entry's time-to-live.
+- **`upsert()`** — `EntityCache` gains `upsert(key, data, { overwrite, ttl })`, which resolves to `{ existing, added }`. `set` now takes `{ ttl }` in milliseconds (`null` for none).
+- **In-memory time-to-live** — `MemoryEntityCache` supports `ttl`, `sweepInterval`, `sweep()`, and `dispose()`. `createInMemoryCache` takes `ttl` and `sweepInterval`.
+
+### Updates
+
+- **Optional enumeration** — `keys`, `values`, and `entries` moved to `IterableEntityCache`. Check a store with `isIterableCache`. `applyCacheOperations` skips missing stores and the scans of stores that cannot enumerate.
+- **Operation results** — `applyCacheOperations` and `applyGatewayDispatch` resolve to `CacheOperationResult[]` (`{ entity, key, type, existing, added }`).
+- **Deprecated aliases** — `InMemoryCache` and `RedisCache` are now deprecated aliases of `Cache`.
+
+### Migration
+
+Custom stores must implement `upsert` and accept the options of `set`. Code that reads `cache.users` directly must handle `undefined`.
+
+## `0.4.0`
+
+### New features
+
+- **Pluggable Redis codec** — `createRedisCache` and `RedisEntityCache` accept a `codec` option (`jsonCodec()` by default, matching the previous behaviour). A `msgpackCodec()` backed by [`msgpackr`](https://github.com/kriszyp/msgpackr) is available from the new `@wolfstar/plugin-cache/msgpack` subpath, which needs the optional `msgpackr` peer dependency.
+- **Safe codec switching** — Encoded values are tagged with the codec's name, so switching to a codec is always safe. Switching away from a non-default codec requires listing it in the new `legacyCodecs` option so its entries keep decoding. The names `"gz"`, `"br"`, and `"b64"` are reserved.
+
+## `0.3.0`
+
+### New features
+
+- **Resume gateway sessions across restarts** — `createRedisSessionStore` (with a `ttl`, 10 minutes by default) and the `GatewaySessionStore` and `GatewaySessionInfo` types let a new process resume the sessions of the previous one. Pair it with the `sessionStore` option of `GatewayClient`.
+- **Synchronous reads** — `EntityCache` gains an optional, readonly `synchronous` flag: `true` for in-memory caches, `false` for Redis. Managers use it for `cached(...ids)`, for example `client.members.cached(guildId, userId)`.
+
+### Bug fixes
+
+- **`./register` export** — Adds a no-op `./register` subpath export. The Stars CLI build imports `<name>/register` for every `@wolfstar/plugin-*` dependency, so the package crashed consumers at startup with `ERR_PACKAGE_PATH_NOT_EXPORTED`.
+
+## `0.2.0`
+
+### New features
+
+- **Guild index for Redis** — Guild-scoped Redis entity caches are indexed by guild (`indexGuilds`, on by default). A `GUILD_DELETE` drops a guild's entries through the index instead of scanning every entry of every entity cache. `EntityCache` gains an optional `deleteGuild`.
+
+## `0.1.0`
+
+### New features
+
+- **New package** — `@wolfstar/plugin-cache` is a storage-agnostic `Cache` interface with one `EntityCache` per Discord entity, and `applyGatewayDispatch` to write gateway dispatches into it, cascading deletes included.
+- **Two stores** — `createInMemoryCache` (optionally LRU-bounded) and `createRedisCache` (per-entity TTL and optional gzip or brotli compression).
+- **Reactions and poll votes** — Reactions and poll votes are counted into the cached message. Pass `{ clientUserId }` to `applyGatewayDispatch` for the `me` and `me_voted` flags.
+- **Scheduled event creators** — The creator of a scheduled event is cached in `users`.
+
+### Bug fixes
+
+- **Atomic Redis writes** — Redis values and their index entries are written and deleted together in a single `MULTI` transaction, and expired index entries are pruned on every write when a `ttl` is set.
+- **Unreadable values** — Invalid JSON or corrupt compressed bytes are rejected with a `CacheValueError` naming the key.

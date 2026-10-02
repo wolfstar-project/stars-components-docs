@@ -1,0 +1,35 @@
+---
+title: '@wolfstar/plugin-broker'
+sidebarTitle: 'plugin-broker'
+description: 'Changelog for @wolfstar/plugin-broker: distribute gateway events across processes over Redis Streams.'
+---
+
+Changes to [`@wolfstar/plugin-broker`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-broker). The plugin distributes gateway events across processes over [Redis Streams](https://redis.io/docs/latest/develop/data-types/streams/), with consumer-group semantics and at-least-once delivery. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.3.1`
+
+### Updates
+
+- **Cache alignment** — Updated to [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) `0.5.0`.
+
+## `0.3.0`
+
+### New features
+
+- **Claim idle entries** — `claimIdle` claims (`XAUTOCLAIM`) entries that any consumer of the group left pending for too long, for example one that crashed and never restarted under the same name.
+- **Dead-letter stream** — `maxDeliveries` moves an entry that keeps failing to a dead-letter stream instead of retrying it forever. Set the stream with `deadLetterStream` (`<stream>:dead` by default).
+- **Graceful shutdown** — `shutdownSignals` stops the consumer on the given process signals. The consumer awaits the in-flight entry before letting the signal end the process.
+- **`forwardGatewayDispatches`** — Publishes every dispatch a [`@wolfstar/plugin-gateway`](/documentation/changelog/plugins/plugin-gateway) `GatewayClient` receives onto a broker, once it is written to the client's cache.
+
+### Bug fixes
+
+- **Pending entries drain** — A consumer could never drain its own pending entries: an entry that failed again was re-read forever, so the consumer never moved on to new entries. It now moves on.
+- **Trimmed entries** — An entry trimmed from the stream while pending is now acknowledged instead of failing to decode.
+
+## `0.2.0`
+
+### New features
+
+- **New package** — `@wolfstar/plugin-broker` distributes gateway events across processes over Redis Streams. `createBroker` publishes events. `ClientOptions.broker` configures a `BrokerConsumer`, started automatically once the client starts listening. The consumer reads events through a consumer group and redelivers a restarted consumer's own pending entries.
+- **`BrokerListener` pieces** — Loaded from the `listeners` directory, like `EventGatewayListener` in `@wolfstar/plugin-gateway`. Listeners are typed per event through an augmentable `BrokerEvents` map. An entry is acknowledged only once every matching listener has resolved, so a throwing listener leaves its entry pending.
+- **Pluggable payload codec** — Payloads are encoded with a `CacheCodec` from [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) (`jsonCodec()` by default).

@@ -1,240 +1,85 @@
 ---
 title: 'Class: RedditParseException'
+description: "An error thrown by fetchRedditPost if no post key could be extracted from the [['link']](/documentation/api/reddit-helpers/classes/RedditParseExcepti… (@wolfstar/reddit-helpers)"
 hidden: true
 ---
 
-Defined in: [packages/reddit-helpers/src/lib/RedditParseException.ts:4](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/RedditParseException.ts#L4)
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-An error thrown by `fetchRedditPost` if no post key could be extracted from the \['link'\]
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/RedditParseException.ts#L4',
+		label: 'packages/reddit-helpers/src/lib/RedditParseException.ts:4'
+	}}
+	packageName="@wolfstar/reddit-helpers"
+	packageHref="/documentation/api/reddit-helpers"
+/>
 
-## Extends
+An error thrown by `fetchRedditPost` if no post key could be extracted from the [['link']](/documentation/api/reddit-helpers/classes/RedditParseException)
 
-- `Error`
+<ApiSignature
+	tokens={[
+		'class RedditParseException extends ',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']
+	]}
+/>
+
+<ApiHierarchy extends={[[['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]]} />
 
 ## Constructors
 
 ### Constructor
 
-> **new RedditParseException**(`message`, `subreddit`, `key`): `RedditParseException`
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/RedditParseException.ts#L11', label: 'packages/reddit-helpers/src/lib/RedditParseException.ts:11' }}>
 
-Defined in: [packages/reddit-helpers/src/lib/RedditParseException.ts:11](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/RedditParseException.ts#L11)
+<ApiSignature
+	tokens={[
+		'new RedditParseException(\n  message: string,\n  subreddit: string,\n  key: string\n): ',
+		['RedditParseException', '/documentation/api/reddit-helpers/classes/RedditParseException']
+	]}
+/>
 
 Represents an exception that occurs during parsing of Reddit data.
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### message
-
-`string`
+<ApiParam name="message" type={['string']}>
 
 The message to display
 
-##### subreddit
+</ApiParam>
 
-`string`
+<ApiParam name="subreddit" type={['string']}>
 
 The subreddit that was being parsed
 
-##### key
+</ApiParam>
 
-`string`
+<ApiParam name="key" type={['string']}>
 
 The key that was being parsed
 
-#### Returns
+</ApiParam>
 
-`RedditParseException`
+</ApiParams>
 
-#### Overrides
-
-`Error.constructor`
+</ApiMember>
 
 ## Properties
 
-### cause?
-
-> `optional` **cause?**: `unknown`
-
-Defined in: node_modules/.pnpm/typescript@5.8.3/node_modules/typescript/lib/lib.es2022.error.d.ts:26
-
-#### Inherited from
-
-`Error.cause`
-
----
-
 ### key
 
-> `readonly` **key**: `string`
-
-Defined in: [packages/reddit-helpers/src/lib/RedditParseException.ts:14](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/RedditParseException.ts#L14)
+<ApiMember kind="property" badges={['readonly']} signature={['readonly key: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/RedditParseException.ts#L14', label: 'packages/reddit-helpers/src/lib/RedditParseException.ts:14' }}>
 
 The key that was being parsed
 
----
-
-### message
-
-> **message**: `string`
-
-Defined in: node_modules/.pnpm/typescript@5.8.3/node_modules/typescript/lib/lib.es5.d.ts:1077
-
-#### Inherited from
-
-`Error.message`
-
----
-
-### name
-
-> **name**: `string`
-
-Defined in: node_modules/.pnpm/typescript@5.8.3/node_modules/typescript/lib/lib.es5.d.ts:1076
-
-#### Inherited from
-
-`Error.name`
-
----
-
-### stack?
-
-> `optional` **stack?**: `string`
-
-Defined in: node_modules/.pnpm/typescript@5.8.3/node_modules/typescript/lib/lib.es5.d.ts:1078
-
-#### Inherited from
-
-`Error.stack`
-
----
+</ApiMember>
 
 ### subreddit
 
-> `readonly` **subreddit**: `string`
-
-Defined in: [packages/reddit-helpers/src/lib/RedditParseException.ts:13](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/RedditParseException.ts#L13)
+<ApiMember kind="property" badges={['readonly']} signature={['readonly subreddit: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/RedditParseException.ts#L13', label: 'packages/reddit-helpers/src/lib/RedditParseException.ts:13' }}>
 
 The subreddit that was being parsed
 
----
-
-### stackTraceLimit
-
-> `static` **stackTraceLimit**: `number`
-
-Defined in: node_modules/.pnpm/@types+node@22.15.21/node_modules/@types/node/globals.d.ts:161
-
-The `Error.stackTraceLimit` property specifies the number of stack frames
-collected by a stack trace (whether generated by `new Error().stack` or
-`Error.captureStackTrace(obj)`).
-
-The default value is `10` but may be set to any valid JavaScript number. Changes
-will affect any stack trace captured _after_ the value has been changed.
-
-If set to a non-number value, or set to a negative number, stack traces will
-not capture any frames.
-
-#### Inherited from
-
-`Error.stackTraceLimit`
-
-## Methods
-
-### captureStackTrace()
-
-> `static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
-
-Defined in: node_modules/.pnpm/@types+node@22.15.21/node_modules/@types/node/globals.d.ts:145
-
-Creates a `.stack` property on `targetObject`, which when accessed returns
-a string representing the location in the code at which
-`Error.captureStackTrace()` was called.
-
-```js
-const myObject = {};
-Error.captureStackTrace(myObject);
-myObject.stack; // Similar to `new Error().stack`
-```
-
-The first line of the trace will be prefixed with
-`${myObject.name}: ${myObject.message}`.
-
-The optional `constructorOpt` argument accepts a function. If given, all frames
-above `constructorOpt`, including `constructorOpt`, will be omitted from the
-generated stack trace.
-
-The `constructorOpt` argument is useful for hiding implementation
-details of error generation from the user. For instance:
-
-```js
-function a() {
-	b();
-}
-
-function b() {
-	c();
-}
-
-function c() {
-	// Create an error without stack trace to avoid calculating the stack trace twice.
-	const { stackTraceLimit } = Error;
-	Error.stackTraceLimit = 0;
-	const error = new Error();
-	Error.stackTraceLimit = stackTraceLimit;
-
-	// Capture the stack trace above function b
-	Error.captureStackTrace(error, b); // Neither function c, nor b is included in the stack trace
-	throw error;
-}
-
-a();
-```
-
-#### Parameters
-
-##### targetObject
-
-`object`
-
-##### constructorOpt?
-
-`Function`
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-`Error.captureStackTrace`
-
----
-
-### prepareStackTrace()
-
-> `static` **prepareStackTrace**(`err`, `stackTraces`): `any`
-
-Defined in: node_modules/.pnpm/@types+node@22.15.21/node_modules/@types/node/globals.d.ts:149
-
-#### Parameters
-
-##### err
-
-`Error`
-
-##### stackTraces
-
-`CallSite`[]
-
-#### Returns
-
-`any`
-
-#### See
-
-https://v8.dev/docs/stack-trace-api#customizing-stack-traces
-
-#### Inherited from
-
-`Error.prepareStackTrace`
+</ApiMember>

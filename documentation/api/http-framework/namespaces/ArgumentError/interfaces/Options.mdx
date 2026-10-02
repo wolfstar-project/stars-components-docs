@@ -1,0 +1,115 @@
+---
+title: 'Interface: Options'
+description: 'The options for ArgumentError. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	badges={['since 3.2.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L56',
+		label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:56'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The options for [ArgumentError](/documentation/api/http-framework/classes/ArgumentError).
+
+<ApiSignature
+	tokens={[
+		'interface Options<T> extends ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['UserError.Options', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options'],
+		', "identifier">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+			'<',
+			['UserError.Options', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options'],
+			', "identifier">'
+		]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+## Properties
+
+### argument
+
+<ApiMember kind="property" badges={['since 3.2.0']} signature={['argument: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L61', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:61' }}>
+
+The name of the option that caused the error.
+
+</ApiMember>
+
+### context?
+
+<ApiMember kind="property" badges={['optional', 'since 3.2.0']} signature={['context?: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L70', label: 'packages/http-framework/src/lib/errors/UserError.ts:70' }} inheritedFrom={[['Omit.context', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options#context']]}>
+
+The extra context to provide more information about this error.
+
+**Default**
+
+```ts
+null;
+```
+
+</ApiMember>
+
+### identifier?
+
+<ApiMember kind="property" badges={['optional', 'since 3.2.0']} signature={['identifier?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L81', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:81' }}>
+
+The identifier.
+
+**Default**
+
+```ts
+argument;
+```
+
+</ApiMember>
+
+### message?
+
+<ApiMember kind="property" badges={['optional', 'since 3.2.0']} signature={['message?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L63', label: 'packages/http-framework/src/lib/errors/UserError.ts:63' }} inheritedFrom={[['Omit.message', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options#message']]}>
+
+The message to be passed to the Error constructor.
+
+</ApiMember>
+
+### parameter
+
+<ApiMember kind="property" badges={['since 3.2.0']} signature={['parameter: T']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L74', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:74' }}>
+
+The value that failed to be resolved.
+
+</ApiMember>
+
+### type?
+
+<ApiMember kind="property" badges={['optional', 'since 3.2.0']} signature={['type?: ', ['ApplicationCommandOptionType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationCommandOptionType'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L68', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:68' }}>
+
+The type of the option that caused the error.
+
+**Default**
+
+```ts
+null;
+```
+
+</ApiMember>

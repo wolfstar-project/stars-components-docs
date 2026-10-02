@@ -1,0 +1,125 @@
+---
+title: 'Class: CommandLoaderStrategy'
+description: 'Represents a strategy for loading and unloading commands. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 2.0.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandLoaderStrategy.ts#L10',
+		label: 'packages/http-framework/src/lib/structures/CommandLoaderStrategy.ts:10'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Represents a strategy for loading and unloading commands.
+
+<ApiSignature
+	tokens={['class CommandLoaderStrategy extends LoaderStrategy<', ['Command', '/documentation/api/http-framework/classes/Command'], '>']}
+/>
+
+<ApiHierarchy extends={[['LoaderStrategy<', ['Command', '/documentation/api/http-framework/classes/Command'], '>']]} />
+
+## Methods
+
+### onLoad()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandLoaderStrategy.ts#L19', label: 'packages/http-framework/src/lib/structures/CommandLoaderStrategy.ts:19' }}>
+
+<ApiSignature
+	tokens={[
+		'onLoad(store: ',
+		['CommandStore', '/documentation/api/http-framework/classes/CommandStore'],
+		', piece: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'): ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<PieceOptions>'
+	]}
+/>
+
+Called when a command is loaded.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="store" type={[['CommandStore', '/documentation/api/http-framework/classes/CommandStore']]}>
+
+The command store.
+
+</ApiParam>
+
+<ApiParam name="piece" type={[['Command', '/documentation/api/http-framework/classes/Command']]}>
+
+The command being loaded.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<PieceOptions>']}>
+
+The loaded command.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### onUnload()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandLoaderStrategy.ts#L43', label: 'packages/http-framework/src/lib/structures/CommandLoaderStrategy.ts:43' }}>
+
+<ApiSignature
+	tokens={[
+		'onUnload(store: ',
+		['CommandStore', '/documentation/api/http-framework/classes/CommandStore'],
+		', piece: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'): ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<PieceOptions>'
+	]}
+/>
+
+Called when a command is unloaded.
+
+This also drops the command's [ApplicationCommandRegistryEntry](/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry) from the
+[ApplicationCommandRegistry](/documentation/api/http-framework/namespaces/ApplicationCommandRegistry). The registry is keyed by command class, and reloading a command evaluates its
+module again, producing a brand new class: without this, the entry of the previous class would linger and the
+command would be pushed to Discord twice.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="store" type={[['CommandStore', '/documentation/api/http-framework/classes/CommandStore']]}>
+
+The command store.
+
+</ApiParam>
+
+<ApiParam name="piece" type={[['Command', '/documentation/api/http-framework/classes/Command']]}>
+
+The command being unloaded.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<PieceOptions>']}>
+
+The unloaded command.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,154 @@
+---
+title: '@wolfstar/plugin-broker'
+description: 'Distribute gateway events across processes over Redis Streams with at-least-once delivery.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-broker ioredis
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-broker ioredis
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-broker ioredis
+```
+
+```bash bun
+bun add @wolfstar/plugin-broker ioredis
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-broker"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-broker"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+`@wolfstar/plugin-broker` publishes and consumes messages over [Redis Streams](https://redis.io/docs/latest/develop/data-types/streams/)
+with consumer-group semantics. One gateway process, or several sharded ones with
+[`@wolfstar/plugin-sharder`](/documentation/packages/plugin-sharder), publishes dispatches. Any number of worker
+processes consume them and share the load, so a worker can restart, crash, or deploy without dropping the gateway
+connection.
+
+Unlike Redis Pub/Sub, entries survive a worker being down (`XADD` and `XREADGROUP` instead of `PUBLISH`). Unlike a
+plain `XREAD`, workers share the load through a consumer group instead of each receiving every message.
+
+## Producer
+
+```ts
+import { createBroker } from '@wolfstar/plugin-broker';
+import { Redis } from 'ioredis';
+
+const broker = createBroker({
+	redis: new Redis(process.env.REDIS_URL!),
+	stream: 'wolfstar:events',
+	maxLength: 100_000 // XADD MAXLEN ~, omit for no trimming
+});
+
+await broker.publish('messageCreate', payload);
+```
+
+## Consumer
+
+Import the `register` entry point before you create your `Client`, then configure `broker` on it. The consumer starts
+automatically once the client starts listening:
+
+```ts
+import '@wolfstar/plugin-broker/register';
+import { Client } from '@wolfstar/http-framework';
+import { Redis } from 'ioredis';
+
+const client = new Client({
+	broker: {
+		redis: new Redis(process.env.REDIS_URL!),
+		stream: 'wolfstar:events',
+		group: 'workers',
+		consumer: `worker-${process.pid}`,
+		batchSize: 10,
+		block: 5_000,
+		claimIdle: 60_000,
+		maxDeliveries: 5,
+		deadLetterStream: 'wolfstar:events:dead',
+		shutdownSignals: ['SIGTERM', 'SIGINT']
+	}
+});
+```
+
+## Delivery guarantees
+
+An entry is acknowledged once every listener for its event has resolved. A listener that throws leaves the entry
+pending. A restarted consumer of the same name receives it again. With `claimIdle` set, whichever consumer claims the
+entry after it has been idle that long receives it instead.
+
+<Warning>
+	Idle time counts from an entry's last delivery. Set `claimIdle` well above your slowest listener's run time, or another consumer can claim and
+	handle an entry that is still running.
+</Warning>
+
+With `maxDeliveries` set, an entry delivered more than that many times moves to the dead-letter stream. The dead-letter
+entry keeps its `event` and `payload` fields plus the original `id`, `stream`, `group`, `consumer`, and `deliveries`. Without it, a
+failing entry is retried forever.
+
+## Graceful shutdown
+
+`container.broker.stop()` stops reading and waits for the in-flight entry. Anything left unacknowledged stays pending
+for the next consumer. With `shutdownSignals`, the consumer does this on its own when the process receives one of
+those signals.
+
+## Forwarding gateway dispatches
+
+`forwardGatewayDispatches` publishes every dispatch a [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway)
+`GatewayClient` receives, once it is written to the client's cache. Workers that share a
+[`@wolfstar/plugin-cache`](/documentation/packages/plugin-cache) Redis cache see the state each dispatch left.
+
+```ts
+import { createBroker, forwardGatewayDispatches } from '@wolfstar/plugin-broker';
+import { GatewayDispatchEvents } from 'discord-api-types/v10';
+
+const broker = createBroker({ redis, stream: 'wolfstar:events', maxLength: 100_000 });
+const stopForwarding = forwardGatewayDispatches(gatewayClient, broker, {
+	events: [GatewayDispatchEvents.MessageCreate], // omit to forward every dispatch
+	onError: (error, payload) => console.error(`Failed to forward ${payload.t}`, error)
+});
+```
+
+## BrokerListener piece
+
+A `BrokerListener` piece, typed by event name, is loaded from the `listeners` directory. Augment `BrokerEvents` in your
+application to type the events you publish and consume:
+
+```ts
+import { BrokerListener, RegisterAsBrokerListener, type BrokerMessage } from '@wolfstar/plugin-broker';
+
+declare module '@wolfstar/plugin-broker' {
+	interface BrokerEvents {
+		messageCreate: { content: string };
+	}
+}
+
+@RegisterAsBrokerListener('messageCreate')
+export class LogMessagesListener extends BrokerListener<'messageCreate'> {
+	public override run(payload: { content: string }, message: BrokerMessage) {
+		console.log(`[${message.id}] ${payload.content}`);
+	}
+}
+```
+
+## Codec
+
+Payloads use a `CacheCodec` from `@wolfstar/plugin-cache`: `jsonCodec()` by default, or `msgpackCodec()` from
+`@wolfstar/plugin-cache/msgpack` for a denser format.
+
+<Warning>Every producer and consumer of a stream must use the same codec.</Warning>
+
+[![version](https://npmx.dev/api/registry/badge/version/@wolfstar/plugin-broker)](https://npmx.dev/package/@wolfstar/plugin-broker)
+[![downloads](https://npmx.dev/api/registry/badge/downloads/@wolfstar/plugin-broker)](https://npmx.dev/package/@wolfstar/plugin-broker)
+[![license](https://img.shields.io/github/license/wolfstar-project/plugins?style=flat-square&color=informational)](https://github.com/wolfstar-project/plugins/blob/main/LICENSE)

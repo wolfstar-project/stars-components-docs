@@ -32,7 +32,16 @@ const packageManifests = [
 		'twitch-helpers',
 		'weather-helpers'
 	].map((name) => ({ name, repo: 'wolfstar-project/stars-components' })),
-	...['plugin-api', 'plugin-i18next', 'plugin-subcommands-advanced', 'plugin-logger'].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
+	...[
+		'plugin-api',
+		'plugin-broker',
+		'plugin-cache',
+		'plugin-gateway',
+		'plugin-i18next',
+		'plugin-logger',
+		'plugin-sharder',
+		'plugin-subcommands-advanced'
+	].map((name) => ({ name, repo: 'wolfstar-project/plugins' }))
 ];
 const packageNames = new Set(packageManifests.map(({ name }) => name));
 

@@ -1,0 +1,113 @@
+---
+title: '@wolfstar/plugin-cache'
+description: 'A storage-agnostic Discord entity cache for plugin-gateway, backed by in-memory Maps with LRU bounds or by Redis with per-entity TTL and compression.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-cache
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-cache
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-cache
+```
+
+```bash bun
+bun add @wolfstar/plugin-cache
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-cache"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+`@wolfstar/plugin-cache` is the cache behind the managers of [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway).
+A `Cache` is one Map-like `EntityCache` per Discord entity kind (`guilds`, `users`, `channels`, `messages`, `members`,
+`roles`, and more). It stores raw, JSON-serializable API data only. Building structures on top of it is the managers'
+job, which lets the same data live in a `Map` or in Redis.
+
+Swapping the store never changes the call sites:
+
+| Store                 | Backed by | Extras                                               |
+| --------------------- | --------- | ---------------------------------------------------- |
+| `createInMemoryCache` | `Map`s    | Optional LRU bound, global or per entity             |
+| `createRedisCache`    | Redis     | Per-entity TTL, optional gzip or brotli compression  |
+| your own              | anything  | Implement `Cache`, every method may return a promise |
+
+## Usage
+
+Most of the time you hand the cache to a `GatewayClient`, which writes every dispatch into it:
+
+```ts
+import { createInMemoryCache } from '@wolfstar/plugin-cache';
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+
+const client = new GatewayClient({
+	intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMessages,
+	// Keep at most 1000 messages, every other entity cache is unbounded.
+	cache: createInMemoryCache({ maxSize: { messages: 1_000 } })
+});
+```
+
+You can also use it on its own with any gateway dispatch source:
+
+```ts
+import { attachCacheToGateway, createInMemoryCache } from '@wolfstar/plugin-cache';
+
+const cache = createInMemoryCache();
+const detach = attachCacheToGateway(gateway, cache, {
+	onError: (error) => console.error(error)
+});
+
+const guild = await cache.guilds?.get(guildId);
+```
+
+`applyGatewayDispatch` also handles cascades. A `CHANNEL_DELETE` drops that channel's messages and a `GUILD_DELETE`
+drops every entity of that guild. Reactions and poll votes update the cached message. Pass the bot's user ID as
+`clientUserId` so the `me` flags are right.
+
+## Redis
+
+`createRedisCache` takes any client that exposes the commands it needs, which an [`ioredis`](https://github.com/redis/ioredis)
+`Redis` or `Cluster` instance does as is:
+
+```ts
+import { createRedisCache } from '@wolfstar/plugin-cache';
+import { Redis } from 'ioredis';
+
+const cache = createRedisCache({
+	redis: new Redis(process.env.REDIS_URL!),
+	prefix: 'my-bot:cache',
+	compression: 'gzip',
+	compressionThreshold: 1024,
+	ttl: { guilds: 60 * 60, users: 30 * 60 }
+});
+```
+
+| Option                 | Default            | Description                                                          |
+| ---------------------- | ------------------ | -------------------------------------------------------------------- |
+| `redis`                | —                  | The client to use.                                                   |
+| `prefix`               | `"wolfstar:cache"` | Prefix of every key, stored as `<prefix>:<entity>:<key>`.            |
+| `compression`          | `"none"`           | `"gzip"`, `"brotli"`, or `"none"`.                                   |
+| `compressionThreshold` | `1024`             | Minimum serialized size, in bytes, for a value to be compressed.     |
+| `codec`                | `jsonCodec()`      | Encodes and decodes values before compression.                       |
+| `legacyCodecs`         | `[]`               | Former `codec` values still tagging entries.                         |
+| `ttl`                  | `{}`               | Time-to-live in seconds per entity cache. Omitted ones never expire. |
+| `indexGuilds`          | `true`             | Index guild-scoped entity caches by guild.                           |
+
+Compressed values are tagged, so turning compression on or off never breaks reading existing values.
+
+[![version](https://npmx.dev/api/registry/badge/version/@wolfstar/plugin-cache)](https://npmx.dev/package/@wolfstar/plugin-cache)
+[![downloads](https://npmx.dev/api/registry/badge/downloads/@wolfstar/plugin-cache)](https://npmx.dev/package/@wolfstar/plugin-cache)
+[![license](https://img.shields.io/github/license/wolfstar-project/plugins?style=flat-square&color=informational)](https://github.com/wolfstar-project/plugins/blob/main/LICENSE)

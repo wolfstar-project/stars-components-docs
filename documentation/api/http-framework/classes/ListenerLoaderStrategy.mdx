@@ -1,0 +1,108 @@
+---
+title: 'Class: ListenerLoaderStrategy'
+description: 'Represents a strategy for loading and unloading listeners. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 2.1.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/ListenerLoaderStrategy.ts#L13',
+		label: 'packages/http-framework/src/lib/structures/ListenerLoaderStrategy.ts:13'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Represents a strategy for loading and unloading listeners.
+
+<ApiSignature
+	tokens={['class ListenerLoaderStrategy extends LoaderStrategy<', ['Listener', '/documentation/api/http-framework/classes/Listener'], '>']}
+/>
+
+<ApiHierarchy extends={[['LoaderStrategy<', ['Listener', '/documentation/api/http-framework/classes/Listener'], '>']]} />
+
+## Methods
+
+### onLoad()
+
+<ApiMember kind="method" badges={['since 2.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/ListenerLoaderStrategy.ts#L22', label: 'packages/http-framework/src/lib/structures/ListenerLoaderStrategy.ts:22' }}>
+
+<ApiSignature
+	tokens={[
+		'onLoad(_store: ',
+		['ListenerStore', '/documentation/api/http-framework/classes/ListenerStore'],
+		', piece: ',
+		['Listener', '/documentation/api/http-framework/classes/Listener'],
+		'): void'
+	]}
+/>
+
+Called when a listener is loaded.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="_store" type={[['ListenerStore', '/documentation/api/http-framework/classes/ListenerStore']]} />
+
+<ApiParam name="piece" type={[['Listener', '/documentation/api/http-framework/classes/Listener']]}>
+
+The listener being loaded.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void']}>
+
+The loaded listener.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### onUnload()
+
+<ApiMember kind="method" badges={['since 2.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/ListenerLoaderStrategy.ts#L40', label: 'packages/http-framework/src/lib/structures/ListenerLoaderStrategy.ts:40' }}>
+
+<ApiSignature
+	tokens={[
+		'onUnload(_store: ',
+		['ListenerStore', '/documentation/api/http-framework/classes/ListenerStore'],
+		', piece: ',
+		['Listener', '/documentation/api/http-framework/classes/Listener'],
+		'): void'
+	]}
+/>
+
+Called when a listener is unloaded.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="_store" type={[['ListenerStore', '/documentation/api/http-framework/classes/ListenerStore']]} />
+
+<ApiParam name="piece" type={[['Listener', '/documentation/api/http-framework/classes/Listener']]}>
+
+The listener being unloaded.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void']}>
+
+The unloaded listener.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

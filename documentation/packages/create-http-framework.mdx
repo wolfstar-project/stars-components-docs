@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/create-http-framework'
-description: 'Scaffold a production-ready HTTP Framework bot.'
+description: 'CLI scaffolder for new HTTP Framework bots that prompts for package manager, language, build tool, linter, port, and optional features.'
 ---
 
 <CodeGroup>
@@ -54,33 +54,40 @@ The CLI will guide you through the following prompts:
 - **Project name** — an npm-compatible name for your bot
 - **Package manager** — npm, yarn, pnpm, or bun
 - **Language** — TypeScript or JavaScript
-- **Build tool** — tsdown, TypeScript 6, or the TypeScript 7 release candidate
+- **Build tool** — tsdown, Vite, Vite + Nitro, TypeScript 6, or the TypeScript 7 release candidate (Vite and Vite + Nitro are experimental)
 - **Linter and formatter** — Oxlint / ESLint and Oxfmt / Prettier
 - **Port** — the port the HTTP server will listen on (default: `3000`)
 - **Optional features** (multiselect) —
     - **i18n** — add [`@wolfstar/plugin-i18next`](https://github.com/wolfstar-project/stars-components/tree/main/packages/plugin-i18next)
     - **Subcommands** — add an example command that uses subcommands
     - **Testing** — set up Vitest with [`@wolfstar/http-framework-test-utils`](https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-test-utils)
+    - **Gateway** — receive gateway events next to the HTTP interactions with [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway)
+    - **Cache** — cache gateway entities with [`@wolfstar/plugin-cache`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache), in memory or in Redis (asked as a follow-up)
+    - **Sharder** — spread gateway shards across cluster workers with [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder)
 - **Auto-install** — install dependencies immediately after scaffolding
 
 ## Options
 
-| Flag                                 | Alias | Description                                                                |
-| ------------------------------------ | ----- | -------------------------------------------------------------------------- |
-| `--overwrite`                        |       | Overwrite the target directory if it already exists                        |
-| `--no-interactive`                   |       | Skip all prompts and use defaults / flags                                  |
-| `--interactive`                      | `-i`  | Force interactive prompts even when an AI agent is detected                |
-| `--package-manager <pm>`             |       | Choose npm, yarn, pnpm, or bun                                             |
-| `--language <lang>`                  |       | Choose TypeScript (`ts`) or JavaScript (`js`)                              |
-| `--build <tool>`                     |       | Choose `tsc6`, `tsc7`, or `tsdown` for TypeScript                          |
-| `--lint <linter>`                    |       | Choose `none`, `eslint`, or `oxlint`                                       |
-| `--format <formatter>`               |       | Choose `none`, `prettier`, or `oxfmt`                                      |
-| `--port <number>`                    |       | Set the HTTP port (default: `3000`)                                        |
-| `--i18n` / `--no-i18n`               |       | Enable or disable `@wolfstar/plugin-i18next` scaffolding                   |
-| `--subcommands` / `--no-subcommands` |       | Enable or disable the example subcommand command                           |
-| `--testing` / `--no-testing`         |       | Enable or disable the Vitest + `@wolfstar/http-framework-test-utils` setup |
-| `--install` / `--no-install`         |       | Enable or disable dependency installation                                  |
-| `--help`                             | `-h`  | Print usage and exit                                                       |
+| Flag                                 | Alias | Description                                                                                                                                               |
+| ------------------------------------ | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--overwrite`                        |       | Overwrite the target directory if it already exists                                                                                                       |
+| `--no-interactive`                   |       | Skip all prompts and use defaults / flags                                                                                                                 |
+| `--interactive`                      | `-i`  | Force interactive prompts even when an AI agent is detected                                                                                               |
+| `--package-manager <pm>`             |       | Choose npm, yarn, pnpm, or bun                                                                                                                            |
+| `--language <lang>`                  |       | Choose TypeScript (`ts`) or JavaScript (`js`)                                                                                                             |
+| `--build <tool>`                     |       | Choose `tsc6`, `tsc7`, `tsdown`, `vite`, or `vite-nitro` for TypeScript. `vite` and `vite-nitro` are experimental (see [Vite and Nitro](#vite-and-nitro)) |
+| `--lint <linter>`                    |       | Choose `none`, `eslint`, or `oxlint`                                                                                                                      |
+| `--format <formatter>`               |       | Choose `none`, `prettier`, or `oxfmt`                                                                                                                     |
+| `--port <number>`                    |       | Set the HTTP port (default: `3000`)                                                                                                                       |
+| `--i18n` / `--no-i18n`               |       | Enable or disable `@wolfstar/plugin-i18next` scaffolding                                                                                                  |
+| `--subcommands` / `--no-subcommands` |       | Enable or disable the example subcommand command                                                                                                          |
+| `--testing` / `--no-testing`         |       | Enable or disable the Vitest + `@wolfstar/http-framework-test-utils` setup                                                                                |
+| `--gateway` / `--no-gateway`         |       | Enable or disable `@wolfstar/plugin-gateway` scaffolding                                                                                                  |
+| `--cache` / `--no-cache`             |       | Enable or disable `@wolfstar/plugin-cache` (turns `--gateway` on)                                                                                         |
+| `--redis` / `--no-redis`             |       | Cache in Redis instead of memory (turns `--cache` and `--gateway` on)                                                                                     |
+| `--sharder` / `--no-sharder`         |       | Enable or disable `@wolfstar/plugin-sharder` (turns `--gateway` on). Can't be combined with `--build vite-nitro`                                          |
+| `--install` / `--no-install`         |       | Enable or disable dependency installation                                                                                                                 |
+| `--help`                             | `-h`  | Print usage and exit                                                                                                                                      |
 
 ## Non-interactive / AI agent mode
 
@@ -102,6 +109,7 @@ my-discord-bot/
 │   │   ├── setup/
 │   │   │   ├── all.ts            # Aggregates setup imports
 │   │   │   └── logger.ts         # Logger configuration
+│   │   ├── cache.ts              # Gateway entity cache (--cache)
 │   │   └── types/
 │   │       └── augments.ts       # Module augmentations (TypeScript only)
 │   ├── locales/
@@ -110,11 +118,13 @@ my-discord-bot/
 │   │           └── ping.json     # Example locale resource (--i18n)
 │   ├── @types/
 │   │   └── i18next.d.ts          # Generated i18next augmentation (--i18n)
+│   ├── shard.ts                  # Gateway client run by each shard worker (--sharder)
 │   └── main.ts                   # Entry point — starts the HTTP server
 ├── tests/
 │   └── ping.test.ts              # Example test (--testing)
 ├── vitest.config.ts              # Vitest configuration (--testing)
 ├── vitest.setup.ts               # Vitest setup file (--testing)
+├── compose.yaml                  # Local Redis server (--redis)
 ├── README.md                     # Generated project README
 ├── .env                          # Environment variables (DISCORD_TOKEN, DISCORD_PUBLIC_KEY)
 ├── .gitignore
@@ -125,7 +135,42 @@ my-discord-bot/
 - `src/locales/en-US/commands/ping.json` and `src/@types/i18next.d.ts` are only generated when **i18n** is enabled.
 - `src/@types/i18next.d.ts` is produced by `@wolfstar/i18next-type-generator`; the CLI runs it automatically at the end of scaffolding, and it can be re-run any time locale files change (see [`generate:i18n`](#i18n-type-generation) below).
 - `src/commands/math.ts` is only generated when **Subcommands** is enabled.
+- `src/lib/cache.ts` is only generated with **Cache**, `src/shard.ts` with **Sharder**, and `compose.yaml` with **Redis**.
 - `tests/ping.test.ts`, `vitest.config.ts`, and `vitest.setup.ts` are only generated when **Testing** is enabled.
+
+### Vite and Nitro
+
+`--build vite` bundles the bot with [Vite](https://vite.dev) into a single `dist/main.js`. `--build vite-nitro` hands the bundle to [Nitro](https://nitro.build), which writes a deployable `.output/` directory using the `node-server` preset, pinned in `stars.config.ts`. Both options are TypeScript only and experimental. They turn on `experimental.enableVite` (and `experimental.enableNitro` for `vite-nitro`) in the generated `stars.config.ts`.
+
+```bash
+npm create @wolfstar/http-framework@latest my-discord-bot -- --language ts --build vite-nitro
+```
+
+- A bundle has no `commands` directory to scan, so `src/main.ts` imports and loads the example commands explicitly. Add your own commands there.
+- With Nitro, `src/main.ts` default-exports the client instead of calling `listen()`. The port comes from `PORT` in `.env` instead of `HTTP_PORT`.
+- The `main` field and `start` script point to the `node-server` preset's output, `.output/server/index.mjs`. If you change `nitro.preset` to target another platform, deploy that platform's `.output/` instead of running `npm start`. With `--gateway`, only a preset that keeps a server alive can hold the gateway connection open.
+- Nitro can't be combined with `--sharder`. The sharder's manager process has no client for Nitro to forward requests to, so the CLI exits with an error.
+
+### Gateway, cache, and sharder
+
+Use the gateway plugins when your bot also needs gateway events in addition to HTTP interactions. They require a long-lived process.
+
+```bash
+npm create @wolfstar/http-framework@latest my-discord-bot -- --redis --sharder
+```
+
+- `--gateway` makes `src/main.*` create a `GatewayClient`. The bot still answers HTTP interactions.
+- `--cache` adds `src/lib/cache.*`, an in-memory cache by default.
+- `--redis` (or the follow-up prompt) swaps the in-memory cache for `ioredis`. It adds a `compose.yaml` that starts a local Redis server, and adds `REDIS_URL=redis://localhost:6379` to `.env`.
+- `--sharder` turns `src/main.*` into the shard manager and adds `src/shard.*`, which runs in every cluster worker. Set the number of workers with `SHARDER_CLUSTERS` in `.env` (default: `2`).
+- Each flag turns on the flags it depends on: `--redis` turns on `--cache`, and `--cache` and `--sharder` both turn on `--gateway`.
+- When the gateway is enabled, the generated `package.json` sets `engines.node` to `>=24.17.0`.
+
+To start the local Redis server for a `--redis` project:
+
+```bash
+docker compose up -d
+```
 
 ### i18n type generation
 
@@ -139,4 +184,4 @@ The CLI runs this script automatically once at the end of scaffolding; re-run it
 
 ## Requirements
 
-- Node.js `>=20`
+- Node.js `>=20` (`>=24.17.0` for projects using the gateway)

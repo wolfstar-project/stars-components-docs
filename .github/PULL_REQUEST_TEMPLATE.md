@@ -19,14 +19,14 @@
 
 ### Type of Change
 
-- [ ] New content (guide page, package card, etc.)
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Documentation change
+- [ ] New content (guide page, package page, etc.)
+- [ ] Fix (typo, broken link, outdated or incorrect content)
+- [ ] Site config change (`docs.json`, styles, assets)
 - [ ] Workflow / CI change
 
 ### Pre-flight Checklist
 
-- [ ] I have read the [Contributing Guidelines](https://github.com/wolfstar-project/website/blob/main/.github/CONTRIBUTING.md) (if applicable)
-- [ ] My code follows the code style of this project (`pnpm lint`)
-- [ ] `pnpm build` and `pnpm typecheck` pass locally with my changes
+- [ ] I have read the [Contributing Guidelines](https://github.com/wolfstar-project/stars-components-docs/blob/main/.github/CONTRIBUTING.md) (if applicable)
+- [ ] `mint format` leaves no diff and `mint validate` passes
+- [ ] `pnpm lint` passes
+- [ ] New pages are listed in `docs.json`

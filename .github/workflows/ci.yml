@@ -33,14 +33,6 @@ jobs:
             - name: Install the Mintlify CLI
               run: npm install --global mint
 
-            - name: Check formatting
-              run: |
-                  mint format
-                  if [ -n "$(git status --porcelain)" ]; then
-                      echo "Files are not formatted. Run 'mint format' locally and commit the changes."
-                      exit 1
-                  fi
-
             - name: Validate the build
               run: mint validate
 

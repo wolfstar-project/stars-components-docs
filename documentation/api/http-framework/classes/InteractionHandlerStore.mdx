@@ -1,0 +1,99 @@
+---
+title: 'Class: InteractionHandlerStore'
+description: 'The store class which contains Pieces. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandlerStore.ts#L11',
+		label: 'packages/http-framework/src/lib/structures/InteractionHandlerStore.ts:11'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The store class which contains `Piece`s.
+
+<ApiSignature
+	tokens={[
+		'class InteractionHandlerStore extends Store<',
+		['InteractionHandler', '/documentation/api/http-framework/classes/InteractionHandler'],
+		', "interaction-handlers">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[['Store<', ['InteractionHandler', '/documentation/api/http-framework/classes/InteractionHandler'], ', "interaction-handlers">']]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandlerStore.ts#L12', label: 'packages/http-framework/src/lib/structures/InteractionHandlerStore.ts:12' }}>
+
+<ApiSignature
+	tokens={['new InteractionHandlerStore(): ', ['InteractionHandlerStore', '/documentation/api/http-framework/classes/InteractionHandlerStore']]}
+/>
+
+</ApiMember>
+
+## Methods
+
+### runHandler()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandlerStore.ts#L16', label: 'packages/http-framework/src/lib/structures/InteractionHandlerStore.ts:16' }}>
+
+<ApiSignature
+	tokens={[
+		'runHandler(\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		',\n  interaction: ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]} />
+
+<ApiParam
+	name="interaction"
+	type={[
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction']
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

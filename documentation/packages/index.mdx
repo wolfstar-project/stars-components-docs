@@ -1,10 +1,10 @@
 ---
 title: Packages
-description: Browse all packages published under the @wolfstar npm scope.
+description: Index of every @wolfstar package, grouped by core framework, infrastructure, shared pieces, platform helpers, and plugins for HTTP-only bots.
 ---
 
 Choose a focused utility or combine the framework packages into a complete HTTP-only Discord bot stack. Every package is
-public on npm and supports Node.js 20 or newer.
+public on npm and supports Node.js 20 or newer, except `@wolfstar/plugin-gateway`, which requires Node.js 24.17 or newer.
 
 <Info>
 	Package guides focus on setup and practical examples. For every exported class, function, interface, and type, use the [generated API
@@ -19,6 +19,15 @@ public on npm and supports Node.js 20 or newer.
 	</Card>
 	<Card title="@wolfstar/cli" href="/documentation/packages/cli">
 		Develop, build, inspect, and maintain HTTP Framework bots.
+	</Card>
+	<Card title="@wolfstar/schema" href="/documentation/packages/schema">
+		Typed `stars.config` schema, `defineConfig`, and loader shared by the framework and CLI.
+	</Card>
+	<Card title="@wolfstar/vite-server" href="/documentation/packages/vite-server">
+		Vite build and watch integration the CLI loads behind `experimental.enableVite`.
+	</Card>
+	<Card title="@wolfstar/nitro-server" href="/documentation/packages/nitro-server">
+		Nitro build and dev server integration the CLI loads behind `experimental.enableNitro`.
 	</Card>
 	<Card title="@wolfstar/create-http-framework" href="/documentation/packages/create-http-framework">
 		Scaffold a production-ready HTTP Framework bot.
@@ -85,8 +94,23 @@ public on npm and supports Node.js 20 or newer.
 	<Card title="@wolfstar/plugin-api" href="/documentation/packages/plugin-api">
 		Expose a standalone REST API server alongside HTTP Framework interactions.
 	</Card>
+	<Card title="@wolfstar/plugin-broker" href="/documentation/packages/plugin-broker">
+		Distribute gateway events across processes over Redis Streams.
+	</Card>
+	<Card title="@wolfstar/plugin-cache" href="/documentation/packages/plugin-cache">
+		Cache Discord entities in memory or in Redis.
+	</Card>
+	<Card title="@wolfstar/plugin-gateway" href="/documentation/packages/plugin-gateway">
+		Add gateway events, cached structures, and API managers to HTTP Framework bots.
+	</Card>
 	<Card title="@wolfstar/plugin-i18next" href="/documentation/packages/plugin-i18next">
 		Add i18next-powered internationalization to HTTP Framework interactions.
+	</Card>
+	<Card title="@wolfstar/plugin-logger" href="/documentation/packages/plugin-logger">
+		Log through swappable transports such as console, Sentry, consola, evlog, and winston.
+	</Card>
+	<Card title="@wolfstar/plugin-sharder" href="/documentation/packages/plugin-sharder">
+		Spread gateway shards across processes, workers, and machines.
 	</Card>
 	<Card title="@wolfstar/plugin-subcommands-advanced" href="/documentation/packages/plugin-subcommands-advanced">
 		Modularize slash subcommands into separate command classes.

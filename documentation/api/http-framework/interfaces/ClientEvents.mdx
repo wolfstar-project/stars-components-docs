@@ -1,251 +1,374 @@
 ---
 title: 'Interface: ClientEvents'
+description: 'API reference for ClientEvents, an interface exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:73](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L73)
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L73',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:73'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['interface ClientEvents']} />
 
 ## Properties
 
 ### autocompleteError
 
-> **autocompleteError**: \[`unknown`, [`ClientEventAutocompleteContext`](/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:97](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L97)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'autocompleteError: [error: unknown, context: ',
+		['ClientEventAutocompleteContext', '/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L97',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:97'
+	}}
+/>
 
 ### autocompleteFinish
 
-> **autocompleteFinish**: \[[`ClientEventAutocompleteContext`](/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:98](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L98)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'autocompleteFinish: [context: ',
+		['ClientEventAutocompleteContext', '/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L98',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:98'
+	}}
+/>
 
 ### autocompleteRun
 
-> **autocompleteRun**: \[[`ClientEventAutocompleteContext`](/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:95](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L95)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'autocompleteRun: [context: ',
+		['ClientEventAutocompleteContext', '/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L95',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:95'
+	}}
+/>
 
 ### autocompleteSuccess
 
-> **autocompleteSuccess**: \[[`ClientEventAutocompleteContext`](/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext), `unknown`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:96](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L96)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'autocompleteSuccess: [context: ',
+		['ClientEventAutocompleteContext', '/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext'],
+		', value: unknown]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L96',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:96'
+	}}
+/>
 
 ### commandError
 
-> **commandError**: \[`unknown`, [`ClientEventCommandContext`](/documentation/api/http-framework/interfaces/ClientEventCommandContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:93](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L93)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'commandError: [error: unknown, context: ',
+		['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L93',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:93'
+	}}
+/>
 
 ### commandFinish
 
-> **commandFinish**: \[[`ClientEventCommandContext`](/documentation/api/http-framework/interfaces/ClientEventCommandContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:94](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L94)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'commandFinish: [context: ',
+		['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L94',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:94'
+	}}
+/>
 
 ### commandMethodUnknown
 
-> **commandMethodUnknown**: \[[`ClientEventCommandContext`](/documentation/api/http-framework/interfaces/ClientEventCommandContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:90](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L90)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'commandMethodUnknown: [context: ',
+		['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L90',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:90'
+	}}
+/>
 
 ### commandNameMissing
 
-> **commandNameMissing**: \[`APIApplicationCommandAutocompleteInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:88](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L88)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'commandNameMissing: [interaction: ',
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		', response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L88',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:88'
+	}}
+/>
 
 ### commandNameUnknown
 
-> **commandNameUnknown**: \[`APIApplicationCommandAutocompleteInteraction` \| `APIApplicationCommandInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:89](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L89)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'commandNameUnknown: [interaction: ',
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		' | ',
+		['APIApplicationCommandInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteraction'],
+		', response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L89',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:89'
+	}}
+/>
 
 ### commandRun
 
-> **commandRun**: \[[`ClientEventCommandContext`](/documentation/api/http-framework/interfaces/ClientEventCommandContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:91](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L91)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'commandRun: [context: ',
+		['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L91',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:91'
+	}}
+/>
 
 ### commandSuccess
 
-> **commandSuccess**: \[[`ClientEventCommandContext`](/documentation/api/http-framework/interfaces/ClientEventCommandContext), `unknown`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:92](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L92)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'commandSuccess: [context: ',
+		['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'],
+		', value: unknown]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L92',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:92'
+	}}
+/>
 
 ### error
 
-> **error**: \[`unknown`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:74](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L74)
-
----
+<ApiMember
+	kind="property"
+	signature={['error: [error: unknown]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L74',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:74'
+	}}
+/>
 
 ### hmrError
 
-> **hmrError**: \[`unknown`, `string`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:141](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L141)
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrError: [error: unknown, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L141', label: 'packages/http-framework/src/lib/ClientEvents.ts:141' }}>
 
 Emitted when the Hot Module Reloader fails to load, reload, or unload the pieces of a file. The error is not
 rethrown: saving the file again retries the operation.
 
-#### Since
-
-3.3.0
-
----
+</ApiMember>
 
 ### hmrPieceReloaded
 
-> **hmrPieceReloaded**: \[`Piece`\<[`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions), keyof [`StoreRegistryEntries`](/documentation/api/http-framework/interfaces/StoreRegistryEntries)\>, `string`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:128](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L128)
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPieceReloaded: [piece: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L128', label: 'packages/http-framework/src/lib/ClientEvents.ts:128' }}>
 
 Emitted when the Hot Module Reloader reloads an already loaded piece after its file changed.
 
-#### Since
-
-3.3.0
-
----
+</ApiMember>
 
 ### hmrPiecesLoaded
 
-> **hmrPiecesLoaded**: \[`Piece`\<[`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions), keyof [`StoreRegistryEntries`](/documentation/api/http-framework/interfaces/StoreRegistryEntries)\>[], `string`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:122](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L122)
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPiecesLoaded: [pieces: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>[], path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L122', label: 'packages/http-framework/src/lib/ClientEvents.ts:122' }}>
 
 Emitted when the Hot Module Reloader loads the pieces of a newly created file.
 
-#### Since
-
-3.3.0
-
----
+</ApiMember>
 
 ### hmrPieceUnloaded
 
-> **hmrPieceUnloaded**: \[`Piece`\<[`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions), keyof [`StoreRegistryEntries`](/documentation/api/http-framework/interfaces/StoreRegistryEntries)\>, `string`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:134](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L134)
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPieceUnloaded: [piece: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L134', label: 'packages/http-framework/src/lib/ClientEvents.ts:134' }}>
 
 Emitted when the Hot Module Reloader unloads a piece after its file was deleted.
 
-#### Since
-
-3.3.0
-
----
+</ApiMember>
 
 ### hmrStart
 
-> **hmrStart**: \[`string`[]\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:110](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L110)
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrStart: [paths: string[]]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L110', label: 'packages/http-framework/src/lib/ClientEvents.ts:110' }}>
 
 Emitted when the Hot Module Reloader starts watching, with the list of watched store paths.
 
-#### Since
-
-3.3.0
-
----
+</ApiMember>
 
 ### hmrStop
 
-> **hmrStop**: \[\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:116](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L116)
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrStop: []']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L116', label: 'packages/http-framework/src/lib/ClientEvents.ts:116' }}>
 
 Emitted when the Hot Module Reloader stops watching and all of its watchers have been closed.
 
-#### Since
-
-3.3.0
-
----
+</ApiMember>
 
 ### interactionHandlerError
 
-> **interactionHandlerError**: \[`unknown`, [`ClientEventInteractionHandlerContext`](/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:103](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L103)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'interactionHandlerError: [error: unknown, context: ',
+		['ClientEventInteractionHandlerContext', '/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L103',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:103'
+	}}
+/>
 
 ### interactionHandlerFinish
 
-> **interactionHandlerFinish**: \[[`ClientEventInteractionHandlerContext`](/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:104](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L104)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'interactionHandlerFinish: [context: ',
+		['ClientEventInteractionHandlerContext', '/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L104',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:104'
+	}}
+/>
 
 ### interactionHandlerNameInvalid
 
-> **interactionHandlerNameInvalid**: \[`APIMessageComponentInteraction` \| `APIModalSubmitInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:99](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L99)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'interactionHandlerNameInvalid: [interaction: ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		', response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L99',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:99'
+	}}
+/>
 
 ### interactionHandlerNameUnknown
 
-> **interactionHandlerNameUnknown**: \[`APIMessageComponentInteraction` \| `APIModalSubmitInteraction`, `ServerResponse`\<`IncomingMessage`\>\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:100](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L100)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'interactionHandlerNameUnknown: [interaction: ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		', response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L100',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:100'
+	}}
+/>
 
 ### interactionHandlerRun
 
-> **interactionHandlerRun**: \[[`ClientEventInteractionHandlerContext`](/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext)\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:101](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L101)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'interactionHandlerRun: [context: ',
+		['ClientEventInteractionHandlerContext', '/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L101',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:101'
+	}}
+/>
 
 ### interactionHandlerSuccess
 
-> **interactionHandlerSuccess**: \[[`ClientEventInteractionHandlerContext`](/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext), `unknown`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:102](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L102)
-
----
+<ApiMember
+	kind="property"
+	signature={[
+		'interactionHandlerSuccess: [context: ',
+		['ClientEventInteractionHandlerContext', '/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext'],
+		', value: unknown]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L102',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:102'
+	}}
+/>
 
 ### pluginLoaded
 
-> **pluginLoaded**: \[[`PluginHook`](/documentation/api/http-framework/enumerations/PluginHook), `string`\]
-
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:87](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L87)
+<ApiMember kind="property" signature={['pluginLoaded: [hook: ', ['PluginHook', '/documentation/api/http-framework/enumerations/PluginHook'], ', name: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L87', label: 'packages/http-framework/src/lib/ClientEvents.ts:87' }}>
 
 Emitted after a plugin hook runs, providing the hook's [PluginHook](/documentation/api/http-framework/enumerations/PluginHook) and the plugin's name
 (or `undefined` when the registering plugin did not provide one).
-
-#### Remarks
 
 The `PreGenericsInitialization`, `PreInitialization`, and `PostInitialization` hooks run
 synchronously inside the `Client` constructor, so their emissions fire before `new Client()`
@@ -253,3 +376,5 @@ returns. A listener attached afterwards cannot observe them (not even one added 
 whose constructor body only runs after `super()` has already executed those hooks), so only the
 `PreLoad` (during `Client#load`) and `PostListen` (during `Client#listen`) emissions are
 observable. To react to the constructor-phase hooks, use the plugin hooks themselves.
+
+</ApiMember>

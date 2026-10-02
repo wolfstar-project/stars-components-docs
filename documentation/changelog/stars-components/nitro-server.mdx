@@ -1,0 +1,17 @@
+---
+title: '@wolfstar/nitro-server'
+sidebarTitle: 'nitro-server'
+description: 'Changelog for @wolfstar/nitro-server: the optional, experimental Nitro builder for stars.'
+---
+
+Changes to [`@wolfstar/nitro-server`](/documentation/packages/nitro-server). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## 2026-09-24
+
+### New features
+
+- **Nitro builds (experimental)** — Set `experimental.enableNitro` to build your bot with [Nitro](https://nitro.build) v3. `stars build` outputs `.output/` for the configured `experimental.nitro.preset` (`node-server` by default). Install `nitro` and `vite` (Vite 8) as dev dependencies.
+
+### Updates
+
+- **Separate package** — The Nitro builder now ships as its own package instead of being bundled with the CLI. It loads only when you use it, and your CLI configuration is unchanged.

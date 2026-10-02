@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/cli'
-description: 'The stars CLI develops, builds, inspects, and maintains HTTP Framework bots through configurable tsdown, Vite, tsc, and Nitro builders.'
+description: 'The stars CLI that runs dev, build, info, codegen, prepare, and commands for HTTP Framework bots driven by a typed stars.config.ts file.'
 ---
 
 <CodeGroup>
@@ -28,8 +28,8 @@ bun add @wolfstar/cli
 	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/cli"></Card>
 </CardGroup>
 
-calls into it), the typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/documentation/packages/http-framework)
-(`@wolfstar/http-framework/config`) — this package only consumes it to drive its commands:
+The typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/documentation/packages/http-framework)
+(`@wolfstar/http-framework/config`). This package only consumes it to drive its commands:
 
 - `stars dev` builds the project, starts the bot, restarts it on changes and shows what is happening in an interactive terminal UI (or plain logs).
 - `stars build` runs the configured build tool once.
@@ -46,11 +46,20 @@ Everything is driven by a typed `stars.config.ts` file.
 pnpm add -D @wolfstar/cli
 ```
 
+Installing [`@wolfstar/http-framework`](/documentation/packages/http-framework) already gives a project the `stars`
+binary. You only need this explicit install to use the package's programmatic exports (`loadStarsConfig`,
+diagnostics) or to pin its version independently of the framework's.
+
 Projects scaffolded with [`@wolfstar/create-http-framework`](/documentation/packages/create-http-framework) come with `@wolfstar/cli`, a `stars.config.ts` file and `dev`/`build` scripts already wired up.
 
 ## Configuration
 
-`stars.config.{ts,mts,cts,js,mjs,cjs}` is defined and loaded by [`@wolfstar/http-framework`](/documentation/packages/http-framework#project-configuration-starsconfig), not by this package — see its README for the full option reference (`root`, `entry`, `build`, `dev`, `codegen`) and the `defineConfig` helper. `stars` looks for it in the working directory (`--config <file>` overrides it, `--cwd <dir>` changes the working directory) and passes `ConfigError`s from the framework through as exit code `2`, with the offending option path and a hint printed to the terminal.
+`stars.config.{ts,mts,cts,js,mjs,cjs}` is defined by [`@wolfstar/schema`](/documentation/packages/schema) and
+re-exported by [`@wolfstar/http-framework`](/documentation/packages/http-framework#project-configuration-starsconfig).
+See the framework page for the full option reference (`root`, `entry`, `build`, `dev`, `codegen`) and the
+`defineConfig` helper. `stars` looks for the file in the working directory (`--config <file>` overrides it,
+`--cwd <dir>` changes the working directory). It passes configuration diagnostics through as exit code `2` and prints
+the offending option path and a hint to the terminal.
 
 ```ts
 // stars.config.ts
@@ -183,6 +192,13 @@ automatically in bundler builds. `stars` injects its `/register` side-effect ent
 so projects do not need to maintain bare imports such as `import '@wolfstar/plugin-i18next/register'`. Packages used
 only for development are intentionally not activated from `devDependencies`.
 
+`stars` injects `<name>/register` only when the installed package's `exports` map defines a `./register` subpath.
+Library plugins without that entrypoint, such as `@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway`, and
+`@wolfstar/plugin-sharder`, are skipped, and you import them directly. A package that is not installed, or that
+declares no `exports`, is still injected so a missing install surfaces as a resolution error. If a build fails with
+`ERR_PACKAGE_PATH_NOT_EXPORTED` on a library plugin, upgrade to `@wolfstar/cli@2.0.2` or newer, or refresh your
+lockfile so it resolves `@wolfstar/vite-server@0.2.2` or newer.
+
 ```typescript
 export default defineConfig({
 	tsdown: { dts: true }
@@ -213,7 +229,7 @@ and which options the block sets.
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
 | `enableVite`         | Builds through the project's own `vite` (and allows `build.tool: 'vite'`) instead of `tsdown`                             |
 | `enableExternalVite` | The project runs Vite itself; `stars dev` only watches the build output and restarts the bot                              |
-| `enableNitro`        | Builds through [Nitro](https://nitro.build) v3's Vite plugin (requires `enableVite`) into `.output/` for any Nitro preset |
+| `enableNitro`        | Builds through [Nitro](https://nitro.build) (itself a Vite plugin) instead of `node:http`, deployable to any Nitro preset |
 
 `stars info` prints which flags are on.
 
@@ -263,5 +279,15 @@ location. Explicit `include` or `compilerOptions.paths` in your own tsconfig rep
 remove manually duplicated paths to use the generated aliases. Generation works with `imports: false` too.
 Use `stars prepare --check` to check both generated files without writing them. Do not edit `.stars/tsconfig.json`
 by hand; keep `.stars/` ignored by Git and run `stars prepare` after installing dependencies on a fresh checkout.
+
+## Server integrations
+
+The Vite and Nitro builders live in dedicated packages —
+[`@wolfstar/vite-server`](/documentation/packages/vite-server) and
+[`@wolfstar/nitro-server`](/documentation/packages/nitro-server). The CLI loads the selected integration lazily,
+passes the resolved `stars.config`, and supplies project dependency loading and plugin registration through
+`BuilderContext` from [`@wolfstar/schema`](/documentation/packages/schema). Neither server package depends on the
+CLI or framework. Existing experimental flags, presets, output directories, and `stars dev`/`stars build` commands
+are unchanged; install Vite and Nitro in the consuming project as before.
 
 See [CLI Errors](/documentation/errors/cli) for every diagnostic code `stars` can raise.

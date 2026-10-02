@@ -1,9 +1,65 @@
 ---
 title: Changelog
-description: Weekly product updates for Stars Components.
+description: Weekly summaries of user-facing changes across every @wolfstar package, with links to per-package CHANGELOG.md files and GitHub releases.
 ---
 
 Weekly summaries of user-facing changes to Stars Components. For per-package history, see each package's `CHANGELOG.md` in the [monorepo](https://github.com/wolfstar-project/stars-components), or the full [release history](https://github.com/wolfstar-project/stars-components/releases).
+
+Looking for one package? Each has its own changelog page:
+
+- **Stars Components** — [`http-framework`](/documentation/changelog/stars-components/http-framework), [`cli`](/documentation/changelog/stars-components/cli), [`schema`](/documentation/changelog/stars-components/schema), [`env-utilities`](/documentation/changelog/stars-components/env-utilities), [`vite-server`](/documentation/changelog/stars-components/vite-server), [`nitro-server`](/documentation/changelog/stars-components/nitro-server), [`create-http-framework`](/documentation/changelog/stars-components/create-http-framework), [`shared-http-pieces`](/documentation/changelog/stars-components/shared-http-pieces), [`oxfmt-config`](/documentation/changelog/stars-components/oxfmt-config), and [`oxlint-config`](/documentation/changelog/stars-components/oxlint-config).
+- **Plugins** — [`plugin-api`](/documentation/changelog/plugins/plugin-api), [`plugin-broker`](/documentation/changelog/plugins/plugin-broker), [`plugin-cache`](/documentation/changelog/plugins/plugin-cache), [`plugin-gateway`](/documentation/changelog/plugins/plugin-gateway), [`plugin-i18next`](/documentation/changelog/plugins/plugin-i18next), [`plugin-logger`](/documentation/changelog/plugins/plugin-logger), [`plugin-sharder`](/documentation/changelog/plugins/plugin-sharder), and [`plugin-subcommands-advanced`](/documentation/changelog/plugins/plugin-subcommands-advanced).
+
+## 2026-10-01
+
+`http-framework` `6.0.0` moves the decorators into their own package. `stars.config` gains `env` and lifecycle `hooks`, and three new packages land.
+
+### New features
+
+- **`env` in `stars.config`** — Configure [`@wolfstar/env-utilities`](/documentation/packages/env-utilities) from `stars.config` with the new `env` option. The `stars` CLI loads your environment before plugins and your own modules, so you no longer call `setup()` by hand. See [Environment](/documentation/guide/environment).
+- **Lifecycle `hooks`** — Add `hooks` to `stars.config` to run code at build and dev lifecycle points, such as `config:resolved`, `env:options`, `prepare:*`, `builder:created`, `tsdown:options`, `build:*`, and `dev:*`. See [`@wolfstar/cli`](/documentation/packages/cli).
+- **New `@wolfstar/http-framework-utilities` package** — Type guards, `app_permissions`-based permission helpers, `MessageBuilder`, `PaginatedMessage`, and `MessagePrompter` for `@wolfstar/http-framework`. Sessions use a pluggable store: `MemorySessionStore` for one process, or `RedisSessionStore` to share across replicas. The optional `/gateway` entry point adds collectors, `GatewayPaginatedMessage`, and `GatewayMessagePrompter` for [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway).
+- **New `@wolfstar/discord-utilities` package** — Discord limits, regexes, and option resolvers for raw API payloads, with the same exports as `@sapphire/discord-utilities`.
+- **New `@wolfstar/decorators` package** — Utility decorators now live in their own package, mirroring `@sapphire/decorators`.
+
+### Updates
+
+- **Compatibility version 5 is the default** — Version 5 is version 4 plus automatic `env` loading. It turns on when your project depends on `@wolfstar/env-utilities`, and stays off with Nitro. Version 4 is still supported. Version 3 is end-of-life: it still works, reports a `COMPATIBILITY_VERSION_EOL` warning, and will be removed in the next major.
+- **Scaffolded projects skip manual `setup()`** — [`@wolfstar/create-http-framework`](/documentation/packages/create-http-framework) `2.7.0` projects using the `tsdown` or `vite` build rely on the `env` option. `tsc` and JavaScript projects keep calling `setup()` and set `env: false`.
+- **Breaking: decorators moved out of `http-framework`** — [`@wolfstar/http-framework`](/documentation/packages/http-framework) `6.0.0` no longer exports `ApplyOptions`, `RequiresGuildContext`, `RequiresDMContext`, `RequiresUserPermissions`, `RequiresClientPermissions`, `Enumerable`, `EnumerableMethod`, `createClassDecorator`, `createMethodDecorator`, `createProxy`, or `createFunctionPrecondition`. Install `@wolfstar/decorators` and import them from there. Their behaviour is unchanged. `Register*` decorators and `RestrictGuildIds` stay in the framework. CLI auto imports include `@wolfstar/decorators` by default once it is installed.
+- **Breaking: `plugin-api` `2.0.0`** — [`@wolfstar/plugin-api`](/documentation/packages/plugin-api) now aligns with `@sapphire/plugin-api` 8.3.1, except auth. `ApiServer` is now `Server`, `ApiPlugin` is now `Api`, and `HttpMethod` is now `MethodName`. Routes with no methods no longer default to `GET`. `ApiResponse#json()` no longer takes a status code, so use `status(code).json(data)`. The release adds cookies, body readers, a `prefix` option, and per-route `maximumBodyLength`. It requires Node.js `>=20.18.1`.
+- **Breaking: `plugin-gateway` `manager.cache`** — An upcoming [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway) release exposes a discord.js-style `manager.cache`, built by a client-level `cacheConstructor`. Managers now cache every entity in memory by default. Bound memory with `cacheOptions` or `policies.filter`, or pass `cache: null` to keep the previous no-cache behaviour. Replace `client.users.get(id)` with `client.users.cache.get(id)`.
+- **`@wolfstar/logger` and `@wolfstar/http-framework-i18n` removed** — Both deprecated packages are no longer maintained. Use [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger) and [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) instead. See [Migration](/documentation/guide/migration).
+
+### Bug fixes
+
+- **`plugin-api` fixes** — Router path, route removal, and `supportedMethods` bugs are fixed. `Server#connect()` now rejects instead of throwing uncaught when the port is in use. Malformed `Cookie` headers no longer crash cookie parsing.
+
+## 2026-09-24
+
+Nitro deploys, themed dev UI, and clearer diagnostics. This week also brings the `http-framework` `5.x` release and a new `@wolfstar/schema` package.
+
+### New features
+
+- **Nitro builds (experimental)** — Set `experimental.enableNitro` to build your bot with [Nitro](https://nitro.build) v3. `stars build` outputs `.output/` for the configured `experimental.nitro.preset` (`node-server` by default), so you can deploy to Cloudflare, AWS Lambda, Vercel, Netlify, Bun, Deno Deploy, and more. Install `nitro` and `vite` (Vite 8) as dev dependencies. See [`@wolfstar/cli`](/documentation/packages/cli).
+- **`Client.fetch()`** — `@wolfstar/http-framework` `5.0.0` adds `client.fetch(request)`, the Web `Request`/`Response` counterpart of `listen()`. It runs the same signature verification and routing without binding a port, for Workers, `Bun.serve`, `Deno.serve`, and similar runtimes. See [`@wolfstar/http-framework`](/documentation/packages/http-framework).
+- **`stars dev` colour themes** — Press `T` in the interactive UI to pick `dark`, `light`, colour-blind friendly `dark-daltonized`/`light-daltonized`, terminal-palette `dark-ansi`/`light-ansi`, or `auto`. `stars dev` saves your choice between runs. Use `--theme <name>` or `STARS_THEME` to override it for one run.
+- **varlock support (experimental)** — `@wolfstar/env-utilities` `2.2.0` can load environment files with [varlock](https://varlock.dev) instead of `dotenv`. Opt in with `loader: 'varlock'` or the `DOTENV_LOADER` environment variable. See [Environment](/documentation/guide/environment).
+- **`stars` binary ships with `http-framework`** — Installing `@wolfstar/http-framework` now gives you the `stars` command, with no separate `@wolfstar/cli` install.
+
+### Updates
+
+- **Structured diagnostics** — Config and CLI errors are now [`nostics`](https://github.com/vercel-labs/nostics) diagnostics with stable codes, a reason, an actionable fix, and a docs link. `ConfigError` and `CliError` are removed. Catch errors with `instanceof Diagnostic` instead. Exit codes are unchanged. See [Config errors](/documentation/errors/config) and [CLI errors](/documentation/errors/cli).
+- **Readable crash reports** — Unexpected errors and `stars dev` startup crashes now render as sourcemapped, syntax-highlighted reports instead of raw stack traces.
+- **Faster `stars dev` exit** — The first `Ctrl+C` stops your bot gracefully. A second one kills the bot and its helper processes immediately, without waiting for `dev.killTimeout`.
+- **New `@wolfstar/schema` package** — The `stars.config.*` schema and loader now live in `@wolfstar/schema`. Imports from `@wolfstar/http-framework/config` keep working unchanged. If you install `@wolfstar/cli` without `@wolfstar/http-framework`, add `@wolfstar/http-framework` yourself. Scaffolded projects are unaffected.
+- **Optional Vite and Nitro builders** — The Vite and Nitro builders now ship as separate `@wolfstar/vite-server` and `@wolfstar/nitro-server` packages. They load only when you use them. Your CLI configuration is unchanged.
+- **Oxc configs as TypeScript** — `@wolfstar/oxfmt-config` and `@wolfstar/oxlint-config` `0.2.0` now default-export `defineConfig` objects. Spread the formatter config into `oxfmt.config.ts` and pass the linter config to `extends` in `oxlint.config.ts`. The `index.json` and `.oxlintrc.json` entry points are removed.
+- **Plugins support `http-framework` 5** — [`@wolfstar/plugin-api`](/documentation/packages/plugin-api), [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), [`@wolfstar/plugin-logger`](https://github.com/wolfstar-project/plugins), and [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) now target `@wolfstar/http-framework` `5.x`.
+
+### Bug fixes
+
+- **`stars dev` readability on light terminals** — The dev UI now uses semantic theme colours, so body text keeps your terminal's foreground colour and stays readable on light backgrounds.
 
 ## 2026-09-17
 

@@ -1,24 +1,35 @@
 ---
 title: '@wolfstar/influx-utilities'
+description: 'Generated API reference for @wolfstar/influx-utilities: the Client, InfluxDB, and Point classes, ConnectionOptions, and credential helpers.'
 ---
 
-## Classes
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- [Client](/documentation/api/influx-utilities/classes/Client)
-- [InfluxDB](/documentation/api/influx-utilities/classes/InfluxDB)
-- [Point](/documentation/api/influx-utilities/classes/Point)
+<ApiPackageHeader
+	name="@wolfstar/influx-utilities"
+	version="1.1.6"
+	guideHref="/documentation/packages/influx-utilities"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/influx-utilities"
+/>
 
-## Interfaces
+<InstallPackage packages="@wolfstar/influx-utilities" />
 
-- [ConnectionOptions](/documentation/api/influx-utilities/interfaces/ConnectionOptions)
-- [QueryApi](/documentation/api/influx-utilities/interfaces/QueryApi)
-- [WriteApi](/documentation/api/influx-utilities/interfaces/WriteApi)
-
-## Type Aliases
-
-- [WritePrecisionType](/documentation/api/influx-utilities/type-aliases/WritePrecisionType)
-
-## Functions
-
-- [areInfluxCredentialsSet](/documentation/api/influx-utilities/functions/areInfluxCredentialsSet)
-- [setInfluxVariables](/documentation/api/influx-utilities/functions/setInfluxVariables)
+<ApiSymbolList
+	symbols={[
+		{ name: 'Client', kind: 'class', href: '/documentation/api/influx-utilities/classes/Client' },
+		{ name: 'ConnectionOptions', kind: 'interface', href: '/documentation/api/influx-utilities/interfaces/ConnectionOptions' },
+		{
+			name: 'areInfluxCredentialsSet',
+			kind: 'function',
+			href: '/documentation/api/influx-utilities/functions/areInfluxCredentialsSet',
+			summary: 'Checks if the Influx credentials are set in the environment variables or in the variables set by setVariables.'
+		},
+		{
+			name: 'setInfluxVariables',
+			kind: 'function',
+			href: '/documentation/api/influx-utilities/functions/setInfluxVariables',
+			summary: 'Sets the variables required to interact with the Influx API.'
+		}
+	]}
+/>

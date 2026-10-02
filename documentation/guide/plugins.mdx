@@ -5,7 +5,7 @@ description: Optional @wolfstar/http-framework extensions maintained in the wolf
 
 Plugins are opt-in extensions for [`@wolfstar/http-framework`](/documentation/packages/http-framework). They live outside this
 repository, in [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins), and release on their own
-schedule — adding one never bumps the core framework, and the framework has no required dependency on any of them.
+schedule. Adding one never bumps the core framework, and the framework has no required dependency on any of them.
 
 <Tip>
 **Prerequisites**
@@ -16,11 +16,16 @@ Every plugin requires `@wolfstar/http-framework@^3.1.0` or newer as a peer depen
 
 ## Available Plugins
 
-| Plugin                                                                                         | What it does                                                |
-| ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next)                           | i18next-powered internationalization for interactions       |
-| [`@wolfstar/plugin-api`](/documentation/packages/plugin-api)                                   | Standalone REST API server alongside interaction handling   |
-| [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) | Modularizes slash subcommands into separate command classes |
+| Plugin                                                                                         | What it does                                                   |
+| ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next)                           | i18next-powered internationalization for interactions          |
+| [`@wolfstar/plugin-api`](/documentation/packages/plugin-api)                                   | Standalone REST API server alongside interaction handling      |
+| [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway)                           | Gateway events, cached structures, and API managers            |
+| [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker)                             | Distributes gateway events across processes over Redis Streams |
+| [`@wolfstar/plugin-cache`](/documentation/packages/plugin-cache)                               | Discord entity cache, in memory or in Redis                    |
+| [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger)                             | Pluggable logging with swappable transports                    |
+| [`@wolfstar/plugin-sharder`](/documentation/packages/plugin-sharder)                           | Spreads gateway shards across processes and machines           |
+| [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) | Modularizes slash subcommands into separate command classes    |
 
 Browse the [source on GitHub](https://github.com/wolfstar-project/plugins/tree/main/packages) or the generated
 [API reference](/documentation/api) for the full surface of each one.
@@ -62,8 +67,9 @@ const client = new Client({
 await client.load();
 ```
 
-Check each plugin's package page for its exact registration entry point and options — see
-[`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), [`@wolfstar/plugin-api`](/documentation/packages/plugin-api), and
+Check each plugin's package page for its exact registration entry point and options. See
+[`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), [`@wolfstar/plugin-api`](/documentation/packages/plugin-api),
+[`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger), and
 [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced).
 
 ## Coming from `@wolfstar/http-framework-i18n`?
@@ -72,7 +78,7 @@ That package is deprecated in favor of `@wolfstar/plugin-i18next`. Follow the [m
 
 ## Writing Your Own Plugin
 
-Plugins are regular `@wolfstar/http-framework` consumers — there is no separate plugin API to learn beyond the
+Plugins are regular `@wolfstar/http-framework` consumers. There is no separate plugin API to learn beyond the
 client's lifecycle hooks (`preLoad`, and the piece stores). Read an existing plugin's source, such as
 [`plugin-i18next`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-i18next), as a template, and
 open a pull request against [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) to have it

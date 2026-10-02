@@ -1,49 +1,187 @@
 ---
 title: '@wolfstar/weather-helpers'
+description: 'Generated API reference for @wolfstar/weather-helpers: getWeatherData, getWeatherName, celsiusToKelvin, and the WeatherCode enumeration.'
 ---
 
-## Enumerations
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- [Identifiers](/documentation/api/weather-helpers/enumerations/Identifiers)
-- [WeatherCode](/documentation/api/weather-helpers/enumerations/WeatherCode)
+<ApiPackageHeader
+	name="@wolfstar/weather-helpers"
+	version="1.1.7"
+	guideHref="/documentation/packages/weather-helpers"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/weather-helpers"
+/>
 
-## Interfaces
+<InstallPackage packages="@wolfstar/weather-helpers" />
 
-- [Astronomy](/documentation/api/weather-helpers/interfaces/Astronomy)
-- [CurrentCondition](/documentation/api/weather-helpers/interfaces/CurrentCondition)
-- [Hourly](/documentation/api/weather-helpers/interfaces/Hourly)
-- [NearestArea](/documentation/api/weather-helpers/interfaces/NearestArea)
-- [Request](/documentation/api/weather-helpers/interfaces/Request)
-- [Url](/documentation/api/weather-helpers/interfaces/Url)
-- [ValueWrapper](/documentation/api/weather-helpers/interfaces/ValueWrapper)
-- [Weather](/documentation/api/weather-helpers/interfaces/Weather)
-- [WeatherDescription](/documentation/api/weather-helpers/interfaces/WeatherDescription)
-- [WeatherElement](/documentation/api/weather-helpers/interfaces/WeatherElement)
-
-## Type Aliases
-
-- [FloatString](/documentation/api/weather-helpers/type-aliases/FloatString)
-- [Hour](/documentation/api/weather-helpers/type-aliases/Hour)
-- [IntegerString](/documentation/api/weather-helpers/type-aliases/IntegerString)
-- [MoonPhase](/documentation/api/weather-helpers/type-aliases/MoonPhase)
-- [WeatherName](/documentation/api/weather-helpers/type-aliases/WeatherName)
-- [WindDirection](/documentation/api/weather-helpers/type-aliases/WindDirection)
-- [WindDirectionEast](/documentation/api/weather-helpers/type-aliases/WindDirectionEast)
-- [WindDirectionNorth](/documentation/api/weather-helpers/type-aliases/WindDirectionNorth)
-- [WindDirectionNorthEast](/documentation/api/weather-helpers/type-aliases/WindDirectionNorthEast)
-- [WindDirectionNorthWest](/documentation/api/weather-helpers/type-aliases/WindDirectionNorthWest)
-- [WindDirectionSouth](/documentation/api/weather-helpers/type-aliases/WindDirectionSouth)
-- [WindDirectionSouthEast](/documentation/api/weather-helpers/type-aliases/WindDirectionSouthEast)
-- [WindDirectionSouthWest](/documentation/api/weather-helpers/type-aliases/WindDirectionSouthWest)
-- [WindDirectionWest](/documentation/api/weather-helpers/type-aliases/WindDirectionWest)
-
-## Variables
-
-- [version](/documentation/api/weather-helpers/variables/version)
-
-## Functions
-
-- [celsiusToKelvin](/documentation/api/weather-helpers/functions/celsiusToKelvin)
-- [getWeatherData](/documentation/api/weather-helpers/functions/getWeatherData)
-- [getWeatherName](/documentation/api/weather-helpers/functions/getWeatherName)
-- [kilometersPerHourToMetersPerSecond](/documentation/api/weather-helpers/functions/kilometersPerHourToMetersPerSecond)
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'Identifiers',
+			kind: 'enum',
+			href: '/documentation/api/weather-helpers/enumerations/Identifiers',
+			summary: 'Enum representing different types of identifiers.'
+		},
+		{
+			name: 'WeatherCode',
+			kind: 'enum',
+			href: '/documentation/api/weather-helpers/enumerations/WeatherCode',
+			summary: 'Enum representing weather codes.'
+		},
+		{
+			name: 'Astronomy',
+			kind: 'interface',
+			href: '/documentation/api/weather-helpers/interfaces/Astronomy',
+			summary: 'Represents astronomy data'
+		},
+		{
+			name: 'CurrentCondition',
+			kind: 'interface',
+			href: '/documentation/api/weather-helpers/interfaces/CurrentCondition',
+			summary: 'Represents the current weather conditions'
+		},
+		{
+			name: 'Hourly',
+			kind: 'interface',
+			href: '/documentation/api/weather-helpers/interfaces/Hourly',
+			summary: 'Represents hourly weather data'
+		},
+		{
+			name: 'NearestArea',
+			kind: 'interface',
+			href: '/documentation/api/weather-helpers/interfaces/NearestArea',
+			summary: 'Represents the nearest area'
+		},
+		{ name: 'Request', kind: 'interface', href: '/documentation/api/weather-helpers/interfaces/Request', summary: 'Represents a request' },
+		{ name: 'Url', kind: 'interface', href: '/documentation/api/weather-helpers/interfaces/Url', summary: 'Represents a URL' },
+		{
+			name: 'ValueWrapper',
+			kind: 'interface',
+			href: '/documentation/api/weather-helpers/interfaces/ValueWrapper',
+			summary: 'Represents a value wrapper'
+		},
+		{ name: 'Weather', kind: 'interface', href: '/documentation/api/weather-helpers/interfaces/Weather', summary: 'Represents a weather object' },
+		{
+			name: 'WeatherDescription',
+			kind: 'interface',
+			href: '/documentation/api/weather-helpers/interfaces/WeatherDescription',
+			summary: 'Represents a weather description'
+		},
+		{
+			name: 'WeatherElement',
+			kind: 'interface',
+			href: '/documentation/api/weather-helpers/interfaces/WeatherElement',
+			summary: 'Represents a weather element'
+		},
+		{
+			name: 'FloatString',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/FloatString',
+			summary: 'Represents a stringified number'
+		},
+		{
+			name: 'Hour',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/Hour',
+			summary: 'Represents a time in the format of hours and minutes'
+		},
+		{
+			name: 'IntegerString',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/IntegerString',
+			summary: 'Represents a stringified bigint'
+		},
+		{
+			name: 'MoonPhase',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/MoonPhase',
+			summary: 'Represents different moon phases'
+		},
+		{
+			name: 'WeatherName',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WeatherName',
+			summary: 'Represents different possible weather conditions'
+		},
+		{
+			name: 'WindDirection',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirection',
+			summary: 'Represents all possible wind directions'
+		},
+		{
+			name: 'WindDirectionEast',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionEast',
+			summary: 'Represents wind direction from the east'
+		},
+		{
+			name: 'WindDirectionNorth',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionNorth',
+			summary: 'Represents wind direction from the north'
+		},
+		{
+			name: 'WindDirectionNorthEast',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionNorthEast',
+			summary: 'Represents wind direction from the northeast'
+		},
+		{
+			name: 'WindDirectionNorthWest',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionNorthWest',
+			summary: 'Represents wind direction from the northwest'
+		},
+		{
+			name: 'WindDirectionSouth',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionSouth',
+			summary: 'Represents wind direction from the south'
+		},
+		{
+			name: 'WindDirectionSouthEast',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionSouthEast',
+			summary: 'Represents wind direction from the southeast'
+		},
+		{
+			name: 'WindDirectionSouthWest',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionSouthWest',
+			summary: 'Represents wind direction from the southwest'
+		},
+		{
+			name: 'WindDirectionWest',
+			kind: 'type-alias',
+			href: '/documentation/api/weather-helpers/type-aliases/WindDirectionWest',
+			summary: 'Represents wind direction from the west'
+		},
+		{ name: 'version', kind: 'variable', href: '/documentation/api/weather-helpers/variables/version' },
+		{
+			name: 'celsiusToKelvin',
+			kind: 'function',
+			href: '/documentation/api/weather-helpers/functions/celsiusToKelvin',
+			summary: 'Converts Celsius temperature to Kelvin.'
+		},
+		{
+			name: 'getWeatherData',
+			kind: 'function',
+			href: '/documentation/api/weather-helpers/functions/getWeatherData',
+			summary: 'Retrieves weather data for a given query and language.'
+		},
+		{
+			name: 'getWeatherName',
+			kind: 'function',
+			href: '/documentation/api/weather-helpers/functions/getWeatherName',
+			summary: 'Retrieves the name of the weather based on the provided weather code.'
+		},
+		{
+			name: 'kilometersPerHourToMetersPerSecond',
+			kind: 'function',
+			href: '/documentation/api/weather-helpers/functions/kilometersPerHourToMetersPerSecond',
+			summary: 'Converts kilometers per hour to meters per second.'
+		}
+	]}
+/>

@@ -57,7 +57,7 @@ repository and release independently of the core framework, so picking one up ne
 
 Every package exposes its supported API through `src/index.ts` and explicit `package.json` export maps, so private
 implementation files never become accidental public contracts. The [API reference](/documentation/api) is generated from those entry
-points on every documentation build — it cannot drift from the code.
+points on every documentation build, so it cannot drift from the code.
 
 The same idea runs through the packages themselves: typed environment keys in
 [`@wolfstar/env-utilities`](/documentation/packages/env-utilities), typed translation keys in
@@ -68,7 +68,7 @@ The same idea runs through the packages themselves: typed environment keys in
 
 Commands and listeners are plain classes discovered by a store, so they can be reloaded and tested independently.
 [`@wolfstar/http-framework-test-utils`](/documentation/packages/http-framework-test-utils) dispatches interaction fixtures without
-starting a network server — see [Testing Interactions](/documentation/guide/testing).
+starting a network server. See [Testing Interactions](/documentation/guide/testing).
 
 ## Next Steps
 

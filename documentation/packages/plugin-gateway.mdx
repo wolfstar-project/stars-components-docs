@@ -1,0 +1,451 @@
+---
+title: '@wolfstar/plugin-gateway'
+description: 'Add Discord gateway events, cached structures, and API managers to an HTTP Framework bot.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-gateway @wolfstar/plugin-cache
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-gateway @wolfstar/plugin-cache
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-gateway @wolfstar/plugin-cache
+```
+
+```bash bun
+bun add @wolfstar/plugin-gateway @wolfstar/plugin-cache
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-gateway"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+`@wolfstar/plugin-gateway` extends the [`@wolfstar/http-framework`](/documentation/packages/http-framework) client with
+Discord gateway events and API access. `GatewayClient` is a subclass of the framework's `Client`. Commands and HTTP
+interactions keep working exactly as before, and the same process also receives gateway dispatches such as
+`messageCreate` or `guildMemberAdd`.
+
+The package connects shards with [`@discordjs/ws`](https://www.npmjs.com/package/@discordjs/ws), which handles
+sharding, reconnects, and session resumes. Actions turn dispatches into events carrying structures such as `Message`,
+`User`, and `Guild`. Managers such as `client.users` and `client.guilds` read from an optional
+[`@wolfstar/plugin-cache`](https://npmx.dev/package/@wolfstar/plugin-cache) cache and fetch missing data through
+`@discordjs/core`, which is also available as `client.api`.
+
+<Note>A gateway connection is long-lived. A `GatewayClient` needs a persistent process, unlike a bot that only serves HTTP interactions.</Note>
+
+## Requirements
+
+- Node.js `>=24.17.0`. The package builds on `@discordjs/structures`, which is only published as `dev` snapshots that
+  require Node.js 24.17.
+- `@wolfstar/http-framework` `^3.4.0` or `^5.0.0` as a peer dependency.
+- `@wolfstar/plugin-cache` if you want to cache Discord entities or resume sessions across restarts.
+
+## No side-effect registration
+
+Unlike most plugins, `@wolfstar/plugin-gateway` is a library. Its `@wolfstar/plugin-gateway/register` entry point exists
+only so the [Stars CLI](/documentation/packages/cli) build can import it like every other plugin, and it does nothing.
+You opt in to the gateway by constructing a `GatewayClient` instead of the framework's `Client`.
+
+## Usage
+
+Create a `GatewayClient` where you would create the framework's `Client`, then call `start()`. It loads your pieces,
+starts the HTTP interaction endpoint, and connects the gateway shards in one call:
+
+```ts
+import { createInMemoryCache } from '@wolfstar/plugin-cache';
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { GatewayIntentBits } from 'discord-api-types/v10';
+
+const client = new GatewayClient({
+	intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMessages | GatewayIntentBits.MessageContent,
+	cache: createInMemoryCache()
+});
+
+client.on('messageCreate', async (message) => {
+	const guild = message.guildId ? await client.guilds.get(message.guildId) : undefined;
+	console.log(`${message.author.username} in ${guild?.name ?? 'a DM'}: ${message.content}`);
+});
+
+await client.start({ listen: { port: 8080 } });
+```
+
+To control each step yourself, call `load()`, `listen()`, and `connect()` separately. `client.gateway` exposes the
+underlying `WebSocketManager`, for example to send presence updates.
+
+### Options
+
+`GatewayClient` accepts every `Client` option, plus:
+
+| Option                | Default     | Description                                                                                                                     |
+| --------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `intents`             | None        | The gateway intents.                                                                                                            |
+| `cache`               | `undefined` | A `Cache` from `@wolfstar/plugin-cache`. See [Caching](#caching).                                                               |
+| `makeCache`           | `undefined` | A function returning a store per entity kind, or `null` not to cache it. Takes precedence over `cache`.                         |
+| `policies`            | `undefined` | Per-entity `filter` and `ttl` rules applied to dispatches and managers.                                                         |
+| `cacheErrors`         | `"miss"`    | `"miss"` treats a failing store as a cache miss reported through `cacheError`. `"throw"` rejects instead.                       |
+| `shardCount`          | `null`      | Total shards across every process. `null` uses Discord's recommendation.                                                        |
+| `shardIds`            | `null`      | The shards this client runs, as an array or a `{ start, end }` range. `null` runs all of them.                                  |
+| `gateway`             | `{}`        | Extra `@discordjs/ws` `WebSocketManager` options, such as `compression` or `initialPresence`.                                   |
+| `cacheFailure`        | `"skip"`    | On a cache read or write failure, `"skip"` drops the event and `"emitUncached"` emits it from the payload.                      |
+| `dispatchTimeout`     | `30_000`    | Milliseconds after which a dispatch still processing is reported as a `DispatchTimeoutError`. `null` disables it.               |
+| `sessionStore`        | `undefined` | A `GatewaySessionStore` that keeps shard sessions across restarts. See [Resuming sessions](#resuming-sessions-across-restarts). |
+| `sessionStoreTimeout` | `5_000`     | Milliseconds a shard waits for `sessionStore` to read its session before identifying. `null` waits forever.                     |
+| `partials`            | `[]`        | The structures to build partially for uncached entities, such as `Partials.Message` or `Partials.User`.                         |
+| `waitGuildTimeout`    | `15_000`    | Milliseconds `clientReady` waits for initially unavailable guilds before emitting anyway.                                       |
+
+### Access the client from pieces
+
+`GatewayClient` registers itself as `container.gatewayClient` when you construct it, next to the framework's
+`container.client`. `container.gatewayClient` is typed as `GatewayClient`, so any listener, command, or interaction
+handler can use its managers without a cast:
+
+```ts
+import { Command } from '@wolfstar/http-framework';
+
+export class GuildNameCommand extends Command {
+	public override async chatInputRun(interaction: Command.ChatInputInteraction) {
+		const guild = await this.container.gatewayClient.guilds.fetch(interaction.guildId!);
+		return interaction.reply({ content: guild.name });
+	}
+}
+```
+
+`container.client` stays typed as the base `Client`, because a module augmentation cannot redeclare it with another
+type. Outside a piece, `getGatewayClient()` returns the same client.
+
+## Events
+
+`GatewayClient` emits gateway events on the client itself. The `GatewayEvents` enum lists every event name. Each member's
+value is the plain event name, like the framework's own `Events`, so it is interchangeable with the string literal:
+
+```ts
+import { GatewayEvents } from '@wolfstar/plugin-gateway';
+
+client.on(GatewayEvents.MessageCreate, (message) => console.log(message.content));
+```
+
+Update events receive the previous state from the cache, and delete events receive the cached entity. Both are `null`
+when the entity was not cached. Delete events also receive `data`, the raw dispatch data, which always identifies the
+deleted entity. Every dispatch is also emitted as `raw`, with the payload and shard ID.
+
+### The `clientReady` event
+
+`clientReady` is emitted once, like discord.js's `Client#clientReady`. It fires after every shard this client manages has
+connected and every guild that `READY` listed as unavailable became available. If those guilds take longer than
+`waitGuildTimeout` (15 seconds by default), `clientReady` fires anyway. The timeout only bounds the wait on guilds, never
+the wait on shards connecting.
+
+```ts
+client.on(GatewayEvents.ClientReady, (client) => console.log(`Logged in as ${client.user!.username}`));
+```
+
+After the fact, `client.isClientReady()` returns whether the event fired, and `client.clientReadyAt` holds the `Date`
+it fired at, or `null`.
+
+### Dispatch ordering
+
+`GatewayClient` processes dispatches of the same guild, or the same direct message channel, in order, so an asynchronous
+cache never reorders them. Different guilds proceed concurrently, so a slow guild does not hold the others back.
+Dispatches that belong to no guild, such as `READY` or `USER_UPDATE`, wait for everything queued before them on their
+shard. `client.queueStats` reports the pending dispatches.
+
+### Listeners
+
+`EventGatewayListener` is a listener piece for gateway events. It pins the emitter to the client and types `run` after
+the event. Place it in your `listeners` directory:
+
+```ts
+// src/listeners/log-messages.ts
+import { EventGatewayListener, type Message } from '@wolfstar/plugin-gateway';
+
+export class LogMessagesListener extends EventGatewayListener<'messageCreate'> {
+	public constructor(context: EventGatewayListener.LoaderContext) {
+		super(context, { event: 'messageCreate' });
+	}
+
+	public override run(message: Message) {
+		console.log(`${message.author.username}: ${message.content}`);
+	}
+}
+```
+
+To skip the constructor, use the `RegisterAsGatewayListener` decorator. With `once: true`, the listener unloads itself
+after its first run:
+
+```ts
+import { EventGatewayListener, RegisterAsGatewayListener, type Message } from '@wolfstar/plugin-gateway';
+
+@RegisterAsGatewayListener('messageCreate', { once: false })
+export class LogMessagesListener extends EventGatewayListener<'messageCreate'> {
+	public override run(message: Message) {
+		console.log(`${message.author.username}: ${message.content}`);
+	}
+}
+```
+
+## Caching
+
+The cache only holds raw API data. Managers build structures from it, and each read builds a fresh structure, so
+in-memory and Redis stores behave the same.
+
+| Manager           | `get` / `fetch` / `refresh` arguments |
+| ----------------- | ------------------------------------- |
+| `client.users`    | `userId`                              |
+| `client.guilds`   | `guildId`                             |
+| `client.channels` | `channelId` (threads included)        |
+| `client.threads`  | `threadId`                            |
+| `client.messages` | `channelId`, `messageId`              |
+| `client.members`  | `guildId`, `userId`                   |
+| `client.roles`    | `guildId`, `roleId`                   |
+
+- `get` only reads the cache and resolves to `undefined` on a miss.
+- `fetch` reads the cache and falls back to the REST API, caching the result. Pass `{ force: true }` after the IDs to
+  always hit the API, or `{ cache: false }` to skip storing the result.
+- `refresh` is `fetch` with `{ force: true }`.
+- `resolve` takes a structure, returned as is, or a cache key, like discord.js's `resolve`.
+- `cached` is a synchronous `get`. See [Synchronous reads](#synchronous-reads).
+
+Relations are resolved from the cache too. `message.author` is the entry of `client.users`, `message.member` the one of
+`client.members`, and every guild structure has `guild`. These getters return `null` when the entity is not cached.
+`fetchGuild()` and `fetchChannel()` always get it.
+
+Swapping `createInMemoryCache()` for `createRedisCache({ redis })` changes nothing else in your code.
+
+### Zero caching and cache control
+
+The managers follow [discord.js RFC #11426](https://github.com/discordjs/discord.js/issues/11426). Every feature works
+without a cache: leave `cache` out and every `fetch` hits the API, every event is still emitted, and the previous state
+of update and delete events is `null`. Use `makeCache` and `policies` to choose what to cache per entity kind:
+
+```ts
+import { MemoryEntityCache } from '@wolfstar/plugin-cache';
+
+const client = new GatewayClient({
+	intents,
+	makeCache: (entity) => (['guilds', 'channels', 'roles'].includes(entity) ? new MemoryEntityCache() : null),
+	policies: { users: { filter: (user) => !user.bot }, messages: { ttl: () => 3_600_000 } },
+	cacheErrors: 'miss'
+});
+```
+
+Some features need a store. Without `emojis` or `stickers`, you only get `guildEmojisUpdate` and `guildStickersUpdate`
+instead of granular diff events. Without `presences`, `presences.fetch` rejects, because presences only come from the
+gateway.
+
+### Synchronous reads
+
+Manager methods are asynchronous because the cache can be Redis. With a synchronous cache such as
+`createInMemoryCache()`, `cached` takes the same arguments as `get` and returns the same structure, relations included,
+without a promise. Use it on hot paths such as message filters:
+
+```ts
+client.on('messageCreate', (message) => {
+	const member = client.members.cached(message.guildId!, message.author.id);
+	if (member?.roleIds.includes(mutedRoleId)) return;
+	// ...
+});
+```
+
+`cached` returns `undefined` on a miss. With an asynchronous cache, it throws a `TypeError` instead of silently returning
+`undefined`. Check `manager.cache?.synchronous` to pick the right path:
+
+```ts
+const user = client.users.cache?.synchronous ? client.users.cached(userId) : await client.users.get(userId);
+```
+
+## Requesting guild members
+
+`client.members.request(guildId, options)`, or `guild.requestMembers(options)`, asks the guild's shard for its members
+over the gateway instead of REST. By default, it requests every member. Pass `query` with a `limit` to search by name,
+or up to 100 `userIds`. Set `presences: true` to include presences.
+
+```ts
+const members = await client.members.request(guildId);
+const [wolf] = await client.members.request(guildId, { userIds: [userId], presences: true });
+```
+
+The promise resolves with the `GuildMember`s once the last `GUILD_MEMBERS_CHUNK` for the request is cached, so
+`client.members.get` sees them. It rejects with:
+
+- `GuildMembersTimeoutError` when no chunk arrives for `time` milliseconds (120 seconds by default).
+- `GuildMembersRateLimitError` when Discord answers with `RATE_LIMITED`. Its `retryAfter` holds the delay.
+
+Every chunk is also emitted as `guildMembersChunk`. Its `data.not_found` lists the requested IDs that are not members.
+Requesting every member or a query needs the `GuildMembers` intent, and presences need the `GuildPresences` intent.
+
+## Resuming sessions across restarts
+
+`@discordjs/ws` resumes a dropped connection within the same process. Without a `sessionStore`, every deploy or crash
+identifies every shard again, spends identify quota, misses the events sent meanwhile, and triggers a full
+`GUILD_CREATE` burst. A `sessionStore` keeps sessions outside the process, so the next process resumes them and Discord
+replays what it missed:
+
+```ts
+import { createRedisCache, createRedisSessionStore } from '@wolfstar/plugin-cache';
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { GatewayIntentBits } from 'discord-api-types/v10';
+import { Redis } from 'ioredis';
+
+const redis = new Redis(process.env.REDIS_URL!);
+const client = new GatewayClient({
+	intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMessages,
+	cache: createRedisCache({ redis }),
+	sessionStore: createRedisSessionStore({ redis })
+});
+
+process.once('SIGTERM', async () => {
+	await client.destroy({ resumable: true });
+	process.exit(0);
+});
+```
+
+- **Pair it with a persistent cache.** A resumed session only replays missed events, not guilds. With
+  `createInMemoryCache()`, a restarted process resumes with an empty cache that `GUILD_CREATE` never refills.
+- **Shut down with `destroy({ resumable: true })`.** By default, `destroy()` closes connections with code `1000`, which
+  makes Discord invalidate the sessions. With `resumable`, shards close with code `4200` and their sessions stay stored.
+- **Reads never stall a shard.** Each shard reads the store once when it first connects. A read that fails or takes
+  longer than `sessionStoreTimeout` is reported as a `GatewaySessionStoreError` through `error`, and the shard identifies.
+- **Writes run in the background.** After a crash, the stored sequence may be a few dispatches behind. Discord replays
+  those dispatches, so listeners can see them twice.
+
+`sessionStore` replaces the `gateway.retrieveSessionInfo` and `gateway.updateSessionInfo` options. Passing either
+alongside it throws.
+
+## Structures
+
+Structures extend the classes [`@discordjs/structures`](https://github.com/discordjs/discord.js/tree/main/packages/structures)
+ships, such as `User`, `Message`, `Emoji`, `Invite`, `Webhook`, and every channel type. They add relations resolved from
+the cache, CDN URLs, and discord.js-style actions. Structures without a counterpart yet, such as `Guild`, `GuildMember`,
+and `Role`, extend its base `Structure`.
+
+Every structure has `client`, like discord.js's `Base#client`: the client whose manager built it. It is not part of the
+structure's data, so `toJSON()` never serializes it and the cache never stores it.
+
+Channels get one class per type (`TextChannel`, `VoiceChannel`, `ForumChannel`, `PublicThreadChannel`, `DMChannel`, and
+more), and `instanceof Channel` matches any of them:
+
+```ts
+import { TextChannel } from '@wolfstar/plugin-gateway';
+
+client.on('channelCreate', (channel) => {
+	if (channel instanceof TextChannel) console.log(channel.name, channel.topic);
+});
+```
+
+Guilds, members, roles, channels, threads, messages, webhooks, and moderation structures follow discord.js's API. The
+difference is that anything discord.js reads synchronously from its cache is asynchronous here, for example
+`member.fetchPermissions()` instead of `member.permissions`. Position setters such as `setPosition` sort siblings the
+way Discord does.
+
+```ts
+const member = await client.members.fetch(guildId, userId);
+
+await member.roles.add(roleId, 'verified');
+if (await member.fetchKickable()) await member.kick();
+```
+
+`Structure`, `StructureMixin`, `initStructure`, `Mixin`, and the `kData`, `kPatch`, and `kClone` symbols are exported,
+so you can subclass structures and write new mixins.
+
+### Components
+
+Message components are structures too, like in discord.js: `ActionRow`, `InteractiveButtonComponent`,
+`LinkButtonComponent`, the select menus, `TextInputComponent`, and the Components v2 layout classes such as
+`ContainerComponent`, `SectionComponent`, `TextDisplayComponent`, and `MediaGalleryComponent`. `createComponent()`
+builds the matching class from raw component data, and `findComponentByCustomId()` finds a component in a tree.
+
+### Messages and `MessagePayload`
+
+`Message` follows discord.js, with `reply`, `edit`, `delete`, `forward`, `pin`, `react`, and more. Text channels have
+`send`, `sendTyping`, and `bulkDelete`.
+
+`MessagePayload` normalizes message options into the REST body and files Discord expects, like discord.js's class of the
+same name. It accepts camel case options, builders, reply and forward shortcuts, stickers, polls, and files from paths,
+URLs, streams, or buffers:
+
+```ts
+import { MessagePayload } from '@wolfstar/plugin-gateway';
+
+const payload = MessagePayload.create(channel, {
+	content: 'Awoo',
+	reply: { messageReference: message },
+	files: ['./wolf.png', { attachment: buffer, name: 'howl.ogg', description: 'A howl' }]
+});
+await channel.send(payload);
+```
+
+### Resolvable types
+
+Methods accept discord.js's `Resolvable` types, so you can pass either a structure or an ID. Examples include
+`UserResolvable`, `GuildResolvable`, `ChannelResolvable`, `RoleResolvable`, `MessageResolvable`, `EmojiResolvable`,
+`EmojiIdentifierResolvable`, `BufferResolvable`, `AttachmentResolvable`, and `MessagePayloadResolvable`.
+
+## Utilities
+
+The package exports the discord.js helpers its structures use:
+
+- `parseEmoji(text)` parses a Unicode emoji, a custom emoji mention such as `<a:name:id>`, or a `name:id` pair. It
+  returns `null` when the string holds a colon but no custom emoji.
+- `resolvePartialEmoji(emoji)` resolves any `EmojiIdentifierResolvable` without a cache lookup. A bare ID resolves to
+  `{ id }`.
+- DataResolver functions: `resolveFile`, `resolveBase64`, `resolveImage`, `resolveInviteCode`, and
+  `resolveGuildTemplateCode`.
+- Transformers such as `toSnakeCase` and the `transformAPI*` functions convert between API payloads and discord.js-style
+  camel case objects.
+- Util functions such as `resolveColor`, `cleanContent`, `parseWebhookURL`, `discordSort`, and `transformResolved`.
+
+```ts
+import { parseEmoji, resolvePartialEmoji } from '@wolfstar/plugin-gateway';
+
+parseEmoji('<a:howl:123456789012345678>'); // { animated: true, name: 'howl', id: '123456789012345678' }
+resolvePartialEmoji('123456789012345678'); // { id: '123456789012345678' }
+```
+
+## Errors
+
+Like discord.js's `DiscordjsError`, every error the package throws or emits carries a `code` from `GatewayErrorCodes`,
+and its message comes from `GatewayErrorMessages`. `GatewayError`, `GatewayTypeError`, and `GatewayRangeError` extend
+`Error`, `TypeError`, and `RangeError`, and are named after their code, for example
+`GatewayError [WebhookTokenUnavailable]`.
+
+```ts
+import { GatewayError, GatewayErrorCodes } from '@wolfstar/plugin-gateway';
+
+try {
+	await webhook.send('Awoo');
+} catch (error) {
+	if (error instanceof GatewayError && error.code === GatewayErrorCodes.WebhookTokenUnavailable) {
+		// The webhook was fetched without its token.
+	}
+}
+```
+
+These errors extend `GatewayError` and carry extra data:
+
+| Error                        | When                                                                         | Extra properties                          |
+| ---------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- |
+| `DispatchTimeoutError`       | A dispatch is still processing after `dispatchTimeout`. It is not cancelled. | `type`, `shardId`, `partition`, `timeout` |
+| `GuildMembersTimeoutError`   | A member request receives no chunk for `time` milliseconds.                  | `guildId`, `nonce`, `timeout`             |
+| `GuildMembersRateLimitError` | Discord rate limits a member request.                                        | `guildId`, `nonce`, `retryAfter`          |
+| `GatewaySessionStoreError`   | A `sessionStore` read or write fails or times out.                           | `operation`, `shardId`, `cause`           |
+
+The client reports dispatch, cache, and session store failures through its `error` event.
+
+## Limitations
+
+- A `GatewayClient` connects its shards from a single process. You can set `@discordjs/ws`'s `WorkerShardingStrategy`
+  through `gateway.buildStrategy`.
+- Interaction payloads are handled by the HTTP endpoint as before. They do not read through `client.users` and the other
+  managers.

@@ -1,0 +1,19 @@
+---
+title: '@wolfstar/env-utilities'
+sidebarTitle: 'env-utilities'
+description: 'Changelog for @wolfstar/env-utilities: environment loading and parsing.'
+---
+
+Changes to [`@wolfstar/env-utilities`](/documentation/packages/env-utilities). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## 2026-09-24 — `2.2.0`
+
+### New features
+
+- **varlock support (experimental)** — Load environment files with [varlock](https://varlock.dev) instead of `dotenv`. Opt in with `loader: 'varlock'` or the `DOTENV_LOADER` environment variable. See [Environment](/documentation/guide/environment).
+
+## 2026-09-17 — `2.1.x`
+
+### Updates
+
+- **Structured logging** — Uses `container.logger` from `@sapphire/pieces` when available and falls back to `console.debug` for standalone consumers.

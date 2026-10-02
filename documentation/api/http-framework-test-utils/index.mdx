@@ -1,48 +1,107 @@
 ---
 title: '@wolfstar/http-framework-test-utils'
+description: 'Generated API reference for the test utilities: TestableClient, InteractionTestRunner, createTestHarness, snowflake helpers, and fixture data.'
 ---
 
-## Classes
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- [InteractionTestRunner](/documentation/api/http-framework-test-utils/classes/InteractionTestRunner)
-- [MockServerResponse](/documentation/api/http-framework-test-utils/classes/MockServerResponse)
-- [TestableClient](/documentation/api/http-framework-test-utils/classes/TestableClient)
+<ApiPackageHeader
+	name="@wolfstar/http-framework-test-utils"
+	version="4.0.2"
+	guideHref="/documentation/packages/http-framework-test-utils"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-test-utils"
+/>
 
-## Interfaces
+<InstallPackage packages="@wolfstar/http-framework-test-utils" />
 
-- [InteractionResult](/documentation/api/http-framework-test-utils/interfaces/InteractionResult)
-- [SnowflakeGeneratorOptions](/documentation/api/http-framework-test-utils/interfaces/SnowflakeGeneratorOptions)
-
-## Type Aliases
-
-- [TestHarness](/documentation/api/http-framework-test-utils/type-aliases/TestHarness)
-
-## Variables
-
-- [ApplicationCommandAutocompleteInteractionData](/documentation/api/http-framework-test-utils/variables/ApplicationCommandAutocompleteInteractionData)
-- [BaseInteractionData](/documentation/api/http-framework-test-utils/variables/BaseInteractionData)
-- [ChatInputApplicationCommandInteractionData](/documentation/api/http-framework-test-utils/variables/ChatInputApplicationCommandInteractionData)
-- [InteractionGuildMemberData](/documentation/api/http-framework-test-utils/variables/InteractionGuildMemberData)
-- [LocaleData](/documentation/api/http-framework-test-utils/variables/LocaleData)
-- [MessageApplicationCommandInteractionData](/documentation/api/http-framework-test-utils/variables/MessageApplicationCommandInteractionData)
-- [MessageComponentButtonInteractionData](/documentation/api/http-framework-test-utils/variables/MessageComponentButtonInteractionData)
-- [MessageComponentChannelSelectInteractionData](/documentation/api/http-framework-test-utils/variables/MessageComponentChannelSelectInteractionData)
-- [MessageComponentMentionableSelectInteractionData](/documentation/api/http-framework-test-utils/variables/MessageComponentMentionableSelectInteractionData)
-- [MessageComponentRoleSelectInteractionData](/documentation/api/http-framework-test-utils/variables/MessageComponentRoleSelectInteractionData)
-- [MessageComponentStringSelectInteractionData](/documentation/api/http-framework-test-utils/variables/MessageComponentStringSelectInteractionData)
-- [MessageComponentUserSelectInteractionData](/documentation/api/http-framework-test-utils/variables/MessageComponentUserSelectInteractionData)
-- [MessageData](/documentation/api/http-framework-test-utils/variables/MessageData)
-- [ModalSubmitInteractionData](/documentation/api/http-framework-test-utils/variables/ModalSubmitInteractionData)
-- [PermissionsData](/documentation/api/http-framework-test-utils/variables/PermissionsData)
-- [UserApplicationCommandInteractionData](/documentation/api/http-framework-test-utils/variables/UserApplicationCommandInteractionData)
-- [UserData](/documentation/api/http-framework-test-utils/variables/UserData)
-
-## Functions
-
-- [buildSubcommand](/documentation/api/http-framework-test-utils/functions/buildSubcommand)
-- [createSnowflakeGenerator](/documentation/api/http-framework-test-utils/functions/createSnowflakeGenerator)
-- [createTestHarness](/documentation/api/http-framework-test-utils/functions/createTestHarness)
-- [generateSnowflake](/documentation/api/http-framework-test-utils/functions/generateSnowflake)
-- [getAndDelete](/documentation/api/http-framework-test-utils/functions/getAndDelete)
-- [makeCommand](/documentation/api/http-framework-test-utils/functions/makeCommand)
-- [makeResponse](/documentation/api/http-framework-test-utils/functions/makeResponse)
+<ApiSymbolList
+	symbols={[
+		{ name: 'InteractionTestRunner', kind: 'class', href: '/documentation/api/http-framework-test-utils/classes/InteractionTestRunner' },
+		{ name: 'MockServerResponse', kind: 'class', href: '/documentation/api/http-framework-test-utils/classes/MockServerResponse' },
+		{ name: 'TestableClient', kind: 'class', href: '/documentation/api/http-framework-test-utils/classes/TestableClient' },
+		{ name: 'InteractionResult', kind: 'interface', href: '/documentation/api/http-framework-test-utils/interfaces/InteractionResult' },
+		{
+			name: 'SnowflakeGeneratorOptions',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-test-utils/interfaces/SnowflakeGeneratorOptions'
+		},
+		{ name: 'TestHarness', kind: 'type-alias', href: '/documentation/api/http-framework-test-utils/type-aliases/TestHarness' },
+		{
+			name: 'ApplicationCommandAutocompleteInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/ApplicationCommandAutocompleteInteractionData'
+		},
+		{ name: 'BaseInteractionData', kind: 'variable', href: '/documentation/api/http-framework-test-utils/variables/BaseInteractionData' },
+		{
+			name: 'ChatInputApplicationCommandInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/ChatInputApplicationCommandInteractionData'
+		},
+		{
+			name: 'InteractionGuildMemberData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/InteractionGuildMemberData'
+		},
+		{ name: 'LocaleData', kind: 'variable', href: '/documentation/api/http-framework-test-utils/variables/LocaleData' },
+		{
+			name: 'MessageApplicationCommandInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/MessageApplicationCommandInteractionData'
+		},
+		{
+			name: 'MessageComponentButtonInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/MessageComponentButtonInteractionData'
+		},
+		{
+			name: 'MessageComponentChannelSelectInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/MessageComponentChannelSelectInteractionData'
+		},
+		{
+			name: 'MessageComponentMentionableSelectInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/MessageComponentMentionableSelectInteractionData'
+		},
+		{
+			name: 'MessageComponentRoleSelectInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/MessageComponentRoleSelectInteractionData'
+		},
+		{
+			name: 'MessageComponentStringSelectInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/MessageComponentStringSelectInteractionData'
+		},
+		{
+			name: 'MessageComponentUserSelectInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/MessageComponentUserSelectInteractionData'
+		},
+		{ name: 'MessageData', kind: 'variable', href: '/documentation/api/http-framework-test-utils/variables/MessageData' },
+		{
+			name: 'ModalSubmitInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/ModalSubmitInteractionData'
+		},
+		{ name: 'PermissionsData', kind: 'variable', href: '/documentation/api/http-framework-test-utils/variables/PermissionsData' },
+		{
+			name: 'UserApplicationCommandInteractionData',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-test-utils/variables/UserApplicationCommandInteractionData'
+		},
+		{ name: 'UserData', kind: 'variable', href: '/documentation/api/http-framework-test-utils/variables/UserData' },
+		{ name: 'buildSubcommand', kind: 'function', href: '/documentation/api/http-framework-test-utils/functions/buildSubcommand' },
+		{
+			name: 'createSnowflakeGenerator',
+			kind: 'function',
+			href: '/documentation/api/http-framework-test-utils/functions/createSnowflakeGenerator'
+		},
+		{ name: 'createTestHarness', kind: 'function', href: '/documentation/api/http-framework-test-utils/functions/createTestHarness' },
+		{ name: 'generateSnowflake', kind: 'function', href: '/documentation/api/http-framework-test-utils/functions/generateSnowflake' },
+		{ name: 'getAndDelete', kind: 'function', href: '/documentation/api/http-framework-test-utils/functions/getAndDelete' },
+		{ name: 'makeCommand', kind: 'function', href: '/documentation/api/http-framework-test-utils/functions/makeCommand' },
+		{ name: 'makeResponse', kind: 'function', href: '/documentation/api/http-framework-test-utils/functions/makeResponse' }
+	]}
+/>

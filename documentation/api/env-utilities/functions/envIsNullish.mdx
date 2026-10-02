@@ -1,25 +1,40 @@
 ---
 title: 'Function: envIsNullish()'
+description: 'Checks if the value of the specified environment variable is nullish. (@wolfstar/env-utilities)'
 hidden: true
 ---
 
-> **envIsNullish**(`key`): `boolean`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:102](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L102)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/utils.ts#L102',
+		label: 'packages/env-utilities/src/lib/utils.ts:102'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
 
 Checks if the value of the specified environment variable is nullish.
 
-## Parameters
+<ApiSignature tokens={['envIsNullish(key: keyof ', ['Env', '/documentation/api/env-utilities/interfaces/Env'], '): boolean']} />
 
-### key
+Checks if the value of the specified environment variable is nullish.
 
-keyof [`Env`](/documentation/api/env-utilities/interfaces/Env)
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['keyof ', ['Env', '/documentation/api/env-utilities/interfaces/Env']]}>
 
 The name of the environment variable.
 
-## Returns
+</ApiParam>
 
-`boolean`
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
 
 Whether the value of the specified environment variable is:
 
@@ -27,3 +42,7 @@ Whether the value of the specified environment variable is:
 - An empty string (`""`)
 - The string `"0"`
 - The string `"null"`, case insensitive
+
+</ApiParam>
+
+</ApiParams>

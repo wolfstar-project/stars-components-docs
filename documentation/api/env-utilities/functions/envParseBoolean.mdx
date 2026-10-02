@@ -1,44 +1,61 @@
 ---
 title: 'Function: envParseBoolean()'
+description: 'API reference for envParseBoolean, a function exported by @wolfstar/env-utilities.'
 hidden: true
 ---
 
-## Call Signature
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-> **envParseBoolean**(`key`, `defaultValue?`): `boolean`
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/utils.ts#L31',
+		label: 'packages/env-utilities/src/lib/utils.ts:31'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:31](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L31)
+<Tabs>
 
-### Parameters
+<Tab title="Overload 1">
 
-#### key
+<ApiSignature tokens={['envParseBoolean(key: "DOTENV_DEBUG", defaultValue?: boolean): boolean']} />
 
-`"DOTENV_DEBUG"`
+<ApiParams title="Parameters">
 
-#### defaultValue?
+<ApiParam name="key" type={['"DOTENV_DEBUG"']} />
 
-`boolean`
+<ApiParam name="defaultValue" type={['boolean']} optional />
 
-### Returns
+</ApiParams>
 
-`boolean`
+<ApiParams title="Returns">
 
-## Call Signature
+<ApiParam type={['boolean']} />
 
-> **envParseBoolean**(`key`, `defaultValue`): `boolean` \| `null`
+</ApiParams>
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:32](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L32)
+</Tab>
 
-### Parameters
+<Tab title="Overload 2">
 
-#### key
+<ApiSignature tokens={['envParseBoolean(key: "DOTENV_DEBUG", defaultValue: boolean | null): boolean | null']} />
 
-`"DOTENV_DEBUG"`
+<ApiParams title="Parameters">
 
-#### defaultValue
+<ApiParam name="key" type={['"DOTENV_DEBUG"']} />
 
-`boolean` \| `null`
+<ApiParam name="defaultValue" type={['boolean | null']} />
 
-### Returns
+</ApiParams>
 
-`boolean` \| `null`
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean | null']} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>

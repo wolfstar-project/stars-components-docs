@@ -1,0 +1,35 @@
+---
+title: 'Variable: ChatInputRouterErrors'
+description: 'API reference for ChatInputRouterErrors, a variable exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L65',
+		label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:65'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'const ChatInputRouterErrors: {\n  readonly DuplicatedSubcommand: (command: string, subcommandGroup: string, subcommand: string) => string;\n  readonly DuplicatedSubcommandGroup: (command: string, subcommandGroup: string) => string;\n  readonly SubcommandGroupLinkInvalid: (command: string, subcommandGroup: string) => string;\n  readonly SubcommandLinkInvalid: (command: string, subcommandGroup: string, subcommand: string) => string;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="DuplicatedSubcommand" type={['(command: string, subcommandGroup: string, subcommand: string) => string']} />
+
+<ApiParam name="DuplicatedSubcommandGroup" type={['(command: string, subcommandGroup: string) => string']} />
+
+<ApiParam name="SubcommandGroupLinkInvalid" type={['(command: string, subcommandGroup: string) => string']} />
+
+<ApiParam name="SubcommandLinkInvalid" type={['(command: string, subcommandGroup: string, subcommand: string) => string']} />
+
+</ApiParams>

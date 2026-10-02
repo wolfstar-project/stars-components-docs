@@ -1,0 +1,157 @@
+---
+title: '@wolfstar/plugin-logger'
+description: 'Replace the HTTP Framework console logger with one that fans entries out to Console, Sentry, consola, evlog, or winston transports.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-logger
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-logger
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-logger
+```
+
+```bash bun
+bun add @wolfstar/plugin-logger
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-logger"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-logger"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+`@wolfstar/plugin-logger` replaces the built-in console logger of [`@wolfstar/http-framework`](/documentation/packages/http-framework)
+with one that fans every entry out to a list of transports. It implements the same `ILogger` contract, so code that
+already writes through `container.logger` keeps working. It supersedes the deprecated
+[`@wolfstar/logger`](/documentation/packages/logger).
+
+Every logging backend is an optional peer dependency. Install only the ones you use:
+
+```bash
+pnpm add consola   # for @wolfstar/plugin-logger/consola
+pnpm add evlog     # for @wolfstar/plugin-logger/evlog
+pnpm add winston   # for @wolfstar/plugin-logger/winston
+pnpm add @sentry/node
+```
+
+## Usage
+
+Import the `register` entry point before you create your `Client`:
+
+```ts
+import '@wolfstar/plugin-logger/register';
+import { Client, LogLevel } from '@wolfstar/http-framework';
+
+const client = new Client({
+	logger: { level: LogLevel.Debug }
+});
+
+container.logger.info('Ready');
+```
+
+Without further configuration the logger writes to `console`, like the framework's built-in one.
+
+## Transports
+
+A transport is any object implementing `Transport`:
+
+```ts
+interface Transport {
+	readonly level?: LogLevel;
+	log(payload: LogPayload): void | Promise<void>;
+	close?(): void | Promise<void>;
+}
+```
+
+`level` filters on top of the logger's own level, so a Sentry sink can take only errors while the console keeps
+everything:
+
+```ts
+import '@wolfstar/plugin-logger/register';
+import * as Sentry from '@sentry/node';
+import { Client, LogLevel } from '@wolfstar/http-framework';
+import { ConsoleTransport, SentryTransport } from '@wolfstar/plugin-logger';
+
+const client = new Client({
+	logger: {
+		level: LogLevel.Debug,
+		transports: [
+			new ConsoleTransport(),
+			new SentryTransport({ client: Sentry }) // defaults to LogLevel.Error
+		]
+	}
+});
+```
+
+A transport that throws, or returns a rejecting promise, never interrupts the caller. The error is caught and
+reported to `console.error`.
+
+| Transport          | Entry point | Peer dependency |
+| ------------------ | ----------- | --------------- |
+| `ConsoleTransport` | `.`         | none            |
+| `SentryTransport`  | `.`         | `@sentry/node`  |
+
+### Backend adapters
+
+Each adapter wraps a third-party logger as a transport and lives behind its own subpath, so the dependency is only
+resolved when you import it:
+
+```ts
+import { consola } from 'consola';
+import { ConsolaTransport } from '@wolfstar/plugin-logger/consola';
+
+new ConsolaTransport({ instance: consola });
+```
+
+```ts
+import { log } from 'evlog';
+import { EvlogTransport } from '@wolfstar/plugin-logger/evlog';
+
+new EvlogTransport({ instance: log, tag: 'bot' });
+```
+
+```ts
+import { createLogger, transports } from 'winston';
+import { WinstonTransport } from '@wolfstar/plugin-logger/winston';
+
+new WinstonTransport({
+	instance: createLogger({ transports: [new transports.File({ filename: 'bot.log' })] })
+});
+```
+
+<Note>
+	`evlog` has only four levels and `winston`'s default `npm` levels have no `fatal`, so `trace` collapses into `debug` and `fatal` into `error` on
+	those backends.
+</Note>
+
+## Migration from @wolfstar/logger
+
+```diff
+-import { Logger, LogLevel } from '@wolfstar/logger';
++import '@wolfstar/plugin-logger/register';
++import { LogLevel, container } from '@wolfstar/http-framework';
+
+-const logger = new Logger({ level: LogLevel.Debug });
+-logger.info('Ready');
++const client = new Client({ logger: { level: LogLevel.Debug } });
++container.logger.info('Ready');
+```
+
+The `trace`, `debug`, `info`, `warn`, `error`, and `fatal` methods behave the same. `LogLevel` keeps its ordering and is
+now imported from `@wolfstar/http-framework`.
+
+[![version](https://npmx.dev/api/registry/badge/version/@wolfstar/plugin-logger)](https://npmx.dev/package/@wolfstar/plugin-logger)
+[![downloads](https://npmx.dev/api/registry/badge/downloads/@wolfstar/plugin-logger)](https://npmx.dev/package/@wolfstar/plugin-logger)
+[![license](https://img.shields.io/github/license/wolfstar-project/plugins?style=flat-square&color=informational)](https://github.com/wolfstar-project/plugins/blob/main/LICENSE)

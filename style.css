@@ -374,3 +374,576 @@ body:has(.ws-home) #navbar {
 		transition: none;
 	}
 }
+
+/* <InstallPackage /> — snippets/install-package.jsx */
+.ws-install {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin: 1rem 0;
+	padding: 0.75rem 1rem;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.75rem;
+	background: rgb(128 128 128 / 0.06);
+}
+
+.ws-install-body {
+	display: flex;
+	flex: 1;
+	min-width: 0;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+}
+
+.ws-install-command {
+	overflow-x: auto;
+	white-space: nowrap;
+	font-size: 0.875rem;
+	background: none !important;
+}
+
+.ws-install-prompt {
+	opacity: 0.5;
+	user-select: none;
+}
+
+.ws-install-copy,
+.ws-install-trigger {
+	flex: none;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.5rem;
+	background: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+.ws-install-copy {
+	padding: 0.125rem 0.5rem;
+	font-size: 0.75rem;
+}
+
+.ws-install-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.25rem 0.625rem;
+	font-size: 0.8125rem;
+	font-weight: 500;
+}
+
+.ws-install-copy:hover,
+.ws-install-trigger:hover,
+.ws-install-trigger[aria-expanded='true'] {
+	background: rgb(128 128 128 / 0.15);
+}
+
+.ws-install-select {
+	flex: none;
+}
+
+.ws-install-badge {
+	display: inline-flex;
+	width: 1.125rem;
+	height: 1.125rem;
+	align-items: center;
+	justify-content: center;
+	border-radius: 0.25rem;
+	background: #5865f2;
+	color: #fff;
+	font-size: 0.6875rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.ws-install-chevron {
+	font-size: 0.75rem;
+	transition: transform 0.15s;
+}
+
+.ws-install-chevron-open {
+	transform: rotate(180deg);
+}
+
+.ws-install-menu {
+	position: absolute;
+	top: calc(100% + 0.25rem);
+	right: 0;
+	z-index: 20;
+	min-width: 10rem;
+	margin: 0;
+	padding: 0.25rem;
+	list-style: none;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.625rem;
+	background: var(--ws-surface, #29292e);
+	color: var(--ws-heading, #e5e5df);
+	box-shadow: 0 8px 24px rgb(0 0 0 / 0.35);
+}
+
+.ws-install-option {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.375rem 0.5rem;
+	border-radius: 0.375rem;
+	background: none;
+	color: inherit;
+	font-size: 0.8125rem;
+	text-align: left;
+	cursor: pointer;
+}
+
+.ws-install-option:hover,
+.ws-install-menu [aria-selected='true'] .ws-install-option {
+	background: rgb(128 128 128 / 0.2);
+}
+
+.ws-install-check {
+	margin-left: auto;
+	color: #ff7a6a;
+}
+
+.ws-install-icon {
+	width: 1.125rem;
+	height: 1.125rem;
+	flex: none;
+}
+
+/* API Reference components (snippets/api-reference.jsx) */
+.ws-api-kind,
+.ws-api-badge {
+	--ws-api-c: #94a3b8;
+	display: inline-flex;
+	align-items: center;
+	padding: 0.0625rem 0.5rem;
+	border: 1px solid color-mix(in srgb, var(--ws-api-c) 40%, transparent);
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--ws-api-c) 14%, transparent);
+	color: color-mix(in srgb, var(--ws-api-c) 72%, currentColor);
+	font-size: 0.6875rem;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+}
+
+.ws-api-kind-class {
+	--ws-api-c: #7357f6;
+}
+
+.ws-api-kind-interface {
+	--ws-api-c: #14b8a6;
+}
+
+.ws-api-kind-enum {
+	--ws-api-c: #f59e0b;
+}
+
+.ws-api-kind-type-alias {
+	--ws-api-c: #ec4899;
+}
+
+.ws-api-kind-function,
+.ws-api-kind-method,
+.ws-api-kind-constructor {
+	--ws-api-c: #22c55e;
+}
+
+.ws-api-kind-variable,
+.ws-api-kind-property {
+	--ws-api-c: #0ea5e9;
+}
+
+.ws-api-kind-accessor {
+	--ws-api-c: #a445dc;
+}
+
+.ws-api-kind-package {
+	--ws-api-c: #ff7a6a;
+}
+
+.ws-api-badge-deprecated {
+	--ws-api-c: #ef4444;
+}
+
+.ws-api-badge-abstract,
+.ws-api-badge-protected {
+	--ws-api-c: #f97316;
+}
+
+.ws-api-badge-static,
+.ws-api-badge-readonly {
+	--ws-api-c: #6366f1;
+}
+
+.ws-api-badge-optional {
+	--ws-api-c: #64748b;
+}
+
+.ws-api-badge-since {
+	--ws-api-c: #10b981;
+}
+
+.ws-api-badges {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+}
+
+.ws-api-header,
+.ws-api-member-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0.5rem 0 1rem;
+	font-size: 0.8125rem;
+}
+
+.ws-api-member-meta {
+	margin: 0 0 0.75rem;
+}
+
+.ws-api-package,
+.ws-api-source,
+.ws-api-inherited,
+.ws-api-version {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.25rem;
+	border-bottom: none !important;
+	color: rgb(128 128 128);
+	font-size: 0.75rem;
+	text-decoration: none;
+}
+
+.ws-api-package:hover,
+.ws-api-source:hover {
+	color: var(--ws-violet, #7357f6);
+}
+
+.ws-api-source {
+	margin-left: auto;
+}
+
+.ws-api-package-name {
+	font-size: 0.9375rem;
+	font-weight: 600;
+}
+
+.ws-api-type-link {
+	border-bottom: none !important;
+	color: var(--ws-violet, #7357f6);
+	text-decoration: none;
+}
+
+.ws-api-type-link:hover {
+	text-decoration: underline;
+}
+
+.ws-api-hierarchy {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin: 1rem 0;
+}
+
+.ws-api-hierarchy:empty {
+	display: none;
+}
+
+.ws-api-hierarchy-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.5rem;
+}
+
+.ws-api-hierarchy-label {
+	min-width: 6.5rem;
+	color: rgb(128 128 128);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.ws-api-hierarchy-items {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 0.375rem;
+}
+
+.ws-api-chip {
+	padding: 0.125rem 0.5rem;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.5rem;
+	background: rgb(128 128 128 / 0.08);
+	font-size: 0.8125rem;
+}
+
+.ws-api-signature {
+	position: relative;
+	margin: 0.75rem 0;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.75rem;
+	background: rgb(128 128 128 / 0.06);
+}
+
+.ws-api-signature-code {
+	margin: 0;
+	padding: 0.75rem 4rem 0.75rem 1rem;
+	overflow-x: auto;
+	background: none !important;
+	font-size: 0.8125rem;
+	line-height: 1.6;
+	white-space: pre;
+}
+
+.ws-api-signature-code code {
+	background: none !important;
+}
+
+.ws-api-copy {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	padding: 0.125rem 0.5rem;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.5rem;
+	background: none;
+	color: inherit;
+	font-size: 0.75rem;
+	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.15s;
+}
+
+.ws-api-signature:hover .ws-api-copy,
+.ws-api-copy:focus-visible {
+	opacity: 1;
+}
+
+.ws-api-copy:hover {
+	background: rgb(128 128 128 / 0.15);
+}
+
+.ws-api-member {
+	margin: 0.5rem 0 1.5rem;
+	padding: 1rem 1.125rem;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-left: 3px solid var(--ws-violet, #7357f6);
+	border-radius: 0.75rem;
+	background: rgb(128 128 128 / 0.04);
+}
+
+.ws-api-member-property {
+	border-left-color: #0ea5e9;
+}
+
+.ws-api-member-method,
+.ws-api-member-constructor {
+	border-left-color: #22c55e;
+}
+
+.ws-api-member-accessor {
+	border-left-color: #a445dc;
+}
+
+.ws-api-member-body > :first-child,
+.ws-api-param-body > :first-child {
+	margin-top: 0;
+}
+
+.ws-api-member-body > :last-child,
+.ws-api-param-body > :last-child {
+	margin-bottom: 0;
+}
+
+.ws-api-params {
+	margin: 1rem 0;
+}
+
+.ws-api-params-title {
+	margin-bottom: 0.375rem;
+	color: rgb(128 128 128);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.ws-api-params-list {
+	overflow: hidden;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.625rem;
+}
+
+.ws-api-param {
+	padding: 0.625rem 0.875rem;
+}
+
+.ws-api-param + .ws-api-param {
+	border-top: 1px solid rgb(128 128 128 / 0.2);
+}
+
+.ws-api-param-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 0.5rem;
+}
+
+.ws-api-param-name {
+	font-weight: 600;
+}
+
+.ws-api-param-type {
+	background: none !important;
+	font-size: 0.8125rem;
+	white-space: pre-wrap;
+}
+
+.ws-api-param-default {
+	color: rgb(128 128 128);
+	font-size: 0.75rem;
+}
+
+.ws-api-param-body {
+	margin-top: 0.25rem;
+	font-size: 0.875rem;
+}
+
+.ws-api-enum {
+	margin: 1rem 0;
+	overflow-x: auto;
+}
+
+.ws-api-enum-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.875rem;
+}
+
+.ws-api-enum-table th,
+.ws-api-enum-table td {
+	padding: 0.5rem 0.75rem;
+	border-bottom: 1px solid rgb(128 128 128 / 0.2);
+	text-align: left;
+	vertical-align: top;
+}
+
+.ws-api-enum-table th {
+	color: rgb(128 128 128);
+	font-size: 0.75rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.ws-api-deprecated {
+	opacity: 0.7;
+	text-decoration: line-through;
+}
+
+.ws-api-symbols {
+	margin: 1rem 0;
+}
+
+.ws-api-filter {
+	width: 100%;
+	padding: 0.5rem 0.875rem;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.625rem;
+	background: rgb(128 128 128 / 0.06);
+	color: inherit;
+	font-size: 0.875rem;
+}
+
+.ws-api-filter:focus {
+	outline: 2px solid var(--ws-violet, #7357f6);
+	outline-offset: 1px;
+}
+
+.ws-api-empty {
+	margin: 1.5rem 0;
+	color: rgb(128 128 128);
+}
+
+.ws-api-symbol-group-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 1.75rem 0 0.75rem;
+	font-size: 1rem;
+}
+
+.ws-api-count {
+	padding: 0 0.5rem;
+	border-radius: 999px;
+	background: rgb(128 128 128 / 0.18);
+	font-size: 0.6875rem;
+	font-weight: 600;
+}
+
+.ws-api-symbol-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+	gap: 0.625rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ws-api-symbol-grid > li {
+	margin: 0;
+	padding: 0;
+}
+
+.ws-api-symbol {
+	display: flex;
+	flex-direction: column;
+	gap: 0.375rem;
+	height: 100%;
+	padding: 0.75rem 0.875rem;
+	border: 1px solid rgb(128 128 128 / 0.3);
+	border-radius: 0.75rem;
+	color: inherit;
+	text-decoration: none;
+	transition:
+		border-color 0.15s,
+		background 0.15s;
+}
+
+.ws-api-symbol:hover {
+	border-color: var(--ws-violet, #7357f6);
+	background: rgb(115 87 246 / 0.07);
+}
+
+.ws-api-symbol-head {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	min-width: 0;
+}
+
+.ws-api-symbol-name {
+	overflow: hidden;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ws-api-symbol-summary {
+	display: -webkit-box;
+	overflow: hidden;
+	color: rgb(128 128 128);
+	font-size: 0.8125rem;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}

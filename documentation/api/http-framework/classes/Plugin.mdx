@@ -1,0 +1,125 @@
+---
+title: 'Class: Plugin'
+description: 'The base class for all plugins. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract', 'since 2.4.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/Plugin.ts#L11',
+		label: 'packages/http-framework/src/lib/plugins/Plugin.ts:11'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The base class for all plugins. Plugins hook into the [Client](/documentation/api/http-framework/classes/Client)'s lifecycle by defining static
+methods keyed by the plugin symbols. Use [PluginManager.use](/documentation/api/http-framework/classes/PluginManager#use) (via `Client.use`) to register a plugin.
+
+<ApiSignature tokens={['abstract class Plugin']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new Plugin(): ', ['Plugin', '/documentation/api/http-framework/classes/Plugin']]} />
+
+</ApiMember>
+
+## Properties
+
+### \[postInitialization\]?
+
+<ApiMember
+	kind="property"
+	badges={['static', 'optional']}
+	signature={[
+		'static [postInitialization]?: (this: ',
+		['Client', '/documentation/api/http-framework/classes/Client'],
+		', options: ',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		') => void'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/Plugin.ts#L14',
+		label: 'packages/http-framework/src/lib/plugins/Plugin.ts:14'
+	}}
+/>
+
+### \[postListen\]?
+
+<ApiMember
+	kind="property"
+	badges={['static', 'optional']}
+	signature={[
+		'static [postListen]?: (this: ',
+		['Client', '/documentation/api/http-framework/classes/Client'],
+		', options: ',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		') => Awaitable<void>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/Plugin.ts#L16',
+		label: 'packages/http-framework/src/lib/plugins/Plugin.ts:16'
+	}}
+/>
+
+### \[preGenericsInitialization\]?
+
+<ApiMember
+	kind="property"
+	badges={['static', 'optional']}
+	signature={[
+		'static [preGenericsInitialization]?: (this: ',
+		['Client', '/documentation/api/http-framework/classes/Client'],
+		', options: ',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		') => void'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/Plugin.ts#L12',
+		label: 'packages/http-framework/src/lib/plugins/Plugin.ts:12'
+	}}
+/>
+
+### \[preInitialization\]?
+
+<ApiMember
+	kind="property"
+	badges={['static', 'optional']}
+	signature={[
+		'static [preInitialization]?: (this: ',
+		['Client', '/documentation/api/http-framework/classes/Client'],
+		', options: ',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		') => void'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/Plugin.ts#L13',
+		label: 'packages/http-framework/src/lib/plugins/Plugin.ts:13'
+	}}
+/>
+
+### \[preLoad\]?
+
+<ApiMember
+	kind="property"
+	badges={['static', 'optional']}
+	signature={[
+		'static [preLoad]?: (this: ',
+		['Client', '/documentation/api/http-framework/classes/Client'],
+		', options: ',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		') => Awaitable<void>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/Plugin.ts#L15',
+		label: 'packages/http-framework/src/lib/plugins/Plugin.ts:15'
+	}}
+/>

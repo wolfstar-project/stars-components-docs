@@ -1,8 +1,27 @@
 ---
 title: 'Type Alias: MappedClientEvents'
+description: 'API reference for MappedClientEvents, a type alias exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-> **MappedClientEvents** = `{ [K in keyof ClientEvents]: ClientEvents[K] }`
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/ClientEvents.ts:152](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/ClientEvents.ts#L152)
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L152',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:152'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'type MappedClientEvents = { [K in keyof ',
+		['ClientEvents', '/documentation/api/http-framework/interfaces/ClientEvents'],
+		']: ',
+		['ClientEvents', '/documentation/api/http-framework/interfaces/ClientEvents'],
+		'[K] }'
+	]}
+/>

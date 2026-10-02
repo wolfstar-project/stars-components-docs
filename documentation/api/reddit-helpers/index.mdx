@@ -1,40 +1,134 @@
 ---
 title: '@wolfstar/reddit-helpers'
+description: 'Generated API reference for @wolfstar/reddit-helpers: fetchRedditPost, fetchRedditPosts, bearer and header helpers, and RedditParseException.'
 ---
 
-## Enumerations
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- [ForbiddenType](/documentation/api/reddit-helpers/enumerations/ForbiddenType)
+<ApiPackageHeader
+	name="@wolfstar/reddit-helpers"
+	version="1.2.7"
+	guideHref="/documentation/packages/reddit-helpers"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/reddit-helpers"
+/>
 
-## Classes
+<InstallPackage packages="@wolfstar/reddit-helpers" />
 
-- [RedditParseException](/documentation/api/reddit-helpers/classes/RedditParseException)
-
-## Interfaces
-
-- [CacheEntry](/documentation/api/reddit-helpers/interfaces/CacheEntry)
-- [CacheHit](/documentation/api/reddit-helpers/interfaces/CacheHit)
-- [RedditVariables](/documentation/api/reddit-helpers/interfaces/RedditVariables)
-
-## Type Aliases
-
-- [RedditError](/documentation/api/reddit-helpers/type-aliases/RedditError)
-
-## Variables
-
-- [ApiUrlSegment](/documentation/api/reddit-helpers/variables/ApiUrlSegment)
-- [BaseUrl](/documentation/api/reddit-helpers/variables/BaseUrl)
-- [RedditBrandingColor](/documentation/api/reddit-helpers/variables/RedditBrandingColor)
-- [RedditLogoUrl](/documentation/api/reddit-helpers/variables/RedditLogoUrl)
-- [version](/documentation/api/reddit-helpers/variables/version)
-
-## Functions
-
-- [areRedditCredentialsSet](/documentation/api/reddit-helpers/functions/areRedditCredentialsSet)
-- [fetchBearer](/documentation/api/reddit-helpers/functions/fetchBearer)
-- [fetchRedditPost](/documentation/api/reddit-helpers/functions/fetchRedditPost)
-- [fetchRedditPosts](/documentation/api/reddit-helpers/functions/fetchRedditPosts)
-- [getHeaders](/documentation/api/reddit-helpers/functions/getHeaders)
-- [getRedditRedirectPostUrl](/documentation/api/reddit-helpers/functions/getRedditRedirectPostUrl)
-- [getRequest](/documentation/api/reddit-helpers/functions/getRequest)
-- [setVariables](/documentation/api/reddit-helpers/functions/setVariables)
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'ForbiddenType',
+			kind: 'enum',
+			href: '/documentation/api/reddit-helpers/enumerations/ForbiddenType',
+			summary: 'Represents the types of forbidden content.'
+		},
+		{
+			name: 'RedditParseException',
+			kind: 'class',
+			href: '/documentation/api/reddit-helpers/classes/RedditParseException',
+			summary:
+				"An error thrown by fetchRedditPost if no post key could be extracted from the [['link']](/documentation/api/reddit-helpers/classes/RedditPa…"
+		},
+		{
+			name: 'CacheEntry',
+			kind: 'interface',
+			href: '/documentation/api/reddit-helpers/interfaces/CacheEntry',
+			summary: 'Represents a cache entry.'
+		},
+		{
+			name: 'CacheHit',
+			kind: 'interface',
+			href: '/documentation/api/reddit-helpers/interfaces/CacheHit',
+			summary:
+				'Represents a cache hit, containing information about whether the cache has NSFW or NSFL content, as well as an array of cache entries.'
+		},
+		{
+			name: 'RedditVariables',
+			kind: 'interface',
+			href: '/documentation/api/reddit-helpers/interfaces/RedditVariables',
+			summary: 'Represents the variables used for Reddit integration.'
+		},
+		{
+			name: 'RedditError',
+			kind: 'type-alias',
+			href: '/documentation/api/reddit-helpers/type-aliases/RedditError',
+			summary: 'Represents an error response from the Reddit API.'
+		},
+		{
+			name: 'ApiUrlSegment',
+			kind: 'variable',
+			href: '/documentation/api/reddit-helpers/variables/ApiUrlSegment',
+			summary: 'The API URL segment used in the Reddit Helpers library.'
+		},
+		{
+			name: 'BaseUrl',
+			kind: 'variable',
+			href: '/documentation/api/reddit-helpers/variables/BaseUrl',
+			summary: 'The Base URL for the Reddit API'
+		},
+		{
+			name: 'RedditBrandingColor',
+			kind: 'variable',
+			href: '/documentation/api/reddit-helpers/variables/RedditBrandingColor',
+			summary: 'The official Reddit orange colour'
+		},
+		{
+			name: 'RedditLogoUrl',
+			kind: 'variable',
+			href: '/documentation/api/reddit-helpers/variables/RedditLogoUrl',
+			summary: 'The official Reddit branding logo re-hosted on the Wolfstar CDN for consistent access'
+		},
+		{ name: 'version', kind: 'variable', href: '/documentation/api/reddit-helpers/variables/version' },
+		{
+			name: 'areRedditCredentialsSet',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/areRedditCredentialsSet',
+			summary:
+				'Checks if the Reddit client credentials are set in the environment variables REDDITCLIENTID and REDDITDEVICEID or in the variables set by s…'
+		},
+		{
+			name: 'fetchBearer',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/fetchBearer',
+			summary: 'Fetches a Bearer token from the Reddit API.'
+		},
+		{
+			name: 'fetchRedditPost',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/fetchRedditPost',
+			summary: 'Fetches a Reddit post from a specified subreddit.'
+		},
+		{
+			name: 'fetchRedditPosts',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/fetchRedditPosts',
+			summary: 'Fetches Reddit posts from a specified subreddit.'
+		},
+		{
+			name: 'getHeaders',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/getHeaders',
+			summary: 'Retrieves the headers for a Reddit request'
+		},
+		{
+			name: 'getRedditRedirectPostUrl',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/getRedditRedirectPostUrl',
+			summary: 'Gets the proper URL of a reddit post in case an URL was provided that redirects to a post.'
+		},
+		{
+			name: 'getRequest',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/getRequest',
+			summary:
+				'A tiny wrapper around Json(safeFetch) that implements fetchBearer to set the proper headers and adds the BaseUrl for the base path.'
+		},
+		{
+			name: 'setVariables',
+			kind: 'function',
+			href: '/documentation/api/reddit-helpers/functions/setVariables',
+			summary: 'Sets the variables required to interact with the Reddit API.'
+		}
+	]}
+/>

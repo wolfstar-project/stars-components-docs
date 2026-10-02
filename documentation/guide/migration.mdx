@@ -172,6 +172,10 @@ has (`formatError`/`exitCodeOf` keep their existing exports and behaviour) and s
       with `client.fetch(request, options?)`
 - [ ] `instanceof ConfigError` / `instanceof CliError` checks replaced with `instanceof Diagnostic` (from `nostics`)
 - [ ] `.path`/`.file` reads on caught errors replaced with `.message`/`.sources`
+- [ ] CLI-only consumers (projects that depend on `@wolfstar/cli` without `@wolfstar/http-framework`) added
+      `@wolfstar/http-framework` to their `dependencies`. The CLI no longer depends on the framework transitively.
+      Projects scaffolded by `@wolfstar/create-http-framework`, or that already depend on `@wolfstar/http-framework`,
+      are unaffected.
 - [ ] Optional: `experimental.enableVite` and `experimental.enableNitro` configured, `vite` and `nitro` installed as
       `devDependencies`, and the entry's default export changed from calling `listen()` to the loaded `Client`
       instance
@@ -462,8 +466,11 @@ and `stars build` regenerate it. Run `stars prepare` explicitly before editor/ty
 
 ### Plugin Registration and the Built-in Logger
 
-Bundler builds now activate every `@wolfstar/plugin-*` package found in `dependencies` or `optionalDependencies` by
-injecting its `/register` side-effect entry before the application entry. Remove matching manual imports such as:
+Bundler builds now activate `@wolfstar/plugin-*` packages found in `dependencies` or `optionalDependencies` by
+injecting their `/register` side-effect entry before the application entry. The CLI only injects `<name>/register`
+when the installed package's `exports` map defines a `./register` subpath. Library plugins that you use directly,
+such as `@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway`, and `@wolfstar/plugin-sharder`, are skipped. Remove
+matching manual imports such as:
 
 ```diff
 -import '@wolfstar/plugin-i18next/register';
@@ -472,6 +479,12 @@ injecting its `/register` side-effect entry before the application entry. Remove
 This automation applies to `tsdown` and Vite builds. It deliberately ignores `devDependencies`; a runtime plugin must
 be a runtime dependency. Projects using `build.tool: 'tsc'` or `'none'` do not have a bundler transform and must keep
 explicit `/register` imports.
+
+<Warning>
+	If `stars build` or `stars dev` fails with `ERR_PACKAGE_PATH_NOT_EXPORTED` for a package such as `@wolfstar/plugin-cache`, your project resolves
+	an older `@wolfstar/vite-server` that injects `/register` for every plugin. Upgrade to `@wolfstar/cli@2.0.2` or newer (or
+	`@wolfstar/http-framework@5.1.2` or newer), or refresh your lockfile so it resolves `@wolfstar/vite-server@0.2.2` or newer.
+</Warning>
 
 The framework also provides `container.logger` without `@wolfstar/logger`. Remove the deprecated package and custom
 setup module when it only installed the standard logger. Configure the built-in logger through the client when needed:
@@ -871,6 +884,12 @@ import '@wolfstar/plugin-logger/register';
 With `@wolfstar/cli@0.6.0` or newer and a `tsdown` build, installed `@wolfstar/plugin-*` packages are discovered from
 runtime dependencies and their `/register` entrypoints are activated automatically. In that setup, remove the manual
 import to avoid registering the plugin twice.
+
+The CLI injects `<name>/register` only for packages whose `exports` map defines `./register`, such as
+`@wolfstar/plugin-logger`. Packages without that subpath, such as `@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway`,
+and `@wolfstar/plugin-sharder`, are libraries you import directly and are skipped. If a build fails with
+`ERR_PACKAGE_PATH_NOT_EXPORTED` on one of those packages, upgrade to `@wolfstar/cli@2.0.2` or newer, or refresh your
+lockfile so it resolves `@wolfstar/vite-server@0.2.2` or newer.
 
 ### Configuring Transports <Badge type="tip" text="optional" />
 

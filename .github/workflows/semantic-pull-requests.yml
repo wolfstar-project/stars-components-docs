@@ -18,7 +18,7 @@ jobs:
     semantic-pr:
         name: Validate PR title
         runs-on: ubuntu-latest
-        if: github.repository == 'wolfstar-project/website'
+        if: github.repository == 'wolfstar-project/stars-components-docs'
         permissions:
             contents: read
             pull-requests: read
@@ -41,8 +41,10 @@ jobs:
                   scopes: |
                       guide
                       packages
-                      theme
                       api
+                      changelog
+                      errors
+                      config
                       deps
                       ci
                   subjectPattern: ^(?![A-Z]).+$

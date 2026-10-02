@@ -1,0 +1,118 @@
+---
+title: '@wolfstar/plugin-sharder'
+description: 'Spread gateway shards across processes, cluster workers, worker threads, and machines.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-sharder
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-sharder
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-sharder
+```
+
+```bash bun
+bun add @wolfstar/plugin-sharder
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-sharder"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+A `GatewayClient` connects its gateway shards from a single process. `@wolfstar/plugin-sharder` spreads them across
+processes, cluster workers, worker threads, and machines. It implements the sharder RFC
+[discordjs/discord.js#8084](https://github.com/discordjs/discord.js/issues/8084).
+
+A shard is what the manager spawns, and it can connect several gateway shards. The package knows nothing about
+Discord's gateway. A shard runs any script that uses `ShardClient`, so it works with
+[`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway), `@discordjs/ws`, or another library.
+
+| Piece                | Role                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------- |
+| `ShardManager`       | Spawns and supervises the shards, paces their identifies, carries their messages            |
+| `ShardChannel`       | The manager's handle on one shard: status, pings, messages, requests, restarts              |
+| `ShardClient`        | The shard's side: signals its status, sends messages and requests, answers requests         |
+| `ShardManagerProxy`  | Runs shards on another machine for one or several managers                                  |
+| `ChannelStrategy`    | How shards are spawned: `"fork"` (default), `"cluster"`, `"worker"`, `"network"`, or custom |
+| `MessageHandler`     | How packets are serialized: `"json"` (default), `"v8"`, `"raw"`, or custom                  |
+| `MessageTransformer` | How serialized packets are transformed, composable: `"gzip"`, `"brotli"`, or custom         |
+
+## Usage
+
+The manager and the shards can share one script, because `ShardClient.context` is `null` in the manager:
+
+```ts
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { ShardClient, ShardManager } from '@wolfstar/plugin-sharder';
+
+if (!ShardClient.context) {
+	// Discord's recommended shard count, split across one process per CPU core, forking this script.
+	const manager = new ShardManager({ spawn: { delay: 0 } });
+	manager.on('shardReady', (channel) => console.log(`Shard ${channel.id} (${channel.shards}) is ready`));
+	await manager.spawn();
+} else {
+	const shard = new ShardClient();
+	const client = new GatewayClient({
+		...options,
+		...shard.gatewayOptions,
+		// The manager paces identifies across every process, so the spawn delay can be 0.
+		gateway: { buildIdentifyThrottler: () => shard.identifyThrottler }
+	});
+	// Reuse the manager's GET /gateway/bot instead of requesting it from every process.
+	client.gateway.fetchGatewayInformation = () => shard.fetchGatewayInformation();
+
+	shard.setCloseHandler(() => client.destroy());
+
+	let pending = shard.shards.length;
+	client.on('shardReady', () => {
+		if (--pending === 0) void shard.ready();
+	});
+	await client.connect();
+}
+```
+
+## Layout
+
+| Option              | Meaning                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------- |
+| `shards: 9`         | 9 shards of one gateway shard each                                                       |
+| `shards: [3, 3, 3]` | 3 shards of 3 gateway shards each: 0-2, 3-5, 6-8                                         |
+| `shards: "auto"`    | (default) the gateway shards split across `clusters` shards, one per CPU core by default |
+| `totalShards`       | the total across every manager; `"auto"` is Discord's recommendation                     |
+| `shardList`         | the gateway shards this manager runs, when several managers split them                   |
+
+`"auto"` needs the bot token (`token`, or `DISCORD_TOKEN`) or `gatewayInformation.fetch`. The manager fetches
+`GET /gateway/bot` once, caches it for `gatewayInformation.ttl`, and hands it to the shards.
+
+## Messages and requests
+
+Messages are raw data, and a request is a message waiting for a reply:
+
+| From a shard                     | From the manager                 | Goes to                          |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| `shard.send(body)`               | —                                | the manager's `message` event    |
+| `shard.send(body, 2)`            | `manager.send(2, body)`          | shard 2's `message` event        |
+| `shard.send(body, "all")`        | `manager.broadcast(body)`        | every shard                      |
+| `shard.request(body)`            | —                                | the manager's request handler    |
+| `shard.request(body, { to: 2 })` | `manager.request(2, body)`       | shard 2's request handler        |
+| `shard.broadcastRequest(body)`   | `manager.broadcastRequest(body)` | every shard, replies by shard ID |
+
+`broadcastRequest` replaces `broadcastEval` and `fetchClientValues` from discord.js. To share gateway dispatches
+between processes, pair it with [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker).
+
+[![version](https://npmx.dev/api/registry/badge/version/@wolfstar/plugin-sharder)](https://npmx.dev/package/@wolfstar/plugin-sharder)
+[![downloads](https://npmx.dev/api/registry/badge/downloads/@wolfstar/plugin-sharder)](https://npmx.dev/package/@wolfstar/plugin-sharder)
+[![license](https://img.shields.io/github/license/wolfstar-project/plugins?style=flat-square&color=informational)](https://github.com/wolfstar-project/plugins/blob/main/LICENSE)
