@@ -63,8 +63,8 @@ This registers the `wolfstar-pm` (paginated message) and `wolfstar-mp` (message 
 every process, not only on the process that first calls `PaginatedMessage#run` or `MessagePrompter#run`.
 
 <Warning>
-	This import is required, including when you build with the `stars` CLI. CLI [auto-registration](/documentation/guide/plugins) only
-	discovers `@wolfstar/plugin-*` packages, so it does not register `@wolfstar/http-framework-utilities`.
+	This import is required, including when you build with the `stars` CLI. CLI [auto-registration](/documentation/guide/plugins) only discovers
+	`@wolfstar/plugin-*` packages, so it does not register `@wolfstar/http-framework-utilities`.
 </Warning>
 
 ## Usage
@@ -153,10 +153,7 @@ session without sending anything and returns `{ sessionId, payload }`, so you se
 export async function run(interaction: Interactions.ApplicationCommand) {
 	await interaction.defer();
 
-	const { payload } = await new PaginatedMessage()
-		.addPageEmbed({ title: 'Page 1' })
-		.addPageEmbed({ title: 'Page 2' })
-		.start(interaction.user.id);
+	const { payload } = await new PaginatedMessage().addPageEmbed({ title: 'Page 1' }).addPageEmbed({ title: 'Page 2' }).start(interaction.user.id);
 
 	await interaction.followup(payload);
 }
