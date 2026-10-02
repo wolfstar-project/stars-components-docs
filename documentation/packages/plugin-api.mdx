@@ -42,8 +42,8 @@ claims every path on its port and answers 404 for anything that doesn't match. T
 `Server` on a separate port instead of sharing the same listener.
 
 <Note>
-	Version 2.0.0 matches `@sapphire/plugin-api` 8.3.1 except for authentication, and renames most exports. If you are upgrading, see
-	[Migrating from 1.x](#migrating-from-1x).
+	Version 2.0.0 matches `@sapphire/plugin-api` 8.3.1 except for authentication, and renames most exports. If you are upgrading, see [Migrating from
+	1.x](#migrating-from-1x).
 </Note>
 
 ## Installation
@@ -127,8 +127,8 @@ export class HealthRoute extends Route {
 the raw value instead of failing the request.
 
 <Warning>
-	A route declared with **no methods** matches nothing, and its path answers `404`. There is no implicit `GET`. A route whose file name
-	has no method suffix and that passes no `methods` option is never reachable. Name the file `health.get.ts` or pass `methods`.
+	A route declared with **no methods** matches nothing, and its path answers `404`. There is no implicit `GET`. A route whose file name has no
+	method suffix and that passes no `methods` option is never reachable. Name the file `health.get.ts` or pass `methods`.
 </Warning>
 
 ## Reading the request
@@ -226,24 +226,24 @@ export class RequestIdMiddleware extends Middleware {
 
 Built-in middlewares:
 
-| Name      | Position | Behavior                                                                                                                                                 |
-| --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `headers` | 10       | Sets `Date` and the CORS headers. Ends the response early with an empty `200` for `OPTIONS` (unless the route handles `OPTIONS`), `404`, or `405`.       |
-| `body`    | 20       | Answers `413` when the declared `Content-Length` exceeds the route's `maximumBodyLength`.                                                                |
-| `cookies` | 30       | Creates `response.cookies`.                                                                                                                              |
+| Name      | Position | Behavior                                                                                                                                           |
+| --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `headers` | 10       | Sets `Date` and the CORS headers. Ends the response early with an empty `200` for `OPTIONS` (unless the route handles `OPTIONS`), `404`, or `405`. |
+| `body`    | 20       | Answers `413` when the declared `Content-Length` exceeds the route's `maximumBodyLength`.                                                          |
+| `cookies` | 30       | Creates `response.cookies`.                                                                                                                        |
 
 ## `ServerOptions`
 
 Pass these under the `api` key of your `ClientOptions`:
 
-| Option                 | Default            | Description                                                           |
-| ---------------------- | ------------------ | --------------------------------------------------------------------- |
-| `prefix`               | `undefined`        | Path segment prefix applied to every route.                           |
-| `origin`               | `'*'`              | `Access-Control-Allow-Origin` header value.                           |
-| `maximumBodyLength`    | `1024 * 1024 * 50` | Default maximum `Content-Length`, in bytes. A route can override it.  |
-| `server`               | `undefined`        | Raw options forwarded to `node:http`'s `createServer`.                |
-| `listenOptions`        | `{ port: 4000 }`   | Raw options forwarded to `server.listen()`.                           |
-| `automaticallyConnect` | `true`             | Whether to start listening during the `postListen` hook.              |
+| Option                 | Default            | Description                                                          |
+| ---------------------- | ------------------ | -------------------------------------------------------------------- |
+| `prefix`               | `undefined`        | Path segment prefix applied to every route.                          |
+| `origin`               | `'*'`              | `Access-Control-Allow-Origin` header value.                          |
+| `maximumBodyLength`    | `1024 * 1024 * 50` | Default maximum `Content-Length`, in bytes. A route can override it. |
+| `server`               | `undefined`        | Raw options forwarded to `node:http`'s `createServer`.               |
+| `listenOptions`        | `{ port: 4000 }`   | Raw options forwarded to `server.listen()`.                          |
+| `automaticallyConnect` | `true`             | Whether to start listening during the `postListen` hook.             |
 
 `Server#connect()` rejects (for example with `EADDRINUSE`) instead of throwing uncaught.
 
@@ -262,17 +262,17 @@ Listener piece names are PascalCase (for example `PluginServerRequest`).
 
 Version 2.0.0 contains breaking changes. Update your code as follows:
 
-| 1.x                                         | 2.x                                                                   |
-| ------------------------------------------- | --------------------------------------------------------------------- |
-| `ApiServer`                                 | `Server`                                                              |
-| `ApiServerOptions`                          | `ServerOptions`                                                       |
-| `ApiServerEvents`                           | `ServerEvents`                                                        |
-| `ApiServerEvent`                            | `ServerEvent`                                                         |
-| `ApiPlugin`                                 | `Api`                                                                 |
-| `HttpMethod`                                | `MethodName`                                                          |
-| `response.json(data, code)`                 | `response.status(code).json(data)`                                    |
-| `request.readBodyJson<T>(limit)`            | `request.readBodyJson()` (returns `unknown`) or `readValidatedBodyJson(fn)` |
-| `request.query.get('key')`                  | `request.query.key`                                                   |
+| 1.x                              | 2.x                                                                         |
+| -------------------------------- | --------------------------------------------------------------------------- |
+| `ApiServer`                      | `Server`                                                                    |
+| `ApiServerOptions`               | `ServerOptions`                                                             |
+| `ApiServerEvents`                | `ServerEvents`                                                              |
+| `ApiServerEvent`                 | `ServerEvent`                                                               |
+| `ApiPlugin`                      | `Api`                                                                       |
+| `HttpMethod`                     | `MethodName`                                                                |
+| `response.json(data, code)`      | `response.status(code).json(data)`                                          |
+| `request.readBodyJson<T>(limit)` | `request.readBodyJson()` (returns `unknown`) or `readValidatedBodyJson(fn)` |
+| `request.query.get('key')`       | `request.query.key`                                                         |
 
 Behavior changes:
 
@@ -292,8 +292,8 @@ Behavior changes:
 The plugin matches `@sapphire/plugin-api` 8.3.1 except for authentication.
 
 <Warning>
-	**Authentication and OAuth2 are not ported.** `Auth`, `ServerOptions.auth`, `ApiRequest.auth`, the `auth` middleware, and the built-in
-	OAuth routes (`loadRoutes`) do not exist in this plugin. Write your own auth middleware and routes as needed.
+	**Authentication and OAuth2 are not ported.** `Auth`, `ServerOptions.auth`, `ApiRequest.auth`, the `auth` middleware, and the built-in OAuth
+	routes (`loadRoutes`) do not exist in this plugin. Write your own auth middleware and routes as needed.
 </Warning>
 
 Also not ported: the `Client.server` augmentation (that is the interactions server here) and the CommonJS
