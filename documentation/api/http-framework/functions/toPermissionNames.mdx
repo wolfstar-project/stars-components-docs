@@ -1,24 +1,47 @@
 ---
 title: 'Function: toPermissionNames()'
+description: 'Converts a permission bitfield into the list of the flag names it contains. (@wolfstar/http-framework)'
 hidden: true
 ---
 
-> **toPermissionNames**(`bits`): (`"CreateInstantInvite"` \| `"KickMembers"` \| `"BanMembers"` \| `"Administrator"` \| `"ManageChannels"` \| `"ManageGuild"` \| `"AddReactions"` \| `"ViewAuditLog"` \| `"PrioritySpeaker"` \| `"Stream"` \| `"ViewChannel"` \| `"SendMessages"` \| `"SendTTSMessages"` \| `"ManageMessages"` \| `"EmbedLinks"` \| `"AttachFiles"` \| `"ReadMessageHistory"` \| `"MentionEveryone"` \| `"UseExternalEmojis"` \| `"ViewGuildInsights"` \| `"Connect"` \| `"Speak"` \| `"MuteMembers"` \| `"DeafenMembers"` \| `"MoveMembers"` \| `"UseVAD"` \| `"ChangeNickname"` \| `"ManageNicknames"` \| `"ManageRoles"` \| `"ManageWebhooks"` \| `"ManageEmojisAndStickers"` \| `"ManageGuildExpressions"` \| `"UseApplicationCommands"` \| `"RequestToSpeak"` \| `"ManageEvents"` \| `"ManageThreads"` \| `"CreatePublicThreads"` \| `"CreatePrivateThreads"` \| `"UseExternalStickers"` \| `"SendMessagesInThreads"` \| `"UseEmbeddedActivities"` \| `"ModerateMembers"` \| `"ViewCreatorMonetizationAnalytics"` \| `"UseSoundboard"` \| `"CreateGuildExpressions"` \| `"CreateEvents"` \| `"UseExternalSounds"` \| `"SendVoiceMessages"` \| `"SetVoiceChannelStatus"` \| `"SendPolls"` \| `"UseExternalApps"` \| `"PinMessages"` \| `"BypassSlowmode"`)[]
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/utils/permissions.ts:63](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/permissions.ts#L63)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/permissions.ts#L63',
+		label: 'packages/http-framework/src/lib/utils/permissions.ts:63'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
 Converts a permission bitfield into the list of the flag names it contains.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'toPermissionNames(bits: bigint): ("CreateInstantInvite" | "KickMembers" | "BanMembers" | "Administrator" | "ManageChannels" | "ManageGuild" | "AddReactions" | "ViewAuditLog" | "PrioritySpeaker" | "Stream" | "ViewChannel" | "SendMessages" | "SendTTSMessages" | "ManageMessages" | "EmbedLinks" | "AttachFiles" | "ReadMessageHistory" | "MentionEveryone" | "UseExternalEmojis" | "ViewGuildInsights" | "Connect" | "Speak" | "MuteMembers" | "DeafenMembers" | "MoveMembers" | "UseVAD" | "ChangeNickname" | "ManageNicknames" | "ManageRoles" | "ManageWebhooks" | "ManageEmojisAndStickers" | "ManageGuildExpressions" | "UseApplicationCommands" | "RequestToSpeak" | "ManageEvents" | "ManageThreads" | "CreatePublicThreads" | "CreatePrivateThreads" | "UseExternalStickers" | "SendMessagesInThreads" | "UseEmbeddedActivities" | "ModerateMembers" | "ViewCreatorMonetizationAnalytics" | "UseSoundboard" | "CreateGuildExpressions" | "CreateEvents" | "UseExternalSounds" | "SendVoiceMessages" | "SetVoiceChannelStatus" | "SendPolls" | "UseExternalApps" | "PinMessages" | "BypassSlowmode")[]'
+	]}
+/>
 
-### bits
+Converts a permission bitfield into the list of the flag names it contains.
 
-`bigint`
+<ApiParams title="Parameters">
+
+<ApiParam name="bits" type={['bigint']}>
 
 The bitfield to convert.
 
-## Returns
+</ApiParam>
 
-(`"CreateInstantInvite"` \| `"KickMembers"` \| `"BanMembers"` \| `"Administrator"` \| `"ManageChannels"` \| `"ManageGuild"` \| `"AddReactions"` \| `"ViewAuditLog"` \| `"PrioritySpeaker"` \| `"Stream"` \| `"ViewChannel"` \| `"SendMessages"` \| `"SendTTSMessages"` \| `"ManageMessages"` \| `"EmbedLinks"` \| `"AttachFiles"` \| `"ReadMessageHistory"` \| `"MentionEveryone"` \| `"UseExternalEmojis"` \| `"ViewGuildInsights"` \| `"Connect"` \| `"Speak"` \| `"MuteMembers"` \| `"DeafenMembers"` \| `"MoveMembers"` \| `"UseVAD"` \| `"ChangeNickname"` \| `"ManageNicknames"` \| `"ManageRoles"` \| `"ManageWebhooks"` \| `"ManageEmojisAndStickers"` \| `"ManageGuildExpressions"` \| `"UseApplicationCommands"` \| `"RequestToSpeak"` \| `"ManageEvents"` \| `"ManageThreads"` \| `"CreatePublicThreads"` \| `"CreatePrivateThreads"` \| `"UseExternalStickers"` \| `"SendMessagesInThreads"` \| `"UseEmbeddedActivities"` \| `"ModerateMembers"` \| `"ViewCreatorMonetizationAnalytics"` \| `"UseSoundboard"` \| `"CreateGuildExpressions"` \| `"CreateEvents"` \| `"UseExternalSounds"` \| `"SendVoiceMessages"` \| `"SetVoiceChannelStatus"` \| `"SendPolls"` \| `"UseExternalApps"` \| `"PinMessages"` \| `"BypassSlowmode"`)[]
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['("CreateInstantInvite" | "KickMembers" | "BanMembers" | "Administrator" | "ManageChannels" | "ManageGuild" | "AddReactions" | "ViewAuditLog" | "PrioritySpeaker" | "Stream" | "ViewChannel" | "SendMessages" | "SendTTSMessages" | "ManageMessages" | "EmbedLinks" | "AttachFiles" | "ReadMessageHistory" | "MentionEveryone" | "UseExternalEmojis" | "ViewGuildInsights" | "Connect" | "Speak" | "MuteMembers" | "DeafenMembers" | "MoveMembers" | "UseVAD" | "ChangeNickname" | "ManageNicknames" | "ManageRoles" | "ManageWebhooks" | "ManageEmojisAndStickers" | "ManageGuildExpressions" | "UseApplicationCommands" | "RequestToSpeak" | "ManageEvents" | "ManageThreads" | "CreatePublicThreads" | "CreatePrivateThreads" | "UseExternalStickers" | "SendMessagesInThreads" | "UseEmbeddedActivities" | "ModerateMembers" | "ViewCreatorMonetizationAnalytics" | "UseSoundboard" | "CreateGuildExpressions" | "CreateEvents" | "UseExternalSounds" | "SendVoiceMessages" | "SetVoiceChannelStatus" | "SendPolls" | "UseExternalApps" | "PinMessages" | "BypassSlowmode")[]']}>
 
 The names of the permissions contained in the bitfield.
+
+</ApiParam>
+
+</ApiParams>

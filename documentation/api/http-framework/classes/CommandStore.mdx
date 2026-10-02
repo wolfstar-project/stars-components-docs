@@ -1,0 +1,153 @@
+---
+title: 'Class: CommandStore'
+description: 'The store class which contains Pieces. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStore.ts#L26',
+		label: 'packages/http-framework/src/lib/structures/CommandStore.ts:26'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The store class which contains `Piece`s.
+
+<ApiSignature tokens={['class CommandStore extends Store<', ['Command', '/documentation/api/http-framework/classes/Command'], ', "commands">']} />
+
+<ApiHierarchy extends={[['Store<', ['Command', '/documentation/api/http-framework/classes/Command'], ', "commands">']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStore.ts#L34', label: 'packages/http-framework/src/lib/structures/CommandStore.ts:34' }}>
+
+<ApiSignature tokens={['new CommandStore(): ', ['CommandStore', '/documentation/api/http-framework/classes/CommandStore']]} />
+
+</ApiMember>
+
+## Properties
+
+### router
+
+<ApiMember kind="property" badges={['since 2.0.0']} signature={['router: ', ['CommandStoreRouter', '/documentation/api/http-framework/classes/CommandStoreRouter']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStore.ts#L32', label: 'packages/http-framework/src/lib/structures/CommandStore.ts:32' }}>
+
+The router instance for handling commands in the CommandStore.
+
+</ApiMember>
+
+## Methods
+
+### runApplicationCommand()
+
+<ApiMember kind="method" badges={['since 1.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStore.ts#L46', label: 'packages/http-framework/src/lib/structures/CommandStore.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'runApplicationCommand(\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		',\n  interaction: ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		' | ',
+		['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+Runs an application command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]}>
+
+The server response object.
+
+</ApiParam>
+
+<ApiParam name="interaction" type={[['APIChatInputApplicationCommandInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'], ' | ', ['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction']]}>
+
+The API application command interaction object.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'], '<', ['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'], '>>']}>
+
+A promise that resolves to the server response.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### runApplicationCommandAutocomplete()
+
+<ApiMember kind="method" badges={['since 1.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStore.ts#L83', label: 'packages/http-framework/src/lib/structures/CommandStore.ts:83' }}>
+
+<ApiSignature
+	tokens={[
+		'runApplicationCommandAutocomplete(\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		',\n  interaction: ',
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+Runs the application command autocomplete.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]}>
+
+The server response object.
+
+</ApiParam>
+
+<ApiParam name="interaction" type={[['APIApplicationCommandAutocompleteInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction']]}>
+
+The API application command autocomplete interaction object.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'], '<', ['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'], '>>']}>
+
+A promise that resolves to the server response.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

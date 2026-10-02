@@ -1,35 +1,62 @@
 ---
 title: 'Function: addEventSubscription()'
+description: 'Adds a new Twitch subscription. (@wolfstar/twitch-helpers)'
 hidden: true
 ---
 
-> **addEventSubscription**(`streamerId`, `subscriptionType?`): `Promise`\<[`TwitchEventSubResult`](/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult)\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [twitch.ts:131](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L131)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/twitch.ts#L131',
+		label: 'twitch.ts:131'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
 Adds a new Twitch subscription.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'addEventSubscription(\n  streamerId: string,\n  subscriptionType: ',
+		['TwitchEventSubTypes', '/documentation/api/twitch-helpers/enumerations/TwitchEventSubTypes'],
+		' = TwitchEventSubTypes.StreamOnline\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['TwitchEventSubResult', '/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult'],
+		'>'
+	]}
+/>
 
-### streamerId
+Adds a new Twitch subscription.
 
-`string`
+This requires `process.env.TWITCH_EVENTSUB_CALLBACK` and `process.env.TWITCH_EVENTSUB_SECRET` to be set.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="streamerId" type={['string']}>
 
 The Twitch ID of the streamer to subscribe to. You can use [fetchUsers](/documentation/api/twitch-helpers/functions/fetchUsers) to get the user information.
 
-### subscriptionType?
+</ApiParam>
 
-[`TwitchEventSubTypes`](/documentation/api/twitch-helpers/enumerations/TwitchEventSubTypes) = `TwitchEventSubTypes.StreamOnline`
+<ApiParam name="subscriptionType" type={[['TwitchEventSubTypes', '/documentation/api/twitch-helpers/enumerations/TwitchEventSubTypes']]} defaultValue="TwitchEventSubTypes.StreamOnline">
 
 The type of subscription to add.
 
-## Returns
+</ApiParam>
 
-`Promise`\<[`TwitchEventSubResult`](/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult)\>
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['TwitchEventSubResult', '/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult'], '>']}>
 
 If successful the result of the Twitch subscription, this contains the `id` that can be stored in a database
-for reference. Otherwise an HttpError is thrown.
+for reference. Otherwise an `HttpError` is thrown.
 
-## Remarks
+</ApiParam>
 
-This requires `process.env.TWITCH_EVENTSUB_CALLBACK` and `process.env.TWITCH_EVENTSUB_SECRET` to be set.
+</ApiParams>

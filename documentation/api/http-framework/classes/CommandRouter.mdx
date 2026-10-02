@@ -1,0 +1,169 @@
+---
+title: 'Class: CommandRouter'
+description: 'Represents a command router that handles routing of interactions for a specific command. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 2.0.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L23',
+		label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:23'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Represents a command router that handles routing of interactions for a specific command.
+
+<ApiSignature
+	tokens={[
+		'class CommandRouter<Options extends ',
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		' = ',
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options']]} defaultValue="Command.Options">
+
+The options type for the command.
+
+</ApiParam>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L30', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:30' }}>
+
+<ApiSignature
+	tokens={[
+		'new CommandRouter<Options extends PieceOptions = PieceOptions>(command: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<Options>): ',
+		['CommandRouter', '/documentation/api/http-framework/classes/CommandRouter'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions">
+
+The options type for the command.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="command" type={[['Command', '/documentation/api/http-framework/classes/Command'], '<Options>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Accessors
+
+### chatInputName
+
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get chatInputName(): string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L47', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:47' }}>
+
+The name of the registered chat input command for this command, if any.
+
+</ApiMember>
+
+### contextMenuNames
+
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get contextMenuNames(): string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L56', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:56' }}>
+
+The names of the registered context menu commands for this command, if any.
+
+</ApiMember>
+
+## Methods
+
+### routeChatInputInteraction()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L67', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:67' }}>
+
+<ApiSignature
+	tokens={[
+		'routeChatInputInteraction(data: ',
+		[
+			'APIChatInputApplicationCommandInteractionData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteractionData'
+		],
+		'): string | null'
+	]}
+/>
+
+Routes a chat input interaction based on the provided data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIChatInputApplicationCommandInteractionData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteractionData']]}>
+
+The data of the chat input interaction.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The mapped command name or `null` if no mapping is found.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### routeContextMenuInteraction()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L91', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:91' }}>
+
+<ApiSignature
+	tokens={[
+		'routeContextMenuInteraction(data: ',
+		['APIContextMenuInteractionData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteractionData'],
+		'): string | null'
+	]}
+/>
+
+Routes a context menu interaction based on the provided data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIContextMenuInteractionData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteractionData']]}>
+
+The data for the context menu interaction.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The result of the context menu interaction, or null if no result is found.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

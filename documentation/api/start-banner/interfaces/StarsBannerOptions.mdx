@@ -1,44 +1,74 @@
 ---
 title: 'Interface: StarsBannerOptions'
+description: 'API reference for StarsBannerOptions, an interface exported by @wolfstar/start-banner.'
 hidden: true
 ---
 
-Defined in: [creator.ts:44](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/start-banner/src/lib/creator.ts#L44)
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
 
-## Extends
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/start-banner/src/lib/creator.ts#L44',
+		label: 'creator.ts:44'
+	}}
+	packageName="@wolfstar/start-banner"
+	packageHref="/documentation/api/start-banner"
+/>
 
-- `Omit`\<[`BannerOptions`](/documentation/api/start-banner/interfaces/BannerOptions), `"logo"`\>
+<ApiSignature
+	tokens={[
+		'interface StarsBannerOptions extends ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['BannerOptions', '/documentation/api/start-banner/interfaces/BannerOptions'],
+		', "logo">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+			'<',
+			['BannerOptions', '/documentation/api/start-banner/interfaces/BannerOptions'],
+			', "logo">'
+		]
+	]}
+/>
 
 ## Properties
 
 ### extra?
 
-> `optional` **extra?**: readonly `string`[]
-
-Defined in: [creator.ts:41](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/start-banner/src/lib/creator.ts#L41)
-
-#### Inherited from
-
-[`BannerOptions`](/documentation/api/start-banner/interfaces/BannerOptions).[`extra`](/documentation/api/start-banner/interfaces/BannerOptions#extra)
-
----
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['extra?: readonly string[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/start-banner/src/lib/creator.ts#L41',
+		label: 'creator.ts:41'
+	}}
+	inheritedFrom={[['Omit.extra', '/documentation/api/start-banner/interfaces/BannerOptions#extra']]}
+/>
 
 ### logo?
 
-> `optional` **logo?**: `false` \| readonly `string`[]
-
-Defined in: [creator.ts:46](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/start-banner/src/lib/creator.ts#L46)
+<ApiMember kind="property" badges={['optional']} signature={['logo?: false | readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/start-banner/src/lib/creator.ts#L46', label: 'creator.ts:46' }}>
 
 Replaces [DEFAULT_STARS_LOGO](/documentation/api/start-banner/variables/DEFAULT_STARS_LOGO); use `false` for a text-only banner.
 
----
+</ApiMember>
 
 ### name?
 
-> `optional` **name?**: readonly `string`[]
-
-Defined in: [creator.ts:40](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/start-banner/src/lib/creator.ts#L40)
-
-#### Inherited from
-
-[`BannerOptions`](/documentation/api/start-banner/interfaces/BannerOptions).[`name`](/documentation/api/start-banner/interfaces/BannerOptions#name)
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['name?: readonly string[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/start-banner/src/lib/creator.ts#L40',
+		label: 'creator.ts:40'
+	}}
+	inheritedFrom={[['Omit.name', '/documentation/api/start-banner/interfaces/BannerOptions#name']]}
+/>

@@ -1,0 +1,35 @@
+---
+title: 'Interface: FetchOptions'
+description: 'API reference for FetchOptions, an interface exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L391',
+		label: 'packages/http-framework/src/lib/Client.ts:391'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['interface FetchOptions']} />
+
+## Properties
+
+### postPath?
+
+<ApiMember kind="property" badges={['optional']} signature={['postPath?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L396', label: 'packages/http-framework/src/lib/Client.ts:396' }}>
+
+The path interactions are posted to.
+
+**Default**
+
+```ts
+process.env.HTTP_POST_PATH ?? '/';
+```
+
+</ApiMember>

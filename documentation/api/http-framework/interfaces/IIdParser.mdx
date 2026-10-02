@@ -1,24 +1,43 @@
 ---
 title: 'Interface: IIdParser'
+description: 'API reference for IIdParser, an interface exported by @wolfstar/http-framework.'
 hidden: true
 ---
 
-Defined in: [packages/http-framework/src/lib/components/IIdParser.ts:1](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/components/IIdParser.ts#L1)
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/components/IIdParser.ts#L1',
+		label: 'packages/http-framework/src/lib/components/IIdParser.ts:1'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['interface IIdParser']} />
+
+<ApiHierarchy implementedBy={[[['StringIdParser', '/documentation/api/http-framework/classes/StringIdParser']]]} />
 
 ## Methods
 
 ### run()
 
-> **run**(`customId`): [`IdParserRead`](/documentation/api/http-framework/interfaces/IdParserRead) \| `null`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/components/IIdParser.ts#L2', label: 'packages/http-framework/src/lib/components/IIdParser.ts:2' }}>
 
-Defined in: [packages/http-framework/src/lib/components/IIdParser.ts:2](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/components/IIdParser.ts#L2)
+<ApiSignature tokens={['run(customId: string): ', ['IdParserRead', '/documentation/api/http-framework/interfaces/IdParserRead'], ' | null']} />
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### customId
+<ApiParam name="customId" type={['string']} />
 
-`string`
+</ApiParams>
 
-#### Returns
+<ApiParams title="Returns">
 
-[`IdParserRead`](/documentation/api/http-framework/interfaces/IdParserRead) \| `null`
+<ApiParam type={[['IdParserRead', '/documentation/api/http-framework/interfaces/IdParserRead'], ' | null']} />
+
+</ApiParams>
+
+</ApiMember>

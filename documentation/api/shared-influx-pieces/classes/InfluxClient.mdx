@@ -1,188 +1,54 @@
 ---
 title: 'Class: InfluxClient'
+description: 'API reference for InfluxClient, a class exported by @wolfstar/shared-influx-pieces.'
 hidden: true
 ---
 
-Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:7](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L7)
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-## Extends
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L7',
+		label: 'packages/shared-influx-pieces/src/lib/InfluxClient.ts:7'
+	}}
+	packageName="@wolfstar/shared-influx-pieces"
+	packageHref="/documentation/api/shared-influx-pieces"
+/>
 
-- `Client`
+<ApiSignature tokens={['class InfluxClient extends ', ['Client', '/documentation/api/influx-utilities/classes/Client']]} />
+
+<ApiHierarchy extends={[[['Client', '/documentation/api/influx-utilities/classes/Client']]]} />
 
 ## Constructors
 
 ### Constructor
 
-> **new InfluxClient**(`options?`): `InfluxClient`
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L18', label: 'packages/shared-influx-pieces/src/lib/InfluxClient.ts:18' }}>
 
-Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:18](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L18)
+<ApiSignature
+	tokens={[
+		'new InfluxClient(options: ',
+		['ConnectionOptions', '/documentation/api/influx-utilities/interfaces/ConnectionOptions'],
+		' = {}): ',
+		['InfluxClient', '/documentation/api/shared-influx-pieces/classes/InfluxClient']
+	]}
+/>
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### options?
+<ApiParam name="options" type={[['ConnectionOptions', '/documentation/api/influx-utilities/interfaces/ConnectionOptions']]} defaultValue={'{}'} />
 
-[`ConnectionOptions`](/documentation/api/influx-utilities/interfaces/ConnectionOptions) = `{}`
+</ApiParams>
 
-#### Returns
-
-`InfluxClient`
-
-#### Overrides
-
-`Client.constructor`
+</ApiMember>
 
 ## Properties
 
-### influx
-
-> `readonly` **influx**: [`InfluxDB`](/documentation/api/influx-utilities/classes/InfluxDB)
-
-Defined in: packages/influx-utilities/dist/esm/index.d.ts:23
-
-#### Inherited from
-
-`Client.influx`
-
----
-
 ### interactionCounters
 
-> **interactionCounters**: `Record`\<[`InteractionCounterKey`](/documentation/api/shared-influx-pieces/type-aliases/InteractionCounterKey), `number`\>
-
-Defined in: [packages/shared-influx-pieces/src/lib/InfluxClient.ts:11](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L11)
+<ApiMember kind="property" signature={['interactionCounters: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<', ['InteractionCounterKey', '/documentation/api/shared-influx-pieces/type-aliases/InteractionCounterKey'], ', number>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/shared-influx-pieces/src/lib/InfluxClient.ts#L11', label: 'packages/shared-influx-pieces/src/lib/InfluxClient.ts:11' }}>
 
 Represents the count of different types of interactions.
 
----
-
-### queryApi
-
-> `readonly` **queryApi**: [`QueryApi`](/documentation/api/influx-utilities/interfaces/QueryApi)
-
-Defined in: packages/influx-utilities/dist/esm/index.d.ts:24
-
-#### Inherited from
-
-`Client.queryApi`
-
----
-
-### writeApi
-
-> `readonly` **writeApi**: [`WriteApi`](/documentation/api/influx-utilities/interfaces/WriteApi)
-
-Defined in: packages/influx-utilities/dist/esm/index.d.ts:25
-
-#### Inherited from
-
-`Client.writeApi`
-
-## Methods
-
-### addInjectTag()
-
-> **addInjectTag**(`name`, `value`): `void`
-
-Defined in: packages/influx-utilities/dist/esm/index.d.ts:33
-
-Adds a tag that will be injected in all points.
-
-#### Parameters
-
-##### name
-
-`string`
-
-The name of the tag to inject.
-
-##### value
-
-`string`
-
-The value of the tag to inject.
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-`Client.addInjectTag`
-
----
-
-### flush()
-
-> **flush**(`withRetryBuffer?`): `Promise`\<`void`\>
-
-Defined in: packages/influx-utilities/dist/esm/index.d.ts:48
-
-Flushes the pending writes to the server.
-
-#### Parameters
-
-##### withRetryBuffer?
-
-`boolean`
-
-Whether or not it should flush the scheduled retries
-
-#### Returns
-
-`Promise`\<`void`\>
-
-#### Inherited from
-
-`Client.flush`
-
----
-
-### writePoint()
-
-> **writePoint**(`point`): `void`
-
-Defined in: packages/influx-utilities/dist/esm/index.d.ts:38
-
-Writes a point into the write buffer.
-
-#### Parameters
-
-##### point
-
-[`Point`](/documentation/api/influx-utilities/classes/Point)
-
-The point to write.
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-`Client.writePoint`
-
----
-
-### writePoints()
-
-> **writePoints**(`points`): `void`
-
-Defined in: packages/influx-utilities/dist/esm/index.d.ts:43
-
-Writes multiple points into the write buffer.
-
-#### Parameters
-
-##### points
-
-readonly [`Point`](/documentation/api/influx-utilities/classes/Point)[]
-
-The points to write.
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-`Client.writePoints`
+</ApiMember>

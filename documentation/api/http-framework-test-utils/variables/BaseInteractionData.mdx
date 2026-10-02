@@ -1,58 +1,70 @@
 ---
 title: 'Variable: BaseInteractionData'
+description: 'API reference for BaseInteractionData, a variable exported by @wolfstar/http-framework-test-utils.'
 hidden: true
 ---
 
-> `const` **BaseInteractionData**: `object`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework-test-utils/src/fixtures.ts:70](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework-test-utils/src/fixtures.ts#L70)
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework-test-utils/src/fixtures.ts#L70',
+		label: 'packages/http-framework-test-utils/src/fixtures.ts:70'
+	}}
+	packageName="@wolfstar/http-framework-test-utils"
+	packageHref="/documentation/api/http-framework-test-utils"
+/>
 
-## Type Declaration
+<ApiSignature
+	tokens={[
+		'const BaseInteractionData: {\n  readonly app_permissions: string;\n  readonly application_id: "737141877803057244";\n  readonly attachment_size_limit: number;\n  readonly authorizing_integration_owners: ',
+		['APIAuthorizingIntegrationOwnersMap', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAuthorizingIntegrationOwnersMap'],
+		';\n  readonly entitlements: ',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		'[];\n  readonly guild_id: "737141877803057244";\n  readonly guild_locale: EnglishUS;\n  readonly id: "254360814063058944";\n  readonly locale: EnglishUS;\n  readonly member: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['APIInteractionGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionGuildMember'],
+		'>;\n  readonly token: "my-very-nice-token";\n  readonly version: 1;\n}'
+	]}
+/>
 
-### app_permissions
+<ApiParams title="Properties">
 
-> `readonly` **app_permissions**: `string` = `PermissionsData`
+<ApiParam name="app_permissions" type={['string']} />
 
-### application_id
+<ApiParam name="application_id" type={['"737141877803057244"']} />
 
-> `readonly` **application_id**: `"737141877803057244"` = `'737141877803057244'`
+<ApiParam name="attachment_size_limit" type={['number']} />
 
-### attachment_size_limit
+<ApiParam
+	name="authorizing_integration_owners"
+	type={[['APIAuthorizingIntegrationOwnersMap', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAuthorizingIntegrationOwnersMap']]}
+/>
 
-> `readonly` **attachment_size_limit**: `number` = `Number.MAX_SAFE_INTEGER`
+<ApiParam name="entitlements" type={[['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'], '[]']} />
 
-### authorizing_integration_owners
+<ApiParam name="guild_id" type={['"737141877803057244"']} />
 
-> `readonly` **authorizing_integration_owners**: `APIAuthorizingIntegrationOwnersMap`
+<ApiParam name="guild_locale" type={['EnglishUS']} />
 
-### entitlements
+<ApiParam name="id" type={['"254360814063058944"']} />
 
-> `readonly` **entitlements**: `APIEntitlement`[]
+<ApiParam name="locale" type={['EnglishUS']} />
 
-### guild_id
+<ApiParam
+	name="member"
+	type={[
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['APIInteractionGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionGuildMember'],
+		'>'
+	]}
+/>
 
-> `readonly` **guild_id**: `"737141877803057244"` = `'737141877803057244'`
+<ApiParam name="token" type={['"my-very-nice-token"']} />
 
-### guild_locale
+<ApiParam name="version" type={['1']} />
 
-> `readonly` **guild_locale**: `EnglishUS` = `LocaleData`
-
-### id
-
-> `readonly` **id**: `"254360814063058944"` = `'254360814063058944'`
-
-### locale
-
-> `readonly` **locale**: `EnglishUS` = `LocaleData`
-
-### member
-
-> `readonly` **member**: `Readonly`\<`APIInteractionGuildMember`\> = `InteractionGuildMemberData`
-
-### token
-
-> `readonly` **token**: `"my-very-nice-token"` = `'my-very-nice-token'`
-
-### version
-
-> `readonly` **version**: `1` = `1`
+</ApiParams>

@@ -1,31 +1,59 @@
 ---
 title: 'Function: getRequest()'
+description: 'A tiny wrapper around Json(safeFetch) that implements fetchBearer to set the proper headers and adds the BaseUrl for the base path. (@wolfstar/reddit-helpers)'
 hidden: true
 ---
 
-> **getRequest**\<`T`\>(`path`): `Promise`\<`FetchResult`\<`T`\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/reddit-helpers/src/lib/reddit.ts:89](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/reddit.ts#L89)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/reddit.ts#L89',
+		label: 'packages/reddit-helpers/src/lib/reddit.ts:89'
+	}}
+	packageName="@wolfstar/reddit-helpers"
+	packageHref="/documentation/api/reddit-helpers"
+/>
 
-A tiny wrapper around Json(safeFetch) that implements [fetchBearer](/documentation/api/reddit-helpers/functions/fetchBearer) to set the proper headers
+A tiny wrapper around [Json](/documentation/api/safe-fetch/functions/Json)([safeFetch](/documentation/api/safe-fetch/functions/safeFetch)) that implements [fetchBearer](/documentation/api/reddit-helpers/functions/fetchBearer) to set the proper headers
 and adds the [BaseUrl](/documentation/api/reddit-helpers/variables/BaseUrl) for the base path.
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'getRequest<T extends object>(path: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<T>>'
+	]}
+/>
 
-### T
+A tiny wrapper around [Json](/documentation/api/safe-fetch/functions/Json)([safeFetch](/documentation/api/safe-fetch/functions/safeFetch)) that implements [fetchBearer](/documentation/api/reddit-helpers/functions/fetchBearer) to set the proper headers
+and adds the [BaseUrl](/documentation/api/reddit-helpers/variables/BaseUrl) for the base path.
 
-`T` _extends_ `object`
+<ApiParams title="Type Parameters">
 
-## Parameters
+<ApiParam name="T" type={['extends object']} />
 
-### path
+</ApiParams>
 
-`string`
+<ApiParams title="Parameters">
+
+<ApiParam name="path" type={['string']}>
 
 The Reddit Path to fetch
 
-## Returns
+</ApiParam>
 
-`Promise`\<`FetchResult`\<`T`\>\>
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'], '<T>>']}>
 
 The response to the request
+
+</ApiParam>
+
+</ApiParams>

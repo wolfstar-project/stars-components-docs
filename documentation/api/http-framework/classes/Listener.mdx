@@ -1,0 +1,140 @@
+---
+title: 'Class: Listener'
+description: 'The piece to be stored in Store instances. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L7',
+		label: 'packages/http-framework/src/lib/structures/Listener.ts:7'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The piece to be stored in `Store` instances.
+
+<ApiSignature
+	tokens={[
+		'abstract class Listener<Options extends ',
+		['Listener.Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options'],
+		' = ',
+		['Listener.Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options'],
+		'> extends Piece<Options, "listeners">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Piece<Options, "listeners">']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['Listener.Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options']]}
+	defaultValue="Listener.Options"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L12', label: 'packages/http-framework/src/lib/structures/Listener.ts:12' }}>
+
+<ApiSignature
+	tokens={[
+		'new Listener<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options'],
+		' = ',
+		['Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options'],
+		'>(\n  context: ',
+		['LoaderContext', '/documentation/api/http-framework/namespaces/Listener/type-aliases/LoaderContext'],
+		',\n  options: Options\n): ',
+		['Listener', '/documentation/api/http-framework/classes/Listener'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Listener/interfaces/Options']]}
+	defaultValue="Options"
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['LoaderContext', '/documentation/api/http-framework/namespaces/Listener/type-aliases/LoaderContext']]} />
+
+<ApiParam name="options" type={['Options']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \_listener
+
+<ApiMember
+	kind="property"
+	badges={['protected']}
+	signature={['protected _listener: (...args: readonly any[]) => unknown']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L10',
+		label: 'packages/http-framework/src/lib/structures/Listener.ts:10'
+	}}
+/>
+
+### emitter
+
+<ApiMember
+	kind="property"
+	signature={['emitter: ', ['Emitter', '/documentation/api/http-framework/namespaces/Listener/interfaces/Emitter']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L8',
+		label: 'packages/http-framework/src/lib/structures/Listener.ts:8'
+	}}
+/>
+
+### event
+
+<ApiMember
+	kind="property"
+	signature={['event: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L9',
+		label: 'packages/http-framework/src/lib/structures/Listener.ts:9'
+	}}
+/>
+
+## Methods
+
+### run()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Listener.ts#L20', label: 'packages/http-framework/src/lib/structures/Listener.ts:20' }}>
+
+<ApiSignature tokens={['abstract run(...args: readonly any[]): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['readonly any[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

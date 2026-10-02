@@ -1,24 +1,26 @@
 ---
 title: 'Enumeration: ForbiddenType'
+description: 'Represents the types of forbidden content. (@wolfstar/reddit-helpers)'
 hidden: true
 ---
 
-Defined in: [packages/reddit-helpers/src/lib/enums.ts:4](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/enums.ts#L4)
+import { ApiEnumMembers, ApiHeader } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="enum"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/enums.ts#L4',
+		label: 'packages/reddit-helpers/src/lib/enums.ts:4'
+	}}
+	packageName="@wolfstar/reddit-helpers"
+	packageHref="/documentation/api/reddit-helpers"
+/>
 
 Represents the types of forbidden content.
 
-## Enumeration Members
-
-### Gated
-
-> **Gated**: `1`
-
-Defined in: [packages/reddit-helpers/src/lib/enums.ts:6](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/enums.ts#L6)
-
----
-
-### Quarantined
-
-> **Quarantined**: `0`
-
-Defined in: [packages/reddit-helpers/src/lib/enums.ts:5](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/enums.ts#L5)
+<ApiEnumMembers
+	members={[
+		{ name: 'Gated', value: '1', id: 'member-gated', description: '' },
+		{ name: 'Quarantined', value: '0', id: 'member-quarantined', description: '' }
+	]}
+/>
