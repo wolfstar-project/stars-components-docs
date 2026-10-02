@@ -1,0 +1,103 @@
+---
+title: 'Class: UserError'
+description: 'The UserError class to be thrown and emitted by the pieces of the framework. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 3.2.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L19',
+		label: 'packages/http-framework/src/lib/errors/UserError.ts:19'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The UserError class to be thrown and emitted by the pieces of the framework.
+
+<ApiSignature
+	tokens={['class UserError extends ', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]}
+/>
+
+<ApiHierarchy
+	extends={[[['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]]}
+	extendedBy={[
+		[['ArgumentError', '/documentation/api/http-framework/classes/ArgumentError']],
+		[['ChatInputRouterError', '/documentation/api/http-framework/classes/ChatInputRouterError']],
+		[['PreconditionError', '/documentation/api/http-framework/classes/PreconditionError']]
+	]}
+/>
+
+This class is the root of every framework-thrown error, allowing consumers to distinguish
+errors that are meant to be shown to the user from unexpected, internal ones.
+
+**Example**
+
+```typescript
+throw new UserError({
+	identifier: Identifiers.ArgumentIntegerTooSmall,
+	message: 'The number you provided is too small.',
+	context: { received: 2, minimum: 3 }
+});
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L36', label: 'packages/http-framework/src/lib/errors/UserError.ts:36' }}>
+
+<ApiSignature
+	tokens={[
+		'new UserError(options: ',
+		['Options', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options'],
+		'): ',
+		['UserError', '/documentation/api/http-framework/classes/UserError']
+	]}
+/>
+
+Constructs an UserError.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['Options', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options']]}>
+
+The UserError options
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### context
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L30', label: 'packages/http-framework/src/lib/errors/UserError.ts:30' }}>
+
+User-provided context.
+
+</ApiMember>
+
+### identifier
+
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L24', label: 'packages/http-framework/src/lib/errors/UserError.ts:24' }}>
+
+An identifier, useful to localize emitted errors.
+
+</ApiMember>
+
+## Accessors
+
+### name
+
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L42', label: 'packages/http-framework/src/lib/errors/UserError.ts:42' }}>
+
+This will be `'UserError'` and can be used to distinguish the type of error when any error gets thrown.
+
+</ApiMember>

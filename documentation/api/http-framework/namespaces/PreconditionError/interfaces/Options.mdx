@@ -1,0 +1,87 @@
+---
+title: 'Interface: Options'
+description: 'The options for PreconditionError. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	badges={['since 3.2.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L42',
+		label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:42'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The options for [PreconditionError](/documentation/api/http-framework/classes/PreconditionError).
+
+<ApiSignature
+	tokens={[
+		'interface Options extends ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['UserError.Options', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options'],
+		', "identifier">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+			'<',
+			['UserError.Options', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options'],
+			', "identifier">'
+		]
+	]}
+/>
+
+## Properties
+
+### context?
+
+<ApiMember kind="property" badges={['optional', 'since 3.2.0']} signature={['context?: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L70', label: 'packages/http-framework/src/lib/errors/UserError.ts:70' }} inheritedFrom={[['Omit.context', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options#context']]}>
+
+The extra context to provide more information about this error.
+
+**Default**
+
+```ts
+null;
+```
+
+</ApiMember>
+
+### identifier?
+
+<ApiMember kind="property" badges={['optional', 'since 3.2.0']} signature={['identifier?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L54', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:54' }}>
+
+The identifier.
+
+**Default**
+
+```ts
+precondition;
+```
+
+</ApiMember>
+
+### message?
+
+<ApiMember kind="property" badges={['optional', 'since 3.2.0']} signature={['message?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L63', label: 'packages/http-framework/src/lib/errors/UserError.ts:63' }} inheritedFrom={[['Omit.message', '/documentation/api/http-framework/namespaces/UserError/interfaces/Options#message']]}>
+
+The message to be passed to the Error constructor.
+
+</ApiMember>
+
+### precondition
+
+<ApiMember kind="property" badges={['since 3.2.0']} signature={['precondition: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L47', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:47' }}>
+
+The name of the precondition that caused the error.
+
+</ApiMember>

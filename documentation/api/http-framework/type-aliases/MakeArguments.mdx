@@ -1,0 +1,76 @@
+---
+title: 'Type Alias: MakeArguments'
+description: 'Convenience type for creating arguments out of strings. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts#L241',
+		label: 'packages/http-framework/src/lib/interactions/resolvers/InteractionOptions.ts:241'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Convenience type for creating arguments out of strings.
+
+<ApiSignature
+	tokens={[
+		'type MakeArguments<T extends ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, keyof ',
+		['ArgumentTypes', '/documentation/api/http-framework/interfaces/ArgumentTypes'],
+		'>> = { [K in keyof T]: ',
+		['ArgumentTypes', '/documentation/api/http-framework/interfaces/ArgumentTypes'],
+		'[T[K]] }'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="T"
+	type={[
+		'extends ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, keyof ',
+		['ArgumentTypes', '/documentation/api/http-framework/interfaces/ArgumentTypes'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+**Example 1**
+
+```typescript
+// Using named string:
+type Options = MakeArguments<{
+	name: 'string';
+	file: 'attachment';
+}>;
+
+// ➥ type Options = {
+//    	name: string;
+//    	attachment: APIAttachment;
+//    };
+```
+
+**Example 2**
+
+```typescript
+// Using named string:
+type Options = MakeArguments<{
+	name: ApplicationCommandOptionType.String;
+	file: ApplicationCommandOptionType.Attachment;
+}>;
+
+// ➥ type Options = {
+//    	name: string;
+//    	attachment: APIAttachment;
+//    };
+```

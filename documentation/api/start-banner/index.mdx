@@ -3,22 +3,40 @@ title: '@wolfstar/start-banner'
 description: 'Generated API reference for @wolfstar/start-banner: createBanner and createStarsBanner, generateFrameData and generateLineData, and BannerOptions.'
 ---
 
-## Interfaces
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- [BannerOptions](/documentation/api/start-banner/interfaces/BannerOptions)
-- [FrameData](/documentation/api/start-banner/interfaces/FrameData)
-- [LineData](/documentation/api/start-banner/interfaces/LineData)
-- [StarsBannerOptions](/documentation/api/start-banner/interfaces/StarsBannerOptions)
+<ApiPackageHeader
+	name="@wolfstar/start-banner"
+	version="2.1.2"
+	guideHref="/documentation/packages/start-banner"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/start-banner"
+/>
 
-## Variables
+<InstallPackage packages="@wolfstar/start-banner" />
 
-- [ansiRegExp](/documentation/api/start-banner/variables/ansiRegExp)
-- [DEFAULT_STARS_LOGO](/documentation/api/start-banner/variables/DEFAULT_STARS_LOGO)
-
-## Functions
-
-- [createBanner](/documentation/api/start-banner/functions/createBanner)
-- [createStarsBanner](/documentation/api/start-banner/functions/createStarsBanner)
-- [escapedLength](/documentation/api/start-banner/functions/escapedLength)
-- [generateFrameData](/documentation/api/start-banner/functions/generateFrameData)
-- [generateLineData](/documentation/api/start-banner/functions/generateLineData)
+<ApiSymbolList
+	symbols={[
+		{ name: 'BannerOptions', kind: 'interface', href: '/documentation/api/start-banner/interfaces/BannerOptions' },
+		{ name: 'FrameData', kind: 'interface', href: '/documentation/api/start-banner/interfaces/FrameData' },
+		{ name: 'LineData', kind: 'interface', href: '/documentation/api/start-banner/interfaces/LineData' },
+		{ name: 'StarsBannerOptions', kind: 'interface', href: '/documentation/api/start-banner/interfaces/StarsBannerOptions' },
+		{ name: 'ansiRegExp', kind: 'variable', href: '/documentation/api/start-banner/variables/ansiRegExp' },
+		{
+			name: 'DEFAULT_STARS_LOGO',
+			kind: 'variable',
+			href: '/documentation/api/start-banner/variables/DEFAULT_STARS_LOGO',
+			summary: 'The compact logo used by createStarsBanner when a project does not provide one.'
+		},
+		{ name: 'createBanner', kind: 'function', href: '/documentation/api/start-banner/functions/createBanner' },
+		{
+			name: 'createStarsBanner',
+			kind: 'function',
+			href: '/documentation/api/start-banner/functions/createStarsBanner',
+			summary: 'Creates a startup banner with a small Stars logo by default.'
+		},
+		{ name: 'escapedLength', kind: 'function', href: '/documentation/api/start-banner/functions/escapedLength' },
+		{ name: 'generateFrameData', kind: 'function', href: '/documentation/api/start-banner/functions/generateFrameData' },
+		{ name: 'generateLineData', kind: 'function', href: '/documentation/api/start-banner/functions/generateLineData' }
+	]}
+/>

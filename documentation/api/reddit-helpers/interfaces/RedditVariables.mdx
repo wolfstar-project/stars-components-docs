@@ -1,28 +1,39 @@
 ---
 title: 'Interface: RedditVariables'
+description: 'Represents the variables used for Reddit integration. (@wolfstar/reddit-helpers)'
 hidden: true
 ---
 
-Defined in: [packages/reddit-helpers/src/lib/variables.ts:21](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/variables.ts#L21)
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/variables.ts#L21',
+		label: 'packages/reddit-helpers/src/lib/variables.ts:21'
+	}}
+	packageName="@wolfstar/reddit-helpers"
+	packageHref="/documentation/api/reddit-helpers"
+/>
 
 Represents the variables used for Reddit integration.
+
+<ApiSignature tokens={['interface RedditVariables']} />
 
 ## Properties
 
 ### clientId?
 
-> `optional` **clientId?**: `string`
-
-Defined in: [packages/reddit-helpers/src/lib/variables.ts:25](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/variables.ts#L25)
+<ApiMember kind="property" badges={['optional']} signature={['clientId?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/variables.ts#L25', label: 'packages/reddit-helpers/src/lib/variables.ts:25' }}>
 
 The Reddit Client ID, otherwise set in the environment variable `REDDIT_CLIENT_ID`
 
----
+</ApiMember>
 
 ### deviceId?
 
-> `optional` **deviceId?**: `string`
-
-Defined in: [packages/reddit-helpers/src/lib/variables.ts:30](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/variables.ts#L30)
+<ApiMember kind="property" badges={['optional']} signature={['deviceId?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/variables.ts#L30', label: 'packages/reddit-helpers/src/lib/variables.ts:30' }}>
 
 The Reddit Device Id, otherwise set in the environment variable `REDDIT_DEVICE_ID` or randomly generated
+
+</ApiMember>

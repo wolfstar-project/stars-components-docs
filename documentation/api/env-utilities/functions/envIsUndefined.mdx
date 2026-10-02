@@ -1,27 +1,46 @@
 ---
 title: 'Function: envIsUndefined()'
+description: 'Checks if the value of the specified environment variable is undefined. (@wolfstar/env-utilities)'
 hidden: true
 ---
 
-> **envIsUndefined**(`key`): `boolean`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/env-utilities/src/lib/utils.ts:88](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/utils.ts#L88)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/utils.ts#L88',
+		label: 'packages/env-utilities/src/lib/utils.ts:88'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
 
 Checks if the value of the specified environment variable is undefined.
 
-## Parameters
+<ApiSignature tokens={['envIsUndefined(key: keyof ', ['Env', '/documentation/api/env-utilities/interfaces/Env'], '): boolean']} />
 
-### key
+Checks if the value of the specified environment variable is undefined.
 
-keyof [`Env`](/documentation/api/env-utilities/interfaces/Env)
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['keyof ', ['Env', '/documentation/api/env-utilities/interfaces/Env']]}>
 
 The name of the environment variable.
 
-## Returns
+</ApiParam>
 
-`boolean`
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
 
 Whether the value of the specified environment variable is:
 
 - `undefined`
 - An empty string (`""`)
+
+</ApiParam>
+
+</ApiParams>

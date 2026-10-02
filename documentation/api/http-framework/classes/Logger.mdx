@@ -1,0 +1,249 @@
+---
+title: 'Class: Logger'
+description: 'The default ILogger implementation, writing every entry to the matching console method. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 3.4.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L12',
+		label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:12'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The default [ILogger](/documentation/api/http-framework/interfaces/ILogger) implementation, writing every entry to the matching `console` method.
+
+It is intentionally minimal: it only filters by [Logger.level](/documentation/api/http-framework/classes/Logger#level) and forwards the values as-is, leaving
+timestamps, colours, and transports to a logger plugin that replaces `container.logger` through
+[ClientLoggerOptions.instance](/documentation/api/http-framework/interfaces/ClientLoggerOptions#instance).
+
+<ApiSignature tokens={['class Logger implements ', ['ILogger', '/documentation/api/http-framework/interfaces/ILogger']]} />
+
+<ApiHierarchy implements={[[['ILogger', '/documentation/api/http-framework/interfaces/ILogger']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L21', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:21' }}>
+
+<ApiSignature
+	tokens={[
+		'new Logger(level: ',
+		['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel'],
+		' = LogLevel.Info): ',
+		['Logger', '/documentation/api/http-framework/classes/Logger']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="level" type={[['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel']]} defaultValue="LogLevel.Info">
+
+The lowest level the logger writes.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### level
+
+<ApiMember kind="property" signature={['level: ', ['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L16', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:16' }}>
+
+The lowest level the logger writes.
+
+</ApiMember>
+
+### levels
+
+<ApiMember kind="property" badges={['static', 'protected', 'readonly']} signature={['static protected readonly levels: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<', ['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel'], ', ', ['LoggerConsoleMethod', '/documentation/api/http-framework/type-aliases/LoggerConsoleMethod'], '>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L63', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:63' }}>
+
+The `console` method each level is written with.
+
+</ApiMember>
+
+## Methods
+
+### debug()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L33', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:33' }}>
+
+<ApiSignature tokens={['debug(...values: readonly unknown[]): void']} />
+
+Writes the values at [LogLevel.Debug](/documentation/api/http-framework/enumerations/LogLevel#member-debug) level.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="values" type={['readonly unknown[]']} rest>
+
+The values to log.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### error()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L45', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:45' }}>
+
+<ApiSignature tokens={['error(...values: readonly unknown[]): void']} />
+
+Writes the values at [LogLevel.Error](/documentation/api/http-framework/enumerations/LogLevel#member-error) level.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="values" type={['readonly unknown[]']} rest>
+
+The values to log.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fatal()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L49', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:49' }}>
+
+<ApiSignature tokens={['fatal(...values: readonly unknown[]): void']} />
+
+Writes the values at [LogLevel.Fatal](/documentation/api/http-framework/enumerations/LogLevel#member-fatal) level.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="values" type={['readonly unknown[]']} rest>
+
+The values to log.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L25', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:25' }}>
+
+<ApiSignature tokens={['has(level: ', ['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel'], '): boolean']} />
+
+Whether or not the logger writes entries at the given level.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="level" type={[['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel']]}>
+
+The level to check for.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### info()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L37', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:37' }}>
+
+<ApiSignature tokens={['info(...values: readonly unknown[]): void']} />
+
+Writes the values at [LogLevel.Info](/documentation/api/http-framework/enumerations/LogLevel#member-info) level.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="values" type={['readonly unknown[]']} rest>
+
+The values to log.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### trace()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L29', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:29' }}>
+
+<ApiSignature tokens={['trace(...values: readonly unknown[]): void']} />
+
+Writes the values at [LogLevel.Trace](/documentation/api/http-framework/enumerations/LogLevel#member-trace) level.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="values" type={['readonly unknown[]']} rest>
+
+The values to log.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### warn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L41', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:41' }}>
+
+<ApiSignature tokens={['warn(...values: readonly unknown[]): void']} />
+
+Writes the values at [LogLevel.Warn](/documentation/api/http-framework/enumerations/LogLevel#member-warn) level.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="values" type={['readonly unknown[]']} rest>
+
+The values to log.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### write()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/logger/Logger.ts#L53', label: 'packages/http-framework/src/lib/utils/logger/Logger.ts:53' }}>
+
+<ApiSignature
+	tokens={['write(level: ', ['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel'], ', ...values: readonly unknown[]): void']}
+/>
+
+Writes the values at the given level, skipping them when [ILogger.has](/documentation/api/http-framework/interfaces/ILogger#has) returns `false`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="level" type={[['LogLevel', '/documentation/api/http-framework/enumerations/LogLevel']]}>
+
+The level to write the values at.
+
+</ApiParam>
+
+<ApiParam name="values" type={['readonly unknown[]']} rest>
+
+The values to log.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

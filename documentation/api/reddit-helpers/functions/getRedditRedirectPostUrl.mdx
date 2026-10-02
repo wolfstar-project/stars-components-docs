@@ -1,25 +1,51 @@
 ---
 title: 'Function: getRedditRedirectPostUrl()'
+description: 'Gets the proper URL of a reddit post in case an URL was provided that redirects to a post. (@wolfstar/reddit-helpers)'
 hidden: true
 ---
 
-> **getRedditRedirectPostUrl**(`path`): `Promise`\<`string` \| `null`\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/reddit-helpers/src/lib/reddit.ts:50](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/reddit-helpers/src/lib/reddit.ts#L50)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/reddit-helpers/src/lib/reddit.ts#L50',
+		label: 'packages/reddit-helpers/src/lib/reddit.ts:50'
+	}}
+	packageName="@wolfstar/reddit-helpers"
+	packageHref="/documentation/api/reddit-helpers"
+/>
 
 Gets the proper URL of a reddit post in case an URL was provided that redirects to a post.
 This happens when the shortlink is provided from the official Reddit app.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'getRedditRedirectPostUrl(path: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string | null>'
+	]}
+/>
 
-### path
+Gets the proper URL of a reddit post in case an URL was provided that redirects to a post.
+This happens when the shortlink is provided from the official Reddit app.
 
-`string`
+<ApiParams title="Parameters">
+
+<ApiParam name="path" type={['string']}>
 
 The shortlink path to get the redirect for.
 
-## Returns
+</ApiParam>
 
-`Promise`\<`string` \| `null`\>
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string | null>']}>
 
 The proper URL of the post from `headers.get('Location')`
+
+</ApiParam>
+
+</ApiParams>

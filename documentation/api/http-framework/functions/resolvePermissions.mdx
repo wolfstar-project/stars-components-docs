@@ -1,33 +1,64 @@
 ---
 title: 'Function: resolvePermissions()'
+description: 'Resolves any PermissionResolvable into a single permission bitfield. (@wolfstar/http-framework)'
 hidden: true
 ---
 
-> **resolvePermissions**(`resolvable`): `bigint`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/utils/permissions.ts:29](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/utils/permissions.ts#L29)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/utils/permissions.ts#L29',
+		label: 'packages/http-framework/src/lib/utils/permissions.ts:29'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
-Resolves any `PermissionResolvable` into a single permission bitfield.
+Resolves any [`PermissionResolvable`](/documentation/api/http-framework/type-aliases/PermissionResolvable) into a single permission bitfield.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'resolvePermissions(resolvable: ',
+		['PermissionResolvable', '/documentation/api/http-framework/type-aliases/PermissionResolvable'],
+		'): bigint'
+	]}
+/>
 
-### resolvable
+Resolves any [`PermissionResolvable`](/documentation/api/http-framework/type-aliases/PermissionResolvable) into a single permission bitfield.
 
-`PermissionResolvable`
+<ApiParams title="Parameters">
+
+<ApiParam name="resolvable" type={[['PermissionResolvable', '/documentation/api/http-framework/type-aliases/PermissionResolvable']]}>
 
 The value to resolve.
 
-## Returns
+</ApiParam>
 
-`bigint`
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['bigint']}>
 
 The resolved bitfield.
 
-## Throws
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
 
 `TypeError` If a string was given that is not a known permission flag.
 
-## Example
+</ApiParam>
+
+</ApiParams>
+
+**Example**
 
 ```typescript
 resolvePermissions(['BanMembers', PermissionFlagsBits.KickMembers]);

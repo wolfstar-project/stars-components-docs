@@ -1,26 +1,47 @@
 ---
 title: 'Function: removeEventSubscription()'
+description: 'Removes a Twitch subscription based on its ID. (@wolfstar/twitch-helpers)'
 hidden: true
 ---
 
-> **removeEventSubscription**(`subscriptionId`): `Promise`\<`void`\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [twitch.ts:163](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L163)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/twitch.ts#L163',
+		label: 'twitch.ts:163'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
 Removes a Twitch subscription based on its ID.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'removeEventSubscription(subscriptionId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
 
-### subscriptionId
+Removes a Twitch subscription based on its ID.
 
-`string`
+This requires `process.env.TWITCH_EVENTSUB_SECRET` to be set.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="subscriptionId" type={['string']}>
 
 the ID to remove. This ID should be saved from [addEventSubscription](/documentation/api/twitch-helpers/functions/addEventSubscription)
 
-## Returns
+</ApiParam>
 
-`Promise`\<`void`\>
+</ApiParams>
 
-## Remarks
+<ApiParams title="Returns">
 
-This requires `process.env.TWITCH_EVENTSUB_SECRET` to be set.
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>

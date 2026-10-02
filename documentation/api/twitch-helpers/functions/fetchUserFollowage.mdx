@@ -1,30 +1,61 @@
 ---
 title: 'Function: fetchUserFollowage()'
+description: 'Check if followerId follows streamerId and returns the followage data. (@wolfstar/twitch-helpers)'
 hidden: true
 ---
 
-> **fetchUserFollowage**(`followerId`, `streamerId`): `Promise`\<`FetchResult`\<[`TwitchHelixResponse`](/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse)\<[`TwitchHelixUserFollowsResult`](/documentation/api/twitch-helpers/interfaces/TwitchHelixUserFollowsResult)\> & `object`\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [twitch.ts:77](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/twitch.ts#L77)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/twitch.ts#L77',
+		label: 'twitch.ts:77'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
-Check if followerId follows streamerId and returns the followage data.
+Check if [followerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage) follows [streamerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage) and returns the followage data.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'fetchUserFollowage(\n  followerId: string,\n  streamerId: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<',
+		['TwitchHelixResponse', '/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse'],
+		'<',
+		['TwitchHelixUserFollowsResult', '/documentation/api/twitch-helpers/interfaces/TwitchHelixUserFollowsResult'],
+		'> & { total: number }>>'
+	]}
+/>
 
-### followerId
+Check if [followerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage) follows [streamerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage) and returns the followage data.
 
-`string`
+<ApiParams title="Parameters">
 
-The Twitch User ID of the user of whom you want to check if they are following streamerId.
+<ApiParam name="followerId" type={['string']}>
 
-### streamerId
+The Twitch User ID of the user of whom you want to check if they are following [streamerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage).
 
-`string`
+</ApiParam>
 
-The Twitch User ID of the user of whom you want to check if they are followed by followerId.
+<ApiParam name="streamerId" type={['string']}>
 
-## Returns
+The Twitch User ID of the user of whom you want to check if they are followed by [followerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage).
 
-`Promise`\<`FetchResult`\<[`TwitchHelixResponse`](/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse)\<[`TwitchHelixUserFollowsResult`](/documentation/api/twitch-helpers/interfaces/TwitchHelixUserFollowsResult)\> & `object`\>\>
+</ApiParam>
 
-A FetchResult that contains the object with details of whether followerId follows streamerId
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'], '<', ['TwitchHelixResponse', '/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse'], '<', ['TwitchHelixUserFollowsResult', '/documentation/api/twitch-helpers/interfaces/TwitchHelixUserFollowsResult'], '> & { total: number }>>']}>
+
+A [FetchResult](/documentation/api/safe-fetch/type-aliases/FetchResult) that contains the object with details of whether [followerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage) follows [streamerId](/documentation/api/twitch-helpers/functions/fetchUserFollowage)
+
+</ApiParam>
+
+</ApiParams>

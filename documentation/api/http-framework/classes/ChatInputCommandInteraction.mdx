@@ -1,0 +1,657 @@
+---
+title: 'Class: ChatInputCommandInteraction'
+description: 'API reference for ChatInputCommandInteraction, a class exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/ChatInputCommandInteraction.ts#L4',
+		label: 'packages/http-framework/src/lib/interactions/structures/interactions/ChatInputCommandInteraction.ts:4'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'class ChatInputCommandInteraction extends ',
+		['CommandInteraction', '/documentation/api/http-framework/classes/CommandInteraction'],
+		'<',
+		['ChatInputCommandInteraction.Type', '/documentation/api/http-framework/namespaces/ChatInputCommandInteraction/type-aliases/Type'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CommandInteraction', '/documentation/api/http-framework/classes/CommandInteraction'],
+			'<',
+			['ChatInputCommandInteraction.Type', '/documentation/api/http-framework/namespaces/ChatInputCommandInteraction/type-aliases/Type'],
+			'>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L25', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:25' }} inheritedFrom={[['CommandInteraction.constructor', '/documentation/api/http-framework/classes/CommandInteraction#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new ChatInputCommandInteraction(\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		',\n  data: ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		'\n): ',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]} />
+
+<ApiParam
+	name="data"
+	type={[
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		]
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[Data\]
+
+<ApiMember
+	kind="property"
+	badges={['protected', 'readonly']}
+	signature={[
+		'protected readonly [Data]: ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		]
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L22',
+		label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:22'
+	}}
+	inheritedFrom={[['CommandInteraction.[Data]', '/documentation/api/http-framework/classes/CommandInteraction#data']]}
+/>
+
+### \[Response\]
+
+<ApiMember
+	kind="property"
+	badges={['protected', 'readonly']}
+	signature={['protected readonly [Response]: ', ['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L23',
+		label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:23'
+	}}
+	inheritedFrom={[['CommandInteraction.[Response]', '/documentation/api/http-framework/classes/CommandInteraction#response']]}
+/>
+
+## Accessors
+
+### app_permissions
+
+<ApiMember kind="accessor" signature={['get app_permissions(): T["app_permissions"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L51', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:51' }} inheritedFrom={[['CommandInteraction.app_permissions', '/documentation/api/http-framework/classes/CommandInteraction#app_permissions']]}>
+
+Bitwise set of permissions the app or bot has within the channel the interaction was sent from.
+
+</ApiMember>
+
+### application_id
+
+<ApiMember kind="accessor" signature={['get application_id(): T["application_id"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L67', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:67' }} inheritedFrom={[['CommandInteraction.application_id', '/documentation/api/http-framework/classes/CommandInteraction#application_id']]}>
+
+The ID of the application the interaction is for.
+
+</ApiMember>
+
+### applicationId
+
+<ApiMember kind="accessor" signature={['get applicationId(): T["application_id"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L76', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:76' }} inheritedFrom={[['CommandInteraction.applicationId', '/documentation/api/http-framework/classes/CommandInteraction#applicationid']]}>
+
+The ID of the application the interaction is for.
+
+**See also**
+
+- [application_id](/documentation/api/http-framework/classes/BaseInteraction#application_id) for the raw data.
+
+</ApiMember>
+
+### applicationPermissions
+
+<ApiMember kind="accessor" signature={['get applicationPermissions(): bigint | undefined']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L60', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:60' }} inheritedFrom={[['CommandInteraction.applicationPermissions', '/documentation/api/http-framework/classes/CommandInteraction#applicationpermissions']]}>
+
+Bitwise set of permissions the app or bot has within the channel the interaction was sent from.
+
+**See also**
+
+- [app_permissions](/documentation/api/http-framework/classes/BaseInteraction#app_permissions) for the raw data.
+
+</ApiMember>
+
+### authorizing_integration_owners
+
+<ApiMember kind="accessor" signature={['get authorizing_integration_owners(): T["authorizing_integration_owners"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L84', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:84' }} inheritedFrom={[['CommandInteraction.authorizing_integration_owners', '/documentation/api/http-framework/classes/CommandInteraction#authorizing_integration_owners']]}>
+
+Mapping of installation contexts that the interaction was authorized for
+to related user or guild IDs.
+
+</ApiMember>
+
+### authorizingIntegrationOwners
+
+<ApiMember kind="accessor" signature={['get authorizingIntegrationOwners(): T["authorizing_integration_owners"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L94', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:94' }} inheritedFrom={[['CommandInteraction.authorizingIntegrationOwners', '/documentation/api/http-framework/classes/CommandInteraction#authorizingintegrationowners']]}>
+
+Mapping of installation contexts that the interaction was authorized for
+to related user or guild IDs.
+
+**See also**
+
+- [authorizing_integration_owners](/documentation/api/http-framework/classes/BaseInteraction#authorizing_integration_owners) for the raw data.
+
+</ApiMember>
+
+### channel
+
+<ApiMember kind="accessor" signature={['get channel(): T["channel"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L101', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:101' }} inheritedFrom={[['CommandInteraction.channel', '/documentation/api/http-framework/classes/CommandInteraction#channel']]}>
+
+The channel of the interaction.
+
+</ApiMember>
+
+### channel_id
+
+<ApiMember kind="accessor" badges={['deprecated']} signature={['get channel_id(): T["channel_id"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L109', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:109' }} inheritedFrom={[['CommandInteraction.channel_id', '/documentation/api/http-framework/classes/CommandInteraction#channel_id']]}>
+
+<Warning>
+
+**Deprecated.** Use [channel](/documentation/api/http-framework/classes/BaseInteraction#channel).id instead.
+
+</Warning>
+
+The channel the interaction was sent from.
+
+</ApiMember>
+
+### channelId
+
+<ApiMember kind="accessor" badges={['deprecated']} signature={['get channelId(): T["channel_id"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L119', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:119' }} inheritedFrom={[['CommandInteraction.channelId', '/documentation/api/http-framework/classes/CommandInteraction#channelid']]}>
+
+<Warning>
+
+**Deprecated.** Use [channel](/documentation/api/http-framework/classes/BaseInteraction#channel).id instead.
+
+</Warning>
+
+The channel the interaction was sent from.
+
+**See also**
+
+- [channel_id](/documentation/api/http-framework/classes/BaseInteraction#channel_id) for the raw data.
+
+</ApiMember>
+
+### context
+
+<ApiMember kind="accessor" signature={['get context(): T["context"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L126', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:126' }} inheritedFrom={[['CommandInteraction.context', '/documentation/api/http-framework/classes/CommandInteraction#context']]}>
+
+Context where the interaction was triggered from.
+
+</ApiMember>
+
+### data
+
+<ApiMember kind="accessor" signature={['get data(): T["data"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L133', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:133' }} inheritedFrom={[['CommandInteraction.data', '/documentation/api/http-framework/classes/CommandInteraction#data-1']]}>
+
+The command data payload.
+
+</ApiMember>
+
+### entitlements
+
+<ApiMember kind="accessor" signature={['get entitlements(): T["entitlements"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L141', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:141' }} inheritedFrom={[['CommandInteraction.entitlements', '/documentation/api/http-framework/classes/CommandInteraction#entitlements']]}>
+
+For monetized apps, any entitlements for the invoking user, representing
+access to premium SKUs.
+
+</ApiMember>
+
+### guild_id
+
+<ApiMember kind="accessor" signature={['get guild_id(): T["guild_id"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L148', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:148' }} inheritedFrom={[['CommandInteraction.guild_id', '/documentation/api/http-framework/classes/CommandInteraction#guild_id']]}>
+
+The guild the interaction was sent from.
+
+</ApiMember>
+
+### guild_locale
+
+<ApiMember kind="accessor" signature={['get guild_locale(): T["guild_locale"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L164', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:164' }} inheritedFrom={[['CommandInteraction.guild_locale', '/documentation/api/http-framework/classes/CommandInteraction#guild_locale']]}>
+
+The guild's preferred locale, if invoked in a guild.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="accessor" signature={['get guildId(): T["guild_id"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L157', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:157' }} inheritedFrom={[['CommandInteraction.guildId', '/documentation/api/http-framework/classes/CommandInteraction#guildid']]}>
+
+The guild the interaction was sent from.
+
+**See also**
+
+- [guild_id](/documentation/api/http-framework/classes/BaseInteraction#guild_id) for the raw data.
+
+</ApiMember>
+
+### guildLocale
+
+<ApiMember kind="accessor" signature={['get guildLocale(): T["guild_locale"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L173', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:173' }} inheritedFrom={[['CommandInteraction.guildLocale', '/documentation/api/http-framework/classes/CommandInteraction#guildlocale']]}>
+
+The guild's preferred locale, if invoked in a guild.
+
+**See also**
+
+- [guild_locale](/documentation/api/http-framework/classes/BaseInteraction#guild_locale) for the raw data.
+
+</ApiMember>
+
+### id
+
+<ApiMember kind="accessor" signature={['get id(): T["id"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L37', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:37' }} inheritedFrom={[['CommandInteraction.id', '/documentation/api/http-framework/classes/CommandInteraction#id']]}>
+
+The ID of the interaction.
+
+</ApiMember>
+
+### locale
+
+<ApiMember kind="accessor" signature={['get locale(): T["locale"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L180', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:180' }} inheritedFrom={[['CommandInteraction.locale', '/documentation/api/http-framework/classes/CommandInteraction#locale']]}>
+
+The selected language of the invoking user.
+
+</ApiMember>
+
+### member
+
+<ApiMember kind="accessor" signature={['get member(): T["member"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L189', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:189' }} inheritedFrom={[['CommandInteraction.member', '/documentation/api/http-framework/classes/CommandInteraction#member']]}>
+
+Guild member data for the invoking user, including permissions.
+
+**This is only sent when an interaction is invoked in a guild**.
+
+</ApiMember>
+
+### replied
+
+<ApiMember
+	kind="accessor"
+	signature={['get replied(): boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L30',
+		label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:30'
+	}}
+	inheritedFrom={[['CommandInteraction.replied', '/documentation/api/http-framework/classes/CommandInteraction#replied']]}
+/>
+
+### token
+
+<ApiMember kind="accessor" signature={['get token(): T["token"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L196', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:196' }} inheritedFrom={[['CommandInteraction.token', '/documentation/api/http-framework/classes/CommandInteraction#token']]}>
+
+A continuation token for responding to the interaction.
+
+</ApiMember>
+
+### type
+
+<ApiMember kind="accessor" signature={['get type(): T["type"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L44', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:44' }} inheritedFrom={[['CommandInteraction.type', '/documentation/api/http-framework/classes/CommandInteraction#type']]}>
+
+The type of the interaction.
+
+</ApiMember>
+
+### user
+
+<ApiMember kind="accessor" signature={['get user(): ', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L203', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:203' }} inheritedFrom={[['CommandInteraction.user', '/documentation/api/http-framework/classes/CommandInteraction#user']]}>
+
+User object for the invoking user.
+
+</ApiMember>
+
+### version
+
+<ApiMember kind="accessor" signature={['get version(): T["version"]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L210', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:210' }} inheritedFrom={[['CommandInteraction.version', '/documentation/api/http-framework/classes/CommandInteraction#version']]}>
+
+Read-only property, always `1`.
+
+</ApiMember>
+
+## Methods
+
+### \_sendReply()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L243', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:243' }} inheritedFrom={[['CommandInteraction._sendReply', '/documentation/api/http-framework/classes/CommandInteraction#_sendreply']]}>
+
+<ApiSignature
+	tokens={[
+		'protected _sendReply(data: object): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### defer()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts#L44', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts:44' }} inheritedFrom={[['CommandInteraction.defer', '/documentation/api/http-framework/classes/CommandInteraction#defer']]}>
+
+<ApiSignature
+	tokens={[
+		'defer(data?: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData'],
+		', "flags">): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PartialMessage', '/documentation/api/http-framework/classes/PartialMessage'],
+		'<',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		'>>'
+	]}
+/>
+
+ACK an interaction and edit a response later. The user sees a loading state.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'], '<', ['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData'], ', "flags">']} optional>
+
+The data to be sent, if any.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PartialMessage', '/documentation/api/http-framework/classes/PartialMessage'],
+		'<',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L228', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:228' }} inheritedFrom={[['CommandInteraction.fetchChannel', '/documentation/api/http-framework/classes/CommandInteraction#fetchchannel']]}>
+
+<ApiSignature
+	tokens={[
+		'fetchChannel(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Err<',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'],
+		', any> | ',
+		['DiscordResult', '/documentation/api/http-framework/type-aliases/DiscordResult'],
+		'<',
+		['APIChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChannel'],
+		'>>'
+	]}
+/>
+
+Fetches the channel the interaction was sent from.
+
+**This requires REST to have a token.**
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Err<', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'], ', any> | ', ['DiscordResult', '/documentation/api/http-framework/type-aliases/DiscordResult'], '<', ['APIChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChannel'], '>>']}>
+
+The fetched channel.
+
+</ApiParam>
+
+</ApiParams>
+
+**See also**
+
+- [channel](/documentation/api/http-framework/classes/BaseInteraction#channel).
+
+</ApiMember>
+
+### fetchGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L238', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:238' }} inheritedFrom={[['CommandInteraction.fetchGuild', '/documentation/api/http-framework/classes/CommandInteraction#fetchguild']]}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuild(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Err<',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'],
+		', any> | ',
+		['DiscordResult', '/documentation/api/http-framework/type-aliases/DiscordResult'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>>'
+	]}
+/>
+
+Fetches the channel the interaction was sent from.
+
+**This requires REST to have a token.**
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Err<', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'], ', any> | ', ['DiscordResult', '/documentation/api/http-framework/type-aliases/DiscordResult'], '<', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], '>>']}>
+
+The fetched channel.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### followup()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts#L63', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts:63' }} inheritedFrom={[['CommandInteraction.followup', '/documentation/api/http-framework/classes/CommandInteraction#followup']]}>
+
+<ApiSignature
+	tokens={[
+		'followup(data: ',
+		['FollowupOptions', '/documentation/api/http-framework/type-aliases/FollowupOptions'],
+		'): ',
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['Message', '/documentation/api/http-framework/classes/Message'],
+		'<',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		'>>'
+	]}
+/>
+
+Sends a follow-up message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['FollowupOptions', '/documentation/api/http-framework/type-aliases/FollowupOptions']]}>
+
+The data to be sent.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['AsyncDiscordResult', '/documentation/api/http-framework/type-aliases/AsyncDiscordResult'],
+		'<',
+		['Message', '/documentation/api/http-framework/classes/Message'],
+		'<',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### inGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L218', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:218' }} inheritedFrom={[['CommandInteraction.inGuild', '/documentation/api/http-framework/classes/CommandInteraction#inguild']]}>
+
+<ApiSignature
+	tokens={[
+		'inGuild(): this is ',
+		['InGuild', '/documentation/api/http-framework/type-aliases/InGuild'],
+		'<',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		'>'
+	]}
+/>
+
+Determines whether or not the interaction was sent from a guild.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this is ', ['InGuild', '/documentation/api/http-framework/type-aliases/InGuild'], '<', ['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'], '>']}>
+
+The casted interaction type.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### reply()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts#L34', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts:34' }} inheritedFrom={[['CommandInteraction.reply', '/documentation/api/http-framework/classes/CommandInteraction#reply']]}>
+
+<ApiSignature
+	tokens={[
+		'reply(data: ',
+		['MessageResponseOptions', '/documentation/api/http-framework/type-aliases/MessageResponseOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PartialMessage', '/documentation/api/http-framework/classes/PartialMessage'],
+		'<',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		'>>'
+	]}
+/>
+
+Responds to the interaction with a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['MessageResponseOptions', '/documentation/api/http-framework/type-aliases/MessageResponseOptions']]}>
+
+The data to be sent.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PartialMessage', '/documentation/api/http-framework/classes/PartialMessage'],
+		'<',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### showModal()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts#L54', label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/CommandInteraction.ts:54' }} inheritedFrom={[['CommandInteraction.showModal', '/documentation/api/http-framework/classes/CommandInteraction#showmodal']]}>
+
+<ApiSignature
+	tokens={[
+		'showModal(data: ',
+		[
+			'APIModalInteractionResponseCallbackData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIModalInteractionResponseCallbackData'
+		],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Responds to the interaction with a popup modal.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIModalInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalInteractionResponseCallbackData']]}>
+
+The data to be sent.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

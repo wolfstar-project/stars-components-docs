@@ -1,0 +1,573 @@
+---
+title: 'Class: ApplicationCommandRegistry'
+description: 'Represents a registry for application commands. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 2.0.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L26',
+		label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:26'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Represents a registry for application commands.
+
+<ApiSignature
+	tokens={[
+		'class ApplicationCommandRegistry implements JSONEncodable<',
+		[
+			'ApplicationCommandRegistryEntry.Command',
+			'/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'
+		],
+		'[]>'
+	]}
+/>
+
+<ApiHierarchy
+	implements={[
+		[
+			'JSONEncodable<',
+			[
+				'ApplicationCommandRegistryEntry.Command',
+				'/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'
+			],
+			'[]>'
+		]
+	]}
+/>
+
+This registry is globally available through `container.applicationCommandRegistry`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature
+	tokens={[
+		'new ApplicationCommandRegistry(): ',
+		['ApplicationCommandRegistry', '/documentation/api/http-framework/classes/ApplicationCommandRegistry']
+	]}
+/>
+
+</ApiMember>
+
+## Accessors
+
+### store
+
+<ApiMember
+	kind="accessor"
+	signature={['get store(): ', ['CommandStore', '/documentation/api/http-framework/classes/CommandStore']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L32',
+		label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:32'
+	}}
+/>
+
+## Methods
+
+### delete()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L70', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:70' }}>
+
+<ApiSignature
+	tokens={[
+		'delete<Options extends PieceOptions>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<any>;\n  }): boolean'
+	]}
+/>
+
+Deletes a command from the registry.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']}>
+
+The options type for the command.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={['{\n  Location: typeof PieceLocation;\n  prototype: ', ['Command', '/documentation/api/http-framework/classes/Command'], '<any>;\n}']}>
+
+The command to delete.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
+
+True if the command was successfully deleted, false otherwise.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### ensure()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L82', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:82' }}>
+
+<ApiSignature
+	tokens={[
+		'ensure<Options extends PieceOptions>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<any>;\n  }): ',
+		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry']
+	]}
+/>
+
+Retrieves or creates an [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry) for the specified command class.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']}>
+
+The options type for the command.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={['{\n  Location: typeof PieceLocation;\n  prototype: ', ['Command', '/documentation/api/http-framework/classes/Command'], '<any>;\n}']}>
+
+The command class to ensure registration for.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry']]}>
+
+The application command registry entry for the command.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L58', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:58' }}>
+
+<ApiSignature
+	tokens={[
+		'get<Options extends PieceOptions>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<any>;\n  }): ',
+		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'],
+		' | null'
+	]}
+/>
+
+Retrieves the [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry) associated with the specified command class.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']}>
+
+The options type of the command class.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={['{\n  Location: typeof PieceLocation;\n  prototype: ', ['Command', '/documentation/api/http-framework/classes/Command'], '<any>;\n}']}>
+
+The command class to retrieve the entry for.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'], ' | null']}>
+
+The [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry) associated with the command class, or null if not found.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### getLoadedChatInputCommands()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L118', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:118' }}>
+
+<ApiSignature
+	tokens={[
+		'getLoadedChatInputCommands(): ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'],
+		'>'
+	]}
+/>
+
+Retrieves the loaded chat input commands from the application command registry.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'], '>']}>
+
+A collection of chat input commands.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### getLoadedContextMenuCommands()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L133', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:133' }}>
+
+<ApiSignature
+	tokens={[
+		'getLoadedContextMenuCommands(): ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'],
+		'>'
+	]}
+/>
+
+Retrieves the loaded context menu commands.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'], '>']}>
+
+A collection of context menu commands.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### getLoadedGlobalCommands()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L150', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:150' }}>
+
+<ApiSignature
+	tokens={[
+		'getLoadedGlobalCommands(): ',
+		['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'],
+		'[]'
+	]}
+/>
+
+Retrieves the loaded global commands from the application command registry.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'], '[]']}>
+
+An array of loaded global commands.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### getLoadedGuildCommands()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L163', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:163' }}>
+
+<ApiSignature
+	tokens={[
+		'getLoadedGuildCommands(): ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'],
+		'[]>'
+	]}
+/>
+
+Retrieves the loaded guild commands from the application command registry.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'], '[]>']}>
+
+A collection of guild commands, where the key is the guild ID and the value is an array of commands.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### loadCommands()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L104', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:104' }}>
+
+<ApiSignature
+	tokens={[
+		'loadCommands(baseUserDirectory?: string | ',
+		['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'],
+		' | null): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Loads the commands from the specified base user directory.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="baseUserDirectory" type={['string | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'], ' | null']} optional>
+
+The base user directory to load the commands from, define it as `null` to not register
+a path for the file system loader.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}>
+
+A promise that resolves when all the commands are loaded.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### pushAllCommandsInGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L208', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:208' }}>
+
+<ApiSignature
+	tokens={[
+		'pushAllCommandsInGuild(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		[
+			'RESTPutAPIApplicationGuildCommandsResult',
+			'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationGuildCommandsResult'
+		],
+		'>'
+	]}
+/>
+
+Registers all the commands including guild-restricted ones in a single guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The guild to register the commands at.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['RESTPutAPIApplicationGuildCommandsResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationGuildCommandsResult'], '>']}>
+
+The raw result from registering the commands in the specified guild.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### pushGlobalCommands()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L187', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:187' }}>
+
+<ApiSignature
+	tokens={[
+		'pushGlobalCommands(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['RESTPutAPIApplicationCommandsResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationCommandsResult'],
+		'>'
+	]}
+/>
+
+Registers all the non guild-restricted commands globally.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['RESTPutAPIApplicationCommandsResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationCommandsResult'], '>']}>
+
+The raw result from registering the commands globally.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### pushGlobalCommandsInGuild()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L198', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:198' }}>
+
+<ApiSignature
+	tokens={[
+		'pushGlobalCommandsInGuild(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		[
+			'RESTPutAPIApplicationGuildCommandsResult',
+			'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationGuildCommandsResult'
+		],
+		'>'
+	]}
+/>
+
+Registers all the non guild-restricted commands in a single guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The guild to register the commands at.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['RESTPutAPIApplicationGuildCommandsResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationGuildCommandsResult'], '>']}>
+
+The raw result from registering the commands in the specified guild.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### pushGuildRestrictedCommands()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L217', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:217' }}>
+
+<ApiSignature
+	tokens={[
+		'pushGuildRestrictedCommands(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PromiseSettledResult', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		[
+			'RESTPutAPIApplicationGuildCommandsResult',
+			'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationGuildCommandsResult'
+		],
+		'>[]>'
+	]}
+/>
+
+Registers all the guild-restricted commands in their respective guilds.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['PromiseSettledResult', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['RESTPutAPIApplicationGuildCommandsResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPutAPIApplicationGuildCommandsResult'], '>[]>']}>
+
+The settled promises from all the guild command registrations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setup()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L43', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:43' }}>
+
+<ApiSignature
+	tokens={[
+		'setup(options: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		[
+			'ApplicationCommandRegistry.SetupOptions',
+			'/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SetupOptions'
+		],
+		'>): ',
+		['ApplicationCommandRegistry', '/documentation/api/http-framework/classes/ApplicationCommandRegistry']
+	]}
+/>
+
+Sets up the application command registry with the provided options.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['ApplicationCommandRegistry.SetupOptions', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SetupOptions'], '>']}>
+
+The setup options for the application command registry.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ApplicationCommandRegistry', '/documentation/api/http-framework/classes/ApplicationCommandRegistry']]}>
+
+The updated instance of the application command registry.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L92', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:92' }}>
+
+<ApiSignature
+	tokens={['toJSON(): ', ['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'], '[]']}
+/>
+
+Converts the [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry) objects to an array of command objects in JSON format.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'], '[]']}>
+
+An array of Command objects in JSON format.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

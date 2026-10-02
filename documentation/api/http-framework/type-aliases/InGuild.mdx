@@ -1,0 +1,41 @@
+---
+title: 'Type Alias: InGuild'
+description: 'API reference for InGuild, a type alias exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L257',
+		label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:257'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'type InGuild<T extends ',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'> = T & {\n  guild_id: ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<T["guild_id"]>;\n  guild_locale: ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<T["guild_locale"]>;\n  guildId: ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<T["guildId"]>;\n  guildLocale: ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<T["guildLocale"]>;\n  member: ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<T["member"]>;\n}'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" type={['extends ', ['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction']]} />
+
+</ApiParams>

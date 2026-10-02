@@ -1,26 +1,69 @@
 ---
 title: 'Function: safeTimedFetch()'
+description: 'API reference for safeTimedFetch, a function exported by @wolfstar/safe-fetch.'
 hidden: true
 ---
 
-> **safeTimedFetch**(`input`, `ms`, `init?`): `Promise`\<[`FetchResult`](/documentation/api/safe-fetch/type-aliases/FetchResult)\<`Response`\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/safe-fetch/src/lib/fetch.ts:18](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/safe-fetch/src/lib/fetch.ts#L18)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/safe-fetch/src/lib/fetch.ts#L18',
+		label: 'packages/safe-fetch/src/lib/fetch.ts:18'
+	}}
+	packageName="@wolfstar/safe-fetch"
+	packageHref="/documentation/api/safe-fetch"
+/>
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'safeTimedFetch(\n  input: RequestInfo | ',
+		['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'],
+		',\n  ms: number,\n  init?: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['RequestInit', 'https://developer.mozilla.org/en-US/docs/Web/API/RequestInit'],
+		', "signal">\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>>'
+	]}
+/>
 
-### input
+<ApiParams title="Parameters">
 
-`RequestInfo` \| `URL`
+<ApiParam name="input" type={['RequestInfo | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL']]} />
 
-### ms
+<ApiParam name="ms" type={['number']} />
 
-`number`
+<ApiParam
+	name="init"
+	type={[
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['RequestInit', 'https://developer.mozilla.org/en-US/docs/Web/API/RequestInit'],
+		', "signal">'
+	]}
+	optional
+/>
 
-### init?
+</ApiParams>
 
-`Omit`\<`RequestInit`, `"signal"`\>
+<ApiParams title="Returns">
 
-## Returns
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>>'
+	]}
+/>
 
-`Promise`\<[`FetchResult`](/documentation/api/safe-fetch/type-aliases/FetchResult)\<`Response`\>\>
+</ApiParams>

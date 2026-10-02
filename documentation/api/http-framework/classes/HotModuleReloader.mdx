@@ -1,0 +1,249 @@
+---
+title: 'Class: HotModuleReloader'
+description: 'Hot Module Reloading for every Store registered in container.stores. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 3.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L21',
+		label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:21'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Hot Module Reloading for every `Store` registered in `container.stores`.
+
+<ApiSignature tokens={['class HotModuleReloader']} />
+
+The reloader watches each store's registered paths and reacts to file system events by loading, reloading,
+and unloading the affected pieces in place, without restarting the process. It is a development-only utility: watching
+the file system in production adds overhead and reloads code that is not supposed to change, which is why it is
+opt-in.
+
+**Example**
+
+```typescript
+const client = new Client({ hmr: { enabled: process.env.NODE_ENV !== 'production' } });
+await client.load();
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L32', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:32' }}>
+
+<ApiSignature
+	tokens={[
+		'new HotModuleReloader(options: ',
+		['HMROptions', '/documentation/api/http-framework/interfaces/HMROptions'],
+		' = {}): ',
+		['HotModuleReloader', '/documentation/api/http-framework/classes/HotModuleReloader']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['HMROptions', '/documentation/api/http-framework/interfaces/HMROptions']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### options
+
+<ApiMember kind="property" badges={['readonly', 'since 3.3.0']} signature={['readonly options: ', ['HMROptions', '/documentation/api/http-framework/interfaces/HMROptions']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L27', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:27' }}>
+
+The options this reloader was constructed with.
+
+</ApiMember>
+
+## Accessors
+
+### paths
+
+<ApiMember kind="accessor" badges={['since 3.3.0']} signature={['get paths(): readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L50', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:50' }}>
+
+The paths currently being watched, one entry per store path.
+
+</ApiMember>
+
+### running
+
+<ApiMember kind="accessor" badges={['since 3.3.0']} signature={['get running(): boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L41', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:41' }}>
+
+Whether the reloader is currently watching for changes.
+
+</ApiMember>
+
+## Methods
+
+### handleError()
+
+<ApiMember kind="method" badges={['protected', 'since 3.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L181', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:181' }}>
+
+<ApiSignature tokens={['protected handleError(error: unknown, path: string): void']} />
+
+Handles an error thrown while (re)loading or unloading a piece.
+
+Errors are never rethrown: a broken file must not take the process down, the user is expected to fix it
+and save again, which triggers a new reload.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="error" type={['unknown']}>
+
+The error that was thrown.
+
+</ApiParam>
+
+<ApiParam name="path" type={['string']}>
+
+The full path of the file that was being processed.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### handlePieceDelete()
+
+<ApiMember kind="method" badges={['protected', 'since 3.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L156', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:156' }}>
+
+<ApiSignature
+	tokens={[
+		'protected handlePieceDelete(\n  store: Store<Piece<PieceOptions, keyof ',
+		['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'],
+		'>>,\n  path: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Handles a file being removed from one of the store's paths, unloading the piece it defined.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="store" type={['Store<Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>>']}>
+
+The store the path belongs to.
+
+</ApiParam>
+
+<ApiParam name="path" type={['string']}>
+
+The full path of the file that was deleted.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### handlePieceUpdate()
+
+<ApiMember kind="method" badges={['protected', 'since 3.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L120', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:120' }}>
+
+<ApiSignature
+	tokens={[
+		'protected handlePieceUpdate(\n  store: Store<Piece<PieceOptions, keyof ',
+		['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'],
+		'>>,\n  path: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Handles a file being added to, or modified in, one of the store's paths, reloading the piece it defines when it is
+already loaded, and loading it otherwise.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="store" type={['Store<Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>>']}>
+
+The store the path belongs to.
+
+</ApiParam>
+
+<ApiParam name="path" type={['string']}>
+
+The full path of the file that changed.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### start()
+
+<ApiMember kind="method" badges={['since 3.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L63', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:63' }}>
+
+<ApiSignature
+	tokens={[
+		'start(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['HotModuleReloader', '/documentation/api/http-framework/classes/HotModuleReloader'],
+		'>'
+	]}
+/>
+
+Starts watching every path registered in every store.
+
+This is a no-op when [HotModuleReloader.Options.enabled](/documentation/api/http-framework/interfaces/HMROptions#enabled) is `false`, when the reloader is already
+running, or when no store has registered paths. `chokidar` is imported lazily, so applications that never enable
+HMR do not pay for loading it.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['HotModuleReloader', '/documentation/api/http-framework/classes/HotModuleReloader'], '>']}>
+
+This instance, for chaining.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### stop()
+
+<ApiMember kind="method" badges={['since 3.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/hmr/HotModuleReloader.ts#L99', label: 'packages/http-framework/src/lib/hmr/HotModuleReloader.ts:99' }}>
+
+<ApiSignature
+	tokens={['stop(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Stops watching for changes and closes every watcher.
+
+Calling this on a reloader that is not running is a no-op. Already loaded pieces are left untouched.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
