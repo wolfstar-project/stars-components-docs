@@ -1,106 +1,121 @@
 ---
-title: 'Class: Backend<T>'
+title: 'Class: Backend'
+description: 'API reference for Backend, a class exported by @wolfstar/i18next-backend.'
 hidden: true
 ---
 
-Defined in: [index.ts:6](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/i18next-backend/src/index.ts#L6)
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-## Type Parameters
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/i18next-backend/src/index.ts#L6',
+		label: 'index.ts:6'
+	}}
+	packageName="@wolfstar/i18next-backend"
+	packageHref="/documentation/api/i18next-backend"
+/>
 
-### T
+<ApiSignature
+	tokens={[
+		'class Backend<T = object> implements BackendModule<',
+		['Backend.Options', '/documentation/api/i18next-backend/namespaces/Backend/type-aliases/Options'],
+		'<T>>'
+	]}
+/>
 
-`T` = `object`
+<ApiHierarchy
+	implements={[['BackendModule<', ['Backend.Options', '/documentation/api/i18next-backend/namespaces/Backend/type-aliases/Options'], '<T>>']]}
+/>
 
-## Implements
+<ApiParams title="Type Parameters">
 
-- `BackendModule`\<[`Options`](/documentation/api/i18next-backend/namespaces/Backend/type-aliases/Options)\<`T`\>\>
+<ApiParam name="T" defaultValue="object" />
+
+</ApiParams>
 
 ## Constructors
 
 ### Constructor
 
-> **new Backend**\<`T`\>(): `Backend`\<`T`\>
+<ApiMember kind="constructor">
 
-#### Returns
+<ApiSignature tokens={['new Backend<T = object>(): ', ['Backend', '/documentation/api/i18next-backend/classes/Backend'], '<T>']} />
 
-`Backend`\<`T`\>
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="object" />
+
+</ApiParams>
+
+</ApiMember>
 
 ## Properties
 
 ### type
 
-> `readonly` **type**: `"backend"` = `'backend'`
-
-Defined in: [index.ts:7](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/i18next-backend/src/index.ts#L7)
-
-#### Implementation of
-
-`BackendModule.type`
-
----
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly type: "backend"']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/i18next-backend/src/index.ts#L7',
+		label: 'index.ts:7'
+	}}
+/>
 
 ### type
 
-> `readonly` `static` **type**: `"backend"` = `'backend'`
-
-Defined in: [index.ts:52](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/i18next-backend/src/index.ts#L52)
+<ApiMember
+	kind="property"
+	badges={['static', 'readonly']}
+	signature={['static readonly type: "backend"']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/i18next-backend/src/index.ts#L52',
+		label: 'index.ts:52'
+	}}
+/>
 
 ## Methods
 
 ### init()
 
-> **init**(`_`, `backendOptions`, `i18nextOptions`): `void`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/i18next-backend/src/index.ts#L11', label: 'index.ts:11' }}>
 
-Defined in: [index.ts:11](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/i18next-backend/src/index.ts#L11)
+<ApiSignature
+	tokens={[
+		'init(_: Services, backendOptions: ',
+		['Options', '/documentation/api/i18next-backend/namespaces/Backend/type-aliases/Options'],
+		'<T>, i18nextOptions: InitOptions): void'
+	]}
+/>
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### \_
+<ApiParam name="_" type={['Services']} />
 
-`Services`
+<ApiParam name="backendOptions" type={[['Options', '/documentation/api/i18next-backend/namespaces/Backend/type-aliases/Options'], '<T>']} />
 
-##### backendOptions
+<ApiParam name="i18nextOptions" type={['InitOptions']} />
 
-[`Options`](/documentation/api/i18next-backend/namespaces/Backend/type-aliases/Options)\<`T`\>
+</ApiParams>
 
-##### i18nextOptions
-
-`InitOptions`
-
-#### Returns
-
-`void`
-
-#### Implementation of
-
-`BackendModule.init`
-
----
+</ApiMember>
 
 ### read()
 
-> **read**(`language`, `namespace`, `callback`): `void`
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/i18next-backend/src/index.ts#L16', label: 'index.ts:16' }}>
 
-Defined in: [index.ts:16](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/i18next-backend/src/index.ts#L16)
+<ApiSignature tokens={['read(language: string, namespace: string, callback: ReadCallback): void']} />
 
-#### Parameters
+<ApiParams title="Parameters">
 
-##### language
+<ApiParam name="language" type={['string']} />
 
-`string`
+<ApiParam name="namespace" type={['string']} />
 
-##### namespace
+<ApiParam name="callback" type={['ReadCallback']} />
 
-`string`
+</ApiParams>
 
-##### callback
-
-`ReadCallback`
-
-#### Returns
-
-`void`
-
-#### Implementation of
-
-`BackendModule.read`
+</ApiMember>

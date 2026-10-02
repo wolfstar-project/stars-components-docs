@@ -1,8 +1,35 @@
 ---
 title: 'Type Alias: EnvString'
+description: 'API reference for EnvString, a type alias exported by @wolfstar/env-utilities.'
 hidden: true
 ---
 
-> **EnvString** = \{ \[K in EnvAny\]: Env\[K\] extends BooleanString \| IntegerString \| NumberString ? never : K \}\[[`EnvAny`](/documentation/api/env-utilities/type-aliases/EnvAny)\]
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/env-utilities/src/lib/types.ts:7](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/env-utilities/src/lib/types.ts#L7)
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/types.ts#L7',
+		label: 'packages/env-utilities/src/lib/types.ts:7'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
+
+<ApiSignature
+	tokens={[
+		'type EnvString = { [K in ',
+		['EnvAny', '/documentation/api/env-utilities/type-aliases/EnvAny'],
+		']: ',
+		['Env', '/documentation/api/env-utilities/interfaces/Env'],
+		'[K] extends ',
+		['BooleanString', '/documentation/api/env-utilities/type-aliases/BooleanString'],
+		' | ',
+		['IntegerString', '/documentation/api/env-utilities/type-aliases/IntegerString'],
+		' | ',
+		['NumberString', '/documentation/api/env-utilities/type-aliases/NumberString'],
+		' ? never : K }[',
+		['EnvAny', '/documentation/api/env-utilities/type-aliases/EnvAny'],
+		']'
+	]}
+/>

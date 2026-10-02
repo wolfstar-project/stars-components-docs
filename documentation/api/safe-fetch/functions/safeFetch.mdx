@@ -1,22 +1,56 @@
 ---
 title: 'Function: safeFetch()'
+description: 'API reference for safeFetch, a function exported by @wolfstar/safe-fetch.'
 hidden: true
 ---
 
-> **safeFetch**(`input`, `init?`): `Promise`\<[`FetchResult`](/documentation/api/safe-fetch/type-aliases/FetchResult)\<`Response`\>\>
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/safe-fetch/src/lib/fetch.ts:8](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/safe-fetch/src/lib/fetch.ts#L8)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/safe-fetch/src/lib/fetch.ts#L8',
+		label: 'packages/safe-fetch/src/lib/fetch.ts:8'
+	}}
+	packageName="@wolfstar/safe-fetch"
+	packageHref="/documentation/api/safe-fetch"
+/>
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'safeFetch(input: RequestInfo | ',
+		['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'],
+		', init?: ',
+		['RequestInit', 'https://developer.mozilla.org/en-US/docs/Web/API/RequestInit'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>>'
+	]}
+/>
 
-### input
+<ApiParams title="Parameters">
 
-`RequestInfo` \| `URL`
+<ApiParam name="input" type={['RequestInfo | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL']]} />
 
-### init?
+<ApiParam name="init" type={[['RequestInit', 'https://developer.mozilla.org/en-US/docs/Web/API/RequestInit']]} optional />
 
-`RequestInit`
+</ApiParams>
 
-## Returns
+<ApiParams title="Returns">
 
-`Promise`\<[`FetchResult`](/documentation/api/safe-fetch/type-aliases/FetchResult)\<`Response`\>\>
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchResult', '/documentation/api/safe-fetch/type-aliases/FetchResult'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>>'
+	]}
+/>
+
+</ApiParams>

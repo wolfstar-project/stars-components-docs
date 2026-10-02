@@ -1,37 +1,64 @@
 ---
 title: 'Function: RegisterUserCommand()'
+description: 'Registers a user command. (@wolfstar/http-framework)'
 hidden: true
 ---
 
-> **RegisterUserCommand**\<`Options`\>(`data`): (`target`, `method`) => `void`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/interactions/decorators/RegisterUserCommand.ts:23](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RegisterUserCommand.ts#L23)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/decorators/RegisterUserCommand.ts#L23',
+		label: 'packages/http-framework/src/lib/interactions/decorators/RegisterUserCommand.ts:23'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
 Registers a user command.
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'RegisterUserCommand<Options extends PieceOptions = PieceOptions>(data: CommandData): (target: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<Options>, method: string) => void'
+	]}
+/>
 
-### Options
+Registers a user command.
 
-`Options` _extends_ [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions) = [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions)
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions">
 
 The options type for the command.
 
-## Parameters
+</ApiParam>
 
-### data
+</ApiParams>
 
-`CommandData`
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['CommandData']}>
 
 The command to register.
 
-## Returns
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['(target: ', ['Command', '/documentation/api/http-framework/classes/Command'], '<Options>, method: string) => void']}>
 
 A method decorator function, does not override the method.
 
-(`target`, `method`) => `void`
+</ApiParam>
 
-## Example
+</ApiParams>
+
+**Example**
 
 ```typescript
 export class UserCommand extends Command {

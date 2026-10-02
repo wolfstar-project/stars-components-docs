@@ -1,22 +1,41 @@
 ---
 title: 'Function: setVariables()'
+description: 'Sets the variables required to interact with the Twitch API. (@wolfstar/twitch-helpers)'
 hidden: true
 ---
 
-> **setVariables**(`variables`): `void`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [variables.ts:15](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/twitch-helpers/src/lib/variables.ts#L15)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/twitch-helpers/src/lib/variables.ts#L15',
+		label: 'variables.ts:15'
+	}}
+	packageName="@wolfstar/twitch-helpers"
+	packageHref="/documentation/api/twitch-helpers"
+/>
 
 Sets the variables required to interact with the Twitch API.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'setVariables(variables: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['TwitchVariables', '/documentation/api/twitch-helpers/interfaces/TwitchVariables'],
+		'>): void'
+	]}
+/>
 
-### variables
+Sets the variables required to interact with the Twitch API.
 
-`Readonly`\<[`TwitchVariables`](/documentation/api/twitch-helpers/interfaces/TwitchVariables)\>
+<ApiParams title="Parameters">
+
+<ApiParam name="variables" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['TwitchVariables', '/documentation/api/twitch-helpers/interfaces/TwitchVariables'], '>']}>
 
 The variables to set
 
-## Returns
+</ApiParam>
 
-`void`
+</ApiParams>

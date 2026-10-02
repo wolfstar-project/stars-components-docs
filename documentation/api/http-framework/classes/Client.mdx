@@ -1,0 +1,440 @@
+---
+title: 'Class: Client'
+description: 'API reference for Client, a class exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L32',
+		label: 'packages/http-framework/src/lib/Client.ts:32'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'class Client extends AsyncEventEmitter<',
+		['MappedClientEvents', '/documentation/api/http-framework/type-aliases/MappedClientEvents'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy extends={[['AsyncEventEmitter<', ['MappedClientEvents', '/documentation/api/http-framework/type-aliases/MappedClientEvents'], '>']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L59', label: 'packages/http-framework/src/lib/Client.ts:59' }}>
+
+<ApiSignature
+	tokens={[
+		'new Client(options: ',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		' = {}): ',
+		['Client', '/documentation/api/http-framework/classes/Client']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### bodySizeLimit
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly bodySizeLimit: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L54',
+		label: 'packages/http-framework/src/lib/Client.ts:54'
+	}}
+/>
+
+### hmr
+
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmr: ', ['HotModuleReloader', '/documentation/api/http-framework/classes/HotModuleReloader'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L41', label: 'packages/http-framework/src/lib/Client.ts:41' }}>
+
+The Hot Module Reloader, set by [Client#load](/documentation/api/http-framework/classes/Client#load) when [ClientOptions.hmr](/documentation/api/http-framework/interfaces/ClientOptions#hmr) is enabled, and `null`
+otherwise.
+
+</ApiMember>
+
+### httpReplyOnError
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly httpReplyOnError: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L55',
+		label: 'packages/http-framework/src/lib/Client.ts:55'
+	}}
+/>
+
+### id
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L52',
+		label: 'packages/http-framework/src/lib/Client.ts:52'
+	}}
+/>
+
+### logger
+
+<ApiMember kind="property" badges={['readonly', 'since 3.4.0']} signature={['readonly logger: ', ['ILogger', '/documentation/api/http-framework/interfaces/ILogger']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L50', label: 'packages/http-framework/src/lib/Client.ts:50' }}>
+
+The logger the client and the framework internals write to. It defaults to a [Logger](/documentation/api/http-framework/classes/Logger) writing to the
+console, and can be replaced with any [ILogger](/documentation/api/http-framework/interfaces/ILogger) through [ClientLoggerOptions.instance](/documentation/api/http-framework/interfaces/ClientLoggerOptions#instance), which is
+how a logger plugin swaps the built-in implementation for a richer one.
+
+</ApiMember>
+
+### options
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly options: ', ['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L53',
+		label: 'packages/http-framework/src/lib/Client.ts:53'
+	}}
+/>
+
+### server
+
+<ApiMember
+	kind="property"
+	signature={['server: ', ['Server', 'https://nodejs.org/api/http.html#class-httpserver']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L33',
+		label: 'packages/http-framework/src/lib/Client.ts:33'
+	}}
+/>
+
+### plugins
+
+<ApiMember kind="property" badges={['static', 'readonly', 'since 2.4.0']} signature={['static readonly plugins: ', ['PluginManager', '/documentation/api/http-framework/classes/PluginManager']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L117', label: 'packages/http-framework/src/lib/Client.ts:117' }}>
+
+The plugin manager, holding every registered plugin hook.
+
+</ApiMember>
+
+## Accessors
+
+### registry
+
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get registry(): ', ['ApplicationCommandRegistry', '/documentation/api/http-framework/classes/ApplicationCommandRegistry']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L136', label: 'packages/http-framework/src/lib/Client.ts:136' }}>
+
+Gets the application command registry.
+
+</ApiMember>
+
+## Methods
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L201', label: 'packages/http-framework/src/lib/Client.ts:201' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(request: ',
+		['Request', 'https://developer.mozilla.org/en-US/docs/Web/API/Request'],
+		', options: ',
+		['FetchOptions', '/documentation/api/http-framework/interfaces/FetchOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>'
+	]}
+/>
+
+Handles a single Web `Request`/`Response` interaction — the exact same signature verification, routing and
+replies `listen()`'s `node:http` server runs, `handleRawHttpMessage` called exactly the way it calls it on
+every request — without binding a port. This is `node:http`'s replacement whenever something else (Nitro, a
+Worker, `Bun.serve`) owns the actual listener instead of `Client`: build a `Request` from whatever that
+transport gives you and hand it here.
+
+The Discord public key given at construction is imported once and reused across every call, the same lifetime
+`listen()` gives its own signing key.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['Request', 'https://developer.mozilla.org/en-US/docs/Web/API/Request']]}>
+
+The interaction request.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['FetchOptions', '/documentation/api/http-framework/interfaces/FetchOptions']]} defaultValue={'{}'}>
+
+The fetch options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### handleHttpMessage()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L249', label: 'packages/http-framework/src/lib/Client.ts:249' }}>
+
+<ApiSignature
+	tokens={[
+		'protected handleHttpMessage(\n  interaction: ',
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		' | ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		' | ',
+		['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction'],
+		' | ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		' | ',
+		['APIPingInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIPingInteraction'],
+		',\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		' | ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		' | ',
+		['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction'],
+		' | ',
+		['APIMessageComponentInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageComponentInteraction'],
+		' | ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		' | ',
+		['APIPingInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIPingInteraction']
+	]}
+/>
+
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### handleRawHttpMessage()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L212', label: 'packages/http-framework/src/lib/Client.ts:212' }}>
+
+<ApiSignature
+	tokens={[
+		'protected handleRawHttpMessage(\n  request: ',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		',\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		',\n  path: string,\n  key: CryptoKey\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage']]} />
+
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]} />
+
+<ApiParam name="path" type={['string']} />
+
+<ApiParam name="key" type={['CryptoKey']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### listen()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L167', label: 'packages/http-framework/src/lib/Client.ts:167' }}>
+
+<ApiSignature
+	tokens={[
+		'listen(options: ',
+		['ListenOptions', '/documentation/api/http-framework/interfaces/ListenOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Starts the HTTP server, listening for HTTP interactions.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ListenOptions', '/documentation/api/http-framework/interfaces/ListenOptions']]}>
+
+The listen options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### load()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L144', label: 'packages/http-framework/src/lib/Client.ts:144' }}>
+
+<ApiSignature
+	tokens={[
+		'load(options: ',
+		['LoadOptions', '/documentation/api/http-framework/interfaces/LoadOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Loads all the commands.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['LoadOptions', '/documentation/api/http-framework/interfaces/LoadOptions']]} defaultValue={'{}'}>
+
+The load options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### use()
+
+<ApiMember kind="method" badges={['static', 'since 2.4.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/Client.ts#L125', label: 'packages/http-framework/src/lib/Client.ts:125' }}>
+
+<ApiSignature
+	tokens={[
+		'static use(plugin: typeof ',
+		['Plugin', '/documentation/api/http-framework/classes/Plugin'],
+		'): typeof ',
+		['Client', '/documentation/api/http-framework/namespaces/Client']
+	]}
+/>
+
+Registers a plugin onto the [Client](/documentation/api/http-framework/classes/Client), applying all of its hooks.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="plugin" type={['typeof ', ['Plugin', '/documentation/api/http-framework/classes/Plugin']]}>
+
+The plugin to register.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['typeof ', ['Client', '/documentation/api/http-framework/namespaces/Client']]} />
+
+</ApiParams>
+
+</ApiMember>

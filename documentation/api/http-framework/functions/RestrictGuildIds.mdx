@@ -1,35 +1,60 @@
 ---
 title: 'Function: RestrictGuildIds()'
+description: 'Decorator that restricts the guild IDs for a command. (@wolfstar/http-framework)'
 hidden: true
 ---
 
-> **RestrictGuildIds**\<`Options`\>(`guildIds`): (`target`) => `void`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts:28](https://github.com/wolfstar-project/stars-components/blob/5aefd164bc5fc41e5a35d3abf908c288163dd354/packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts#L28)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts#L28',
+		label: 'packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts:28'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
 
 Decorator that restricts the guild IDs for a command.
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'RestrictGuildIds<Options extends PieceOptions = PieceOptions>(guildIds: readonly string[]): (target: typeof ',
+		['Command', '/documentation/api/http-framework/namespaces/Command'],
+		') => void'
+	]}
+/>
 
-### Options
+Decorator that restricts the guild IDs for a command.
 
-`Options` _extends_ [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions) = [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions)
+<ApiParams title="Type Parameters">
 
-## Parameters
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
 
-### guildIds
+</ApiParams>
 
-readonly `string`[]
+<ApiParams title="Parameters">
+
+<ApiParam name="guildIds" type={['readonly string[]']}>
 
 An array of guild IDs to restrict the command to.
 
-## Returns
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['(target: typeof ', ['Command', '/documentation/api/http-framework/namespaces/Command'], ') => void']}>
 
 A decorator function.
 
-(`target`) => `void`
+</ApiParam>
 
-## Example
+</ApiParams>
+
+**Example**
 
 ```typescript
 import { Command, RegisterCommand, RestrictGuildIds } from '@wolfstar/http-framework';

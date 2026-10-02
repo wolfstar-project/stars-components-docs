@@ -3,51 +3,148 @@ title: '@wolfstar/twitch-helpers'
 description: 'Generated API reference for @wolfstar/twitch-helpers: fetchStream, fetchUsers, fetchUserFollowage, EventSub subscription management, and checkSignature.'
 ---
 
-## Enumerations
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- [TwitchEventSubTypes](/documentation/api/twitch-helpers/enumerations/TwitchEventSubTypes)
-- [TwitchHelixBroadcasterType](/documentation/api/twitch-helpers/enumerations/TwitchHelixBroadcasterType)
-- [TwitchHelixUserType](/documentation/api/twitch-helpers/enumerations/TwitchHelixUserType)
+<ApiPackageHeader
+	name="@wolfstar/twitch-helpers"
+	version="2.0.8"
+	guideHref="/documentation/packages/twitch-helpers"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/twitch-helpers"
+/>
 
-## Interfaces
+<InstallPackage packages="@wolfstar/twitch-helpers" />
 
-- [TwitchEventSubResult](/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult)
-- [TwitchEventSubVerificationMessage](/documentation/api/twitch-helpers/interfaces/TwitchEventSubVerificationMessage)
-- [TwitchFetchUsersParameters](/documentation/api/twitch-helpers/interfaces/TwitchFetchUsersParameters)
-- [TwitchHelixBearerToken](/documentation/api/twitch-helpers/interfaces/TwitchHelixBearerToken)
-- [TwitchHelixGameSearchResult](/documentation/api/twitch-helpers/interfaces/TwitchHelixGameSearchResult)
-- [TwitchHelixOauth2Result](/documentation/api/twitch-helpers/interfaces/TwitchHelixOauth2Result)
-- [TwitchHelixResponse](/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse)
-- [TwitchHelixStreamsResult](/documentation/api/twitch-helpers/interfaces/TwitchHelixStreamsResult)
-- [TwitchHelixUserFollowsResult](/documentation/api/twitch-helpers/interfaces/TwitchHelixUserFollowsResult)
-- [TwitchHelixUsersSearchResult](/documentation/api/twitch-helpers/interfaces/TwitchHelixUsersSearchResult)
-- [TwitchOnlineEmbedData](/documentation/api/twitch-helpers/interfaces/TwitchOnlineEmbedData)
-- [TwitchVariables](/documentation/api/twitch-helpers/interfaces/TwitchVariables)
-
-## Type Aliases
-
-- [TwitchEventSubEvent](/documentation/api/twitch-helpers/type-aliases/TwitchEventSubEvent)
-- [TwitchEventSubOnlineEvent](/documentation/api/twitch-helpers/type-aliases/TwitchEventSubOnlineEvent)
-
-## Variables
-
-- [BaseUrlHelix](/documentation/api/twitch-helpers/variables/BaseUrlHelix)
-- [TwitchBrandingColor](/documentation/api/twitch-helpers/variables/TwitchBrandingColor)
-- [TwitchLogoUrl](/documentation/api/twitch-helpers/variables/TwitchLogoUrl)
-- [version](/documentation/api/twitch-helpers/variables/version)
-
-## Functions
-
-- [addEventSubscription](/documentation/api/twitch-helpers/functions/addEventSubscription)
-- [areTwitchClientCredentialsSet](/documentation/api/twitch-helpers/functions/areTwitchClientCredentialsSet)
-- [areTwitchEventSubCredentialsSet](/documentation/api/twitch-helpers/functions/areTwitchEventSubCredentialsSet)
-- [checkSignature](/documentation/api/twitch-helpers/functions/checkSignature)
-- [fetchBearer](/documentation/api/twitch-helpers/functions/fetchBearer)
-- [fetchStream](/documentation/api/twitch-helpers/functions/fetchStream)
-- [fetchUserFollowage](/documentation/api/twitch-helpers/functions/fetchUserFollowage)
-- [fetchUsers](/documentation/api/twitch-helpers/functions/fetchUsers)
-- [getCurrentTwitchSubscriptions](/documentation/api/twitch-helpers/functions/getCurrentTwitchSubscriptions)
-- [getHeaders](/documentation/api/twitch-helpers/functions/getHeaders)
-- [getRequest](/documentation/api/twitch-helpers/functions/getRequest)
-- [removeEventSubscription](/documentation/api/twitch-helpers/functions/removeEventSubscription)
-- [setVariables](/documentation/api/twitch-helpers/functions/setVariables)
+<ApiSymbolList
+	symbols={[
+		{ name: 'TwitchEventSubTypes', kind: 'enum', href: '/documentation/api/twitch-helpers/enumerations/TwitchEventSubTypes' },
+		{ name: 'TwitchHelixBroadcasterType', kind: 'enum', href: '/documentation/api/twitch-helpers/enumerations/TwitchHelixBroadcasterType' },
+		{ name: 'TwitchHelixUserType', kind: 'enum', href: '/documentation/api/twitch-helpers/enumerations/TwitchHelixUserType' },
+		{ name: 'TwitchEventSubResult', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchEventSubResult' },
+		{
+			name: 'TwitchEventSubVerificationMessage',
+			kind: 'interface',
+			href: '/documentation/api/twitch-helpers/interfaces/TwitchEventSubVerificationMessage'
+		},
+		{ name: 'TwitchFetchUsersParameters', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchFetchUsersParameters' },
+		{ name: 'TwitchHelixBearerToken', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchHelixBearerToken' },
+		{ name: 'TwitchHelixGameSearchResult', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchHelixGameSearchResult' },
+		{ name: 'TwitchHelixOauth2Result', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchHelixOauth2Result' },
+		{ name: 'TwitchHelixResponse', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchHelixResponse' },
+		{ name: 'TwitchHelixStreamsResult', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchHelixStreamsResult' },
+		{
+			name: 'TwitchHelixUserFollowsResult',
+			kind: 'interface',
+			href: '/documentation/api/twitch-helpers/interfaces/TwitchHelixUserFollowsResult'
+		},
+		{
+			name: 'TwitchHelixUsersSearchResult',
+			kind: 'interface',
+			href: '/documentation/api/twitch-helpers/interfaces/TwitchHelixUsersSearchResult'
+		},
+		{ name: 'TwitchOnlineEmbedData', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchOnlineEmbedData' },
+		{ name: 'TwitchVariables', kind: 'interface', href: '/documentation/api/twitch-helpers/interfaces/TwitchVariables' },
+		{ name: 'TwitchEventSubEvent', kind: 'type-alias', href: '/documentation/api/twitch-helpers/type-aliases/TwitchEventSubEvent' },
+		{ name: 'TwitchEventSubOnlineEvent', kind: 'type-alias', href: '/documentation/api/twitch-helpers/type-aliases/TwitchEventSubOnlineEvent' },
+		{
+			name: 'BaseUrlHelix',
+			kind: 'variable',
+			href: '/documentation/api/twitch-helpers/variables/BaseUrlHelix',
+			summary: 'The Base URL for the Twitch Helix API'
+		},
+		{
+			name: 'TwitchBrandingColor',
+			kind: 'variable',
+			href: '/documentation/api/twitch-helpers/variables/TwitchBrandingColor',
+			summary: 'The official Twitch purple colour'
+		},
+		{
+			name: 'TwitchLogoUrl',
+			kind: 'variable',
+			href: '/documentation/api/twitch-helpers/variables/TwitchLogoUrl',
+			summary: 'The official Twitch branding logo re-hosted on the Wolfstar CDN for consistent access'
+		},
+		{ name: 'version', kind: 'variable', href: '/documentation/api/twitch-helpers/variables/version' },
+		{
+			name: 'addEventSubscription',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/addEventSubscription',
+			summary: 'Adds a new Twitch subscription.'
+		},
+		{
+			name: 'areTwitchClientCredentialsSet',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/areTwitchClientCredentialsSet',
+			summary:
+				'Checks if the Twitch client credentials are set in the environment variables TWITCHCLIENTID and TWITCHCLIENTSECRET or in the variables set…'
+		},
+		{
+			name: 'areTwitchEventSubCredentialsSet',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/areTwitchEventSubCredentialsSet',
+			summary:
+				'Checks if the Twitch EventSub credentials are set in the environment variables TWITCHEVENTSUBSECRET and TWITCHEVENTSUBCALLBACK or in the va…'
+		},
+		{
+			name: 'checkSignature',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/checkSignature',
+			summary: 'This method can be used to verify the Twitch signature when receiving an event sub request.'
+		},
+		{
+			name: 'fetchBearer',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/fetchBearer',
+			summary: 'Fetches a Bearer token from the Twitch API.'
+		},
+		{
+			name: 'fetchStream',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/fetchStream',
+			summary: 'Retrieves the data of the current stream of a channel.'
+		},
+		{
+			name: 'fetchUserFollowage',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/fetchUserFollowage',
+			summary: 'Check if followerId follows streamerId and returns the followage data.'
+		},
+		{
+			name: 'fetchUsers',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/fetchUsers',
+			summary: 'Fetches the user data for lists of User IDs and/or login names.'
+		},
+		{
+			name: 'getCurrentTwitchSubscriptions',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/getCurrentTwitchSubscriptions',
+			summary: 'Retrieves the current Twitch subscriptions from the API.'
+		},
+		{
+			name: 'getHeaders',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/getHeaders',
+			summary: 'Retrieves the headers for a Twitch request'
+		},
+		{
+			name: 'getRequest',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/getRequest',
+			summary:
+				'A tiny wrapper around Json(safeFetch) that implements fetchBearer to set the proper headers and adds the BaseUrlHelix for the base path.'
+		},
+		{
+			name: 'removeEventSubscription',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/removeEventSubscription',
+			summary: 'Removes a Twitch subscription based on its ID.'
+		},
+		{
+			name: 'setVariables',
+			kind: 'function',
+			href: '/documentation/api/twitch-helpers/functions/setVariables',
+			summary: 'Sets the variables required to interact with the Twitch API.'
+		}
+	]}
+/>
