@@ -67,6 +67,47 @@ An interactive prompt was cancelled.
 **Fix:** pass `--yes` to delete them without prompting, or `--name` to pick a single command, when running from a
 script.
 
+## DEPLOY_CONFIRMATION_REQUIRED {#deploy_confirmation_required}
+
+`stars commands deploy` refuses to overwrite the deployed commands without a confirmation. It raises this outside a
+terminal, or with `--json`.
+
+**Fix:** pass `--yes` to deploy from a script or with `--json`.
+
+## COMMANDS_DIFFER {#commands_differ}
+
+`stars commands diff --check` found deployed commands that differ from the ones the project defines. The message
+includes how many differ.
+
+**Fix:** run `stars commands deploy` to deploy them.
+
+## LOCAL_COMMANDS_UNAVAILABLE {#local_commands_unavailable}
+
+`stars commands diff` or `stars commands deploy` could not read the commands the project defines. The message includes
+the reason, for example a project that is not built or a framework older than `@wolfstar/http-framework` 6.1.
+
+**Fix:** the message includes the fix for the reason it reports.
+
+## DOCTOR_FAILED {#doctor_failed}
+
+`stars doctor` found at least one failing check. The message includes how many checks failed, and the command exits
+with code `1`.
+
+**Fix:** follow the fix `stars doctor` prints under each failing check.
+
+## UNKNOWN_SHELL {#unknown_shell}
+
+`stars completions` was given a shell it has no completions for.
+
+**Fix:** use one of `bash`, `zsh`, or `fish`.
+
+## INVALID_OPTION {#invalid_option}
+
+`stars dev` was given an unknown value for `--layout` or `--level`.
+
+**Fix:** use one of the values the message lists. `--layout` accepts `auto`, `dashboard`, or `panel`. `--level`
+accepts `trace`, `debug`, `info`, `warn`, or `error`.
+
 ## INVALID_THEME {#invalid_theme}
 
 `stars dev` was given a theme it doesn't know.

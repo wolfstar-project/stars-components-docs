@@ -129,6 +129,14 @@ The tunnel URL isn't `https`.
 
 **Fix:** Discord only accepts an `https` interactions endpoint.
 
+## INVALID_CHOICE {#invalid_choice}
+
+An option limited to a fixed set of values received an unknown one: `dev.layout`, `dev.logs.levels`, or
+`dev.commands.refresh`. The message names the option path and the value it received.
+
+**Fix:** use one of the values the message lists. For example, `dev.layout` accepts `'auto'`, `'dashboard'`, or
+`'panel'`.
+
 ## INVALID_TYPECHECKER {#invalid_typechecker}
 
 The configured type checker is set to an unknown value.
