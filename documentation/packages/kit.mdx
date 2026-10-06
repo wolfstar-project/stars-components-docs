@@ -1,0 +1,181 @@
+---
+title: '@wolfstar/kit'
+description: 'defineModule and the module runtime for installable Stars modules that projects activate through modules in stars.config.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/kit
+```
+
+```bash pnpm
+pnpm add @wolfstar/kit
+```
+
+```bash yarn
+yarn add @wolfstar/kit
+```
+
+```bash bun
+bun add @wolfstar/kit
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/kit"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/kit"></Card>
+</CardGroup>
+
+## Description
+
+`@wolfstar/kit` provides `defineModule` and the runtime that installs Stars modules, the counterpart of `@nuxt/kit`.
+A module is a package that a project lists in `modules` in `stars.config`. While the [`stars` CLI](/documentation/packages/cli)
+loads the project, it installs each module. A module can register runtime plugins in the bot, add auto import
+presets, and hook into the CLI.
+
+`@wolfstar/kit` depends on [`@wolfstar/schema`](/documentation/packages/schema) only. A module declares it as a peer
+dependency without pulling in the framework or the CLI.
+
+## When to use it
+
+- Use `modules` in `stars.config` to activate a module, such as the [`@wolfstar/plugin-*` packages](/documentation/guide/plugins).
+  You do not import `@wolfstar/kit` yourself for this, but the plugin packages list it as an optional peer, so install
+  it in the project.
+- Depend on `@wolfstar/kit` when you write a package that should be installable from `stars.config`.
+
+## Activating modules
+
+List each module as a package specifier, or as a `[specifier, options]` tuple to pass options. Falsy entries are
+dropped, so `condition && 'some-module'` works:
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	modules: ['@wolfstar/plugin-cache/module', ['@wolfstar/plugin-logger/module', { level: 20 }]]
+});
+```
+
+The options are merged over the module's `defaults`: plain objects merge deeply, and arrays and other values replace
+the default. A package listed in `modules` is no longer activated through the `/register` import the CLI otherwise
+injects for `@wolfstar/plugin-*` packages.
+
+## Writing a module
+
+Export the module as the package's default export with `defineModule`. Like `definePlugin`, it is an identity helper
+that types the definition.
+
+```typescript
+// module.ts
+import { defineModule } from '@wolfstar/kit';
+
+export default defineModule<{ ttl: number }>({
+	meta: {
+		name: 'my-cache',
+		compatibility: { framework: '>=6.1.0' }
+	},
+	defaults: { ttl: 60_000 },
+	hooks: {
+		'build:done': (outcome) => {}
+	},
+	setup(options, ctx) {
+		ctx.addPlugin({ from: new URL('./plugin.js', import.meta.url), options });
+		ctx.addImports('my-cache');
+	}
+});
+```
+
+The runtime plugin is a regular [`definePlugin`](/documentation/packages/http-framework#plugins) export. When the
+export is a function, the module runtime calls it with the `options` given to `addPlugin`:
+
+```typescript
+// plugin.ts
+import { definePlugin } from '@wolfstar/http-framework';
+
+export default definePlugin((options: { ttl: number }) => ({
+	name: 'my-cache',
+	preLoad(client) {}
+}));
+```
+
+### Module definition
+
+| Property       | Description                                                                                                                                                      |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `meta`         | `name` (required, usually the package name), optional `version`, and `compatibility`. `configKey` is reserved.                                                   |
+| `defaults`     | Default options, merged under the options written in `stars.config`.                                                                                            |
+| `dependencies` | Modules (specifiers or definitions) installed before this one.                                                                                                   |
+| `hooks`        | `stars` CLI hooks, the same ones as `hooks` in `stars.config`. They are registered before `setup` runs. An unknown hook name or a non-function value fails the install with `MODULE_INVALID`. |
+| `setup`        | `setup(options, ctx)` runs once, in the CLI process, while the project loads.                                                                                    |
+
+`meta.compatibility.framework` is a semver range checked against the project's installed `@wolfstar/http-framework`,
+and `meta.compatibility.stars` against the running `@wolfstar/cli`. A mismatch fails the install early instead of
+leaving a plugin that never runs. A range is only checked when the CLI finds the version.
+
+A module is installed once, by `meta.name`. When two paths install the same module, the first installation wins,
+whatever options the second one passes.
+
+### The `setup` context
+
+| Member                             | Description                                                                                                                       |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `ctx.root`                         | The absolute project root.                                                                                                        |
+| `ctx.config`                       | The resolved `stars.config`, before any module contributed to it.                                                                 |
+| `ctx.versions`                     | The detected `framework` and `stars` versions, or `null` when unknown.                                                            |
+| `ctx.addPlugin(source)`            | Registers a runtime plugin with `Client.use` in the bot. See below.                                                               |
+| `ctx.addImports(preset)`           | Adds a package (a string or `{ from }`) to the auto imports presets, so all of its exports become auto imports.                   |
+| `ctx.hook(name, callback)`         | Registers a `stars` CLI hook.                                                                                                     |
+| `ctx.callHook(name, ...args)`      | Calls a `stars` CLI hook.                                                                                                         |
+| `ctx.installModule(module, opts?)` | Installs another module, given by specifier or definition, with optional options.                                                |
+
+The plugin runs in the bot's process, while `setup` runs in the CLI's. That is why `addPlugin` takes a plugin
+**source** instead of a plugin value: a string or URL, or `{ from, export?, options? }`.
+
+- `from` is a package specifier resolved from the project, an absolute path, or a `file:` URL such as
+  `new URL('./plugin.js', import.meta.url)`. A relative path is rejected, because it would resolve differently in each
+  build tool.
+- `export` names the export to use and defaults to `'default'`. When the export is a function, the runtime calls it as
+  a factory with `options`. A legacy `Plugin` class is passed to `Client.use` as it is, never called.
+- `options` must be JSON-serialisable, because the CLI writes it into the built entry.
+
+## Production with `tsc` or `none`
+
+The `tsdown`, `vite`, and Nitro builds register the runtime plugins through the bot's entry. The `tsc` and `none`
+build tools cannot transform the entry, so the plugins are preloaded with `node --import` instead:
+
+- `stars dev` preloads them for you.
+- `stars prepare` and `stars build` write `.stars/modules.mjs`. Start the production bot with it preloaded:
+
+```bash
+node --import ./.stars/modules.mjs dist/main.js
+```
+
+When `env` is enabled, `.stars/modules.mjs` imports `.stars/env.mjs` first, so the environment is loaded before any
+plugin is evaluated. `stars build`, `stars prepare`, and `stars info` report a
+[`MODULES_PRELOAD_REQUIRED`](/documentation/errors/cli#modules_preload_required) warning for such projects.
+
+## Errors
+
+When a module cannot be installed, `@wolfstar/kit` throws a `ModuleError`. Its `moduleName` is the module's
+`meta.name`, or the specifier it was listed by, and its `code` is one of:
+
+| Code                    | Cause                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| `MODULE_LOAD_FAILED`    | The module's package could not be imported from the project.                           |
+| `MODULE_INVALID`        | The default export has no `meta.name`, `setup` is not a function, or a `hooks` entry has an unknown name or a non-function value. |
+| `MODULE_INCOMPATIBLE`   | A `meta.compatibility` range does not match the installed versions.                     |
+| `MODULE_SETUP_FAILED`   | `setup` threw or rejected.                                                              |
+| `MODULE_PLUGIN_INVALID` | `addPlugin` got no `from`, a relative path, or options that are not JSON-serialisable.  |
+
+The `stars` CLI reports a failing module as a [`MODULE_FAILED`](/documentation/errors/cli#module_failed) diagnostic
+and exits with code `2`.
+
+## Programmatic usage
+
+`setupModules({ config, hooks, load, versions })` is the function the CLI calls. `load` imports a specifier from the
+project, and `hooks` is a `hookable`-shaped registry. The result, a `ModulesRuntime`, lists the installed modules and
+the runtime plugins and import presets they contributed. `mergeOptions(defaults, options)` exposes the merge used for
+module options.

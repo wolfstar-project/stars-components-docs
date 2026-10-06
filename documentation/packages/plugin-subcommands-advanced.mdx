@@ -77,6 +77,31 @@ const client = new Client({
 });
 ```
 
+### Activating with `modules`
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: ['@wolfstar/plugin-subcommands-advanced/module']
+});
+```
+
+The module takes no options. Configure the package through `ClientOptions.subcommandsAdvanced`, as shown above.
+
+Without the `stars` CLI, pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the
+`plugins` client option:
+
+```ts
+import subcommandsPlugin from '@wolfstar/plugin-subcommands-advanced/plugin';
+
+const client = new Client({ plugins: [subcommandsPlugin()] });
+```
+
+Use only one of the module, the `./plugin` factory, and `register`. Combining them installs the plugin's hooks twice.
+
 Recommended layout:
 
 ```text

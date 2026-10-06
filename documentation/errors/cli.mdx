@@ -14,7 +14,7 @@ happened, and — when there's something you can do about it — a concrete fix.
 | --------- | ---------------------------------------------------------------------------------- |
 | `0`       | Success                                                                            |
 | `1`       | Generic error                                                                      |
-| `2`       | Invalid `stars.config.*` (any [configuration error](/documentation/errors/config)) |
+| `2`       | Invalid `stars.config.*` (any [configuration error](/documentation/errors/config)) or `MODULE_FAILED` |
 | `3`       | `BUILD_FAILED`                                                                     |
 | `130`     | Interrupted (`Ctrl+C`)                                                             |
 | `143`     | Terminated                                                                         |
@@ -88,3 +88,26 @@ A dependency the current configuration needs (for example `tsdown` or `vite`) is
 ## CODEGEN_FAILED {#codegen_failed}
 
 `i18next-type-generator` exited with a non-zero code, optionally with its `stderr` output attached.
+
+## MODULE_FAILED {#module_failed}
+
+A module listed in `modules` in `stars.config` could not be installed. The message carries the underlying
+[`ModuleError`](/documentation/packages/kit#errors) code and the module's name. Exits with code `2`.
+
+**Fix:** depends on the underlying code:
+
+- `MODULE_LOAD_FAILED`: install the module in the project, or fix its specifier in `modules`.
+- `MODULE_INCOMPATIBLE`: update the module or `@wolfstar/http-framework` so their versions match.
+- `MODULE_INVALID`: export the module with `defineModule` from `@wolfstar/kit` as the default export.
+- `MODULE_PLUGIN_INVALID`: pass `ctx.addPlugin` a package specifier, an absolute path or a `file:` URL, and
+  JSON-serialisable options.
+- Otherwise: fix the error the module threw (see the cause), or remove it from `modules`.
+
+## MODULES_PRELOAD_REQUIRED {#modules_preload_required}
+
+A warning from `stars build`, `stars prepare`, and `stars info`. The project uses the `tsc` or `none` build tool and
+its modules add runtime plugins. Those plugins are registered through `node --import`, which only `stars dev` does for
+you.
+
+**Fix:** start the production bot with `node --import ./.stars/modules.mjs <entry>`. `stars prepare` and `stars build`
+write that file.

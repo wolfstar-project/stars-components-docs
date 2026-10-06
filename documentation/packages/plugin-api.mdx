@@ -74,6 +74,33 @@ await client.load();
 await client.listen({ port: 8080 }); // interactions webhook; the API server starts right after
 ```
 
+### Activating with `modules`
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: [['@wolfstar/plugin-api/module', { prefix: 'v1', listenOptions: { port: 4000 } }]]
+});
+```
+
+Module options must be JSON-serialisable. Set anything else, such as `server` options holding functions, through `ClientOptions.api`, which is merged over the module options.
+
+Without the `stars` CLI, pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the
+`plugins` client option:
+
+```ts
+import apiPlugin from '@wolfstar/plugin-api/plugin';
+
+const client = new Client({
+	plugins: [apiPlugin({ prefix: 'v1', listenOptions: { port: 4000 } })]
+});
+```
+
+Use only one of the module, the `./plugin` factory, and `register`. Combining them installs the plugin's hooks twice.
+
 `container.server` is the running `Server`. It is an `AsyncEventEmitter` (see [Events](#events)).
 
 The package also exports `version`, a string with the installed `@wolfstar/plugin-api` version:
