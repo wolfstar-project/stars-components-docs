@@ -1,0 +1,209 @@
+---
+title: '@wolfstar/plugin-scheduled-tasks'
+description: 'Schedule one-off and repeated tasks for HTTP Framework bots, stored in Redis and run by BullMQ.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-scheduled-tasks @wolfstar/kit
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-scheduled-tasks @wolfstar/kit
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-scheduled-tasks @wolfstar/kit
+```
+
+```bash bun
+bun add @wolfstar/plugin-scheduled-tasks @wolfstar/kit
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-scheduled-tasks"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-scheduled-tasks"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+`@wolfstar/plugin-scheduled-tasks` runs tasks later or on a schedule, such as unmuting a member in an hour or sending a
+report every morning. It is the counterpart of
+[`@sapphire/plugin-scheduled-tasks`](https://www.npmjs.com/package/@sapphire/plugin-scheduled-tasks) for
+[`@wolfstar/http-framework`](/documentation/packages/http-framework).
+
+Tasks are pieces. [BullMQ](https://docs.bullmq.io/) stores their jobs in Redis, so jobs survive a restart and every
+process of the bot shares them.
+
+The plugin requires `@wolfstar/http-framework` 6.1.0 or later and a Redis server.
+
+## Registering the plugin
+
+With the `stars` CLI, list the package in `modules`:
+
+```ts stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	modules: [
+		[
+			'@wolfstar/plugin-scheduled-tasks',
+			{ queue: 'tasks', bull: { connection: { host: 'localhost', port: 6379 } } }
+		]
+	]
+});
+```
+
+The CLI writes options from `stars.config` into the built entry, so they must be JSON-serializable.
+
+Without the CLI, or to pass an `ioredis` instance, give the plugin to the client:
+
+```ts
+import { Client } from '@wolfstar/http-framework';
+import { scheduledTasks } from '@wolfstar/plugin-scheduled-tasks';
+
+const client = new Client({
+	plugins: [scheduledTasks({ bull: { connection: { host: 'localhost', port: 6379 } } })]
+});
+```
+
+`ClientOptions.tasks` is merged over the plugin's options, so you can also set the connection there:
+
+```ts
+import { Client } from '@wolfstar/http-framework';
+import { scheduledTasks } from '@wolfstar/plugin-scheduled-tasks';
+import { Redis } from 'ioredis';
+
+const client = new Client({
+	plugins: [scheduledTasks()],
+	tasks: {
+		bull: { connection: new Redis(process.env.REDIS_URL!, { maxRetriesPerRequest: null }) }
+	}
+});
+```
+
+Use either `modules` or `plugins`, not both. Registering the plugin twice runs its hooks twice and starts two workers on
+the same queue. The `@wolfstar/plugin-scheduled-tasks/register` entrypoint exists for the CLI and does nothing.
+
+If no `bull.connection` is set in either place, the plugin throws a `TypeError` when the client initializes.
+
+| Option               | Default             | Description                                                                         |
+| -------------------- | ------------------- | ----------------------------------------------------------------------------------- |
+| `bull`               | —                   | BullMQ's `QueueOptions`. `bull.connection` is required and the worker also uses it. |
+| `queue`              | `"scheduled-tasks"` | The name of the BullMQ queue.                                                       |
+| `loadErrorListeners` | `true`              | Load the listeners that log task and connection errors through `container.logger`.  |
+
+In `ClientOptions`, `tasks` accepts `bull` and `queue`, and `loadScheduledTaskErrorListeners` overrides
+`loadErrorListeners`.
+
+## Writing a task
+
+A task is a piece of the `scheduled-tasks` store, placed in the `scheduled-tasks` directory:
+
+```ts src/scheduled-tasks/unmute.ts
+import { ScheduledTask } from '@wolfstar/plugin-scheduled-tasks';
+
+export class UnmuteTask extends ScheduledTask<'unmute'> {
+	public override async run(payload: { guildId: string; userId: string }) {
+		// ...
+	}
+}
+
+declare module '@wolfstar/plugin-scheduled-tasks' {
+	interface ScheduledTasks {
+		unmute: { guildId: string; userId: string };
+	}
+}
+```
+
+The `ScheduledTasks` interface types the payload everywhere. Use `never` for a task without a payload, and a union with
+`undefined` for an optional one.
+
+## Scheduling a task
+
+```ts
+import { container } from '@wolfstar/http-framework';
+
+// Run in one hour
+await container.tasks.create({ name: 'unmute', payload: { guildId, userId } }, 3_600_000);
+```
+
+`create` returns the BullMQ job. The second argument is either a delay in milliseconds or an options object with
+`delay`, `interval`, or `pattern` and `timezone`, plus optional `customJobOptions`.
+
+| Method                      | Description                                                       |
+| --------------------------- | ----------------------------------------------------------------- |
+| `create(task, options?)`    | Schedules a task and returns its BullMQ job.                      |
+| `get(id)`                   | Returns a job by its ID.                                          |
+| `list({ types })`           | Lists jobs in the given BullMQ states.                            |
+| `delete(id)`                | Removes a job. It does not stop a repeated task.                  |
+| `listRepeated()`            | Lists the repeated tasks' job schedulers.                         |
+| `deleteRepeated(name)`      | Removes the job scheduler of a repeated task.                     |
+| `close()`                   | Closes the queue and waits for the worker to finish its task.     |
+
+`container.tasks.client` is the BullMQ `Queue` itself.
+
+## Repeated tasks
+
+A task with an `interval` in milliseconds or a cron `pattern` is scheduled when the client starts listening:
+
+```ts src/scheduled-tasks/report.ts
+import { ScheduledTask } from '@wolfstar/plugin-scheduled-tasks';
+
+export class ReportTask extends ScheduledTask<'report'> {
+	public constructor(context: ScheduledTask.LoaderContext) {
+		super(context, { pattern: '0 8 * * *', timezone: 'Europe/Rome' });
+	}
+
+	public override run() {
+		// Every day at 08:00
+	}
+}
+
+declare module '@wolfstar/plugin-scheduled-tasks' {
+	interface ScheduledTasks {
+		report: never;
+	}
+}
+```
+
+`timezone` defaults to `UTC`. A repeated task is a BullMQ [job scheduler](https://docs.bullmq.io/guide/job-schedulers)
+named after the task. Changing the `pattern` or `interval` in your code replaces its schedule on the next start.
+
+Deleting the piece does not delete the scheduler from Redis. Remove it with `container.tasks.deleteRepeated('report')`,
+and list existing schedulers with `container.tasks.listRepeated()`.
+
+## Events
+
+The client emits these events, whose names are in `ScheduledTaskEvents`:
+
+- `scheduledTaskRun`, `scheduledTaskSuccess`, `scheduledTaskError`, `scheduledTaskFinished`, and
+  `scheduledTaskNotFound` around every run.
+- `scheduledTaskStrategyConnectError`, `scheduledTaskStrategyClientError`, and `scheduledTaskStrategyWorkerError` for
+  Redis and BullMQ failures.
+
+A task that throws fails its job. BullMQ retries the job according to its `attempts`, which you set with
+`customJobOptions`.
+
+## Shutting down
+
+```ts
+await container.tasks.close();
+```
+
+## Differences from `@sapphire/plugin-scheduled-tasks`
+
+- It runs on BullMQ 6, where repeated tasks are job schedulers. `listRepeated()` returns `JobSchedulerJson[]`, and
+  `deleteRepeated(name)` is new.
+- The worker starts once the pieces are loaded rather than when the handler is constructed. A job is never taken before
+  its task exists.
+- `ClientOptions.tasks` is optional, since you can give the options to the plugin instead.
+
+[![version](https://npmx.dev/api/registry/badge/version/@wolfstar/plugin-scheduled-tasks)](https://npmx.dev/package/@wolfstar/plugin-scheduled-tasks)
+[![downloads](https://npmx.dev/api/registry/badge/downloads/@wolfstar/plugin-scheduled-tasks)](https://npmx.dev/package/@wolfstar/plugin-scheduled-tasks)
+[![license](https://img.shields.io/github/license/wolfstar-project/plugins?style=flat-square&color=informational)](https://github.com/wolfstar-project/plugins/blob/main/LICENSE)
