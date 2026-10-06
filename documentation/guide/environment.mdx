@@ -5,9 +5,27 @@ description: Load and parse typed environment variables with @wolfstar/env-utili
 
 `@wolfstar/env-utilities` loads layered dotenv files and provides strict parsers for application configuration.
 
+## Load with stars.config
+
+With compatibility version 5, the default, `stars` loads your environment for you. When your project depends on `@wolfstar/env-utilities`, `stars` calls `setup()` as the very first import of the built entry, before plugin registrations and your own modules. Projects that build with `tsdown` or Vite no longer need to call `setup()` by hand.
+
+Pass `setup()` options through the `env` option of `stars.config`:
+
+```typescript stars.config.ts
+export default defineConfig({
+	env: { prefix: 'BOT_', loader: 'varlock' }
+});
+```
+
+- `env: false` turns the automatic registration off. Projects that build with `tsc`, and JavaScript projects, set `env: false` and keep calling `setup()` themselves.
+- `env: true`, or any option, turns it on.
+- The registration stays off when `experimental.enableNitro` is set.
+
+See [Compatibility version](/documentation/packages/http-framework#compatibility-version) for the other defaults of each version.
+
 ## Load Dotenv Files
 
-Use the side-effect entry point when the default `.env` path is enough:
+Outside the automatic `stars.config` registration, use the side-effect entry point when the default `.env` path is enough:
 
 ```typescript
 import '@wolfstar/env-utilities/setup';
@@ -30,6 +48,16 @@ The loader applies environment-specific files with the most specific value first
 
 `.env.local` is intentionally skipped in the test environment.
 
+## Choose a Loader
+
+`setup()` needs no extra package. It picks a loader in this order:
+
+1. `varlock`: when the project has a varlock schema (`src/.env.schema`, `.env.schema`, or a `varlock.loadPath` in `package.json`).
+2. `dotenv`: when the optional `dotenv` and `dotenv-expand` peer dependencies are installed.
+3. `node`: otherwise. It parses files with Node.js' `util.parseEnv` and requires Node.js 20.12 or newer.
+
+Set the `loader` option or `DOTENV_LOADER` to choose one yourself. See [Loaders](/documentation/packages/env-utilities#loaders) for details.
+
 ## Type Application Keys
 
 Augment the package's `Env` interface so parsers accept your keys:
@@ -46,6 +74,19 @@ declare module '@wolfstar/env-utilities' {
 }
 ```
 
+With a varlock schema, derive `Env` from the types varlock generates instead of declaring each key again:
+
+```typescript
+import type { CoercedEnvSchema } from './env';
+import type { EnvFromVarlock } from '@wolfstar/env-utilities/varlock';
+
+declare module '@wolfstar/env-utilities' {
+	interface Env extends EnvFromVarlock<CoercedEnvSchema> {}
+}
+```
+
+You can also read varlock's already-coerced values through the `env` export of `@wolfstar/env-utilities/varlock`. See [With a varlock schema](/documentation/packages/env-utilities#with-a-varlock-schema).
+
 ## Parse Values
 
 ```typescript
@@ -60,5 +101,5 @@ Missing required keys throw `ReferenceError`. Invalid values throw `TypeError`. 
 
 ## Configure the Loader Itself
 
-You can set `DOTENV_PATH`, `DOTENV_ENV`, `DOTENV_PREFIX`, `DOTENV_ENCODING`, and `DOTENV_DEBUG` before setup. Keep secrets
+You can set `DOTENV_PATH`, `DOTENV_ENV`, `DOTENV_PREFIX`, `DOTENV_ENCODING`, `DOTENV_DEBUG`, and `DOTENV_LOADER` before setup. Keep secrets
 outside source control and configure them through your deployment platform.
