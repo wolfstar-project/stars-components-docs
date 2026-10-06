@@ -91,8 +91,8 @@ import type { StarsConfig, ResolvedStarsConfig, BuilderContext } from '@wolfstar
 ### Default auto imports presets
 
 When a project does not set `imports.presets`, `@wolfstar/schema` resolves it to `@wolfstar/http-framework`,
-[`@wolfstar/decorators`](/documentation/packages/decorators), and `@wolfstar/env-utilities`. Presets that are not
-installed in the project are skipped when auto imports are generated. The resolved list is available on
+[`@wolfstar/decorators`](/documentation/packages/decorators), and `@wolfstar/env-utilities`. Auto import generation
+skips presets that are not installed in the project. The resolved list is available on
 `config.imports.presets`:
 
 ```typescript

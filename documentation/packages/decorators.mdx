@@ -43,16 +43,16 @@ interactions, or check user and application permissions before a method runs.
 `@wolfstar/http-framework` is a peer dependency, so install both packages. The decorators use the legacy
 (`experimentalDecorators`) decorator semantics, like the `Register*` decorators of the framework.
 
-Projects that use the `stars` CLI's auto imports get every export of `@wolfstar/decorators` without an explicit
-`import` once the package is installed, because `@wolfstar/decorators` is one of the default `imports.presets`. See
-the [CLI guide](/documentation/packages/cli#auto-imports).
+`@wolfstar/decorators` is one of the default `imports.presets`. If your project uses the `stars` CLI's auto imports, you
+get every export of `@wolfstar/decorators` without an explicit `import` once the package is installed. See the
+[CLI guide](/documentation/packages/cli#auto-imports).
 
 ## Usage
 
 ### `ApplyOptions`
 
-Sets the options of any `Piece` — `Command`, `Listener`, or `InteractionHandler` — without writing a constructor. The
-decorator's values are merged on top of the options the piece is constructed with, so they win on conflicting keys.
+Sets the options of any `Piece` (`Command`, `Listener`, or `InteractionHandler`) without writing a constructor. The
+decorator merges its values on top of the options the piece is constructed with, so they win on conflicting keys.
 
 ```typescript
 import { ApplyOptions } from '@wolfstar/decorators';
@@ -74,17 +74,17 @@ It also accepts a function, which receives the loader context:
 export class UserCommand extends Command {}
 ```
 
-> **Note**: `ApplyOptions` returns a `Proxy` wrapping the class, so it must be applied above (outside of) any other class
-> decorator that keys metadata by class identity, such as `RegisterCommand` — as in the example above. A decorator
-> applied above `ApplyOptions` would run after it and register against the proxy, but instances constructed from the
-> exported class still resolve `.constructor` to the original, unproxied class, so that metadata could never be found.
+> **Note**: `ApplyOptions` returns a `Proxy` wrapping the class. Apply it above (outside of) any other class decorator
+> that keys metadata by class identity, such as `RegisterCommand`, as in the example above. A decorator applied above
+> `ApplyOptions` would run after it and register against the proxy. Instances constructed from the exported class still
+> resolve `.constructor` to the original, unproxied class, so the framework could never find that metadata.
 > The `wolfstar/apply-options-decorator-order` rule of `@wolfstar/eslint-plugin-http-framework` enforces this.
 
 ### `RequiresGuildContext` / `RequiresDMContext`
 
 Restrict a method to interactions received from a guild, or to interactions received outside of one (DMs and
-user-installed app contexts). Both take an optional fallback that receives the same arguments as the decorated method;
-without one, the method is silently skipped and resolves to `undefined`.
+user-installed app contexts). Both take an optional fallback that receives the same arguments as the decorated method.
+Without a fallback, the decorator silently skips the method, which resolves to `undefined`.
 
 ```typescript
 import { RequiresGuildContext } from '@wolfstar/decorators';
@@ -120,10 +120,11 @@ export class UserCommand extends Command {
 }
 ```
 
-When the check fails, a `PreconditionError` is thrown, identified by `Identifiers.PreconditionUserPermissions` or
-`Identifiers.PreconditionClientPermissions`, with `context: { missing, missingNames }` describing the missing
-permissions. Errors thrown from a command are emitted as `commandError` (and as `interactionHandlerError` for
-interaction handlers), which is the idiomatic place to turn them into a user-facing reply:
+When the check fails, the decorator throws a `PreconditionError`. Its identifier is
+`Identifiers.PreconditionUserPermissions` or `Identifiers.PreconditionClientPermissions`, and its
+`context: { missing, missingNames }` describes the missing permissions. The framework emits errors thrown from a command
+as `commandError` (and as `interactionHandlerError` for interaction handlers). Listen to these events to turn the errors
+into a user-facing reply:
 
 ```typescript
 import { ApplyOptions } from '@wolfstar/decorators';
@@ -170,9 +171,9 @@ export class UserCommand extends Command {
 }
 ```
 
-> **Note**: `Enumerable` installs a setter on the prototype, which is bypassed by the `Object.defineProperty` call that
-> `useDefineForClassFields` (enabled by `@sapphire/ts-config`, and the default from `ES2022` onwards) emits for class
-> fields. Mark the field as `declare` so no field definition is emitted, and assign it in the constructor.
+> **Note**: `Enumerable` installs a setter on the prototype. `useDefineForClassFields` (enabled by `@sapphire/ts-config`,
+> and the default from `ES2022` onwards) emits an `Object.defineProperty` call for class fields, which bypasses that
+> setter. Mark the field as `declare` so no field definition is emitted, and assign it in the constructor.
 
 ### Building your own decorators
 

@@ -216,8 +216,8 @@ With the `tsdown` build tool, `stars` wires the `autoImports()` plugin into the 
 package in `imports.presets` are usable without an `import` statement. The default presets are
 `@wolfstar/http-framework`, [`@wolfstar/decorators`](/documentation/packages/decorators), and
 `@wolfstar/env-utilities`. `stars` scans each preset from the project's own `node_modules` and skips packages that are
-not installed, so `ApplyOptions` and the other decorators are auto-imported once you add `@wolfstar/decorators` to
-your dependencies.
+not installed. Once you add `@wolfstar/decorators` to your dependencies, `ApplyOptions` and the other decorators are
+auto-imported.
 
 ```typescript
 // stars.config.ts
