@@ -398,7 +398,9 @@ export default defineConfig({
 
 If the configuration cannot be migrated in one step, temporarily keep the old file with
 `future: { compatibilityVersion: 3 }`. In this legacy mode, Stars loads the standalone config and merges the
-`stars.config.ts` `tsdown` block over it. Remove the old file and the compatibility override together when finished.
+`stars.config.ts` `tsdown` block over it. Version 3 is end-of-life: every command prints a
+`COMPATIBILITY_VERSION_EOL` warning, and the next major removes it. Remove the old file and the compatibility override
+together when finished.
 
 ### The New Framework Subpaths
 
