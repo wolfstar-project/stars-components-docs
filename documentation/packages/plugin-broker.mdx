@@ -147,6 +147,80 @@ const stopForwarding = forwardGatewayDispatches(gatewayClient, broker, {
 });
 ```
 
+For a `GatewayClient`, each entry also carries the previous state of the dispatch's entity (for example, the cached
+message a `MESSAGE_UPDATE` replaces), the shard that received the dispatch, and its gateway sequence number.
+
+## Replaying gateway dispatches on workers
+
+`replayGatewayDispatches(consumer, client)` replays the dispatches `forwardGatewayDispatches` publishes on a worker's own
+`GatewayClient`, which never connects to Discord. The worker's `EventGatewayListener` pieces receive the same events,
+with the same structures and `old` arguments, as if the dispatch happened in-process. Use it when you want to run
+gateway listeners on workers instead of on the process connected to Discord.
+
+Both clients must use the same [`@wolfstar/plugin-cache`](/documentation/packages/plugin-cache) Redis cache.
+
+```ts
+import { BrokerConsumer, createBroker, forwardGatewayDispatches, replayGatewayDispatches } from '@wolfstar/plugin-broker';
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { GatewayDispatchEvents } from 'discord-api-types/v10';
+
+// Gateway process
+const gatewayClient = new GatewayClient({ ...options, cache: redisCache });
+const broker = createBroker({ redis, stream: 'wolfstar:events' });
+forwardGatewayDispatches(gatewayClient, broker);
+await gatewayClient.start();
+
+// Worker: same cache, never connected
+const worker = new GatewayClient({ ...options, cache: redisCache });
+const consumer = new BrokerConsumer({
+	redis,
+	stream: 'wolfstar:events',
+	group: 'workers',
+	consumer: 'worker-1'
+});
+const stopReplaying = replayGatewayDispatches(consumer, worker, {
+	events: [GatewayDispatchEvents.MessageUpdate] // omit to replay every type the client handles
+});
+await consumer.start();
+```
+
+A worker's `messageUpdate` listener receives the message as it was before the edit. The gateway process ships that
+previous state with the dispatch as raw API data, and the worker rebuilds it. Relations of the previous state (author,
+guild, and so on) resolve from the cache when the worker handles the entry, so they can be newer than the dispatch.
+`raw` listeners receive the same payload (`op`, `s`, `t`, `d`) on both sides.
+
+`replayGatewayDispatches` does not replay `READY`, `INTERACTION_CREATE`, or shard lifecycle events (`shardReady`,
+`shardClose`, and so on). A worker's `client.user` stays `null`.
+
+### Acknowledgement and ordering
+
+An entry is acknowledged once its listeners have resolved, async ones included. A worker listener that throws or
+rejects leaves the entry pending for redelivery.
+
+A failure applies to the whole entry, not to a single listener. When one of several listeners of an event throws, the
+redelivery runs the listeners that already succeeded again. A connected `GatewayClient` would not do this.
+
+<Warning>
+	Keep worker listeners idempotent, and enqueue slow work instead of awaiting it. A consumer handles one entry at a
+	time, and another worker can claim an entry pending for longer than `claimIdle` while it still runs.
+</Warning>
+
+Ordering holds per consumer, not across the consumer group. Workers in one group take different entries and run them
+concurrently, so two events of the same guild can replay out of order across workers. The cached relations a listener
+resolves can also differ from the gateway process's. The previous state shipped with each entry is a snapshot, so `old`
+stays correct.
+
+### Entry fields
+
+Stream entries can carry optional `state`, `shard`, and `sequence` fields next to `event` and `payload`. Pass them to
+`broker.publish` as a third `options` argument. `state` is encoded with the configured codec, like the payload.
+Listeners read them from `BrokerMessage.state`, `BrokerMessage.shard`, and `BrokerMessage.sequence`. Entries without
+these fields, and consumers that ignore them, work as before.
+
+```ts
+await broker.publish('MESSAGE_UPDATE', payload, { state: previousMessage, shard: 0, sequence: 42 });
+```
+
 ## BrokerListener piece
 
 A `BrokerListener` piece, typed by event name, is loaded from the `listeners` directory. Augment `BrokerEvents` in your
