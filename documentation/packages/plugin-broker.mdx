@@ -82,6 +82,33 @@ const client = new Client({
 });
 ```
 
+## Activating with `modules`
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: [['@wolfstar/plugin-broker/module', { stream: 'wolfstar:events', group: 'workers' }]]
+});
+```
+
+Module options must be JSON-serialisable. `redis` is a client instance and `consumer` is per process, so set both through `ClientOptions.broker`, which is shallow-merged over the module options. `ClientOptions.broker` is currently typed as the full `BrokerConsumerOptions`, so it must still include `stream` and `group`.
+
+Without the `stars` CLI, pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the
+`plugins` client option:
+
+```ts
+import brokerPlugin from '@wolfstar/plugin-broker/plugin';
+
+const client = new Client({
+	plugins: [brokerPlugin({ redis, stream: 'wolfstar:events', group: 'workers', consumer: 'w1' })]
+});
+```
+
+Use only one of the module, the `./plugin` factory, and `register`. Combining them installs the plugin's hooks twice.
+
 ## Delivery guarantees
 
 An entry is acknowledged once every listener for its event has resolved. A listener that throws leaves the entry

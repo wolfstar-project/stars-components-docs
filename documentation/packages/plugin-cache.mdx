@@ -77,6 +77,20 @@ const guild = await cache.guilds?.get(guildId);
 drops every entity of that guild. Reactions and poll votes update the cached message. Pass the bot's user ID as
 `clientUserId` so the `me` flags are right.
 
+## Stars module
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` to add the package to the auto
+imports. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: ['@wolfstar/plugin-cache/module']
+});
+```
+
+The module registers no plugin and takes no options. `@wolfstar/plugin-gateway` still constructs the cache.
+
 ## Redis
 
 `createRedisCache` takes any client that exposes the commands it needs, which an [`ioredis`](https://github.com/redis/ioredis)

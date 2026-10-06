@@ -58,6 +58,20 @@ Unlike most plugins, `@wolfstar/plugin-gateway` is a library. Its `@wolfstar/plu
 only so the [Stars CLI](/documentation/packages/cli) build can import it like every other plugin, and it does nothing.
 You opt in to the gateway by constructing a `GatewayClient` instead of the framework's `Client`.
 
+## Stars module
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` to add the package to the auto
+imports. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: ['@wolfstar/plugin-gateway/module']
+});
+```
+
+The module registers no plugin and takes no options. You still construct the `GatewayClient` yourself.
+
 ## Usage
 
 Create a `GatewayClient` where you would create the framework's `Client`, then call `start()`. It loads your pieces,

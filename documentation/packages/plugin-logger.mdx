@@ -63,6 +63,31 @@ container.logger.info('Ready');
 
 Without further configuration the logger writes to `console`, like the framework's built-in one.
 
+### Activating with `modules`
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: [['@wolfstar/plugin-logger/module', { level: 20 }]]
+});
+```
+
+Module options must be JSON-serialisable. Transports are objects, so set them through `ClientOptions.logger.transports`.
+
+Without the `stars` CLI, pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the
+`plugins` client option:
+
+```ts
+import loggerPlugin from '@wolfstar/plugin-logger/plugin';
+
+const client = new Client({ plugins: [loggerPlugin({ level: LogLevel.Debug })] });
+```
+
+Use only one of the module, the `./plugin` factory, and `register`. Combining them installs the plugin's hooks twice.
+
 ## Transports
 
 A transport is any object implementing `Transport`:
