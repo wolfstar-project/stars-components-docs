@@ -486,8 +486,8 @@ into the project's own `vite.config.*`, the way `vite: {}` in a Nuxt config is.
 
 ### Compatibility version
 
-`future.compatibilityVersion` selects the build-default generation. Version 5 is the default and version 4 remains
-supported. Version 3 is end-of-life. It still works for projects that have a standalone `tsdown.config.*`, but every
+`future.compatibilityVersion` selects the build-default generation. Version 6 is the default, and versions 5 and 4
+remain supported. Version 3 is end-of-life. It still works for projects that have a standalone `tsdown.config.*`, but every
 command prints a [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and
 the next major removes it.
 
@@ -503,7 +503,8 @@ export default defineConfig({
 | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for                                                                |
 | `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript; [`env`](#environment-env) is opt-in |
-| `5` (default) | Everything in `4`, plus [`env`](#environment-env) registered automatically when the project depends on `@wolfstar/env-utilities`                         |
+| `5`           | Everything in `4`, plus [`env`](#environment-env) registered automatically when the project depends on `@wolfstar/env-utilities`                         |
+| `6` (default) | Everything in `5`, plus the generated TypeScript configuration split in two: `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`                  |
 
 From version 4 on:
 
@@ -518,6 +519,12 @@ From version 4 on:
 
 Version 5 adds one thing: **`stars` registers the environment for you.** It calls `setup()` from
 `@wolfstar/env-utilities` before any module of the bot runs, so the bot no longer loads its `.env*` files by hand.
+
+Version 6 splits the generated TypeScript configuration. `stars prepare` writes `.stars/tsconfig.app.json` for the
+bot sources and `.stars/tsconfig.node.json` for root files such as `stars.config.*`, instead of a single
+`.stars/tsconfig.json`. The project's own `tsconfig.json` becomes a solution-style file that references both. A
+`tsdown` build defaults `build.tsconfig` to the app config. Pin `5` or `4` to keep the single
+`.stars/tsconfig.json`. See [generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).
 
 `stars info` prints the version in effect, and any warning about it.
 

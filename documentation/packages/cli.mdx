@@ -242,7 +242,8 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
 | `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript           |
-| `5` (default) | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                  |
+| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                  |
+| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`          |
 
 Version 3 is end-of-life. It still works, but every command prints a
 [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and the next major
@@ -319,13 +320,37 @@ package.json imports, and ESNext/DOM libraries. Use `import type` and `export ty
 These options apply to tsdown and Vite; tsc keeps its emit-compatible settings. Sapphire's decorator options and
 the ES2022 target remain in effect. This does not enable Stars' experimental Nitro runtime integration.
 
-Run `stars prepare` and extend the generated config from your project's `tsconfig.json`:
+From compatibility version 6 (the default), the generated configuration is split in two, the way a Nuxt 4 project
+has it:
+
+- `.stars/tsconfig.app.json` covers the bot sources: everything under the entry's directory plus the auto imports
+  declaration, with the aliases and options above. The `tsdown` build uses it as its default `build.tsconfig`.
+- `.stars/tsconfig.node.json` covers the files Node runs without a bundler, such as `stars.config.*`,
+  `vitest.config.*`, and `scripts/**`.
+
+Your own `tsconfig.json` becomes a solution-style file that only references them:
+
+```json
+{
+	"files": [],
+	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+}
+```
+
+Type checking follows the split. For a `tsdown` or `vite` project, `dev.typecheck` watches the app config, and
+`stars typecheck` checks both generated configs. A `tsc` or `none` project keeps its own tsconfig for the bot sources
+and gets the node config on top. Setting `dev.typecheck.tsconfig` checks only that file.
+
+On versions `5` and `4`, nothing changes. Run `stars prepare` and extend the single generated config from your
+project's `tsconfig.json`:
 
 ```json
 {
 	"extends": "./.stars/tsconfig.json"
 }
 ```
+
+To stay on the single file, set `future: { compatibilityVersion: 5 }` in `stars.config.ts`.
 
 New tsdown projects already extend this file and run `stars prepare` through `postinstall`.
 Keep your existing compiler options alongside `extends`. `stars dev` and `stars build` also regenerate this file.
