@@ -260,9 +260,8 @@ new GatewayClient({ intents, cacheConstructor: MyCache }); // your own Cache cla
 ```
 
 <Warning>
-	The default cache keeps every entity the gateway sends in memory until a dispatch such as `MESSAGE_DELETE` or
-	`GUILD_DELETE` removes it. Nothing expires, so messages, users, and presences grow for as long as the process runs.
-	See [Bounding memory](#bounding-memory).
+	The default cache keeps every entity the gateway sends in memory until a dispatch such as `MESSAGE_DELETE` or `GUILD_DELETE` removes it. Nothing
+	expires, so messages, users, and presences grow for as long as the process runs. See [Bounding memory](#bounding-memory).
 </Warning>
 
 `manager.cache` is keyed by a single ID for most managers. Client managers that take more than one ID build the key
@@ -368,14 +367,14 @@ const channel = await category.children.create({ name: 'announcements' });
 
 Earlier releases cached nothing by default and exposed `get` and `cached` on each manager. Both are removed:
 
-| Before                                      | After                                                                  |
-| ------------------------------------------- | ---------------------------------------------------------------------- |
-| `client.users.get(id)`                      | `client.users.cache.get(id)`                                           |
-| `client.members.get(guildId, userId)`       | `guild.members.cache.get(userId)`                                      |
-| `client.users.cached(id)`                   | `client.users.cache.get(id)`                                           |
-| `client.users.cache?.get(id)` (raw data)    | `client.cache?.users?.get(id)`                                         |
-| `client.users.construct(raw)`               | `client.users.cache.construct(raw)`                                    |
-| `new GatewayClient({ intents })` (no cache) | `new GatewayClient({ intents, cache: null })`                          |
+| Before                                      | After                                         |
+| ------------------------------------------- | --------------------------------------------- |
+| `client.users.get(id)`                      | `client.users.cache.get(id)`                  |
+| `client.members.get(guildId, userId)`       | `guild.members.cache.get(userId)`             |
+| `client.users.cached(id)`                   | `client.users.cache.get(id)`                  |
+| `client.users.cache?.get(id)` (raw data)    | `client.cache?.users?.get(id)`                |
+| `client.users.construct(raw)`               | `client.users.cache.construct(raw)`           |
+| `new GatewayClient({ intents })` (no cache) | `new GatewayClient({ intents, cache: null })` |
 
 `client.presences.resolve(id)` now takes a user ID instead of a cache key. Read a presence with
 `guild.presences.cache.get(userId)`.
@@ -461,19 +460,10 @@ Sweepers walk the caches of structure instances, so combining them with `cache` 
 `CollectionCache` to get all of this:
 
 ```ts
-import {
-	CollectionCache,
-	type CacheConstructorOptions,
-	type RawAPIType,
-	type StructureCreator,
-	type StructureMixin
-} from '@wolfstar/plugin-gateway';
+import { CollectionCache, type CacheConstructorOptions, type RawAPIType, type StructureCreator, type StructureMixin } from '@wolfstar/plugin-gateway';
 import type { CacheEntityName } from '@wolfstar/plugin-cache';
 
-class BoundedCache<Value extends StructureMixin<object>, Raw extends RawAPIType<Value> = RawAPIType<Value>> extends CollectionCache<
-	Value,
-	Raw
-> {
+class BoundedCache<Value extends StructureMixin<object>, Raw extends RawAPIType<Value> = RawAPIType<Value>> extends CollectionCache<Value, Raw> {
 	public constructor(creator: StructureCreator<Value, Raw>, name: CacheEntityName, options: CacheConstructorOptions<Value, Raw>) {
 		super(creator, name, { ...options, maxSize: options.maxSize ?? 10_000 });
 	}
@@ -515,9 +505,7 @@ as Redis. `manager.cache.synchronous` tells them apart, so a hot path can skip `
 
 ```ts
 client.on('messageCreate', async (message) => {
-	const member = message.guildId
-		? await client.guilds.members(message.guildId).cache.get(message.author.id)
-		: undefined;
+	const member = message.guildId ? await client.guilds.members(message.guildId).cache.get(message.author.id) : undefined;
 	if (member?.roleIds.includes(mutedRoleId)) return;
 	// ...
 });
@@ -564,7 +552,9 @@ if ((await member.permissions).has('BanMembers')) await member.ban();
 if (await member.kickable) await member.kick();
 ```
 
-<Warning>Without the declaration, the getters are typed as plain values. A promise is always truthy, so `if (member.kickable)` passes for every member.</Warning>
+<Warning>
+	Without the declaration, the getters are typed as plain values. A promise is always truthy, so `if (member.kickable)` passes for every member.
+</Warning>
 
 Relation getters such as `message.guild`, `member.voice`, and `channel.parent` stay `null` with an asynchronous store
 and never throw. Use the entity fetches, such as `fetchGuild()`, `fetchChannel()`, and `member.fetchPresence()`.
@@ -685,6 +675,7 @@ thread, and `SoundboardSound#equals` are new, and both accept the structure or i
 `Guild`, `GuildMember`, `Sticker`, `GuildEmoji`, `GuildChannel`, and `SoundboardSound` return `false` for a foreign
 argument instead of throwing. `Role`, `User`, `Embed`, and `Message` accept `null` and `undefined`. Update events such
 as `messageUpdate` do not rely on `equals()`, but `emojiUpdate` and `stickerUpdate` still do.
+
 </Warning>
 
 ```ts
