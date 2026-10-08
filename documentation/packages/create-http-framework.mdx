@@ -134,7 +134,7 @@ my-discord-bot/
 ├── .env                          # Environment variables (DISCORD_TOKEN, DISCORD_PUBLIC_KEY)
 ├── .gitignore
 ├── package.json
-└── tsconfig.json
+└── tsconfig.json             # Root tsconfig (TypeScript only, see TypeScript configuration)
 ```
 
 - `src/locales/en-US/commands/ping.json` and `src/@types/i18next.d.ts` are only generated when **i18n** is enabled.
@@ -145,6 +145,37 @@ my-discord-bot/
 - `AGENTS.md` and `llms.txt` are always generated. They only describe the features the project was created with. See [AI agent files](#ai-agent-files).
 - With a linter, the generated `.oxlintrc.json` or `eslint.config.mjs` enables the rules of `@wolfstar/eslint-plugin-http-framework`. See [Framework lint rules](#framework-lint-rules).
 - In TypeScript projects built with tsdown or Vite, `src/lib/setup/all.ts` doesn't load the environment itself. `stars` loads `.env` (the `env` option in `stars.config.ts`) before any module of the bot runs. Projects built with `tsc`, Vite + Nitro, or JavaScript still call `setup()` from `@wolfstar/env-utilities`.
+
+### TypeScript configuration
+
+TypeScript projects built with tsdown, Vite, or Vite + Nitro are generated for `future.compatibilityVersion` 6. Their
+root `tsconfig.json` is solution-style. It only references the two configs that `stars prepare` writes to `.stars/`:
+
+```json
+{
+	"files": [],
+	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+}
+```
+
+`.stars/tsconfig.app.json` covers the bot sources, and `.stars/tsconfig.node.json` covers the config files and scripts
+Node runs. See [Generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).
+The `postinstall` script runs `stars prepare`, so both files exist after you install dependencies.
+
+These projects also get a `typecheck` script that runs [`stars typecheck`](/documentation/packages/cli#stars-typecheck):
+
+```bash
+npm run typecheck
+```
+
+A bare `tsc` on the root `tsconfig.json` checks nothing, because it only references `.stars/`. The generated
+`README.md` and `AGENTS.md` list the `typecheck` script. Projects built with `tsc6` or `tsc7` keep their composite
+`tsconfig.json` and `src/tsconfig.json`, without a `typecheck` script.
+
+When you run the CLI again on an existing project, it replaces the root `tsconfig.json` only when the file is one
+the generator wrote: the solution-style file, or the older one that extends `./.stars/tsconfig.json`. The CLI
+compares the files as JSON, so formatting changes don't count as edits. It keeps a hand-edited `tsconfig.json` and
+prints a warning. If that file extends `./.stars/tsconfig.json`, make it reference the two generated configs instead.
 
 ### AI agent files
 
