@@ -180,7 +180,8 @@ DOTENV_LOADER=varlock
 ```
 
 <Warning>
-If your project already has a `.env.schema` and `varlock` installed but loaded its `.env*` files through dotenv, detection now switches it to varlock. Varlock does its own `.env*` discovery, so the values can differ. Set `loader: 'dotenv'` to opt out.
+	If your project already has a `.env.schema` and `varlock` installed but loaded its `.env*` files through dotenv, detection now switches it to
+	varlock. Varlock does its own `.env*` discovery, so the values can differ. Set `loader: 'dotenv'` to opt out.
 </Warning>
 
 With the varlock loader, `setup()` runs `varlock load --format json-full` to resolve your checked-in `.env.schema`, then injects the result into `process.env`:
