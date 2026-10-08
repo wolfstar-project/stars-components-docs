@@ -55,6 +55,37 @@ export class MathCommand extends Command {
 Subcommand groups, user context-menu commands, message context-menu commands, and guild restrictions use the matching
 registration decorators exposed by the package.
 
+## Restrict Who Can Run a Command
+
+Preconditions are checks that run before a command. Write one as a piece that extends `Precondition` in the
+`preconditions` directory:
+
+```typescript
+import { Precondition } from '@wolfstar/http-framework';
+
+export class OwnerOnly extends Precondition {
+	public override chatInputRun(interaction: Precondition.ChatInputInteraction) {
+		return interaction.user.id === process.env.OWNER_ID ? this.ok() : this.error({ message: 'Only the owner can use this command.' });
+	}
+}
+```
+
+Then list it by name in the `preconditions` option of the command:
+
+```typescript
+import { Command } from '@wolfstar/http-framework';
+
+export class EvalCommand extends Command {
+	public constructor(context: Command.LoaderContext, options: Command.Options) {
+		super(context, { ...options, preconditions: ['OwnerOnly'] });
+	}
+}
+```
+
+When a precondition denies the interaction, the framework skips the command and emits `chatInputCommandDenied` with the
+error. Reply to the user from a listener on that event. See [Preconditions](/documentation/packages/http-framework#preconditions)
+for AND/OR combinations, parallel runs, global preconditions, and interaction handlers.
+
 ## Publish Command Definitions
 
 After loading pieces, push the registry to Discord:
