@@ -59,7 +59,7 @@ Projects scaffolded with [`@wolfstar/create-http-framework`](/documentation/pack
 
 `stars.config.{ts,mts,cts,js,mjs,cjs}` is defined by [`@wolfstar/schema`](/documentation/packages/schema) and
 re-exported by [`@wolfstar/http-framework`](/documentation/packages/http-framework#project-configuration-starsconfig).
-See the framework page for the full option reference (`root`, `entry`, `build`, `dev`, `codegen`) and the
+See the framework page for the full option reference (`root`, `entry`, `build`, `dev`, `codegen`, `env`, `hooks`) and the
 `defineConfig` helper. `stars` looks for the file in the working directory (`--config <file>` overrides it,
 `--cwd <dir>` changes the working directory). It passes configuration diagnostics through as exit code `2` and prints
 the offending option path and a hint to the terminal.
@@ -587,8 +587,8 @@ export default defineConfig({
 });
 ```
 
-With `future.compatibilityVersion: 3` an existing `tsdown.config.*` still drives the build and the block is merged
-over it (values from `stars.config` win, `plugins` are appended); with `4` the block is the whole configuration. The
+With `future.compatibilityVersion: 3` (end-of-life) an existing `tsdown.config.*` still drives the build and the block is merged
+over it (values from `stars.config` win, `plugins` are appended); from `4` on the block is the whole configuration. The
 `vite` block works the same way for `build.tool: 'vite'`. `stars info` shows which file the build is configured from
 and which options the block sets.
 
@@ -620,12 +620,48 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
 [framework README](/documentation/packages/http-framework#compatibility-version) for the full reference):
 
-| Version       | What it changes                                                                                                      |
-| ------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `3`           | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for                            |
-| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript  |
-| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`         |
-| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` |
+| Version       | What it changes                                                                                                               |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
+| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript           |
+| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                  |
+| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`          |
+
+Version 3 is end-of-life. It still works, but every command prints a
+[`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and the next major
+removes it.
+
+### Environment and hooks
+
+`env` mirrors the options of `setup()` from `@wolfstar/env-utilities`. `stars` calls `setup()` with them as the first
+import of the built entry, before plugin registrations and the bot's own modules. tsdown, Vite and Nitro builds get it
+through the entry transform. With `build.tool: 'tsc'` or `'none'`, only `stars dev` preloads it (`node --import`).
+Nitro leaves it off unless you set `env` explicitly.
+
+`hooks` registers CLI lifecycle hooks run with [`hookable`](https://github.com/unjs/hookable): `config:resolved`,
+`env:options`, `prepare:before`/`prepare:done`, `builder:created`, `tsdown:options`, `build:before`/`build:done`, and
+`dev:start`/`dev:restart`/`dev:close`. They run in the CLI process, never in the bot. `stars build` and `stars dev`
+run them in the same order.
+
+```typescript
+export default defineConfig({
+	env: { prefix: 'BOT_' },
+	hooks: {
+		'env:options'(options) {
+			if (process.env.CI) options.path = '.env.ci';
+		},
+		build: {
+			done(outcome) {
+				if (!outcome.ok) console.error(outcome.message);
+			}
+		}
+	}
+});
+```
+
+`stars info` lists the env options and the registered hooks. See the
+[framework reference](/documentation/packages/http-framework#environment-env) for every `env` option and
+[hooks](/documentation/packages/http-framework#hooks) for each hook's arguments and timing.
 
 ### Experimental flags
 
