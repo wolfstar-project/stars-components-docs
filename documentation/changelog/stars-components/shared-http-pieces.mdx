@@ -1,13 +1,122 @@
 ---
-title: '@wolfstar/shared-http-pieces'
-sidebarTitle: 'shared-http-pieces'
-description: 'Changelog for @wolfstar/shared-http-pieces: shared commands and listeners.'
+title: "@wolfstar/shared-http-pieces"
+sidebarTitle: "shared-http-pieces"
+description: "Changelog for @wolfstar/shared-http-pieces: The common pieces for Star Network's HTTP-only bots."
 ---
 
-Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/shared-http-pieces`](https://github.com/wolfstar-project/stars-components/tree/main/packages/shared-http-pieces). This package provides shared commands and listeners for Star Network's HTTP-only bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-17
+## `2.0.10`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.3.1` and `@wolfstar/http-framework` to `6.2.0`. ([#253](https://github.com/wolfstar-project/stars-components/pull/253))
+
+## `2.0.9`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `6.0.0`.
+
+## `2.0.8`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.2.1` and `@wolfstar/http-framework` to `5.1.3`. ([#227](https://github.com/wolfstar-project/stars-components/pull/227))
+
+## `2.0.7`
 
 ### Bug fixes
 
-- **Locale loading** — Consumer locale paths are preserved and the bundled `commands/shared` namespace loads correctly when using the register entrypoint.
+- **Preserve bundled locales on early register import** — Bundled locales are kept when `@wolfstar/plugin-i18next/register` is imported before `@wolfstar/shared-http-pieces/register`. ([#222](https://github.com/wolfstar-project/stars-components/pull/222))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `5.1.1`.
+
+## `2.0.6`
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#210](https://github.com/wolfstar-project/stars-components/pull/210))
+
+## `2.0.5`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `5.0.0`.
+
+## `2.0.4`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.1.1` and `@wolfstar/http-framework` to `4.0.1`. ([#178](https://github.com/wolfstar-project/stars-components/pull/178))
+
+## `2.0.3`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `4.0.0` and `@wolfstar/env-utilities` to `2.1.0`.
+
+## `2.0.2`
+
+### Bug fixes
+
+- **Locale paths and namespace loading** — Consumer locale paths are preserved and the bundled `commands/shared` namespace loads correctly when using the register entrypoint. ([#176](https://github.com/wolfstar-project/stars-components/pull/176))
+
+## `2.0.1`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/plugin-i18next` to `v2`. ([#171](https://github.com/wolfstar-project/stars-components/pull/171))
+- **Dependencies** — Updated `@wolfstar/http-framework` to `3.6.0`. ([#169](https://github.com/wolfstar-project/stars-components/pull/169), [#146](https://github.com/wolfstar-project/stars-components/pull/146))
+
+## `2.0.0`
+
+### Updates
+
+- **Adopt i18next v25 native TypeScript types** — `@wolfstar/shared-http-pieces` removes the hand-maintained `LanguageKeys` export in favor of the generated `CustomTypeOptions` augmentation and direct `TFunction<'commands/shared'>` usage. Adds `@wolfstar/i18next-type-generator`, the CLI used to generate that augmentation from locale JSON files. ([#30](https://github.com/wolfstar-project/stars-components/pull/30))
+- **Migrate to `@wolfstar/plugin-i18next`** — Importing `@wolfstar/shared-http-pieces/register` now registers bundled locales automatically via a `preGenericsInitialization` hook that splices `localesPath` into your `Client`'s `i18n.backend.paths` before `@wolfstar/plugin-i18next` builds its handler. No consumer changes are required as long as the register entrypoint is imported before `new Client(...)`. ([#144](https://github.com/wolfstar-project/stars-components/pull/144))
+- **Typechecker switch** — `typecheck` scripts now run `golar tsc` instead of `tsc` directly. This is a dev-tooling-only change with no effect on published output. ([#151](https://github.com/wolfstar-project/stars-components/pull/151))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.8` and `@wolfstar/http-framework` to `3.2.1`.
+
+### Migration
+
+- The `T`, `FT`, `resolveKey`, and `resolveUserKey` APIs from `@wolfstar/http-framework-i18n` are deprecated. Use the i18next v25 native `getT` / `getSupportedLanguageT` helpers instead.
+
+## `1.2.9`
+
+### Updates
+
+- **Dependencies** — Updated `@sentry/node` to `v10`. ([#112](https://github.com/wolfstar-project/stars-components/pull/112))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.7` and `@wolfstar/http-framework` to `3.1.4`.
+
+## `1.2.8`
+
+### Updates
+
+- **Npm provenance** — Restored npm provenance attestation on publish for all packages. ([#107](https://github.com/wolfstar-project/stars-components/pull/107))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.5`, `@wolfstar/http-framework` to `3.1.2`, and `@wolfstar/http-framework-i18n` to `1.2.5`.
+
+## `1.2.7`
+
+### Updates
+
+- **Localization tooling** — Migrated localization tooling from Crowdin to Tolgee. ([#96](https://github.com/wolfstar-project/stars-components/pull/96))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.4`, `@wolfstar/http-framework-i18n` to `1.2.4`, and `@wolfstar/http-framework` to `3.1.1`.
+
+## `1.2.6`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `3.0.0`.
+
+## `1.2.5`
+
+### Updates
+
+- **Npm provenance** — Added provenance attestation to `publishConfig` for all packages. ([#59](https://github.com/wolfstar-project/stars-components/pull/59))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.3`, `@wolfstar/http-framework` to `2.3.1`, and `@wolfstar/http-framework-i18n` to `1.2.3`.

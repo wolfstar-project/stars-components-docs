@@ -1,17 +1,71 @@
 ---
-title: '@wolfstar/nitro-server'
-sidebarTitle: 'nitro-server'
-description: 'Changelog for @wolfstar/nitro-server: the optional, experimental Nitro builder for stars.'
+title: "@wolfstar/nitro-server"
+sidebarTitle: "nitro-server"
+description: "Changelog for @wolfstar/nitro-server: Nitro server integration for Stars projects."
 ---
 
-Changes to [`@wolfstar/nitro-server`](/documentation/packages/nitro-server). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/nitro-server`](https://github.com/wolfstar-project/stars-components/tree/main/packages/nitro-server). This package provides the optional, experimental Nitro builder for Stars projects. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24
-
-### New features
-
-- **Nitro builds (experimental)** — Set `experimental.enableNitro` to build your bot with [Nitro](https://nitro.build) v3. `stars build` outputs `.output/` for the configured `experimental.nitro.preset` (`node-server` by default). Install `nitro` and `vite` (Vite 8) as dev dependencies.
+## `0.2.9`
 
 ### Updates
 
-- **Separate package** — The Nitro builder now ships as its own package instead of being bundled with the CLI. It loads only when you use it, and your CLI configuration is unchanged.
+- **Dependencies** — Updated `@wolfstar/schema` to `0.9.0` and `@wolfstar/vite-server` to `0.4.4`.
+
+## `0.2.8`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.8.0` and `@wolfstar/vite-server` to `0.4.3`.
+
+## `0.2.7`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. Updated `@wolfstar/schema` to `0.7.0` and `@wolfstar/vite-server` to `0.4.2` ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
+
+## `0.2.6`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.6.0` and `@wolfstar/vite-server` to `0.4.1`.
+
+## `0.2.5`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.5.0` and `@wolfstar/vite-server` to `0.4.0`.
+
+## `0.2.4`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.4.0` and `@wolfstar/vite-server` to `0.3.0`.
+
+## `0.2.3`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.3.0` and `@wolfstar/vite-server` to `0.2.4`.
+
+## `0.2.2`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. Updated `@wolfstar/schema` to `0.2.1` and `@wolfstar/vite-server` to `0.2.3` ([#227](https://github.com/wolfstar-project/stars-components/pull/227)).
+
+## `0.2.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. Updated `@wolfstar/vite-server` to `0.2.1` ([#213](https://github.com/wolfstar-project/stars-components/pull/213)).
+
+## `0.2.0`
+
+### New features
+
+- **Separate Nitro builder package** — The optional Vite and Nitro builders are now dedicated server packages with a shared host context and builder lifecycle contract in [`@wolfstar/schema`](/documentation/changelog/stars-components/schema). CLI configuration, lazy loading, project-local dependencies, and plugin registration are preserved ([#209](https://github.com/wolfstar-project/stars-components/pull/209)).
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.2.0` and `@wolfstar/vite-server` to `0.2.0`.

@@ -1,13 +1,53 @@
 ---
-title: '@wolfstar/oxlint-config'
-sidebarTitle: 'oxlint-config'
-description: 'Changelog for @wolfstar/oxlint-config: the shared oxlint linter config.'
+title: "@wolfstar/oxlint-config"
+sidebarTitle: "oxlint-config"
+description: "Changelog for @wolfstar/oxlint-config: shareable oxlint base configuration for Star Network packages."
 ---
 
-Changes to `@wolfstar/oxlint-config`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/oxlint-config`](https://github.com/wolfstar-project/stars-components/tree/main/packages/oxlint-config). This package provides a shareable oxlint base configuration for Star Network packages. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24 — `0.2.0`
+## `0.2.3`
 
 ### Updates
 
-- **TypeScript config** — The package now default-exports a `defineConfig` object. Pass it to `extends` in `oxlint.config.ts`. The `.oxlintrc.json` entry point is removed.
+- **Dependencies** — Updated all non-major dependencies. ([#253](https://github.com/wolfstar-project/stars-components/pull/253))
+- **Dependencies** — Updated `@wolfstar/eslint-plugin-http-framework` to `0.1.3`.
+
+## `0.2.2`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#227](https://github.com/wolfstar-project/stars-components/pull/227))
+- **Dependencies** — Updated `@wolfstar/eslint-plugin-http-framework` to `0.1.2`.
+
+## `0.2.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#210](https://github.com/wolfstar-project/stars-components/pull/210))
+
+## `0.2.0` (2026-09-24)
+
+### Updates
+
+- **TypeScript config** — The package now default-exports a `defineConfig` object to pass to `extends` in `oxlint.config.ts`. The `.oxlintrc.json` entry point is removed. ([#202](https://github.com/wolfstar-project/stars-components/pull/202))
+
+### Migration
+
+Replace `import config from '@wolfstar/oxlint-config/.oxlintrc.json'` with `import config from '@wolfstar/oxlint-config'` and pass the default export to `extends` in `oxlint.config.ts`.
+
+## `0.1.1`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/eslint-plugin-http-framework` to `0.1.1`.
+
+## `0.1.0`
+
+### New features
+
+- **Initial release** — Added shareable `oxlint`/`oxfmt`/`eslint`/`prettier` configs and a custom Wolfstar lint rules plugin. `@wolfstar/oxlint-config` publishes the repo's `oxlint` rules as a reusable base config for other `@wolfstar/*` projects. ([#160](https://github.com/wolfstar-project/stars-components/pull/160))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/eslint-plugin-http-framework` to `0.1.0`.

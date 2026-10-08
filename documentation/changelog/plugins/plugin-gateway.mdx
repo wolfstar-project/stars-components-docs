@@ -1,86 +1,199 @@
 ---
-title: '@wolfstar/plugin-gateway'
-sidebarTitle: 'plugin-gateway'
-description: 'Changelog for @wolfstar/plugin-gateway: gateway events, Discord structures, and API managers for @wolfstar/http-framework.'
+title: "@wolfstar/plugin-gateway"
+sidebarTitle: "plugin-gateway"
+description: "Changelog for @wolfstar/plugin-gateway: Gateway (WebSocket) support for @wolfstar/http-framework, emitting Structures and backed by a pluggable cache."
 ---
 
 Changes to [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway). The plugin extends the `@wolfstar/http-framework` client with Discord gateway events, structures, and API managers. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.12.0`
+
+### New features
+
+- **Category children** — Adds `category.children`, a `CategoryChannelChildManager` with `cache`, `create()`, `resolve()`, and `resolveId()`, after discord.js. `children.cache` is read from the channel store on each access, so a store that cannot enumerate its entries throws `CacheNotIterable`, and `create()` rejects a category as the channel type. ([#222](https://github.com/wolfstar-project/plugins/pull/222))
+- **Poll answer voters** — Adds `answer.voters`, a `PollAnswerVoterManager` whose `fetch()` lists the users who voted for the answer. `fetchVoters()` now goes through it. `answer.voters` has no `cache`. ([#222](https://github.com/wolfstar-project/plugins/pull/222))
+- **Gateway soundboard sounds** — Adds `GuildManager#fetchSoundboardSounds(guildIds, options?)`, which requests soundboard sounds of several guilds over the gateway (opcode 31), caches them, and resolves with a `Collection` of each guild's sounds. It rejects with the new `GuildSoundboardSoundsTimeoutError` when replies take longer than `time` (10 seconds by default). ([#226](https://github.com/wolfstar-project/plugins/pull/226))
+- **Small manager methods** — Adds `DataManager#valueOf()` (the manager's cache), `GuildEmojiManager#resolveIdentifier()`, `GuildManager#widgetImageURL(guild, style?)`, and `GuildChannelManager#channelCountWithoutThreads`. `resolveIdentifier` throws for a value it cannot resolve instead of returning `null`, and `channelCountWithoutThreads` throws `CacheNotIterable` when the channel store cannot enumerate its entries. ([#221](https://github.com/wolfstar-project/plugins/pull/221))
+- **Voice channel status and start time** — `VoiceChannel` gets `status`, `voiceStartTimestamp`, and `voiceStartAt` (all `null` until Discord sends them) and `setStatus()`. The new `voiceChannelStatusUpdate` and `voiceChannelStartTimeUpdate` events carry the channel before and after. `client.channels.requestInfo()` (also `guild.requestChannelInfo()`) asks a guild's shard for the info over the gateway, resolving once the `channelInfo` reply is cached or rejecting with `GuildChannelInfoTimeoutError`. ([#223](https://github.com/wolfstar-project/plugins/pull/223))
+- **Guild-scoped managers** — Adds `guild.members`, `guild.roles`, `guild.voiceStates`, and `guild.presences`, also reachable as `client.guilds.members(guildId)`, `roles(guildId)`, `voiceStates(guildId)`, and `presences(guildId)`. Each manager has the methods of the client's one with the guild's ID filled in. `channel.messages` and `thread.members` gain the same `cache`. `guild.members.me` is a getter. The classes gain an `InGuild` type parameter (`false` by default) and a `guildId` property. ([#219](https://github.com/wolfstar-project/plugins/pull/219))
+
+### Bug fixes
+
+- **Client ready on resume** — Fixes `GatewayClient` never becoming ready when its shards resume a stored session (`sessionStore`). The client now restores `client.user` from the cache, or from `GET /users/@me` when the cache does not hold it, and emits `clientReady` once every shard is ready, whether through `READY` or `RESUMED`. ([#225](https://github.com/wolfstar-project/plugins/pull/225))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.7.0`. ([#225](https://github.com/wolfstar-project/plugins/pull/225))
+
+## `0.11.0`
+
+### New features
+
+- **`equals()` alignment** — Aligns `equals()` with discord.js (v14 and v15) on every structure that has one. New: `GuildChannel#equals` on every guild channel and thread, and `SoundboardSound#equals`. Changed comparisons on `Message#equals`, `Embed#equals`, `Guild#equals`, `GuildMember#equals`, `Role#equals`, `User#equals`, `Sticker#equals`, and `GuildEmoji#equals`. Several `equals` methods now take `unknown` and return `false` for a foreign argument. ([#218](https://github.com/wolfstar-project/plugins/pull/218))
+- **Partial guild members** — `GuildMemberRoleManager#partial` reads `member.partial`, so a member's roles indicate they are not known when the member is partial. ([#201](https://github.com/wolfstar-project/plugins/pull/201))
+- **Guild message search** — Adds `Guild#searchMessages(options?)` and `client.guilds.searchMessages(guildId, options?)`, the guild message search of discord.js (`GET /guilds/{guild.id}/messages/search`). The result holds `Collection`s of `messages`, `threads`, and `threadMembers` with `totalResults`, `doingDeepHistoricalIndex`, and `documentsIndexed`. ([#202](https://github.com/wolfstar-project/plugins/pull/202))
+- **`GuildMember#isPartial()`** — Adds the `PartialGuildMember` type and `GuildMember#isPartial()`, a type guard narrowing to it. The `guildMemberUpdate` (old member), `guildMemberRemove` (member), and `typingStart` (`Typing#member`) payloads are now typed as `GuildMember | PartialGuildMember | null`. ([#201](https://github.com/wolfstar-project/plugins/pull/201))
+
+### Updates
+
+- **`bulkDelete` return type** — `bulkDelete` now matches discord.js's `TextBasedChannel#bulkDelete`. It accepts messages, message IDs, a `Collection` of messages, or a count, and resolves to a `Collection<string, Message | PartialMessage | undefined>` of the deleted messages by ID. `bulkDelete` moves to the new `TextGuildChannelMixin`; `DMChannel` and `GroupDMChannel` no longer have it. ([#206](https://github.com/wolfstar-project/plugins/pull/206))
+- **Generic `Message`** — `Message<InGuild>` is now generic: `guildId`, `guild`, `channel`, and `mentions` narrow with it, and `inGuild()` narrows to `Message<true>`. `PartialMessage` is now a `Partialize` of `Message`. `Message#forward()` now accepts a channel as well as its ID. ([#206](https://github.com/wolfstar-project/plugins/pull/206))
+- **`presences.resolve` signature** — `client.presences.resolve` and `resolveId` now accept a `PresenceResolvable` (a `Presence`, `GuildMember`, `User`, `ThreadMember`, `Message`, or user ID). `resolveId` returns the user ID, where it used to answer `null` for a `Presence`. `presences.resolve(string)` now takes a user ID, not the cache key. ([#197](https://github.com/wolfstar-project/plugins/pull/197))
+
+### Migration
+
+- `bulkDelete` resolved to deleted IDs (`string[]`) and now resolves to a `Collection` keyed by them. Use `[...deleted.keys()]` for the IDs.
+- `PartialMessage` is no longer assignable to `Message`. Narrow with `message.partial` before using one as a `Message`.
+- `presences.resolve(string)` now takes a user ID, not the cache key. Read a key with `presences.cache.get(presences.resolveKey(guildId, userId))`.
+- A listener that passes the old member or the removed member to code expecting a plain `GuildMember` now has to narrow it with `isPartial()` first.
+
+## `0.10.0`
+
+### New features
+
+- **`@wolfstar/plugin-gateway/module`** — Adds a `/module` subpath export. List it in `modules` in `stars.config` to add the package to the auto imports. It needs framework 6.1 and the optional `@wolfstar/kit` peer. ([#191](https://github.com/wolfstar-project/plugins/pull/191))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.6.0`. ([#191](https://github.com/wolfstar-project/plugins/pull/191))
+
+## `0.9.1`
+
+### Updates
+
+- **Peer range** — Accepts `@wolfstar/http-framework` v6 in the peer range (`|| ^6.0.0`). ([#176](https://github.com/wolfstar-project/plugins/pull/176))
+
+## `0.9.0`
+
+### New features
+
+- **Sweepers and cache limits** — Adds discord.js-style sweepers and cache limits. The `sweepers` client option and `client.sweepers` evict entries of the instance caches on a timer or on demand, emitting `cacheSweep`. `cacheOptions.<entity>.keepOverLimit` mirrors `LimitedCollection#keepOverLimit`, and `cacheWithLimits` and `DefaultSweeperSettings` are ready-made presets. Sweepers cannot be combined with `cache` or `makeCache`. ([#175](https://github.com/wolfstar-project/plugins/pull/175))
+- **Deprecate `fetch*` twins** — Deprecates the derived `fetch*` twins of discord.js's getters and removes `Message#fetchEditable`. Every entity fetch and `GuildMember#fetchPresence` are kept. When the cache may lack an entity, fetch it first, then read the getter. ([#174](https://github.com/wolfstar-project/plugins/pull/174))
+- **Cross-process dispatch replay** — Lets a `GatewayClient` that never connects to Discord receive the events of another process's client. The `dispatch` event gains a trailing `state` argument, and `serializeDispatchState`/`reviveDispatchState` carry that state across processes. `replayDispatch`/`replayDispatchTypes` handle a dispatch another process wrote to the shared cache. ([#168](https://github.com/wolfstar-project/plugins/pull/168))
+- **`client.members.me`** — Adds `client.members.me(guildId)`: the bot's own member in a guild, read from the cache alone. It is `null` when the member is not cached, and `Awaitable`. `fetchMe(guildId)` stays as the variant that falls back to the API. ([#167](https://github.com/wolfstar-project/plugins/pull/167))
+- **Synchronous getters** — Adds discord.js's synchronous getters, read from the cache: `GuildMember#permissions`, `manageable`, `kickable`, `bannable`, `moderatable`, `displayColor`, `displayHexColor`; `Message#editable`, `deletable`, `bulkDeletable`, `pinnable`, `crosspostable`; `Role#editable`, `permissionsIn(channel)`; `permissionsFor(target)` on guild channels; `GuildEmoji#deletable`, `GuildInvite#deletable`. An entity they need that is not cached throws `GuildUncached`, `GuildUncachedMe`, `ChannelUncached`, or `GuildMemberUncached`. With asynchronous caches, the same getters answer a promise. ([#170](https://github.com/wolfstar-project/plugins/pull/170))
+- **Structure parity** — `Message#react()` now resolves to the `MessageReaction` instead of the message. `Message#attachments`, `Message#stickers`, `Message#messageSnapshots`, and `ReactionManager#cache` are now `Collection`s instead of arrays. `Message#partial` is `true` when the message lacks its content. `valueOf()` of a structure is its ID when it has one. ([#169](https://github.com/wolfstar-project/plugins/pull/169))
+
+### Updates
+
+- **`manager.cache` and `cacheConstructor`** — Managers now expose the discord.js RFC `Cache` as `manager.cache`, built by a client-level `cacheConstructor`. Without a cache option, every entity is cached in memory by `CollectionCache`. Pass `cache: null` to cache nothing (the previous default). Bound memory with `cacheOptions` (`maxSize`, `keepOverLimit`) and `policies.filter`. Only `manager.cache.get` returns the cached instance; event structures are freshly built. Removed `manager.get()`, `manager.cached()`, `manager.construct()`, `manager.hydrate()`, `manager.resolveData()`, and `manager.entity`. ([#163](https://github.com/wolfstar-project/plugins/pull/163))
+- **Member and emoji roles** — `GuildMemberRoleManager` is now built from the member (`new GuildMemberRoleManager(member)`), exposing `member` and `guild`. `add`/`remove` always resolve to the updated `GuildMember`. New `cache`, `highest`, `hoist`, `color`, `icon`, `premiumSubscriberRole`, `botRole` getters, and `clone()`. `GuildEmojiRoleManager` is similarly rebuilt from the emoji. `UserManager#createDM` returns the cached DM channel instead of always calling the API. `deleteDM` closes the cached channel and throws `UserNoDMChannel` when there is none. ([#166](https://github.com/wolfstar-project/plugins/pull/166))
+
+### Migration
+
+- Replace `client.users.get(id)` with `client.users.cache.get(id)`.
+- Replace `client.members.get(guildId, userId)` with `client.members.cache.get(client.members.resolveKey(guildId, userId))`.
+- Replace `client.users.cached(id)` with `client.users.cache.get(id)`.
+- Replace `client.users.cache?.get(id)` (raw) with `client.cache?.users?.get(id)`.
+- Replace `client.users.construct(raw)` with `client.users.cache.construct(raw)`.
+- Replace `new GatewayClient({ intents })` (no cache) with `new GatewayClient({ intents, cache: null })`.
+- `member.roles.add`/`remove` now resolve to the updated `GuildMember` instead of `void`.
+- `UserManager#createDM(user, { cache, force })` returns the cached channel; pass `force: true` for the previous API-always behavior.
+- `UserManager#deleteDM(user)` throws when there is no cached DM channel.
+- Use `message.partial` to narrow `Message | PartialMessage` before using a partial as a `Message`.
+- A `MessageReaction`'s cache and attachments are now `Collection`s; use `.first()`, `.size`, `.get(id)`.
+
+## `0.8.0`
+
+### New features
+
+- **`parseEmoji` utilities** — Adds `parseEmoji` and `resolvePartialEmoji` utilities. `ReactionEmoji.resolveIdentifier`, `ReactionEmoji.resolvePartial`, and poll answer emojis now share them, so a bare emoji ID given as a poll answer emoji is sent as an ID instead of a name. ([#157](https://github.com/wolfstar-project/plugins/pull/157))
+- **Channel and role positioning** — Moves channels and roles among their sorted siblings like discord.js. `GuildChannelManager.setPosition` and `fetchSorted` move a channel among the channels of its category and group. `RoleManager.setPosition` and `Role#setPosition` move a role among the sorted roles of its guild. Adds `computePositions` and fixes `moveElementInArray`. ([#160](https://github.com/wolfstar-project/plugins/pull/160))
+- **`transformResolved`** — Resolves users, members, roles, and channels by ID from the cache or from raw data into structures. `client.messages` builds a message's `MessageMentions` with it. ([#160](https://github.com/wolfstar-project/plugins/pull/160))
+- **Resolvable types** — Adds every `*Resolvable` type from discord.js mapped onto the package's structures, channel groups (`ThreadChannel`, `GuildBasedChannel`, `NonThreadGuildBasedChannel`, `TextBasedChannel`, `VoiceBasedChannel`, `GuildInvitableChannel`), `Colors` and `resolveColor`, and `ApplicationFlagsBitField`. ([#154](https://github.com/wolfstar-project/plugins/pull/154))
+- **Serializers** — Adds `Transformers`, `DataResolver`, and `Util` helpers from discord.js. `toSnakeCase` and `transformAPI*`/`transform*` pairs cover auto moderation, forum tags, scheduled events, incidents, role tags, audit logs, avatar decorations, collectibles, primary guilds, message references, activities, calls, role subscriptions, crossposted channels, interaction metadata, and embed assets. ([#158](https://github.com/wolfstar-project/plugins/pull/158))
+
+### Updates
+
+- **Camel-cased getters** — Several getters now return camel-cased objects instead of raw API ones: `AutoModerationRule#triggerMetadata`/`#actions`, `ForumChannel`/`MediaChannel#availableTags`/`#defaultReactionEmoji`, `GuildScheduledEvent#recurrenceRule`, `Guild#incidentsData`, `User#avatarDecorationData`/`#collectibles`/`#primaryGuild`, `GuildMember#avatarDecorationData`, `Role#tags`, `Message#reference`/`#activity`/`#interactionMetadata`/`#call`/`#roleSubscriptionData`, `MessageMentions#crosspostedChannels`, `GuildAuditLogsEntry#changes`, and `Embed#thumbnail`/`#image`/`#video`/`#author`/`#footer`. `Message#messageSnapshots` now returns `Message` structures. `toJSON()` still returns raw data. Options accept both camel-cased and raw shapes. ([#158](https://github.com/wolfstar-project/plugins/pull/158))
+
+### Migration
+
+- Read camel-cased values from the getters listed above. Call `toJSON()` for raw API data.
 
 ## `0.7.0`
 
 ### New features
 
-- **Component structures** — Adds discord.js-style component classes, all extending a common `Component`: `ActionRow`, the button components (`InteractiveButtonComponent`, `LinkButtonComponent`, `PremiumButtonComponent`), the five select menus, `TextInputComponent`, and the layout and media components (`ContainerComponent`, `SectionComponent`, `TextDisplayComponent`, `ThumbnailComponent`, `MediaGalleryComponent`, `FileComponent`, `SeparatorComponent`), plus `LabelComponent`, `FileUploadComponent`, `RadioGroupComponent`, `CheckboxGroupComponent`, and `CheckboxComponent`. `createComponent()` builds the matching class for raw component data, and `findComponentByCustomId()` searches a component tree.
-- **discord.js-style errors** — Every error thrown or emitted by the package is now a `GatewayError`, `GatewayTypeError`, or `GatewayRangeError` carrying a `code` from `GatewayErrorCodes`, with its message in `GatewayErrorMessages`. `DispatchTimeoutError`, `GuildMembersTimeoutError`, `GuildMembersRateLimitError`, and `GatewaySessionStoreError` extend `GatewayError`, so their `name` now includes the code, for example `GuildMembersTimeoutError [GuildMembersTimeout]`.
-
-### Breaking changes
-
-- **`Message#components`** — Now returns the component structures instead of raw API data. Call `toJSON()` on them to get the raw components back.
-
-## `0.6.0`
-
-Aligns the managers with the discord.js RFC [#11426](https://github.com/wolfstar-project/plugins/issues/11426) (zero caching, complete flexibility), together with [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) `0.5.0`.
-
-### New features
-
-- **`makeCache`, `policies`, and `cacheErrors` options** — `makeCache(entity)` creates the store of each entity kind, or returns `null` not to cache it. `policies` decide entry by entry what gets cached and for how long, for dispatches and managers alike. `cacheErrors` (`"miss"` by default, or `"throw"`) decides what the managers do when a store fails, and a new `cacheError` event is always emitted.
-- **Works with any subset of caches** — Every feature now works with any subset of entity caches, or none. `GUILD_EMOJIS_UPDATE` and `GUILD_STICKERS_UPDATE` always emit the new `guildEmojisUpdate` and `guildStickersUpdate` events. The granular diff events still need a cache.
+- **Component structures** — Adds discord.js-style component structures: `ActionRow`, `InteractiveButtonComponent`, `LinkButtonComponent`, `PremiumButtonComponent`, the five select menus, `TextInputComponent`, `ContainerComponent`, `SectionComponent`, `TextDisplayComponent`, `ThumbnailComponent`, `MediaGalleryComponent` (with `MediaGalleryItem` and `UnfurledMediaItem`), `FileComponent`, `SeparatorComponent`, `LabelComponent`, `FileUploadComponent`, `RadioGroupComponent`, `CheckboxGroupComponent`, and `CheckboxComponent`, all extending `Component`. `createComponent()` builds the matching class for raw component data, and `findComponentByCustomId()` searches a component tree. ([#151](https://github.com/wolfstar-project/plugins/pull/151))
+- **discord.js-style errors** — Every error thrown or emitted is now a `GatewayError`, `GatewayTypeError`, or `GatewayRangeError` carrying a `code` from `GatewayErrorCodes`, with its message in `GatewayErrorMessages`. `DispatchTimeoutError`, `GuildMembersTimeoutError`, `GuildMembersRateLimitError`, and `GatewaySessionStoreError` extend `GatewayError`. ([#152](https://github.com/wolfstar-project/plugins/pull/152))
 
 ### Updates
 
-- **Manager construction** — Managers build structures with `construct` (`createStructure` is kept as a deprecated alias) and write through the store's `upsert`. `CachedManager` is also exported as `BaseManager`.
+- **`Message#components`** — Now returns the component structures instead of raw API data. Call `toJSON()` on them to get the raw components back. ([#151](https://github.com/wolfstar-project/plugins/pull/151))
 
 ### Migration
 
-`thread.joined` is now `boolean | null`. `listCached` throws a `TypeError` for a store that cannot enumerate its entries.
+- Call `toJSON()` on `Message#components` entries to get raw API data.
+
+## `0.6.0`
+
+### New features
+
+- **`makeCache`, `policies`, and `cacheErrors`** — Aligns managers with the discord.js RFC (zero caching, complete flexibility). `makeCache(entity)` creates the store of each entity kind, or returns `null` not to cache it. `policies` decide entry by entry what gets cached and for how long. `cacheErrors` (`"miss"` by default, or `"throw"`) decides what managers do when a store fails, and a new `cacheError` event is always emitted. Every feature now works with any subset of entity caches, or none. ([#149](https://github.com/wolfstar-project/plugins/pull/149))
+- **Manager construction** — Managers build structures with `construct` (`createStructure` is kept as a deprecated alias) and write through the store's `upsert`. `CachedManager` is also exported as `BaseManager`. ([#149](https://github.com/wolfstar-project/plugins/pull/149))
+
+### Migration
+
+- `thread.joined` is now `boolean | null`.
+- `listCached` throws a `TypeError` for a store that cannot enumerate its entries.
 
 ## `0.5.0`
 
 ### New features
 
-- **`dispatch` event** — `GatewayEvents.Dispatch` is emitted for every gateway dispatch once it is written to the cache, before the matching event. Unlike `raw`, a listener reading the cache sees the dispatch applied. [`@wolfstar/plugin-broker`](/documentation/changelog/plugins/plugin-broker)'s `forwardGatewayDispatches` relies on it.
+- **`dispatch` event** — `GatewayEvents.Dispatch` is emitted for every gateway dispatch once it is written to the cache, before the matching event. Unlike `raw`, a listener reading the cache sees the dispatch applied. [`@wolfstar/plugin-broker`](/documentation/changelog/plugins/plugin-broker)'s `forwardGatewayDispatches` relies on it. ([#147](https://github.com/wolfstar-project/plugins/pull/147))
 
 ## `0.4.0`
 
 ### New features
 
-- **`GatewayEvents` enum** — Mirrors the keys of `GatewayEventMap`, like `Events` in `@wolfstar/http-framework`. `client.on(GatewayEvents.MessageCreate, ...)` is interchangeable with `client.on("messageCreate", ...)`.
-- **`clientReady` event** — Emitted once, after every shard the client manages has connected and every guild listed as initially unavailable became available, or the new `waitGuildTimeout` option (`15_000` ms by default) elapses. `GatewayClient` gains `clientReadyTimestamp`, `clientReadyAt`, and `isClientReady()`.
+- **`GatewayEvents` enum** — Mirrors the keys of `GatewayEventMap`, like `Events` in `@wolfstar/http-framework`. `client.on(GatewayEvents.MessageCreate, ...)` is interchangeable with `client.on("messageCreate", ...)`. ([#145](https://github.com/wolfstar-project/plugins/pull/145))
+- **`clientReady` event** — Emitted once, after every shard the client manages has connected and every guild listed as initially unavailable became available, or the new `waitGuildTimeout` option (`15_000` ms by default) elapses. `GatewayClient` gains `clientReadyTimestamp`, `clientReadyAt`, and `isClientReady()`. ([#145](https://github.com/wolfstar-project/plugins/pull/145))
 
 ## `0.3.0`
 
 ### New features
 
-- **`client` on structures** — Every structure exposes the `GatewayClient` whose manager built it, like discord.js's `Base#client`.
-- **`MessagePayload`** — Normalizes message options like discord.js: camel case options, builders, `reply` and `forward` shortcuts, stickers, polls, and files from paths, URLs, streams, or buffers. Every `send`, `edit`, and `reply` accepts either the options or a `MessagePayload`.
-- **`WebhookMixin`** — The token-based members that `Webhook` posts through (`send`, `editMessage`, `deleteMessage`, `fetchMessage`, `url`).
-- **`client.rest`** — Exposes the `REST` manager that the gateway and every manager's API calls go through.
-- **Relations from the cache** — Related structures resolve from the cache as synchronous getters, like discord.js, alongside the existing `fetch*()` methods. This covers channels, guilds, members, messages, reactions, polls, audit log entries, auto moderation executions, invites, and onboarding.
-- **Partials** — Adds `Partials` and the `partials` client option. With a partial enabled, an event about an uncached message, user, member, thread member, scheduled event, soundboard sound, poll, or direct message receives a structure built from the dispatch's IDs (`partial` is `true`, `fetch()` completes it) instead of `null`.
+- **`client` on structures** — Every structure exposes the `GatewayClient` whose manager built it, like discord.js's `Base#client`. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
+- **`MessagePayload`** — Normalizes message options like discord.js: camel case options, builders, `reply` and `forward` shortcuts, stickers, polls, and files from paths, URLs, streams, or buffers. Every `send`, `edit`, and `reply` accepts either the options or a `MessagePayload`. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
+- **`WebhookMixin`** — The token-based members that `Webhook` posts through (`send`, `editMessage`, `deleteMessage`, `fetchMessage`, `url`). ([#142](https://github.com/wolfstar-project/plugins/pull/142))
+- **`client.rest`** — Exposes the `REST` manager that the gateway and every manager's API calls go through. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
+- **Relations from the cache** — Related structures resolve from the cache as synchronous getters, like discord.js, alongside the existing `fetch*()` methods. This covers channels, guilds, members, messages, reactions, polls, audit log entries, auto moderation executions, invites, and onboarding. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
+- **Partials** — Adds `Partials` and the `partials` client option. With a partial enabled, an event about an uncached message, user, member, thread member, scheduled event, soundboard sound, poll, or direct message receives a structure built from the dispatch's IDs (`partial` is `true`, `fetch()` completes it) instead of `null`. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
 
 ### Bug fixes
 
-- **`Message#reply()`** — No longer hardcodes `failIfNotExists` to `false`. It defaults like every other `reply`, to `GatewayClientOptions.failIfNotExists ?? true`.
+- **`Message#reply()`** — No longer hardcodes `failIfNotExists` to `false`. It defaults like every other `reply`, to `GatewayClientOptions.failIfNotExists ?? true`. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
 
-### Breaking changes
+### Updates
 
-- **`GatewayClient#core` is protected** — Use `client.api` (the same `@discordjs/core` `API`), `client.rest`, and `client.gateway` instead of `client.core.api`, `client.core.rest`, and `client.core.gateway`.
-- **Type changes** — `BaseInvite.channel` is `AnyChannel | APIInviteChannel | null`. `MessageReaction.emoji`, `PollAnswer.emoji`, `SoundboardSound.emoji`, `WelcomeChannel.emoji`, and `GuildOnboardingPromptOption.emoji` may be a `GuildEmoji`.
+- **`GatewayClient#core` is protected** — Use `client.api` (the same `@discordjs/core` `API`), `client.rest`, and `client.gateway` instead of `client.core.api`, `client.core.rest`, and `client.core.gateway`. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
+- **Type changes** — `BaseInvite.channel` is `AnyChannel | APIInviteChannel | null`. `MessageReaction.emoji`, `PollAnswer.emoji`, `SoundboardSound.emoji`, `WelcomeChannel.emoji`, and `GuildOnboardingPromptOption.emoji` may be a `GuildEmoji`. ([#142](https://github.com/wolfstar-project/plugins/pull/142))
+
+### Migration
+
+- Replace `client.core.api` with `client.api`, `client.core.rest` with `client.rest`, and `client.core.gateway` with `client.gateway`.
 
 ## `0.2.0`
 
 ### New features
 
-- **`container.gatewayClient`** — Every `GatewayClient` is registered as `container.gatewayClient`, typed as `GatewayClient`, so pieces reach its managers through `this.container.gatewayClient` without a cast.
-- **Request guild members** — `client.members.request(guildId, options)` and `guild.requestMembers(options)` send `REQUEST_GUILD_MEMBERS` for every member, a `query`, or up to 100 `userIds`. The call rejects with `GuildMembersTimeoutError` when chunks stop arriving, or `GuildMembersRateLimitError` when Discord answers with `RATE_LIMITED`. Every chunk is also emitted as the new `guildMembersChunk` event.
-- **Resume sessions across restarts** — `GatewayClient` gains a `sessionStore` option (and `sessionStoreTimeout`). `GatewayClient#destroy({ resumable: true })` closes the shards with a resumable code and keeps their sessions stored for the next process. Store failures are reported as `GatewaySessionStoreError`s and fall back to identifying. See [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache).
-- **Synchronous cache reads** — Every `CachedManager` gains `cached(...ids)`, which returns the structure without a promise, for example `client.members.cached(guildId, userId)`. It returns `undefined` on a miss, and throws a `TypeError` on an asynchronous cache.
+- **`container.gatewayClient`** — Every `GatewayClient` is registered as `container.gatewayClient`, typed as `GatewayClient`, so pieces reach its managers through `this.container.gatewayClient` without a cast. ([#130](https://github.com/wolfstar-project/plugins/pull/130))
+- **Request guild members** — `client.members.request(guildId, options)` and `guild.requestMembers(options)` send `REQUEST_GUILD_MEMBERS` for every member, a `query`, or up to 100 `userIds`. Rejects with `GuildMembersTimeoutError` when chunks stop arriving, or `GuildMembersRateLimitError` when Discord answers with `RATE_LIMITED`. Every chunk is also emitted as the new `guildMembersChunk` event. ([#126](https://github.com/wolfstar-project/plugins/pull/126))
+- **Resume sessions** — `GatewayClient` gains a `sessionStore` option (and `sessionStoreTimeout`). `GatewayClient#destroy({ resumable: true })` closes the shards with a resumable code and keeps their sessions stored for the next process. Store failures are reported as `GatewaySessionStoreError`s and fall back to identifying. See [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache). ([#128](https://github.com/wolfstar-project/plugins/pull/128))
+- **Synchronous cache reads** — Every `CachedManager` gains `cached(...ids)`, which returns the structure without a promise, for example `client.members.cached(guildId, userId)`. It returns `undefined` on a miss, and throws a `TypeError` on an asynchronous cache. ([#131](https://github.com/wolfstar-project/plugins/pull/131))
 
 ### Updates
 
-- **Structures extend `@discordjs/structures`** — `User`, `Message`, `Attachment`, `Embed`, `MessageReaction`, `Poll`, `Emoji`, `BaseInvite`, `Presence`, `VoiceState`, `Webhook`, `Sticker`, and every channel type now inherit from their `@discordjs/structures` counterparts. The source is organised in one folder per domain.
+- **Structures extend `@discordjs/structures`** — `User`, `Message`, `Attachment`, `Embed`, `MessageReaction`, `Poll`, `Emoji`, `BaseInvite`, `Presence`, `VoiceState`, `Webhook`, `Sticker`, and every channel type now inherit from their `@discordjs/structures` counterparts. The source is organised in one folder per domain. ([#138](https://github.com/wolfstar-project/plugins/pull/138))
 
-### Breaking changes
+### Bug fixes
+
+- **`./register` export** — Adds a no-op `./register` subpath export, fixing `ERR_PACKAGE_PATH_NOT_EXPORTED` crashes at startup with the Stars CLI build. ([#123](https://github.com/wolfstar-project/plugins/pull/123))
+- **Subpath exports removed from README** — Removes the README's "Subpath exports" section: `@wolfstar/plugin-gateway/rest` and `@wolfstar/plugin-gateway/ws` were never exported. Depend on `@discordjs/rest` and `@discordjs/ws` directly instead. ([#134](https://github.com/wolfstar-project/plugins/pull/134))
+
+### Migration
 
 - Getters that now come from `@discordjs/structures` return `undefined` rather than `null` when the field is absent.
 - `Channel.flags` is a frozen `ChannelFlagsBitField` rather than a `number`.
@@ -88,20 +201,36 @@ Aligns the managers with the discord.js RFC [#11426](https://github.com/wolfstar
 - `MessageReaction.burstColors` holds numbers rather than `#rrggbb` strings.
 - `VoiceState.requestToSpeakTimestamp` is the raw ISO string rather than milliseconds. Use `requestToSpeakAt` for a `Date`.
 
-### Bug fixes
-
-- **`./register` export** — Adds a no-op `./register` subpath export, fixing `ERR_PACKAGE_PATH_NOT_EXPORTED` crashes at startup with the Stars CLI build.
-
 ## `0.1.1`
 
 ### Updates
 
-- Updated to [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) `0.2.0`.
+- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.2.0`.
 
 ## `0.1.0`
 
 ### New features
 
-- **New package** — `@wolfstar/plugin-gateway` adds gateway actions and a unified `GatewayClient.start()` startup method, uses `@discordjs/core` for API operations, and provides a standalone gateway cache adapter.
-- **Discord parity for structures and managers** — Users, guild members, roles, guilds, guild channels, threads, messages, reactions, polls, emojis, stickers, invites, webhooks, voice states, presences, scheduled events, stage instances, soundboard sounds, integrations, guild templates, welcome screens, widgets, onboarding, and moderation (bans, audit logs, auto moderation), each with their gateway events.
-- **Relations from the cache** — `guild` and `channel` resolve from the cache on guild structures and messages, with `fetchGuild()` for when the guild is not cached.
+- **New package** — `@wolfstar/plugin-gateway` implements the Gateway RFC. `GatewayClient` extends the framework's `Client` with a Discord gateway connection (through `@discordjs/ws`), per-entity managers reading from an optional [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) cache, and events carrying structures instead of raw payloads. ([#93](https://github.com/wolfstar-project/plugins/pull/93))
+- **Gateway actions and startup** — Adds gateway actions and a unified `GatewayClient.start()` startup method, uses `@discordjs/core` for API operations, optimizes structure data during construction and patches, and provides a standalone gateway cache adapter. ([#113](https://github.com/wolfstar-project/plugins/pull/113))
+- **Guild channels** — Brings guild channels to discord.js parity: `edit`, `setName`, `clone`, per-type setters, `setParent`/`lockPermissions`/`setPosition`, `PermissionOverwriteManager` with `PermissionOverwrites`, `guild.channels` (`GuildChannelManager`), and channel permissions with overwrites. ([#105](https://github.com/wolfstar-project/plugins/pull/105))
+- **Guilds** — Brings guilds to discord.js parity (every field, editing, invites pause, incident actions, leave and delete, preview, vanity data, voice regions) and adds emojis, stickers, sticker packs, and invites with their guild managers. ([#98](https://github.com/wolfstar-project/plugins/pull/98))
+- **Scheduled events, stage instances, soundboard** — Adds `GuildScheduledEvent`, `StageInstance`, and `SoundboardSound` with their gateway events. ([#110](https://github.com/wolfstar-project/plugins/pull/110))
+- **Integrations, templates, welcome screens, widgets, onboarding** — Adds `Integration`, `GuildTemplate`, `WelcomeScreen`, `Widget`, and `GuildOnboarding`. ([#111](https://github.com/wolfstar-project/plugins/pull/111))
+- **Managers `_add` and `resolve`** — Adds discord.js's `CachedManager#_add` and `DataManager#resolve` to every manager: API payloads are merged into the cached entry, and structures resolve their relations from the cache. ([#102](https://github.com/wolfstar-project/plugins/pull/102))
+- **Messages** — Brings messages to discord.js parity: `Attachment`, `Embed`, `MessageMentions`, `MessageReaction`, `Poll`, `PollAnswer`, `ReactionEmoji`, `Message` actions, `ReactionManager`/`ReactionUserManager`, and every message and reaction route. ([#101](https://github.com/wolfstar-project/plugins/pull/101))
+- **Moderation** — Adds `GuildBan`, audit logs, auto moderation, and their gateway events. ([#109](https://github.com/wolfstar-project/plugins/pull/109))
+- **Reaction and poll events** — Emits `messageReactionAdd`, `messageReactionRemove`, `messageReactionRemoveAll`, `messageReactionRemoveEmoji`, `messagePollVoteAdd`, and `messagePollVoteRemove`, with reactions and poll answers read from the cached message after the dispatch is counted into it. ([#104](https://github.com/wolfstar-project/plugins/pull/104))
+- **Relations from cache** — Resolves `guild` from the cache on every guild structure and `channel` on messages, like discord.js, with `fetchGuild()` for when the guild is not cached. ([#103](https://github.com/wolfstar-project/plugins/pull/103))
+- **Threads** — Brings threads to discord.js parity: `channel.threads`, thread setters, `join`/`leave`, `ThreadMember`, and thread events. ([#107](https://github.com/wolfstar-project/plugins/pull/107))
+- **Users, members, and roles** — Brings users, guild members, and roles to discord.js parity: every API field, CDN URLs, `ClientUser`, `GuildMemberRoleManager`, permission computation, member moderation, member listing and search, and role management. `Role#permissions` is now a `PermissionsBitField`. ([#97](https://github.com/wolfstar-project/plugins/pull/97))
+- **Voice states and presences** — Adds `VoiceState`, `Presence` with `Activity` and `RichPresenceAssets`, `client.voiceStates` and `client.presences`, and their events. ([#108](https://github.com/wolfstar-project/plugins/pull/108))
+- **Webhooks** — Adds `Webhook`, `client.webhooks`, channel and guild webhook methods, and `AnnouncementChannel#addFollower`. ([#106](https://github.com/wolfstar-project/plugins/pull/106))
+
+### Bug fixes
+
+- **Per-guild dispatch partitions** — Processes dispatches in per-guild partitions instead of one queue per shard, reports dispatches slower than `dispatchTimeout`, adds a `cacheFailure` policy (`"skip"` or `"emitUncached"`), accepts `{ force, cache }` options on managers' `fetch`, and drops cached guilds a new `READY` no longer lists. `READY` itself is always emitted, even when the cache fails. ([#95](https://github.com/wolfstar-project/plugins/pull/95))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.1.0`. ([#93](https://github.com/wolfstar-project/plugins/pull/93))

@@ -1,13 +1,41 @@
 ---
-title: '@wolfstar/oxfmt-config'
-sidebarTitle: 'oxfmt-config'
-description: 'Changelog for @wolfstar/oxfmt-config: the shared oxfmt formatter config.'
+title: "@wolfstar/oxfmt-config"
+sidebarTitle: "oxfmt-config"
+description: "Changelog for @wolfstar/oxfmt-config: shareable oxfmt base configuration for Star Network packages."
 ---
 
-Changes to `@wolfstar/oxfmt-config`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/oxfmt-config`](https://github.com/wolfstar-project/stars-components/tree/main/packages/oxfmt-config). This package provides a shareable oxfmt base configuration for Star Network packages. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24 — `0.2.0`
+## `0.2.3`
 
 ### Updates
 
-- **TypeScript config** — The package now default-exports a `defineConfig` object. Spread it into `oxfmt.config.ts`. The `index.json` entry point is removed.
+- **Dependencies** — Updated all non-major dependencies. ([#253](https://github.com/wolfstar-project/stars-components/pull/253))
+
+## `0.2.2`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#227](https://github.com/wolfstar-project/stars-components/pull/227))
+
+## `0.2.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#210](https://github.com/wolfstar-project/stars-components/pull/210))
+
+## `0.2.0` (2026-09-24)
+
+### Updates
+
+- **TypeScript config** — The package now default-exports a `defineConfig` object to spread into `oxfmt.config.ts`. The `index.json` entry point is removed. ([#202](https://github.com/wolfstar-project/stars-components/pull/202))
+
+### Migration
+
+Replace `import config from '@wolfstar/oxfmt-config/index.json'` with `import config from '@wolfstar/oxfmt-config'` and spread the default export into `oxfmt.config.ts`.
+
+## `0.1.0`
+
+### New features
+
+- **Initial release** — Added shareable `oxlint`/`oxfmt`/`eslint`/`prettier` configs and a custom Wolfstar lint rules plugin. `@wolfstar/oxfmt-config` publishes the repo's `oxfmt` rules as a reusable base config for other `@wolfstar/*` projects. ([#160](https://github.com/wolfstar-project/stars-components/pull/160))

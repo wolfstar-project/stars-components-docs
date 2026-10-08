@@ -4,10 +4,87 @@ sidebarTitle: 'plugin-i18next'
 description: 'Changelog for @wolfstar/plugin-i18next: the i18next localisation plugin.'
 ---
 
-Changes to [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/plugin-i18next`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-i18next). The plugin provides an internationalization layer for `@wolfstar/http-framework` powered by `i18next` and `@wolfstar/i18next-backend`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24
+## `2.2.0`
+
+### New features
+
+- **Module and plugin entrypoints** — Add `@wolfstar/plugin-i18next/module` and `@wolfstar/plugin-i18next/plugin`. List the module in `modules` in `stars.config`, or pass the `definePlugin` factory to `plugins`. Both need framework 6.1 (and `@wolfstar/kit` for the module). `./register` is unchanged and still supports framework v3, v5, and v6. ([#188](https://github.com/wolfstar-project/plugins/pull/188))
+
+## `2.1.2`
+
+### Bug fixes
+
+- **Peer range** — Accept `@wolfstar/http-framework` v6 in the peer range (`|| ^6.0.0`). ([#176](https://github.com/wolfstar-project/plugins/pull/176))
+
+## `2.1.1`
 
 ### Updates
 
-- **`http-framework` 5 support** — The plugin now targets [`@wolfstar/http-framework`](/documentation/changelog/stars-components/http-framework) `5.x`.
+- **Dependencies** — Updated all non-major dependencies. ([#132](https://github.com/wolfstar-project/plugins/pull/132))
+
+## `2.1.0`
+
+### New features
+
+- **Compatibility shims** — Export `T`, `FT`, `resolveKey`, `resolveUserKey`, `TypedT`, and `TypedFT` again as deprecated compatibility shims with `@wolfstar/http-framework-i18n`'s names and signatures, so a migration only has to rename the module specifier instead of failing at load time with `does not provide an export named 'T'`. ([#116](https://github.com/wolfstar-project/plugins/pull/116))
+
+### Bug fixes
+
+- **Dependencies** — Updated `i18next` to v26. ([#60](https://github.com/wolfstar-project/plugins/pull/60))
+- **Peer dependency** — Accept `@wolfstar/http-framework` v5 as a peer dependency (`^3.1.0 || ^5.0.0`), so v5 projects no longer install the plugin with an unmet peer. ([#116](https://github.com/wolfstar-project/plugins/pull/116))
+
+## `2.0.4`
+
+### Bug fixes
+
+- **TypeScript overload resolution** — Fix overload resolution in `getSupportedLanguageT`, `getSupportedUserLanguageT`, and `fetchKey` when `key` is a union type (such as a ternary expression). Previously, these functions used a single generic signature with a union-typed rest parameter. When `key` was a union, TypeScript failed to resolve the candidate tuple properly and rejected valid options objects as if they were positional `defaultValue` strings. Each call shape is now declared as an independent overload, while the original generic signature is retained as a deprecated trailing overload for full backward compatibility. ([#86](https://github.com/wolfstar-project/plugins/pull/86))
+
+## `2.0.3`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#75](https://github.com/wolfstar-project/plugins/pull/75))
+
+## `2.0.2`
+
+### Updates
+
+- **Type validation** — Validate every published subpath export with `are-the-types-wrong`, not just the main entrypoint. `createTsdownOptions` hardcoded `attw.entrypoints` to `["."]`, so the `./register` export of each package shipped unchecked. It now accepts an `attwEntrypoints` option, and all packages list their real entrypoints. ([#70](https://github.com/wolfstar-project/plugins/pull/70))
+
+## `2.0.1`
+
+### Bug fixes
+
+- **Typed-key helpers** — Fix the typed-key helpers introduced in v2.0.0 under a real `@wolfstar/i18next-type-generator` augmentation, which was never exercised before. Every fully-qualified `<namespace>:<key>` string (the shape `getSupportedLanguageT`, `getSupportedUserLanguageT`, `container.i18n.format`, `fetchKey`, and the builder helpers all expect) failed to typecheck once `CustomTypeOptions.resources` declared more than one namespace, and `container.i18n.format`/`fetchKey` failed to typecheck at all. Namespace-prefixed keys are now typed against every namespace `CustomTypeOptions.resources` declares (previously only i18next's own `DefaultNamespace`, which is what left non-default namespaces unreachable) through the new `AnyNamespace` type. The generic `Ret` these functions and `InternationalizationHandler#format` compute their return type through had an invalid default that violated its own constraint as soon as it resolved to something narrower than `string`. It is dropped in favour of letting it resolve from the constraint, matching how i18next's own `t()` overloads are typed. `@wolfstar/i18next-type-generator` is now an optional peer dependency. A new `tests/typedConsumption.test.ts`, checked by a dedicated `tsconfig.consumption.json` wired into the package's `typecheck` script, runs the public API against types generated from the test fixtures so a regression like this is caught continuously. ([#62](https://github.com/wolfstar-project/plugins/pull/62))
+
+## `2.0.0`
+
+### Updates
+
+- **Native TypeScript support** — Drop the branded-key helpers in favour of i18next's native TypeScript support, porting [wolfstar-project/stars-components#30](https://github.com/wolfstar-project/stars-components/pull/30). Keys are now plain strings typed through the `CustomTypeOptions` augmentation generated by `@wolfstar/i18next-type-generator`. `resolveKey(target, key, options)` becomes `getSupportedLanguageT(target, key, options)` (and `resolveUserKey` its `getSupportedUserLanguageT` counterpart), keeping the call shape those helpers had. `LocalePrefixKey` is no longer hardcoded to `commands/<file>:<key>`. It is now ``${string}${LocaleSeparator}${string}``, with the new `LocaleSeparator` type read from i18next's `TypeOptions["nsSeparator"]`. `getSupportedLanguageT` and `getSupportedUserLanguageT` resolve the key when one is passed, and still return the bound `TFunction` when it is not. The `TFunction` augmentation that declares `lng`, `lngs`, `ns`, and `keyPrefix` is kept, so code reading the language off a bound function still compiles. `InternationalizationHandler#getT` takes an optional namespace and returns a `TFunction<Ns>` bound to it, so its keys can be written without the `<namespace>:` prefix. ([#57](https://github.com/wolfstar-project/plugins/pull/57))
+
+### Bug fixes
+
+- **Dependencies** — Updated all non-major dependencies. ([#47](https://github.com/wolfstar-project/plugins/pull/47))
+- **Dependencies** — Updated `chokidar` to v5. ([#59](https://github.com/wolfstar-project/plugins/pull/59))
+- **Documentation** — Document how to migrate from the deprecated `@wolfstar/http-framework-i18n` in the README, including the bootstrap diff and a table mapping every removed export to its replacement. ([#56](https://github.com/wolfstar-project/plugins/pull/56))
+
+### Migration
+
+- Remove `T`, `FT`, `resolveKey`, `resolveUserKey`, `TypedT`, `TypedFT`, `Value`, `Values`, and `Difference`.
+- Replace `resolveKey(target, key, options)` with `getSupportedLanguageT(target, key, options)`.
+- Replace `resolveUserKey(target, key, options)` with `getSupportedUserLanguageT(target, key, options)`.
+- Use `@wolfstar/i18next-type-generator` to generate the `CustomTypeOptions` augmentation.
+
+## `1.0.0`
+
+### New features
+
+- **New package** — Add `@wolfstar/plugin-i18next`. An internationalization layer for `@wolfstar/http-framework` powered by `i18next` and `@wolfstar/i18next-backend`, merging `@wolfstar/http-framework-i18n` (HTTP-interaction helpers, typed `T` / `FT` keys, builder localization) with the plugin architecture of `@sapphire/plugin-i18next` (`container.i18n`, `InternationalizationHandler`, custom `fetchLanguage`, formatters and HMR). Register it before creating the client with `import "@wolfstar/plugin-i18next/register"`. ([#50](https://github.com/wolfstar-project/plugins/pull/50))
+- **Target types** — Accept guild, channel, and message targets. `Target` was `Interaction` only, so the guild, channel, and message targets `@sapphire/plugin-i18next` supports had no equivalent here. `Target` is now `Interaction | MessageTarget | ChannelTarget | GuildTarget`, and every helper (`getSupportedLanguageName`, `getSupportedUserLanguageName`, their `...T` variants, `resolveKey`, `resolveUserKey`, `fetchLanguage`, `fetchT`, `fetchKey`) accepts all four. `APIGuild`, `APIChannel`, and `APIMessage` satisfy the matching target structurally, so payloads can be passed straight through. Since the framework receives raw JSON rather than `discord.js` class instances, the members are told apart by shape: an interaction has `locale`, a message has `channel_id`, a channel has `type`, and anything left is a guild. A guild resolves its language from `preferred_locale`, mirroring `Guild#preferredLocale` in Sapphire. Channels and messages carry no locale, so the synchronous helpers fall back to `defaultName` for them. `InternationalizationContext` now also carries `preferredLocale`, and the hook keeps receiving `guildId`, `channelId`, and `userId` so an asynchronous lookup can resolve them. Interaction behaviour is unchanged. ([#53](https://github.com/wolfstar-project/plugins/pull/53))
+
+### Bug fixes
+
+- **`defaultName` and HMR** — Honour `defaultName` and register resources added by HMR. `getSupportedLanguageName` and `getSupportedUserLanguageName` returned a hard-coded `'en-US'` when none of the interaction's locales was loaded, so `InternationalizationOptions.defaultName` was never consulted. A bot with only `es-ES` loaded and `defaultName: 'es-ES'` made `fetchT` throw `ReferenceError: Invalid language (en-US)` on any interaction with an unmatched locale. Both helpers now fall back to `defaultName` when it is a loaded Discord locale, and only then to `'en-US'`. The HMR watcher subscribed to `change` and `unlink` only, so adding a locale directory or a namespace file (`addDir` / `add`) triggered no reload, and `reloadResources` never registered anything discovered after init. It now watches additions and deletions of both files and directories, calls `i18next.loadLanguages` / `loadNamespaces` for what appeared since startup, and keeps `InternationalizationHandler#languages` and `#namespaces` in sync. Reloads are serialized, since a single edit can emit several events. `hmr.options.ignoreInitial` now defaults to `true`, otherwise chokidar replays an `add` per existing translation file on startup. The watcher is exposed as `I18nextPlugin.watcher` so it can be closed on shutdown. ([#52](https://github.com/wolfstar-project/plugins/pull/52))

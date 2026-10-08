@@ -1,38 +1,206 @@
 ---
-title: '@wolfstar/cli'
-sidebarTitle: 'cli'
-description: 'Changelog for @wolfstar/cli: the stars command, dev UI, builders, and diagnostics.'
+title: "@wolfstar/cli"
+sidebarTitle: "cli"
+description: "Changelog for @wolfstar/cli: the stars command line interface for @wolfstar/http-framework projects: typed configuration, dev server, build and project info."
 ---
 
-Changes to [`@wolfstar/cli`](/documentation/packages/cli). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/cli`](https://github.com/wolfstar-project/stars-components/tree/main/packages/cli). It is the stars command line interface for `@wolfstar/http-framework` projects: typed configuration, dev server, build and project info. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24
+## `2.6.0`
 
 ### New features
 
-- **Nitro builds (experimental)** — Set `experimental.enableNitro` to build your bot with [Nitro](https://nitro.build) v3. `stars build` outputs `.output/` for the configured `experimental.nitro.preset` (`node-server` by default), so you can deploy to Cloudflare, AWS Lambda, Vercel, Netlify, Bun, Deno Deploy, and more. Install `nitro` and `vite` (Vite 8) as dev dependencies.
-- **`stars dev` colour themes** — Press `T` in the interactive UI to pick `dark`, `light`, colour-blind friendly `dark-daltonized`/`light-daltonized`, terminal-palette `dark-ansi`/`light-ansi`, or `auto`. `stars dev` saves your choice between runs. Use `--theme <name>` or `STARS_THEME` to override it for one run.
+- **Module config keys** — Read a module's options from a top-level `stars.config` key (`meta.configKey`). Once modules are set up, a key that is not built in and that no installed module claimed is reported as `UNKNOWN_OPTION`, with the claimed keys in the fix, so a misspelled key is still an error. The check also runs when `modules` is empty. A `meta.configKey` that is empty, built in, claimed twice, or holding a non-object fails with `MODULE_FAILED`. ([#295](https://github.com/wolfstar-project/stars-components/pull/295))
+- **Clickable dashboard** — Make the dashboard of `stars dev` clickable. A click on a channel or a level of the sidebar shows or hides it like `Space`, a second click or an `Alt`/`Ctrl` click solos it like `s`, a click on a group header folds the group, a click on a key of the list runs that key, and the wheel scrolls the logs. The new `dev.mouse` option (default `true`) and `stars dev --no-mouse` leave the mouse to the terminal. ([#291](https://github.com/wolfstar-project/stars-components/pull/291))
+- **Tunnel flags** — Add `stars dev --tunnel` to open the public tunnel at start whatever `dev.tunnel` says (a `cloudflared` quick tunnel when it is off), and `--no-tunnel` to keep it closed at start even when `dev.tunnel` enables it. It works with `--no-tui`, where there is no `t` key: the URL is printed on the `tunnel` channel. ([#290](https://github.com/wolfstar-project/stars-components/pull/290))
 
 ### Updates
 
-- **Structured diagnostics** — Config and CLI errors are now [`nostics`](https://github.com/vercel-labs/nostics) diagnostics with stable codes, a reason, an actionable fix, and a docs link. `ConfigError` and `CliError` are removed. Catch errors with `instanceof Diagnostic` instead. Exit codes are unchanged. See [Config errors](/documentation/errors/config) and [CLI errors](/documentation/errors/cli).
-- **Readable crash reports** — Unexpected errors and `stars dev` startup crashes now render as sourcemapped, syntax-highlighted reports instead of raw stack traces.
-- **Faster `stars dev` exit** — The first `Ctrl+C` stops your bot gracefully. A second one kills the bot and its helper processes immediately, without waiting for `dev.killTimeout`.
-- **Config schema moved to `@wolfstar/schema`** — If you install `@wolfstar/cli` without `@wolfstar/http-framework`, add `@wolfstar/http-framework` yourself. Scaffolded projects are unaffected.
-- **Optional Vite and Nitro builders** — The builders now ship as separate [`@wolfstar/vite-server`](/documentation/changelog/stars-components/vite-server) and [`@wolfstar/nitro-server`](/documentation/changelog/stars-components/nitro-server) packages. They load only when you use them. Your CLI configuration is unchanged.
+- **Dependencies** — Updated `@wolfstar/schema` to `0.9.0`, `@wolfstar/kit` to `0.2.0`, `@wolfstar/nitro-server` to `0.2.9`, `@wolfstar/vite-server` to `0.4.4`.
 
-### Bug fixes
-
-- **`stars dev` readability on light terminals** — The dev UI now uses semantic theme colours, so body text keeps your terminal's foreground colour and stays readable on light backgrounds.
-
-## 2026-09-17
+## `2.5.0`
 
 ### New features
 
-- **Convention-first `stars` workflow** — Compatibility version 4 is now the default. `stars dev` forces development mode, `src/locales` is copied and watched automatically, and environment files are discovered under both `src/` and the project root. The interactive dev UI adds a `t` shortcut to open or close a public quick tunnel without configuring `dev.tunnel`.
-- **Auto-registered WolfStar plugins** — Bundler builds now inject the `/register` side-effect entrypoint of every installed `@wolfstar/plugin-*` dependency before your app entry, so plugins activate without manual `import '@wolfstar/plugin-x/register'` lines. See [Plugins](/documentation/guide/plugins).
-- **Generated TypeScript alias config** — `stars prepare`, `stars dev`, and `stars build` write an extendable `.stars/tsconfig.json` whose paths match the `tsdown` aliases.
+- **Split tsconfigs and `stars typecheck`** — Generate a separate app and node tsconfig from `future.compatibilityVersion` `6`, like Nuxt 4, and add `stars typecheck`. `stars prepare` (and `stars dev`/`stars build`) writes `.stars/tsconfig.app.json` (the bot sources, with the aliases, auto imports and the bundler options) and `.stars/tsconfig.node.json` (`stars.config.*`, `vitest.config.*`, `tsdown.config.*`, `vite.config.*` and `scripts/**`, with `NodeNext` resolution, `types: ["node"]` and no DOM library) instead of `.stars/tsconfig.json`. `--check` fails when either is outdated, and `stars doctor` and `stars info` report both. The project's own `tsconfig.json` becomes a solution-style file that references them; a root `tsconfig.json` that still extends `./.stars/tsconfig.json` gets a `TSCONFIG_LEGACY_EXTENDS` warning from `stars prepare` and `stars doctor`. Projects that pin `future.compatibilityVersion` to `5` or `4` keep the single `.stars/tsconfig.json`, unchanged. `stars typecheck` regenerates `.stars/` and runs the project's checker (`golar` or `tsc`) once on each project, which a bare `tsc -p` on a `files: []` root cannot do. ([#283](https://github.com/wolfstar-project/stars-components/pull/283))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.8.0`, `@wolfstar/kit` to `0.1.3`, `@wolfstar/nitro-server` to `0.2.8`, `@wolfstar/vite-server` to `0.4.3`.
+
+## `2.4.0`
+
+### New features
+
+- **Typed command options from builders** — `codegen.commands` in `stars.config` (`true`, or `{ output }`, default `src/@types/commands.d.ts`) makes `stars codegen` read the commands from the built bot and write a `CommandOptionsRegistry` entry per command path (`'ping'`, `'math add'`, `'subscriptions twitch add'`). The new `Command.OptionsOf<'math add'>` reads it, so a handler no longer needs a hand-written `interface Options` that can drift from the builder: `required` options are not optional, `choices` are a literal union, `channel_types` narrow the channel and every option has the shape the framework resolves it to. `stars codegen --check` fails with `CODEGEN_OUTDATED` when the file is stale, and `--json` reports it like the i18n generator. ([#275](https://github.com/wolfstar-project/stars-components/pull/275))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/kit` to `0.1.2`, `@wolfstar/nitro-server` to `0.2.7`, `@wolfstar/schema` to `0.7.0`, `@wolfstar/vite-server` to `0.4.2`.
+
+## `2.3.1`
 
 ### Bug fixes
 
-- **Quick tunnel reliability** — `dev.tunnel` now opens the `cloudflared` tunnel through `untun` instead of spawning `cloudflared` and scraping stdout. `untun` manages the binary (downloading it if missing) and exposes the URL and lifecycle programmatically, which also fixes the tunnel never closing when the spawn failed silently.
+- **Tunnel shutdown crash** — Fix `stars dev` crashing with an unhandled `cloudflared exited (code=0, ...) before URL was ready` error when the tunnel closes (for example on Ctrl+C). `untun` leaves a connection promise unhandled when cloudflared exits, so the CLI now guards against that one error while the tunnel exists, removes the signal listeners `untun` installs so shutdown goes through `DevService#stop()`, and no longer reports a requested close as a tunnel failure. ([#270](https://github.com/wolfstar-project/stars-components/pull/270))
+
+## `2.3.0`
+
+### New features
+
+- **Command diff, deploy, doctor and completions** — `stars commands diff` compares the commands the built bot defines with the ones Discord has deployed (`--check` for CI); `stars commands deploy` overwrites them after a confirmation (`--yes` for scripts). The commands are read from the bot itself: it is started with the dev bridge, loads its pieces, reports its registry and exits before it listens. This needs `@wolfstar/http-framework` 6.1 or later and a built project. `stars doctor` checks the runtime, the framework, the credentials, the dev port, the tunnel and the generated files, with a fix for each problem (`--online` also asks Discord, `--json` for scripts). `stars completions <bash|zsh|fish>` prints a completion script generated from the registered commands. `stars info` lists the installed modules and the new `dev` options. ([#257](https://github.com/wolfstar-project/stars-components/pull/257))
+- **Log channels and bot-to-CLI bridge** — A dev log entry now has a channel (`cli`, `build`, `bot`, `types`, `tunnel`), a `trace` level and optional detail lines. `dev.logs`, `--channel` and `--level` choose what is shown at start; the log file always receives everything, and `dev.logs.dir` adds one file per run. The bot reports what happens inside it over an IPC channel instead of leaving the CLI to guess from stdout: a preload registers a plugin on the project's own `Client` (`@wolfstar/http-framework` 6.1 or later). That feeds the `hmr`, `commands`, `interactions`, `http` and `lifecycle` channels, and two behaviours: hot reload (with the `hmr` option of the `Client` enabled, a build that only changed pieces is left to the bot instead of restarting it; `dev.hmr: false` always restarts) and command refresh (when the application commands the bot registers change, `stars dev` reports it and, with `dev.commands.refresh: 'auto'`, has the bot redeploy them). Changed: the log file prints the channel of an entry where it printed its source, and the detail lines of an entry indented under it. ([#255](https://github.com/wolfstar-project/stars-components/pull/255))
+- **Full-screen dashboard for `stars dev`** — On a terminal of at least 90x20 `stars dev` opens a dashboard: a sidebar with the state of the session (framework version, uptime, port, tunnel, log file) and the channel and level filters, and the log stream next to it with level badges, highlighted URLs, paths, names and numbers, blocks for entries with detail lines, and stack frames folded under their error. The compact panel is still there (`dev.layout: 'panel'`, `--layout panel`, the `v` key, or a small terminal). When the application commands the bot registers change, a card under the stream asks (`Refresh commands? (y/n)`) before the bot redeploys them, with `dev.commands.refresh: 'prompt'` (the default). New keys: `d` stops the bot until the next `r`, `v` switches layout, and the dashboard's own: `←`/`→` and `Tab` to select a channel or a level, `Space` to toggle it, `s` to solo it, `a` for all, `b` to group by channel, `g`/`G` for the top and back to live, `/` to search. New flag: `--layout`. ([#256](https://github.com/wolfstar-project/stars-components/pull/256))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.6.0`, `@wolfstar/kit` to `0.1.1`, `@wolfstar/nitro-server` to `0.2.6`, `@wolfstar/vite-server` to `0.4.1`.
+
+## `2.2.0`
+
+### New features
+
+- **Module system in `stars.config`** — Add `modules` to `stars.config`: a list of package names or `[name, options]` tuples, installed by the CLI with `@wolfstar/kit`'s `setupModules` before `config:resolved`. The resolved configuration gains `modules` and `runtime` (the runtime plugins and auto-import presets the modules contributed). Runtime plugins are registered in the bot through a `\0stars:modules` virtual module imported before the legacy `/register` imports, which skip packages listed in `modules`, and, for the `tsc` and `none` build tools, through a `node --import` preload in `stars dev` and a `.stars/modules.mjs` file written by `stars prepare` for production (`stars build`, `stars prepare` and `stars info` report a `MODULES_PRELOAD_REQUIRED` warning that points at it; it loads `env` first through `.stars/env.mjs`). A failing module is reported as a `MODULE_FAILED` diagnostic (exit code 2). ([#247](https://github.com/wolfstar-project/stars-components/pull/247))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/kit` to `0.1.0`, `@wolfstar/schema` to `0.5.0`, `@wolfstar/vite-server` to `0.4.0`, `@wolfstar/nitro-server` to `0.2.5`.
+
+## `2.1.0`
+
+### New features
+
+- **Automatic `env` registration and lifecycle hooks** — Add an `env` option to `stars.config` that mirrors `@wolfstar/env-utilities`' setup options and is registered automatically as the first import of the built entry, before plugin registrations and the bot's own modules. Add Nuxt-style lifecycle `hooks` (`config:resolved`, `env:options`, `prepare:*`, `builder:created`, `tsdown:options`, `build:*`, `dev:*`) run with `hookable`. `future.compatibilityVersion: 5` is now the default: it is version 4 plus the automatic `env` registration, which turns on when the project depends on `@wolfstar/env-utilities` (and stays off with Nitro). Version 4 is still supported. Version 3 is end-of-life: it still works, now reports a `COMPATIBILITY_VERSION_EOL` warning, and will be removed in the next major. Projects generated by `@wolfstar/create-http-framework` with the `tsdown` or `vite` build no longer call `setup()` from `@wolfstar/env-utilities` by hand; `tsc` and JavaScript projects keep it and set `env: false`. ([#243](https://github.com/wolfstar-project/stars-components/pull/243))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.4.0`, `@wolfstar/vite-server` to `0.3.0`, `@wolfstar/nitro-server` to `0.2.4`.
+
+## `2.0.4`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.3.0`, `@wolfstar/nitro-server` to `0.2.3`, `@wolfstar/vite-server` to `0.2.4`.
+
+## `2.0.3`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies.
+- **Dependencies** — Updated `@wolfstar/nitro-server` to `0.2.2`, `@wolfstar/schema` to `0.2.1`, `@wolfstar/vite-server` to `0.2.3`.
+
+## `2.0.2`
+
+### Bug fixes
+
+- **Plugin registration version requirement** — Require `@wolfstar/vite-server` `^0.2.2`, so upgrading the CLI always brings the plugin registration fix from [#222](https://github.com/wolfstar-project/stars-components/issues/222) (only packages exporting `/register` get their registration injected) instead of keeping a locked `0.2.1` that crashes builds depending on `@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway` or `@wolfstar/plugin-sharder` with `ERR_PACKAGE_PATH_NOT_EXPORTED`. ([#231](https://github.com/wolfstar-project/stars-components/pull/231))
+
+## `2.0.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies.
+- **Dependencies** — Updated `@wolfstar/nitro-server` to `0.2.1`, `@wolfstar/vite-server` to `0.2.1`.
+
+## `2.0.0`
+
+### Updates
+
+- **Config schema extracted to `@wolfstar/schema`** — Split the `stars.config.*` schema and loader (`defineConfig`, `loadStarsConfig`, `configDiagnostics` and friends) out of `@wolfstar/http-framework` into a new package, [`@wolfstar/schema`](https://npmx.dev/package/@wolfstar/schema), and made `@wolfstar/http-framework` depend on `@wolfstar/cli` for its own `stars` binary. `@wolfstar/http-framework/config` re-exports `@wolfstar/schema`'s public surface unchanged, so existing `import { defineConfig } from '@wolfstar/http-framework/config'` code keeps working with no changes needed. `@wolfstar/http-framework` now depends on `@wolfstar/cli` and ships a `stars` bin (`bin/stars.mjs`, re-exporting `@wolfstar/cli/cli`), the way `nuxt` ships `nuxi`'s binary: installing `@wolfstar/http-framework` is now enough to get the `stars` command, no separate `@wolfstar/cli` install required. Breaking for `@wolfstar/cli`: it no longer depends on `@wolfstar/http-framework` (matching `@nuxt/cli` having no dependency on `nuxt`) and now depends on `@wolfstar/schema` for the config schema/loader instead. Projects that installed `@wolfstar/cli` without also depending on `@wolfstar/http-framework` directly (uncommon, since the CLI has nothing to build without it) now need to add `@wolfstar/http-framework` themselves; every project scaffolded by `@wolfstar/create-http-framework`, or that already depends on `@wolfstar/http-framework`, is unaffected. `@wolfstar/cli`'s own public exports (`loadStarsConfig`, `configDiagnostics`, `ConfigDiagnosticCode`, `ResolvedStarsConfig`, re-exported from `@wolfstar/schema`) are unchanged. ([#209](https://github.com/wolfstar-project/stars-components/pull/209))
+
+### New features
+
+- **Dedicated Vite and Nitro builder packages** — Extract optional Vite and Nitro builders into dedicated server packages ([`@wolfstar/vite-server`](/documentation/changelog/stars-components/vite-server) and [`@wolfstar/nitro-server`](/documentation/changelog/stars-components/nitro-server)), with a shared host context and builder lifecycle contract in schema. Preserve CLI configuration, lazy loading, project-local dependencies, and plugin registration. ([#209](https://github.com/wolfstar-project/stars-components/pull/209))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.2.0`, `@wolfstar/nitro-server` to `0.2.0`, `@wolfstar/vite-server` to `0.2.0`.
+
+## `1.0.0`
+
+### Updates
+
+- **Structured diagnostics via `nostics`** — Replaced the hand-rolled `ConfigError` (`@wolfstar/http-framework/config`) and `CliError` (`@wolfstar/cli`) error classes with [`nostics`](https://github.com/vercel-labs/nostics) `Diagnostic`s: stable, typed diagnostic codes with a `why`, an actionable `fix`, and a docs link, instead of ad hoc `code`/`hint`/`path`/`file` fields. `@wolfstar/http-framework/config` no longer exports `ConfigError`/`ConfigErrorOptions`. Every `stars.config.*` validation and load failure is now built from `configDiagnostics` (also exported) and thrown as a `nostics` `Diagnostic`. Catch it with `instanceof Diagnostic` (from `nostics`) instead of `instanceof ConfigError`. The option path that used to live on `.path` is folded into the diagnostic's message; the configuration file that used to live on `.file` is now in `.sources`. `@wolfstar/cli` no longer exports `CliError`/`CliErrorOptions`. Its own errors are now built from the new `cliDiagnostics` catalog (also exported) and are `Diagnostic` instances too. `formatError` renders a `Diagnostic` with `nostics`' own ANSI formatter; `exitCodeOf` maps `stars.config.*` diagnostic codes to exit code `2` and `BUILD_FAILED` to `3`, the same as before. `ExitCode`, `exitCodeOf` and `formatError` keep their existing exports and behaviour for every other case. ([#205](https://github.com/wolfstar-project/stars-components/pull/205))
+
+### New features
+
+- **Nitro builds (experimental)** — Implemented `experimental.enableNitro`: `stars dev`/`stars build` now build the bot through [Nitro](https://nitro.build) v3's own Vite plugin (`nitro/vite`, requires Vite 8) instead of refusing with `EXPERIMENT_UNAVAILABLE`. `@wolfstar/http-framework`: `Client` now has a `fetch(request, options?)` method, the Web `Request`/`Response` counterpart of `listen()`, running the exact same signature verification, routing and replies without binding a port, for anything that speaks Fetch instead of `node:http` (Nitro, a Worker, `Bun.serve`, `Deno.serve`, Vite's own dev middleware). The Discord public key is imported once and reused across calls, the same lifetime `listen()` gives its own signing key. The previously-unannounced `@wolfstar/http-framework/fetch` submodule (`createFetchHandler`/`FetchHandler`/`FetchHandlerOptions`) is removed in favour of this. `@wolfstar/cli`: Nitro v3 is itself a Vite plugin, so the new `NitroBuilder` reuses the project's own `vite.config.*`/`stars.config#vite` the same way `build.tool: 'vite'` does, and adds a generated server entry on top: it imports the entry's default export (the `Client` instance, already `load()`ed rather than `listen()`ed) and calls `client.fetch(request)`, in the plain `{ fetch(Request): Promise<Response> }` shape Nitro's own server entry convention expects. `stars build` now produces `.output/` laid out for the configured `experimental.nitro.preset` (`node-server` by default, deployable to anything Nitro targets: `cloudflare-module`, `aws-lambda`, `vercel`, `netlify`, `bun`, `deno-deploy`, and more) instead of a `node:http` process; `stars dev` rebuilds and restarts on every change, the same as the other build tools. Install `nitro` (and `vite`) as a dev dependency to use it. The now-implemented `EXPERIMENT_UNAVAILABLE` diagnostic code is removed from `cliDiagnostics`/`CliDiagnosticCode`. `@wolfstar/cli`: `NitroBuilder` also turns on Vite's native `resolve.tsconfigPaths`, and `stars prepare`'s generated `.stars/tsconfig.json` now emits the same `~`/`@`/`~~`/`@@` aliases `build.tool: 'tsdown'` already gets whenever `experimental.enableNitro` is on. ([#207](https://github.com/wolfstar-project/stars-components/pull/207))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `5.0.0`.
+
+## `0.7.0`
+
+### New features
+
+- **Colour themes for `stars dev`** — `stars dev` now has colour themes, like Claude Code. Press `T` in the interactive UI to preview and pick `dark`, `light`, the colour-blind friendly `dark-daltonized`/`light-daltonized`, the terminal-palette-only `dark-ansi`/`light-ansi`, or `auto` (follows the terminal background). The choice is saved to `~/.config/stars/preferences.json` (`$XDG_CONFIG_HOME`, `%APPDATA%` or `$STARS_CONFIG_DIR`). `--theme <name>` and `STARS_THEME` override the saved theme for one run. The UI now paints with semantic theme colours, so body text keeps the terminal's own foreground and stays readable on light backgrounds. ([#204](https://github.com/wolfstar-project/stars-components/pull/204))
+- **Turborepo-style shutdown** — `stars dev` now shuts down like Turborepo: the first `Ctrl+C` (or `SIGINT`/`SIGTERM`/`SIGHUP`) stops the bot gracefully and prints a hint, a second one kills the bot and its helper processes right away instead of waiting for `dev.killTimeout`. ([#201](https://github.com/wolfstar-project/stars-components/pull/201))
+- **Readable crash reports** — Render unexpected errors (and `stars dev` startup crashes) as sourcemapped, syntax-highlighted reports through `my-bad`, the way `nuxt` does, instead of a raw stack trace into the bundled `dist`. Errors the CLI already explains (`CliError`, `ConfigError`) keep their short message and hint. `runMain` is now exported for programmatic use, and the package's sources are reorganised after `nuxt/cli` (`commands/`, `dev/`, `builders/`, `utils/`, `main.ts`, `run.ts`) with no change to the `stars` commands or the public exports. ([#200](https://github.com/wolfstar-project/stars-components/pull/200))
+
+## `0.6.1`
+
+### Bug fixes
+
+- **Quick tunnel reliability** — Fixed the `dev.tunnel` quick tunnel: it now opens the `cloudflared` tunnel through `untun` instead of spawning `cloudflared` directly and scraping its stdout for the URL with a regex. `untun` manages the `cloudflared` binary itself (downloading it if missing) and exposes the tunnel URL and lifecycle programmatically, which also fixes the tunnel never closing when spawning `cloudflared` failed silently. ([#195](https://github.com/wolfstar-project/stars-components/pull/195))
+
+## `0.6.0`
+
+### New features
+
+- **Auto-registered WolfStar plugins** — Automatically activate `@wolfstar/plugin-*` dependencies during bundler builds by injecting each plugin's `/register` side-effect entrypoint before the application entry. ([#192](https://github.com/wolfstar-project/stars-components/pull/192))
+
+## `0.5.0`
+
+### New features
+
+- **Generated TypeScript alias config** — Generate an extendable `.stars/tsconfig.json` during prepare, dev and build with TypeScript paths matching tsdown aliases, and extend it in scaffolded projects. Include Sapphire base, extra-strict, and decorators compiler options in the generated configuration, with ESNext/Bundler and noEmit for bundler builds. Align bundler compiler options with Nitro: isolated modules, verbatim syntax, JavaScript sources, explicit TypeScript extensions, package imports, and web API types. ([#191](https://github.com/wolfstar-project/stars-components/pull/191))
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies.
+- **Dependencies** — Updated `@wolfstar/http-framework` to `4.0.1`.
+
+## `0.4.0`
+
+### New features
+
+- **Convention-first workflow** — Make the Stars workflow convention-first: compatibility version 4 is now the default, `stars dev` forces development mode, `src/locales` is copied and watched automatically, and environment files are discovered under both `src/` and the project root. The interactive dev UI now supports `t` to open or close a public quick tunnel without configuring `dev.tunnel`. ([#182](https://github.com/wolfstar-project/stars-components/pull/182))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `4.0.0`.
+
+## `0.3.0`
+
+### New features
+
+- **Nuxt-style dev panel and folded logs** — Align the `stars dev` terminal UI with Nuxt's pinned panel and folded logs. The tsdown builder now leaves dependencies external with `deps.neverBundle`, removing the deprecated option and keeping shared dependencies external for dynamically loaded pieces. Its entry list, target and output-size table are suppressed; warnings and errors remain available in the log browser and log file. The bottom-aligned panel displays an animated Stars wordmark, aligned URLs, actual build-phase progress and elapsed time, then readiness timing and diagnostic counts. `dev.banner` accepts custom text/lines or `false` to hide the wordmark. Log, help and session-info views use the alternate screen and restore the panel when closed. Logs support search, source/level filters, selection, copying, and jumping to the last error with context. Stack frames are dimmed and no longer counted as separate errors; Node warnings are classified as warnings rather than errors. Rebuild state and duration now reset on Rolldown's per-build hook, including recovery from a failed build. Reduced motion preserves the elapsed clock, and redirected input, dumb terminals and small panes get a safe plain fallback. ([#168](https://github.com/wolfstar-project/stars-components/pull/168))
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies.
+- **Dependencies** — Updated dependency chokidar to v5.
+- **Dependencies** — Updated `@wolfstar/http-framework` to `3.6.0`.
+
+## `0.2.0`
+
+### New features
+
+- **`tsdown` build from `stars.config`** — Build `tsdown` from `stars.config`, and wire auto imports into it. `stars build` and `stars dev` now derive the whole `tsdown` build from `stars.config`, so a base project configures nothing: every source file next to `entry` (minus `*.test.*`/`*.spec.*`), emitted one-to-one so the stores keep loading pieces from `dist/commands` at runtime, ESM on `platform: 'node'`, the project's tsconfig, sourcemaps and treeshaking on, minification off, dependencies left in `node_modules` (`deps.skipNodeModulesBundle`), no declaration files, and the output extension `build.output` implies. The build also ships Nuxt's alias prefixes: `~` and `@` resolve to the entry's directory, `~~` and `@@` to the project root. A target written as a relative path (`'./src/lib'`) is resolved against the project root the way every other path in `stars.config` is. The project's `tsdown` block is layered on top: its values win, and its `plugins` and `alias` entries are added to what `stars` contributes rather than replacing them. The auto imports plugin is injected by the CLI instead of by the project's own configuration file, so `future: { compatibilityVersion: 4 }` is all a project needs for the framework's exports and its `src/lib/**`, `src/utils/**` to be usable without an `import` statement. With `future.compatibilityVersion: 3` a `tsdown.config.*` still drives the build and everything above is merged over it, so options can move across one at a time. The `vite` block finally reaches Vite too: it was resolved and validated, but never passed to `vite.build()`. `stars info` gains a `Future` section with the compatibility version in effect, and two `Build` rows: the file the build tool is configured from, and the option names the `tsdown`/`vite` block sets. ([#164](https://github.com/wolfstar-project/stars-components/pull/164))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `3.5.0`.
+
+## `0.1.0`
+
+### New features
+
+- **`stars dev` loop completion** — Round out the `stars dev` loop with the pieces a Discord bot needs while developing: `dev.typecheck` runs a type checker next to the bot and reports type errors on the dev UI's own `tsc` channel, without blocking builds or restarts. `dev.typecheck.checker` selects `tsc`, `golar` (`golar tsc`) or `tsz`, and defaults to `auto`: `golar` when the project depends on it, `tsc` otherwise. `tsc` and `golar` watch the project themselves; `tsz`, which has no watch mode, is re-run after every build. `dev.tunnel` exposes the bot's interactions endpoint publicly, either through a `cloudflared` quick tunnel (`true`) or an https URL you already serve (a string), so Discord can reach it. `dev.tunnel.updateEndpoint` writes that URL to the Discord application's `interactions_endpoint_url` and is opt-in. `dev.logFile` (default `.stars/dev.log`) mirrors a dev session's logs to disk, so a run can be read back after the terminal UI is gone. `stars commands` lists and cleans the application commands Discord has deployed (`--guild`, `--name`, `--yes`, `--json`), which is how renamed or removed commands get cleared. `stars info` now reports the auto imports and the new `dev` options too. The interactive `stars dev` UI is now an [Ink](https://github.com/vadimdemedes/ink) (React) application: the same keys and layout, rebuilt as components, with the terminal's alternate screen handled by Ink itself. `@wolfstar/cli` therefore requires Node 22 or newer (Ink's own requirement); plain mode is unchanged and still takes over on non-interactive output, in CI and with `--no-tui`. `stars commands clean` without `--name`/`--yes` now runs an interactive wizard: a checklist of the deployed commands, then a confirmation, instead of an all-or-nothing prompt. ([#158](https://github.com/wolfstar-project/stars-components/pull/158))
+- **Typed project configuration and the `stars` CLI** — Mirroring how Nuxt splits `nuxt.config`/`defineNuxtConfig` (owned by the `nuxt` framework) from `nuxi` (a separate CLI that calls into it), the typed `stars.config.{ts,mts,cts,js,mjs,cjs}` schema and loader are owned by `@wolfstar/http-framework` (`@wolfstar/http-framework/config`: `defineConfig`, `loadStarsConfig`, `ConfigError`), not by the CLI. Any tool can resolve a project's configuration without depending on `@wolfstar/cli`. The config module has no side effects; importing it (or a `stars.config.ts` that imports it) never starts the bot. Configuration is discovered from the working directory or passed with `--config`, paths are resolved from the file, every option has a default, and invalid options raise a `ConfigError` with a stable code, the offending option path, the file, and an actionable hint. `@wolfstar/cli` ships the `stars` binary that consumes it: `dev`, `build`, `info`, `codegen`. `stars dev` builds through the project's `tsdown` or `tsc` (or plain-watches JavaScript projects), starts the bot and restarts it after every successful build. `dev.url` needs no configuration: it is detected from `HTTP_PORT` (env var, `.env.local`/`.env`, or `dev.env`) or `3000`, the way Vite's and Nuxt's dev servers do, and `localhost` is swapped for `127.0.0.1` at runtime if that is what is actually reachable. On a terminal it renders an interactive UI (lifecycle, uptime, restart reason, build state, URL/health, filtered logs, `r` restart, `c` clear, `h`/`?` help, `q` quit); `--no-tui`, `STARS_TUI=plain`, CI and redirected output switch to plain line output. Both modes honour `NO_COLOR`, reduced motion, and stop the bot cleanly on `SIGINT`/`SIGTERM` with consistent exit codes. `ConfigError`s from the framework are reported with exit code `2`. `stars build` runs the build tool once (exit code `3` on failure). `stars info [--json]` prints the resolved configuration and environment. `stars codegen [--check] [--json]` runs the i18next type generation. `stars --help` and `stars --version` never load the configuration machinery, so they stay fast. ([#158](https://github.com/wolfstar-project/stars-components/pull/158))
+- **Experimental config block** — Add an `experimental` block to `stars.config.*`, in the shape Nuxt's own `experimental` config has: opt-in booleans, all `false` by default, each documented with what it changes and what it still needs. `experimental.enableVite` lets a project build through its own `vite` instead of `tsdown` ( `build.tool` accepts `'vite'` only with the flag on, and `'auto'` only then detects a `vite.config.*`). `experimental.enableExternalVite` leaves the build to the project: `stars dev` starts no build of its own, it watches what the external one writes and restarts the bot, keeping restarts, health, the tunnel, type checking and the panel working. `experimental.enableNitro` is declared but not implemented yet: it needs the framework's Fetch adapter, so `stars dev`/`stars build` refuse it with an actionable error instead of silently ignoring it. `stars info` reports which flags are on. ([#158](https://github.com/wolfstar-project/stars-components/pull/158))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `3.4.0`.

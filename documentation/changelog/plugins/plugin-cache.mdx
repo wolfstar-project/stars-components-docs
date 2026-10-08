@@ -4,11 +4,27 @@ sidebarTitle: 'plugin-cache'
 description: 'Changelog for @wolfstar/plugin-cache: a storage-agnostic Discord entity cache, in memory or in Redis.'
 ---
 
-Changes to [`@wolfstar/plugin-cache`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache). The plugin is a storage-agnostic Discord entity cache, in memory or in Redis, and the cache behind the managers of [`@wolfstar/plugin-gateway`](/documentation/changelog/plugins/plugin-gateway). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/plugin-cache`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache). The plugin provides a storage-agnostic Discord entity cache, in memory or in Redis, and the cache behind the managers of [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.7.0`
+
+### New features
+
+- **Voice channel status** — Cache the status and start time of voice channels: `VOICE_CHANNEL_STATUS_UPDATE`, `VOICE_CHANNEL_START_TIME_UPDATE` and `CHANNEL_INFO` patch the `status` and `voice_start_time` of a cached channel, and leave an uncached one uncached. ([#223](https://github.com/wolfstar-project/plugins/pull/223))
+
+## `0.6.0`
+
+### New features
+
+- **Module entry point** — Added `@wolfstar/plugin-cache/module`: list it in `modules` in `stars.config` to add the package to the auto imports. It needs framework 6.1 and the optional `@wolfstar/kit` peer; the main entrypoint is unchanged. ([#189](https://github.com/wolfstar-project/plugins/pull/189))
+
+## `0.5.1`
+
+### Updates
+
+- **discord.js parity** — Structure members that had discord.js names now match its contracts. Breaking for [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway): `Message#react()` resolves to the `MessageReaction` instead of the message, and counts the bot on the message and on its cached entry; `Message#attachments`, `Message#stickers`, `Message#messageSnapshots` and `ReactionManager#cache` are `Collection`s instead of arrays; `Message#stickers` holds partial `Sticker` structures; `Message#partial` is `true` when the message lacks its content, not only its author; and `valueOf()` of a structure is its ID. `MESSAGE_REACTION_ADD` for the bot's own reaction is no longer counted when the cached reaction already has `me` set. ([#169](https://github.com/wolfstar-project/plugins/pull/169))
 
 ## `0.5.0`
-
-Aligns the cache with the discord.js RFC [#11426](https://github.com/wolfstar-project/plugins/issues/11426) (zero caching, complete flexibility).
 
 ### New features
 

@@ -1,19 +1,159 @@
 ---
-title: '@wolfstar/create-http-framework'
-sidebarTitle: 'create-http-framework'
-description: 'Changelog for @wolfstar/create-http-framework: the project scaffolder.'
+title: "@wolfstar/create-http-framework"
+sidebarTitle: "create-http-framework"
+description: "Changelog for @wolfstar/create-http-framework: Create a new WolfStar HTTP Framework bot project."
 ---
 
-Changes to [`@wolfstar/create-http-framework`](/documentation/packages/create-http-framework). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/create-http-framework`](https://github.com/wolfstar-project/stars-components/tree/main/packages/create-http-framework). This package scaffolds new bot projects for the WolfStar HTTP Framework. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24
-
-### Updates
-
-- **Schema split** — Scaffolded projects are unaffected by the move of the config schema to [`@wolfstar/schema`](/documentation/changelog/stars-components/schema).
-
-## 2026-09-17
+## `2.9.0`
 
 ### New features
 
-- **Generated TypeScript alias config** — Scaffolded projects extend the `.stars/tsconfig.json` that `stars prepare`, `stars dev`, and `stars build` write, and pick up Sapphire base, extra-strict, and decorators options automatically.
+- **Solution-style root tsconfig** — Scaffolded projects now generate a solution-style root `tsconfig.json` with compatibility version 6 for `tsdown`, `vite`, and `vite-nitro` builds. The file references `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` written by `stars prepare`, and projects receive a `typecheck` script running `stars typecheck`. The manifest records the `compatibilityVersion`. A rerun only replaces a previous generator-written root `tsconfig.json` and warns about hand-edited ones. The generated `AGENTS.md` and `README.md` document the script. ([#284](https://github.com/wolfstar-project/stars-components/pull/284))
+
+## `2.8.1`
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#253](https://github.com/wolfstar-project/stars-components/pull/253))
+
+## `2.8.0`
+
+### New features
+
+- **AGENTS.md, llms.txt, lint rules, and dev tunnel** — Every project now gets an `AGENTS.md` (commands, layout, and common rules) and an `llms.txt` (upstream documentation by topic) scoped to the features it was created with. The generated `.oxlintrc.json` or `eslint.config.mjs` enables `@wolfstar/eslint-plugin-http-framework` rules. The `--tunnel` option (or Dev tunnel feature) writes `dev: { tunnel: true }` to `stars.config` so `stars dev` opens a Cloudflare quick tunnel. ([#258](https://github.com/wolfstar-project/stars-components/pull/258))
+
+## `2.7.0`
+
+### New features
+
+- **`env` option and lifecycle hooks** — `stars.config` now accepts an `env` option mirroring `@wolfstar/env-utilities` setup, automatically registered as the first import before plugins and the bot's own modules. New Nuxt-style lifecycle hooks (`config:resolved`, `env:options`, `prepare:*`, `builder:created`, `tsdown:options`, `build:*`, `dev:*`) run via `hookable`.
+- **Compatibility version 5 default** — `future.compatibilityVersion: 5` is now the default (version 4 plus automatic `env` registration when `@wolfstar/env-utilities` is present). Version 4 remains supported. Version 3 is end-of-life and emits a `COMPATIBILITY_VERSION_EOL` warning. ([#243](https://github.com/wolfstar-project/stars-components/pull/243))
+
+### Migration
+
+- If you script project generation with `--i18n --no-interactive`, update your automation to expect `@wolfstar/plugin-i18next` instead of `@wolfstar/http-framework-i18n`.
+- `tsc` and JavaScript projects keep manual `setup()` calls and set `env: false`.
+
+## `2.6.1`
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#227](https://github.com/wolfstar-project/stars-components/pull/227))
+
+## `2.6.0`
+
+### New features
+
+- **`vite` and `vite-nitro` build tools plus plugin scaffolding** — Added `vite` and `vite-nitro` options to `--build`, and added `--gateway`, `--cache`, `--redis`, and `--sharder` options to scaffold against `@wolfstar/plugin-gateway`, `@wolfstar/plugin-cache` (memory or Redis), and `@wolfstar/plugin-sharder`. ([#225](https://github.com/wolfstar-project/stars-components/pull/225))
+
+## `2.5.2`
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#210](https://github.com/wolfstar-project/stars-components/pull/210))
+
+## `2.5.1`
+
+### Updates
+
+- **Generated tsconfig alignment** — The generated `.stars/tsconfig.json` now extends in scaffolded projects with TypeScript paths matching `tsdown` aliases. It includes Sapphire base, extra-strict, and decorators compiler options with ESNext/Bundler and `noEmit` for bundler builds. Bundler options now align with Nitro (`isolatedModules`, `verbatimModuleSyntax`, `allowJs`, `resolvePackageJsonImports`, `lib: ["DOM"]`). ([#191](https://github.com/wolfstar-project/stars-components/pull/191))
+
+## `2.5.0`
+
+### New features
+
+- **Convention-first Stars workflow** — Compatibility version 4 is now the default, `stars dev` forces development mode, `src/locales` is copied and watched automatically, and environment files are discovered under both `src/` and the project root. The interactive dev UI now supports `t` to open or close a public quick tunnel without preconfiguring `dev.tunnel`. ([#182](https://github.com/wolfstar-project/stars-components/pull/182))
+
+## `2.4.1`
+
+### New features
+
+- **Compact default banner** — `createStarsBanner()` uses a small built-in Stars logo, accepts a custom `logo` array, and supports `logo: false` for text-only output. Newly scaffolded projects and runnable examples use it instead of embedding default artwork in every entry. ([#167](https://github.com/wolfstar-project/stars-components/pull/167))
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#169](https://github.com/wolfstar-project/stars-components/pull/169))
+
+## `2.4.0`
+
+### New features
+
+- **Build configuration in `stars.config`** — Generated TypeScript projects no longer ship a `tsdown.config.ts`. The build lives in `stars.config.ts`, and `future: { compatibilityVersion: 4 }` opts into auto-imports wired into the build. The generated `tsconfig.json` includes `.stars/*.d.ts` for auto-import types and declares `paths` for built-in `~`/`@`/`~~`/`@@` aliases. The generated `.gitignore` covers `.stars/`. ([#164](https://github.com/wolfstar-project/stars-components/pull/164))
+
+## `2.3.0`
+
+### New features
+
+- **Scaffold on top of the `stars` CLI** — Generated projects now depend on `@wolfstar/cli`, ship a `stars.config.ts` (or `.js`) importing `defineConfig` from `@wolfstar/http-framework/config`, and use `stars dev`/`stars build` as their `dev` and `build` scripts. The `generate:i18n` script now runs `stars codegen`. ([#158](https://github.com/wolfstar-project/stars-components/pull/158))
+
+### Updates
+
+- **Remove generated logger module** — The generated `src/lib/setup/logger` module and the `@wolfstar/logger` dependency are dropped: `container.logger` is provided by `@wolfstar/http-framework` out of the box. ([#159](https://github.com/wolfstar-project/stars-components/pull/159))
+
+## `2.2.0`
+
+### New features
+
+- **Revamped project template** — Generated projects match the monorepo's `examples/basic` reference, replacing i18n scaffolding with `@wolfstar/plugin-i18next` and dropping `@wolfstar/http-framework-i18n`. New toggles `--subcommands`, `--subcommands-advanced`, and `--testing` add a subcommand example and a vitest + `@wolfstar/http-framework-test-utils` setup. ([#150](https://github.com/wolfstar-project/stars-components/pull/150))
+
+### Updates
+
+- **Stale file cleanup on rerun** — Rerunning the generator with `--ignore` now removes stale files left by the previous run (for example, `src/commands/math.ts` after disabling `--subcommands`) instead of leaving broken imports behind. Hand-edited files are detected and left in place with a warning. ([#152](https://github.com/wolfstar-project/stars-components/pull/152))
+- **Typechecker switch** — `typecheck` scripts now run `golar tsc` instead of `tsc` directly. This is a dev-tooling-only change. ([#151](https://github.com/wolfstar-project/stars-components/pull/151))
+
+### Migration
+
+- If you script project generation with `--i18n --no-interactive`, the i18n toggle now installs `@wolfstar/plugin-i18next` instead of the deprecated `@wolfstar/http-framework-i18n`.
+
+## `2.1.4`
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#126](https://github.com/wolfstar-project/stars-components/pull/126))
+
+## `2.1.3`
+
+### Bug fixes
+
+- **Command loading on scaffolded projects** — The generated `package.json` now sets `main` to the file the `start` script actually runs (`dist/index.js` for TypeScript, `src/index.js` for JavaScript), and the entry point calls `client.load()` with no arguments. Previously, missing `main` caused `client.load()` to resolve to the project root and the explicit `baseUserDirectory` argument doubled the `commands` segment, so scaffolded bots never registered any commands. ([#122](https://github.com/wolfstar-project/stars-components/pull/122))
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#102](https://github.com/wolfstar-project/stars-components/pull/102))
+
+## `2.1.2`
+
+### Updates
+
+- **Npm provenance** — Restored npm provenance attestation on publish for all packages. ([#107](https://github.com/wolfstar-project/stars-components/pull/107))
+
+## `2.1.1`
+
+### Updates
+
+- **tsdown upgrade** — Upgraded tsdown to `0.22.14` and migrated `deps.skipNodeModulesBundle` to `deps.neverBundle`. ([#93](https://github.com/wolfstar-project/stars-components/pull/93))
+
+## `2.1.0`
+
+### New features
+
+- **Interactive and CLI options for language, build tool, linter, and formatter** — New options when scaffolding projects. ([#73](https://github.com/wolfstar-project/stars-components/pull/73))
+
+### Updates
+
+- **Non-interactive mode standardized** — Standardized on `--no-interactive` and dropped the `--yes` / `-y` alias. Updated README and `--help` output. ([#74](https://github.com/wolfstar-project/stars-components/pull/74))
+- **Package READMEs** — Added READMEs documenting installation, usage, and exports. ([#72](https://github.com/wolfstar-project/stars-components/pull/72))
+
+## `2.0.1`
+
+### Updates
+
+- **Npm provenance** — Added provenance attestation to `publishConfig` for all packages. ([#59](https://github.com/wolfstar-project/stars-components/pull/59))
+
+## `2.0.0`
+
+### New features
+
+- **Improved CLI** — Vite-inspired argument parsing (`--yes`, `--overwrite`, `--interactive`, `--help`), automatic AI agent detection via `@vercel/detect-agent`, parallel npm version fetching, and directory overwrite handling. ([#54](https://github.com/wolfstar-project/stars-components/pull/54))

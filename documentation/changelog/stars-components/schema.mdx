@@ -1,17 +1,77 @@
 ---
-title: '@wolfstar/schema'
-sidebarTitle: 'schema'
-description: 'Changelog for @wolfstar/schema: the stars.config.* schema and loader move out of @wolfstar/http-framework, and config errors become structured diagnostics.'
+title: "@wolfstar/schema"
+sidebarTitle: "schema"
+description: "Changelog for @wolfstar/schema: typed stars.config.* schema and loader shared by @wolfstar/http-framework and @wolfstar/cli."
 ---
 
-Changes to [`@wolfstar/schema`](/documentation/packages/schema). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/schema`](https://github.com/wolfstar-project/stars-components/tree/main/packages/schema). This package defines the typed `stars.config.*` schema, the loader, and shared configuration types used by `@wolfstar/http-framework` and `@wolfstar/cli`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24
+## `0.9.0`
 
 ### New features
 
-- **New package** — The `stars.config.*` schema and loader now live in `@wolfstar/schema`. Imports from `@wolfstar/http-framework/config` keep working unchanged. If you install `@wolfstar/cli` without `@wolfstar/http-framework`, add `@wolfstar/http-framework` yourself. Scaffolded projects are unaffected.
+- **Clickable `stars dev` dashboard** — The `stars dev` dashboard now responds to mouse clicks. A click on a channel or level in the sidebar shows or hides it (like the `Space` key). A second click or an `Alt`/`Ctrl` click solos it (like `s`). Clicking a group header folds the group, clicking a list key runs that key, and the mouse wheel scrolls the logs. The new `dev.mouse` option (default `true`) and `stars dev --no-mouse` leave the mouse to the terminal ([#291](https://github.com/wolfstar-project/stars-components/pull/291)).
+- **Module-level `stars.config` keys** — Top-level `stars.config` keys that are not built in are now kept as `ResolvedStarsConfig.moduleOptions` instead of being rejected. A module can read its options from a key matching `meta.configKey`. `BUILT_IN_CONFIG_KEYS` lists the keys the schema owns, `assertModuleOptionsClaimed` reports the first unclaimed key as `UNKNOWN_OPTION`, and `ModulesRuntime.configKeys` carries the keys the modules claimed. `StarsConfig` is the interface a module augments to type its key. `ModulesRuntime.configKeys` is now required; code that builds a `ModulesRuntime` literal must add it (`EMPTY_MODULES_RUNTIME` already includes it) ([#293](https://github.com/wolfstar-project/stars-components/pull/293)).
+
+## `0.8.0`
+
+### New features
+
+- **`future.compatibilityVersion` 6** — Added compatibility version `6`, now the latest and default, gated by `SPLIT_TSCONFIG_VERSION`. From version 6 a `tsdown` build's default `build.tsconfig` is the generated `.stars/tsconfig.app.json`, and `dev.typecheck.projects` lists what `stars typecheck` checks: the generated app and node configs. A `tsc` or `none` project keeps its own tsconfig and gets the node config on top. `DEFAULT_APP_TSCONFIG` and `DEFAULT_NODE_TSCONFIG` are the new defaults. Projects that pin version 5 or 4 keep the single `.stars/tsconfig.json` and the `tsconfig.json` lookup unchanged ([#282](https://github.com/wolfstar-project/stars-components/pull/282)).
+
+## `0.7.0`
+
+### New features
+
+- **Typed command options from builders** — `stars codegen` can now generate a `CommandOptionsRegistry` entry per command path (`'ping'`, `'math add'`, `'subscriptions twitch add'`). Enable it with `codegen.commands` in `stars.config` (`true`, or `{ output }`; default `src/@types/commands.d.ts`). The new `Command.OptionsOf<'math add'>` reads it, so a handler no longer needs a hand-written `interface Options` that can drift from the builder. Required options are not optional, choices become a literal union, `channel_types` narrow the channel, and every option uses the shape the framework resolves it to. `stars codegen --check` fails with `CODEGEN_OUTDATED` when the file is stale, and `--json` reports it like the i18n generator ([#275](https://github.com/wolfstar-project/stars-components/pull/275)).
 
 ### Updates
 
-- **Structured diagnostics** — Config errors are now [`nostics`](https://github.com/vercel-labs/nostics) diagnostics with stable codes. `ConfigError` is removed. Catch errors with `instanceof Diagnostic` instead. See [Config errors](/documentation/errors/config).
+- **Dependencies** — Updated all non-major dependencies ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
+
+## `0.6.0`
+
+### New features
+
+- **`dev` layout options** — Added `dev.layout` (`'auto' | 'dashboard' | 'panel'`), `dev.logs` (which channels and levels are shown at start, and `dir`/`keep` for one log file per run), `dev.commands.refresh` (`'prompt' | 'auto' | 'off'`), and `dev.hmr` to `stars.config`. An unknown value of a fixed-choice option is reported with the new `INVALID_CHOICE` diagnostic. `LOG_LEVELS` and `DEFAULT_LOG_LEVELS` are now exported ([#252](https://github.com/wolfstar-project/stars-components/issues/252)) ([#254](https://github.com/wolfstar-project/stars-components/pull/254)).
+- **`env.loader: 'node'`** — Accept `'node'` as `env.loader` in `stars.config`, and leave the loader to be auto-detected when it is not set ([#265](https://github.com/wolfstar-project/stars-components/pull/265)).
+
+## `0.5.0`
+
+### New features
+
+- **`modules` in `stars.config`** — Added `modules`: a list of package names or `[name, options]` tuples, installed by the CLI with `@wolfstar/kit`'s `setupModules` before `config:resolved`. The resolved configuration gains `modules` and `runtime` (the runtime plugins and auto-import presets the modules contributed). Runtime plugins are registered through a `\0stars:modules` virtual module imported before legacy `/register` imports, which skip packages listed in `modules`. For the `tsc` and `none` build tools, `stars dev` uses a `node --import` preload, and `stars prepare` writes `.stars/modules.mjs` for production. `stars build`, `stars prepare`, and `stars info` report a `MODULES_PRELOAD_REQUIRED` warning when the preload is missing. A failing module is reported as a `MODULE_FAILED` diagnostic (exit code 2) ([#247](https://github.com/wolfstar-project/stars-components/pull/247)).
+
+## `0.4.0`
+
+### New features
+
+- **`env` in `stars.config`** — Added a top-level `env` option that mirrors `@wolfstar/env-utilities`' setup options. It is registered automatically as the first import of the built entry, before plugin registrations and the bot's own modules.
+- **Lifecycle hooks** — Added Nuxt-style hooks (`config:resolved`, `env:options`, `prepare:*`, `builder:created`, `tsdown:options`, `build:*`, `dev:*`) run with `hookable`.
+
+### Migration
+
+- `future.compatibilityVersion: 5` is now the default. It is version 4 plus the automatic `env` registration, which activates when the project depends on `@wolfstar/env-utilities` and stays off with Nitro. Version 4 is still supported. Version 3 is end of life: it still works but now reports a `COMPATIBILITY_VERSION_EOL` warning and will be removed in the next major.
+- Projects generated by `@wolfstar/create-http-framework` with the `tsdown` or `vite` build no longer call `setup()` from `@wolfstar/env-utilities` by hand. `tsc` and JavaScript projects keep it and set `env: false` ([#243](https://github.com/wolfstar-project/stars-components/pull/243)).
+
+## `0.3.0`
+
+### Updates
+
+- **Decorators split into new package** — Moved the utility decorators out of `@wolfstar/http-framework` into a new package, [`@wolfstar/decorators`](/documentation/changelog/stars-components/decorators), mirroring the split between `@sapphire/framework` and `@sapphire/decorators`.
+  - **Breaking (`@wolfstar/http-framework`):** `ApplyOptions`, `RequiresGuildContext`, `RequiresDMContext`, `RequiresUserPermissions`, `RequiresClientPermissions`, `Enumerable`, `EnumerableMethod`, `createClassDecorator`, `createMethodDecorator`, `createProxy`, `createFunctionPrecondition`, and the `PieceConstructor`/`ContextFallback` types are no longer exported by the framework. Install `@wolfstar/decorators` and import them from there instead; their behaviour is unchanged. The `Register*` decorators and `RestrictGuildIds` stay in the framework.
+  - `@wolfstar/decorators` declares `@wolfstar/http-framework` as a peer dependency.
+  - `@wolfstar/schema` now includes `@wolfstar/decorators` in the default `imports.presets`, so projects using the `stars` CLI's auto imports keep getting the decorators without an explicit import once the package is installed ([#238](https://github.com/wolfstar-project/stars-components/pull/238)).
+
+## `0.2.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies ([#227](https://github.com/wolfstar-project/stars-components/pull/227)).
+
+## `0.2.0`
+
+### New features
+
+- **Separate Vite and Nitro builder packages** — The optional Vite and Nitro builders are now dedicated server packages with a shared host context and builder lifecycle contract in [`@wolfstar/schema`](/documentation/changelog/stars-components/schema). CLI configuration, lazy loading, project-local dependencies, and plugin registration are preserved ([#209](https://github.com/wolfstar-project/stars-components/pull/209)).
+- **Nuxt-style configuration entry points** — Aligned configuration entry points with Nuxt by adding framework schema and package metadata exports, a lightweight schema/config helper, and separating schema input types from config resolution while preserving existing exports ([#209](https://github.com/wolfstar-project/stars-components/pull/209)).

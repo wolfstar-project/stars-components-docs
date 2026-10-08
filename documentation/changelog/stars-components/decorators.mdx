@@ -1,0 +1,26 @@
+---
+title: "@wolfstar/decorators"
+sidebarTitle: "decorators"
+description: "Changelog for @wolfstar/decorators: useful TypeScript decorators for @wolfstar/http-framework."
+---
+
+Changes to [`@wolfstar/decorators`](https://github.com/wolfstar-project/stars-components/tree/main/packages/decorators). This package provides the utility decorators that were previously part of `@wolfstar/http-framework`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.1.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
+
+## `0.1.0`
+
+### New features
+
+- **Decorators split into new package** — Moved the utility decorators out of `@wolfstar/http-framework` into this new package, mirroring the split between `@sapphire/framework` and `@sapphire/decorators`.
+  - **Breaking (`@wolfstar/http-framework`):** `ApplyOptions`, `RequiresGuildContext`, `RequiresDMContext`, `RequiresUserPermissions`, `RequiresClientPermissions`, `Enumerable`, `EnumerableMethod`, `createClassDecorator`, `createMethodDecorator`, `createProxy`, `createFunctionPrecondition`, and the `PieceConstructor`/`ContextFallback` types are no longer exported by the framework. Install `@wolfstar/decorators` and import them from there instead; their behaviour is unchanged. The `Register*` decorators and `RestrictGuildIds` stay in the framework.
+  - `@wolfstar/decorators` declares `@wolfstar/http-framework` as a peer dependency.
+  - `@wolfstar/schema` now includes `@wolfstar/decorators` in the default `imports.presets`, so projects using the `stars` CLI's auto imports keep getting the decorators without an explicit import once the package is installed ([#238](https://github.com/wolfstar-project/stars-components/pull/238)).
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `6.0.0`.
