@@ -5,7 +5,8 @@ description: 'Diagnostic codes for stars.config.* loading and validation failure
 
 Every way `stars.config.*` can fail to load or validate is a structured diagnostic exported from
 `@wolfstar/http-framework/config` as `configDiagnostics`. `@wolfstar/cli` renders these the same way as its own
-[CLI errors](/documentation/errors/cli) and exits with code `2` for all of them.
+[CLI errors](/documentation/errors/cli) and exits with code `2` for all of them, except warnings such as
+`COMPATIBILITY_VERSION_EOL`.
 
 ## ROOT_NOT_FOUND {#root_not_found}
 
@@ -90,14 +91,31 @@ An option was set to a value of the wrong type.
 
 `future.compatibilityVersion` is set to an unknown version.
 
-**Fix:** use the legacy compatibility version for the legacy build pipeline, or the latest version for today's
-defaults.
+**Fix:** use one of the supported versions (`3`, `4`, `5`, or `6`). Version `6` carries today's defaults.
+
+## COMPATIBILITY_VERSION_EOL {#compatibility_version_eol}
+
+`future.compatibilityVersion` is set to `3`, which is end-of-life and will be removed in the next major. This is a
+warning: the configuration still loads, and every command prints it. `stars info` shows it next to the version in
+effect.
+
+**Fix:** move the options of your `tsdown.config.*` into `tsdown` in `stars.config`, delete that file, then set
+`future.compatibilityVersion` to `6` (or remove it).
 
 ## UNKNOWN_OPTION {#unknown_option}
 
 The configuration contains an option name `@wolfstar/http-framework` doesn't recognize.
 
 **Fix:** the message lists the known options for that section — check for a typo.
+
+## UNKNOWN_HOOK {#unknown_hook}
+
+`hooks` contains a hook name the `stars` CLI doesn't recognize. `stars` rejects it rather than registering a hook that
+never runs.
+
+**Fix:** the message lists the known hooks (`config:resolved`, `env:options`, `prepare:before`, `prepare:done`,
+`builder:created`, `tsdown:options`, `build:before`, `build:done`, `dev:start`, `dev:restart`, `dev:close`). Check for
+a typo in the full name or the namespaced form.
 
 ## EXPERIMENT_REQUIRED {#experiment_required}
 
@@ -110,6 +128,12 @@ An option needs an `experimental.*` flag that isn't set.
 `imports` was set but `build.tool` isn't `'tsdown'`.
 
 **Fix:** set `build.tool` to `'tsdown'`, or remove `imports` (or set it to `false`).
+
+## ENV_REQUIRES_ENV_UTILITIES {#env_requires_env_utilities}
+
+`env` is enabled, but the project does not depend on `@wolfstar/env-utilities`.
+
+**Fix:** install it with `pnpm add @wolfstar/env-utilities`, or set `env` to `false`.
 
 ## LOCALES_NOT_FOUND {#locales_not_found}
 
