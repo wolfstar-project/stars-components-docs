@@ -119,6 +119,19 @@ interface Args {
 }
 ```
 
+Instead of a hand-written `Args`, you can let `stars codegen` type the options from the builder. Set
+`codegen: { commands: true }` in `stars.config`, run `stars build`, then `stars codegen` (see
+[Typed command options](/documentation/packages/cli#typed-command-options)). The CLI writes a `CommandOptionsRegistry`
+entry per command path, and `Command.OptionsOf` reads it. A renamed option, a flipped `required`, or a changed type then
+stops compiling:
+
+```typescript
+@RegisterSubcommand(buildSubcommandBuilders('add', 'Adds the first number to the second number'))
+public add(interaction: Command.ChatInputInteraction, { first, second }: Command.OptionsOf<'math add'>) {
+	return interaction.sendMessage({ content: `The result is: ${first + second}` });
+}
+```
+
 ### Registering commands without decorators
 
 If you don't want to rely on TS decorators (for example, when writing plain JavaScript, or [`@sapphire/framework`][`@sapphire/framework`]-style codebases), you can instead override the `registerApplicationCommands` method, which receives a per-command registry with the same capabilities as the decorators above:
