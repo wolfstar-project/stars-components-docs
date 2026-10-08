@@ -196,11 +196,7 @@ With ESLint, `eslint.config.mjs` registers the plugin with its recommended rules
 import wolfstar, { recommendedRules } from '@wolfstar/eslint-plugin-http-framework';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
-	{ ignores: ['dist/**'] },
-	...tseslint.configs.recommended,
-	{ plugins: { wolfstar }, rules: recommendedRules }
-);
+export default tseslint.config({ ignores: ['dist/**'] }, ...tseslint.configs.recommended, { plugins: { wolfstar }, rules: recommendedRules });
 ```
 
 With Oxlint, `.oxlintrc.json` loads the plugin through `jsPlugins` and sets each `wolfstar/*` rule to `error`:

@@ -117,11 +117,11 @@ changes to pieces to the bot instead of restarting it. See [Hot reload](#hot-rel
 
 `dev.layout` in `stars.config`, or `--layout`, picks the interactive UI:
 
-| Value            | UI                                                                                     |
-| ---------------- | -------------------------------------------------------------------------------------- |
-| `'auto'` (default) | The dashboard on a terminal of at least 90×20, the panel on a smaller one            |
-| `'dashboard'`    | The full-screen dashboard                                                              |
-| `'panel'`        | The compact panel pinned to the bottom of the terminal, with the logs folded away      |
+| Value              | UI                                                                                |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `'auto'` (default) | The dashboard on a terminal of at least 90×20, the panel on a smaller one         |
+| `'dashboard'`      | The full-screen dashboard                                                         |
+| `'panel'`          | The compact panel pinned to the bottom of the terminal, with the logs folded away |
 
 Press `v` to switch between the two while a session runs.
 
@@ -263,11 +263,11 @@ The bot reports the application commands it registers when it starts and after e
 what it reported before, `stars dev` reports the change on the `commands` channel. `dev.commands.refresh` picks what
 happens next:
 
-| Value               | Behaviour                                                                   |
-| ------------------- | --------------------------------------------------------------------------- |
-| `'prompt'` (default) | Ask `Refresh commands? (y/n)` in the dev UI and redeploy on `y`            |
-| `'auto'`            | Redeploy right away without asking                                          |
-| `'off'`             | Only report the change                                                      |
+| Value                | Behaviour                                                       |
+| -------------------- | --------------------------------------------------------------- |
+| `'prompt'` (default) | Ask `Refresh commands? (y/n)` in the dev UI and redeploy on `y` |
+| `'auto'`             | Redeploy right away without asking                              |
+| `'off'`              | Only report the change                                          |
 
 ```ts
 export default defineConfig({
@@ -539,11 +539,11 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
 [framework README](/documentation/packages/http-framework#compatibility-version) for the full reference):
 
-| Version       | What it changes                                                                                                     |
-| ------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `3`           | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for                           |
-| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
-| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`        |
+| Version       | What it changes                                                                                                      |
+| ------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `3`           | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for                            |
+| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript  |
+| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`         |
 | `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` |
 
 ### Experimental flags

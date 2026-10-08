@@ -106,15 +106,15 @@ console.log(config.imports.presets);
 
 The `dev` block configures `stars dev`. Besides `banner`, `typecheck`, `tunnel`, and `logFile`, it accepts:
 
-| Option                 | Type                                       | Default                              | Description                                                                                                                         |
-| ---------------------- | ------------------------------------------ | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `dev.layout`           | `'auto' \| 'dashboard' \| 'panel'`         | `'auto'`                             | The interactive UI. `'auto'` picks the full-screen dashboard on a terminal of at least 90×20 and the compact panel otherwise.       |
-| `dev.logs.channels`    | `string[]`                                 | every channel                        | The log channels shown when `stars dev` starts. Other channels start hidden but can still be toggled.                               |
-| `dev.logs.levels`      | `StarsLogLevel[]`                          | `['error', 'warn', 'info', 'debug']` | The log levels shown when `stars dev` starts.                                                                                       |
-| `dev.logs.dir`         | `string \| false`                          | `false`                              | A directory, relative to `root`, that receives one log file per run (`dev-<timestamp>.log`).                                        |
-| `dev.logs.keep`        | `number`                                   | `10`                                 | How many per-run files `dev.logs.dir` keeps, the current run included. Must be a positive integer.                                  |
-| `dev.commands.refresh` | `'prompt' \| 'auto' \| 'off'`              | `'prompt'`                           | What `stars dev` does when the bot's application commands change: ask before redeploying, redeploy right away, or only report it. |
-| `dev.hmr`              | `boolean`                                  | `true`                               | Leaves changes to pieces to the bot's own hot reload instead of restarting it. `false` always restarts.                             |
+| Option                 | Type                               | Default                              | Description                                                                                                                       |
+| ---------------------- | ---------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+| `dev.layout`           | `'auto' \| 'dashboard' \| 'panel'` | `'auto'`                             | The interactive UI. `'auto'` picks the full-screen dashboard on a terminal of at least 90×20 and the compact panel otherwise.     |
+| `dev.logs.channels`    | `string[]`                         | every channel                        | The log channels shown when `stars dev` starts. Other channels start hidden but can still be toggled.                             |
+| `dev.logs.levels`      | `StarsLogLevel[]`                  | `['error', 'warn', 'info', 'debug']` | The log levels shown when `stars dev` starts.                                                                                     |
+| `dev.logs.dir`         | `string \| false`                  | `false`                              | A directory, relative to `root`, that receives one log file per run (`dev-<timestamp>.log`).                                      |
+| `dev.logs.keep`        | `number`                           | `10`                                 | How many per-run files `dev.logs.dir` keeps, the current run included. Must be a positive integer.                                |
+| `dev.commands.refresh` | `'prompt' \| 'auto' \| 'off'`      | `'prompt'`                           | What `stars dev` does when the bot's application commands change: ask before redeploying, redeploy right away, or only report it. |
+| `dev.hmr`              | `boolean`                          | `true`                               | Leaves changes to pieces to the bot's own hot reload instead of restarting it. `false` always restarts.                           |
 
 ```typescript
 // stars.config.ts
