@@ -87,13 +87,16 @@ the same queue. The `@wolfstar/plugin-scheduled-tasks/register` entrypoint exist
 
 If no `bull.connection` is set in either place, the plugin throws a `TypeError` when the client initializes.
 
-| Option               | Default             | Description                                                                         |
-| -------------------- | ------------------- | ----------------------------------------------------------------------------------- |
-| `bull`               | —                   | BullMQ's `QueueOptions`. `bull.connection` is required and the worker also uses it. |
-| `queue`              | `"scheduled-tasks"` | The name of the BullMQ queue.                                                       |
-| `loadErrorListeners` | `true`              | Load the listeners that log task and connection errors through `container.logger`.  |
+| Option               | Default             | Description                                                                                                                                          |
+| -------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bull`               | —                   | BullMQ's `QueueOptions`. `bull.connection` is required and the worker also uses it.                                                                  |
+| `queue`              | `"scheduled-tasks"` | The name of the BullMQ queue.                                                                                                                        |
+| `loadErrorListeners` | `true`              | Load the listeners that log task and connection errors through `container.logger`.                                                                   |
+| `ready`              | —                   | A function that tells whether the app is ready, for tasks that wait for it. See [Waiting for the app to be ready](#waiting-for-the-app-to-be-ready). |
+| `readyTimeout`       | `30000`             | How long a job waits for `ready`, in milliseconds.                                                                                                   |
+| `readyDelay`         | `30000`             | How long a job that timed out waiting for `ready` is pushed back, in milliseconds.                                                                   |
 
-In `ClientOptions`, `tasks` accepts `bull` and `queue`, and `loadScheduledTaskErrorListeners` overrides
+In `ClientOptions`, `tasks` accepts `bull`, `queue`, `ready`, `readyTimeout`, and `readyDelay`, and `loadScheduledTaskErrorListeners` overrides
 `loadErrorListeners`.
 
 ## Writing a task
@@ -139,6 +142,7 @@ await container.tasks.create({ name: 'unmute', payload: { guildId, userId } }, 3
 | `delete(id)`             | Removes a job. It does not stop a repeated task.              |
 | `listRepeated()`         | Lists the repeated tasks' job schedulers.                     |
 | `deleteRepeated(name)`   | Removes the job scheduler of a repeated task.                 |
+| `waitForReady(timeout?)` | Waits for `ready` and resolves to whether the app is ready.   |
 | `close()`                | Closes the queue and waits for the worker to finish its task. |
 
 `container.tasks.client` is the BullMQ `Queue` itself.
@@ -173,12 +177,75 @@ named after the task. Changing the `pattern` or `interval` in your code replaces
 Deleting the piece does not delete the scheduler from Redis. Remove it with `container.tasks.deleteRepeated('report')`,
 and list existing schedulers with `container.tasks.listRepeated()`.
 
+## Waiting for the app to be ready
+
+When the worker starts, it immediately takes any job that came due while the bot was down. That can happen before the
+app has what the task needs, such as the gateway cache. Use the `ready` option to tell the plugin when the app is ready,
+and set `waitForReady: true` on the tasks that depend on it.
+
+`ready` returns `true`, or a promise that resolves to anything but `false`, when the app is ready:
+
+```ts
+import { Client, container } from '@wolfstar/http-framework';
+import { scheduledTasks } from '@wolfstar/plugin-scheduled-tasks';
+
+const client = new Client({
+	plugins: [
+		scheduledTasks({
+			bull: { connection: { host: 'localhost', port: 6379 } },
+			ready: () => container.gatewayClient.isClientReady(),
+			readyTimeout: 30_000,
+			readyDelay: 30_000
+		})
+	]
+});
+```
+
+```ts src/scheduled-tasks/poststats.ts
+import { ScheduledTask } from '@wolfstar/plugin-scheduled-tasks';
+
+export class PostStatsTask extends ScheduledTask<'poststats'> {
+	public constructor(context: ScheduledTask.LoaderContext) {
+		super(context, { pattern: '*/10 * * * *', waitForReady: true });
+	}
+
+	public override run() {
+		// Runs only once the app is ready
+	}
+}
+```
+
+Before a `waitForReady` task runs, its job waits up to `readyTimeout` for `ready`. If `ready` returns `false`, the
+plugin calls it again every 250 ms until the timeout. If the app is still not ready, the plugin moves the job back to
+`delayed` for `readyDelay` and the client emits `scheduledTaskNotReady`. The delayed job costs no attempt and does not
+emit `scheduledTaskError`. If `ready` throws or rejects, the job fails like a task error.
+
+- Tasks without `waitForReady` never wait. `waitForReady` defaults to `false`.
+- `waitForReady` does nothing if you don't set `ready`.
+- The worker runs one job at a time, so a waiting job holds back the other tasks for up to `readyTimeout`. Lower it if
+  that matters.
+
+To wait inside a task by hand, call `container.tasks.waitForReady()`. It resolves to `true` once the app is ready, or
+`false` if it still isn't after the timeout. It defaults to `readyTimeout`, and resolves to `true` immediately without a
+`ready` option:
+
+```ts
+if (!(await container.tasks.waitForReady(10_000))) return;
+```
+
+<Warning>
+	`ready` is a function, so you can't set it in `stars.config`. Pass it to `scheduledTasks()` or `ClientOptions.tasks` instead. You can still set
+	`readyTimeout` and `readyDelay` in `stars.config`.
+</Warning>
+
 ## Events
 
 The client emits these events, whose names are in `ScheduledTaskEvents`:
 
 - `scheduledTaskRun`, `scheduledTaskSuccess`, `scheduledTaskError`, `scheduledTaskFinished`, and
   `scheduledTaskNotFound` around every run.
+- `scheduledTaskNotReady` when a task that waits for the app is delayed because the app isn't ready. The plugin installs
+  no listener for it, so add one if you want to log it.
 - `scheduledTaskStrategyConnectError`, `scheduledTaskStrategyClientError`, and `scheduledTaskStrategyWorkerError` for
   Redis and BullMQ failures.
 
