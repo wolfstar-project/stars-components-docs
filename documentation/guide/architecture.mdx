@@ -33,7 +33,8 @@ Discord ──POST──▶ Client (node:http)
 
 The framework emits an event at each step (`commandRun`, `commandSuccess`, `commandError`, `commandFinish`, and the
 matching `interactionHandler*` and `autocomplete*` events), so cross-cutting concerns such as logging and error replies live
-in listeners instead of being repeated in every command.
+in listeners instead of being repeated in every command. Expected failures, such as a denied
+[precondition](/documentation/packages/http-framework#preconditions), go to the `*Denied` events instead of `commandError`.
 
 ## Project Layout
 

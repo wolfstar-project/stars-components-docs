@@ -122,17 +122,18 @@ export class UserCommand extends Command {
 
 When the check fails, the decorator throws a `PreconditionError`. Its identifier is
 `Identifiers.PreconditionUserPermissions` or `Identifiers.PreconditionClientPermissions`, and its
-`context: { missing, missingNames }` describes the missing permissions. The framework emits errors thrown from a command
-as `commandError` (and as `interactionHandlerError` for interaction handlers). Listen to these events to turn the errors
-into a user-facing reply:
+`context: { missing, missingNames }` describes the missing permissions. A `PreconditionError` is a `UserError`, so the
+framework emits it as `chatInputCommandDenied` or `contextMenuCommandDenied` (and as `interactionHandlerDenied` for
+interaction handlers) instead of `commandError`. Listen to these events to turn the errors into a user-facing reply.
+`commandError` only receives unexpected errors:
 
 ```typescript
 import { ApplyOptions } from '@wolfstar/decorators';
-import { Identifiers, Listener, PreconditionError, type ClientEventCommandContext } from '@wolfstar/http-framework';
+import { Identifiers, Listener, PreconditionError, type ClientEventCommandContext, type UserError } from '@wolfstar/http-framework';
 
-@ApplyOptions<Listener.Options>({ emitter: 'client', event: 'commandError' })
+@ApplyOptions<Listener.Options>({ emitter: 'client', event: 'chatInputCommandDenied' })
 export class UserListener extends Listener {
-	public run(error: unknown, context: ClientEventCommandContext) {
+	public run(error: UserError, context: ClientEventCommandContext) {
 		if (
 			error instanceof PreconditionError &&
 			(error.identifier === Identifiers.PreconditionUserPermissions || error.identifier === Identifiers.PreconditionClientPermissions)
@@ -146,6 +147,9 @@ export class UserListener extends Listener {
 
 Notes on the semantics:
 
+- Before `@wolfstar/http-framework` 6.3.0, this error reached `commandError`. If a listener on that event handles
+  `PreconditionError`, move it to the `*Denied` events. See
+  [Expected errors](/documentation/packages/http-framework#expected-errors-denied-events).
 - Members with `Administrator` implicitly satisfy every check.
 - `RequiresUserPermissions` passes for interactions received outside of a guild, since there are no guild permissions to
   check. Combine it with `RequiresGuildContext` when the method must be guild-only.
