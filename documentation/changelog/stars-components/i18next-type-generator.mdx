@@ -1,0 +1,53 @@
+---
+title: "@wolfstar/i18next-type-generator"
+sidebarTitle: "i18next-type-generator"
+description: "Changelog for @wolfstar/i18next-type-generator: a fast utility that generates the TypeScript augmentation for i18next."
+---
+
+Changes to [`@wolfstar/i18next-type-generator`](https://github.com/wolfstar-project/stars-components/tree/main/packages/i18next-type-generator). This package generates the TypeScript augmentation for i18next from locale JSON files. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `3.1.6`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
+
+## `3.1.5`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies ([#227](https://github.com/wolfstar-project/stars-components/pull/227)).
+
+## `3.1.4`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies ([#210](https://github.com/wolfstar-project/stars-components/pull/210)).
+
+## `3.1.3`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies ([#178](https://github.com/wolfstar-project/stars-components/pull/178)).
+
+## `3.1.2`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies ([#169](https://github.com/wolfstar-project/stars-components/pull/169)).
+
+## `3.1.1`
+
+### Updates
+
+- **Provenance** — Enabled npm provenance for published releases (`publishConfig.provenance`), matching every other package in this workspace ([#163](https://github.com/wolfstar-project/stars-components/pull/163)).
+
+## `3.1.0`
+
+### New features
+
+- **i18next v25 native TypeScript types** — `@wolfstar/http-framework-i18n` now targets i18next v25 with namespace-aware `getT` and `getSupportedLanguageT` helpers and drops the deprecated `T`, `FT`, `resolveKey`, and `resolveUserKey` APIs. `@wolfstar/shared-http-pieces` removes the hand-maintained `LanguageKeys` export in favour of the generated `CustomTypeOptions` augmentation and direct `TFunction<'commands/shared'>` usage. `@wolfstar/i18next-type-generator` is the CLI used to generate that augmentation from locale JSON files ([#30](https://github.com/wolfstar-project/stars-components/pull/30)).
+
+### Updates
+
+- **Typechecker** — Replaced `tsc` with `golar tsc` in the `typecheck` script. This is a dev-tooling-only change with no effect on published output. Also bumped TypeScript to `7.0.2` ([#151](https://github.com/wolfstar-project/stars-components/pull/151)).

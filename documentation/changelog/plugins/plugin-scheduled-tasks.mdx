@@ -1,0 +1,19 @@
+---
+title: "@wolfstar/plugin-scheduled-tasks"
+sidebarTitle: "plugin-scheduled-tasks"
+description: "Changelog for @wolfstar/plugin-scheduled-tasks: schedule one-off and repeated tasks for @wolfstar/http-framework, backed by BullMQ."
+---
+
+Changes to [`@wolfstar/plugin-scheduled-tasks`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-scheduled-tasks). The plugin adds scheduled tasks to `@wolfstar/http-framework`, run by a BullMQ worker. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.2.0`
+
+### New features
+
+- **Task readiness gate** — Adds a readiness gate for tasks that need the app to be up. Give the plugin a `ready` callback (with optional `readyTimeout` and `readyDelay`) and set `waitForReady: true` on the tasks that need it: when a job is taken before the app is ready it waits, and if the timeout passes it is moved back to `delayed` instead of failed, so it costs no attempt and emits no `scheduledTaskError`. The new `scheduledTaskNotReady` event (`ScheduledTaskEvents.ScheduledTaskNotReady`) reports it, and `ScheduledTaskHandler#waitForReady()` lets a task wait by hand. `ScheduledTaskHandler#run` takes an optional second argument with the BullMQ job and token. ([#228](https://github.com/wolfstar-project/plugins/pull/228))
+
+## `0.1.0`
+
+### New features
+
+- **New package** — `@wolfstar/plugin-scheduled-tasks` is the counterpart of `@sapphire/plugin-scheduled-tasks` for `@wolfstar/http-framework`. Tasks are `ScheduledTask` pieces run by a BullMQ worker, created with `container.tasks.create()` or repeated on an `interval` or cron `pattern`. It is built on `definePlugin` and `defineModule`: list the package in `modules` in `stars.config`, or pass `scheduledTasks()` to `plugins`. ([#177](https://github.com/wolfstar-project/plugins/pull/177))

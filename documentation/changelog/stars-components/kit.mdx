@@ -1,0 +1,45 @@
+---
+title: "@wolfstar/kit"
+sidebarTitle: "kit"
+description: "Changelog for @wolfstar/kit: defineModule and the module setup runtime for installable Stars modules."
+---
+
+Changes to [`@wolfstar/kit`](https://github.com/wolfstar-project/stars-components/tree/main/packages/kit). This package implements `defineModule` and the module setup runtime, the `@nuxt/kit` counterpart for installable Stars modules. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.2.0`
+
+### New features
+
+- **`meta.configKey` support** — `setupModules` now merges module options in the right order: defaults, then `config.moduleOptions[configKey]`, then the inline options from the `[name, options]` tuple or `ctx.installModule`. A `configKey` that is empty, a built-in `stars.config` key, claimed by another installed module, or holding something other than a plain object fails with `MODULE_INVALID`. The claimed keys are returned as `ModulesRuntime.configKeys` ([#294](https://github.com/wolfstar-project/stars-components/pull/294)).
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.9.0`.
+
+## `0.1.3`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.8.0`.
+
+## `0.1.2`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. Updated `@wolfstar/schema` to `0.7.0` ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
+
+## `0.1.1`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.6.0`.
+
+## `0.1.0`
+
+### New features
+
+- **New package** — Introduced `defineModule` and the module runtime for installable Stars modules. A module declares `meta` (name, version, `compatibility` ranges checked against the project's `@wolfstar/http-framework` and `@wolfstar/cli`), `defaults`, `dependencies`, `hooks` and `setup(options, ctx)`, whose `ctx` offers `addPlugin`, `addImports`, `hook`, `callHook` and `installModule`. `setupModules` installs each module once, dependencies first, and failures are reported as `ModuleError`s ([#247](https://github.com/wolfstar-project/stars-components/pull/247)).
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.5.0`.

@@ -1,0 +1,38 @@
+---
+title: "@wolfstar/http-framework-utilities"
+sidebarTitle: "http-framework-utilities"
+description: "Changelog for @wolfstar/http-framework-utilities: utilities for @wolfstar/http-framework including type guards, permission helpers, message builder, paginated messages, and prompters."
+---
+
+Changes to [`@wolfstar/http-framework-utilities`](https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-utilities). This package provides type guards, permission helpers, `MessageBuilder`, `PaginatedMessage`, and `MessagePrompter` for `@wolfstar/http-framework`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.1.1`
+
+### Bug fixes
+
+- **Peer dependency range** — Widened the optional `@wolfstar/plugin-gateway` peer dependency from `^0.8.0` to `>=0.8.0`. A caret range on a `0.x` version only matches one minor, so `^0.8.0` previously reported an unmet peer for every newer plugin release, including the current `0.11.0` ([#281](https://github.com/wolfstar-project/stars-components/pull/281)).
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. Updated `@wolfstar/discord-utilities` to `0.1.1` ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
+
+## `0.1.0`
+
+### New features
+
+- **New package** — Introduced `@wolfstar/http-framework-utilities` with the following utilities for `@wolfstar/http-framework`:
+  - Type guards and `app_permissions`-based permission helpers.
+  - `MessageBuilder` for composing messages.
+  - `PaginatedMessage` with lazy and embed-field variants, backed by a pluggable session store with a required `scope` (`MemorySessionStore` is process-scoped, `RedisSessionStore` is shared and rejects lazy pages, custom action callbacks, and `MessagePrompter`).
+  - `MessagePrompter` for prompting users.
+  - Best-effort timeout cleanup (`timeoutBehavior: 'disable' | 'remove'`) capped at a 14-minute interaction-token lifetime, falling back to bot REST after that bound for non-ephemeral messages.
+  - A disabled-controls update plus an ephemeral expiry notice for expired or unknown sessions, configurable process-wide with `setDefaultExpiredReply` and readable with `getDefaultExpiredReply`.
+  - Same-message clicks are handled one at a time per process; `stop` leaves a tombstone so a concurrent click cannot bring the session back.
+  - A failed save keeps the current page and sends an ephemeral notice set with `setDefaultSaveFailedReply`.
+  - `registerSessionStore` lets every replica find sessions kept in a per-instance shared store.
+  - Custom actions with a `run` callback cannot reuse a built-in id (`PaginatedMessageBuiltinActionIds`).
+  - Added the optional `@wolfstar/http-framework-utilities/gateway` subpath for [`@wolfstar/plugin-gateway`](/documentation/changelog/plugins/plugin-gateway) with structure type guards, async `can*` permission helpers, `awaitMessages` and `awaitReactions` collectors, `GatewayPaginatedMessage` (can be sent to a gateway message or a channel), and `GatewayMessagePrompter` (adds the `message` and `reaction` strategies) ([#239](https://github.com/wolfstar-project/stars-components/pull/239)).
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/discord-utilities` to `0.1.0`.

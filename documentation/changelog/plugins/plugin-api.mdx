@@ -4,27 +4,94 @@ sidebarTitle: 'plugin-api'
 description: 'Changelog for @wolfstar/plugin-api: the standalone REST API server plugin.'
 ---
 
-Changes to [`@wolfstar/plugin-api`](/documentation/packages/plugin-api). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/plugin-api`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-api). The plugin adds a standalone REST API server to your Stars bot, with routes, middleware, and a router. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-10-01
-
-### Breaking changes
-
-- **`2.0.0`: Sapphire 8.3.1 parity** — The plugin now matches `@sapphire/plugin-api` 8.3.1, except for authentication. `ApiServer` is renamed `Server`, `ApiServerOptions`/`ApiServerEvents`/`ApiServerEvent` are `ServerOptions`/`ServerEvents`/`ServerEvent`, `ApiPlugin` is `Api`, and `HttpMethod` is `MethodName`. Use `response.status(code).json(data)` instead of `json(data, code)`. `readBodyJson()` returns `unknown` and takes its limit from `maximumBodyLength`. `request.query` is a plain record. A route with no methods now answers `404` instead of defaulting to `GET`, and `OPTIONS` answers `200` with an empty body instead of `204`. Requires Node.js `>=20.18.1`. See [Migrating from 1.x](/documentation/packages/plugin-api#migrating-from-1x). ([plugins#161](https://github.com/wolfstar-project/plugins/pull/161))
+## `2.1.0`
 
 ### New features
 
-- **Cookies** — The new `cookies` middleware exposes `response.cookies`, a `CookieStore` that writes `Set-Cookie` headers. See [Cookies](/documentation/packages/plugin-api#cookies).
-- **Body readers** — `readBody*`, `readValidatedBody*`, and `asWeb()` on `ApiRequest`. See [Reading the request](/documentation/packages/plugin-api#reading-the-request).
-- **More response helpers and `HttpCodes`** — The full `ApiResponse` helper set (`created`, `notFound`, `text`, `html`, and more), plus a `HttpCodes` re-export.
-- **`ServerOptions.prefix`, per-route `maximumBodyLength`, and `version`** — Prefix every route path, override the body limit per route, and read the installed version from the `version` export.
+- **Module and plugin entrypoints** — Add `@wolfstar/plugin-api/module` and `@wolfstar/plugin-api/plugin`. List the module in `modules` in `stars.config`, or pass the `definePlugin` factory to `plugins`. Both need framework 6.1 (and `@wolfstar/kit` for the module). `./register` is unchanged and still supports framework v3, v5, and v6. ([#194](https://github.com/wolfstar-project/plugins/pull/194))
+
+## `2.0.1`
 
 ### Bug fixes
 
-- Router path, route removal, and `supportedMethods` bugs inherited from upstream are fixed. `Server#connect()` now rejects instead of throwing uncaught when the port is in use, and malformed `Cookie` headers no longer crash parsing.
+- **Dependencies** — Updated `cookie-es` to v3. ([#180](https://github.com/wolfstar-project/plugins/pull/180))
+- **Peer range** — Accept `@wolfstar/http-framework` v6 in the peer range (`|| ^6.0.0`). ([#176](https://github.com/wolfstar-project/plugins/pull/176))
 
-## 2026-09-24
+## `2.0.0` (2026-10-01)
+
+### New features
+
+- **Sapphire 8.3.1 parity** — The plugin now matches `@sapphire/plugin-api` 8.3.1, except for authentication. Added: `CookieStore` and the `cookies` middleware, body readers (`readBody*`, `readValidatedBody*`, `asWeb`), the full `ApiResponse` helper set, `ServerOptions.prefix`, per-route `maximumBodyLength`, the `MiddlewareSuccess`/`MiddlewareFailure` events, full router (`RouterBranch`/`RouterNode`) parity, `HttpCodes`, and a `version` export. ([#161](https://github.com/wolfstar-project/plugins/pull/161))
 
 ### Updates
 
-- **`http-framework` 5 support** — The plugin now targets [`@wolfstar/http-framework`](/documentation/changelog/stars-components/http-framework) `5.x`.
+- **Renames** — `ApiServer` is renamed `Server`, `ApiServerOptions`/`ApiServerEvents`/`ApiServerEvent` are `ServerOptions`/`ServerEvents`/`ServerEvent`, `ApiPlugin` is `Api`, and `HttpMethod` is `MethodName`.
+- **Response helpers** — Use `response.status(code).json(data)` instead of `json(data, code)`.
+- **Body reading** — `readBodyJson()` returns `unknown` and takes its limit from `maximumBodyLength`.
+- **Query object** — `request.query` is a plain record.
+- **Route matching** — A route with no methods now answers `404` instead of defaulting to `GET`, and `OPTIONS` answers `200` with an empty body instead of `204`.
+- **Listener pieces** — Listener piece names are PascalCase.
+- **Node version** — Requires Node.js `>=20.18.1`.
+
+### Bug fixes
+
+- Router path, route removal, and `supportedMethods` bugs inherited from upstream are fixed.
+- `Server#connect()` now rejects instead of throwing uncaught when the port is in use.
+- Malformed `Cookie` headers no longer crash parsing.
+
+### Migration
+
+- Replace `ApiServer` with `Server`, `ApiServerOptions` with `ServerOptions`, `ApiServerEvents` with `ServerEvents`, `ApiServerEvent` with `ServerEvent`, `ApiPlugin` with `Api`, and `HttpMethod` with `MethodName`.
+- Replace `json(data, code)` with `status(code).json(data)`.
+- Replace `readBodyJson<Shape>` with `readBodyJson()` returning `unknown`.
+- Ensure Node.js is `>=20.18.1`.
+
+## `1.1.7`
+
+### Bug fixes
+
+- **Peer dependency** — Accept `@wolfstar/http-framework` v5 as a peer dependency (`^3.0.0 || ^5.0.0`), so v5 projects no longer install the plugin with an unmet peer. ([#125](https://github.com/wolfstar-project/plugins/pull/125))
+
+## `1.1.6`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#75](https://github.com/wolfstar-project/plugins/pull/75))
+
+## `1.1.5`
+
+### Updates
+
+- **Type validation** — Validate every published subpath export with `are-the-types-wrong`, not just the main entrypoint. `createTsdownOptions` hardcoded `attw.entrypoints` to `["."]`, so the `./register` export of each package shipped unchecked. It now accepts an `attwEntrypoints` option, and all packages list their real entrypoints. ([#70](https://github.com/wolfstar-project/plugins/pull/70))
+
+## `1.1.4`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#47](https://github.com/wolfstar-project/plugins/pull/47))
+
+## `1.1.3`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#26](https://github.com/wolfstar-project/plugins/pull/26))
+
+## `1.1.2`
+
+### Bug fixes
+
+- **Repository URL** — Fix repository URL in package.json to point to the plugins repository. ([#13](https://github.com/wolfstar-project/plugins/pull/13))
+
+## `1.1.1`
+
+### Updates
+
+- **Republish** — Republish after fixing the npm trusted-publishing configuration that prevented earlier releases from reaching the registry.
+
+## `1.1.0`
+
+### New features
+
+- **New package** — Add `@wolfstar/plugin-api`: standalone REST API server plugin for `@wolfstar/http-framework` with routes, middlewares, and router.

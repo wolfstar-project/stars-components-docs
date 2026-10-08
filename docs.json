@@ -79,49 +79,94 @@
 					}
 				]
 			},
-			{
-				"tab": "Changelog",
-				"icon": "list",
-				"groups": [
-					{
-						"group": "Overview",
-						"pages": ["documentation/changelog/index"]
-					},
-					{
-						"group": "Stars Components",
-						"pages": [
-							"documentation/changelog/stars-components/http-framework",
-							"documentation/changelog/stars-components/cli",
-							"documentation/changelog/stars-components/schema",
-							"documentation/changelog/stars-components/env-utilities",
-							"documentation/changelog/stars-components/vite-server",
-							"documentation/changelog/stars-components/nitro-server",
-							"documentation/changelog/stars-components/create-http-framework",
-							"documentation/changelog/stars-components/shared-http-pieces",
-							"documentation/changelog/stars-components/oxfmt-config",
-							"documentation/changelog/stars-components/oxlint-config"
-						]
-					},
-					{
-						"group": "Plugins",
-						"pages": [
-							"documentation/changelog/plugins/plugin-api",
-							"documentation/changelog/plugins/plugin-broker",
-							"documentation/changelog/plugins/plugin-cache",
-							"documentation/changelog/plugins/plugin-gateway",
-							"documentation/changelog/plugins/plugin-i18next",
-							"documentation/changelog/plugins/plugin-logger",
-							"documentation/changelog/plugins/plugin-sharder",
-							"documentation/changelog/plugins/plugin-subcommands-advanced"
-						]
-					}
-				]
-			},
-			{
+      {
 				"tab": "Errors",
 				"icon": "triangle-exclamation",
 				"pages": ["documentation/errors/cli", "documentation/errors/config"]
-			},
+      },
+      {
+        "tab": "Changelog",
+        "icon": "list",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": [
+              "documentation/changelog/index"
+            ]
+          },
+          {
+            "group": "Stars Components",
+            "pages": [
+              {
+                "group": "Core Framework",
+                "pages": [
+                  "documentation/changelog/stars-components/http-framework",
+                  "documentation/changelog/stars-components/decorators",
+                  "documentation/changelog/stars-components/kit",
+                  "documentation/changelog/stars-components/cli",
+                  "documentation/changelog/stars-components/schema",
+                  "documentation/changelog/stars-components/vite-server",
+                  "documentation/changelog/stars-components/nitro-server",
+                  "documentation/changelog/stars-components/create-http-framework",
+                  "documentation/changelog/stars-components/i18next-backend",
+                  "documentation/changelog/stars-components/i18next-type-generator",
+                  "documentation/changelog/stars-components/http-framework-test-utils",
+                  "documentation/changelog/stars-components/http-framework-utilities"
+                ]
+              },
+              {
+                "group": "Infrastructure",
+                "pages": [
+                  "documentation/changelog/stars-components/env-utilities",
+                  "documentation/changelog/stars-components/safe-fetch",
+                  "documentation/changelog/stars-components/start-banner"
+                ]
+              },
+              {
+                "group": "Shared Pieces",
+                "pages": [
+                  "documentation/changelog/stars-components/shared-http-pieces",
+                  "documentation/changelog/stars-components/shared-influx-pieces"
+                ]
+              },
+              {
+                "group": "Platform Helpers",
+                "pages": [
+                  "documentation/changelog/stars-components/discord-utilities",
+                  "documentation/changelog/stars-components/influx-utilities",
+                  "documentation/changelog/stars-components/reddit-helpers",
+                  "documentation/changelog/stars-components/twitch-helpers",
+                  "documentation/changelog/stars-components/weather-helpers"
+                ]
+              },
+              {
+                "group": "Tooling",
+                "pages": [
+                  "documentation/changelog/stars-components/eslint-config",
+                  "documentation/changelog/stars-components/eslint-plugin-http-framework",
+                  "documentation/changelog/stars-components/oxfmt-config",
+                  "documentation/changelog/stars-components/oxlint-config",
+                  "documentation/changelog/stars-components/prettier-config"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Plugins",
+            "pages": [
+              "documentation/changelog/plugins/plugin-api",
+              "documentation/changelog/plugins/plugin-broker",
+              "documentation/changelog/plugins/plugin-cache",
+              "documentation/changelog/plugins/plugin-gateway",
+              "documentation/changelog/plugins/plugin-i18next",
+              "documentation/changelog/plugins/plugin-logger",
+              "documentation/changelog/plugins/plugin-scheduled-tasks",
+              "documentation/changelog/plugins/plugin-sharder",
+              "documentation/changelog/plugins/plugin-subcommands-advanced"
+            ]
+          }
+        ]
+      },
 			{
 				"tab": "API Reference",
 				"icon": "code",

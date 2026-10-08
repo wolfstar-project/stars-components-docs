@@ -4,10 +4,28 @@ sidebarTitle: 'plugin-logger'
 description: 'Changelog for @wolfstar/plugin-logger: the logging plugin and its transports.'
 ---
 
-Changes to [`@wolfstar/plugin-logger`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-logger). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/plugin-logger`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-logger). The plugin installs a pluggable `Logger` as `container.logger` for `@wolfstar/http-framework`, fanning every entry out to a list of transports. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24
+## `0.3.0`
 
-### Updates
+### New features
 
-- **`http-framework` 5 support** — The plugin now targets [`@wolfstar/http-framework`](/documentation/changelog/stars-components/http-framework) `5.x`.
+- **Module and plugin entrypoints** — Add `@wolfstar/plugin-logger/module` and `@wolfstar/plugin-logger/plugin`. List the module in `modules` in `stars.config`, or pass the `definePlugin` factory to `plugins`. Both need framework 6.1 (and `@wolfstar/kit` for the module). `./register` is unchanged and still supports framework v3, v5, and v6. ([#187](https://github.com/wolfstar-project/plugins/pull/187))
+
+## `0.2.2`
+
+### Bug fixes
+
+- **Peer range** — Accept `@wolfstar/http-framework` v6 in the peer range (`|| ^6.0.0`). ([#176](https://github.com/wolfstar-project/plugins/pull/176))
+
+## `0.2.1`
+
+### Bug fixes
+
+- **Peer dependency** — Accept `@wolfstar/http-framework` v5 as a peer dependency (`^3.4.0 || ^5.0.0`), so v5 projects no longer install the plugin with an unmet peer. ([#125](https://github.com/wolfstar-project/plugins/pull/125))
+
+## `0.2.0` (2026-09-24)
+
+### New features
+
+- **New package** — Add `@wolfstar/plugin-logger`, a pluggable logger for `@wolfstar/http-framework` that replaces the deprecated `@wolfstar/logger`. It installs a `Logger` as `container.logger` through the `preGenericsInitialization` hook, implementing the framework's `ILogger` contract so migrating is a drop-in change. Instead of being hardcoded to `console`, it fans every entry out to a list of transports, each able to filter by its own level on top of the logger's. The package ships `ConsoleTransport` (the zero-dependency default) and `SentryTransport` in its core entrypoint, plus `ConsolaTransport`, `EvlogTransport`, and `WinstonTransport` behind the `./consola`, `./evlog`, and `./winston` subpaths. Every backend is an optional peer dependency whose instance is injected through the transport constructor, so the core stays free of runtime dependencies and consumers only install what they actually use. ([#70](https://github.com/wolfstar-project/plugins/pull/70))

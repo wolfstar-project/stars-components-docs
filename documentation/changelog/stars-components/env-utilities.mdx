@@ -1,19 +1,96 @@
 ---
-title: '@wolfstar/env-utilities'
-sidebarTitle: 'env-utilities'
-description: 'Changelog for @wolfstar/env-utilities: environment loading and parsing.'
+title: "@wolfstar/env-utilities"
+sidebarTitle: "env-utilities"
+description: "Changelog for @wolfstar/env-utilities: environment loading and parsing utilities."
 ---
 
-Changes to [`@wolfstar/env-utilities`](/documentation/packages/env-utilities). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/env-utilities`](https://github.com/wolfstar-project/stars-components/tree/main/packages/env-utilities). The package parses and validates environment variables, with optional `.env` file loading through `dotenv`, `varlock` or Node.js built-ins. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## 2026-09-24 — `2.2.0`
-
-### New features
-
-- **varlock support (experimental)** — Load environment files with [varlock](https://varlock.dev) instead of `dotenv`. Opt in with `loader: 'varlock'` or the `DOTENV_LOADER` environment variable. See [Environment](/documentation/guide/environment).
-
-## 2026-09-17 — `2.1.x`
+## `2.3.1`
 
 ### Updates
 
-- **Structured logging** — Uses `container.logger` from `@sapphire/pieces` when available and falls back to `console.debug` for standalone consumers.
+- **Dependencies** — Updated all non-major dependencies. ([#253](https://github.com/wolfstar-project/stars-components/pull/253))
+
+## `2.3.0`
+
+### New features
+
+- **`EnvFromVarlock`** — Added `EnvFromVarlock` to derive `Env` from varlock's generated `CoercedEnvSchema`, exported from the package root and from the new `@wolfstar/env-utilities/varlock` subpath. The README now states that `envParseArray` needs `ArrayString` keys, not plain `string`. `EnvString` also rejects optional number and boolean keys now, like required ones. ([#260](https://github.com/wolfstar-project/stars-components/pull/260))
+- **Node.js loader** — Added a `node` loader that parses `.env*` files with Node.js' own `util.parseEnv` (Node.js 20.12 or newer) and expands references like `dotenv-expand`. `dotenv` and `dotenv-expand` are now optional peer dependencies. When no loader is requested, `dotenv` is used if both packages are installed and the `node` loader if they are not, so a project that has them installed behaves as before and a varlock or new project installs nothing. Asking for `loader: 'dotenv'` without the packages throws an `Error` naming the missing one. `EnvLoaderOptions` no longer extends dotenv's `DotenvConfigOptions`, and `EnvSetupResult` is now the package's own `EnvLoaderOutput`. ([#265](https://github.com/wolfstar-project/stars-components/pull/265))
+- **Automatic varlock loader** — The `varlock` loader is now picked automatically when `varlock` is installed and the project has a `src/.env.schema`, a `.env.schema` or a `varlock.loadPath` in `package.json`. An explicit `path`, the `loader` option and `DOTENV_LOADER` still win. Behaviour change: a project that already has a `.env.schema` and has `varlock` installed, but loaded its `.env*` files through dotenv, now loads through varlock after this release. Varlock reads the schema and its own `.env*` discovery, not `src/.env*` with `NODE_ENV` suffixes, so the values can differ: set `loader: 'dotenv'` (or `DOTENV_LOADER=dotenv`) to keep the previous behaviour. The loader is still experimental. ([#262](https://github.com/wolfstar-project/stars-components/pull/262))
+- **`varlock load` format** — The experimental `varlock` loader now runs through `varlock load --format json-full` instead of `varlock/auto-load`. `parsed` now holds exactly the resolved keys, `path` and `env` map to `--path` and `--env`, and an invalid schema throws an `Error` with varlock's summary instead of exiting the process. ([#261](https://github.com/wolfstar-project/stars-components/pull/261))
+- **Typed `ENV` export** — Varlock's typed `ENV` object is now exported as `env` from `@wolfstar/env-utilities/varlock`, filled by `setup()` when the `varlock` loader runs. ([#263](https://github.com/wolfstar-project/stars-components/pull/263))
+
+### Updates
+
+- **Dependencies** — Updated `dotenv` to v18. ([#230](https://github.com/wolfstar-project/stars-components/pull/230))
+
+## `2.2.1`
+
+### Bug fixes
+
+- **Cross-file variable references** — `loadEnvFiles()` used to expand every file right after loading it, so a specific file (e.g. `.env.local`) referencing a variable defined only in a more generic one (e.g. `.env`) silently resolved to an empty string. All files are now parsed first and expanded once, so references resolve regardless of load order. Precedence (specific over generic, `src/.env*` over root, existing `process.env` values kept) and the `prefix` filter (applied after expansion) are unchanged. ([#226](https://github.com/wolfstar-project/stars-components/pull/226))
+- **Circular references** — Because a variable is now resolved from the merged result and no longer from the file that defined it, a specific file whose value expands to an empty string (e.g. `K=${MISSING}`) now ends up as `''` in `process.env` instead of falling back to the value from a more generic file. Variables that are part of a circular reference spanning several variables now resolve to an empty string instead of hanging the process, including cycle shapes that previously terminated with a non-empty value (e.g. `A=${B}` / `B=${A:-fallback}`, or `A=${B:+alt}` / `B=${A}`). ([#226](https://github.com/wolfstar-project/stars-components/pull/226))
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#227](https://github.com/wolfstar-project/stars-components/pull/227))
+
+## `2.2.0` (2026-09-24)
+
+### New features
+
+- **varlock support (experimental)** — Load environment files with [varlock](https://varlock.dev) instead of `dotenv`. Opt in with `loader: 'varlock'` or the `DOTENV_LOADER` environment variable. ([#198](https://github.com/wolfstar-project/stars-components/pull/198))
+
+## `2.1.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#178](https://github.com/wolfstar-project/stars-components/pull/178))
+
+## `2.1.0`
+
+### New features
+
+- **Convention-first workflow** — Compatibility version 4 is now the default, `stars dev` forces development mode, `src/locales` is copied and watched automatically, and environment files are discovered under both `src/` and the project root. The interactive dev UI now supports `t` to open or close a public quick tunnel without configuring `dev.tunnel`. ([#182](https://github.com/wolfstar-project/stars-components/pull/182))
+
+### Bug fixes
+
+- **Logger fallback** — Fixed a broken build caused by an incomplete removal of `@wolfstar/logger`. `setup()` now uses `container.logger` from `@sapphire/pieces` when available (populated by `@wolfstar/http-framework`), falling back to `console.debug` for standalone consumers, instead of the deprecated `@wolfstar/logger` package. ([#182](https://github.com/wolfstar-project/stars-components/pull/182))
+
+## `2.0.8`
+
+### Updates
+
+- **Type checker** — Replaced `tsc` with `golar` as the type checker and bumped TypeScript to `7.0.2`. `typecheck` scripts now run `golar tsc` instead of `tsc` directly. This is a dev-tooling-only change with no effect on published output. ([#151](https://github.com/wolfstar-project/stars-components/pull/151))
+
+## `2.0.7`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#126](https://github.com/wolfstar-project/stars-components/pull/126))
+
+## `2.0.6`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#102](https://github.com/wolfstar-project/stars-components/pull/102))
+
+## `2.0.5`
+
+### Updates
+
+- **Provenance attestation** — Restored npm provenance attestation on publish for all packages. ([#107](https://github.com/wolfstar-project/stars-components/pull/107))
+
+## `2.0.4`
+
+### Updates
+
+- **Build tooling** — Upgraded `tsdown` to `0.22.14` and migrated `deps.skipNodeModulesBundle` to `deps.neverBundle`. ([#93](https://github.com/wolfstar-project/stars-components/pull/93))
+
+## `2.0.3`
+
+### Updates
+
+- **Provenance attestation** — Added provenance attestation to `publishConfig` for all packages. ([#59](https://github.com/wolfstar-project/stars-components/pull/59))
