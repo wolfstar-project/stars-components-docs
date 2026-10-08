@@ -50,12 +50,7 @@ With the `stars` CLI, list the package in `modules`:
 import { defineConfig } from '@wolfstar/http-framework/config';
 
 export default defineConfig({
-	modules: [
-		[
-			'@wolfstar/plugin-scheduled-tasks',
-			{ queue: 'tasks', bull: { connection: { host: 'localhost', port: 6379 } } }
-		]
-	]
+	modules: [['@wolfstar/plugin-scheduled-tasks', { queue: 'tasks', bull: { connection: { host: 'localhost', port: 6379 } } }]]
 });
 ```
 
@@ -92,14 +87,14 @@ the same queue. The `@wolfstar/plugin-scheduled-tasks/register` entrypoint exist
 
 If no `bull.connection` is set in either place, the plugin throws a `TypeError` when the client initializes.
 
-| Option               | Default             | Description                                                                         |
-| -------------------- | ------------------- | ----------------------------------------------------------------------------------- |
-| `bull`               | —                   | BullMQ's `QueueOptions`. `bull.connection` is required and the worker also uses it. |
-| `queue`              | `"scheduled-tasks"` | The name of the BullMQ queue.                                                       |
-| `loadErrorListeners` | `true`              | Load the listeners that log task and connection errors through `container.logger`.  |
+| Option               | Default             | Description                                                                                                                                          |
+| -------------------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bull`               | —                   | BullMQ's `QueueOptions`. `bull.connection` is required and the worker also uses it.                                                                  |
+| `queue`              | `"scheduled-tasks"` | The name of the BullMQ queue.                                                                                                                        |
+| `loadErrorListeners` | `true`              | Load the listeners that log task and connection errors through `container.logger`.                                                                   |
 | `ready`              | —                   | A function that tells whether the app is ready, for tasks that wait for it. See [Waiting for the app to be ready](#waiting-for-the-app-to-be-ready). |
-| `readyTimeout`       | `30000`             | How long a job waits for `ready`, in milliseconds.                                  |
-| `readyDelay`         | `30000`             | How long a job that timed out waiting for `ready` is pushed back, in milliseconds.  |
+| `readyTimeout`       | `30000`             | How long a job waits for `ready`, in milliseconds.                                                                                                   |
+| `readyDelay`         | `30000`             | How long a job that timed out waiting for `ready` is pushed back, in milliseconds.                                                                   |
 
 In `ClientOptions`, `tasks` accepts `bull`, `queue`, `ready`, `readyTimeout`, and `readyDelay`, and `loadScheduledTaskErrorListeners` overrides
 `loadErrorListeners`.
@@ -139,16 +134,16 @@ await container.tasks.create({ name: 'unmute', payload: { guildId, userId } }, 3
 `create` returns the BullMQ job. The second argument is either a delay in milliseconds or an options object with
 `delay`, `interval`, or `pattern` and `timezone`, plus optional `customJobOptions`.
 
-| Method                      | Description                                                       |
-| --------------------------- | ----------------------------------------------------------------- |
-| `create(task, options?)`    | Schedules a task and returns its BullMQ job.                      |
-| `get(id)`                   | Returns a job by its ID.                                          |
-| `list({ types })`           | Lists jobs in the given BullMQ states.                            |
-| `delete(id)`                | Removes a job. It does not stop a repeated task.                  |
-| `listRepeated()`            | Lists the repeated tasks' job schedulers.                         |
-| `deleteRepeated(name)`      | Removes the job scheduler of a repeated task.                     |
-| `waitForReady(timeout?)`    | Waits for `ready` and resolves to whether the app is ready.       |
-| `close()`                   | Closes the queue and waits for the worker to finish its task.     |
+| Method                   | Description                                                   |
+| ------------------------ | ------------------------------------------------------------- |
+| `create(task, options?)` | Schedules a task and returns its BullMQ job.                  |
+| `get(id)`                | Returns a job by its ID.                                      |
+| `list({ types })`        | Lists jobs in the given BullMQ states.                        |
+| `delete(id)`             | Removes a job. It does not stop a repeated task.              |
+| `listRepeated()`         | Lists the repeated tasks' job schedulers.                     |
+| `deleteRepeated(name)`   | Removes the job scheduler of a repeated task.                 |
+| `waitForReady(timeout?)` | Waits for `ready` and resolves to whether the app is ready.   |
+| `close()`                | Closes the queue and waits for the worker to finish its task. |
 
 `container.tasks.client` is the BullMQ `Queue` itself.
 
@@ -239,8 +234,8 @@ if (!(await container.tasks.waitForReady(10_000))) return;
 ```
 
 <Warning>
-	`ready` is a function, so you can't set it in `stars.config`. Pass it to `scheduledTasks()` or `ClientOptions.tasks`
-	instead. You can still set `readyTimeout` and `readyDelay` in `stars.config`.
+	`ready` is a function, so you can't set it in `stars.config`. Pass it to `scheduledTasks()` or `ClientOptions.tasks` instead. You can still set
+	`readyTimeout` and `readyDelay` in `stars.config`.
 </Warning>
 
 ## Events

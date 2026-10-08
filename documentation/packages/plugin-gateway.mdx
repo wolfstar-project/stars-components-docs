@@ -260,9 +260,8 @@ new GatewayClient({ intents, cacheConstructor: MyCache }); // your own Cache cla
 ```
 
 <Warning>
-	The default cache keeps every entity the gateway sends in memory until a dispatch such as `MESSAGE_DELETE` or
-	`GUILD_DELETE` removes it. Nothing expires, so messages, users, and presences grow for as long as the process runs.
-	See [Bounding memory](#bounding-memory).
+	The default cache keeps every entity the gateway sends in memory until a dispatch such as `MESSAGE_DELETE` or `GUILD_DELETE` removes it. Nothing
+	expires, so messages, users, and presences grow for as long as the process runs. See [Bounding memory](#bounding-memory).
 </Warning>
 
 `manager.cache` is keyed by a single ID for most managers. Managers that take more than one ID build the key with
@@ -391,19 +390,10 @@ Sweepers walk the caches of structure instances, so combining them with `cache` 
 `CollectionCache` to get all of this:
 
 ```ts
-import {
-	CollectionCache,
-	type CacheConstructorOptions,
-	type RawAPIType,
-	type StructureCreator,
-	type StructureMixin
-} from '@wolfstar/plugin-gateway';
+import { CollectionCache, type CacheConstructorOptions, type RawAPIType, type StructureCreator, type StructureMixin } from '@wolfstar/plugin-gateway';
 import type { CacheEntityName } from '@wolfstar/plugin-cache';
 
-class BoundedCache<Value extends StructureMixin<object>, Raw extends RawAPIType<Value> = RawAPIType<Value>> extends CollectionCache<
-	Value,
-	Raw
-> {
+class BoundedCache<Value extends StructureMixin<object>, Raw extends RawAPIType<Value> = RawAPIType<Value>> extends CollectionCache<Value, Raw> {
 	public constructor(creator: StructureCreator<Value, Raw>, name: CacheEntityName, options: CacheConstructorOptions<Value, Raw>) {
 		super(creator, name, { ...options, maxSize: options.maxSize ?? 10_000 });
 	}
@@ -493,7 +483,9 @@ if ((await member.permissions).has('BanMembers')) await member.ban();
 if (await member.kickable) await member.kick();
 ```
 
-<Warning>Without the declaration, the getters are typed as plain values. A promise is always truthy, so `if (member.kickable)` passes for every member.</Warning>
+<Warning>
+	Without the declaration, the getters are typed as plain values. A promise is always truthy, so `if (member.kickable)` passes for every member.
+</Warning>
 
 Relation getters such as `message.guild`, `member.voice`, and `channel.parent` stay `null` with an asynchronous store
 and never throw. Use the entity fetches, such as `fetchGuild()`, `fetchChannel()`, and `member.fetchPresence()`.
