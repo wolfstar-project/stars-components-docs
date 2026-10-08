@@ -240,7 +240,7 @@ and falls back to the REST API:
 
 ```ts
 const user = client.users.cache.get(userId);
-const member = client.members.cache.get(client.members.resolveKey(guildId, userId));
+const member = guild.members.cache.get(userId);
 
 client.users.cache.has(userId);
 client.users.cache.getSize();
@@ -265,8 +265,9 @@ new GatewayClient({ intents, cacheConstructor: MyCache }); // your own Cache cla
 	See [Bounding memory](#bounding-memory).
 </Warning>
 
-`manager.cache` is keyed by a single ID for most managers. Managers that take more than one ID build the key with
-`manager.resolveKey(...)`:
+`manager.cache` is keyed by a single ID for most managers. Client managers that take more than one ID build the key
+with `manager.resolveKey(...)`. For those, prefer the guild- or channel-scoped managers in
+[Guild-scoped managers](#guild-scoped-managers):
 
 | Manager           | `resolveKey` / `fetch` / `refresh` arguments |
 | ----------------- | -------------------------------------------- |
@@ -283,8 +284,9 @@ new GatewayClient({ intents, cacheConstructor: MyCache }); // your own Cache cla
   always hit the API, or `{ cache: false }` to skip storing the result.
 - `refresh` is `fetch` with `{ force: true }`.
 - `resolve` takes a structure, returned as is, or a cache key, like discord.js's `resolve`. `resolveId` returns the ID.
-- `client.members.me(guildId)` returns the bot's own member from the cache, like discord.js's `guild.members.me`. It
-  is `null` when the member is not cached. `client.members.fetchMe(guildId)` falls back to the API.
+- `guild.members.me` returns the bot's own member from the cache, like discord.js. It is `null` when the member is not
+  cached. Without a `Guild`, call `client.members.me(guildId)`. `client.members.fetchMe(guildId)` falls back to the API.
+- `manager.valueOf()` returns `manager.cache`, like discord.js's `DataManager#valueOf`.
 
 Only `manager.cache.get`, and `fetch` and `resolve`, which read it, return the cached instance. Structures delivered by
 events are freshly built from the cache, and later dispatches do not patch them. The previous state of update and
@@ -294,6 +296,74 @@ Relations are resolved from the cache too. `message.author` is the entry of `cli
 `client.members`, and every guild structure has `guild`. These getters return `null` when the entity is not cached.
 `fetchGuild()` and `fetchChannel()` always get it. `guild` is a copy of the cached guild, so compare guilds by `id`.
 
+### Guild-scoped managers
+
+Like discord.js, a guild, channel, or thread hands out its own managers. The first ID is filled in, so `cache` is
+keyed by the entity's ID alone. Use them instead of building keys with `resolveKey`, which keeps working:
+
+```ts
+const member = await guild.members.cache.get(userId);
+// instead of client.members.cache.get(client.members.resolveKey(guildId, userId))
+
+await guild.roles.cache.has(roleId);
+await channel.messages.cache.get(messageId);
+await guild.members.kick(userId, 'spam'); // client.members.kick(guildId, userId, 'spam')
+```
+
+| Manager             | From the client                      | `cache` is keyed by |
+| ------------------- | ------------------------------------ | ------------------- |
+| `guild.members`     | `client.guilds.members(guildId)`     | `userId`            |
+| `guild.roles`       | `client.guilds.roles(guildId)`       | `roleId`            |
+| `guild.voiceStates` | `client.guilds.voiceStates(guildId)` | `userId`            |
+| `guild.presences`   | `client.guilds.presences(guildId)`   | `userId`            |
+| `channel.messages`  | `new ChannelMessageManager(…)`       | `messageId`         |
+| `thread.members`    | `new ThreadChannelMemberManager(…)`  | `userId`            |
+
+Call `client.guilds.members(guildId)` and the other client methods when you only hold the guild's ID:
+
+```ts
+const presence = await client.guilds.presences(guildId).cache.get(userId);
+const voiceState = await guild.voiceStates.cache.get(userId);
+await guild.presences.resolve(member); // null on a miss
+```
+
+The guild managers are the client's managers built for one guild. `guild.members` is a `GuildMemberManager<true>`, and
+`guild.roles`, `guild.voiceStates`, and `guild.presences` are typed the same way. They have every method of the
+client's manager with the guild's ID filled in, and a `guildId` property. Their `cache` is a `Cache` like the client's.
+It counts and clears the guild's entries alone, and is synchronous when the client's is. The `cache` of
+`channel.messages` and `thread.members` only has `get`, `has`, and `delete`.
+
+On the client's `GuildMemberManager`, `me` is now a property holding a function instead of a prototype method. You still
+call it as `client.members.me(guildId)`.
+
+Other managers follow discord.js too:
+
+- `category.children` is a `CategoryChannelChildManager`. Its `cache` lists the cached channels of the category, and
+  is a promise with an asynchronous store. `create(options)` makes a channel inside the category, and `resolve()` and
+  `resolveId()` look one up. `cache` is read from the channel store on each access, so a store that cannot enumerate
+  its entries throws `CacheNotIterable`. `create()` rejects a category as the channel type.
+- `answer.voters` is a `PollAnswerVoterManager`. `fetch()` lists the users who voted for the poll answer, and
+  `answer.fetchVoters()` now goes through it. It has no `cache`.
+- `guild.channels.channelCountWithoutThreads` counts the guild's cached channels, threads excluded. It throws
+  `CacheNotIterable` when the channel store cannot enumerate its entries.
+- `guild.emojis.resolveIdentifier(emoji)` returns the identifier used in reactions. Unlike discord.js, it throws for a
+  value it cannot resolve. An uncached emoji ID still returns `null`.
+- `client.guilds.widgetImageURL(guild, style?)` returns the URL of a guild's widget image. `style` defaults to
+  `GuildWidgetStyle.Shield`.
+- `client.guilds.fetchSoundboardSounds(guildIds, { time })` requests the soundboard sounds of several guilds over the
+  gateway, caches them, and resolves with a `Collection` of each guild's sounds, keyed by guild ID. It sends one
+  request per shard, so the client must run every shard of the guilds. It rejects with a
+  `GuildSoundboardSoundsTimeoutError` when no reply arrives for `time` milliseconds (10 seconds by default). Each reply
+  restarts the timer. The replies carry no nonce, so only the process that sent the request resolves it.
+
+```ts
+const sounds = await client.guilds.fetchSoundboardSounds([guildId, otherGuildId]);
+console.log(sounds.get(guildId)?.size);
+
+const voters = await answer.voters.fetch();
+const channel = await category.children.create({ name: 'announcements' });
+```
+
 ### Migrating from `get` and `cached`
 
 Earlier releases cached nothing by default and exposed `get` and `cached` on each manager. Both are removed:
@@ -301,14 +371,14 @@ Earlier releases cached nothing by default and exposed `get` and `cached` on eac
 | Before                                      | After                                                                  |
 | ------------------------------------------- | ---------------------------------------------------------------------- |
 | `client.users.get(id)`                      | `client.users.cache.get(id)`                                           |
-| `client.members.get(guildId, userId)`       | `client.members.cache.get(client.members.resolveKey(guildId, userId))` |
+| `client.members.get(guildId, userId)`       | `guild.members.cache.get(userId)`                                      |
 | `client.users.cached(id)`                   | `client.users.cache.get(id)`                                           |
 | `client.users.cache?.get(id)` (raw data)    | `client.cache?.users?.get(id)`                                         |
 | `client.users.construct(raw)`               | `client.users.cache.construct(raw)`                                    |
 | `new GatewayClient({ intents })` (no cache) | `new GatewayClient({ intents, cache: null })`                          |
 
-`client.presences.resolve(id)` now takes a user ID instead of a cache key. Read a key with
-`client.presences.cache.get(client.presences.resolveKey(guildId, userId))`.
+`client.presences.resolve(id)` now takes a user ID instead of a cache key. Read a presence with
+`guild.presences.cache.get(userId)`.
 
 ### Bounding memory
 
@@ -445,8 +515,9 @@ as Redis. `manager.cache.synchronous` tells them apart, so a hot path can skip `
 
 ```ts
 client.on('messageCreate', async (message) => {
-	const key = message.guildId && client.members.resolveKey(message.guildId, message.author.id);
-	const member = key ? await client.members.cache.get(key) : undefined;
+	const member = message.guildId
+		? await client.guilds.members(message.guildId).cache.get(message.author.id)
+		: undefined;
 	if (member?.roleIds.includes(mutedRoleId)) return;
 	// ...
 });
@@ -588,6 +659,33 @@ Guilds, members, roles, channels, threads, messages, webhooks, and moderation st
 Getters that discord.js reads from its cache, such as `member.permissions` or `member.kickable`, read `manager.cache`
 here too. See [Synchronous reads](#synchronous-reads). Position setters such as `setPosition` sort siblings the way
 Discord does. Every structure is valued by its ID through `valueOf()`, like discord.js's `Base`.
+
+`equals()` compares structures the way discord.js v14 and v15 do. `GuildChannel#equals`, on every guild channel and
+thread, and `SoundboardSound#equals` are new, and both accept the structure or its raw payload.
+
+<Warning>
+`equals()` compares different fields than in earlier releases:
+
+- `Message#equals(message, rawData?)` compares the ID, author, content, `nonce`, `tts`, attachments by ID, and embeds
+  through `Embed#equals`. With `rawData`, it also compares `mention_everyone` and the timestamps. `pinned` and the
+  content of attachments are no longer compared.
+- `Embed#equals` deep-compares two embeds, and compares a raw embed field by field, so `type` and proxy URLs no longer
+  matter.
+- `Guild#equals` no longer compares the AFK and system channels, content filter, MFA level, banner, description, or
+  vanity code. It compares features in order.
+- `GuildMember#equals` also compares `partial`, banner, `pending`, the avatar decoration, and the nameplate, and
+  compares roles in order.
+- `Role#equals` compares the three `colors` instead of `color`.
+- `User#equals` also compares the avatar decoration SKU, the nameplate, and the primary guild.
+- `Sticker#equals` also compares the type, pack, and sort value. `GuildEmoji#equals` and `Sticker#equals` compare
+  fewer fields against raw data.
+- `GuildChannel#equals` compares the ID, type, name, topic, position, and permission overwrites in any order. It
+  does not compare the category.
+
+`Guild`, `GuildMember`, `Sticker`, `GuildEmoji`, `GuildChannel`, and `SoundboardSound` return `false` for a foreign
+argument instead of throwing. `Role`, `User`, `Embed`, and `Message` accept `null` and `undefined`. Update events such
+as `messageUpdate` do not rely on `equals()`, but `emojiUpdate` and `stickerUpdate` still do.
+</Warning>
 
 ```ts
 const member = await client.members.fetch(guildId, userId);
@@ -742,12 +840,13 @@ try {
 
 These errors extend `GatewayError` and carry extra data:
 
-| Error                        | When                                                                         | Extra properties                          |
-| ---------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- |
-| `DispatchTimeoutError`       | A dispatch is still processing after `dispatchTimeout`. It is not cancelled. | `type`, `shardId`, `partition`, `timeout` |
-| `GuildMembersTimeoutError`   | A member request receives no chunk for `time` milliseconds.                  | `guildId`, `nonce`, `timeout`             |
-| `GuildMembersRateLimitError` | Discord rate limits a member request.                                        | `guildId`, `nonce`, `retryAfter`          |
-| `GatewaySessionStoreError`   | A `sessionStore` read or write fails or times out.                           | `operation`, `shardId`, `cause`           |
+| Error                               | When                                                                         | Extra properties                          |
+| ----------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------- |
+| `DispatchTimeoutError`              | A dispatch is still processing after `dispatchTimeout`. It is not cancelled. | `type`, `shardId`, `partition`, `timeout` |
+| `GuildMembersTimeoutError`          | A member request receives no chunk for `time` milliseconds.                  | `guildId`, `nonce`, `timeout`             |
+| `GuildSoundboardSoundsTimeoutError` | `fetchSoundboardSounds` receives no reply for `time` milliseconds.           | `guildIds`, `timeout`                     |
+| `GuildMembersRateLimitError`        | Discord rate limits a member request.                                        | `guildId`, `nonce`, `retryAfter`          |
+| `GatewaySessionStoreError`          | A `sessionStore` read or write fails or times out.                           | `operation`, `shardId`, `cause`           |
 
 The client reports dispatch, cache, and session store failures through its `error` event.
 
