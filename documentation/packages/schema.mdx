@@ -124,6 +124,37 @@ const config = await loadStarsConfig({ cwd: process.cwd() });
 console.log(config.imports.presets);
 ```
 
+### Environment and hooks
+
+`StarsConfig` includes `env` and `hooks`. `env` accepts `true`, `false`, or the setup options of
+`@wolfstar/env-utilities` (`path`, `env`, `prefix`, `loader`, `debug`, `encoding`) plus `enabled`. `hooks` accepts the
+`stars` CLI lifecycle hooks, keyed by full name (`'build:done'`) or nested under their namespace
+(`{ build: { done() {} } }`), as a function or an array of functions. `loadStarsConfig` flattens `hooks` to full names
+and raises [`UNKNOWN_HOOK`](/documentation/errors/config#unknown_hook) for a name it does not recognize.
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/schema/config';
+
+export default defineConfig({
+	env: { prefix: 'BOT_' },
+	hooks: {
+		'config:resolved'(config) {
+			console.log(`Building ${config.entry}`);
+		}
+	}
+});
+```
+
+The hook signatures are exported as types:
+
+```typescript
+import type { StarsHooks, StarsHookName, StarsHooksConfig, StarsEnvConfig } from '@wolfstar/schema';
+```
+
+See the [framework reference](/documentation/packages/http-framework#environment-env) for what each `env` option and
+[hook](/documentation/packages/http-framework#hooks) does.
+
 ### Dev options
 
 The `dev` block configures `stars dev`. Besides `banner`, `typecheck`, `tunnel`, and `logFile`, it accepts:
