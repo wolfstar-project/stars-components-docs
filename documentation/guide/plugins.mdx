@@ -113,9 +113,8 @@ await client.load();
 ```
 
 <Warning>
-Use one activation path per plugin. The module, the `./plugin` factory, and `/register` install the same hooks, so
-combining them installs the hooks twice. The CLI skips its injected `/register` import for packages listed in
-`modules`.
+	Use one activation path per plugin. The module, the `./plugin` factory, and `/register` install the same hooks, so combining them installs the
+	hooks twice. The CLI skips its injected `/register` import for packages listed in `modules`.
 </Warning>
 
 Check each plugin's package page for its exact entry points and options. See
