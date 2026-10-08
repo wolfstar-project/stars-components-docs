@@ -25,6 +25,38 @@ The generated project files are out of date.
 
 **Fix:** run `stars prepare` to update them.
 
+## TSCONFIG_LEGACY_EXTENDS {#tsconfig_legacy_extends}
+
+A warning, not an error: the command keeps running. `stars prepare`, `stars doctor`, `stars dev`, `stars build`, and
+`stars typecheck` raise it when the project's root `tsconfig.json` still extends `./.stars/tsconfig.json`. From
+`future.compatibilityVersion` 6, `stars prepare` no longer writes that file. It writes `.stars/tsconfig.app.json` and
+`.stars/tsconfig.node.json` instead.
+
+**Fix:** replace the root `tsconfig.json` with a solution-style file that references the generated configs:
+
+```json
+{
+	"files": [],
+	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+}
+```
+
+Or set `future.compatibilityVersion` to `5` to keep the single `.stars/tsconfig.json`. See
+[Generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).
+
+## TYPECHECK_FAILED {#typecheck_failed}
+
+`stars typecheck` found type errors in one or more projects. The message lists the failing projects, and the
+checker's own output above it shows the errors.
+
+**Fix:** fix the reported type errors, then run `stars typecheck` again.
+
+## TYPECHECK_NO_PROJECT {#typecheck_no_project}
+
+`stars typecheck` found no tsconfig to check in the project root.
+
+**Fix:** create `src/tsconfig.json` or `tsconfig.json`, or set `dev.typecheck.tsconfig`.
+
 ## DISCORD_TOKEN_MISSING {#discord_token_missing}
 
 `DISCORD_TOKEN` is not set.
