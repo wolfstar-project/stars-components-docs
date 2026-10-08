@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/cli'
-description: 'The stars CLI that runs dev, build, info, codegen, prepare, commands, doctor, and completions for HTTP Framework bots driven by a typed stars.config.ts file.'
+description: 'The stars CLI that runs dev, build, info, codegen, prepare, typecheck, commands, doctor, and completions for HTTP Framework bots driven by a typed stars.config.ts file.'
 ---
 
 <CodeGroup>
@@ -35,7 +35,8 @@ The typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`
 - `stars build` runs the configured build tool once.
 - `stars info` prints the resolved configuration and environment (`--json` for scripts).
 - `stars codegen` runs the configured code generators (`--check` for CI).
-- `stars prepare` generates `.stars/tsconfig.json` and the auto imports declaration file (`--check` for CI).
+- `stars prepare` generates the TypeScript configuration in `.stars/` and the auto imports declaration file (`--check` for CI).
+- `stars typecheck` regenerates `.stars/` and type-checks every project once.
 - `stars commands` inspects, compares, deploys, and cleans the application commands Discord has deployed.
 - `stars doctor` checks that the project is ready: runtime, framework, credentials, interactions endpoint, generated files.
 - `stars completions` prints the shell completion script for bash, zsh, or fish.
@@ -89,6 +90,7 @@ stars build [--config <file>] [--cwd <dir>]
 stars info [--json] [--config <file>] [--cwd <dir>]
 stars codegen [--check] [--json] [--config <file>] [--cwd <dir>]
 stars prepare [--check] [--json] [--config <file>] [--cwd <dir>]
+stars typecheck [--config <file>] [--cwd <dir>]
 stars commands [list|clean|diff|deploy] [--guild <id>] [--name <name>] [--check] [--yes] [--json]
 stars doctor [--online] [--json] [--config <file>] [--cwd <dir>]
 stars completions <bash|zsh|fish>
@@ -360,6 +362,38 @@ on its own (`id`, `version`, defaults such as `nsfw: false`) are ignored. `diff 
 `deploy` uses Discord's bulk overwrite, so a deployed command the project no longer defines is deleted. That is why it
 asks first. Outside a terminal, or with `--json`, it refuses to run without `--yes`.
 
+### `stars typecheck`
+
+Type-checks the project once, the way `nuxt typecheck` does. `stars typecheck` first regenerates `.stars/` (the same
+work as `stars prepare`), then runs the project's checker once on each project. The checker is
+`dev.typecheck.checker`: `golar` or `tsc`.
+
+```sh
+stars typecheck
+```
+
+From `future.compatibilityVersion` 6, the projects are:
+
+- `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` for `tsdown` and `vite` builds.
+- The project's own tsconfig plus `.stars/tsconfig.node.json` for `tsc` and `none` builds.
+- Only the configured tsconfig when `dev.typecheck.tsconfig` is set.
+
+On versions 5 and below, `stars typecheck` checks the single tsconfig. Use it instead of `tsc -p tsconfig.json`: a
+solution-style root `tsconfig.json` has `files: []`, so a bare `tsc -p` on it checks nothing. Use it as the project's
+`typecheck` script:
+
+```json
+{
+	"scripts": {
+		"typecheck": "stars typecheck"
+	}
+}
+```
+
+`stars typecheck` exits with `1` and the [`TYPECHECK_FAILED`](/documentation/errors/cli#typecheck_failed) diagnostic
+when any project has type errors. It lists the failing projects. `stars info` lists the projects it checks on the
+`typechecks` row.
+
 ### `stars doctor`
 
 Checks what a project needs before `stars dev` can do its job, and says what to do about each problem:
@@ -376,7 +410,7 @@ stars doctor v2.3.0
                 → Stop it, or set another HTTP_PORT, unless it is this bot running.
   ℹ tunnel      No tunnel: Discord cannot reach a bot on localhost
                 → Set `dev.tunnel: true` for a cloudflared quick tunnel, or press t in `stars dev`.
-  ⚠ prepare     Out of date: .stars/tsconfig.json
+  ⚠ prepare     Out of date: .stars/tsconfig.app.json, .stars/tsconfig.node.json
                 → Run `stars prepare`.
 
   1 error(s), 2 warning(s)
@@ -391,7 +425,8 @@ It covers:
 - `DISCORD_TOKEN`, `DISCORD_PUBLIC_KEY`, and the application id.
 - Whether the dev port is free.
 - The tunnel.
-- Whether `.stars/` is stale.
+- Whether `.stars/` is stale. It names each generated file that is out of date.
+- Whether the root `tsconfig.json` still extends `./.stars/tsconfig.json` ([`TSCONFIG_LEGACY_EXTENDS`](/documentation/errors/cli#tsconfig_legacy_extends)).
 
 `--online` also asks Discord whether the token works and where the application sends its interactions. `stars doctor`
 never changes anything. `--json` prints `{ ok, checks }` for scripts. The exit code is `1` when a check fails, with
@@ -507,7 +542,9 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 | Version       | What it changes                                                                                                     |
 | ------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `3`           | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for                           |
-| `4` (default) | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
+| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
+| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`        |
+| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` |
 
 ### Experimental flags
 
@@ -548,7 +585,31 @@ package.json imports, and ESNext/DOM libraries. Use `import type` and `export ty
 These options apply to tsdown and Vite; tsc keeps its emit-compatible settings. Sapphire's decorator options and
 the ES2022 target remain in effect. This does not enable Stars' experimental Nitro runtime integration.
 
-Run `stars prepare` and extend the generated config from your project's `tsconfig.json`:
+From `future.compatibilityVersion` 6, `stars prepare` writes two files, the way a Nuxt 4 project has them:
+
+- `.stars/tsconfig.app.json` covers the bot: everything under the entry's directory plus the auto imports
+  declaration, with the `~`/`@`/`~~`/`@@` paths and the options above. `tsdown` builds with it.
+- `.stars/tsconfig.node.json` covers the files Node runs without a bundler: `stars.config.*`, `vitest.config.*`,
+  `tsdown.config.*`, `vite.config.*`, and `scripts/**`. It uses `NodeNext` resolution, `types: ["node"]`, and no DOM
+  library. It has no aliases, auto imports, or decorators, and leaves the entry's directory to the app project.
+
+Your project's `tsconfig.json` is solution-style. It only references the two generated files:
+
+```json
+{
+	"files": [],
+	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+}
+```
+
+New tsdown and Vite projects already ship this file, a `typecheck` script, and `stars prepare` in `postinstall`.
+Because the root has `files: []`, type-check with [`stars typecheck`](#stars-typecheck) instead of `tsc -p`.
+`stars dev`'s `dev.typecheck` watches the app project. A root `tsconfig.json` that still extends
+`./.stars/tsconfig.json` gets a [`TSCONFIG_LEGACY_EXTENDS`](/documentation/errors/cli#tsconfig_legacy_extends) warning
+from `stars prepare` and `stars doctor`. Replace it with the file above, or keep `future.compatibilityVersion` at `5`.
+
+On versions `5` and `4`, nothing changes. `stars prepare` writes the single `.stars/tsconfig.json`, which you extend
+from your project's `tsconfig.json`:
 
 ```json
 {
@@ -556,18 +617,18 @@ Run `stars prepare` and extend the generated config from your project's `tsconfi
 }
 ```
 
-New tsdown projects already extend this file and run `stars prepare` through `postinstall`.
-Keep your existing compiler options alongside `extends`. `stars dev` and `stars build` also regenerate this file.
-For tsdown builds, `@/` and `~/` resolve to the entry file's directory (normally `src/`), while `@@/` and `~~/`
+Keep your existing compiler options alongside `extends`. `stars dev` and `stars build` also regenerate the generated
+files. For tsdown builds, `@/` and `~/` resolve to the entry file's directory (normally `src/`), while `@@/` and `~~/`
 resolve to the project root. Filesystem aliases in `stars.config.ts`'s `tsdown.alias` are included too, with custom
 values taking precedence. Legacy builds using a separate tsdown config only include aliases declared in
 `stars.config.ts`. Other build tools do not get tsdown aliases, since TypeScript alone does not rewrite imports.
 
-The generated config includes source files and the auto imports declaration, including a custom `imports.dts`
+The generated app config includes source files and the auto imports declaration, including a custom `imports.dts`
 location. Explicit `include` or `compilerOptions.paths` in your own tsconfig replace the inherited values;
 remove manually duplicated paths to use the generated aliases. Generation works with `imports: false` too.
-Use `stars prepare --check` to check both generated files without writing them. Do not edit `.stars/tsconfig.json`
-by hand; keep `.stars/` ignored by Git and run `stars prepare` after installing dependencies on a fresh checkout.
+Use `stars prepare --check` to check the generated files without writing them. It fails when any of them is out of
+date. Do not edit anything in `.stars/` by hand; keep `.stars/` ignored by Git and run `stars prepare` after
+installing dependencies on a fresh checkout.
 
 ## Server integrations
 
