@@ -94,7 +94,7 @@ export default defineConfig({
 });
 ```
 
-Module options must be JSON-serialisable. `redis` is a client instance and `consumer` is per process, so set both through `ClientOptions.broker`, which is shallow-merged over the module options. `ClientOptions.broker` is currently typed as the full `BrokerConsumerOptions`, so it must still include `stream` and `group`.
+Module options must be JSON-serialisable. `redis` is a client instance and `consumer` is per process, so set both through `ClientOptions.broker`, which is shallowly merged over the module options. `ClientOptions.broker` is currently typed as the full `BrokerConsumerOptions`, so it must still include `stream` and `group`.
 
 Without the `stars` CLI, pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the
 `plugins` client option:

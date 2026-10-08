@@ -539,13 +539,12 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
 [framework README](/documentation/packages/http-framework#compatibility-version) for the full reference):
 
-<<<<<<< HEAD
-| Version | What it changes |
+| Version       | What it changes                                                                                                               |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `3` (EOL) | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
-| `4` | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
-| `5` | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities` |
-| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` |
+| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
+| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript           |
+| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                  |
+| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`          |
 
 Version 3 is end-of-life. It still works, but every command prints a
 [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and the next major
@@ -582,15 +581,6 @@ export default defineConfig({
 `stars info` lists the env options and the registered hooks. See the
 [framework reference](/documentation/packages/http-framework#environment-env) for every `env` option and
 [hooks](/documentation/packages/http-framework#hooks) for each hook's arguments and timing.
-=======
-| Version | What it changes |
-| ------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `3` | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for |
-| `4` | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
-| `5` | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities` |
-| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` |
-
-> > > > > > > origin/main
 
 ### Experimental flags
 
@@ -631,17 +621,6 @@ package.json imports, and ESNext/DOM libraries. Use `import type` and `export ty
 These options apply to tsdown and Vite; tsc keeps its emit-compatible settings. Sapphire's decorator options and
 the ES2022 target remain in effect. This does not enable Stars' experimental Nitro runtime integration.
 
-<<<<<<< HEAD
-From compatibility version 6 (the default), the generated configuration is split in two, the way a Nuxt 4 project
-has it:
-
-- `.stars/tsconfig.app.json` covers the bot sources: everything under the entry's directory plus the auto imports
-  declaration, with the aliases and options above. The `tsdown` build uses it as its default `build.tsconfig`.
-- `.stars/tsconfig.node.json` covers the files Node runs without a bundler, such as `stars.config.*`,
-  `vitest.config.*`, and `scripts/**`.
-
-# Your own `tsconfig.json` becomes a solution-style file that only references them:
-
 From `future.compatibilityVersion` 6, `stars prepare` writes two files, the way a Nuxt 4 project has them:
 
 - `.stars/tsconfig.app.json` covers the bot: everything under the entry's directory plus the auto imports
@@ -652,8 +631,6 @@ From `future.compatibilityVersion` 6, `stars prepare` writes two files, the way 
 
 Your project's `tsconfig.json` is solution-style. It only references the two generated files:
 
-> > > > > > > origin/main
-
 ```json
 {
 	"files": [],
@@ -661,14 +638,6 @@ Your project's `tsconfig.json` is solution-style. It only references the two gen
 }
 ```
 
-<<<<<<< HEAD
-Type checking follows the split. For a `tsdown` or `vite` project, `dev.typecheck` watches the app config, and
-`stars typecheck` checks both generated configs. A `tsc` or `none` project keeps its own tsconfig for the bot sources
-and gets the node config on top. Setting `dev.typecheck.tsconfig` checks only that file.
-
-On versions `5` and `4`, nothing changes. Run `stars prepare` and extend the single generated config from your
-project's `tsconfig.json`:
-=======
 New tsdown and Vite projects already ship this file, a `typecheck` script, and `stars prepare` in `postinstall`.
 Because the root has `files: []`, type-check with [`stars typecheck`](#stars-typecheck) instead of `tsc -p`.
 `stars dev`'s `dev.typecheck` watches the app project. A root `tsconfig.json` that still extends
@@ -678,28 +647,17 @@ from `stars prepare` and `stars doctor`. Replace it with the file above, or keep
 On versions `5` and `4`, nothing changes. `stars prepare` writes the single `.stars/tsconfig.json`, which you extend
 from your project's `tsconfig.json`:
 
-> > > > > > > origin/main
-
 ```json
 {
 	"extends": "./.stars/tsconfig.json"
 }
 ```
 
-<<<<<<< HEAD
-To stay on the single file, set `future: { compatibilityVersion: 5 }` in `stars.config.ts`.
-
-New tsdown projects already extend this file and run `stars prepare` through `postinstall`.
-Keep your existing compiler options alongside `extends`. `stars dev` and `stars build` also regenerate this file.
-For tsdown builds, `@/` and `~/` resolve to the entry file's directory (normally `src/`), while `@@/` and `~~/`
-=======
 Keep your existing compiler options alongside `extends`. `stars dev` and `stars build` also regenerate the generated
 files. For tsdown builds, `@/` and `~/` resolve to the entry file's directory (normally `src/`), while `@@/` and `~~/`
-
-> > > > > > > origin/main
-> > > > > > > resolve to the project root. Filesystem aliases in `stars.config.ts`'s `tsdown.alias` are included too, with custom
-> > > > > > > values taking precedence. Legacy builds using a separate tsdown config only include aliases declared in
-> > > > > > > `stars.config.ts`. Other build tools do not get tsdown aliases, since TypeScript alone does not rewrite imports.
+resolve to the project root. Filesystem aliases in `stars.config.ts`'s `tsdown.alias` are included too, with custom
+values taking precedence. Legacy builds using a separate tsdown config only include aliases declared in
+`stars.config.ts`. Other build tools do not get tsdown aliases, since TypeScript alone does not rewrite imports.
 
 The generated app config includes source files and the auto imports declaration, including a custom `imports.dts`
 location. Explicit `include` or `compilerOptions.paths` in your own tsconfig replace the inherited values;
