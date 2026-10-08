@@ -223,18 +223,81 @@ logger plugin, which replaces it by assigning an `ILogger` to `options.logger.in
 `preGenericsInitialization` hook:
 
 ```typescript
-import { Plugin, preGenericsInitialization, type ClientOptions } from '@wolfstar/http-framework';
+import { definePlugin } from '@wolfstar/http-framework';
 
-export class LoggerPlugin extends Plugin {
-	public static [preGenericsInitialization](options: ClientOptions): void {
+export default definePlugin({
+	name: 'my-logger',
+	preGenericsInitialization(client, options) {
 		options.logger ??= {};
 		options.logger.instance = new MyLogger(options.logger);
 	}
-}
+});
 ```
 
-Because the plugin only has to satisfy the `ILogger` interface, the rest of the framework — including Hot Module
-Reloading and the command router — keeps logging through `container.logger` without any change.
+Because the plugin only has to satisfy the `ILogger` interface, the rest of the framework, including Hot Module
+Reloading and the command router, keeps logging through `container.logger` without any change.
+
+### Plugins
+
+A plugin hooks into the `Client` lifecycle. Since 6.1.0, you define one as a plain object with `definePlugin`, the
+way Vite plugins are written. `definePlugin` is an identity helper: it only gives the object, or a factory that
+returns it, its types.
+
+```typescript
+import { definePlugin } from '@wolfstar/http-framework';
+
+export default definePlugin((options: { prefix?: string } = {}) => ({
+	name: 'my-plugin',
+	enforce: 'pre',
+	apply: 'production',
+	async preLoad(client, clientOptions) {
+		client.logger.info(`Loading with prefix ${options.prefix ?? 'none'}`);
+	}
+}));
+```
+
+| Property                    | Type                                                                   | Description                                                                                                               |
+| --------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `name`                      | `string`                                                               | Required and non-empty. Identifies the plugin in errors and in the `pluginLoaded` event.                                  |
+| `enforce`                   | `'pre' \| 'post'`                                                      | Runs the plugin's hooks before (`'pre'`) or after (`'post'`) plain plugins. Registration order is kept inside each group. |
+| `apply`                     | `'development' \| 'production' \| (options: ClientOptions) => boolean` | Restricts the plugin. The strings compare against `process.env.NODE_ENV`, which `stars dev` sets to `development`.        |
+| `preGenericsInitialization` | `(client, options) => unknown`                                         | Runs first in the constructor, before the logger is set up.                                                               |
+| `preInitialization`         | `(client, options) => unknown`                                         | Runs in the constructor after the logger is set up.                                                                       |
+| `postInitialization`        | `(client, options) => unknown`                                         | Runs at the end of the constructor.                                                                                       |
+| `preLoad`                   | `(client, options) => Awaitable<unknown>`                              | Runs at the start of `client.load()`.                                                                                     |
+| `postListen`                | `(client, options) => Awaitable<unknown>`                              | Runs once the HTTP server listens in `client.listen()`.                                                                   |
+
+Every hook receives the `Client` and the credential-free `ClientOptions` the client keeps, so a hook can rewrite what
+a later hook sees. An `apply` function is called once per client and plugin, with the options, and its answer holds
+for every hook of that plugin.
+
+Register a plugin for every client with `Client.use`, or for one client with the `plugins` option. Both accept nested
+arrays and drop falsy entries, so you can enable a plugin conditionally:
+
+```typescript
+import { Client } from '@wolfstar/http-framework';
+import myPlugin from './my-plugin.js';
+
+// Every client:
+Client.use(myPlugin({ prefix: 'v1' }));
+
+// This client only, next to the global ones:
+const client = new Client({
+	plugins: [process.env.METRICS === 'true' && myPlugin({ prefix: 'metrics' })]
+});
+```
+
+When a hook throws or rejects, the framework wraps the failure in a `PluginHookError`. Its `pluginName` and `hook`
+properties name the plugin and the hook that failed, and `cause` holds the original error.
+
+<Warning>
+	The legacy class-based API (`Plugin` subclasses with symbol hooks such as `preGenericsInitialization`, `Client.use(PluginClass)`, and
+	`registerXHook`) is deprecated. It still works through an adapter, but each legacy plugin emits a one-time `DeprecationWarning` with the code
+	`HTTP_FRAMEWORK_LEGACY_PLUGIN`. Port it to `definePlugin`.
+</Warning>
+
+To ship a plugin as an installable package that projects activate from `stars.config`, wrap it in a module with
+[`@wolfstar/kit`](/documentation/packages/kit).
 
 ### Client events
 
@@ -384,6 +447,21 @@ export default defineConfig({});
 starts the bot. `loadStarsConfig` discovers `stars.config.{ts,mts,cts,js,mjs,cjs}` from a directory, applies defaults,
 validates every option and resolves all paths to absolute ones.
 
+`modules` lists installable modules, such as the `@wolfstar/plugin-*` packages, that the `stars` CLI installs while it
+loads the project. Each entry is a package specifier or a `[specifier, options]` tuple, and falsy entries are
+dropped:
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	modules: ['@wolfstar/plugin-subcommands-advanced/module', ['@wolfstar/plugin-api/module', { prefix: 'v1' }]]
+});
+```
+
+See [`@wolfstar/kit`](/documentation/packages/kit) for how modules work and how to write one.
+
 `dev.url`, the URL `stars dev` shows and health-checks the bot on, needs no configuration either: it is detected the
 way Vite's and Nuxt's dev servers are, from `HTTP_PORT` (env var, `src/.env*`/`.env*`, or `dev.env`) or `3000`, and
 `localhost` is swapped for `127.0.0.1` at runtime if that is what is actually reachable. Set `dev.url` explicitly only
@@ -391,7 +469,8 @@ to override it, e.g. for a LAN address: `dev: { url: 'http://192.168.1.5:3000' }
 
 `dev.banner` replaces the default Stars wordmark in the interactive CLI. Use a string or an array of lines, for
 example `dev: { banner: ['★ STARYL', 'Twitch notifications'] }`, or `false` to hide it. Up to four lines fit the
-compact panel. Application logs and standalone banners are available behind `l`, not printed over the dev panel.
+compact panel (`dev.layout: 'panel'`). The dashboard, which a terminal of at least 90×20 gets, shows the project's name
+instead. Application logs and standalone banners go to the log stream, not over the dev UI.
 
 `dev` also carries optional overrides for the dev loop. Press `t` in the TUI to toggle a quick tunnel without any
 configuration:
@@ -399,16 +478,29 @@ configuration:
 ```typescript
 export default defineConfig({
 	dev: {
-		// A type checker next to the bot, reported on the dev UI's `tsc` channel. Never blocks a build.
+		// A type checker next to the bot, reported on the dev UI's `types` channel. Never blocks a build.
 		// `checker` is 'tsc' | 'golar' | 'tsz' | 'auto' (default: golar when installed, tsc otherwise).
 		typecheck: { checker: 'golar' },
 		// A cloudflared quick tunnel so Discord can reach the interactions endpoint, or an https URL you serve.
 		tunnel: true,
 		// Where the session's logs are mirrored, so a run can be read after the terminal UI is gone.
-		logFile: '.stars/dev.log'
+		logFile: '.stars/dev.log',
+		// 'auto' (default): the full-screen dashboard on a terminal of at least 90x20, the compact panel otherwise.
+		layout: 'auto',
+		// What the dev UI shows at start; `dir` adds one log file per run next to `logFile`, keeping the last `keep`.
+		logs: { channels: ['bot', 'commands', 'interactions'], levels: ['error', 'warn', 'info'], dir: 'logs', keep: 10 },
+		// When the bot's application commands change: 'prompt' (default) asks before redeploying, 'auto', or 'off'.
+		commands: { refresh: 'prompt' },
+		// `false` restarts the bot on every change, even when the bot hot reloads its pieces (`hmr` on the Client).
+		hmr: true
 	}
 });
 ```
+
+With the `hmr` option of the `Client` enabled, a change that only touches pieces is left to the bot. `stars dev` does
+not restart it, and the `hmr` channel of the dev UI shows what was reloaded. The bot itself feeds the channels that
+report what happens inside it (`hmr`, `commands`, `interactions`, `http`, `lifecycle`). See
+[`stars dev`](/documentation/packages/cli#stars-dev).
 
 `tunnel.updateEndpoint` writes the public URL to the Discord application's `interactions_endpoint_url`; it is opt-in
 because it edits a live application, and needs `DISCORD_TOKEN` in the environment or the project's `.env`.

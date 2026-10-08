@@ -10,20 +10,52 @@ happened, and — when there's something you can do about it — a concrete fix.
 
 ## Exit codes
 
-| Exit code | Meaning                                                                            |
-| --------- | ---------------------------------------------------------------------------------- |
-| `0`       | Success                                                                            |
-| `1`       | Generic error                                                                      |
-| `2`       | Invalid `stars.config.*` (any [configuration error](/documentation/errors/config)) |
-| `3`       | `BUILD_FAILED`                                                                     |
-| `130`     | Interrupted (`Ctrl+C`)                                                             |
-| `143`     | Terminated                                                                         |
+| Exit code | Meaning                                                                                               |
+| --------- | ----------------------------------------------------------------------------------------------------- |
+| `0`       | Success                                                                                               |
+| `1`       | Generic error                                                                                         |
+| `2`       | Invalid `stars.config.*` (any [configuration error](/documentation/errors/config)) or `MODULE_FAILED` |
+| `3`       | `BUILD_FAILED`                                                                                        |
+| `130`     | Interrupted (`Ctrl+C`)                                                                                |
+| `143`     | Terminated                                                                                            |
 
 ## PREPARE_OUTDATED {#prepare_outdated}
 
 The generated project files are out of date.
 
 **Fix:** run `stars prepare` to update them.
+
+## TSCONFIG_LEGACY_EXTENDS {#tsconfig_legacy_extends}
+
+A warning, not an error: the command keeps running. `stars prepare`, `stars doctor`, `stars dev`, `stars build`, and
+`stars typecheck` raise it when the project's root `tsconfig.json` still extends `./.stars/tsconfig.json`. From
+`future.compatibilityVersion` 6, `stars prepare` no longer writes that file. It writes `.stars/tsconfig.app.json` and
+`.stars/tsconfig.node.json` instead.
+
+**Fix:** replace the root `tsconfig.json` with a solution-style file that references the generated configs:
+
+```json
+{
+	"files": [],
+	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+}
+```
+
+Or set `future.compatibilityVersion` to `5` to keep the single `.stars/tsconfig.json`. See
+[Generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).
+
+## TYPECHECK_FAILED {#typecheck_failed}
+
+`stars typecheck` found type errors in one or more projects. The message lists the failing projects, and the
+checker's own output above it shows the errors.
+
+**Fix:** fix the reported type errors, then run `stars typecheck` again.
+
+## TYPECHECK_NO_PROJECT {#typecheck_no_project}
+
+`stars typecheck` found no tsconfig to check in the project root.
+
+**Fix:** create `src/tsconfig.json` or `tsconfig.json`, or set `dev.typecheck.tsconfig`.
 
 ## DISCORD_TOKEN_MISSING {#discord_token_missing}
 
@@ -67,6 +99,47 @@ An interactive prompt was cancelled.
 **Fix:** pass `--yes` to delete them without prompting, or `--name` to pick a single command, when running from a
 script.
 
+## DEPLOY_CONFIRMATION_REQUIRED {#deploy_confirmation_required}
+
+`stars commands deploy` refuses to overwrite the deployed commands without a confirmation. It raises this outside a
+terminal, or with `--json`.
+
+**Fix:** pass `--yes` to deploy from a script or with `--json`.
+
+## COMMANDS_DIFFER {#commands_differ}
+
+`stars commands diff --check` found deployed commands that differ from the ones the project defines. The message
+includes how many differ.
+
+**Fix:** run `stars commands deploy` to deploy them.
+
+## LOCAL_COMMANDS_UNAVAILABLE {#local_commands_unavailable}
+
+`stars commands diff` or `stars commands deploy` could not read the commands the project defines. The message includes
+the reason, for example a project that is not built or a framework older than `@wolfstar/http-framework` 6.1.
+
+**Fix:** the message includes the fix for the reason it reports.
+
+## DOCTOR_FAILED {#doctor_failed}
+
+`stars doctor` found at least one failing check. The message includes how many checks failed, and the command exits
+with code `1`.
+
+**Fix:** follow the fix `stars doctor` prints under each failing check.
+
+## UNKNOWN_SHELL {#unknown_shell}
+
+`stars completions` was given a shell it has no completions for.
+
+**Fix:** use one of `bash`, `zsh`, or `fish`.
+
+## INVALID_OPTION {#invalid_option}
+
+`stars dev` was given an unknown value for `--layout` or `--level`.
+
+**Fix:** use one of the values the message lists. `--layout` accepts `auto`, `dashboard`, or `panel`. `--level`
+accepts `trace`, `debug`, `info`, `warn`, or `error`.
+
 ## INVALID_THEME {#invalid_theme}
 
 `stars dev` was given a theme it doesn't know.
@@ -88,3 +161,26 @@ A dependency the current configuration needs (for example `tsdown` or `vite`) is
 ## CODEGEN_FAILED {#codegen_failed}
 
 `i18next-type-generator` exited with a non-zero code, optionally with its `stderr` output attached.
+
+## MODULE_FAILED {#module_failed}
+
+A module listed in `modules` in `stars.config` could not be installed. The message carries the underlying
+[`ModuleError`](/documentation/packages/kit#errors) code and the module's name. Exits with code `2`.
+
+**Fix:** depends on the underlying code:
+
+- `MODULE_LOAD_FAILED`: install the module in the project, or fix its specifier in `modules`.
+- `MODULE_INCOMPATIBLE`: update the module or `@wolfstar/http-framework` so their versions match.
+- `MODULE_INVALID`: export the module with `defineModule` from `@wolfstar/kit` as the default export.
+- `MODULE_PLUGIN_INVALID`: pass `ctx.addPlugin` a package specifier, an absolute path or a `file:` URL, and
+  JSON-serialisable options.
+- Otherwise: fix the error the module threw (see the cause), or remove it from `modules`.
+
+## MODULES_PRELOAD_REQUIRED {#modules_preload_required}
+
+A warning from `stars build`, `stars prepare`, and `stars info`. The project uses the `tsc` or `none` build tool and
+its modules add runtime plugins. Those plugins are registered through `node --import`, which only `stars dev` does for
+you.
+
+**Fix:** start the production bot with `node --import ./.stars/modules.mjs <entry>`. `stars prepare` and `stars build`
+write that file.

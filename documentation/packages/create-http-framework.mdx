@@ -64,6 +64,7 @@ The CLI will guide you through the following prompts:
     - **Gateway** — receive gateway events next to the HTTP interactions with [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway)
     - **Cache** — cache gateway entities with [`@wolfstar/plugin-cache`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache), in memory or in Redis (asked as a follow-up)
     - **Sharder** — spread gateway shards across cluster workers with [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder)
+    - **Dev tunnel** — open a `cloudflared` quick tunnel in `stars dev` so Discord reaches the bot on your machine (see [Dev tunnel](#dev-tunnel))
 - **Auto-install** — install dependencies immediately after scaffolding
 
 ## Options
@@ -86,6 +87,7 @@ The CLI will guide you through the following prompts:
 | `--cache` / `--no-cache`             |       | Enable or disable `@wolfstar/plugin-cache` (turns `--gateway` on)                                                                                         |
 | `--redis` / `--no-redis`             |       | Cache in Redis instead of memory (turns `--cache` and `--gateway` on)                                                                                     |
 | `--sharder` / `--no-sharder`         |       | Enable or disable `@wolfstar/plugin-sharder` (turns `--gateway` on). Can't be combined with `--build vite-nitro`                                          |
+| `--tunnel` / `--no-tunnel`           |       | Write `dev: { tunnel: true }` to `stars.config` so `stars dev` opens a `cloudflared` quick tunnel (see [Dev tunnel](#dev-tunnel))                         |
 | `--install` / `--no-install`         |       | Enable or disable dependency installation                                                                                                                 |
 | `--help`                             | `-h`  | Print usage and exit                                                                                                                                      |
 
@@ -126,10 +128,13 @@ my-discord-bot/
 ├── vitest.setup.ts               # Vitest setup file (--testing)
 ├── compose.yaml                  # Local Redis server (--redis)
 ├── README.md                     # Generated project README
+├── AGENTS.md                     # Commands, layout, and rules for AI coding agents
+├── llms.txt                      # Upstream documentation by topic, for AI coding agents
+├── stars.config.ts               # `stars` CLI configuration (build, env, dev tunnel)
 ├── .env                          # Environment variables (DISCORD_TOKEN, DISCORD_PUBLIC_KEY)
 ├── .gitignore
 ├── package.json
-└── tsconfig.json
+└── tsconfig.json             # Root tsconfig (TypeScript only, see TypeScript configuration)
 ```
 
 - `src/locales/en-US/commands/ping.json` and `src/@types/i18next.d.ts` are only generated when **i18n** is enabled.
@@ -137,6 +142,95 @@ my-discord-bot/
 - `src/commands/math.ts` is only generated when **Subcommands** is enabled.
 - `src/lib/cache.ts` is only generated with **Cache**, `src/shard.ts` with **Sharder**, and `compose.yaml` with **Redis**.
 - `tests/ping.test.ts`, `vitest.config.ts`, and `vitest.setup.ts` are only generated when **Testing** is enabled.
+- `AGENTS.md` and `llms.txt` are always generated. They only describe the features the project was created with. See [AI agent files](#ai-agent-files).
+- With a linter, the generated `.oxlintrc.json` or `eslint.config.mjs` enables the rules of `@wolfstar/eslint-plugin-http-framework`. See [Framework lint rules](#framework-lint-rules).
+- In TypeScript projects built with tsdown or Vite, `src/lib/setup/all.ts` doesn't load the environment itself. `stars` loads `.env` (the `env` option in `stars.config.ts`) before any module of the bot runs. Projects built with `tsc`, Vite + Nitro, or JavaScript still call `setup()` from `@wolfstar/env-utilities`.
+
+### TypeScript configuration
+
+TypeScript projects built with tsdown, Vite, or Vite + Nitro are generated for `future.compatibilityVersion` 6. Their
+root `tsconfig.json` is solution-style. It only references the two configs that `stars prepare` writes to `.stars/`:
+
+```json
+{
+	"files": [],
+	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+}
+```
+
+`.stars/tsconfig.app.json` covers the bot sources, and `.stars/tsconfig.node.json` covers the config files and scripts
+Node runs. See [Generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).
+The `postinstall` script runs `stars prepare`, so both files exist after you install dependencies.
+
+These projects also get a `typecheck` script that runs [`stars typecheck`](/documentation/packages/cli#stars-typecheck):
+
+```bash
+npm run typecheck
+```
+
+A bare `tsc` on the root `tsconfig.json` checks nothing, because it only references `.stars/`. The generated
+`README.md` and `AGENTS.md` list the `typecheck` script. Projects built with `tsc6` or `tsc7` keep their composite
+`tsconfig.json` and `src/tsconfig.json`, without a `typecheck` script.
+
+When you run the CLI again on an existing project, it replaces the root `tsconfig.json` only when the file is one
+the generator wrote: the solution-style file, or the older one that extends `./.stars/tsconfig.json`. The CLI
+compares the files as JSON, so formatting changes don't count as edits. It keeps a hand-edited `tsconfig.json` and
+prints a warning. If that file extends `./.stars/tsconfig.json`, make it reference the two generated configs instead.
+
+### AI agent files
+
+Every project gets two files for AI coding agents:
+
+- `AGENTS.md` lists the project's commands, its layout, and the framework rules that are easy to get wrong.
+- `llms.txt` links the upstream documentation, grouped by topic.
+
+Both files only cover the features you selected. When you rerun the CLI in an existing project, it replaces these files only if they're its own unedited output. If you wrote or edited `AGENTS.md` or `llms.txt`, the CLI keeps your version and prints a warning. To get the generated version, delete the file and run the CLI again.
+
+### Framework lint rules
+
+When you pick a linter, the CLI adds [`@wolfstar/eslint-plugin-http-framework`](https://github.com/wolfstar-project/stars-components/tree/main/packages/eslint-plugin-http-framework) to `devDependencies` and enables its rules. They catch mistakes TypeScript can't, such as decorator order, raw Discord fetches, and dynamic translation keys.
+
+With ESLint, `eslint.config.mjs` registers the plugin with its recommended rules:
+
+```js eslint.config.mjs
+import wolfstar, { recommendedRules } from '@wolfstar/eslint-plugin-http-framework';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config({ ignores: ['dist/**'] }, ...tseslint.configs.recommended, { plugins: { wolfstar }, rules: recommendedRules });
+```
+
+With Oxlint, `.oxlintrc.json` loads the plugin through `jsPlugins` and sets each `wolfstar/*` rule to `error`:
+
+```json .oxlintrc.json
+{
+	"jsPlugins": ["@wolfstar/eslint-plugin-http-framework"],
+	"rules": {
+		"wolfstar/apply-options-decorator-order": "error",
+		"wolfstar/require-subcommand-parent": "error",
+		"wolfstar/no-raw-discord-fetch": "error",
+		"wolfstar/no-dynamic-translation-key": "error",
+		"wolfstar/prefer-apply-localized-builder": "error",
+		"wolfstar/no-hoisted-plugin-register-import": "error",
+		"wolfstar/no-deprecated-i18n-package": "error"
+	}
+}
+```
+
+### Dev tunnel
+
+Discord sends interactions to a public URL, so a bot running on your machine needs a tunnel while you develop. `--tunnel` (or the **Dev tunnel** feature in the prompt) writes `dev: { tunnel: true }` to `stars.config.ts`. `stars dev` then opens a `cloudflared` quick tunnel at startup.
+
+```bash
+npm create @wolfstar/http-framework@latest my-discord-bot -- --tunnel
+```
+
+```ts stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({ dev: { tunnel: true } });
+```
+
+Without the flag, press `t` in `stars dev` to open a tunnel on demand. See [Type checking, tunnel and logs](/documentation/packages/cli#type-checking-tunnel-and-logs) for the other `dev.tunnel` options.
 
 ### Vite and Nitro
 

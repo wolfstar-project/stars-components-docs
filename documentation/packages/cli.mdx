@@ -1,6 +1,6 @@
 ---
 title: '@wolfstar/cli'
-description: 'The stars CLI that runs dev, build, info, codegen, prepare, and commands for HTTP Framework bots driven by a typed stars.config.ts file.'
+description: 'The stars CLI that runs dev, build, info, codegen, prepare, typecheck, commands, doctor, and completions for HTTP Framework bots driven by a typed stars.config.ts file.'
 ---
 
 <CodeGroup>
@@ -31,12 +31,15 @@ bun add @wolfstar/cli
 The typed `stars.config.*` schema and loader live in [`@wolfstar/http-framework`](/documentation/packages/http-framework)
 (`@wolfstar/http-framework/config`). This package only consumes it to drive its commands:
 
-- `stars dev` builds the project, starts the bot, restarts it on changes and shows what is happening in an interactive terminal UI (or plain logs).
+- `stars dev` builds the project, starts the bot, restarts it (or leaves the change to the bot's hot reload) and shows what is happening in a full-screen dashboard with filterable log channels and levels (or a compact panel, or plain logs).
 - `stars build` runs the configured build tool once.
 - `stars info` prints the resolved configuration and environment (`--json` for scripts).
 - `stars codegen` runs the configured code generators (`--check` for CI).
-- `stars prepare` generates `.stars/tsconfig.json` and the auto imports declaration file (`--check` for CI).
-- `stars commands` inspects and cleans the application commands Discord has deployed.
+- `stars prepare` generates the TypeScript configuration in `.stars/` and the auto imports declaration file (`--check` for CI).
+- `stars typecheck` regenerates `.stars/` and type-checks every project once.
+- `stars commands` inspects, compares, deploys, and cleans the application commands Discord has deployed.
+- `stars doctor` checks that the project is ready: runtime, framework, credentials, interactions endpoint, generated files.
+- `stars completions` prints the shell completion script for bash, zsh, or fish.
 
 Everything is driven by a typed `stars.config.ts` file.
 
@@ -82,51 +85,219 @@ console.log(config.entry, config.build.output);
 ## Commands
 
 ```sh
-stars dev [--no-tui] [--config <file>] [--cwd <dir>]
+stars dev [--no-tui] [--layout <auto|dashboard|panel>] [--channel <name>] [--level <level>] [--theme <name>] [--config <file>] [--cwd <dir>]
 stars build [--config <file>] [--cwd <dir>]
 stars info [--json] [--config <file>] [--cwd <dir>]
 stars codegen [--check] [--json] [--config <file>] [--cwd <dir>]
 stars prepare [--check] [--json] [--config <file>] [--cwd <dir>]
-stars commands [list|clean] [--guild <id>] [--name <name>] [--yes] [--json]
+stars typecheck [--config <file>] [--cwd <dir>]
+stars commands [list|clean|diff|deploy] [--guild <id>] [--name <name>] [--check] [--yes] [--json]
+stars doctor [--online] [--json] [--config <file>] [--cwd <dir>]
+stars completions <bash|zsh|fish>
 stars --help | --version
 ```
+
+### `stars info`
+
+Prints the resolved configuration and environment. Pass `--json` for scripts. Besides the build, codegen, env, hooks,
+and experimental flags, the output lists:
+
+- **Dev**: the `dev` options in effect, including the log file, the per-run log directory and how many files it keeps,
+  the layout, the channels and levels the dev UI starts with, the command refresh mode, and whether changes are left to
+  the bot's hot reload.
+- **Modules**: the installed modules and the runtime plugins they registered.
 
 ### `stars dev`
 
 Watches the sources through the configured build tool (`tsdown` programmatically, configured from your `stars.config`, `tsc -b --watch`, or a plain file watcher for JavaScript projects), starts the bot after the first successful build and restarts it after every following one. Failed builds keep the previous process running and wait for the next change; a crashed bot waits for the next change or a manual restart.
 
-The bot runs as a child `node` process with `STARS_DEV=1` and `NODE_ENV=development` in its environment. Because `stars dev` already restarts the whole process, leave the framework's own `hmr` option disabled while using it.
+The bot runs as a child `node` process with `STARS_DEV=1` and `NODE_ENV=development` in its environment. When the bot
+enables the framework's [`hmr` option](/documentation/packages/http-framework#hot-module-reloading), `stars dev` leaves
+changes to pieces to the bot instead of restarting it. See [Hot reload](#hot-reload).
 
-**Interactive UI** (default on a TTY): a bottom-aligned panel following the layout and keyboard conventions of
+`dev.layout` in `stars.config`, or `--layout`, picks the interactive UI:
+
+| Value              | UI                                                                                |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `'auto'` (default) | The dashboard on a terminal of at least 90×20, the panel on a smaller one         |
+| `'dashboard'`      | The full-screen dashboard                                                         |
+| `'panel'`          | The compact panel pinned to the bottom of the terminal, with the logs folded away |
+
+Press `v` to switch between the two while a session runs.
+
+#### Dashboard
+
+The dashboard is the default on a TTY of at least 90×20. It is a full-screen view in the alternate buffer.
+
+```text
+ my-bot • stars v2.3.0            │ I   22:07:01        cli ● Build succeeded in 164ms
+                                  │ I   22:07:01        cli ● Starting (first build)
+ ● running                        │─────────────────────────────────────────────────────────
+ my-bot is ready!                 │ D   22:07:01   commands ● Loaded commands: 1 global, 0 guild groups
+ http    v6.1.0                   │                         │ ping
+ up      3m 35s                   │─────────────────────────────────────────────────────────
+ port    6967                     │ I   22:07:02  lifecycle ● Listening on port 6967
+ tunnel  live                     │ W   22:07:11       http ● POST / 401 in 1ms
+ logs    .stars/dev.log           │ D   22:07:31 interactions ● Processing slash:ping with ping
+                                  │ T   22:09:16        hmr ● UPDATE src/commands/ping.js
+ ▾ channels                       │ D   22:09:16        hmr ● Reloaded ping from src/commands/ping.js
+   bot cli commands hmr http      │┌────────────────────────────────────────────────────────┐
+ ▾ levels                         ││ Commands updated:                                      │
+   error warn info debug trace    ││ - ping changed                                         │
+                                  ││ Refresh commands? (y/n)                                │
+                           ● live │└────────────────────────────────────────────────────────┘
+```
+
+The sidebar shows the state of the session (`starting`, `building`, `running`, `stopped`, `error`), the framework
+version, the uptime, the port, the tunnel, and where the logs are written. Below that are the channel and level
+filters of the stream.
+
+The stream prints one line per entry: a level badge (`T D I W E`), the time, the channel, and the message with URLs,
+paths, names, and numbers highlighted. An entry with detail lines, such as the commands that were loaded or the paths
+that are watched, is shown as a block between two rules. The stack frames the bot prints after an error are folded
+under that error and count as one entry. The build percentage follows actual build milestones, not a timer.
+
+#### Log channels
+
+Each log entry has a channel that says what it is about, so you can switch each one off:
+
+| Channel        | What logs there                                                                 |
+| -------------- | ------------------------------------------------------------------------------- |
+| `cli`          | `stars dev` itself: builds, restarts, hooks, warnings                           |
+| `build`        | The build tool and the file watcher                                             |
+| `bot`          | Everything the bot writes to stdout and stderr                                  |
+| `types`        | The type checker (`dev.typecheck`)                                              |
+| `tunnel`       | The public tunnel                                                               |
+| `lifecycle`    | The bot is listening, the pieces it loaded                                      |
+| `hmr`          | Files left to the bot's hot reload, and what it reloaded                        |
+| `commands`     | The application commands the bot registers, changes to them, redeploys          |
+| `interactions` | Each interaction: the route (`slash:ping`), the piece, how long it took, errors |
+| `http`         | Each request to the interactions endpoint, with its status (`trace` when fine)  |
+
+The last five channels come from the bot itself. `stars dev` preloads a small bridge into the bot (`node --import`)
+that reports its events over an IPC channel instead of guessing from stdout. The bridge needs
+`@wolfstar/http-framework` 6.1 or later, resolved from the project. Without it, or with a build that bundles the
+framework (as Vite and Nitro do), those channels stay empty and everything else works as before.
+
+A plugin can log on a channel of its own:
+
+```ts
+process.send?.({ source: 'stars:bridge', type: 'log', channel: 'gateway', level: 'info', text: 'Shard 0 ready' });
+```
+
+Entries have one of five levels: `trace`, `debug`, `info`, `warn`, and `error`. `trace` is hidden at start because it
+logs one line per request. `dev.logs.channels` and `dev.logs.levels` in `stars.config` choose what a session starts
+with. The log file always receives every entry.
+
+```ts
+export default defineConfig({
+	dev: {
+		logs: { channels: ['bot', 'commands', 'interactions'], levels: ['error', 'warn', 'info'] }
+	}
+});
+```
+
+`--channel` and `--level` override them for one session. `--channel` accepts a comma-separated list and can be
+repeated. `--level` shows that level and every more severe one.
+
+```sh
+stars dev --channel hmr,http --channel commands   # only these channels
+stars dev --level trace                           # this level and every more severe one
+```
+
+#### Keyboard shortcuts
+
+| Key                | Action                                                           |
+| ------------------ | ---------------------------------------------------------------- |
+| `←` / `→`          | Select a channel or a level                                      |
+| `Tab`              | Switch between channels and levels                               |
+| `Space`            | Show or hide the selected one                                    |
+| `s`                | Solo: show only the selected one; press again for all            |
+| `a`                | Show every channel and level                                     |
+| `Enter`            | Fold or unfold the selected group                                |
+| `b`                | Group the stream by channel                                      |
+| `↑` / `↓`, `j`/`k` | Scroll (`PgUp`/`PgDn` by page); the footer turns to `paused`     |
+| `g` / `G`          | Jump to the top / back to live                                   |
+| `/`                | Search the stream (`Esc` clears)                                 |
+| `e`                | Jump to the last error, keeping its context                      |
+| `y` / `n`          | Answer a prompt                                                  |
+| `r` / `Ctrl+R`     | Restart the bot                                                  |
+| `d`                | Disconnect: stop the bot until the next `r`, builds keep running |
+| `o`                | Open the local URL in a browser                                  |
+| `t`                | Toggle a public `cloudflared` tunnel                             |
+| `i`                | Show project, versions, URLs, health, types and session info     |
+| `T`                | Pick a colour theme                                              |
+| `l`                | Browse the logs full width: select a line, copy it               |
+| `v`                | Switch between the dashboard and the panel                       |
+| `c` / `Ctrl+L`     | Clear log history                                                |
+| `h` / `?`          | Show keyboard shortcuts                                          |
+| `q` / `Ctrl+D`     | Quit; confirm with `y` while a build/restart is in flight        |
+| `Ctrl+C`           | Quit immediately from any view                                   |
+
+The channel and level keys (`←`/`→`, `Tab`, `Space`, `s`, `a`, `Enter`, `b`, `g`/`G`, `/`) only apply to the
+dashboard. The panel shares every other key.
+
+#### Hot reload
+
+When the bot runs with the framework's `hmr` option enabled, it tells `stars dev` which directories it watches. A build
+that only changed pieces in those directories is then left to the bot. The process, its HTTP server, and its
+connections stay up, and the `hmr` channel shows what was reloaded. A piece is a file the bot loaded one from, or a new
+file that could be one.
+
+Any other change still restarts the bot: the entry, a shared module, a locale, or a helper next to the pieces (such as
+`_shared.js`, or any file no piece came from), which the bot imports once and cannot replace. A bot without `hmr`, or
+one that stopped its reloader, is always restarted. `stars dev` judges what a build changed by content, since a bundler
+such as `tsdown` rewrites its whole output on every rebuild.
+
+Set `dev.hmr: false` to always restart the bot:
+
+```ts
+export default defineConfig({
+	dev: { hmr: false }
+});
+```
+
+#### Command refresh
+
+The bot reports the application commands it registers when it starts and after every hot reload. When they differ from
+what it reported before, `stars dev` reports the change on the `commands` channel. `dev.commands.refresh` picks what
+happens next:
+
+| Value                | Behaviour                                                       |
+| -------------------- | --------------------------------------------------------------- |
+| `'prompt'` (default) | Ask `Refresh commands? (y/n)` in the dev UI and redeploy on `y` |
+| `'auto'`             | Redeploy right away without asking                              |
+| `'off'`              | Only report the change                                          |
+
+```ts
+export default defineConfig({
+	dev: { commands: { refresh: 'auto' } }
+});
+```
+
+Without the interactive UI (`--no-tui`, CI), `'prompt'` only reports the change. An open question survives a restart of
+the bot. A `y` given while the bot is stopped or restarting is carried out once it listens again. A refresh also
+empties a guild whose last command was removed since the last deploy. Command refresh needs `@wolfstar/http-framework`
+6.1 or later.
+
+#### Panel
+
+The panel is used with `dev.layout: 'panel'`, `--layout panel`, the `v` key, or a terminal smaller than 90×20. It is a
+bottom-aligned panel in the normal buffer, following the layout and keyboard conventions of
 [Nuxt CLI's dev TUI](https://github.com/nuxt/cli/tree/b4b366eafdd9ac4d5b81b6ae7dadda35364252c9/packages/nuxt-cli/src/dev/tui).
-The normal screen shows a Stars wordmark, aligned URLs, a 20-cell progress bar with elapsed time, status and
-shortcuts. The percentage follows actual build milestones, not a timer: it can stay still while a compiler phase
-runs. Once ready, the bar gives way to diagnostics and the header reports the load time.
+It shows a Stars wordmark, aligned URLs, a 20-cell progress bar with elapsed time, status, and shortcuts. Logs are
+folded away: `l` opens them and `e` jumps to the last error. Once ready, the bar gives way to diagnostics and the header
+reports the load time.
 
 Application output (including its banner), build-plugin output and diagnostics stay in the bounded log history and
-`.stars/dev.log`. tsdown's entry list and output-size table are suppressed. Only log/help/info overlays enter the
-alternate screen; closing them restores the panel without duplicating output in scrollback. Error stack frames do
-not count as individual errors. `READY` reports process state unless `dev.health` is configured; it does not certify
-that every application plugin loaded successfully. Logged errors switch the badge to `ERROR`.
+`.stars/dev.log`. tsdown's entry list and output-size table are suppressed. Closing an overlay restores the view under
+it without duplicating output in scrollback. `running` (`READY` in the panel) reports process state unless
+`dev.health` is configured; it does not certify that every application plugin loaded successfully.
 
-| Key            | Action                                                       |
-| -------------- | ------------------------------------------------------------ |
-| `r` / `Ctrl+R` | restart the bot                                              |
-| `o`            | open the local URL in a browser                              |
-| `t`            | toggle a public `cloudflared` tunnel                         |
-| `i`            | show project, versions, URLs, health, types and session info |
-| `l`            | browse logs                                                  |
-| `e`            | select the last error with its surrounding context           |
-| `c` / `Ctrl+L` | clear log history                                            |
-| `h` / `?`      | show keyboard shortcuts                                      |
-| `q` / `Ctrl+D` | quit; confirm with `y` while a build/restart is in flight    |
-| `Ctrl+C`       | quit immediately from any view                               |
-
-In the log view: arrows or `j/k` select, `PgUp/PgDn` move a page, `g/G` go to the beginning/follow the tail,
+In the log browser (`l`): arrows or `j/k` select, `PgUp/PgDn` move a page, `g/G` go to the beginning/follow the tail,
 `e/w/a` filter errors/warnings/all, `c/b/r` toggle CLI/build/runtime sources, `/` searches, `x` clears, and
 `Enter`/`y` copies the selected line on terminals supporting OSC 52 clipboard writes. `q`, `Esc` or the view's
-own shortcut closes an overlay rather than quitting the session. Nuxt-specific request and page-route inspectors
-are not exposed: the bot supervisor does not receive those runtime events.
+own shortcut closes an overlay rather than quitting the session.
 
 Replace the default wordmark in `stars.config.ts` (up to four lines are displayed, clipped to the terminal width):
 
@@ -137,12 +308,16 @@ export default defineConfig({
 ```
 
 `dev.banner` also accepts a string containing newlines, or `false` to hide the wordmark. Omit it for Stars branding.
-For the application's standalone banner outside the TUI, use `createStarsBanner` from `@wolfstar/start-banner`.
+The dashboard shows the project's name instead of the wordmark. For the application's standalone banner outside the
+TUI, use `createStarsBanner` from `@wolfstar/start-banner`.
 
-**Plain mode** prints prefixed lines instead and is selected by `--no-tui`, `STARS_TUI=plain`, redirected input/output,
-CI, `TERM=dumb`, or terminals smaller than 40×10. `STARS_TUI=1` overrides CI/size checks, never redirected streams or
-a dumb terminal. Both modes honour `NO_COLOR`/`FORCE_COLOR`; `STARS_REDUCED_MOTION=1` freezes the logo/spinner but
-keeps the elapsed clock. Both stop the bot cleanly on `SIGINT`/`SIGTERM`. `SIGUSR2` restarts the bot (not on Windows).
+#### Plain mode
+
+Plain mode prints prefixed lines instead: the channel, then the message, with detail lines indented under it. The bot's
+own output is passed through untouched. It is selected by `--no-tui`, `STARS_TUI=plain`, redirected input/output, CI,
+`TERM=dumb`, or terminals smaller than 40×10. `STARS_TUI=1` overrides CI/size checks, never redirected streams or a
+dumb terminal. Both modes honour `NO_COLOR`/`FORCE_COLOR`; `STARS_REDUCED_MOTION=1` freezes the logo/spinner but keeps
+the elapsed clock. Both stop the bot cleanly on `SIGINT`/`SIGTERM`. `SIGUSR2` restarts the bot (not on Windows).
 
 ### `stars commands`
 
@@ -158,25 +333,151 @@ stars commands clean --guild 1234 --yes
 ```
 
 It reads `DISCORD_TOKEN` and `DISCORD_APPLICATION_ID` (or `APPLICATION_ID`) from the environment or the project's
-`.env`, the same place the bot reads them from. `clean` deletes deployed commands, so on a terminal it opens a wizard —
-a checklist of what is deployed, then a confirmation — and refuses to run without `--yes` (or `--name`) anywhere
-else.
+`.env`, the same place the bot reads them from. `clean` deletes deployed commands, so on a terminal it opens a wizard
+(a checklist of what is deployed, then a confirmation). Anywhere else it refuses to run without `--yes` or `--name`.
+
+#### Compare and deploy
+
+`diff` and `deploy` compare what Discord has deployed with what the project defines:
+
+```sh
+stars commands diff                 # what a deploy would add (+), change (~) and remove (-)
+stars commands diff --check         # the same, failing when anything differs (CI)
+stars commands deploy               # show the difference, ask, then overwrite the global scope
+stars commands deploy --guild 1234 --yes
+```
+
+Commands are declared with builders and decorators that only exist once the bot's modules ran, so `stars` asks the bot.
+It starts the built entry with the dev bridge, which loads the pieces, reports the registry, and exits before the bot
+listens or talks to Discord. Run `stars build` first. This needs `@wolfstar/http-framework` 6.1 or later.
+
+The bot is started the way `stars dev` starts it (the same env files, after the `env:options` hook), in the caller's
+`NODE_ENV`, or `development` when unset. Run `NODE_ENV=production stars commands deploy` to deploy what a production
+start registers. `STARS_DEV` is not set, since this is not a dev session.
+
+A command counts as changed when what the project defines no longer matches what is deployed. Fields Discord fills in
+on its own (`id`, `version`, defaults such as `nsfw: false`) are ignored. `diff --check` exits with code `1` and raises
+`COMMANDS_DIFFER` when anything differs.
+
+`deploy` uses Discord's bulk overwrite, so a deployed command the project no longer defines is deleted. That is why it
+asks first. Outside a terminal, or with `--json`, it refuses to run without `--yes`.
+
+### `stars typecheck`
+
+Type-checks the project once, the way `nuxt typecheck` does. `stars typecheck` first regenerates `.stars/` (the same
+work as `stars prepare`), then runs the project's checker once on each project. The checker is
+`dev.typecheck.checker`: `golar` or `tsc`.
+
+```sh
+stars typecheck
+```
+
+From `future.compatibilityVersion` 6, the projects are:
+
+- `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` for `tsdown` and `vite` builds.
+- The project's own tsconfig plus `.stars/tsconfig.node.json` for `tsc` and `none` builds.
+- Only the configured tsconfig when `dev.typecheck.tsconfig` is set.
+
+On versions 5 and below, `stars typecheck` checks the single tsconfig. Use it instead of `tsc -p tsconfig.json`: a
+solution-style root `tsconfig.json` has `files: []`, so a bare `tsc -p` on it checks nothing. Use it as the project's
+`typecheck` script:
+
+```json
+{
+	"scripts": {
+		"typecheck": "stars typecheck"
+	}
+}
+```
+
+`stars typecheck` exits with `1` and the [`TYPECHECK_FAILED`](/documentation/errors/cli#typecheck_failed) diagnostic
+when any project has type errors. It lists the failing projects. `stars info` lists the projects it checks on the
+`typechecks` row.
+
+### `stars doctor`
+
+Checks what a project needs before `stars dev` can do its job, and says what to do about each problem:
+
+```text
+stars doctor v2.3.0
+  ✔ node        Node.js v24.19.0
+  ✔ config      stars.config.ts
+  ✔ framework   @wolfstar/http-framework v6.1.0
+  ✔ entry       src/main.ts (tsdown)
+  ✖ token       DISCORD_TOKEN is not set
+                → Set DISCORD_TOKEN in the environment or in the project .env file.
+  ⚠ port        Something already listens on http://localhost:3000
+                → Stop it, or set another HTTP_PORT, unless it is this bot running.
+  ℹ tunnel      No tunnel: Discord cannot reach a bot on localhost
+                → Set `dev.tunnel: true` for a cloudflared quick tunnel, or press t in `stars dev`.
+  ⚠ prepare     Out of date: .stars/tsconfig.app.json, .stars/tsconfig.node.json
+                → Run `stars prepare`.
+
+  1 error(s), 2 warning(s)
+```
+
+It covers:
+
+- The Node.js version, and the project's `engines.node`.
+- The configuration and its warnings.
+- The framework, and whether it is recent enough for the dev bridge.
+- The entry and the build output.
+- `DISCORD_TOKEN`, `DISCORD_PUBLIC_KEY`, and the application id.
+- Whether the dev port is free.
+- The tunnel.
+- Whether `.stars/` is stale. It names each generated file that is out of date.
+- Whether the root `tsconfig.json` still extends `./.stars/tsconfig.json` ([`TSCONFIG_LEGACY_EXTENDS`](/documentation/errors/cli#tsconfig_legacy_extends)).
+
+`--online` also asks Discord whether the token works and where the application sends its interactions. `stars doctor`
+never changes anything. `--json` prints `{ ok, checks }` for scripts. The exit code is `1` when a check fails, with
+the `DOCTOR_FAILED` diagnostic.
+
+```sh
+stars doctor --online
+stars doctor --json
+```
+
+### `stars completions`
+
+Prints a shell completion script for bash, zsh, or fish. Add it to your shell's startup file:
+
+```sh
+eval "$(stars completions bash)"      # ~/.bashrc
+eval "$(stars completions zsh)"       # ~/.zshrc
+stars completions fish | source       # ~/.config/fish/config.fish
+```
+
+The script is generated from the commands the CLI registers. It completes every command, subcommand, and flag that
+`--help` lists, with their short forms (`-c`) and the `--no-` form of flags that are on by default (`--no-tui`).
 
 ### Type checking, tunnel and logs
 
 Three `dev` options round out the dev loop (all documented in
 [`@wolfstar/http-framework`](/documentation/packages/http-framework#project-configuration-starsconfig)):
 
-- `dev.typecheck: true` runs a type checker next to the bot and reports type errors on the UI's `tsc` channel,
-  without ever blocking a build or a restart — useful when building with `tsdown`, which does not type-check.
+- `dev.typecheck: true` runs a type checker next to the bot and reports type errors on the UI's `types` channel,
+  without ever blocking a build or a restart. This is useful when building with `tsdown`, which does not type-check.
   `dev.typecheck.checker` picks which one: `tsc` (the project's TypeScript, watch mode), `golar` (`golar tsc`, watch
-  mode), `tsz` (the tsc-compatible checker, re-run after every build since it has no watch mode), or `auto` — the
-  default, which uses `golar` when the project depends on it and `tsc` otherwise.
+  mode), `tsz` (the tsc-compatible checker, re-run after every build since it has no watch mode), or `auto`. `auto` is
+  the default and uses `golar` when the project depends on it and `tsc` otherwise.
 - Pressing `t` opens and closes a `cloudflared` quick tunnel without configuration. `dev.tunnel: true` opens it at startup so Discord can reach the bot's interactions endpoint from the
   internet; a string is an https URL you already serve, which the CLI only probes. `dev.tunnel.updateEndpoint` writes
   the URL to the Discord application, and is opt-in because it edits a live application.
-- `dev.logFile` (default `.stars/dev.log`) mirrors the session's logs to disk, so a run can be read back after the
-  terminal UI is gone. Set it to `false` to disable it.
+- `dev.logFile` (default `.stars/dev.log`) mirrors the session's logs to disk, so you can read a run back after the
+  terminal UI is gone. Set it to `false` to disable it. The file is truncated on every run.
+
+To keep earlier runs, set `dev.logs.dir` (for example `'logs'`). `stars dev` then also writes one file per run,
+`dev-<timestamp>.log`, in that directory. `dev.logs.keep` (default `10`) sets how many per-run files stay, the current
+run included. Older files are deleted when a run starts.
+
+```ts
+export default defineConfig({
+	dev: { logs: { dir: 'logs', keep: 5 } }
+});
+```
+
+Each line of a log file is `<ISO time> <level> <channel> <message>`, with the detail lines of an entry indented under
+it. Log files never filter entries out.
 
 ### The build
 
@@ -216,8 +517,8 @@ With the `tsdown` build tool, `stars` wires the `autoImports()` plugin into the 
 package in `imports.presets` are usable without an `import` statement. The default presets are
 `@wolfstar/http-framework`, [`@wolfstar/decorators`](/documentation/packages/decorators), and
 `@wolfstar/env-utilities`. `stars` scans each preset from the project's own `node_modules` and skips packages that are
-not installed, so `ApplyOptions` and the other decorators are auto-imported once you add `@wolfstar/decorators` to
-your dependencies.
+not installed. Once you add `@wolfstar/decorators` to your dependencies, `ApplyOptions` and the other decorators are
+auto-imported.
 
 ```typescript
 // stars.config.ts
@@ -238,12 +539,13 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
 [framework README](/documentation/packages/http-framework#compatibility-version) for the full reference):
 
-| Version       | What it changes                                                                                                               |
+<<<<<<< HEAD
+| Version | What it changes |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
-| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript           |
-| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                  |
-| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`          |
+| `3` (EOL) | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
+| `4` | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
+| `5` | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities` |
+| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` |
 
 Version 3 is end-of-life. It still works, but every command prints a
 [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and the next major
@@ -280,6 +582,15 @@ export default defineConfig({
 `stars info` lists the env options and the registered hooks. See the
 [framework reference](/documentation/packages/http-framework#environment-env) for every `env` option and
 [hooks](/documentation/packages/http-framework#hooks) for each hook's arguments and timing.
+=======
+| Version | What it changes |
+| ------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `3` | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for |
+| `4` | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript |
+| `5` | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities` |
+| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` |
+
+> > > > > > > origin/main
 
 ### Experimental flags
 
@@ -296,14 +607,14 @@ export default defineConfig({
 
 ### Exit codes
 
-| Code  | Meaning                                              |
-| ----- | ---------------------------------------------------- |
-| `0`   | success                                              |
-| `1`   | generic error (including `codegen --check` failures) |
-| `2`   | invalid or missing configuration                     |
-| `3`   | build failed                                         |
-| `130` | interrupted with `SIGINT`                            |
-| `143` | terminated with `SIGTERM`/`SIGHUP`                   |
+| Code  | Meaning                                                   |
+| ----- | --------------------------------------------------------- |
+| `0`   | success                                                   |
+| `1`   | generic error (including `--check` and `doctor` failures) |
+| `2`   | invalid or missing configuration                          |
+| `3`   | build failed                                              |
+| `130` | interrupted with `SIGINT`                                 |
+| `143` | terminated with `SIGTERM`/`SIGHUP`                        |
 
 ### Generated TypeScript configuration
 
@@ -320,6 +631,7 @@ package.json imports, and ESNext/DOM libraries. Use `import type` and `export ty
 These options apply to tsdown and Vite; tsc keeps its emit-compatible settings. Sapphire's decorator options and
 the ES2022 target remain in effect. This does not enable Stars' experimental Nitro runtime integration.
 
+<<<<<<< HEAD
 From compatibility version 6 (the default), the generated configuration is split in two, the way a Nuxt 4 project
 has it:
 
@@ -328,7 +640,19 @@ has it:
 - `.stars/tsconfig.node.json` covers the files Node runs without a bundler, such as `stars.config.*`,
   `vitest.config.*`, and `scripts/**`.
 
-Your own `tsconfig.json` becomes a solution-style file that only references them:
+# Your own `tsconfig.json` becomes a solution-style file that only references them:
+
+From `future.compatibilityVersion` 6, `stars prepare` writes two files, the way a Nuxt 4 project has them:
+
+- `.stars/tsconfig.app.json` covers the bot: everything under the entry's directory plus the auto imports
+  declaration, with the `~`/`@`/`~~`/`@@` paths and the options above. `tsdown` builds with it.
+- `.stars/tsconfig.node.json` covers the files Node runs without a bundler: `stars.config.*`, `vitest.config.*`,
+  `tsdown.config.*`, `vite.config.*`, and `scripts/**`. It uses `NodeNext` resolution, `types: ["node"]`, and no DOM
+  library. It has no aliases, auto imports, or decorators, and leaves the entry's directory to the app project.
+
+Your project's `tsconfig.json` is solution-style. It only references the two generated files:
+
+> > > > > > > origin/main
 
 ```json
 {
@@ -337,12 +661,24 @@ Your own `tsconfig.json` becomes a solution-style file that only references them
 }
 ```
 
+<<<<<<< HEAD
 Type checking follows the split. For a `tsdown` or `vite` project, `dev.typecheck` watches the app config, and
 `stars typecheck` checks both generated configs. A `tsc` or `none` project keeps its own tsconfig for the bot sources
 and gets the node config on top. Setting `dev.typecheck.tsconfig` checks only that file.
 
 On versions `5` and `4`, nothing changes. Run `stars prepare` and extend the single generated config from your
 project's `tsconfig.json`:
+=======
+New tsdown and Vite projects already ship this file, a `typecheck` script, and `stars prepare` in `postinstall`.
+Because the root has `files: []`, type-check with [`stars typecheck`](#stars-typecheck) instead of `tsc -p`.
+`stars dev`'s `dev.typecheck` watches the app project. A root `tsconfig.json` that still extends
+`./.stars/tsconfig.json` gets a [`TSCONFIG_LEGACY_EXTENDS`](/documentation/errors/cli#tsconfig_legacy_extends) warning
+from `stars prepare` and `stars doctor`. Replace it with the file above, or keep `future.compatibilityVersion` at `5`.
+
+On versions `5` and `4`, nothing changes. `stars prepare` writes the single `.stars/tsconfig.json`, which you extend
+from your project's `tsconfig.json`:
+
+> > > > > > > origin/main
 
 ```json
 {
@@ -350,20 +686,27 @@ project's `tsconfig.json`:
 }
 ```
 
+<<<<<<< HEAD
 To stay on the single file, set `future: { compatibilityVersion: 5 }` in `stars.config.ts`.
 
 New tsdown projects already extend this file and run `stars prepare` through `postinstall`.
 Keep your existing compiler options alongside `extends`. `stars dev` and `stars build` also regenerate this file.
 For tsdown builds, `@/` and `~/` resolve to the entry file's directory (normally `src/`), while `@@/` and `~~/`
-resolve to the project root. Filesystem aliases in `stars.config.ts`'s `tsdown.alias` are included too, with custom
-values taking precedence. Legacy builds using a separate tsdown config only include aliases declared in
-`stars.config.ts`. Other build tools do not get tsdown aliases, since TypeScript alone does not rewrite imports.
+=======
+Keep your existing compiler options alongside `extends`. `stars dev` and `stars build` also regenerate the generated
+files. For tsdown builds, `@/` and `~/` resolve to the entry file's directory (normally `src/`), while `@@/` and `~~/`
 
-The generated config includes source files and the auto imports declaration, including a custom `imports.dts`
+> > > > > > > origin/main
+> > > > > > > resolve to the project root. Filesystem aliases in `stars.config.ts`'s `tsdown.alias` are included too, with custom
+> > > > > > > values taking precedence. Legacy builds using a separate tsdown config only include aliases declared in
+> > > > > > > `stars.config.ts`. Other build tools do not get tsdown aliases, since TypeScript alone does not rewrite imports.
+
+The generated app config includes source files and the auto imports declaration, including a custom `imports.dts`
 location. Explicit `include` or `compilerOptions.paths` in your own tsconfig replace the inherited values;
 remove manually duplicated paths to use the generated aliases. Generation works with `imports: false` too.
-Use `stars prepare --check` to check both generated files without writing them. Do not edit `.stars/tsconfig.json`
-by hand; keep `.stars/` ignored by Git and run `stars prepare` after installing dependencies on a fresh checkout.
+Use `stars prepare --check` to check the generated files without writing them. It fails when any of them is out of
+date. Do not edit anything in `.stars/` by hand; keep `.stars/` ignored by Git and run `stars prepare` after
+installing dependencies on a fresh checkout.
 
 ## Server integrations
 
