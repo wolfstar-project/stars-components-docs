@@ -737,8 +737,8 @@ export default defineConfig({
 
 Anything in `tsdown` wins over the defaults, and `plugins` are appended rather than replaced.
 
-With `future.compatibilityVersion: 3` (legacy mode) a `tsdown.config.*` in the project root is still loaded and
-`tsdown` is merged over it, so a project can move its options across one at a time. With `4` the block is the whole
+With `future.compatibilityVersion: 3` (legacy mode, end-of-life) a `tsdown.config.*` in the project root is still
+loaded and `tsdown` is merged over it, so a project can move its options across one at a time. From `4` on the block is the whole
 configuration, and a leftover `tsdown.config.*` is reported instead of being silently ignored.
 
 `vite: {}` works the same way for `build.tool: 'vite'` (see [experimental flags](#experimental-flags)): it is merged
@@ -746,21 +746,30 @@ into the project's own `vite.config.*`, the way `vite: {}` in a Nuxt config is.
 
 ### Compatibility version
 
-`future.compatibilityVersion` selects the build-default generation. Version 4 is the default; version 3 remains as
-an explicit migration mode for projects that still have a standalone `tsdown.config.*`.
+`future.compatibilityVersion` selects the build-default generation. Version 6 is the default, and versions 5 and 4
+remain supported. Version 3 is end-of-life. It still works for projects that have a standalone `tsdown.config.*`, but every
+command prints a [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and
+the next major removes it.
 
 ```typescript
 export default defineConfig({
 	future: {
-		compatibilityVersion: 3
+		compatibilityVersion: 4
 	}
 });
 ```
 
-The default version 4 provides three things:
+| Version       | What it changes                                                                                                                                          |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for                                                                |
+| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript; [`env`](#environment-env) is opt-in |
+| `5`           | Everything in `4`, plus [`env`](#environment-env) registered automatically when the project depends on `@wolfstar/env-utilities`                         |
+| `6` (default) | Everything in `5`, plus the generated TypeScript configuration split in two: `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`                  |
+
+From version 4 on:
 
 - **Auto imports are on** with the `tsdown` build tool, and the `autoImports()` plugin is wired into the build by
-  `stars` itself instead of by the project's own configuration file — the framework's exports and the project's
+  `stars` itself instead of by the project's own configuration file. The framework's exports and the project's
   `src/lib/**`, `src/utils/**` are usable without an `import` statement, the same way Nuxt's own are.
 - **`tsdown` is configured from `stars.config` alone.** A `tsdown.config.*` (or a `package.json#tsdown` field) raises
   `TSDOWN_CONFIG_FILE_UNSUPPORTED`, because a build that quietly dropped the plugins such a file declares would be
@@ -768,7 +777,106 @@ The default version 4 provides three things:
 - **`build.tool: 'auto'` resolves to `tsdown`** for any TypeScript entry, rather than looking for a `tsdown.config.*`
   or a `tsdown` dependency first. `tsc` stays available as an explicit choice.
 
-`stars info` prints the version in effect.
+Version 5 adds one thing: **`stars` registers the environment for you.** It calls `setup()` from
+`@wolfstar/env-utilities` before any module of the bot runs, so the bot no longer loads its `.env*` files by hand.
+
+Version 6 splits the generated TypeScript configuration. `stars prepare` writes `.stars/tsconfig.app.json` for the
+bot sources and `.stars/tsconfig.node.json` for root files such as `stars.config.*`, instead of a single
+`.stars/tsconfig.json`. The project's own `tsconfig.json` becomes a solution-style file that references both. A
+`tsdown` build defaults `build.tsconfig` to the app config. Pin `5` or `4` to keep the single
+`.stars/tsconfig.json`. See [generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).
+
+`stars info` prints the version in effect, and any warning about it.
+
+### Environment (`env`)
+
+`env` mirrors the options of `setup()` from `@wolfstar/env-utilities`. `stars` writes them into the built entry and
+calls `setup()` with them as the entry's very first import. This runs before `@wolfstar/plugin-*` registrations and
+the bot's own modules, all of which may read `process.env` as soon as they load.
+
+```typescript
+export default defineConfig({
+	env: { prefix: 'BOT_', loader: 'varlock' }
+});
+```
+
+| Option     | Type                              | Default                   |
+| ---------- | --------------------------------- | ------------------------- |
+| `enabled`  | `boolean`                         | see below                 |
+| `path`     | `string`                          | `src/.env*`, then `.env*` |
+| `env`      | `string`                          | `NODE_ENV`                |
+| `prefix`   | `string`                          | none                      |
+| `loader`   | `'node' \| 'dotenv' \| 'varlock'` | detected                  |
+| `debug`    | `boolean`                         | `false`                   |
+| `encoding` | `string`                          | `'utf8'`                  |
+
+- `env: false` turns the registration off. `env: true` turns it on with the defaults. Setting any option also opts
+  in, which requires `@wolfstar/env-utilities` in the project's dependencies
+  ([`ENV_REQUIRES_ENV_UTILITIES`](/documentation/errors/config#env_requires_env_utilities)).
+- `enabled: false` turns the registration off while keeping the options, for example for `stars dev`'s port lookup.
+- Without an `env` block, registration is on from compatibility version 5 when the project depends on
+  `@wolfstar/env-utilities`. It stays off with `experimental.enableNitro`, because serverless presets have no `.env`
+  files to load.
+- Only serializable options are mirrored, since they end up in the build output as JSON. `path` stays relative and
+  `@wolfstar/env-utilities` resolves it against the bot's working directory at runtime, so the output does not depend
+  on the machine that built it.
+- `prefix` keeps only the variables starting with it (for example `BOT_`). `debug` logs every file loaded and every
+  prefix match.
+- tsdown, Vite and Nitro builds register it through the entry transform. `build.tool: 'tsc'` and `'none'` never pass
+  through it. `stars dev` preloads it with `node --import`, but in production such a bot loads its environment itself
+  (or runs with `node --import @wolfstar/env-utilities/setup`). The projects `@wolfstar/create-http-framework`
+  generates for them set `env: false` and keep calling `setup()` by hand.
+- `stars dev` reads `HTTP_PORT` for the default `dev.url` from the same `path`/`env` files, after the `env:options`
+  hook runs.
+
+### Hooks
+
+`hooks` registers lifecycle hooks of the `stars` CLI, run with [`hookable`](https://github.com/unjs/hookable) the way
+Nuxt's own `hooks` are. Use them to react to builds, adjust the `env` or `tsdown` options at build time, or run
+scripts around `stars prepare` and `stars dev`. Key each hook by its full name or nest it under its namespace, as a
+function or an array of functions:
+
+```typescript
+export default defineConfig({
+	hooks: {
+		'env:options'(options) {
+			if (process.env.CI) options.path = '.env.ci';
+		},
+		build: {
+			done(outcome) {
+				if (!outcome.ok) console.error(outcome.message);
+			}
+		}
+	}
+});
+```
+
+| Hook              | Arguments           | Runs                                                                  |
+| ----------------- | ------------------- | --------------------------------------------------------------------- |
+| `config:resolved` | `config`            | after `stars.config` is loaded and validated, in every command        |
+| `env:options`     | `options`, `config` | before `env` is written into the build; mutate `options` to change it |
+| `prepare:before`  | `config`            | before `.stars/` is generated                                         |
+| `prepare:done`    | `config`, `result`  | after `.stars/` is generated                                          |
+| `builder:created` | `builder`, `config` | once the builder for `build.tool` exists, before it builds            |
+| `tsdown:options`  | `options`, `config` | before `tsdown.build()`; mutate `options` to change the build         |
+| `build:before`    | `config`            | before each build (every rebuild in `stars dev`)                      |
+| `build:done`      | `outcome`, `config` | after each build, successful or not (`outcome.ok`)                    |
+| `dev:start`       | `config`            | once `stars dev` is watching                                          |
+| `dev:restart`     | `reason`, `config`  | before `stars dev` (re)starts the bot                                 |
+| `dev:close`       | `config`            | when `stars dev` shuts down                                           |
+
+`dev:restart` receives `'initial'`, `'build'`, `'manual'`, or `'crash'` as its `reason`.
+
+Hooks run in the CLI process, never in the bot. Use `env:options` to change what the bot receives. An unknown hook
+name fails with [`UNKNOWN_HOOK`](/documentation/errors/config#unknown_hook) rather than registering a hook that never
+runs. In `stars dev`, a hook that throws is logged and the watcher keeps going. In `stars build`, it fails the build.
+
+`stars build` and `stars dev` run them in the same order: `config:resolved` → `env:options` → `builder:created` →
+`prepare:before` → `prepare:done`, then `build:before` → `build:done` for each build. `stars dev` adds `dev:start` once
+it is watching, `dev:restart` before each (re)start of the bot, and `dev:close` on shutdown. `stars build` awaits
+every hook. In `stars dev`, `build:before` does not delay the rebuild it reports, while `build:done`, `dev:restart`,
+and `dev:close` run one after another. A slow `build:done` settles before the restart it triggered, and before
+shutdown.
 
 ### Experimental flags
 
