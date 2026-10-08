@@ -50,12 +50,7 @@ With the `stars` CLI, list the package in `modules`:
 import { defineConfig } from '@wolfstar/http-framework/config';
 
 export default defineConfig({
-	modules: [
-		[
-			'@wolfstar/plugin-scheduled-tasks',
-			{ queue: 'tasks', bull: { connection: { host: 'localhost', port: 6379 } } }
-		]
-	]
+	modules: [['@wolfstar/plugin-scheduled-tasks', { queue: 'tasks', bull: { connection: { host: 'localhost', port: 6379 } } }]]
 });
 ```
 
@@ -136,15 +131,15 @@ await container.tasks.create({ name: 'unmute', payload: { guildId, userId } }, 3
 `create` returns the BullMQ job. The second argument is either a delay in milliseconds or an options object with
 `delay`, `interval`, or `pattern` and `timezone`, plus optional `customJobOptions`.
 
-| Method                      | Description                                                       |
-| --------------------------- | ----------------------------------------------------------------- |
-| `create(task, options?)`    | Schedules a task and returns its BullMQ job.                      |
-| `get(id)`                   | Returns a job by its ID.                                          |
-| `list({ types })`           | Lists jobs in the given BullMQ states.                            |
-| `delete(id)`                | Removes a job. It does not stop a repeated task.                  |
-| `listRepeated()`            | Lists the repeated tasks' job schedulers.                         |
-| `deleteRepeated(name)`      | Removes the job scheduler of a repeated task.                     |
-| `close()`                   | Closes the queue and waits for the worker to finish its task.     |
+| Method                   | Description                                                   |
+| ------------------------ | ------------------------------------------------------------- |
+| `create(task, options?)` | Schedules a task and returns its BullMQ job.                  |
+| `get(id)`                | Returns a job by its ID.                                      |
+| `list({ types })`        | Lists jobs in the given BullMQ states.                        |
+| `delete(id)`             | Removes a job. It does not stop a repeated task.              |
+| `listRepeated()`         | Lists the repeated tasks' job schedulers.                     |
+| `deleteRepeated(name)`   | Removes the job scheduler of a repeated task.                 |
+| `close()`                | Closes the queue and waits for the worker to finish its task. |
 
 `container.tasks.client` is the BullMQ `Queue` itself.
 

@@ -201,8 +201,8 @@ A failure applies to the whole entry, not to a single listener. When one of seve
 redelivery runs the listeners that already succeeded again. A connected `GatewayClient` would not do this.
 
 <Warning>
-	Keep worker listeners idempotent, and enqueue slow work instead of awaiting it. A consumer handles one entry at a
-	time, and another worker can claim an entry pending for longer than `claimIdle` while it still runs.
+	Keep worker listeners idempotent, and enqueue slow work instead of awaiting it. A consumer handles one entry at a time, and another worker can
+	claim an entry pending for longer than `claimIdle` while it still runs.
 </Warning>
 
 Ordering holds per consumer, not across the consumer group. Workers in one group take different entries and run them

@@ -269,16 +269,16 @@ export default definePlugin((options: { prefix?: string } = {}) => ({
 }));
 ```
 
-| Property                    | Type                                                              | Description                                                                                                                           |
-| --------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`                      | `string`                                                          | Required and non-empty. Identifies the plugin in errors and in the `pluginLoaded` event.                                              |
-| `enforce`                   | `'pre' \| 'post'`                                                 | Runs the plugin's hooks before (`'pre'`) or after (`'post'`) plain plugins. Registration order is kept inside each group.            |
-| `apply`                     | `'development' \| 'production' \| (options: ClientOptions) => boolean` | Restricts the plugin. The strings compare against `process.env.NODE_ENV`, which `stars dev` sets to `development`.            |
-| `preGenericsInitialization` | `(client, options) => unknown`                                    | Runs first in the constructor, before the logger is set up.                                                                          |
-| `preInitialization`         | `(client, options) => unknown`                                    | Runs in the constructor after the logger is set up.                                                                                   |
-| `postInitialization`        | `(client, options) => unknown`                                    | Runs at the end of the constructor.                                                                                                   |
-| `preLoad`                   | `(client, options) => Awaitable<unknown>`                         | Runs at the start of `client.load()`.                                                                                                 |
-| `postListen`                | `(client, options) => Awaitable<unknown>`                         | Runs once the HTTP server listens in `client.listen()`.                                                                               |
+| Property                    | Type                                                                   | Description                                                                                                               |
+| --------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `name`                      | `string`                                                               | Required and non-empty. Identifies the plugin in errors and in the `pluginLoaded` event.                                  |
+| `enforce`                   | `'pre' \| 'post'`                                                      | Runs the plugin's hooks before (`'pre'`) or after (`'post'`) plain plugins. Registration order is kept inside each group. |
+| `apply`                     | `'development' \| 'production' \| (options: ClientOptions) => boolean` | Restricts the plugin. The strings compare against `process.env.NODE_ENV`, which `stars dev` sets to `development`.        |
+| `preGenericsInitialization` | `(client, options) => unknown`                                         | Runs first in the constructor, before the logger is set up.                                                               |
+| `preInitialization`         | `(client, options) => unknown`                                         | Runs in the constructor after the logger is set up.                                                                       |
+| `postInitialization`        | `(client, options) => unknown`                                         | Runs at the end of the constructor.                                                                                       |
+| `preLoad`                   | `(client, options) => Awaitable<unknown>`                              | Runs at the start of `client.load()`.                                                                                     |
+| `postListen`                | `(client, options) => Awaitable<unknown>`                              | Runs once the HTTP server listens in `client.listen()`.                                                                   |
 
 Every hook receives the `Client` and the credential-free `ClientOptions` the client keeps, so a hook can rewrite what
 a later hook sees. An `apply` function is called once per client and plugin, with the options, and its answer holds
@@ -304,9 +304,9 @@ When a hook throws or rejects, the framework wraps the failure in a `PluginHookE
 properties name the plugin and the hook that failed, and `cause` holds the original error.
 
 <Warning>
-The legacy class-based API (`Plugin` subclasses with symbol hooks such as `preGenericsInitialization`,
-`Client.use(PluginClass)`, and `registerXHook`) is deprecated. It still works through an adapter, but each legacy
-plugin emits a one-time `DeprecationWarning` with the code `HTTP_FRAMEWORK_LEGACY_PLUGIN`. Port it to `definePlugin`.
+	The legacy class-based API (`Plugin` subclasses with symbol hooks such as `preGenericsInitialization`, `Client.use(PluginClass)`, and
+	`registerXHook`) is deprecated. It still works through an adapter, but each legacy plugin emits a one-time `DeprecationWarning` with the code
+	`HTTP_FRAMEWORK_LEGACY_PLUGIN`. Port it to `definePlugin`.
 </Warning>
 
 To ship a plugin as an installable package that projects activate from `stars.config`, wrap it in a module with

@@ -103,13 +103,13 @@ export default definePlugin((options: { ttl: number }) => ({
 
 ### Module definition
 
-| Property       | Description                                                                                                                                                      |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `meta`         | `name` (required, usually the package name), optional `version`, and `compatibility`. `configKey` is reserved.                                                   |
-| `defaults`     | Default options, merged under the options written in `stars.config`.                                                                                            |
-| `dependencies` | Modules (specifiers or definitions) installed before this one.                                                                                                   |
+| Property       | Description                                                                                                                                                                                   |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `meta`         | `name` (required, usually the package name), optional `version`, and `compatibility`. `configKey` is reserved.                                                                                |
+| `defaults`     | Default options, merged under the options written in `stars.config`.                                                                                                                          |
+| `dependencies` | Modules (specifiers or definitions) installed before this one.                                                                                                                                |
 | `hooks`        | `stars` CLI hooks, the same ones as `hooks` in `stars.config`. They are registered before `setup` runs. An unknown hook name or a non-function value fails the install with `MODULE_INVALID`. |
-| `setup`        | `setup(options, ctx)` runs once, in the CLI process, while the project loads.                                                                                    |
+| `setup`        | `setup(options, ctx)` runs once, in the CLI process, while the project loads.                                                                                                                 |
 
 `meta.compatibility.framework` is a semver range checked against the project's installed `@wolfstar/http-framework`,
 and `meta.compatibility.stars` against the running `@wolfstar/cli`. A mismatch fails the install early instead of
@@ -120,16 +120,16 @@ whatever options the second one passes.
 
 ### The `setup` context
 
-| Member                             | Description                                                                                                                       |
-| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx.root`                         | The absolute project root.                                                                                                        |
-| `ctx.config`                       | The resolved `stars.config`, before any module contributed to it.                                                                 |
-| `ctx.versions`                     | The detected `framework` and `stars` versions, or `null` when unknown.                                                            |
-| `ctx.addPlugin(source)`            | Registers a runtime plugin with `Client.use` in the bot. See below.                                                               |
-| `ctx.addImports(preset)`           | Adds a package (a string or `{ from }`) to the auto imports presets, so all of its exports become auto imports.                   |
-| `ctx.hook(name, callback)`         | Registers a `stars` CLI hook.                                                                                                     |
-| `ctx.callHook(name, ...args)`      | Calls a `stars` CLI hook.                                                                                                         |
-| `ctx.installModule(module, opts?)` | Installs another module, given by specifier or definition, with optional options.                                                |
+| Member                             | Description                                                                                                     |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `ctx.root`                         | The absolute project root.                                                                                      |
+| `ctx.config`                       | The resolved `stars.config`, before any module contributed to it.                                               |
+| `ctx.versions`                     | The detected `framework` and `stars` versions, or `null` when unknown.                                          |
+| `ctx.addPlugin(source)`            | Registers a runtime plugin with `Client.use` in the bot. See below.                                             |
+| `ctx.addImports(preset)`           | Adds a package (a string or `{ from }`) to the auto imports presets, so all of its exports become auto imports. |
+| `ctx.hook(name, callback)`         | Registers a `stars` CLI hook.                                                                                   |
+| `ctx.callHook(name, ...args)`      | Calls a `stars` CLI hook.                                                                                       |
+| `ctx.installModule(module, opts?)` | Installs another module, given by specifier or definition, with optional options.                               |
 
 The plugin runs in the bot's process, while `setup` runs in the CLI's. That is why `addPlugin` takes a plugin
 **source** instead of a plugin value: a string or URL, or `{ from, export?, options? }`.
@@ -162,13 +162,13 @@ plugin is evaluated. `stars build`, `stars prepare`, and `stars info` report a
 When a module cannot be installed, `@wolfstar/kit` throws a `ModuleError`. Its `moduleName` is the module's
 `meta.name`, or the specifier it was listed by, and its `code` is one of:
 
-| Code                    | Cause                                                                                   |
-| ----------------------- | --------------------------------------------------------------------------------------- |
-| `MODULE_LOAD_FAILED`    | The module's package could not be imported from the project.                           |
+| Code                    | Cause                                                                                                                             |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `MODULE_LOAD_FAILED`    | The module's package could not be imported from the project.                                                                      |
 | `MODULE_INVALID`        | The default export has no `meta.name`, `setup` is not a function, or a `hooks` entry has an unknown name or a non-function value. |
-| `MODULE_INCOMPATIBLE`   | A `meta.compatibility` range does not match the installed versions.                     |
-| `MODULE_SETUP_FAILED`   | `setup` threw or rejected.                                                              |
-| `MODULE_PLUGIN_INVALID` | `addPlugin` got no `from`, a relative path, or options that are not JSON-serialisable.  |
+| `MODULE_INCOMPATIBLE`   | A `meta.compatibility` range does not match the installed versions.                                                               |
+| `MODULE_SETUP_FAILED`   | `setup` threw or rejected.                                                                                                        |
+| `MODULE_PLUGIN_INVALID` | `addPlugin` got no `from`, a relative path, or options that are not JSON-serialisable.                                            |
 
 The `stars` CLI reports a failing module as a [`MODULE_FAILED`](/documentation/errors/cli#module_failed) diagnostic
 and exits with code `2`.
