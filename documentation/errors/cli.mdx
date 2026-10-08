@@ -139,7 +139,9 @@ A module listed in `modules` in `stars.config` could not be installed. The messa
 
 - `MODULE_LOAD_FAILED`: install the module in the project, or fix its specifier in `modules`.
 - `MODULE_INCOMPATIBLE`: update the module or `@wolfstar/http-framework` so their versions match.
-- `MODULE_INVALID`: export the module with `defineModule` from `@wolfstar/kit` as the default export.
+- `MODULE_INVALID`: export the module with `defineModule` from `@wolfstar/kit` as the default export, and give its
+  `meta` a `name`. A `meta.configKey` must be a non-empty string that is not a built-in `stars.config` key or used by
+  another module, and the value under it must be an object.
 - `MODULE_PLUGIN_INVALID`: pass `ctx.addPlugin` a package specifier, an absolute path or a `file:` URL, and
   JSON-serialisable options.
 - Otherwise: fix the error the module threw (see the cause), or remove it from `modules`.

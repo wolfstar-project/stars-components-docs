@@ -82,6 +82,28 @@ console.log(config.entry, config.build.output);
 paths to absolute ones. Invalid options raise a diagnostic whose `code`, `path`, `sources`, and `hint` describe the
 problem — see [Configuration Errors](/documentation/errors/config) for the full catalog.
 
+### Top-level module keys
+
+A top-level key that is not built in is not rejected by `loadStarsConfig`. It may hold the options of a module that
+declares it as its [`meta.configKey`](/documentation/packages/kit#reading-options-from-a-config-key), which the schema
+cannot know before the modules load. `loadStarsConfig` keeps these keys, unvalidated, on `config.moduleOptions`.
+`BUILT_IN_CONFIG_KEYS` lists the keys the schema owns.
+
+The `stars` commands report any key that no installed module claimed once the modules are set up. A tool that loads the
+configuration on its own and wants the same check calls `assertModuleOptionsClaimed` with the `meta.configKey` values
+of the modules it installed, or `[]` when it installs none:
+
+```typescript
+import { assertModuleOptionsClaimed, loadStarsConfig } from '@wolfstar/schema';
+
+const config = await loadStarsConfig({ cwd: process.cwd() });
+assertModuleOptionsClaimed(config, []);
+```
+
+It throws [`UNKNOWN_OPTION`](/documentation/errors/config#unknown_option) for the first unclaimed key. Both helpers are
+also exported by `@wolfstar/http-framework/config`. After the CLI sets up the modules, `config.runtime.configKeys`
+lists the keys they claimed.
+
 For type-only imports of the input and resolved shapes:
 
 ```typescript

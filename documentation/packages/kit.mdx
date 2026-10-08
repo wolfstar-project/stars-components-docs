@@ -60,7 +60,8 @@ export default defineConfig({
 ```
 
 The options are merged over the module's `defaults`: plain objects merge deeply, and arrays and other values replace
-the default. A package listed in `modules` is no longer activated through the `/register` import the CLI otherwise
+the default. A module that declares a [`meta.configKey`](#reading-options-from-a-config-key) also reads its options
+from a top-level `stars.config` key of that name. A package listed in `modules` is no longer activated through the `/register` import the CLI otherwise
 injects for `@wolfstar/plugin-*` packages.
 
 ## Writing a module
@@ -105,7 +106,7 @@ export default definePlugin((options: { ttl: number }) => ({
 
 | Property       | Description                                                                                                                                                      |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `meta`         | `name` (required, usually the package name), optional `version`, and `compatibility`. `configKey` is reserved.                                                   |
+| `meta`         | `name` (required, usually the package name), optional `version`, `compatibility`, and [`configKey`](#reading-options-from-a-config-key).                         |
 | `defaults`     | Default options, merged under the options written in `stars.config`.                                                                                            |
 | `dependencies` | Modules (specifiers or definitions) installed before this one.                                                                                                   |
 | `hooks`        | `stars` CLI hooks, the same ones as `hooks` in `stars.config`. They are registered before `setup` runs. An unknown hook name or a non-function value fails the install with `MODULE_INVALID`. |
@@ -114,6 +115,65 @@ export default definePlugin((options: { ttl: number }) => ({
 `meta.compatibility.framework` is a semver range checked against the project's installed `@wolfstar/http-framework`,
 and `meta.compatibility.stars` against the running `@wolfstar/cli`. A mismatch fails the install early instead of
 leaving a plugin that never runs. A range is only checked when the CLI finds the version.
+
+### Reading options from a config key
+
+Set `meta.configKey` to let users configure the module from a top-level key of `stars.config`, instead of only through
+the `[specifier, options]` tuple in `modules`. The options `setup` receives are merged in this order, each layer over
+the previous one:
+
+1. The module's `defaults`.
+2. The object under `configKey` in `stars.config`.
+3. The inline options: the `[specifier, options]` tuple, or the options passed to `ctx.installModule`.
+
+To type the key in `defineConfig`, augment the `StarsConfig` interface of `@wolfstar/schema`:
+
+```typescript
+// module.ts
+import { defineModule } from '@wolfstar/kit';
+
+interface MyCacheOptions {
+	ttl: number;
+}
+
+export default defineModule<MyCacheOptions>({
+	meta: { name: 'my-cache', configKey: 'myCache' },
+	defaults: { ttl: 60_000 },
+	setup(options, ctx) {}
+});
+
+declare module '@wolfstar/schema' {
+	interface StarsConfig {
+		myCache?: Partial<MyCacheOptions>;
+	}
+}
+```
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+import 'my-cache';
+
+export default defineConfig({
+	modules: ['my-cache'],
+	myCache: { ttl: 30_000 }
+});
+```
+
+The augmentation only applies once TypeScript loads the module's types. `stars prepare` does not reference installed
+modules yet, so import the package in `stars.config.ts`.
+
+A `configKey` must follow these rules, or the install fails with `MODULE_INVALID`:
+
+- It is a non-empty string.
+- It is not a built-in `stars.config` key: `root`, `entry`, `build`, `dev`, `codegen`, `imports`, `env`, `hooks`,
+  `modules`, `experimental`, `future`, `vite`, or `tsdown`.
+- No other installed module claims it.
+- The value under it in `stars.config`, when set, is a plain object.
+
+Modules installed through `dependencies` or `ctx.installModule` read their key too. Once every module is set up, the
+CLI reports any top-level key that no installed module claimed as
+[`UNKNOWN_OPTION`](/documentation/errors/config#unknown_option), so a misspelled key is still an error.
 
 A module is installed once, by `meta.name`. When two paths install the same module, the first installation wins,
 whatever options the second one passes.
@@ -165,7 +225,7 @@ When a module cannot be installed, `@wolfstar/kit` throws a `ModuleError`. Its `
 | Code                    | Cause                                                                                   |
 | ----------------------- | --------------------------------------------------------------------------------------- |
 | `MODULE_LOAD_FAILED`    | The module's package could not be imported from the project.                           |
-| `MODULE_INVALID`        | The default export has no `meta.name`, `setup` is not a function, or a `hooks` entry has an unknown name or a non-function value. |
+| `MODULE_INVALID`        | The default export has no `meta.name`, `setup` is not a function, a `hooks` entry has an unknown name or a non-function value, or `meta.configKey` is empty, built in, claimed by another module, or holds a non-object value. |
 | `MODULE_INCOMPATIBLE`   | A `meta.compatibility` range does not match the installed versions.                     |
 | `MODULE_SETUP_FAILED`   | `setup` threw or rejected.                                                              |
 | `MODULE_PLUGIN_INVALID` | `addPlugin` got no `from`, a relative path, or options that are not JSON-serialisable.  |
@@ -177,5 +237,5 @@ and exits with code `2`.
 
 `setupModules({ config, hooks, load, versions })` is the function the CLI calls. `load` imports a specifier from the
 project, and `hooks` is a `hookable`-shaped registry. The result, a `ModulesRuntime`, lists the installed modules and
-the runtime plugins and import presets they contributed. `mergeOptions(defaults, options)` exposes the merge used for
+the runtime plugins, import presets, and `configKeys` they contributed. `mergeOptions(defaults, options)` exposes the merge used for
 module options.

@@ -97,7 +97,13 @@ defaults.
 
 The configuration contains an option name `@wolfstar/http-framework` doesn't recognize.
 
-**Fix:** the message lists the known options for that section — check for a typo.
+A top-level key that is not built in is checked later. The `stars` commands report it once the modules are set up, if
+no installed module claims it as its [`meta.configKey`](/documentation/packages/kit#reading-options-from-a-config-key).
+The check also runs when `modules` is empty. `loadStarsConfig` on its own does not report such keys.
+
+**Fix:** the message lists the known options for that section. Check for a typo. For a top-level key, the list
+includes the keys claimed by installed modules, and the hint asks you to check that the module is listed in
+`modules` and declares the key as its `configKey`.
 
 ## EXPERIMENT_REQUIRED {#experiment_required}
 
