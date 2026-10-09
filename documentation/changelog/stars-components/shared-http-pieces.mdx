@@ -6,6 +6,22 @@ description: 'Changelog for @wolfstar/shared-http-pieces: shared commands and li
 
 Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.0.11` (2026-10-08)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `6.3.0`.
+
+### Bug fixes
+
+- **Sentry reporting** — The `error` listener no longer reports a `UserError` to Sentry. With `@wolfstar/http-framework` 6.3.0, a `UserError` is emitted as a `*Denied` event and no longer reaches the `commandError`, `autocompleteError`, or `interactionHandlerError` listeners. ([#298](https://github.com/wolfstar-project/stars-components/pull/298))
+
+## `2.0.10` (2026-10-06)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.3.1`, `@wolfstar/http-framework` to `6.2.0`.
+
 ## 2026-09-17
 
 ### Bug fixes
