@@ -6,6 +6,40 @@ description: 'Changelog for @wolfstar/vite-server: the optional Vite builder for
 
 Changes to [`@wolfstar/vite-server`](/documentation/packages/vite-server). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.4.4` (2026-10-07)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.9.0`.
+
+## `0.4.3` (2026-10-06)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.8.0`.
+
+## `0.4.2` (2026-10-06)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.7.0`.
+
+## `0.4.1` (2026-10-04)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.6.0`.
+
+## `0.4.0` (2026-10-02)
+
+### New features
+
+- **Stars modules** — Add `modules` to `stars.config` as a list of package names or `[name, options]` tuples. The CLI installs them with `@wolfstar/kit`'s `setupModules` before the `config:resolved` hook, and the resolved configuration gains `modules` and `runtime` (the runtime plugins and auto-import presets the modules contribute). Runtime plugins are registered in your bot before the legacy `/register` imports, which skip packages listed in `modules`. With the `tsc` and `none` build tools, `stars dev` preloads them with `node --import`, and `stars prepare` writes `.stars/modules.mjs` for production. `stars build`, `stars prepare`, and `stars info` warn with `MODULES_PRELOAD_REQUIRED` when you need that preload. A failing module is reported as a `MODULE_FAILED` diagnostic (exit code 2). See [`@wolfstar/kit`](/documentation/packages/kit). [#247](https://github.com/wolfstar-project/stars-components/pull/247)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.5.0`.
+
 ## 2026-09-24
 
 ### Updates

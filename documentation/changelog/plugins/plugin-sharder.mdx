@@ -6,6 +6,22 @@ description: 'Changelog for @wolfstar/plugin-sharder: multi-process and multi-ma
 
 Changes to [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder). The plugin spreads gateway shards across processes, cluster workers, worker threads, and machines. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.2.1` (2026-10-06)
+
+### Updates
+
+- **Spawn errors are reported** — When a strategy throws in `spawn`, you now get a `ShardSpawnError` (carrying the cause) through `shardError` on every attempt, instead of a silent retry. ([#217](https://github.com/wolfstar-project/plugins/pull/217))
+
+### Bug fixes
+
+- **`ClusterStrategy` without `execArgv` or `args`** — No longer throws `Array.prototype.some called on null or undefined` when you omit `execArgv` or `args`. Only the options you give are passed to `cluster.setupPrimary`, so Node keeps its defaults.
+
+## `0.2.0` (2026-10-05)
+
+### New features
+
+- **`/module` entrypoint** — Adds `@wolfstar/plugin-sharder/module`. List it in `modules` in `stars.config` to add the package to the auto imports. It needs the optional `@wolfstar/kit` peer. The main entrypoint is unchanged. ([#190](https://github.com/wolfstar-project/plugins/pull/190))
+
 ## `0.1.1`
 
 ### Bug fixes

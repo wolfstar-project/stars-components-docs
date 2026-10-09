@@ -6,6 +6,24 @@ description: 'Changelog for @wolfstar/plugin-cache: a storage-agnostic Discord e
 
 Changes to [`@wolfstar/plugin-cache`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache). The plugin is a storage-agnostic Discord entity cache, in memory or in Redis, and the cache behind the managers of [`@wolfstar/plugin-gateway`](/documentation/changelog/plugins/plugin-gateway). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.7.0` (2026-10-07)
+
+### New features
+
+- **Voice channel status and start time** — `VOICE_CHANNEL_STATUS_UPDATE`, `VOICE_CHANNEL_START_TIME_UPDATE`, and `CHANNEL_INFO` now patch the `status` and `voice_start_time` of a cached channel. Uncached channels stay uncached. [#223](https://github.com/wolfstar-project/plugins/pull/223)
+
+## `0.6.0` (2026-10-05)
+
+### New features
+
+- **`@wolfstar/plugin-cache/module`** — List it in `modules` in `stars.config` to add the package to the auto imports. It needs framework 6.1 and the optional `@wolfstar/kit` peer. The main entrypoint is unchanged. [#189](https://github.com/wolfstar-project/plugins/pull/189)
+
+## `0.5.1` (2026-10-02)
+
+### Bug fixes
+
+- **Bot reaction count** — A `MESSAGE_REACTION_ADD` for the bot's own reaction is no longer counted again when the cached reaction already has `me` set. [#169](https://github.com/wolfstar-project/plugins/pull/169)
+
 ## `0.5.0`
 
 Aligns the cache with the discord.js RFC [#11426](https://github.com/wolfstar-project/plugins/issues/11426) (zero caching, complete flexibility).
