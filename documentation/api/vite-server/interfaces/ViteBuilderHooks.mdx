@@ -1,0 +1,135 @@
+---
+title: 'Interface: ViteBuilderHooks'
+description: 'API reference for ViteBuilderHooks, an interface exported by @wolfstar/vite-server.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/build.ts#L7',
+		label: 'packages/vite-server/src/build.ts:7'
+	}}
+	packageName="@wolfstar/vite-server"
+	packageHref="/documentation/api/vite-server"
+/>
+
+<ApiSignature
+	tokens={[
+		'interface ViteBuilderHooks extends ',
+		['ServerHooks', '/documentation/api/vite-server/interfaces/ServerHooks'],
+		', ',
+		['ViteHooks', '/documentation/api/vite-server/interfaces/ViteHooks']
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[['ServerHooks', '/documentation/api/vite-server/interfaces/ServerHooks']],
+		[['ViteHooks', '/documentation/api/vite-server/interfaces/ViteHooks']]
+	]}
+/>
+
+## Methods
+
+### afterBuild()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/lifecycle.ts#L7', label: 'packages/vite-server/src/lifecycle.ts:7' }} inheritedFrom={[['ServerHooks.afterBuild', '/documentation/api/vite-server/interfaces/ServerHooks#afterbuild']]}>
+
+<ApiSignature
+	tokens={[
+		'afterBuild(outcome: ',
+		['BuildOutcome', '/documentation/api/schema/interfaces/BuildOutcome'],
+		'): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="outcome" type={[['BuildOutcome', '/documentation/api/schema/interfaces/BuildOutcome']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### beforeBuild()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/lifecycle.ts#L6', label: 'packages/vite-server/src/lifecycle.ts:6' }} inheritedFrom={[['ServerHooks.beforeBuild', '/documentation/api/vite-server/interfaces/ServerHooks#beforebuild']]}>
+
+<ApiSignature
+	tokens={[
+		'beforeBuild(config: ',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		'): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### close()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/lifecycle.ts#L8', label: 'packages/vite-server/src/lifecycle.ts:8' }} inheritedFrom={[['ServerHooks.close', '/documentation/api/vite-server/interfaces/ServerHooks#close']]}>
+
+<ApiSignature
+	tokens={['close(): void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### configure()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/config.ts#L8', label: 'packages/vite-server/src/config.ts:8' }} inheritedFrom={[['ViteHooks.configure', '/documentation/api/vite-server/interfaces/ViteHooks#configure']]}>
+
+<ApiSignature
+	tokens={[
+		'configure(options: InlineConfig, command: "build" | "serve"): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['InlineConfig']} />
+
+<ApiParam name="command" type={['"build" | "serve"']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
