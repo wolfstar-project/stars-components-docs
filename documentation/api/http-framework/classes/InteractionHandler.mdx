@@ -10,8 +10,8 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 	kind="class"
 	badges={['abstract']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandler.ts#L4',
-		label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:4'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/InteractionHandler.ts#L5',
+		label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:5'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -22,9 +22,9 @@ The piece to be stored in `Store` instances.
 <ApiSignature
 	tokens={[
 		'abstract class InteractionHandler<Options extends ',
-		['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/Options'],
+		['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/interfaces/Options'],
 		' = ',
-		['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/Options'],
+		['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/interfaces/Options'],
 		'> extends Piece<Options, "interaction-handlers">'
 	]}
 />
@@ -35,7 +35,7 @@ The piece to be stored in `Store` instances.
 
 <ApiParam
 	name="Options"
-	type={['extends ', ['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/Options']]}
+	type={['extends ', ['InteractionHandler.Options', '/documentation/api/http-framework/namespaces/InteractionHandler/interfaces/Options']]}
 	defaultValue="InteractionHandler.Options"
 />
 
@@ -45,11 +45,15 @@ The piece to be stored in `Store` instances.
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandler.ts#L8', label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:8' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/InteractionHandler.ts#L9', label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:9' }}>
 
 <ApiSignature
 	tokens={[
-		'new InteractionHandler<Options extends PieceOptions = PieceOptions>(\n  context: ',
+		'new InteractionHandler<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/InteractionHandler/interfaces/Options'],
+		' = ',
+		['Options', '/documentation/api/http-framework/namespaces/InteractionHandler/interfaces/Options'],
+		'>(\n  context: ',
 		['LoaderContext', '/documentation/api/http-framework/namespaces/InteractionHandler/type-aliases/LoaderContext'],
 		',\n  options: Options = ...\n): ',
 		['InteractionHandler', '/documentation/api/http-framework/classes/InteractionHandler'],
@@ -59,7 +63,11 @@ The piece to be stored in `Store` instances.
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+<ApiParam
+	name="Options"
+	type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/InteractionHandler/interfaces/Options']]}
+	defaultValue="Options"
+/>
 
 </ApiParams>
 
@@ -77,7 +85,7 @@ The piece to be stored in `Store` instances.
 
 ### run()
 
-<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/InteractionHandler.ts#L12', label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:12' }}>
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/InteractionHandler.ts#L13', label: 'packages/http-framework/src/lib/structures/InteractionHandler.ts:13' }}>
 
 <ApiSignature
 	tokens={[

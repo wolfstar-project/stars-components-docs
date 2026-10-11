@@ -10,7 +10,7 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 	kind="class"
 	badges={['since 2.0.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L23',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L23',
 		label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:23'
 	}}
 	packageName="@wolfstar/http-framework"
@@ -22,16 +22,16 @@ Represents a command router that handles routing of interactions for a specific 
 <ApiSignature
 	tokens={[
 		'class CommandRouter<Options extends ',
-		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
 		' = ',
-		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
 		'>'
 	]}
 />
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options']]} defaultValue="Command.Options">
+<ApiParam name="Options" type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]} defaultValue="Command.Options">
 
 The options type for the command.
 
@@ -43,11 +43,15 @@ The options type for the command.
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L30', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:30' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L30', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:30' }}>
 
 <ApiSignature
 	tokens={[
-		'new CommandRouter<Options extends PieceOptions = PieceOptions>(command: ',
+		'new CommandRouter<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		' = ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(command: ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
 		'<Options>): ',
 		['CommandRouter', '/documentation/api/http-framework/classes/CommandRouter'],
@@ -57,7 +61,7 @@ The options type for the command.
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions">
+<ApiParam name="Options" type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]} defaultValue="Options">
 
 The options type for the command.
 
@@ -77,7 +81,7 @@ The options type for the command.
 
 ### chatInputName
 
-<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get chatInputName(): string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L47', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:47' }}>
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get chatInputName(): string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L47', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:47' }}>
 
 The name of the registered chat input command for this command, if any.
 
@@ -85,7 +89,7 @@ The name of the registered chat input command for this command, if any.
 
 ### contextMenuNames
 
-<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get contextMenuNames(): string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L56', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:56' }}>
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get contextMenuNames(): string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L56', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:56' }}>
 
 The names of the registered context menu commands for this command, if any.
 
@@ -95,7 +99,7 @@ The names of the registered context menu commands for this command, if any.
 
 ### routeChatInputInteraction()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L67', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:67' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L67', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:67' }}>
 
 <ApiSignature
 	tokens={[
@@ -134,7 +138,7 @@ The mapped command name or `null` if no mapping is found.
 
 ### routeContextMenuInteraction()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L91', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:91' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/router/CommandRouter.ts#L91', label: 'packages/http-framework/src/lib/interactions/router/CommandRouter.ts:91' }}>
 
 <ApiSignature
 	tokens={[

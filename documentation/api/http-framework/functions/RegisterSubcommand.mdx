@@ -9,7 +9,7 @@ import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-refe
 <ApiHeader
 	kind="function"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts#L32',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts#L32',
 		label: 'packages/http-framework/src/lib/interactions/decorators/RegisterSubcommand.ts:32'
 	}}
 	packageName="@wolfstar/http-framework"
@@ -20,7 +20,11 @@ Registers a subcommand for a chat input command.
 
 <ApiSignature
 	tokens={[
-		'RegisterSubcommand<Options extends PieceOptions = PieceOptions>(\n  data: SubcommandData,\n  subCommandGroupName?: string | null\n): (target: ',
+		'RegisterSubcommand<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		' = ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(\n  data: SubcommandData,\n  subCommandGroupName?: string | null\n): (target: ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
 		'<Options>, method: string) => void'
 	]}
@@ -32,7 +36,11 @@ This decorator must be used in conjunction with [RegisterSubcommand](/documentat
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+<ApiParam
+	name="Options"
+	type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}
+	defaultValue="Options"
+/>
 
 </ApiParams>
 

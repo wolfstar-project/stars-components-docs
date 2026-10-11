@@ -1,0 +1,50 @@
+---
+title: 'Function: isUserError()'
+description: 'Checks whether a value is a UserError, which is how the client tells an expected failure from an unexpected one. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L90',
+		label: 'packages/http-framework/src/lib/errors/UserError.ts:90'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Checks whether a value is a [UserError](/documentation/api/http-framework/classes/UserError), which is how the client tells an expected failure from an unexpected
+one.
+
+<ApiSignature tokens={['isUserError(error: unknown): error is ', ['UserError', '/documentation/api/http-framework/classes/UserError']]} />
+
+Checks whether a value is a [UserError](/documentation/api/http-framework/classes/UserError), which is how the client tells an expected failure from an unexpected
+one.
+
+`instanceof` is tried first. A bundle that inlines the framework, or a second installed copy of it, has its
+own `UserError` class that `instanceof` does not recognise, so any `Error` with a string `identifier` and a `context`
+property is accepted too.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="error" type={['unknown']}>
+
+The value to check.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['error is ', ['UserError', '/documentation/api/http-framework/classes/UserError']]}>
+
+Whether the value is a `UserError`.
+
+</ApiParam>
+
+</ApiParams>

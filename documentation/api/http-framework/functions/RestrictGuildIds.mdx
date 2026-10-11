@@ -9,7 +9,7 @@ import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-refe
 <ApiHeader
 	kind="function"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts#L28',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts#L28',
 		label: 'packages/http-framework/src/lib/interactions/decorators/RestrictGuildIds.ts:28'
 	}}
 	packageName="@wolfstar/http-framework"
@@ -20,7 +20,11 @@ Decorator that restricts the guild IDs for a command.
 
 <ApiSignature
 	tokens={[
-		'RestrictGuildIds<Options extends PieceOptions = PieceOptions>(guildIds: readonly string[]): (target: typeof ',
+		'RestrictGuildIds<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		' = ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(guildIds: readonly string[]): (target: typeof ',
 		['Command', '/documentation/api/http-framework/namespaces/Command'],
 		') => void'
 	]}
@@ -30,7 +34,11 @@ Decorator that restricts the guild IDs for a command.
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+<ApiParam
+	name="Options"
+	type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}
+	defaultValue="Options"
+/>
 
 </ApiParams>
 

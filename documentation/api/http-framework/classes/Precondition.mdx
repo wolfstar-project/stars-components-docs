@@ -1,0 +1,367 @@
+---
+title: 'Class: Precondition'
+description: 'A check that runs before a command method does, loaded from the preconditions directory into the preconditions store. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L31',
+		label: 'packages/http-framework/src/lib/structures/Precondition.ts:31'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+A check that runs before a command method does, loaded from the `preconditions` directory into the
+`preconditions` store.
+
+<ApiSignature
+	tokens={[
+		'class Precondition<Options extends ',
+		['Precondition.Options', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Options'],
+		' = ',
+		['Precondition.Options', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Options'],
+		'> extends Piece<Options, "preconditions">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[['Piece<Options, "preconditions">']]}
+	extendedBy={[[['AllFlowsPrecondition', '/documentation/api/http-framework/classes/AllFlowsPrecondition']]]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['Precondition.Options', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Options']]}
+	defaultValue="Precondition.Options"
+/>
+
+</ApiParams>
+
+A precondition with a `position` is global: it runs, in ascending order of `position`, before the
+preconditions of every chat input and context menu command, and of every autocomplete and interaction handler that
+it has a method for. Any other one runs only for the commands that list its
+name in the `preconditions` option. The method it needs depends on the command, and a precondition that is asked to
+run for a kind of command it has no method for denies the command with
+[`Identifiers.PreconditionMissingChatInputHandler`](/documentation/api/http-framework/enumerations/Identifiers#member-preconditionmissingchatinputhandler) or
+[`Identifiers.PreconditionMissingContextMenuHandler`](/documentation/api/http-framework/enumerations/Identifiers#member-preconditionmissingcontextmenuhandler).
+
+**Example**
+
+```typescript
+import { Precondition } from '@wolfstar/http-framework';
+
+export class UserPrecondition extends Precondition {
+	public override chatInputRun(interaction: Precondition.ChatInputInteraction) {
+		return interaction.user.id === process.env.OWNER_ID ? this.ok() : this.error({ message: 'Only the owner can use this command.' });
+	}
+}
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L38', label: 'packages/http-framework/src/lib/structures/Precondition.ts:38' }}>
+
+<ApiSignature
+	tokens={[
+		'new Precondition<Options extends ',
+		['PreconditionOptions', '/documentation/api/http-framework/interfaces/PreconditionOptions'],
+		' = ',
+		['PreconditionOptions', '/documentation/api/http-framework/interfaces/PreconditionOptions'],
+		'>(\n  context: ',
+		['LoaderContext', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/LoaderContext'],
+		',\n  options: Options = ...\n): ',
+		['Precondition', '/documentation/api/http-framework/classes/Precondition'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['PreconditionOptions', '/documentation/api/http-framework/interfaces/PreconditionOptions']]}
+	defaultValue="PreconditionOptions"
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['LoaderContext', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/LoaderContext']]} />
+
+<ApiParam name="options" type={['Options']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### position
+
+<ApiMember kind="property" badges={['readonly', 'since 6.3.0']} signature={['readonly position: number | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L36', label: 'packages/http-framework/src/lib/structures/Precondition.ts:36' }}>
+
+The position of the precondition in the list of global preconditions, or `null` when it is not global.
+
+</ApiMember>
+
+## Methods
+
+### autocompleteRun()
+
+<ApiMember kind="method" badges={['optional', 'since 6.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L70', label: 'packages/http-framework/src/lib/structures/Precondition.ts:70' }}>
+
+<ApiSignature
+	tokens={[
+		'autocompleteRun(\n  interaction: ',
+		['AutocompleteInteraction', '/documentation/api/http-framework/classes/AutocompleteInteraction'],
+		',\n  command: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		',\n  context: ',
+		['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context'],
+		'\n): ',
+		['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']
+	]}
+/>
+
+Checks the autocomplete of a command. Unlike `chatInputRun` and `contextMenuRun`, a precondition without this
+method is skipped, not denied, so a check written for the commands does not break their autocomplete.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['AutocompleteInteraction', '/documentation/api/http-framework/classes/AutocompleteInteraction']]}>
+
+The autocomplete interaction.
+
+</ApiParam>
+
+<ApiParam name="command" type={[['Command', '/documentation/api/http-framework/classes/Command']]}>
+
+The command whose autocomplete is about to run.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context']]}>
+
+The context of the check: the `context` given in the `preconditions` option of the command.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### chatInputRun()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L50', label: 'packages/http-framework/src/lib/structures/Precondition.ts:50' }}>
+
+<ApiSignature
+	tokens={[
+		'chatInputRun(\n  interaction: ',
+		['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction'],
+		',\n  command: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		',\n  context: ',
+		['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context'],
+		'\n): ',
+		['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']
+	]}
+/>
+
+Checks a chat input command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['ChatInputCommandInteraction', '/documentation/api/http-framework/classes/ChatInputCommandInteraction']]}>
+
+The interaction of the command.
+
+</ApiParam>
+
+<ApiParam name="command" type={[['Command', '/documentation/api/http-framework/classes/Command']]}>
+
+The command that is about to run.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context']]}>
+
+The context of the check: the `context` given in the `preconditions` option of the command.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### contextMenuRun()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L59', label: 'packages/http-framework/src/lib/structures/Precondition.ts:59' }}>
+
+<ApiSignature
+	tokens={[
+		'contextMenuRun(\n  interaction: ',
+		['ContextMenuCommand', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/ContextMenuCommand'],
+		',\n  command: ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		',\n  context: ',
+		['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context'],
+		'\n): ',
+		['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']
+	]}
+/>
+
+Checks a user or message context menu command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['ContextMenuCommand', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/ContextMenuCommand']]}>
+
+The interaction of the command.
+
+</ApiParam>
+
+<ApiParam name="command" type={[['Command', '/documentation/api/http-framework/classes/Command']]}>
+
+The command that is about to run.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context']]}>
+
+The context of the check: the `context` given in the `preconditions` option of the command.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### error()
+
+<ApiMember kind="method" badges={['since 6.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L101', label: 'packages/http-framework/src/lib/structures/Precondition.ts:101' }}>
+
+<ApiSignature
+	tokens={[
+		'error(options: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['PreconditionError.Options', '/documentation/api/http-framework/namespaces/PreconditionError/interfaces/Options'],
+		', "precondition"> = {}): ',
+		['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']
+	]}
+/>
+
+Denies the command with a [PreconditionError](/documentation/api/http-framework/classes/PreconditionError) whose `precondition` is the name of this piece.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['PreconditionError.Options', '/documentation/api/http-framework/namespaces/PreconditionError/interfaces/Options'], ', "precondition">']} defaultValue={'{}'}>
+
+The message, identifier and context of the error.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### interactionHandlerRun()
+
+<ApiMember kind="method" badges={['optional', 'since 6.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L81', label: 'packages/http-framework/src/lib/structures/Precondition.ts:81' }}>
+
+<ApiSignature
+	tokens={[
+		'interactionHandlerRun(\n  interaction: ',
+		['MessageComponent', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/MessageComponent'],
+		',\n  handler: ',
+		['InteractionHandler', '/documentation/api/http-framework/classes/InteractionHandler'],
+		',\n  context: ',
+		['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context'],
+		'\n): ',
+		['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']
+	]}
+/>
+
+Checks an interaction handler (a button, a select menu, or a modal). A precondition without this method is
+skipped, not denied.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['MessageComponent', '/documentation/api/http-framework/namespaces/Interactions/type-aliases/MessageComponent']]}>
+
+The interaction of the component or modal.
+
+</ApiParam>
+
+<ApiParam name="handler" type={[['InteractionHandler', '/documentation/api/http-framework/classes/InteractionHandler']]}>
+
+The interaction handler that is about to run.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['Precondition.Context', '/documentation/api/http-framework/namespaces/Precondition/type-aliases/Context']]}>
+
+The context of the check: the `context` given in the `preconditions` option of the handler.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### ok()
+
+<ApiMember kind="method" badges={['since 6.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L91', label: 'packages/http-framework/src/lib/structures/Precondition.ts:91' }}>
+
+<ApiSignature tokens={['ok(): ', ['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+Lets the command run.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+</ApiParams>
+
+</ApiMember>

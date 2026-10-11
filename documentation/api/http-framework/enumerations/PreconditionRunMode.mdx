@@ -1,0 +1,38 @@
+---
+title: 'Enumeration: PreconditionRunMode'
+description: 'How the entries of an array of preconditions are run. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiEnumMembers, ApiHeader } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="enum"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L111',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:111'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+How the entries of an array of preconditions are run.
+
+<ApiEnumMembers
+	members={[
+		{
+			name: 'Parallel',
+			value: '1',
+			id: 'member-parallel',
+			description:
+				'Every entry is started at once and awaited with Promise.all, then the results are read. It is faster when the checks are slow, but none of them is skipped once another one has settled the result.'
+		},
+		{
+			name: 'Sequential',
+			value: '0',
+			id: 'member-sequential',
+			description: 'The entries are run one after the other. This is the default, and it stops as soon as the result is known.'
+		}
+	]}
+/>

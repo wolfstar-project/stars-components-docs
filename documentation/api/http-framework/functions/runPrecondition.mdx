@@ -1,0 +1,84 @@
+---
+title: 'Function: runPrecondition()'
+description: 'Runs a Precondition piece for the given kind of interaction. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L192',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:192'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Runs a [Precondition](/documentation/api/http-framework/classes/Precondition) piece for the given kind of interaction.
+
+<ApiSignature
+	tokens={[
+		'runPrecondition(\n  precondition: ',
+		['Precondition', '/documentation/api/http-framework/classes/Precondition'],
+		',\n  kind: ',
+		['PreconditionKind', '/documentation/api/http-framework/type-aliases/PreconditionKind'],
+		',\n  interaction: ',
+		['PreconditionInteraction', '/documentation/api/http-framework/type-aliases/PreconditionInteraction'],
+		',\n  target: ',
+		['PreconditionTarget', '/documentation/api/http-framework/type-aliases/PreconditionTarget'],
+		',\n  context: ',
+		['PreconditionContext', '/documentation/api/http-framework/type-aliases/PreconditionContext'],
+		' = {}\n): ',
+		['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']
+	]}
+/>
+
+Runs a [Precondition](/documentation/api/http-framework/classes/Precondition) piece for the given kind of interaction.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="precondition" type={[['Precondition', '/documentation/api/http-framework/classes/Precondition']]}>
+
+The precondition to run.
+
+</ApiParam>
+
+<ApiParam name="kind" type={[['PreconditionKind', '/documentation/api/http-framework/type-aliases/PreconditionKind']]}>
+
+What is being run.
+
+</ApiParam>
+
+<ApiParam name="interaction" type={[['PreconditionInteraction', '/documentation/api/http-framework/type-aliases/PreconditionInteraction']]}>
+
+The interaction being handled.
+
+</ApiParam>
+
+<ApiParam name="target" type={[['PreconditionTarget', '/documentation/api/http-framework/type-aliases/PreconditionTarget']]}>
+
+The command or interaction handler being run.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['PreconditionContext', '/documentation/api/http-framework/type-aliases/PreconditionContext']]} defaultValue={'{}'}>
+
+The context of the check.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]}>
+
+The result of the precondition. A chat input or context menu command is denied when the piece has no method
+for it, an autocomplete or an interaction handler is let through.
+
+</ApiParam>
+
+</ApiParams>
