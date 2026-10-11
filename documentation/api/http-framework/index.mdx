@@ -8,7 +8,7 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 
 <ApiPackageHeader
 	name="@wolfstar/http-framework"
-	version="6.0.1"
+	version="6.3.1"
 	guideHref="/documentation/packages/http-framework"
 	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework"
 />
@@ -17,6 +17,7 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 
 <ApiSymbolList
 	symbols={[
+		{ name: 'AllFlowsPrecondition', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/AllFlowsPrecondition' },
 		{ name: 'ApplicationCommandRegistry', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry' },
 		{
 			name: 'ApplicationCommandRegistryEntry',
@@ -68,6 +69,7 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			href: '/documentation/api/http-framework/namespaces/MessageContextMenuCommandInteraction'
 		},
 		{ name: 'ModalSubmitInteraction', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/ModalSubmitInteraction' },
+		{ name: 'Precondition', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/Precondition' },
 		{ name: 'PreconditionError', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/PreconditionError' },
 		{ name: 'TransformedArguments', kind: 'namespace', href: '/documentation/api/http-framework/namespaces/TransformedArguments' },
 		{
@@ -96,6 +98,24 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			summary: 'The available log levels, ordered from the most verbose to the least.'
 		},
 		{ name: 'PluginHook', kind: 'enum', href: '/documentation/api/http-framework/enumerations/PluginHook' },
+		{
+			name: 'PreconditionRunCondition',
+			kind: 'enum',
+			href: '/documentation/api/http-framework/enumerations/PreconditionRunCondition',
+			summary: 'How the results of the entries of an array of preconditions are combined.'
+		},
+		{
+			name: 'PreconditionRunMode',
+			kind: 'enum',
+			href: '/documentation/api/http-framework/enumerations/PreconditionRunMode',
+			summary: 'How the entries of an array of preconditions are run.'
+		},
+		{
+			name: 'AllFlowsPrecondition',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/AllFlowsPrecondition',
+			summary: 'A Precondition that has to implement the check for every kind of command.'
+		},
 		{
 			name: 'ApplicationCommandRegistry',
 			kind: 'class',
@@ -244,13 +264,31 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		{ name: 'ModalSubmitInteraction', kind: 'class', href: '/documentation/api/http-framework/classes/ModalSubmitInteraction' },
 		{ name: 'PartialMessage', kind: 'class', href: '/documentation/api/http-framework/classes/PartialMessage' },
 		{ name: 'Plugin', kind: 'class', href: '/documentation/api/http-framework/classes/Plugin', summary: 'The base class for all plugins.' },
+		{
+			name: 'PluginHookError',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/PluginHookError',
+			summary: 'The error a StarsPlugin hook is wrapped in, so a failure points at the plugin that threw.'
+		},
 		{ name: 'PluginManager', kind: 'class', href: '/documentation/api/http-framework/classes/PluginManager' },
+		{
+			name: 'Precondition',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/Precondition',
+			summary: 'A check that runs before a command method does, loaded from the preconditions directory into the preconditions store.'
+		},
 		{
 			name: 'PreconditionError',
 			kind: 'class',
 			href: '/documentation/api/http-framework/classes/PreconditionError',
 			summary:
 				'Errors thrown by preconditions, that is, any check that runs before a command or an interaction handler is executed, such as the guild rest…'
+		},
+		{
+			name: 'PreconditionStore',
+			kind: 'class',
+			href: '/documentation/api/http-framework/classes/PreconditionStore',
+			summary: 'The store class which contains Pieces.'
 		},
 		{ name: 'StringIdParser', kind: 'class', href: '/documentation/api/http-framework/classes/StringIdParser' },
 		{
@@ -284,19 +322,39 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		{ name: 'ClientEvents', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ClientEvents' },
 		{ name: 'ClientLoggerOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ClientLoggerOptions' },
 		{ name: 'ClientOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ClientOptions' },
+		{
+			name: 'CommandOptionsRegistry',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/CommandOptionsRegistry',
+			summary: "The options a command receives, by the full path of the command ('ping', 'stickyroles add', 'subscriptions twitch add')."
+		},
 		{ name: 'ExtractedOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ExtractedOptions' },
 		{ name: 'FetchOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/FetchOptions' },
 		{ name: 'HMROptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/HMROptions' },
 		{
 			name: 'HttpFrameworkPluginAsyncHook',
 			kind: 'interface',
-			href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'
+			href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook',
+			summary: 'A legacy hook: this is the client.',
+			deprecated: true
 		},
-		{ name: 'HttpFrameworkPluginHook', kind: 'interface', href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook' },
+		{
+			name: 'HttpFrameworkPluginHook',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook',
+			summary: 'A legacy hook: this is the client.',
+			deprecated: true
+		},
 		{
 			name: 'HttpFrameworkPluginHookEntry',
 			kind: 'interface',
 			href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'
+		},
+		{
+			name: 'HttpFrameworkPluginInvoker',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/HttpFrameworkPluginInvoker',
+			summary: 'The normalised callable stored for every hook, whether it came from a StarsPlugin or from the legacy API.'
 		},
 		{ name: 'IdParserRead', kind: 'interface', href: '/documentation/api/http-framework/interfaces/IdParserRead' },
 		{ name: 'IIdParser', kind: 'interface', href: '/documentation/api/http-framework/interfaces/IIdParser' },
@@ -308,6 +366,25 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		},
 		{ name: 'ListenOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/ListenOptions' },
 		{ name: 'LoadOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/LoadOptions' },
+		{
+			name: 'PreconditionArrayDetails',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/PreconditionArrayDetails',
+			summary: 'An array of preconditions with the PreconditionRunMode to run it with.'
+		},
+		{
+			name: 'PreconditionDetails',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/PreconditionDetails',
+			summary: 'The name of a Precondition piece, with the context to give it.'
+		},
+		{ name: 'PreconditionOptions', kind: 'interface', href: '/documentation/api/http-framework/interfaces/PreconditionOptions' },
+		{
+			name: 'StarsPlugin',
+			kind: 'interface',
+			href: '/documentation/api/http-framework/interfaces/StarsPlugin',
+			summary: 'A declarative, object-based plugin.'
+		},
 		{
 			name: 'StoreRegistryEntries',
 			kind: 'interface',
@@ -381,7 +458,84 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			href: '/documentation/api/http-framework/type-aliases/PermissionString',
 			summary: 'The name of a Discord permission flag, as defined by PermissionFlagsBits.'
 		},
+		{
+			name: 'PluginOption',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PluginOption',
+			summary:
+				'Anything accepted where plugins are listed: a plugin, or nested arrays of plugins in which falsy entries are dropped, so plugins: [conditio…'
+		},
+		{
+			name: 'PreconditionArrayResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionArrayResolvable',
+			summary: 'An array of preconditions: a list of entries, or a list with a PreconditionRunMode.'
+		},
+		{
+			name: 'PreconditionContext',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionContext',
+			summary: 'The data a precondition is given besides the interaction and the command.'
+		},
+		{
+			name: 'PreconditionEntryResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionEntryResolvable',
+			summary: 'An entry of an array of preconditions: a single precondition, or a nested array.'
+		},
+		{
+			name: 'PreconditionFunction',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionFunction',
+			summary: 'A precondition written as a function, for a check that does not need a piece of its own.'
+		},
+		{
+			name: 'PreconditionInteraction',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionInteraction',
+			summary: 'The interactions a precondition can be run for.'
+		},
+		{
+			name: 'PreconditionKind',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionKind',
+			summary:
+				'What a precondition is run for, which decides the method it is asked for: chatInputRun, contextMenuRun, autocompleteRun, or interactionHand…'
+		},
+		{
+			name: 'PreconditionResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionResolvable',
+			summary:
+				'An entry of the preconditions option of a command: the name of a Precondition piece, that name with a context, or a PreconditionFunction.'
+		},
+		{
+			name: 'PreconditionResult',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionResult',
+			summary:
+				'What a precondition returns: Result.ok() to let the command run, or a Result.err(error) with a UserError (usually a PreconditionError) to d…'
+		},
+		{
+			name: 'PreconditionTarget',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/PreconditionTarget',
+			summary: 'The piece a precondition guards: the command, or the interaction handler.'
+		},
 		{ name: 'RequestAuthPrefix', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/RequestAuthPrefix' },
+		{
+			name: 'StarsPluginApply',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/StarsPluginApply',
+			summary:
+				"Where a plugin applies: 'development' and 'production' compare against process.env.NODEENV (which stars dev forces to development), a funct…"
+		},
+		{
+			name: 'StarsPluginHook',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework/type-aliases/StarsPluginHook',
+			summary: 'A runtime plugin hook.'
+		},
 		{ name: 'SyncPluginHooks', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/SyncPluginHooks' },
 		{ name: 'UpdateData', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/UpdateData' },
 		{ name: 'UpdateOptions', kind: 'type-alias', href: '/documentation/api/http-framework/type-aliases/UpdateOptions' },
@@ -395,12 +549,19 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		{ name: 'preInitialization', kind: 'variable', href: '/documentation/api/http-framework/variables/preInitialization' },
 		{ name: 'preLoad', kind: 'variable', href: '/documentation/api/http-framework/variables/preLoad' },
 		{ name: 'restrictedGuildIdRegistry', kind: 'variable', href: '/documentation/api/http-framework/variables/restrictedGuildIdRegistry' },
+		{ name: 'definePlugin', kind: 'function', href: '/documentation/api/http-framework/functions/definePlugin', summary: 'Defines a plugin.' },
 		{ name: 'extractTopLevelOptions', kind: 'function', href: '/documentation/api/http-framework/functions/extractTopLevelOptions' },
 		{
 			name: 'getMissingPermissions',
 			kind: 'function',
 			href: '/documentation/api/http-framework/functions/getMissingPermissions',
 			summary: 'Computes the permissions from required that are missing in granted.'
+		},
+		{
+			name: 'isUserError',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/isUserError',
+			summary: 'Checks whether a value is a UserError, which is how the client tells an expected failure from an unexpected one.'
 		},
 		{ name: 'makeInteraction', kind: 'function', href: '/documentation/api/http-framework/functions/makeInteraction' },
 		{
@@ -446,10 +607,29 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			summary: 'Decorator that restricts the guild IDs for a command.'
 		},
 		{
+			name: 'runPrecondition',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/runPrecondition',
+			summary: 'Runs a Precondition piece for the given kind of interaction.'
+		},
+		{
+			name: 'runPreconditions',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/runPreconditions',
+			summary:
+				'Runs the preconditions of a command or an interaction handler: first the global ones of the preconditions store, then the entries of its pr…'
+		},
+		{
 			name: 'toPermissionNames',
 			kind: 'function',
 			href: '/documentation/api/http-framework/functions/toPermissionNames',
 			summary: 'Converts a permission bitfield into the list of the flag names it contains.'
+		},
+		{
+			name: 'toPluginEntries',
+			kind: 'function',
+			href: '/documentation/api/http-framework/functions/toPluginEntries',
+			summary: 'Converts plugin options into hook entries, one per defined hook.'
 		},
 		{
 			name: 'transformAutocompleteInteraction',

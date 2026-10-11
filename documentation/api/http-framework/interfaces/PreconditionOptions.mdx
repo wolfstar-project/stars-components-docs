@@ -1,0 +1,38 @@
+---
+title: 'Interface: PreconditionOptions'
+description: 'API reference for PreconditionOptions, an interface exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L125',
+		label: 'packages/http-framework/src/lib/structures/Precondition.ts:125'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature tokens={['interface PreconditionOptions extends Options']} />
+
+<ApiHierarchy extends={[['Options']]} />
+
+## Properties
+
+### position?
+
+<ApiMember kind="property" badges={['optional', 'since 6.3.0']} signature={['position?: number | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Precondition.ts#L132', label: 'packages/http-framework/src/lib/structures/Precondition.ts:132' }}>
+
+The position of the precondition in the list of global preconditions. When it is `null`, the precondition is not
+global and only runs for the commands that list it.
+
+**Default**
+
+```ts
+null;
+```
+
+</ApiMember>

@@ -9,8 +9,8 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L17',
-		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:17'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L37',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:37'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -34,16 +34,37 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 
 ## Properties
 
-### hook
+### apply?
 
 <ApiMember
 	kind="property"
-	signature={['hook: T']}
+	badges={['optional']}
+	signature={['apply?: ', ['StarsPluginApply', '/documentation/api/http-framework/type-aliases/StarsPluginApply']]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L18',
-		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:18'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L45',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:45'
 	}}
 />
+
+### enforce?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['enforce?: "pre" | "post"']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L44',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:44'
+	}}
+/>
+
+### hook
+
+<ApiMember kind="property" signature={['hook: T']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L39', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:39' }}>
+
+The hook, `this`-bound to the client like it always was: `entry.hook.call(client, options)`.
+
+</ApiMember>
 
 ### name?
 
@@ -52,10 +73,26 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 	badges={['optional']}
 	signature={['name?: string']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L20',
-		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:20'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L43',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:43'
 	}}
 />
+
+### plugin?
+
+<ApiMember kind="property" badges={['optional']} signature={['plugin?: ', ['StarsPlugin', '/documentation/api/http-framework/interfaces/StarsPlugin']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L47', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:47' }}>
+
+The plugin object the entry came from, shared by all of its entries. `undefined` for the legacy API.
+
+</ApiMember>
+
+### run
+
+<ApiMember kind="property" signature={['run: ', ['HttpFrameworkPluginInvoker', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginInvoker']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L41', label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:41' }}>
+
+The same hook as a plain `(client, options)` call. For a [StarsPlugin](/documentation/api/http-framework/interfaces/StarsPlugin) it also attributes failures to the plugin.
+
+</ApiMember>
 
 ### type
 
@@ -63,7 +100,7 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 	kind="property"
 	signature={['type: ', ['PluginHook', '/documentation/api/http-framework/enumerations/PluginHook']]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L19',
-		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:19'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L42',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:42'
 	}}
 />

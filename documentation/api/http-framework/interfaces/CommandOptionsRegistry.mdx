@@ -1,0 +1,37 @@
+---
+title: 'Interface: CommandOptionsRegistry'
+description: "The options a command receives, by the full path of the command ('ping', 'stickyroles add', 'subscriptions twitch add'). (@wolfstar/http-framework)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	badges={['since 6.2.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L26',
+		label: 'packages/http-framework/src/lib/structures/Command.ts:26'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The options a command receives, by the full path of the command (`'ping'`, `'stickyroles add'`,
+`'subscriptions twitch add'`).
+
+It is empty on purpose: `stars codegen` fills it, from the builders of the commands the project registers, by
+augmenting this interface (`codegen.commands` in `stars.config`). [`Command.OptionsOf`](/documentation/api/http-framework/namespaces/Command/type-aliases/OptionsOf) reads it.
+
+<ApiSignature tokens={['interface CommandOptionsRegistry']} />
+
+**Example**
+
+```typescript
+// src/@types/commands.d.ts (generated)
+declare module '@wolfstar/http-framework' {
+	interface CommandOptionsRegistry {
+		'stickyroles add': { role: TransformedArguments.Role; user: TransformedArguments.User };
+	}
+}
+```
