@@ -1,0 +1,327 @@
+---
+title: 'Class: ModalInteractionOptionResolver'
+description: 'Utility class for resolving (modal) interaction options while working with the raw API. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L19',
+		label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:19'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Utility class for resolving (modal) interaction options while working with the raw API.
+Based on [https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js](https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js)
+
+<ApiSignature tokens={['class ModalInteractionOptionResolver']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L30', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:30' }}>
+
+<ApiSignature
+	tokens={[
+		'new ModalInteractionOptionResolver(interaction: ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		'): ',
+		['ModalInteractionOptionResolver', '/documentation/api/discord-utilities/classes/ModalInteractionOptionResolver']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction']]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L53', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:53' }}>
+
+<ApiSignature
+	tokens={['get(customId: string): ', ['ModalSubmitComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#ModalSubmitComponent']]}
+/>
+
+Gets a component.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ModalSubmitComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#ModalSubmitComponent']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getAttachments()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L133', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:133' }}>
+
+<ApiSignature
+	tokens={['getAttachments(customId: string): ', ['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'], '[]']}
+/>
+
+Gets attachments.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the file upload component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'], '[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedChannels()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L100', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:100' }}>
+
+<ApiSignature
+	tokens={[
+		'getSelectedChannels(customId: string): ',
+		['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'],
+		'[]'
+	]}
+/>
+
+Gets selected channels.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the channel select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'], '[]']}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedMembers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L109', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:109' }}>
+
+<ApiSignature
+	tokens={[
+		'getSelectedMembers(customId: string): ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'[]'
+	]}
+/>
+
+Gets selected members.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the member select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'[]'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedMentionables()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L118', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:118' }}>
+
+<ApiSignature
+	tokens={[
+		'getSelectedMentionables(customId: string): (',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		')[]'
+	]}
+/>
+
+Gets selected mentionables.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the mentionable select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'(',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		')[]'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedRoles()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L91', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:91' }}>
+
+<ApiSignature
+	tokens={['getSelectedRoles(customId: string): ', ['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], '[]']}
+/>
+
+Gets selected roles.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the role select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], '[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedStrings()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L74', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:74' }}>
+
+<ApiSignature tokens={['getSelectedStrings(customId: string): string[]']} />
+
+Gets a string select component.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the string select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedUsers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L82', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:82' }}>
+
+<ApiSignature
+	tokens={['getSelectedUsers(customId: string): ', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'], '[]']}
+/>
+
+Gets selected users.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the user select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'], '[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getTextInput()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts#L66', label: 'packages/discord-utilities/src/lib/resolvers/ModalInteractionOptionResolver.ts:66' }}>
+
+<ApiSignature tokens={['getTextInput(customId: string): string']} />
+
+Gets a text input component.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the text input component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>

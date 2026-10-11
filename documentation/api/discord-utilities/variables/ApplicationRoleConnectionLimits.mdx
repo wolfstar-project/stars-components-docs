@@ -1,0 +1,53 @@
+---
+title: 'Variable: ApplicationRoleConnectionLimits'
+description: 'Namespace containing limits related to Discord Application Role Connections. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/limits.ts#L636',
+		label: 'packages/discord-utilities/src/lib/limits.ts:636'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Namespace containing limits related to Discord Application Role Connections.
+
+<ApiSignature
+	tokens={[
+		'const ApplicationRoleConnectionLimits: {\n  readonly MaximumMetadataRecords: 5;\n  readonly MaximumMetadataValueLength: 100;\n  readonly MaximumPlatformNameLength: 50;\n  readonly MaximumPlatformUsernameLength: 100;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumMetadataRecords" type={['5']}>
+
+Maximum application role connection metadata records an application can have.
+
+</ApiParam>
+
+<ApiParam name="MaximumMetadataValueLength" type={['100']}>
+
+Maximum characters allowed in metadata values.
+
+</ApiParam>
+
+<ApiParam name="MaximumPlatformNameLength" type={['50']}>
+
+Maximum characters allowed in a platform name.
+
+</ApiParam>
+
+<ApiParam name="MaximumPlatformUsernameLength" type={['100']}>
+
+Maximum characters allowed in a platform username.
+
+</ApiParam>
+
+</ApiParams>

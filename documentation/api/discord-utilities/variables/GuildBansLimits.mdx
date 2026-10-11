@@ -1,0 +1,37 @@
+---
+title: 'Variable: GuildBansLimits'
+description: 'Namespace containing limits related to Discord guild bans. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/limits.ts#L286',
+		label: 'packages/discord-utilities/src/lib/limits.ts:286'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Namespace containing limits related to Discord guild bans.
+
+<ApiSignature tokens={['const GuildBansLimits: {\n  readonly MaximumBansToFetch: 1000;\n  readonly MinimumBansToFetch: 1;\n}']} />
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumBansToFetch" type={['1000']}>
+
+Maximum number of bans to return from the guild bans API.
+
+</ApiParam>
+
+<ApiParam name="MinimumBansToFetch" type={['1']}>
+
+Minimum number of bans to return from the guild bans API.
+
+</ApiParam>
+
+</ApiParams>

@@ -1,0 +1,695 @@
+---
+title: 'Class: ChatInputInteractionOptionResolver'
+description: 'Utility class for resolving (application command) interaction options while working with the raw API. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L19',
+		label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:19'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Utility class for resolving (application command) interaction options while working with the raw API.
+Based on [https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js](https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js)
+
+<ApiSignature tokens={['class ChatInputInteractionOptionResolver']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L46', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'new ChatInputInteractionOptionResolver(interaction: ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		'): ',
+		['ChatInputInteractionOptionResolver', '/documentation/api/discord-utilities/classes/ChatInputInteractionOptionResolver']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		]
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L71', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:71' }}>
+
+<ApiSignature
+	tokens={[
+		'get<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'>'
+	]}
+/>
+
+Gets an option by its name
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getAttachment()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L208', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:208' }}>
+
+<ApiSignature
+	tokens={[
+		'getAttachment<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'],
+		'>'
+	]}
+/>
+
+Gets an attachment option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getBoolean()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L116', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:116' }}>
+
+<ApiSignature
+	tokens={[
+		'getBoolean<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, boolean>'
+	]}
+/>
+
+Gets a boolean option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L127', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:127' }}>
+
+<ApiSignature
+	tokens={[
+		'getChannel<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'],
+		'>'
+	]}
+/>
+
+Gets a channel option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getInteger()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L149', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:149' }}>
+
+<ApiSignature
+	tokens={[
+		'getInteger<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, number>'
+	]}
+/>
+
+Gets an integer option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getMember()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L182', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:182' }}>
+
+<ApiSignature
+	tokens={[
+		'getMember<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+Gets a member option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getMentionable()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L219', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:219' }}>
+
+<ApiSignature
+	tokens={[
+		'getMentionable<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		' | ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+Gets a mentionable option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		' | ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getNumber()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L160', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:160' }}>
+
+<ApiSignature
+	tokens={[
+		'getNumber<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, number>'
+	]}
+/>
+
+Gets a number option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getRole()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L197', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:197' }}>
+
+<ApiSignature
+	tokens={[
+		'getRole<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		'>'
+	]}
+/>
+
+Gets a role option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L138', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:138' }}>
+
+<ApiSignature
+	tokens={[
+		'getString<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, string>'
+	]}
+/>
+
+Gets a string option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSubcommand()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L89', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:89' }}>
+
+<ApiSignature
+	tokens={[
+		'getSubcommand<Required extends boolean = false>(required?: Required): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, string>'
+	]}
+/>
+
+Gets the selected subcommand
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if there is no subcommand
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSubcommandGroup()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L102', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:102' }}>
+
+<ApiSignature
+	tokens={[
+		'getSubcommandGroup<Required extends boolean = false>(required?: Required): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, string>'
+	]}
+/>
+
+Gets the selected subcommand group
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if there is no subcommand group
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getUser()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts#L171', label: 'packages/discord-utilities/src/lib/resolvers/ChatInputInteractionOptionResolver.ts:171' }}>
+
+<ApiSignature
+	tokens={[
+		'getUser<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		'>'
+	]}
+/>
+
+Gets a user option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

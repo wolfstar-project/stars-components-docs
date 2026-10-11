@@ -1,0 +1,158 @@
+---
+title: 'Class: AutocompleteInteractionOptionResolver'
+description: 'Utility class for resolving (autocomplete) interaction options while working with the raw API. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts#L17',
+		label: 'packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts:17'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Utility class for resolving (autocomplete) interaction options while working with the raw API.
+Based on [https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js](https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js)
+
+<ApiSignature tokens={['class AutocompleteInteractionOptionResolver']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts#L41', label: 'packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts:41' }}>
+
+<ApiSignature
+	tokens={[
+		'new AutocompleteInteractionOptionResolver(interaction: ',
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		],
+		'): ',
+		['AutocompleteInteractionOptionResolver', '/documentation/api/discord-utilities/classes/AutocompleteInteractionOptionResolver']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[
+		[
+			'APIApplicationCommandAutocompleteInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandAutocompleteInteraction'
+		]
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### getFocusedOption()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts#L90', label: 'packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts:90' }}>
+
+<ApiSignature
+	tokens={[
+		'getFocusedOption(): {\n  name: string;\n  type: String;\n  value: string;\n} | {\n  name: string;\n  type: Integer;\n  value: string | number;\n} | {\n  name: string;\n  type: Number;\n  value: string | number;\n}'
+	]}
+/>
+
+Gets the focused option for an autocomplete interaction
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'{\n  name: string;\n  type: String;\n  value: string;\n} | {\n  name: string;\n  type: Integer;\n  value: string | number;\n} | {\n  name: string;\n  type: Number;\n  value: string | number;\n}'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSubcommand()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts#L65', label: 'packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts:65' }}>
+
+<ApiSignature
+	tokens={[
+		'getSubcommand<Required extends boolean = false>(required?: Required): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, string>'
+	]}
+/>
+
+Gets the selected subcommand
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if there is no subcommand
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSubcommandGroup()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts#L78', label: 'packages/discord-utilities/src/lib/resolvers/AutocompleteInteractionOptionResolver.ts:78' }}>
+
+<ApiSignature
+	tokens={[
+		'getSubcommandGroup<Required extends boolean = false>(required?: Required): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, string>'
+	]}
+/>
+
+Gets the selected subcommand group
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if there is no subcommand group
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>

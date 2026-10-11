@@ -1,0 +1,53 @@
+---
+title: 'Variable: ChannelLimits'
+description: 'Namespace containing limits related to Discord channels. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/limits.ts#L5',
+		label: 'packages/discord-utilities/src/lib/limits.ts:5'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Namespace containing limits related to Discord channels.
+
+<ApiSignature
+	tokens={[
+		'const ChannelLimits: {\n  readonly MaximumDescriptionLength: 1024;\n  readonly MaximumNameLength: 100;\n  readonly MaximumViewersPerScreenShare: 50;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumDescriptionLength" type={['1024']}>
+
+Maximum characters allowed in a channel description.
+
+</ApiParam>
+
+<ApiParam name="MaximumNameLength" type={['100']}>
+
+Maximum characters allowed in a channel name.
+
+</ApiParam>
+
+<ApiParam name="MaximumViewersPerScreenShare" type={['50']}>
+
+<Warning>
+
+**Deprecated.** Use `VoiceChannelLimits.MaximumViewersPerScreenShare` instead.
+
+</Warning>
+
+Maximum viewers allowed per screen share.
+
+</ApiParam>
+
+</ApiParams>
