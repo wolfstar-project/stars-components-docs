@@ -1,0 +1,22 @@
+---
+title: 'Variable: AUTO_VARLOCK_VERSION'
+description: 'From this version on the CLI loads the variables through varlock when @wolfstar/env-utilities would pick it by itself (a .env.schema, varlock install… (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/compatibility.ts#L24',
+		label: 'packages/schema/src/config/compatibility.ts:24'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+From this version on the CLI loads the variables through varlock when `@wolfstar/env-utilities` would pick it by
+itself (a `.env.schema`, `varlock` installed, no `env.path`), instead of only when `env.loader` says so.
+
+<ApiSignature tokens={['const AUTO_VARLOCK_VERSION: 6']} />

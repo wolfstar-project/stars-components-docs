@@ -1,0 +1,29 @@
+---
+title: 'Type Alias: StarsViteConfig'
+description: "Raw options merged into the project's own vite.config., the way vite: {} in a Nuxt config is merged into Nuxt's own Vite config. (@wolfstar/schema)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L39',
+		label: 'packages/schema/src/types/config.ts:39'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Raw options merged into the project's own `vite.config.*`, the way `vite: {}` in a Nuxt config is merged into
+Nuxt's own Vite config. Kept as `unknown` here (the CLI, not the framework, depends on `vite`'s types) and passed
+to Vite's `mergeConfig` as-is.
+
+<ApiSignature
+	tokens={[
+		'type StarsViteConfig = ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, unknown>'
+	]}
+/>
