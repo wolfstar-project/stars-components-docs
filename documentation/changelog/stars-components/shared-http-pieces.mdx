@@ -1,12 +1,22 @@
 ---
-title: "@wolfstar/shared-http-pieces"
-sidebarTitle: "shared-http-pieces"
-description: "Changelog for @wolfstar/shared-http-pieces: The common pieces for Star Network's HTTP-only bots."
+title: '@wolfstar/shared-http-pieces'
+sidebarTitle: 'shared-http-pieces'
+description: 'Changelog for @wolfstar/shared-http-pieces: shared commands and listeners.'
 ---
 
-Changes to [`@wolfstar/shared-http-pieces`](https://github.com/wolfstar-project/stars-components/tree/main/packages/shared-http-pieces). This package provides shared commands and listeners for Star Network's HTTP-only bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## `2.0.10`
+## `2.0.11` (2026-10-08)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `6.3.0`.
+
+### Bug fixes
+
+- **Sentry reporting** — The `error` listener no longer reports a `UserError` to Sentry. With `@wolfstar/http-framework` 6.3.0, a `UserError` is emitted as a `*Denied` event and no longer reaches the `commandError`, `autocompleteError`, or `interactionHandlerError` listeners. ([#298](https://github.com/wolfstar-project/stars-components/pull/298))
+
+## `2.0.10` (2026-10-06)
 
 ### Updates
 
@@ -75,9 +85,7 @@ Changes to [`@wolfstar/shared-http-pieces`](https://github.com/wolfstar-project/
 
 ### Updates
 
-- **Adopt i18next v25 native TypeScript types** — `@wolfstar/shared-http-pieces` removes the hand-maintained `LanguageKeys` export in favor of the generated `CustomTypeOptions` augmentation and direct `TFunction<'commands/shared'>` usage. Adds `@wolfstar/i18next-type-generator`, the CLI used to generate that augmentation from locale JSON files. ([#30](https://github.com/wolfstar-project/stars-components/pull/30))
-- **Migrate to `@wolfstar/plugin-i18next`** — Importing `@wolfstar/shared-http-pieces/register` now registers bundled locales automatically via a `preGenericsInitialization` hook that splices `localesPath` into your `Client`'s `i18n.backend.paths` before `@wolfstar/plugin-i18next` builds its handler. No consumer changes are required as long as the register entrypoint is imported before `new Client(...)`. ([#144](https://github.com/wolfstar-project/stars-components/pull/144))
-- **Typechecker switch** — `typecheck` scripts now run `golar tsc` instead of `tsc` directly. This is a dev-tooling-only change with no effect on published output. ([#151](https://github.com/wolfstar-project/stars-components/pull/151))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.8` and `@wolfstar/http-framework` to `3.2.1`.
 
 ### Updates
 

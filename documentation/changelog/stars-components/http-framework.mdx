@@ -1,51 +1,76 @@
 ---
-title: "@wolfstar/http-framework"
-sidebarTitle: "http-framework"
-description: "Changelog for @wolfstar/http-framework: a Sapphire-inspired framework for building Discord bots with HTTP interactions."
+title: '@wolfstar/http-framework'
+sidebarTitle: 'http-framework'
+description: 'Changelog for @wolfstar/http-framework: releases, new features, and fixes.'
 ---
 
-Changes to [`@wolfstar/http-framework`](https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework). It provides routing, commands, hot module reloading, and the `stars` CLI for Discord HTTP bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/http-framework`](/documentation/packages/http-framework). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## `6.2.2`
+## `6.3.0` (2026-10-08)
+
+### New features
+
+- **Preconditions** — You can now run checks before a command, its autocomplete, or an interaction handler, following `@sapphire/framework`. Add a `Precondition` piece to the new `preconditions` store and implement `chatInputRun`, `contextMenuRun`, `autocompleteRun`, and/or `interactionHandlerRun`, returning `ok()` or `error()` (a `PreconditionError` for the piece). A piece with a `position` is global and runs in ascending order of it. There are no built-in preconditions. ([#300](https://github.com/wolfstar-project/stars-components/pull/300))
+- **`preconditions` option** — List the preconditions to run in `Command.Options` or `InteractionHandler.Options`: by name, by name with a `context`, or as a `PreconditionFunction`. The list is an `AND`, a nested array is an `OR`, and nesting alternates from there, for example `['Connect', ['Moderator', ['DJ', 'SongAuthor']]]`. Pass `{ entries, mode: PreconditionRunMode.Parallel }` to start every entry at once.
+- **Precondition events** — The first denial skips the method and emits `chatInputCommandDenied`, `contextMenuCommandDenied`, `autocompleteDenied`, or `interactionHandlerDenied`. New events `preChatInputCommandRun`, `preContextMenuCommandRun`, `chatInputCommandAccepted`, `contextMenuCommandAccepted`, `autocompleteAccepted`, and `interactionHandlerAccepted` let you observe the flow. A piece with no method for a chat input or context menu command denies it; for an autocomplete or an interaction handler it is skipped.
+- **New exports** — `AllFlowsPrecondition`, `PreconditionStore`, `runPreconditions`, `PreconditionRunMode`, `PreconditionRunCondition`, the array types, and the related types are exported. `Identifiers` gains `PreconditionMissingChatInputHandler` and `PreconditionMissingContextMenuHandler`.
+- **`isUserError`** — A new helper checks whether an error is a `UserError`, and also recognizes a `UserError` from another copy of the package by its shape. ([#298](https://github.com/wolfstar-project/stars-components/pull/298))
+
+### Updates
+
+- **`UserError` routed to `*Denied` events** — A `UserError` thrown by a command, an autocomplete handler, or an interaction handler now goes to `chatInputCommandDenied` / `contextMenuCommandDenied` (`Events.ChatInputCommandDenied`, `Events.ContextMenuCommandDenied`), `autocompleteDenied`, or `interactionHandlerDenied` with `(error: UserError, context)`, instead of `commandError`, `autocompleteError`, or `interactionHandlerError`. Other errors still reach the `*Error` events; the `error` event and the HTTP response are unchanged. ([#298](https://github.com/wolfstar-project/stars-components/pull/298))
+- **Run events emitted after preconditions** — `commandRun`, `autocompleteRun`, and `interactionHandlerRun` now fire only after the preconditions pass, so a denied interaction does not emit them. Without preconditions nothing changes.
+- **Dependencies** — Updated `@wolfstar/cli` to `2.6.1`.
+
+### Migration
+
+- **Move `UserError` replies to `*Denied` listeners** — If a listener on `commandError`, `autocompleteError`, or `interactionHandlerError` replies to the user with a `UserError` (including the `PreconditionError` from [`@wolfstar/decorators`](/documentation/changelog/stars-components/decorators)), move that logic to `chatInputCommandDenied`, `contextMenuCommandDenied`, `autocompleteDenied`, or `interactionHandlerDenied`. Those errors no longer reach the `*Error` events.
+
+## `6.2.2` (2026-10-07)
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/cli` to `2.6.0`, `@wolfstar/schema` to `0.9.0`.
 
-## `6.2.1`
+## `6.2.1` (2026-10-06)
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/cli` to `2.5.0`, `@wolfstar/schema` to `0.8.0`.
 
-## `6.2.0`
+## `6.2.0` (2026-10-06)
 
 ### New features
 
-- **`stars codegen` command options** — `stars codegen` now generates typed command options from builders. Set `codegen.commands` in `stars.config` (`true`, or `{ output }`, default `src/@types/commands.d.ts`) to make the CLI read commands from the built bot and write a `CommandOptionsRegistry` entry per command path (`'ping'`, `'math add'`, `'subscriptions twitch add'`). The new `Command.OptionsOf<'math add'>` reads it, so a handler no longer needs a hand-written `interface Options` that can drift from the builder: `required` options are not optional, `choices` are a literal union, `channel_types` narrow the channel, and every option has the shape the framework resolves it to. `stars codegen --check` fails with `CODEGEN_OUTDATED` when the file is stale, and `--json` reports it like the i18n generator. ([#275](https://github.com/wolfstar-project/stars-components/pull/275))
+- **Typed command options with `stars codegen`** — Set `codegen.commands` in `stars.config` (`true`, or `{ output }`, default `src/@types/commands.d.ts`) and `stars codegen` reads the commands from the built bot and writes a `CommandOptionsRegistry` entry per command path (`'ping'`, `'math add'`, `'subscriptions twitch add'`). Use `Command.OptionsOf<'math add'>` instead of a hand-written `interface Options`: `required` options are non-optional, `choices` become a literal union, and `channel_types` narrow the channel. `stars codegen --check` fails with `CODEGEN_OUTDATED` when the file is stale, and `--json` reports the result. ([#275](https://github.com/wolfstar-project/stars-components/pull/275))
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/cli` to `2.4.0`, `@wolfstar/schema` to `0.7.0`.
 
-## `6.1.1`
+## `6.1.1` (2026-10-04)
 
 ### New features
 
-- **`stars commands diff`, `stars commands deploy`, `stars doctor`, and shell completions** — `stars commands diff` compares the commands the built bot defines with the ones Discord has deployed (`--check` for CI). `stars commands deploy` overwrites them after a confirmation (`--yes` for scripts). The commands are read from the bot itself: it is started with the dev bridge, loads its pieces, reports its registry, and exits before it listens. This needs `@wolfstar/http-framework` 6.1 or later and a built project. `stars doctor` checks the runtime, the framework, the credentials, the dev port, the tunnel, and the generated files, with a fix for each problem (`--online` also asks Discord, `--json` for scripts). `stars completions <bash|zsh|fish>` prints a completion script generated from the registered commands. `stars info` lists the installed modules and the new `dev` options. The `@wolfstar/http-framework` README documents the new `dev` options of `stars.config`. ([#257](https://github.com/wolfstar-project/stars-components/pull/257))
+- **`stars commands diff` and `stars commands deploy`** — `stars commands diff` compares the commands your built bot defines with those deployed on Discord (`--check` for CI); `stars commands deploy` overwrites them after a confirmation (`--yes` for scripts). Both need `@wolfstar/http-framework` 6.1 or later and a built project. ([#257](https://github.com/wolfstar-project/stars-components/pull/257))
+- **`stars doctor`** — Checks the runtime, the framework, credentials, the dev port, the tunnel, and generated files, with a fix for each problem (`--online` also queries Discord, `--json` for scripts).
+- **`stars completions <bash|zsh|fish>`** — Prints a shell completion script for the registered commands.
 
 ### Updates
 
+- **`stars info`** — Lists the installed modules and the new `dev` options. The README now documents the `dev` options of `stars.config`.
 - **Dependencies** — Updated `@wolfstar/cli` to `2.3.0`, `@wolfstar/schema` to `0.6.0`.
 
-## `6.1.0`
+## `6.1.0` (2026-10-02)
 
 ### New features
 
-- **Vite-style object-based plugins** — Added `definePlugin` and the `StarsPlugin` type (`name`, `enforce: 'pre' | 'post'`, `apply`, and five lifecycle hooks as `(client, options) => ...`), a `plugins` option in `ClientOptions` for per-client plugins, and `PluginHookError`, which attributes a failing hook to its plugin name. `PluginManager` now orders hooks as `pre`, plain, then `post` (registration order inside each group), and `Client.use` accepts plugin objects and nested arrays. The legacy `Plugin` class, symbol hooks, and `registerXHook` keep working through an adapter and emit a one-time `DeprecationWarning` (`HTTP_FRAMEWORK_LEGACY_PLUGIN`) per plugin. ([#246](https://github.com/wolfstar-project/stars-components/pull/246))
+- **Object-based plugins** — Define Vite-style plugins with `definePlugin` and the `StarsPlugin` type (`name`, `enforce: 'pre' | 'post'`, `apply`, and the five lifecycle hooks as `(client, options) => …`). Add per-client plugins with the new `plugins` option in `ClientOptions`. A failing hook throws `PluginHookError`, which names the plugin. ([#246](https://github.com/wolfstar-project/stars-components/pull/246))
 
 ### Updates
 
+- **Plugin ordering** — `PluginManager` runs hooks as `pre`, plain, then `post`, in registration order within each group. `Client.use` accepts plugin objects and nested arrays.
+- **Legacy plugins deprecated** — The `Plugin` class, symbol hooks, and `registerXHook` keep working through an adapter but emit a one-time `DeprecationWarning` (`HTTP_FRAMEWORK_LEGACY_PLUGIN`) per plugin.
 - **Dependencies** — Updated `@wolfstar/schema` to `0.5.0`, `@wolfstar/cli` to `2.2.0`.
 
 ## `6.0.1`
@@ -112,14 +137,18 @@ Changes to [`@wolfstar/http-framework`](https://github.com/wolfstar-project/star
 
 - **`@wolfstar/cli` no longer depends on `@wolfstar/http-framework`** — Matching how `@nuxt/cli` has no dependency on `nuxt`, `@wolfstar/cli` now depends on `@wolfstar/schema` instead. Projects that installed `@wolfstar/cli` without also depending on `@wolfstar/http-framework` directly now need to add `@wolfstar/http-framework` themselves. Every project scaffolded by `@wolfstar/create-http-framework`, or that already depends on `@wolfstar/http-framework`, is unaffected. `@wolfstar/cli`'s own public exports (`loadStarsConfig`, `configDiagnostics`, `ConfigDiagnosticCode`, `ResolvedStarsConfig`, re-exported from `@wolfstar/schema`) are unchanged. ([#209](https://github.com/wolfstar-project/stars-components/pull/209))
 
-## `5.0.0`
+## `5.0.0` (2026-09-24)
 
 ### New features
 
+- **`Client.fetch()`** — `client.fetch(request)` is the Web `Request`/`Response` counterpart of `listen()`. It runs the same signature verification and routing without binding a port, for Workers, `Bun.serve`, `Deno.serve`, and similar runtimes.
+- **`stars` binary ships with `http-framework`** — Installing `@wolfstar/http-framework` now gives you the `stars` command, with no separate `@wolfstar/cli` install.
 - **`experimental.enableNitro` implemented** — `stars dev`/`stars build` now build the bot through Nitro v3's own Vite plugin (`nitro/vite`, requires Vite 8). `@wolfstar/http-framework`: `Client` now has a `fetch(request, options?)` method, the Web `Request`/`Response` counterpart of `listen()`, running the exact same signature verification, routing, and replies without binding a port, for anything that speaks Fetch instead of `node:http` (Nitro, a Worker, `Bun.serve`, `Deno.serve`, Vite's own dev middleware). The previously-unannounced `@wolfstar/http-framework/fetch` submodule (`createFetchHandler`/`FetchHandler`/`FetchHandlerOptions`) is removed in favour of this method on `Client` itself. `@wolfstar/cli`: `NitroBuilder` reuses the project's own `vite.config.*`/`stars.config#vite`, adds a generated server entry, and produces `.output/` laid out for the configured `experimental.nitro.preset` (`node-server` by default, deployable to anything Nitro targets). `stars dev` rebuilds and restarts on every change. `stars prepare`'s generated `.stars/tsconfig.json` now emits the same `~`/`@`/`~~`/`@@` aliases. ([#207](https://github.com/wolfstar-project/stars-components/pull/207))
 
 ### Updates
 
+- **Config schema moved to `@wolfstar/schema`** — The `stars.config.*` schema and loader now live in [`@wolfstar/schema`](/documentation/changelog/stars-components/schema). Imports from `@wolfstar/http-framework/config` keep working unchanged.
+- **Plugin support** — [`@wolfstar/plugin-api`](/documentation/changelog/plugins/plugin-api), [`@wolfstar/plugin-i18next`](/documentation/changelog/plugins/plugin-i18next), [`@wolfstar/plugin-logger`](/documentation/changelog/plugins/plugin-logger), and [`@wolfstar/plugin-subcommands-advanced`](/documentation/changelog/plugins/plugin-subcommands-advanced) now target `5.x`.
 - **Replace `ConfigError` and `CliError` with `nostics` diagnostics** — `@wolfstar/http-framework/config` no longer exports `ConfigError`/`ConfigErrorOptions`. Every `stars.config.*` validation and load failure is now built from `configDiagnostics` (also exported) and thrown as a `nostics` `Diagnostic`. Catch it with `instanceof Diagnostic` (from `nostics`) instead of `instanceof ConfigError`. The option path is folded into the diagnostic's message; the configuration file is now in `.sources`. `@wolfstar/cli` no longer exports `CliError`/`CliErrorOptions`. Its errors are now built from `cliDiagnostics` and are `Diagnostic` instances too. `formatError` renders a `Diagnostic` with `nostics`' own ANSI formatter; `exitCodeOf` maps `stars.config.*` diagnostic codes to exit code `2` and `BUILD_FAILED` to `3`. `ExitCode`, `exitCodeOf`, and `formatError` keep their existing exports and behaviour for every other case. ([#205](https://github.com/wolfstar-project/stars-components/pull/205))
 
 ## `4.0.2`

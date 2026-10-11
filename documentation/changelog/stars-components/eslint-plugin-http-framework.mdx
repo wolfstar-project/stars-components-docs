@@ -1,12 +1,12 @@
 ---
-title: "@wolfstar/eslint-plugin-http-framework"
-sidebarTitle: "eslint-plugin-http-framework"
-description: "Changelog for @wolfstar/eslint-plugin-http-framework: custom lint rules for @wolfstar/http-framework and the @wolfstar/plugin-* ecosystem, usable from both ESLint and oxlint."
+title: '@wolfstar/eslint-plugin-http-framework'
+sidebarTitle: 'eslint-plugin-http-framework'
+description: 'Changelog for @wolfstar/eslint-plugin-http-framework: custom lint rules for @wolfstar/http-framework and the plugin ecosystem.'
 ---
 
-Changes to [`@wolfstar/eslint-plugin-http-framework`](https://github.com/wolfstar-project/stars-components/tree/main/packages/eslint-plugin-http-framework). This package provides custom lint rules for `@wolfstar/http-framework` and the `@wolfstar/plugin-*` ecosystem, usable from both ESLint and oxlint. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/eslint-plugin-http-framework`](https://github.com/wolfstar-project/stars-components/tree/main/packages/eslint-plugin-http-framework). The plugin catches misuse of `@wolfstar/http-framework` decorators and `@wolfstar/plugin-*` packages, and works with both ESLint and oxlint's JS plugin API. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## `0.1.3`
+## `0.1.3` (2026-10-06)
 
 ### Updates
 
@@ -28,4 +28,4 @@ Changes to [`@wolfstar/eslint-plugin-http-framework`](https://github.com/wolfsta
 
 ### New features
 
-- **Initial release** — Added shareable `oxlint`/`oxfmt`/`eslint`/`prettier` configs and a custom Wolfstar lint rules plugin. `@wolfstar/eslint-plugin-http-framework` is a new custom rules plugin (ESLint-compatible, usable from both ESLint and oxlint's JS plugin API) that catches `@wolfstar/http-framework` decorator misuse and `@wolfstar/plugin-*` i18n pitfalls that TypeScript cannot catch on its own. ([#160](https://github.com/wolfstar-project/stars-components/pull/160))
+- **Initial release** — Custom lint rules, usable from ESLint and from oxlint's JS plugin API, that catch `@wolfstar/http-framework` decorator misuse and `@wolfstar/plugin-*` i18n pitfalls that TypeScript can't catch on its own. `@wolfstar/eslint-config` and `@wolfstar/oxlint-config` bundle the plugin. [#160](https://github.com/wolfstar-project/stars-components/pull/160)

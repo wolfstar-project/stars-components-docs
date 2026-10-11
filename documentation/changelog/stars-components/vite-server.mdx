@@ -1,40 +1,40 @@
 ---
-title: "@wolfstar/vite-server"
-sidebarTitle: "vite-server"
-description: "Changelog for @wolfstar/vite-server: Vite build and watch integration for Stars projects."
+title: '@wolfstar/vite-server'
+sidebarTitle: 'vite-server'
+description: 'Changelog for @wolfstar/vite-server: the optional Vite builder for stars.'
 ---
 
-Changes to [`@wolfstar/vite-server`](https://github.com/wolfstar-project/stars-components/tree/main/packages/vite-server). This package provides the optional Vite builder for Stars projects, handling build and watch modes while preserving CLI configuration and plugin registration. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/vite-server`](/documentation/packages/vite-server). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## `0.4.4`
+## `0.4.4` (2026-10-07)
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/schema` to `0.9.0`.
 
-## `0.4.3`
+## `0.4.3` (2026-10-06)
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/schema` to `0.8.0`.
 
-## `0.4.2`
+## `0.4.2` (2026-10-06)
 
 ### Updates
 
 - **Dependencies** — Updated all non-major dependencies. Updated `@wolfstar/schema` to `0.7.0` ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
 
-## `0.4.1`
+## `0.4.1` (2026-10-04)
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/schema` to `0.6.0`.
 
-## `0.4.0`
+## `0.4.0` (2026-10-02)
 
 ### New features
 
-- **`modules` in `stars.config`** — You can now list installable module packages (`['@wolfstar/module-name']` or `[@wolfstar/module-name', { key: value }]`) in `stars.config`. The CLI installs them with `@wolfstar/kit`'s `setupModules` before `config:resolved` is triggered, and passes each module's runtime plugins and auto-import presets back to the resolved configuration. The built entry loads a `\0stars:modules` virtual module before the older `/register` imports, which now skip packages already handled by `modules`. For `tsc` and `none` build tools, `stars dev` preloads modules via a `node --import` flag, and `stars prepare` writes a `.stars/modules.mjs` file for production. A missing preload is reported as a `MODULES_PRELOAD_REQUIRED` warning, and a failing module exits with `MODULE_FAILED` (exit code 2) ([#247](https://github.com/wolfstar-project/stars-components/pull/247)).
+- **Stars modules** — Add `modules` to `stars.config` as a list of package names or `[name, options]` tuples. The CLI installs them with `@wolfstar/kit`'s `setupModules` before the `config:resolved` hook, and the resolved configuration gains `modules` and `runtime` (the runtime plugins and auto-import presets the modules contribute). Runtime plugins are registered in your bot before the legacy `/register` imports, which skip packages listed in `modules`. With the `tsc` and `none` build tools, `stars dev` preloads them with `node --import`, and `stars prepare` writes `.stars/modules.mjs` for production. `stars build`, `stars prepare`, and `stars info` warn with `MODULES_PRELOAD_REQUIRED` when you need that preload. A failing module is reported as a `MODULE_FAILED` diagnostic (exit code 2). See [`@wolfstar/kit`](/documentation/packages/kit). [#247](https://github.com/wolfstar-project/stars-components/pull/247)
 
 ### Updates
 
