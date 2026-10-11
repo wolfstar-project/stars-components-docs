@@ -6,6 +6,46 @@ description: 'Changelog for @wolfstar/schema: the stars.config.* schema and load
 
 Changes to [`@wolfstar/schema`](/documentation/packages/schema). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.9.0` (2026-10-07)
+
+### New features
+
+- **Module config keys** — Top-level `stars.config` keys that aren't built in are kept as `ResolvedStarsConfig.moduleOptions` instead of rejected, so a module can read its options from its own key (`meta.configKey`). `BUILT_IN_CONFIG_KEYS` lists the keys the schema owns, `assertModuleOptionsClaimed` reports the first unclaimed key as `UNKNOWN_OPTION`, and `ModulesRuntime.configKeys` carries the keys modules claimed. Augment the `StarsConfig` interface to type your module's key. [#293](https://github.com/wolfstar-project/stars-components/pull/293)
+- **`dev.mouse` option** — Controls mouse support in the `stars dev` dashboard (default `true`). Set it to `false`, or pass `stars dev --no-mouse`, to leave the mouse to your terminal. [#291](https://github.com/wolfstar-project/stars-components/pull/291)
+
+### Migration
+
+- **`ModulesRuntime.configKeys` is required** — If you build a `ModulesRuntime` literal, add `configKeys`, or start from `EMPTY_MODULES_RUNTIME`, which already has it.
+
+## `0.8.0` (2026-10-06)
+
+### New features
+
+- **Compatibility version `6`** — `future.compatibilityVersion` `6` is now the latest and the default, gated by the new `SPLIT_TSCONFIG_VERSION` constant. A `tsdown` build's default `build.tsconfig` becomes the generated `.stars/tsconfig.app.json`, and `dev.typecheck.projects` lists what `stars typecheck` checks (`DEFAULT_APP_TSCONFIG`, `DEFAULT_NODE_TSCONFIG`). A `tsc` or `none` project keeps its own tsconfig and gets the node config on top. Pin `5` or `4` to keep the single `.stars/tsconfig.json`. [#282](https://github.com/wolfstar-project/stars-components/pull/282)
+
+## `0.7.0` (2026-10-06)
+
+### New features
+
+- **`codegen.commands`** — Set `codegen.commands` (`true`, or `{ output }`, default `src/@types/commands.d.ts`) so `stars codegen` generates a `CommandOptionsRegistry` from your built bot, read by `Command.OptionsOf<'math add'>`. `stars codegen --check` fails with `CODEGEN_OUTDATED` when the file is stale. [#275](https://github.com/wolfstar-project/stars-components/pull/275)
+
+### Updates
+
+- **Dependencies** — Updated third-party dependencies.
+
+## `0.6.0` (2026-10-04)
+
+### New features
+
+- **`stars dev` options** — New `dev.layout` (`'auto' | 'dashboard' | 'panel'`), `dev.logs` (`channels` and `levels` shown at start, `dir` and `keep` for one log file per run), `dev.commands.refresh` (`'prompt' | 'auto' | 'off'`) and `dev.hmr`. An unknown value for a fixed-choice option is reported with the new `INVALID_CHOICE` diagnostic. `LOG_LEVELS` and `DEFAULT_LOG_LEVELS` are exported. [#254](https://github.com/wolfstar-project/stars-components/pull/254)
+- **Node env loader** — `env.loader` accepts `'node'`, and the loader is auto-detected when you leave it unset. [#265](https://github.com/wolfstar-project/stars-components/pull/265)
+
+## `0.5.0` (2026-10-02)
+
+### New features
+
+- **`modules` option** — Add `modules` to `stars.config`: a list of package names or `[name, options]` tuples, installed by the CLI with [`@wolfstar/kit`](/documentation/packages/kit)'s `setupModules` before `config:resolved`. The resolved config gains `modules` and `runtime` (the runtime plugins and auto-import presets the modules contributed). A failing module is reported as a `MODULE_FAILED` diagnostic, and `MODULES_PRELOAD_REQUIRED` warns when a `tsc` or `none` build needs the `.stars/modules.mjs` preload. [#247](https://github.com/wolfstar-project/stars-components/pull/247)
+
 ## 2026-09-24
 
 ### New features

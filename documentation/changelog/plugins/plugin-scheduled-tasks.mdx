@@ -1,0 +1,22 @@
+---
+title: '@wolfstar/plugin-scheduled-tasks'
+sidebarTitle: 'plugin-scheduled-tasks'
+description: 'Changelog for @wolfstar/plugin-scheduled-tasks: one-off and repeated tasks for @wolfstar/http-framework, backed by BullMQ.'
+---
+
+Changes to [`@wolfstar/plugin-scheduled-tasks`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-scheduled-tasks). The plugin runs tasks later or on a schedule, storing their jobs in Redis through [BullMQ](https://docs.bullmq.io/) so they survive restarts and are shared by every process of your bot. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.2.0` (2026-10-07)
+
+### New features
+
+- **Readiness gate** — Give the plugin a `ready` callback (with optional `readyTimeout` and `readyDelay`) and set `waitForReady: true` on tasks that need your app to be up. A job taken before the app is ready waits. If the timeout passes, the job moves back to `delayed` instead of failing, so it costs no attempt and emits no `scheduledTaskError`. ([#228](https://github.com/wolfstar-project/plugins/pull/228))
+- **`scheduledTaskNotReady` event** — `ScheduledTaskEvents.ScheduledTaskNotReady` reports a job that timed out waiting for readiness.
+- **`ScheduledTaskHandler#waitForReady()`** — Lets a task wait for readiness by hand.
+- **Job and token in `run`** — `ScheduledTaskHandler#run` takes an optional second argument with the BullMQ job and token.
+
+## `0.1.0` (2026-10-04)
+
+### New features
+
+- **New package** — Scheduled tasks for `@wolfstar/http-framework`, the counterpart of `@sapphire/plugin-scheduled-tasks`. Tasks are `ScheduledTask` pieces run by a BullMQ worker. Create them with `container.tasks.create()`, or repeat them on an `interval` or cron `pattern`. List the package in `modules` in `stars.config`, or pass `scheduledTasks()` to `plugins`. See the [package docs](/documentation/packages/plugin-scheduled-tasks). ([#177](https://github.com/wolfstar-project/plugins/pull/177))

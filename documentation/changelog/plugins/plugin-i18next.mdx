@@ -6,6 +6,18 @@ description: 'Changelog for @wolfstar/plugin-i18next: the i18next localisation p
 
 Changes to [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.2.0` (2026-10-05)
+
+### New features
+
+- **`/module` and `/plugin` entrypoints** — Adds `@wolfstar/plugin-i18next/module` and `@wolfstar/plugin-i18next/plugin`. List the module in `modules` in `stars.config`, or pass the `definePlugin` factory to `plugins`. Both need `@wolfstar/http-framework` 6.1 (and `@wolfstar/kit` for the module). `./register` is unchanged and still supports framework v3, v5, and v6. ([#188](https://github.com/wolfstar-project/plugins/pull/188))
+
+## `2.1.2` (2026-10-04)
+
+### Updates
+
+- **`http-framework` 6 support** — The peer range now accepts [`@wolfstar/http-framework`](/documentation/changelog/stars-components/http-framework) `^6.0.0`. ([#176](https://github.com/wolfstar-project/plugins/pull/176))
+
 ## 2026-09-24
 
 ### Updates

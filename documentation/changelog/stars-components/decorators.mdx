@@ -1,0 +1,35 @@
+---
+title: '@wolfstar/decorators'
+sidebarTitle: 'decorators'
+description: 'Changelog for @wolfstar/decorators: typescript decorators for http-framework pieces.'
+---
+
+Changes to [`@wolfstar/decorators`](https://github.com/wolfstar-project/stars-components/tree/main/packages/decorators). It provides TypeScript decorators to configure [`@wolfstar/http-framework`](/documentation/packages/http-framework) pieces and gate their methods, modelled after `@sapphire/decorators`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.1.2` (2026-10-08)
+
+### Updates
+
+- **`PreconditionError` events documented** — The docs now state that with `@wolfstar/http-framework` 6.3.0, the `PreconditionError` thrown by `RequiresUserPermissions` and `RequiresClientPermissions` is emitted as `chatInputCommandDenied`, `contextMenuCommandDenied`, or `interactionHandlerDenied` instead of `commandError`. Move any listener that replies to these errors to the matching `*Denied` event. ([#298](https://github.com/wolfstar-project/stars-components/pull/298))
+
+## `0.1.1` (2026-10-06)
+
+### Updates
+
+- **Dependencies** — Updated third-party dependencies.
+
+## `0.1.0`
+
+### New features
+
+- **New package** — The utility decorators moved out of `@wolfstar/http-framework` into `@wolfstar/decorators`, mirroring the split between `@sapphire/framework` and `@sapphire/decorators`. It ships `ApplyOptions`, `RequiresGuildContext`, `RequiresDMContext`, `RequiresUserPermissions`, `RequiresClientPermissions`, `Enumerable`, `EnumerableMethod`, `createClassDecorator`, `createMethodDecorator`, `createProxy`, `createFunctionPrecondition`, and the `PieceConstructor` and `ContextFallback` types, with unchanged behaviour. ([#238](https://github.com/wolfstar-project/stars-components/pull/238))
+- **Auto imports preset** — `@wolfstar/decorators` is one of the default `imports.presets` in [`@wolfstar/schema`](/documentation/changelog/stars-components/schema), so projects using the `stars` CLI's auto imports get the decorators without an explicit import once the package is installed.
+
+### Updates
+
+- **Peer dependency** — `@wolfstar/http-framework` is a peer dependency.
+- **Dependencies** — Updated `@wolfstar/http-framework` to `6.0.0`.
+
+### Migration
+
+- **Import decorators from the new package** — `@wolfstar/http-framework` 6.0.0 no longer exports these decorators and helpers. Install `@wolfstar/decorators` and change your imports to it. The `Register*` decorators and `RestrictGuildIds` stay in the framework.

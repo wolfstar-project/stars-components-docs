@@ -6,6 +6,24 @@ description: 'Changelog for @wolfstar/plugin-subcommands-advanced: advanced subc
 
 Changes to [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.2.0` (2026-10-08)
+
+### New features
+
+- **`Command.OptionsOf` and `Subcommand.OptionsOf`** — Re-export the framework's `Command.OptionsOf`, so command classes that import `Command` from this package can type their generated options (`stars codegen`). Requires `@wolfstar/http-framework` 6.2.0 or later for the type. ([#231](https://github.com/wolfstar-project/plugins/pull/231))
+
+## `2.1.0` (2026-10-05)
+
+### New features
+
+- **`/module` and `/plugin` entrypoints** — Adds `@wolfstar/plugin-subcommands-advanced/module` and `@wolfstar/plugin-subcommands-advanced/plugin`. List the module in `modules` in `stars.config`, or pass the `definePlugin` factory to `plugins`. Both need `@wolfstar/http-framework` 6.1 (and `@wolfstar/kit` for the module). `./register` is unchanged and still supports framework v3, v5, and v6. ([#193](https://github.com/wolfstar-project/plugins/pull/193))
+
+## `2.0.6` (2026-10-04)
+
+### Updates
+
+- **`http-framework` 6 support** — The peer range now accepts [`@wolfstar/http-framework`](/documentation/changelog/stars-components/http-framework) `^6.0.0`. ([#176](https://github.com/wolfstar-project/plugins/pull/176))
+
 ## 2026-09-24
 
 ### Updates
