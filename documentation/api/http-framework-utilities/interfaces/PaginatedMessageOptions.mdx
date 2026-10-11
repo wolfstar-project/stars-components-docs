@@ -1,0 +1,129 @@
+---
+title: 'Interface: PaginatedMessageOptions'
+description: 'API reference for PaginatedMessageOptions, an interface exported by @wolfstar/http-framework-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L47',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:47'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+<ApiSignature tokens={['interface PaginatedMessageOptions']} />
+
+## Properties
+
+### actions?
+
+<ApiMember kind="property" badges={['optional']} signature={['actions?: ', ['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'], '[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L52', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:52' }}>
+
+**Default**
+
+```ts
+PaginatedMessage.defaultActions;
+```
+
+</ApiMember>
+
+### expiredReply?
+
+<ApiMember kind="property" badges={['optional']} signature={['expiredReply?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L69', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:69' }}>
+
+The ephemeral notice sent when a click cannot be handled while its session is still readable, e.g. a custom
+action or a lazy page that is only available on the process that started the message. A session that expired or
+is unknown cannot be read, so its clicks get the process-wide notice set with `setDefaultExpiredReply` instead.
+
+**Default**
+
+```ts
+getDefaultExpiredReply();
+```
+
+</ApiMember>
+
+### idle?
+
+<ApiMember kind="property" badges={['optional']} signature={['idle?: number']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L56', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:56' }}>
+
+**Default**
+
+```ts
+PaginatedMessage.defaultIdle;
+```
+
+</ApiMember>
+
+### ownerOnly?
+
+<ApiMember kind="property" badges={['optional']} signature={['ownerOnly?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L61', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:61' }}>
+
+Whether only the user who started the paginated message can use it.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### pages?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'pages?: ',
+		['PaginatedMessagePageResolvable', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePageResolvable'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L48',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:48'
+	}}
+/>
+
+### store?
+
+<ApiMember kind="property" badges={['optional']} signature={['store?: ', ['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'], '<unknown>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L78', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:78' }}>
+
+**Default**
+
+```ts
+getSessionStore();
+```
+
+</ApiMember>
+
+### timeoutBehavior?
+
+<ApiMember kind="property" badges={['optional']} signature={['timeoutBehavior?: ', ['TimeoutBehavior', '/documentation/api/http-framework-utilities/type-aliases/TimeoutBehavior']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L74', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:74' }}>
+
+What [`PaginatedMessage.run`](/documentation/api/http-framework-utilities/classes/PaginatedMessage#run) does to the controls when the session times out.
+
+**Default**
+
+```ts
+'disable';
+```
+
+</ApiMember>
+
+### wrongUserReply?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['wrongUserReply?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L62',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:62'
+	}}
+/>

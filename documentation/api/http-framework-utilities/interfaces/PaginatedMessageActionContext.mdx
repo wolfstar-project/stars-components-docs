@@ -1,0 +1,73 @@
+---
+title: 'Interface: PaginatedMessageActionContext'
+description: 'API reference for PaginatedMessageActionContext, an interface exported by @wolfstar/http-framework-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L76',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:76'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+<ApiSignature tokens={['interface PaginatedMessageActionContext']} />
+
+## Properties
+
+### interaction
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly interaction: ', ['ComponentInteraction', '/documentation/api/http-framework-utilities/type-aliases/ComponentInteraction']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L82', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:82' }}>
+
+The click. When it arrived while another click on the same message was still being handled, it was already
+acknowledged with `deferUpdate` (`replied` is `true`): do not `reply`/`update` it, send anything else as a
+`followup`. The handler then edits the message itself through the deferred response.
+
+</ApiMember>
+
+### session
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={[
+		'readonly session: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['PaginatedMessageSession', '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageSession'],
+		'>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L83',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:83'
+	}}
+/>
+
+## Methods
+
+### setIndex()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L84', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:84' }}>
+
+<ApiSignature tokens={['setIndex(index: number): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="index" type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### stop()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L85', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:85' }}>
+
+<ApiSignature tokens={['stop(): void']} />
+
+</ApiMember>

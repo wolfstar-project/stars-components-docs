@@ -1,0 +1,129 @@
+---
+title: 'Interface: MessagePrompterOptions'
+description: 'API reference for MessagePrompterOptions, an interface exported by @wolfstar/http-framework-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L33',
+		label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:33'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+<ApiSignature tokens={['interface MessagePrompterOptions']} />
+
+## Properties
+
+### cancelLabel?
+
+<ApiMember kind="property" badges={['optional']} signature={['cancelLabel?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L49', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:49' }}>
+
+**Default**
+
+```ts
+'No';
+```
+
+</ApiMember>
+
+### confirmLabel?
+
+<ApiMember kind="property" badges={['optional']} signature={['confirmLabel?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L47', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:47' }}>
+
+**Default**
+
+```ts
+'Yes';
+```
+
+</ApiMember>
+
+### end?
+
+<ApiMember kind="property" badges={['optional']} signature={['end?: number']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L53', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:53' }}>
+
+Last number (inclusive) of the `number` strategy.
+
+**Default**
+
+```ts
+10;
+```
+
+</ApiMember>
+
+### start?
+
+<ApiMember kind="property" badges={['optional']} signature={['start?: number']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L51', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:51' }}>
+
+First number of the `number` strategy.
+
+**Default**
+
+```ts
+0;
+```
+
+</ApiMember>
+
+### store?
+
+<ApiMember kind="property" badges={['optional']} signature={['store?: ', ['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'], '<unknown>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L59', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:59' }}>
+
+The answer is only ever delivered to the process that called [`MessagePrompter.run`](/documentation/api/http-framework-utilities/classes/MessagePrompter#run), so this store is
+never actually written to; it is only checked for its [`scope`](/documentation/api/http-framework-utilities/interfaces/SessionStore#scope).
+
+**Default**
+
+```ts
+getSessionStore();
+```
+
+</ApiMember>
+
+### timeout?
+
+<ApiMember kind="property" badges={['optional']} signature={['timeout?: number']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L39', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:39' }}>
+
+How long to wait for an answer, in milliseconds, a positive integer. At most [`MaximumTokenLifetime`](/documentation/api/http-framework-utilities/variables/MaximumTokenLifetime): the
+prompt is only editable with the interaction token.
+
+**Default**
+
+```ts
+60_000;
+```
+
+</ApiMember>
+
+### timeoutBehavior?
+
+<ApiMember kind="property" badges={['optional']} signature={['timeoutBehavior?: ', ['TimeoutBehavior', '/documentation/api/http-framework-utilities/type-aliases/TimeoutBehavior']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L45', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:45' }}>
+
+What happens to the buttons when the prompt times out.
+
+**Default**
+
+```ts
+'disable';
+```
+
+</ApiMember>
+
+### wrongUserReply?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['wrongUserReply?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L40',
+		label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:40'
+	}}
+/>

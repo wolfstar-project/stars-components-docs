@@ -1,0 +1,45 @@
+---
+title: 'Function: validateMessage()'
+description: "Validates a message body against Discord's limits. (@wolfstar/http-framework-utilities)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L76',
+		label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:76'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Validates a message body against Discord's limits.
+
+<ApiSignature
+	tokens={[
+		'validateMessage(data: ',
+		['MessageBuilderData', '/documentation/api/http-framework-utilities/type-aliases/MessageBuilderData'],
+		'): void'
+	]}
+/>
+
+Validates a message body against Discord's limits.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['MessageBuilderData', '/documentation/api/http-framework-utilities/type-aliases/MessageBuilderData']]} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`RangeError` naming the first field over its limit.
+
+</ApiParam>
+
+</ApiParams>

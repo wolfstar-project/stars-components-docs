@@ -1,0 +1,58 @@
+---
+title: 'Interface: ChannelLike'
+description: "The minimal shape shared by every raw channel payload (APIChannel, APIInteractionDataResolvedChannel, and the interaction's channel). (@wolfstar/http-framework-utilities)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L21',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:21'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+The minimal shape shared by every raw channel payload (`APIChannel`, `APIInteractionDataResolvedChannel`, and the
+interaction's `channel`).
+
+<ApiSignature tokens={['interface ChannelLike']} />
+
+## Properties
+
+### id
+
+<ApiMember
+	kind="property"
+	signature={['id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L22',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:22'
+	}}
+/>
+
+### nsfw?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['nsfw?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L24',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:24'
+	}}
+/>
+
+### type
+
+<ApiMember
+	kind="property"
+	signature={['type: ', ['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L23',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:23'
+	}}
+/>

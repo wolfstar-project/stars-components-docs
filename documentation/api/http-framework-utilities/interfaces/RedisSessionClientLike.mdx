@@ -1,0 +1,107 @@
+---
+title: 'Interface: RedisSessionClientLike'
+description: 'The Redis commands RedisSessionStore needs. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L7',
+		label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:7'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+The Redis commands [`RedisSessionStore`](/documentation/api/http-framework-utilities/classes/RedisSessionStore) needs. An `ioredis` `Redis` or `Cluster` satisfies it as is.
+
+<ApiSignature tokens={['interface RedisSessionClientLike']} />
+
+## Methods
+
+### del()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L10', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:10' }}>
+
+<ApiSignature
+	tokens={[
+		'del(key: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L8', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:8' }}>
+
+<ApiSignature
+	tokens={[
+		'get(key: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string | null>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string | null>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L9', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:9' }}>
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: string, mode: "PX", ttl: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string']} />
+
+<ApiParam name="mode" type={['"PX"']} />
+
+<ApiParam name="ttl" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
