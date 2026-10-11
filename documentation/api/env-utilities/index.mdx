@@ -8,7 +8,7 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 
 <ApiPackageHeader
 	name="@wolfstar/env-utilities"
-	version="2.2.1"
+	version="2.3.1"
 	guideHref="/documentation/packages/env-utilities"
 	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/env-utilities"
 />
@@ -24,10 +24,24 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		{ name: 'EnvAny', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/EnvAny' },
 		{ name: 'EnvArray', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/EnvArray' },
 		{ name: 'EnvBoolean', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/EnvBoolean' },
+		{
+			name: 'EnvFromVarlock',
+			kind: 'type-alias',
+			href: '/documentation/api/env-utilities/type-aliases/EnvFromVarlock',
+			summary:
+				'Derives the Env entries of an application from the CoercedEnvSchema type that varlock generates with @generateTsTypes, so the schema stays…'
+		},
 		{ name: 'EnvInteger', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/EnvInteger' },
 		{ name: 'EnvNumber', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/EnvNumber' },
 		{ name: 'EnvSetupResult', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/EnvSetupResult' },
 		{ name: 'EnvString', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/EnvString' },
+		{
+			name: 'EnvValueFromVarlock',
+			kind: 'type-alias',
+			href: '/documentation/api/env-utilities/type-aliases/EnvValueFromVarlock',
+			summary:
+				"Maps one value type of varlock's generated CoercedEnvSchema to the string form process.env holds, as understood by the envParse functions."
+		},
 		{ name: 'IntegerString', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/IntegerString' },
 		{ name: 'NumberString', kind: 'type-alias', href: '/documentation/api/env-utilities/type-aliases/NumberString' },
 		{

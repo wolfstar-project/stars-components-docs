@@ -9,8 +9,8 @@ import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
 <ApiHeader
 	kind="type-alias"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/env-utilities/src/lib/types.ts#L7',
-		label: 'packages/env-utilities/src/lib/types.ts:7'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/env-utilities/src/lib/types.ts#L7',
+		label: 'types.ts:7'
 	}}
 	packageName="@wolfstar/env-utilities"
 	packageHref="/documentation/api/env-utilities"
@@ -21,8 +21,10 @@ import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
 		'type EnvString = { [K in ',
 		['EnvAny', '/documentation/api/env-utilities/type-aliases/EnvAny'],
 		']: ',
+		['NonNullable', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#nonnullabletype'],
+		'<',
 		['Env', '/documentation/api/env-utilities/interfaces/Env'],
-		'[K] extends ',
+		'[K]> extends ',
 		['BooleanString', '/documentation/api/env-utilities/type-aliases/BooleanString'],
 		' | ',
 		['IntegerString', '/documentation/api/env-utilities/type-aliases/IntegerString'],
