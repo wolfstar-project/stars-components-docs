@@ -1,0 +1,98 @@
+---
+title: 'Interface: StarsModule'
+description: 'API reference for StarsModule, an interface exported by @wolfstar/kit.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L82',
+		label: 'packages/kit/src/types.ts:82'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+<ApiSignature
+	tokens={[
+		'interface StarsModule<Options extends ',
+		['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions'],
+		' = ',
+		['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends ', ['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions']]} defaultValue="ModuleOptions" />
+
+</ApiParams>
+
+## Properties
+
+### defaults?
+
+<ApiMember kind="property" badges={['optional']} signature={['defaults?: Options']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L85', label: 'packages/kit/src/types.ts:85' }}>
+
+Merged under the options written in `stars.config`.
+
+</ApiMember>
+
+### dependencies?
+
+<ApiMember kind="property" badges={['optional']} signature={['dependencies?: readonly ', ['ModuleInput', '/documentation/api/kit/type-aliases/ModuleInput'], '<', ['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions'], '>[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L87', label: 'packages/kit/src/types.ts:87' }}>
+
+Modules installed before this one.
+
+</ApiMember>
+
+### hooks?
+
+<ApiMember kind="property" badges={['optional']} signature={['hooks?: {\n  build:before?: (config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  build:done?: (outcome: ', ['BuildOutcome', '/documentation/api/schema/interfaces/BuildOutcome'], ', config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  builder:created?: (builder: ', ['Builder', '/documentation/api/schema/interfaces/Builder'], ', config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  config:resolved?: (config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  dev:close?: (config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  dev:restart?: (reason: ', ['StarsRestartReason', '/documentation/api/schema/type-aliases/StarsRestartReason'], ', config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  dev:start?: (config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  env:options?: (options: ', ['StarsEnvSetupOptions', '/documentation/api/schema/interfaces/StarsEnvSetupOptions'], ', config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  prepare:before?: (config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n  prepare:done?: (config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ', result: ', ['PrepareProjectResult', '/documentation/api/schema/interfaces/PrepareProjectResult'], ') => HookResult;\n  tsdown:options?: (options: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown>, config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], ') => HookResult;\n}']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L89', label: 'packages/kit/src/types.ts:89' }}>
+
+Hooks of the `stars` CLI, registered before `setup` runs. An unknown hook name or a value that is not a function is rejected.
+
+</ApiMember>
+
+### meta
+
+<ApiMember
+	kind="property"
+	signature={['meta: ', ['ModuleMeta', '/documentation/api/kit/interfaces/ModuleMeta']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L83',
+		label: 'packages/kit/src/types.ts:83'
+	}}
+/>
+
+## Methods
+
+### setup()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L91', label: 'packages/kit/src/types.ts:91' }}>
+
+<ApiSignature
+	tokens={['setup(options: Options, ctx: ', ['ModuleContext', '/documentation/api/kit/interfaces/ModuleContext'], '): Awaitable<void>']}
+/>
+
+Runs in the CLI process, once, while the project loads.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['Options']} />
+
+<ApiParam name="ctx" type={[['ModuleContext', '/documentation/api/kit/interfaces/ModuleContext']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Awaitable<void>']} />
+
+</ApiParams>
+
+</ApiMember>

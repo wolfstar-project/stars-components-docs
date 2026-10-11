@@ -1,0 +1,82 @@
+---
+title: 'Interface: SetupModulesOptions'
+description: 'API reference for SetupModulesOptions, an interface exported by @wolfstar/kit.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/setup.ts#L15',
+		label: 'packages/kit/src/setup.ts:15'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+<ApiSignature tokens={['interface SetupModulesOptions']} />
+
+## Properties
+
+### config
+
+<ApiMember kind="property" signature={['config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/setup.ts#L17', label: 'packages/kit/src/setup.ts:17' }}>
+
+The resolved configuration: `root` and `modules` are read from it.
+
+</ApiMember>
+
+### hooks
+
+<ApiMember
+	kind="property"
+	signature={['hooks: ', ['ModuleHookHost', '/documentation/api/kit/interfaces/ModuleHookHost']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/setup.ts#L18',
+		label: 'packages/kit/src/setup.ts:18'
+	}}
+/>
+
+### versions?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['versions?: ', ['ModuleVersions', '/documentation/api/kit/interfaces/ModuleVersions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/setup.ts#L21',
+		label: 'packages/kit/src/setup.ts:21'
+	}}
+/>
+
+## Methods
+
+### load()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/setup.ts#L20', label: 'packages/kit/src/setup.ts:20' }}>
+
+<ApiSignature
+	tokens={[
+		'load(specifier: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+Imports a module specifier from the project. Its default export (or the namespace itself) is the module.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="specifier" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>

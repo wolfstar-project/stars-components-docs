@@ -1,0 +1,59 @@
+---
+title: 'Function: mergeOptions()'
+description: 'Merges options over defaults: plain objects merge deeply, everything else (arrays included) is replaced, and an undefined value in options keeps the… (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/options.ts#L9',
+		label: 'packages/kit/src/options.ts:9'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+Merges `options` over `defaults`: plain objects merge deeply, everything else (arrays included) is replaced, and an
+`undefined` value in `options` keeps the default.
+
+<ApiSignature
+	tokens={[
+		'mergeOptions<T extends ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, unknown>>(\n  defaults: T | undefined,\n  options: ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, unknown> | undefined\n): T'
+	]}
+/>
+
+Merges `options` over `defaults`: plain objects merge deeply, everything else (arrays included) is replaced, and an
+`undefined` value in `options` keeps the default.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="T"
+	type={['extends ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown>']}
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="defaults" type={['T | undefined']} />
+
+<ApiParam
+	name="options"
+	type={[['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown> | undefined']}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['T']} />
+
+</ApiParams>

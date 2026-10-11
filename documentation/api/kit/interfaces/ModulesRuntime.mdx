@@ -1,0 +1,47 @@
+---
+title: 'Interface: ModulesRuntime'
+description: 'What the installed modules contributed, known once the CLI ran their setup. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="interface" packageName="@wolfstar/kit" packageHref="/documentation/api/kit" />
+
+What the installed modules contributed, known once the CLI ran their `setup`. Empty until then.
+
+<ApiSignature tokens={['interface ModulesRuntime']} />
+
+## Properties
+
+### configKeys
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly configKeys: readonly string[]']}>
+
+The `meta.configKey` of every installed module that declares one: the top-level `stars.config` keys they own.
+
+</ApiMember>
+
+### imports
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly imports: readonly string[]']}>
+
+Packages added to `imports.presets` by `ctx.addImports`.
+
+</ApiMember>
+
+### modules
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly modules: readonly ', ['InstalledModule', '/documentation/api/kit/interfaces/InstalledModule'], '[]']}
+/>
+
+### plugins
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly plugins: readonly ', ['RuntimePluginRegistration', '/documentation/api/kit/interfaces/RuntimePluginRegistration'], '[]']}
+/>

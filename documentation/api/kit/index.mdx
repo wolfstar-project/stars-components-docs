@@ -1,0 +1,89 @@
+---
+title: '@wolfstar/kit'
+description: 'Generated API reference for @wolfstar/kit: defineModule and the module runtime for installable Stars modules.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/kit"
+	version="0.2.1"
+	guideHref="/documentation/packages/kit"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/kit"
+/>
+
+<InstallPackage packages="@wolfstar/kit" />
+
+<ApiSymbolList
+	symbols={[
+		{ name: 'ModuleError', kind: 'class', href: '/documentation/api/kit/classes/ModuleError', summary: 'Why a module could not be installed.' },
+		{
+			name: 'InstalledModule',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/InstalledModule',
+			summary: 'A module that was installed.'
+		},
+		{ name: 'ModuleContext', kind: 'interface', href: '/documentation/api/kit/interfaces/ModuleContext' },
+		{
+			name: 'ModuleHookHost',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/ModuleHookHost',
+			summary: 'The hook registry of the host.'
+		},
+		{ name: 'ModuleMeta', kind: 'interface', href: '/documentation/api/kit/interfaces/ModuleMeta' },
+		{
+			name: 'ModulePluginSource',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/ModulePluginSource',
+			summary: 'A runtime plugin to register with Client.use.'
+		},
+		{
+			name: 'ModulesRuntime',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/ModulesRuntime',
+			summary: 'What the installed modules contributed, known once the CLI ran their setup.'
+		},
+		{
+			name: 'ModuleVersions',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/ModuleVersions',
+			summary: 'What the host knows about the project: null when a version could not be found.'
+		},
+		{
+			name: 'RuntimePluginRegistration',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/RuntimePluginRegistration',
+			summary: 'A runtime plugin a module registered with ctx.addPlugin.'
+		},
+		{ name: 'SetupModulesOptions', kind: 'interface', href: '/documentation/api/kit/interfaces/SetupModulesOptions' },
+		{ name: 'StarsModule', kind: 'interface', href: '/documentation/api/kit/interfaces/StarsModule' },
+		{ name: 'ModuleErrorCode', kind: 'type-alias', href: '/documentation/api/kit/type-aliases/ModuleErrorCode' },
+		{
+			name: 'ModuleInput',
+			kind: 'type-alias',
+			href: '/documentation/api/kit/type-aliases/ModuleInput',
+			summary: 'A module to install: its specifier, or its definition, optionally with options.'
+		},
+		{
+			name: 'ModuleOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/kit/type-aliases/ModuleOptions',
+			summary: 'The options a module declares, merged from its defaults and the ones written in stars.config.'
+		},
+		{ name: 'defineModule', kind: 'function', href: '/documentation/api/kit/functions/defineModule', summary: 'Defines an installable module.' },
+		{
+			name: 'mergeOptions',
+			kind: 'function',
+			href: '/documentation/api/kit/functions/mergeOptions',
+			summary:
+				'Merges options over defaults: plain objects merge deeply, everything else (arrays included) is replaced, and an undefined value in options…'
+		},
+		{
+			name: 'setupModules',
+			kind: 'function',
+			href: '/documentation/api/kit/functions/setupModules',
+			summary: 'Installs the modules listed in config.modules, in order and each dependency first, and returns what they contributed.'
+		}
+	]}
+/>

@@ -1,0 +1,55 @@
+---
+title: 'Interface: ModulePluginSource'
+description: 'A runtime plugin to register with Client.use. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L49',
+		label: 'packages/kit/src/types.ts:49'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+A runtime plugin to register with `Client.use`. It is given by source: the plugin lives in the bot's process, the
+module's `setup` in the CLI's. The `export` of `from` is the plugin (`definePlugin({ … })`) or, when it is a
+function, a factory called with `options` (`definePlugin((options) => ({ … }))`). A legacy `Plugin` class is
+passed to `Client.use` as it is, never called.
+
+<ApiSignature tokens={['interface ModulePluginSource']} />
+
+## Properties
+
+### export?
+
+<ApiMember kind="property" badges={['optional']} signature={['export?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L56', label: 'packages/kit/src/types.ts:56' }}>
+
+**Default**
+
+```ts
+'default';
+```
+
+</ApiMember>
+
+### from
+
+<ApiMember kind="property" signature={['from: string | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L54', label: 'packages/kit/src/types.ts:54' }}>
+
+A package specifier (resolved from the project), an absolute path or a `file:` URL, e.g. `new URL('./plugin.js',
+import.meta.url)`. A relative path is rejected: it would resolve differently in each build tool.
+
+</ApiMember>
+
+### options?
+
+<ApiMember kind="property" badges={['optional']} signature={['options?: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L58', label: 'packages/kit/src/types.ts:58' }}>
+
+Must be JSON-serialisable: it is written into the built entry.
+
+</ApiMember>
