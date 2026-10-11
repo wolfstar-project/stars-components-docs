@@ -1,35 +1,52 @@
 ---
 title: 'Function: Enumerable()'
+description: 'Decorator that sets the enumerable property of a class field to the given value. (@wolfstar/decorators)'
 hidden: true
 ---
 
-> **Enumerable**(`value`): (`target`, `key`) => `void`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/decorators/src/Enumerable.ts:25](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/Enumerable.ts#L25)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/Enumerable.ts#L25',
+		label: 'Enumerable.ts:25'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
 
 Decorator that sets the `enumerable` property of a class field to the given value.
 
-## Parameters
+<ApiSignature tokens={['Enumerable(value: boolean): (target: unknown, key: string) => void']} />
 
-### value
-
-`boolean`
-
-Whether the property should be enumerable or not.
-
-## Returns
-
-A property decorator.
-
-(`target`, `key`) => `void`
-
-## Remarks
+Decorator that sets the `enumerable` property of a class field to the given value.
 
 The decorator installs a setter on the prototype, which is bypassed by the `Object.defineProperty` call
 that `useDefineForClassFields` (enabled by `@sapphire/ts-config`, and the default from `ES2022` onwards) emits for
 class fields. Mark the field as `declare` so no field definition is emitted, and assign it in the constructor.
 
-## Example
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['boolean']}>
+
+Whether the property should be enumerable or not.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['(target: unknown, key: string) => void']}>
+
+A property decorator.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example**
 
 ```typescript
 import { Enumerable } from '@wolfstar/decorators';

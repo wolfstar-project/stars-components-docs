@@ -1,35 +1,59 @@
 ---
 title: 'Function: RequiresUserPermissions()'
+description: 'Decorator that only runs the decorated method when the invoking user has all of the given permissions in the channel the interaction was sent from. (@wolfstar/decorators)'
 hidden: true
 ---
 
-> **RequiresUserPermissions**(...`permissions`): `MethodDecorator`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/decorators/src/RequiresPermissions.ts:94](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/RequiresPermissions.ts#L94)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/RequiresPermissions.ts#L96',
+		label: 'RequiresPermissions.ts:96'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
 
 Decorator that only runs the decorated method when the invoking user has all of the given permissions in the channel
 the interaction was sent from.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'RequiresUserPermissions(...permissions: ',
+		['PermissionResolvable', '/documentation/api/http-framework/type-aliases/PermissionResolvable'],
+		'[]): MethodDecorator'
+	]}
+/>
 
-### permissions
-
-...`PermissionResolvable`[]
-
-The permissions the invoking user must have.
-
-## Returns
-
-`MethodDecorator`
-
-A method decorator.
-
-## Remarks
+Decorator that only runs the decorated method when the invoking user has all of the given permissions in the channel
+the interaction was sent from.
 
 Interactions received outside of a guild carry no member permissions, so the check passes for them. Pair
 this decorator with [`RequiresGuildContext`](/documentation/api/decorators/functions/RequiresGuildContext) when the method must also be guild-only.
 
-## Example
+<ApiParams title="Parameters">
+
+<ApiParam name="permissions" type={[['PermissionResolvable', '/documentation/api/http-framework/type-aliases/PermissionResolvable'], '[]']} rest>
+
+The permissions the invoking user must have.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['MethodDecorator']}>
+
+A method decorator.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example**
 
 ```typescript
 import { RequiresUserPermissions } from '@wolfstar/decorators';

@@ -3,21 +3,100 @@ title: '@wolfstar/decorators'
 description: 'Generated API reference for @wolfstar/decorators: ApplyOptions, Requires* context and permission preconditions, Enumerable, and decorator factories.'
 ---
 
-## Type Aliases
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
 
-- ContextFallback
-- PieceConstructor
+<ApiPackageHeader
+	name="@wolfstar/decorators"
+	version="0.1.2"
+	guideHref="/documentation/packages/decorators"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/decorators"
+/>
 
-## Functions
+<InstallPackage packages="@wolfstar/decorators" />
 
-- [ApplyOptions](/documentation/api/decorators/functions/ApplyOptions)
-- [createClassDecorator](/documentation/api/decorators/functions/createClassDecorator)
-- [createFunctionPrecondition](/documentation/api/decorators/functions/createFunctionPrecondition)
-- [createMethodDecorator](/documentation/api/decorators/functions/createMethodDecorator)
-- [createProxy](/documentation/api/decorators/functions/createProxy)
-- [Enumerable](/documentation/api/decorators/functions/Enumerable)
-- [EnumerableMethod](/documentation/api/decorators/functions/EnumerableMethod)
-- [RequiresClientPermissions](/documentation/api/decorators/functions/RequiresClientPermissions)
-- [RequiresDMContext](/documentation/api/decorators/functions/RequiresDMContext)
-- [RequiresGuildContext](/documentation/api/decorators/functions/RequiresGuildContext)
-- [RequiresUserPermissions](/documentation/api/decorators/functions/RequiresUserPermissions)
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'ContextFallback',
+			kind: 'type-alias',
+			href: '/documentation/api/decorators/type-aliases/ContextFallback',
+			summary: 'The fallback invoked when a context precondition is not met.'
+		},
+		{
+			name: 'PieceConstructor',
+			kind: 'type-alias',
+			href: '/documentation/api/decorators/type-aliases/PieceConstructor',
+			summary: 'The constructor signature shared by every Piece of @wolfstar/http-framework, such as Command, Listener, and InteractionHandler.'
+		},
+		{
+			name: 'ApplyOptions',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/ApplyOptions',
+			summary: 'Decorator that sets the options of a Piece, such as a Command, a Listener, or an InteractionHandler.'
+		},
+		{
+			name: 'createClassDecorator',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/createClassDecorator',
+			summary: 'Utility to make a class decorator from a function.'
+		},
+		{
+			name: 'createFunctionPrecondition',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/createFunctionPrecondition',
+			summary: 'Utility to make a method decorator with lighter syntax and inferred types.'
+		},
+		{
+			name: 'createMethodDecorator',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/createMethodDecorator',
+			summary: 'Utility to make a method decorator from a function.'
+		},
+		{
+			name: 'createProxy',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/createProxy',
+			summary: 'Creates a new proxy to efficiently add properties to a class without creating subclasses.'
+		},
+		{
+			name: 'Enumerable',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/Enumerable',
+			summary: 'Decorator that sets the enumerable property of a class field to the given value.'
+		},
+		{
+			name: 'EnumerableMethod',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/EnumerableMethod',
+			summary: 'Decorator that sets the enumerable property of a class method to the given value.'
+		},
+		{
+			name: 'RequiresClientPermissions',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/RequiresClientPermissions',
+			summary:
+				'Decorator that only runs the decorated method when the application has all of the given permissions in the channel the interaction was sent…'
+		},
+		{
+			name: 'RequiresDMContext',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/RequiresDMContext',
+			summary:
+				'Decorator that only runs the decorated method when the interaction was not received from a guild, that is, from a DM or from a user-install…'
+		},
+		{
+			name: 'RequiresGuildContext',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/RequiresGuildContext',
+			summary: 'Decorator that only runs the decorated method when the interaction was received from a guild.'
+		},
+		{
+			name: 'RequiresUserPermissions',
+			kind: 'function',
+			href: '/documentation/api/decorators/functions/RequiresUserPermissions',
+			summary:
+				'Decorator that only runs the decorated method when the invoking user has all of the given permissions in the channel the interaction was se…'
+		}
+	]}
+/>

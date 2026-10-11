@@ -1,29 +1,48 @@
 ---
 title: 'Function: EnumerableMethod()'
+description: 'Decorator that sets the enumerable property of a class method to the given value. (@wolfstar/decorators)'
 hidden: true
 ---
 
-> **EnumerableMethod**(`value`): (`_target`, `_key`, `descriptor`) => `void`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/decorators/src/Enumerable.ts:59](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/Enumerable.ts#L59)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/Enumerable.ts#L59',
+		label: 'Enumerable.ts:59'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
 
 Decorator that sets the `enumerable` property of a class method to the given value.
 
-## Parameters
+<ApiSignature tokens={['EnumerableMethod(value: boolean): (_target: unknown, _key: string, descriptor: PropertyDescriptor) => void']} />
 
-### value
+Decorator that sets the `enumerable` property of a class method to the given value.
 
-`boolean`
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['boolean']}>
 
 Whether the method should be enumerable or not.
 
-## Returns
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['(_target: unknown, _key: string, descriptor: PropertyDescriptor) => void']}>
 
 A method decorator.
 
-(`_target`, `_key`, `descriptor`) => `void`
+</ApiParam>
 
-## Example
+</ApiParams>
+
+**Example**
 
 ```typescript
 import { EnumerableMethod } from '@wolfstar/decorators';

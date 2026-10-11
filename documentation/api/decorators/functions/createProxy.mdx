@@ -1,36 +1,61 @@
 ---
 title: 'Function: createProxy()'
+description: 'Creates a new proxy to efficiently add properties to a class without creating subclasses. (@wolfstar/decorators)'
 hidden: true
 ---
 
-> **createProxy**\<`T`\>(`target`, `handler`): `T`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/decorators/src/utils.ts:43](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/utils.ts#L43)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/utils.ts#L43',
+		label: 'utils.ts:43'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
 
 Creates a new proxy to efficiently add properties to a class without creating subclasses.
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'createProxy<T extends object>(target: T, handler: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<ProxyHandler<T>, "get">): T'
+	]}
+/>
 
-### T
+Creates a new proxy to efficiently add properties to a class without creating subclasses.
 
-`T` _extends_ `object`
+<ApiParams title="Type Parameters">
 
-## Parameters
+<ApiParam name="T" type={['extends object']} />
 
-### target
+</ApiParams>
 
-`T`
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={['T']}>
 
 The constructor of the class to modify.
 
-### handler
+</ApiParam>
 
-`Omit`\<`ProxyHandler`\<`T`\>, `"get"`\>
+<ApiParam name="handler" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<ProxyHandler<T>, "get">']}>
 
 The handler function to modify the constructor behavior for the target.
 
-## Returns
+</ApiParam>
 
-`T`
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['T']}>
 
 The proxy.
+
+</ApiParam>
+
+</ApiParams>
