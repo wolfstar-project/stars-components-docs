@@ -4,3 +4,9 @@ rules:
     dangerous-triggers:
         ignore:
             - semantic-pull-requests.yml
+    # The Mintlify CLI is the tool that validates this site, so `ci` installs it with npm. Putting it in
+    # package.json would resolve ~1000 packages into pnpm-lock.yaml and into every lint job, for a job that
+    # has read-only contents access and no secrets.
+    adhoc-packages:
+        ignore:
+            - ci.yml
