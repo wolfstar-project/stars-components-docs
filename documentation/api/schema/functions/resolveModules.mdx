@@ -1,0 +1,43 @@
+---
+title: 'Function: resolveModules()'
+description: 'Normalises modules: falsy entries are dropped, a bare specifier gets empty options. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/modules.ts#L8',
+		label: 'packages/schema/src/config/modules.ts:8'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Normalises `modules`: falsy entries are dropped, a bare specifier gets empty options.
+
+<ApiSignature
+	tokens={[
+		'resolveModules(config: unknown, validator: Validator): readonly ',
+		['ResolvedModuleEntry', '/documentation/api/schema/interfaces/ResolvedModuleEntry'],
+		'[]'
+	]}
+/>
+
+Normalises `modules`: falsy entries are dropped, a bare specifier gets empty options.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={['unknown']} />
+
+<ApiParam name="validator" type={['Validator']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['readonly ', ['ResolvedModuleEntry', '/documentation/api/schema/interfaces/ResolvedModuleEntry'], '[]']} />
+
+</ApiParams>

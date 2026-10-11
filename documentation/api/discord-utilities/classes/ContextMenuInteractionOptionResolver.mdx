@@ -1,0 +1,129 @@
+---
+title: 'Class: ContextMenuInteractionOptionResolver'
+description: 'Utility class for resolving (context menu) interaction options while working with the raw API. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts#L17',
+		label: 'packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts:17'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Utility class for resolving (context menu) interaction options while working with the raw API.
+Based on [https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js](https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js)
+
+<ApiSignature tokens={['class ContextMenuInteractionOptionResolver']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts#L25', label: 'packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts:25' }}>
+
+<ApiSignature
+	tokens={[
+		'new ContextMenuInteractionOptionResolver(interaction: ',
+		['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction'],
+		'): ',
+		['ContextMenuInteractionOptionResolver', '/documentation/api/discord-utilities/classes/ContextMenuInteractionOptionResolver']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[['APIContextMenuInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIContextMenuInteraction']]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### getTargetMember()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts#L46', label: 'packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'getTargetMember<Required extends boolean = false>(required?: Required): ',
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+Gets the target member for a context menu interaction
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the member data is not present
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RequiredIf', '/documentation/api/discord-utilities/type-aliases/RequiredIf'],
+		'<Required, ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getTargetMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts#L64', label: 'packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts:64' }}>
+
+<ApiSignature tokens={['getTargetMessage(): ', ['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage']]} />
+
+Gets the target message for a context menu interaction
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getTargetUser()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts#L34', label: 'packages/discord-utilities/src/lib/resolvers/ContextMenuInteractionOptionResolver.ts:34' }}>
+
+<ApiSignature tokens={['getTargetUser(): ', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser']]} />
+
+Gets the target user for a context menu interaction
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser']]} />
+
+</ApiParams>
+
+</ApiMember>

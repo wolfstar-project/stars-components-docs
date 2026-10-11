@@ -1,0 +1,31 @@
+---
+title: 'Variable: WebhookRegex'
+description: 'Regex that captures the Webhook ID and token from a Discord Webhook URL. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/regexes.ts#L146',
+		label: 'packages/discord-utilities/src/lib/regexes.ts:146'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Regex that captures the Webhook ID and token from a Discord Webhook URL.
+
+<ApiSignature
+	tokens={['const WebhookRegex: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]}
+/>
+
+Capture group 1 is the full URL of the Discord Webhook. It is named `url`.
+
+Capture group 2 is the ID of the Discord Webhook. It is named `id`.
+
+Capture group 3 is the token of the Discord Webhook. It is named `token`.
+
+for regular HTTP URLs see [HttpUrlRegex](/documentation/api/discord-utilities/variables/HttpUrlRegex)

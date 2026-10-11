@@ -1,0 +1,43 @@
+---
+title: 'Function: isGuildMember()'
+description: 'Whether the value is a full guild member (APIGuildMember / APIInteractionGuildMember), as opposed to a resolved member from interaction data, which l… (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L103',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:103'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Whether the value is a full guild member (`APIGuildMember` / `APIInteractionGuildMember`), as opposed to a resolved
+member from interaction data, which lacks `user`.
+
+<ApiSignature
+	tokens={[
+		'isGuildMember(member: object | ',
+		['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish'],
+		'): member is {\n  joined_at: string;\n  roles: string[];\n  user: { id: string };\n}'
+	]}
+/>
+
+Whether the value is a full guild member (`APIGuildMember` / `APIInteractionGuildMember`), as opposed to a resolved
+member from interaction data, which lacks `user`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="member" type={['object | ', ['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['member is {\n  joined_at: string;\n  roles: string[];\n  user: { id: string };\n}']} />
+
+</ApiParams>

@@ -1,0 +1,37 @@
+---
+title: 'Type Alias: PreconditionResolvable'
+description: 'An entry of the preconditions option of a command: the name of a Precondition piece, that name with a context, or a PreconditionFunction. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L104',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:104'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+An entry of the `preconditions` option of a command: the name of a [Precondition](/documentation/api/http-framework/classes/Precondition) piece, that name with a
+context, or a [PreconditionFunction](/documentation/api/http-framework/type-aliases/PreconditionFunction).
+
+<ApiSignature
+	tokens={[
+		'type PreconditionResolvable<Function = ',
+		['PreconditionFunction', '/documentation/api/http-framework/type-aliases/PreconditionFunction'],
+		'> = string | ',
+		['PreconditionDetails', '/documentation/api/http-framework/interfaces/PreconditionDetails'],
+		' | Function'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Function" defaultValue="PreconditionFunction" />
+
+</ApiParams>

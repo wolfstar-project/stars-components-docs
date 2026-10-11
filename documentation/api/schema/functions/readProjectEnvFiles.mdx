@@ -1,0 +1,55 @@
+---
+title: 'Function: readProjectEnvFiles()'
+description: "Reads the project's environment layers from src/.env and .env into a plain object, the way stars dev and stars commands need it: these files are only… (@wolfstar/schema)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L531',
+		label: 'packages/schema/src/config/resolve.ts:531'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Reads the project's environment layers from `src/.env*` and `.env*` into a plain object, the way `stars dev` and
+`stars commands` need it:
+these files are only loaded into `process.env` by the bot itself once it starts (see `@wolfstar/env-utilities`),
+so by the time the CLI runs they are not there yet. This is a minimal line reader, not a full dotenv
+implementation — quoting is stripped, but expansion (`dotenv-expand`) is not. Earlier files win, matching
+dotenv's own precedence.
+
+<ApiSignature
+	tokens={[
+		"readProjectEnvFiles(\n  root: string,\n  environment: string = 'development',\n  options: { path?: string } = {}\n): ",
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, string>'
+	]}
+/>
+
+Reads the project's environment layers from `src/.env*` and `.env*` into a plain object, the way `stars dev` and
+`stars commands` need it:
+these files are only loaded into `process.env` by the bot itself once it starts (see `@wolfstar/env-utilities`),
+so by the time the CLI runs they are not there yet. This is a minimal line reader, not a full dotenv
+implementation — quoting is stripped, but expansion (`dotenv-expand`) is not. Earlier files win, matching
+dotenv's own precedence.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="root" type={['string']} />
+
+<ApiParam name="environment" type={['string']} defaultValue={"'development'"} />
+
+<ApiParam name="options" type={['{ path?: string }']} defaultValue={'{}'} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>']} />
+
+</ApiParams>

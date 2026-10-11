@@ -1,0 +1,53 @@
+---
+title: 'Variable: TriggerTypeLimits'
+description: 'Namespace containing limits related to Discord Auto Moderation Triggers. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/limits.ts#L691',
+		label: 'packages/discord-utilities/src/lib/limits.ts:691'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Namespace containing limits related to Discord Auto Moderation Triggers.
+
+<ApiSignature
+	tokens={[
+		'const TriggerTypeLimits: {\n  readonly MaximumKeywordPresetTriggersPerChannel: 1;\n  readonly MaximumKeywordTriggersPerGuild: 6;\n  readonly MaximumMentionSpamTriggersPerChannel: 1;\n  readonly MaximumSpamTriggersPerGuild: 1;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumKeywordPresetTriggersPerChannel" type={['1']}>
+
+Maximum number of keyword triggers a channel can have.
+
+</ApiParam>
+
+<ApiParam name="MaximumKeywordTriggersPerGuild" type={['6']}>
+
+Maximum number of keyword triggers a guild can have.
+
+</ApiParam>
+
+<ApiParam name="MaximumMentionSpamTriggersPerChannel" type={['1']}>
+
+Maximum number of mention spam triggers a channel can have.
+
+</ApiParam>
+
+<ApiParam name="MaximumSpamTriggersPerGuild" type={['1']}>
+
+Maximum number of mention spam triggers a guild can have.
+
+</ApiParam>
+
+</ApiParams>

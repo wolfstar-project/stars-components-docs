@@ -1,0 +1,37 @@
+---
+title: 'Variable: ThreadLimits'
+description: 'Namespace containing limits related to Discord threads. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/limits.ts#L61',
+		label: 'packages/discord-utilities/src/lib/limits.ts:61'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Namespace containing limits related to Discord threads.
+
+<ApiSignature tokens={['const ThreadLimits: {\n  readonly MaximumThreadsToFetch: 100;\n  readonly MinimumThreadsToFetch: 1;\n}']} />
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumThreadsToFetch" type={['100']}>
+
+Maximum number of threads to return from the threads API.
+
+</ApiParam>
+
+<ApiParam name="MinimumThreadsToFetch" type={['1']}>
+
+Minimum number of threads to return from the threads API.
+
+</ApiParam>
+
+</ApiParams>

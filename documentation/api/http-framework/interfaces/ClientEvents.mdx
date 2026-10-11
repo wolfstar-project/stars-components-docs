@@ -9,8 +9,8 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L73',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:73'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L84',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:84'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -19,6 +19,23 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 <ApiSignature tokens={['interface ClientEvents']} />
 
 ## Properties
+
+### autocompleteAccepted
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['autocompleteAccepted: [context: ', ['ClientEventAutocompleteContext', '/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L164', label: 'packages/http-framework/src/lib/ClientEvents.ts:164' }}>
+
+Emitted when an autocomplete interaction passes every precondition, right before
+[ClientEvents.autocompleteRun](/documentation/api/http-framework/interfaces/ClientEvents#autocompleterun).
+
+</ApiMember>
+
+### autocompleteDenied
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['autocompleteDenied: [error: ', ['UserError', '/documentation/api/http-framework/classes/UserError'], ', context: ', ['ClientEventAutocompleteContext', '/documentation/api/http-framework/interfaces/ClientEventAutocompleteContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L173', label: 'packages/http-framework/src/lib/ClientEvents.ts:173' }}>
+
+Emitted when an autocomplete handler throws a [UserError](/documentation/api/http-framework/classes/UserError), instead of [ClientEvents.autocompleteError](/documentation/api/http-framework/interfaces/ClientEvents#autocompleteerror).
+
+</ApiMember>
 
 ### autocompleteError
 
@@ -30,8 +47,8 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L97',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:97'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L167',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:167'
 	}}
 />
 
@@ -45,8 +62,8 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L98',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:98'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L174',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:174'
 	}}
 />
 
@@ -60,8 +77,8 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L95',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:95'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L165',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:165'
 	}}
 />
 
@@ -75,25 +92,40 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		', value: unknown]'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L96',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:96'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L166',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:166'
 	}}
 />
+
+### chatInputCommandAccepted
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['chatInputCommandAccepted: [context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L121', label: 'packages/http-framework/src/lib/ClientEvents.ts:121' }}>
+
+Emitted when a chat input command passes every precondition, right before [ClientEvents.commandRun](/documentation/api/http-framework/interfaces/ClientEvents#commandrun).
+
+</ApiMember>
+
+### chatInputCommandDenied
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['chatInputCommandDenied: [error: ', ['UserError', '/documentation/api/http-framework/classes/UserError'], ', context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L149', label: 'packages/http-framework/src/lib/ClientEvents.ts:149' }}>
+
+Emitted when a chat input command throws a [UserError](/documentation/api/http-framework/classes/UserError), an expected failure that is meant to be shown to the
+user. The `error` event is still emitted, and the HTTP response is produced as for any other thrown error
+(`httpReplyOnError`).
+
+</ApiMember>
 
 ### commandError
 
-<ApiMember
-	kind="property"
-	signature={[
-		'commandError: [error: unknown, context: ',
-		['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'],
-		']'
-	]}
-	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L93',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:93'
-	}}
-/>
+<ApiMember kind="property" signature={['commandError: [error: unknown, context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L141', label: 'packages/http-framework/src/lib/ClientEvents.ts:141' }}>
+
+Emitted when a command throws something that is not a [UserError](/documentation/api/http-framework/classes/UserError). A [UserError](/documentation/api/http-framework/classes/UserError) is emitted as
+[ClientEvents.chatInputCommandDenied](/documentation/api/http-framework/interfaces/ClientEvents#chatinputcommanddenied) or [ClientEvents.contextMenuCommandDenied](/documentation/api/http-framework/interfaces/ClientEvents#contextmenucommanddenied) instead.
+
+Since 6.3.0 a thrown [UserError](/documentation/api/http-framework/classes/UserError) (such as the `PreconditionError` of `@wolfstar/decorators`) no
+longer reaches this event.
+
+</ApiMember>
 
 ### commandFinish
 
@@ -105,8 +137,8 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L94',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:94'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L157',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:157'
 	}}
 />
 
@@ -120,8 +152,8 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L90',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:90'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L101',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:101'
 	}}
 />
 
@@ -142,8 +174,8 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		'>]'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L88',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:88'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L99',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:99'
 	}}
 />
 
@@ -166,25 +198,19 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		'>]'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L89',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:89'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L100',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:100'
 	}}
 />
 
 ### commandRun
 
-<ApiMember
-	kind="property"
-	signature={[
-		'commandRun: [context: ',
-		['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'],
-		']'
-	]}
-	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L91',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:91'
-	}}
-/>
+<ApiMember kind="property" signature={['commandRun: [context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L132', label: 'packages/http-framework/src/lib/ClientEvents.ts:132' }}>
+
+Emitted right before the method of a command runs. Since 6.3.0 that is after its preconditions passed, so a
+denied command does not emit it.
+
+</ApiMember>
 
 ### commandSuccess
 
@@ -196,10 +222,27 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 		', value: unknown]'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L92',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:92'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L133',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:133'
 	}}
 />
+
+### contextMenuCommandAccepted
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['contextMenuCommandAccepted: [context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L127', label: 'packages/http-framework/src/lib/ClientEvents.ts:127' }}>
+
+Emitted when a context menu command passes every precondition, right before [ClientEvents.commandRun](/documentation/api/http-framework/interfaces/ClientEvents#commandrun).
+
+</ApiMember>
+
+### contextMenuCommandDenied
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['contextMenuCommandDenied: [error: ', ['UserError', '/documentation/api/http-framework/classes/UserError'], ', context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L156', label: 'packages/http-framework/src/lib/ClientEvents.ts:156' }}>
+
+Emitted when a user or message context menu command throws a [UserError](/documentation/api/http-framework/classes/UserError). See
+[ClientEvents.chatInputCommandDenied](/documentation/api/http-framework/interfaces/ClientEvents#chatinputcommanddenied).
+
+</ApiMember>
 
 ### error
 
@@ -207,14 +250,14 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 	kind="property"
 	signature={['error: [error: unknown]']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L74',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:74'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L85',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:85'
 	}}
 />
 
 ### hmrError
 
-<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrError: [error: unknown, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L141', label: 'packages/http-framework/src/lib/ClientEvents.ts:141' }}>
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrError: [error: unknown, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L231', label: 'packages/http-framework/src/lib/ClientEvents.ts:231' }}>
 
 Emitted when the Hot Module Reloader fails to load, reload, or unload the pieces of a file. The error is not
 rethrown: saving the file again retries the operation.
@@ -223,7 +266,7 @@ rethrown: saving the file again retries the operation.
 
 ### hmrPieceReloaded
 
-<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPieceReloaded: [piece: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L128', label: 'packages/http-framework/src/lib/ClientEvents.ts:128' }}>
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPieceReloaded: [piece: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L218', label: 'packages/http-framework/src/lib/ClientEvents.ts:218' }}>
 
 Emitted when the Hot Module Reloader reloads an already loaded piece after its file changed.
 
@@ -231,7 +274,7 @@ Emitted when the Hot Module Reloader reloads an already loaded piece after its f
 
 ### hmrPiecesLoaded
 
-<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPiecesLoaded: [pieces: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>[], path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L122', label: 'packages/http-framework/src/lib/ClientEvents.ts:122' }}>
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPiecesLoaded: [pieces: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>[], path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L212', label: 'packages/http-framework/src/lib/ClientEvents.ts:212' }}>
 
 Emitted when the Hot Module Reloader loads the pieces of a newly created file.
 
@@ -239,7 +282,7 @@ Emitted when the Hot Module Reloader loads the pieces of a newly created file.
 
 ### hmrPieceUnloaded
 
-<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPieceUnloaded: [piece: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L134', label: 'packages/http-framework/src/lib/ClientEvents.ts:134' }}>
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrPieceUnloaded: [piece: Piece<PieceOptions, keyof ', ['StoreRegistryEntries', '/documentation/api/http-framework/interfaces/StoreRegistryEntries'], '>, path: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L224', label: 'packages/http-framework/src/lib/ClientEvents.ts:224' }}>
 
 Emitted when the Hot Module Reloader unloads a piece after its file was deleted.
 
@@ -247,7 +290,7 @@ Emitted when the Hot Module Reloader unloads a piece after its file was deleted.
 
 ### hmrStart
 
-<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrStart: [paths: string[]]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L110', label: 'packages/http-framework/src/lib/ClientEvents.ts:110' }}>
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrStart: [paths: string[]]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L200', label: 'packages/http-framework/src/lib/ClientEvents.ts:200' }}>
 
 Emitted when the Hot Module Reloader starts watching, with the list of watched store paths.
 
@@ -255,9 +298,27 @@ Emitted when the Hot Module Reloader starts watching, with the list of watched s
 
 ### hmrStop
 
-<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrStop: []']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L116', label: 'packages/http-framework/src/lib/ClientEvents.ts:116' }}>
+<ApiMember kind="property" badges={['since 3.3.0']} signature={['hmrStop: []']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L206', label: 'packages/http-framework/src/lib/ClientEvents.ts:206' }}>
 
 Emitted when the Hot Module Reloader stops watching and all of its watchers have been closed.
+
+</ApiMember>
+
+### interactionHandlerAccepted
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['interactionHandlerAccepted: [context: ', ['ClientEventInteractionHandlerContext', '/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L183', label: 'packages/http-framework/src/lib/ClientEvents.ts:183' }}>
+
+Emitted when an interaction handler passes every precondition, right before
+[ClientEvents.interactionHandlerRun](/documentation/api/http-framework/interfaces/ClientEvents#interactionhandlerrun).
+
+</ApiMember>
+
+### interactionHandlerDenied
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['interactionHandlerDenied: [error: ', ['UserError', '/documentation/api/http-framework/classes/UserError'], ', context: ', ['ClientEventInteractionHandlerContext', '/documentation/api/http-framework/interfaces/ClientEventInteractionHandlerContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L193', label: 'packages/http-framework/src/lib/ClientEvents.ts:193' }}>
+
+Emitted when an interaction handler throws a [UserError](/documentation/api/http-framework/classes/UserError), instead of
+[ClientEvents.interactionHandlerError](/documentation/api/http-framework/interfaces/ClientEvents#interactionhandlererror).
 
 </ApiMember>
 
@@ -271,8 +332,8 @@ Emitted when the Hot Module Reloader stops watching and all of its watchers have
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L103',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:103'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L186',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:186'
 	}}
 />
 
@@ -286,8 +347,8 @@ Emitted when the Hot Module Reloader stops watching and all of its watchers have
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L104',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:104'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L194',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:194'
 	}}
 />
 
@@ -307,8 +368,8 @@ Emitted when the Hot Module Reloader stops watching and all of its watchers have
 		'>]'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L99',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:99'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L175',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:175'
 	}}
 />
 
@@ -328,8 +389,8 @@ Emitted when the Hot Module Reloader stops watching and all of its watchers have
 		'>]'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L100',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:100'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L176',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:176'
 	}}
 />
 
@@ -343,8 +404,8 @@ Emitted when the Hot Module Reloader stops watching and all of its watchers have
 		']'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L101',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:101'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L184',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:184'
 	}}
 />
 
@@ -358,14 +419,14 @@ Emitted when the Hot Module Reloader stops watching and all of its watchers have
 		', value: unknown]'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L102',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:102'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L185',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:185'
 	}}
 />
 
 ### pluginLoaded
 
-<ApiMember kind="property" signature={['pluginLoaded: [hook: ', ['PluginHook', '/documentation/api/http-framework/enumerations/PluginHook'], ', name: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L87', label: 'packages/http-framework/src/lib/ClientEvents.ts:87' }}>
+<ApiMember kind="property" signature={['pluginLoaded: [hook: ', ['PluginHook', '/documentation/api/http-framework/enumerations/PluginHook'], ', name: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L98', label: 'packages/http-framework/src/lib/ClientEvents.ts:98' }}>
 
 Emitted after a plugin hook runs, providing the hook's [PluginHook](/documentation/api/http-framework/enumerations/PluginHook) and the plugin's name
 (or `undefined` when the registering plugin did not provide one).
@@ -376,5 +437,23 @@ returns. A listener attached afterwards cannot observe them (not even one added 
 whose constructor body only runs after `super()` has already executed those hooks), so only the
 `PreLoad` (during `Client#load`) and `PostListen` (during `Client#listen`) emissions are
 observable. To react to the constructor-phase hooks, use the plugin hooks themselves.
+
+</ApiMember>
+
+### preChatInputCommandRun
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['preChatInputCommandRun: [context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L108', label: 'packages/http-framework/src/lib/ClientEvents.ts:108' }}>
+
+Emitted for a chat input command before its preconditions run, then followed by either
+[ClientEvents.chatInputCommandDenied](/documentation/api/http-framework/interfaces/ClientEvents#chatinputcommanddenied) or [ClientEvents.chatInputCommandAccepted](/documentation/api/http-framework/interfaces/ClientEvents#chatinputcommandaccepted).
+
+</ApiMember>
+
+### preContextMenuCommandRun
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['preContextMenuCommandRun: [context: ', ['ClientEventCommandContext', '/documentation/api/http-framework/interfaces/ClientEventCommandContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L115', label: 'packages/http-framework/src/lib/ClientEvents.ts:115' }}>
+
+Emitted for a user or message context menu command before its preconditions run, then followed by either
+[ClientEvents.contextMenuCommandDenied](/documentation/api/http-framework/interfaces/ClientEvents#contextmenucommanddenied) or [ClientEvents.contextMenuCommandAccepted](/documentation/api/http-framework/interfaces/ClientEvents#contextmenucommandaccepted).
 
 </ApiMember>

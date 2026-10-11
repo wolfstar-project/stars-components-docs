@@ -1,0 +1,387 @@
+---
+title: '@wolfstar/discord-utilities'
+description: 'Generated API reference for @wolfstar/discord-utilities: Discord limits, regexes, and option resolvers for raw API payloads.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/discord-utilities"
+	version="0.1.1"
+	guideHref="/documentation/packages/discord-utilities"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/discord-utilities"
+/>
+
+<InstallPackage packages="@wolfstar/discord-utilities" />
+
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'AutocompleteInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/discord-utilities/classes/AutocompleteInteractionOptionResolver',
+			summary: 'Utility class for resolving (autocomplete) interaction options while working with the raw API.'
+		},
+		{
+			name: 'ChatInputInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/discord-utilities/classes/ChatInputInteractionOptionResolver',
+			summary: 'Utility class for resolving (application command) interaction options while working with the raw API.'
+		},
+		{
+			name: 'ContextMenuInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/discord-utilities/classes/ContextMenuInteractionOptionResolver',
+			summary: 'Utility class for resolving (context menu) interaction options while working with the raw API.'
+		},
+		{
+			name: 'ModalInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/discord-utilities/classes/ModalInteractionOptionResolver',
+			summary: 'Utility class for resolving (modal) interaction options while working with the raw API.'
+		},
+		{
+			name: 'BasicApplicationCommandOptionType',
+			kind: 'type-alias',
+			href: '/documentation/api/discord-utilities/type-aliases/BasicApplicationCommandOptionType'
+		},
+		{ name: 'If', kind: 'type-alias', href: '/documentation/api/discord-utilities/type-aliases/If' },
+		{ name: 'ModalComponentType', kind: 'type-alias', href: '/documentation/api/discord-utilities/type-aliases/ModalComponentType' },
+		{ name: 'RequiredIf', kind: 'type-alias', href: '/documentation/api/discord-utilities/type-aliases/RequiredIf' },
+		{ name: 'TypeToModalComponentMap', kind: 'type-alias', href: '/documentation/api/discord-utilities/type-aliases/TypeToModalComponentMap' },
+		{ name: 'TypeToOptionMap', kind: 'type-alias', href: '/documentation/api/discord-utilities/type-aliases/TypeToOptionMap' },
+		{
+			name: 'ActionMetadataLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ActionMetadataLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Action Metadata.'
+		},
+		{
+			name: 'AllowedMentionsLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/AllowedMentionsLimits',
+			summary: 'Namespace containing limits related to Discord Message Allowed Mentions.'
+		},
+		{
+			name: 'ApplicationCommandLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ApplicationCommandLimits',
+			summary: 'Namespace containing limits related to Discord application commands (slash commands).'
+		},
+		{
+			name: 'ApplicationCommandOptionLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ApplicationCommandOptionLimits',
+			summary: 'Namespace containing limits related to Choices of Discord Application Commands.'
+		},
+		{
+			name: 'ApplicationCommandPermissionLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ApplicationCommandPermissionLimits',
+			summary: 'Namespace containing limits related to Permissions of Discord Application Commands.'
+		},
+		{
+			name: 'ApplicationRoleConnectionLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ApplicationRoleConnectionLimits',
+			summary: 'Namespace containing limits related to Discord Application Role Connections.'
+		},
+		{
+			name: 'AutoCompleteLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/AutoCompleteLimits',
+			summary: 'Namespace container limits related to Discord autocomplete interactions.'
+		},
+		{
+			name: 'AutoModerationRuleLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/AutoModerationRuleLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Rules.'
+		},
+		{
+			name: 'ButtonLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ButtonLimits',
+			summary: 'Namespace containing limits related to Message Buttons.'
+		},
+		{
+			name: 'ChannelInviteLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ChannelInviteLimits',
+			summary: 'Namespace containing limits related to Discord Channel Invites.'
+		},
+		{
+			name: 'ChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ChannelLimits',
+			summary: 'Namespace containing limits related to Discord channels.'
+		},
+		{
+			name: 'ChannelMentionRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ChannelMentionRegex',
+			summary: 'Regex that can capture the ID in Discord Channel mentions'
+		},
+		{
+			name: 'ChannelMessageRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ChannelMessageRegex',
+			summary:
+				'Regex that can capture the channel and message IDs in a channelId-messageId pattern This pattern can be found when you hold Shift and hover…'
+		},
+		{
+			name: 'DiscordHostnameRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/DiscordHostnameRegex',
+			summary: 'Regex that matches links on the known Discord host names'
+		},
+		{
+			name: 'DiscordInviteLinkRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/DiscordInviteLinkRegex',
+			summary: 'Regex that can can capture the code of Discord invite links'
+		},
+		{
+			name: 'EmbedLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/EmbedLimits',
+			summary: 'Namespace containing limits related to Discord embeds.'
+		},
+		{
+			name: 'EmojiLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/EmojiLimits',
+			summary: 'Namespace containing limits related to Discord emojis.'
+		},
+		{
+			name: 'EmojiRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/EmojiRegex',
+			summary: 'Regex that can capture the ID of any animated or non-animated custom Discord emoji'
+		},
+		{
+			name: 'FormattedCustomEmoji',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/FormattedCustomEmoji',
+			summary: 'Regex that matches any animated or non-animated custom Discord emoji.'
+		},
+		{
+			name: 'FormattedCustomEmojiWithGroups',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/FormattedCustomEmojiWithGroups',
+			summary: 'Regex that can capture any animated or non-animated custom Discord emoji.'
+		},
+		{
+			name: 'GuildAuditLogsLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/GuildAuditLogsLimits',
+			summary: 'Namespace containing limits related to Discord Guild Audit Logs.'
+		},
+		{
+			name: 'GuildBansLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/GuildBansLimits',
+			summary: 'Namespace containing limits related to Discord guild bans.'
+		},
+		{
+			name: 'GuildIntegrationLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/GuildIntegrationLimits',
+			summary: 'Namespace containing limits related to Discord Guild Integrations.'
+		},
+		{
+			name: 'GuildLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/GuildLimits',
+			summary: 'Namespace containing limits related to Discord guilds.'
+		},
+		{
+			name: 'GuildMemberLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/GuildMemberLimits',
+			summary: 'Namespace containing limits related to Discord guild members.'
+		},
+		{
+			name: 'GuildScheduledEventLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/GuildScheduledEventLimits',
+			summary: 'Namespace containing limits related to Discord guild scheduled events.'
+		},
+		{
+			name: 'HttpUrlRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/HttpUrlRegex',
+			summary: 'Regex that matches any URL starting with http or https'
+		},
+		{
+			name: 'InteractionLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/InteractionLimits',
+			summary: 'Namespace containing limits related to Discord interactions.'
+		},
+		{
+			name: 'MessageLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/MessageLimits',
+			summary: 'Namespace containing limits related to Discord messages.'
+		},
+		{
+			name: 'MessageLinkRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/MessageLinkRegex',
+			summary: 'Regex that can capture the Guild, Channel, and Message ID based on a shareable Discord message link.'
+		},
+		{
+			name: 'ModalLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ModalLimits',
+			summary: 'Namespace containing limits related to Discord Modals.'
+		},
+		{
+			name: 'ModerationLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ModerationLimits',
+			summary: 'Namespace containing limits related to built-in moderation features.'
+		},
+		{
+			name: 'ParsedCustomEmoji',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ParsedCustomEmoji',
+			summary: 'Regex that matches any animated or non-animated custom Discord emoji without the wrapping <...> symbols.'
+		},
+		{
+			name: 'ParsedCustomEmojiWithGroups',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ParsedCustomEmojiWithGroups',
+			summary: 'Regex that matches any animated or non-animated custom Discord emoji without the wrapping <...> symbols.'
+		},
+		{
+			name: 'PremiumGuildLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/PremiumGuildLimits',
+			summary: 'Namespace containing limits related to premium Discord guilds.'
+		},
+		{
+			name: 'ReactionLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ReactionLimits',
+			summary: 'Namespace containing limits related to Discord message reactions.'
+		},
+		{
+			name: 'RoleLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/RoleLimits',
+			summary: 'Namespace containing limits related to Discord roles.'
+		},
+		{
+			name: 'RoleMentionRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/RoleMentionRegex',
+			summary: 'Regex that can capture the ID in Discord Role mentions'
+		},
+		{
+			name: 'SelectMenuLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/SelectMenuLimits',
+			summary: 'Namespace containing limits related to Select Menus.'
+		},
+		{
+			name: 'SnowflakeRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/SnowflakeRegex',
+			summary: 'Regex that can capture any Discord Snowflake ID'
+		},
+		{
+			name: 'StageChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/StageChannelLimits',
+			summary: 'Namespace containing limits related to Discord stage channels.'
+		},
+		{
+			name: 'StickerLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/StickerLimits',
+			summary: 'Namespace containing limits related to Discord Stickers.'
+		},
+		{
+			name: 'TextChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/TextChannelLimits',
+			summary: 'Namespace containing limits related to Discord text channels.'
+		},
+		{
+			name: 'TextInputLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/TextInputLimits',
+			summary: 'Namespace containing limits related to Discord Modal Text Input component.'
+		},
+		{
+			name: 'ThreadLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/ThreadLimits',
+			summary: 'Namespace containing limits related to Discord threads.'
+		},
+		{
+			name: 'TokenRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/TokenRegex',
+			summary: 'Regex that can capture a Discord Token'
+		},
+		{
+			name: 'TriggerMetadataLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/TriggerMetadataLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Trigger Metadata.'
+		},
+		{
+			name: 'TriggerTypeLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/TriggerTypeLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Triggers.'
+		},
+		{
+			name: 'TwemojiRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/TwemojiRegex',
+			summary: 'Regex that can capture a Twemoji (Twitter Emoji)'
+		},
+		{
+			name: 'UserLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/UserLimits',
+			summary: 'Namespace containing limits related to Discord users and Direct Messages.'
+		},
+		{
+			name: 'UserOrMemberMentionRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/UserOrMemberMentionRegex',
+			summary: 'Regex that can capture the ID of a user in Discord user mentions'
+		},
+		{
+			name: 'VoiceChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/VoiceChannelLimits',
+			summary: 'Namespace containing limits related to Discord voice channels.'
+		},
+		{
+			name: 'WebhookRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/WebhookRegex',
+			summary: 'Regex that captures the Webhook ID and token from a Discord Webhook URL.'
+		},
+		{
+			name: 'WebSocketUrlRegex',
+			kind: 'variable',
+			href: '/documentation/api/discord-utilities/variables/WebSocketUrlRegex',
+			summary: 'Regex that matches any WebSocket URL starting with ws or wss'
+		},
+		{
+			name: 'createTwemojiRegex',
+			kind: 'function',
+			href: '/documentation/api/discord-utilities/functions/createTwemojiRegex',
+			summary:
+				"Creates a fresh instance of the Twemoji regex, which is useful if you don't want to worry about the effects of a global regex and the lastI…"
+		}
+	]}
+/>

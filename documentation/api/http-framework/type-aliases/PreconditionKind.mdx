@@ -1,0 +1,27 @@
+---
+title: 'Type Alias: PreconditionKind'
+description: 'What a precondition is run for, which decides the method it is asked for: chatInputRun, contextMenuRun, autocompleteRun, or interactionHandlerRun. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L34',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:34'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+What a precondition is run for, which decides the method it is asked for: `chatInputRun`, `contextMenuRun`,
+`autocompleteRun`, or `interactionHandlerRun`.
+
+<ApiSignature tokens={['type PreconditionKind = "chatInput" | "contextMenu" | "autocomplete" | "interactionHandler"']} />
+
+A piece with no method for a chat input or context menu command denies it. For `autocomplete` and
+`interactionHandler` it is skipped instead, since a check written for the commands says nothing about their
+autocomplete or about the components of the bot.

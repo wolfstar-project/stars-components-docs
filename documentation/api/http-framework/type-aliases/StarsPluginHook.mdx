@@ -1,0 +1,51 @@
+---
+title: 'Type Alias: StarsPluginHook'
+description: 'A runtime plugin hook. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['since 6.1.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L11',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:11'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+A runtime plugin hook. It receives the [Client](/documentation/api/http-framework/classes/Client) explicitly and the same credential-free
+[ClientOptions](/documentation/api/http-framework/interfaces/ClientOptions) object the client persists, so a hook can rewrite what a later hook sees.
+
+<ApiSignature
+	tokens={[
+		'type StarsPluginHook<Async extends boolean = false> = (\n  client: ',
+		['Client', '/documentation/api/http-framework/classes/Client'],
+		',\n  options: ',
+		['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions'],
+		'\n) => Async extends true ? Awaitable<unknown> : unknown'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Async" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['Client', '/documentation/api/http-framework/classes/Client']]} />
+
+<ApiParam name="options" type={[['ClientOptions', '/documentation/api/http-framework/interfaces/ClientOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Async extends true ? Awaitable<unknown> : unknown']} />
+
+</ApiParams>

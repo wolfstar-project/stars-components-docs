@@ -1,0 +1,39 @@
+---
+title: 'Function: encodeCustomId()'
+description: "Builds a customid readable by the framework's StringIdParser: <handler>.<sessionId>.<action>. (@wolfstar/http-framework-utilities)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/custom-id.ts#L21',
+		label: 'packages/http-framework-utilities/src/lib/custom-id.ts:21'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Builds a `custom_id` readable by the framework's `StringIdParser`: `<handler>.<sessionId>.<action>`.
+
+<ApiSignature tokens={['encodeCustomId(handler: string, sessionId: string, action: string): string']} />
+
+Builds a `custom_id` readable by the framework's `StringIdParser`: `<handler>.<sessionId>.<action>`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="handler" type={['string']} />
+
+<ApiParam name="sessionId" type={['string']} />
+
+<ApiParam name="action" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>

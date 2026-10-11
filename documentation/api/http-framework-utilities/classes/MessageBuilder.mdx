@@ -1,0 +1,232 @@
+---
+title: 'Class: MessageBuilder'
+description: 'API reference for MessageBuilder, a class exported by @wolfstar/http-framework-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L9',
+		label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:9'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+<ApiSignature tokens={['class MessageBuilder']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L12', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:12' }}>
+
+<ApiSignature
+	tokens={[
+		'new MessageBuilder(data: ',
+		['MessageBuilderData', '/documentation/api/http-framework-utilities/type-aliases/MessageBuilderData'],
+		' = {}): ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="data"
+	type={[['MessageBuilderData', '/documentation/api/http-framework-utilities/type-aliases/MessageBuilderData']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### addEmbeds()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L25', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:25' }}>
+
+<ApiSignature tokens={['addEmbeds(...embeds: ', ['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed'], '[]): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="embeds" type={[['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed'], '[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setAllowedMentions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L33', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:33' }}>
+
+<ApiSignature
+	tokens={[
+		'setAllowedMentions(mentions: ',
+		['APIAllowedMentions', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAllowedMentions'],
+		' | null): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="mentions" type={[['APIAllowedMentions', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAllowedMentions'], ' | null']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setComponents()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L29', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:29' }}>
+
+<ApiSignature
+	tokens={[
+		'setComponents(components: ',
+		['APIMessageTopLevelComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageTopLevelComponent'],
+		'[] | null | undefined): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="components"
+	type={[
+		['APIMessageTopLevelComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageTopLevelComponent'],
+		'[] | null | undefined'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setContent()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L17', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:17' }}>
+
+<ApiSignature tokens={['setContent(content: string | null): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="content" type={['string | null']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setEmbeds()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L21', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:21' }}>
+
+<ApiSignature tokens={['setEmbeds(embeds: ', ['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed'], '[] | null): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="embeds" type={[['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed'], '[] | null']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setFlags()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L37', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:37' }}>
+
+<ApiSignature tokens={['setFlags(flags: number | null): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="flags" type={['number | null']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setTTS()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L41', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:41' }}>
+
+<ApiSignature tokens={['setTTS(tts: boolean = true): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="tts" type={['boolean']} defaultValue="true" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessageBuilder.ts#L49', label: 'packages/http-framework-utilities/src/lib/MessageBuilder.ts:49' }}>
+
+<ApiSignature tokens={['toJSON(): ', ['MessageBuilderData', '/documentation/api/http-framework-utilities/type-aliases/MessageBuilderData']]} />
+
+Validates the body against Discord's limits and returns a copy of it.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['MessageBuilderData', '/documentation/api/http-framework-utilities/type-aliases/MessageBuilderData']]} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`RangeError` naming the first field over its limit.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

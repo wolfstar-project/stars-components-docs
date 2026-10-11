@@ -1,0 +1,84 @@
+---
+title: 'Function: runPreconditions()'
+description: 'Runs the preconditions of a command or an interaction handler: first the global ones of the preconditions store, then the entries of its precondition… (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L259',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:259'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Runs the preconditions of a command or an interaction handler: first the global ones of the `preconditions` store,
+then the entries of its `preconditions` option, stopping at the first denial.
+
+<ApiSignature
+	tokens={[
+		'runPreconditions(\n  target: ',
+		['PreconditionTarget', '/documentation/api/http-framework/type-aliases/PreconditionTarget'],
+		',\n  kind: ',
+		['PreconditionKind', '/documentation/api/http-framework/type-aliases/PreconditionKind'],
+		',\n  interaction: ',
+		['PreconditionInteraction', '/documentation/api/http-framework/type-aliases/PreconditionInteraction'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<unknown, ',
+		['UserError', '/documentation/api/http-framework/classes/UserError'],
+		', boolean>>'
+	]}
+/>
+
+Runs the preconditions of a command or an interaction handler: first the global ones of the `preconditions` store,
+then the entries of its `preconditions` option, stopping at the first denial.
+
+- The `preconditions` option is an array that runs with [PreconditionRunCondition.And](/documentation/api/http-framework/enumerations/PreconditionRunCondition#member-and): every entry has to pass.
+  An array nested in it runs with `Or`, one nested in that with `And` again, and so on, so
+  `['Connect', ['Moderator', ['DJ', 'SongAuthor']]]` is `Connect && (Moderator || (DJ && SongAuthor))`.
+- The [PreconditionRunMode](/documentation/api/http-framework/enumerations/PreconditionRunMode) is `Sequential`, or the `mode` of the array written as `{ entries, mode }`, which the
+  arrays nested in it inherit.
+- An entry that names a precondition missing from the store denies the interaction with
+  [`Identifiers.PreconditionUnavailable`](/documentation/api/http-framework/enumerations/Identifiers#member-preconditionunavailable).
+- An entry that does not apply to the interaction, such as a function for an autocomplete or a piece with no method for
+  it, is left out of the result. An array in which no entry applies is left out as well.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['PreconditionTarget', '/documentation/api/http-framework/type-aliases/PreconditionTarget']]}>
+
+The command or interaction handler being run.
+
+</ApiParam>
+
+<ApiParam name="kind" type={[['PreconditionKind', '/documentation/api/http-framework/type-aliases/PreconditionKind']]}>
+
+What is being run.
+
+</ApiParam>
+
+<ApiParam name="interaction" type={[['PreconditionInteraction', '/documentation/api/http-framework/type-aliases/PreconditionInteraction']]}>
+
+The interaction being handled.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'], '<unknown, ', ['UserError', '/documentation/api/http-framework/classes/UserError'], ', boolean>>']}>
+
+The first `Err`, or `Result.ok()` when every precondition lets it run.
+
+</ApiParam>
+
+</ApiParams>

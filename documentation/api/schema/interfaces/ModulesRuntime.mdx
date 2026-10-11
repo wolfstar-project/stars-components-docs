@@ -1,0 +1,63 @@
+---
+title: 'Interface: ModulesRuntime'
+description: 'What the installed modules contributed, known once the CLI ran their setup. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L40',
+		label: 'packages/schema/src/types/modules.ts:40'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+What the installed modules contributed, known once the CLI ran their `setup`. Empty until then.
+
+<ApiSignature tokens={['interface ModulesRuntime']} />
+
+## Properties
+
+### configKeys
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly configKeys: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L46', label: 'packages/schema/src/types/modules.ts:46' }}>
+
+The `meta.configKey` of every installed module that declares one: the top-level `stars.config` keys they own.
+
+</ApiMember>
+
+### imports
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly imports: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L44', label: 'packages/schema/src/types/modules.ts:44' }}>
+
+Packages added to `imports.presets` by `ctx.addImports`.
+
+</ApiMember>
+
+### modules
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly modules: readonly ', ['InstalledModule', '/documentation/api/schema/interfaces/InstalledModule'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L41',
+		label: 'packages/schema/src/types/modules.ts:41'
+	}}
+/>
+
+### plugins
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly plugins: readonly ', ['RuntimePluginRegistration', '/documentation/api/schema/interfaces/RuntimePluginRegistration'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L42',
+		label: 'packages/schema/src/types/modules.ts:42'
+	}}
+/>

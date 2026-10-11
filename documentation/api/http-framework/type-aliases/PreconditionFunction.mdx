@@ -1,0 +1,73 @@
+---
+title: 'Type Alias: PreconditionFunction'
+description: 'A precondition written as a function, for a check that does not need a piece of its own. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L73',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:73'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+A precondition written as a function, for a check that does not need a piece of its own. In the `preconditions` option
+of a command it is used for chat input and context menu commands, not for their autocomplete. In the option of an
+interaction handler it is used for the handler.
+
+<ApiSignature
+	tokens={[
+		'type PreconditionFunction<Interaction = ',
+		['Command.ApplicationCommandInteraction', '/documentation/api/http-framework/namespaces/Command/type-aliases/ApplicationCommandInteraction'],
+		', Target = ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'> = (interaction: Interaction, target: Target) => ',
+		['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Interaction" defaultValue="Command.ApplicationCommandInteraction" />
+
+<ApiParam name="Target" defaultValue="Command" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={['Interaction']} />
+
+<ApiParam name="target" type={['Target']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PreconditionResult', '/documentation/api/http-framework/type-aliases/PreconditionResult']]} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { err, ok } from '@sapphire/result';
+import { Command, PreconditionError, type PreconditionFunction } from '@wolfstar/http-framework';
+
+const OwnerOnly: PreconditionFunction = (interaction) =>
+	interaction.user.id === process.env.OWNER_ID
+		? ok()
+		: err(new PreconditionError({ precondition: 'OwnerOnly', message: 'Only the owner can use this command.' }));
+
+export class UserCommand extends Command {
+	public constructor(context: Command.LoaderContext, options: Command.Options) {
+		super(context, { ...options, preconditions: [OwnerOnly] });
+	}
+}
+```

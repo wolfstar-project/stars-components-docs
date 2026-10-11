@@ -1,0 +1,61 @@
+name: generate-api
+
+# Regenerates documentation/api/** from the TypeDoc JSON that wolfstar-project/docs publishes for
+# stars-components, then opens (or updates) a single pull request with the result.
+on:
+    schedule:
+        - cron: '0 6 * * *'
+    workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+    group: ${{ github.workflow }}
+    cancel-in-progress: false
+
+jobs:
+    generate:
+        name: 🧬 Regenerate API reference
+        runs-on: ubuntu-24.04-arm
+        timeout-minutes: 15
+        if: github.repository == 'wolfstar-project/stars-components-docs'
+        permissions:
+            contents: write
+            pull-requests: write
+
+        steps:
+            - name: Checkout Project
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              with:
+                  persist-credentials: false
+
+            - name: Setup pnpm + Node.js v24
+              uses: pnpm/setup@5d160c5bc68a09337ad0d5654e237e03253b5879 # v1
+              with:
+                  runtime: node@24
+                  cache: true
+                  install: false
+
+            - name: Install Dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Generate API reference
+              run: pnpm generate:api --refresh
+
+            # Pull requests opened with the default GITHUB_TOKEN do not trigger other workflows, so
+            # `ci` would never run on them. Set the `WOLFSTAR_TOKEN` secret (a PAT or GitHub App token
+            # with contents and pull-requests write) to get CI on the generated PR.
+            - name: Open pull request
+              uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+              with:
+                  token: ${{ secrets.WOLFSTAR_TOKEN || github.token }}
+                  branch: automation/generate-api
+                  delete-branch: true
+                  add-paths: documentation/api
+                  commit-message: 'docs(api): refresh generated API reference'
+                  title: 'docs(api): refresh generated API reference'
+                  body: |
+                      Regenerated `documentation/api/**` with `pnpm generate:api --refresh` from the latest
+                      TypeDoc JSON published by [wolfstar-project/docs](https://github.com/wolfstar-project/docs/tree/docs/stars-components).
+
+                      Generated files — do not edit by hand. Packages are selected in `scripts/api-config.json`.

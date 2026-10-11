@@ -10,7 +10,7 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 	kind="class"
 	badges={['since 2.0.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L10',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L10',
 		label: 'packages/http-framework/src/lib/structures/CommandStoreRouter.ts:10'
 	}}
 	packageName="@wolfstar/http-framework"
@@ -35,7 +35,7 @@ Represents a router for mapping commands to chat inputs and context menus.
 
 ### get()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L21', label: 'packages/http-framework/src/lib/structures/CommandStoreRouter.ts:21' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L21', label: 'packages/http-framework/src/lib/structures/CommandStoreRouter.ts:21' }}>
 
 <ApiSignature
 	tokens={[
@@ -43,7 +43,9 @@ Represents a router for mapping commands to chat inputs and context menus.
 		['APIApplicationCommandInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteraction'],
 		'): ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
-		'<PieceOptions> | null'
+		'<',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'> | null'
 	]}
 />
 
@@ -61,7 +63,7 @@ The interaction object.
 
 <ApiParams title="Returns">
 
-<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<PieceOptions> | null']}>
+<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'], '> | null']}>
 
 The command associated with the interaction, or null if not found.
 
@@ -73,9 +75,17 @@ The command associated with the interaction, or null if not found.
 
 ### getChatInput()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L34', label: 'packages/http-framework/src/lib/structures/CommandStoreRouter.ts:34' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L34', label: 'packages/http-framework/src/lib/structures/CommandStoreRouter.ts:34' }}>
 
-<ApiSignature tokens={['getChatInput(name: string): ', ['Command', '/documentation/api/http-framework/classes/Command'], '<PieceOptions> | null']} />
+<ApiSignature
+	tokens={[
+		'getChatInput(name: string): ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'> | null'
+	]}
+/>
 
 Gets the chat input command with the specified name.
 
@@ -91,7 +101,7 @@ The name of the chat input command.
 
 <ApiParams title="Returns">
 
-<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<PieceOptions> | null']}>
+<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'], '> | null']}>
 
 The chat input command with the specified name, or null if not found.
 
@@ -103,10 +113,16 @@ The chat input command with the specified name, or null if not found.
 
 ### getContextMenu()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L45', label: 'packages/http-framework/src/lib/structures/CommandStoreRouter.ts:45' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/CommandStoreRouter.ts#L45', label: 'packages/http-framework/src/lib/structures/CommandStoreRouter.ts:45' }}>
 
 <ApiSignature
-	tokens={['getContextMenu(name: string): ', ['Command', '/documentation/api/http-framework/classes/Command'], '<PieceOptions> | null']}
+	tokens={[
+		'getContextMenu(name: string): ',
+		['Command', '/documentation/api/http-framework/classes/Command'],
+		'<',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'> | null'
+	]}
 />
 
 Gets the context menu command with the specified name.
@@ -123,7 +139,7 @@ The name of the context menu command.
 
 <ApiParams title="Returns">
 
-<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<PieceOptions> | null']}>
+<ApiParam type={[['Command', '/documentation/api/http-framework/classes/Command'], '<', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'], '> | null']}>
 
 The context menu command with the specified name, or null if not found.
 

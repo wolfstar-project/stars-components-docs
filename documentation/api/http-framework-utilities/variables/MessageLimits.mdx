@@ -1,0 +1,110 @@
+---
+title: 'Variable: MessageLimits'
+description: 'Namespace containing limits related to Discord messages. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Namespace containing limits related to Discord messages.
+
+<ApiSignature
+	tokens={[
+		'const MessageLimits: {\n  readonly MaximumActionRows: 5;\n  readonly MaximumEmbeds: 10;\n  readonly MaximumLength: 2000;\n  readonly MaximumMessagesToBulkDelete: 100;\n  readonly MaximumMessagesToFetch: 100;\n  readonly MaximumNitroBasicUploadSize: 50000000;\n  readonly MaximumNitroLength: 4000;\n  readonly MaximumNitroUploadSize: 500000000;\n  readonly MaximumReactions: 20;\n  readonly MaximumRequestSize: 25000000;\n  readonly MaximumUploadSize: 25000000;\n  readonly MaximumUploadSizeInGuild: readonly [25000000, 25000000, 50000000, 100000000];\n  readonly MinimumMessagesToBulkDelete: 2;\n  readonly MinimumMessagesToFetch: 1;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumActionRows" type={['5']}>
+
+Maximum action rows allowed in a single message.
+
+</ApiParam>
+
+<ApiParam name="MaximumEmbeds" type={['10']}>
+
+Maximum embeds allowed in a single message.
+
+</ApiParam>
+
+<ApiParam name="MaximumLength" type={['2000']}>
+
+Maximum characters allowed in a single message for a user.
+
+</ApiParam>
+
+<ApiParam name="MaximumMessagesToBulkDelete" type={['100']}>
+
+Maximum number of messages to delete in a single bulk delete request.
+
+</ApiParam>
+
+<ApiParam name="MaximumMessagesToFetch" type={['100']}>
+
+Maximum number of messages to return from the channel messages API.
+
+</ApiParam>
+
+<ApiParam name="MaximumNitroBasicUploadSize" type={['50000000']}>
+
+Maximum upload size for a Nitro Basic user, in any guild or in DMs.
+Size is in bytes, and corresponds to 50MB.
+
+</ApiParam>
+
+<ApiParam name="MaximumNitroLength" type={['4000']}>
+
+Maximum characters allowed in a single message for a nitro user.
+
+</ApiParam>
+
+<ApiParam name="MaximumNitroUploadSize" type={['500000000']}>
+
+Maximum upload size for a Nitro user, in any guild or in DMs.
+Size is in bytes, and corresponds to 500MB.
+
+</ApiParam>
+
+<ApiParam name="MaximumReactions" type={['20']}>
+
+Maximum numbers of reactions allowed for a message.
+
+</ApiParam>
+
+<ApiParam name="MaximumRequestSize" type={['25000000']}>
+
+Maximum request size when sending a messages.
+Size is in bytes, and corresponds to 25MB.
+
+</ApiParam>
+
+<ApiParam name="MaximumUploadSize" type={['25000000']}>
+
+Maximum upload size for a free user in a guild of tier 1 or below, or in DMs.
+Size is in bytes, and corresponds to 25MB.
+
+</ApiParam>
+
+<ApiParam name="MaximumUploadSizeInGuild" type={['readonly [25000000, 25000000, 50000000, 100000000]']}>
+
+Maximum upload size for a free user for all different boost levels available in a guild.
+Sizes are in bytes, and correspond to 25MB, 25MB, 50MB, and 100MB.
+
+</ApiParam>
+
+<ApiParam name="MinimumMessagesToBulkDelete" type={['2']}>
+
+Minimum number of messages to delete in a single bulk delete request.
+
+</ApiParam>
+
+<ApiParam name="MinimumMessagesToFetch" type={['1']}>
+
+Minimum number of messages to return from the channel messages API.
+
+</ApiParam>
+
+</ApiParams>

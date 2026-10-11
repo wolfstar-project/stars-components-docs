@@ -1,0 +1,372 @@
+---
+title: '@wolfstar/schema'
+description: 'Generated API reference for @wolfstar/schema: the typed stars.config schema, defineConfig, and the config loader.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/schema"
+	version="0.10.0"
+	guideHref="/documentation/packages/schema"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/schema"
+/>
+
+<InstallPackage packages="@wolfstar/schema" />
+
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'Builder',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/Builder',
+			summary: 'Turns project sources into the runnable output, once or continuously.'
+		},
+		{
+			name: 'BuilderContext',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/BuilderContext',
+			summary: 'Services supplied by the host; server integrations never import the CLI.'
+		},
+		{ name: 'BuilderEvents', kind: 'interface', href: '/documentation/api/schema/interfaces/BuilderEvents' },
+		{ name: 'BuildOutcome', kind: 'interface', href: '/documentation/api/schema/interfaces/BuildOutcome' },
+		{
+			name: 'InstalledModule',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/InstalledModule',
+			summary: 'A module that was installed.'
+		},
+		{ name: 'LoadConfigFileOptions', kind: 'interface', href: '/documentation/api/schema/interfaces/LoadConfigFileOptions' },
+		{ name: 'LoadedConfigFile', kind: 'interface', href: '/documentation/api/schema/interfaces/LoadedConfigFile' },
+		{ name: 'LoadStarsConfigOptions', kind: 'interface', href: '/documentation/api/schema/interfaces/LoadStarsConfigOptions' },
+		{
+			name: 'ModulesRuntime',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/ModulesRuntime',
+			summary: 'What the installed modules contributed, known once the CLI ran their setup.'
+		},
+		{ name: 'PackageJsonLike', kind: 'interface', href: '/documentation/api/schema/interfaces/PackageJsonLike' },
+		{
+			name: 'PrepareProjectResult',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/PrepareProjectResult',
+			summary: 'What stars prepare generated.'
+		},
+		{ name: 'ResolveConfigOptions', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolveConfigOptions' },
+		{ name: 'ResolvedBuildConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedBuildConfig' },
+		{ name: 'ResolvedCodegenConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedCodegenConfig' },
+		{ name: 'ResolvedCommandsCodegenConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedCommandsCodegenConfig' },
+		{ name: 'ResolvedDevCommandsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedDevCommandsConfig' },
+		{ name: 'ResolvedDevConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedDevConfig' },
+		{ name: 'ResolvedDevLogsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedDevLogsConfig' },
+		{ name: 'ResolvedEnvConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedEnvConfig' },
+		{ name: 'ResolvedExperimentalConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedExperimentalConfig' },
+		{ name: 'ResolvedFutureConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedFutureConfig' },
+		{ name: 'ResolvedI18nCodegenConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedI18nCodegenConfig' },
+		{ name: 'ResolvedImportsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedImportsConfig' },
+		{
+			name: 'ResolvedModuleEntry',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/ResolvedModuleEntry',
+			summary: 'One entry of modules, normalised.'
+		},
+		{ name: 'ResolvedNitroConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedNitroConfig' },
+		{ name: 'ResolvedStarsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedStarsConfig' },
+		{ name: 'ResolvedTypecheckConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedTypecheckConfig' },
+		{
+			name: 'RuntimePluginRegistration',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/RuntimePluginRegistration',
+			summary: 'A runtime plugin a module registered with ctx.addPlugin.'
+		},
+		{ name: 'StarsBuildConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsBuildConfig' },
+		{ name: 'StarsCodegenConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsCodegenConfig' },
+		{ name: 'StarsCommandsCodegenConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsCommandsCodegenConfig' },
+		{ name: 'StarsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsConfig' },
+		{ name: 'StarsDevCommandsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsDevCommandsConfig' },
+		{ name: 'StarsDevConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsDevConfig' },
+		{ name: 'StarsDevLogsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsDevLogsConfig' },
+		{
+			name: 'StarsEnvConfig',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/StarsEnvConfig',
+			summary:
+				'The environment stars registers in the built entry before any other module runs, the way a hand-written setup() from @wolfstar/env-utilitie…'
+		},
+		{
+			name: 'StarsEnvSetupOptions',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/StarsEnvSetupOptions',
+			summary: "The serializable subset of @wolfstar/env-utilities' EnvSetupOptions."
+		},
+		{
+			name: 'StarsFutureConfig',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/StarsFutureConfig',
+			summary: 'Nuxt-style compatibility block.'
+		},
+		{
+			name: 'StarsHooks',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/StarsHooks',
+			summary: 'Lifecycle hooks of the stars CLI, registered through hooks in stars.config and run with hookable.'
+		},
+		{ name: 'StarsI18nCodegenConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsI18nCodegenConfig' },
+		{ name: 'StarsImportsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsImportsConfig' },
+		{
+			name: 'StarsNitroConfig',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/StarsNitroConfig',
+			summary:
+				'The Nitro preset stars build targets, only reachable once StarsExperimentalConfig.enableNitro (itself gated on StarsExperimentalConfig.enab…'
+		},
+		{
+			name: 'StarsTsdownConfig',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/StarsTsdownConfig',
+			summary: 'Options for tsdown, the bundler stars build uses by default.'
+		},
+		{ name: 'StarsTunnelConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsTunnelConfig' },
+		{ name: 'StarsTypecheckConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsTypecheckConfig' },
+		{ name: 'VarlockDetection', kind: 'interface', href: '/documentation/api/schema/interfaces/VarlockDetection' },
+		{ name: 'VarlockSchema', kind: 'interface', href: '/documentation/api/schema/interfaces/VarlockSchema' },
+		{ name: 'BuilderLogLevel', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/BuilderLogLevel' },
+		{ name: 'ConfigDiagnosticCode', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/ConfigDiagnosticCode' },
+		{
+			name: 'ResolvedHooksConfig',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/ResolvedHooksConfig',
+			summary: 'Every hook of stars.config, flattened to its full name, with its callbacks in declaration order.'
+		},
+		{ name: 'ResolvedTunnelConfig', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/ResolvedTunnelConfig' },
+		{
+			name: 'StarsBuildTool',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsBuildTool',
+			summary: 'The build tool used to turn the project sources into runnable JavaScript.'
+		},
+		{
+			name: 'StarsCompatibilityVersion',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsCompatibilityVersion',
+			summary: 'The build-default generation the project runs on.'
+		},
+		{
+			name: 'StarsExperimentalConfig',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsExperimentalConfig',
+			summary:
+				"Opt-in flags for work that is still landing, in the shape Nuxt's own experimental block has: every flag is a boolean, defaults to false, an…"
+		},
+		{ name: 'StarsHookName', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/StarsHookName' },
+		{ name: 'StarsHookNamespace', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/StarsHookNamespace' },
+		{
+			name: 'StarsHooksConfig',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsHooksConfig',
+			summary:
+				"The hooks block of stars.config: each hook keyed by its full name ('build:done') or nested under its namespace ({ build: { done() {} } }),…"
+		},
+		{
+			name: 'StarsLogLevel',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsLogLevel',
+			summary: 'The severities a dev log entry can be filtered by, from the most verbose to the most severe.'
+		},
+		{
+			name: 'StarsModuleEntry',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsModuleEntry',
+			summary:
+				'A module as listed in modules in stars.config: a package name (or a file path Node can import) on its own, or a [specifier, options] tuple…'
+		},
+		{
+			name: 'StarsRestartReason',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsRestartReason',
+			summary: 'Why stars dev (re)started the bot.'
+		},
+		{
+			name: 'StarsTunnelProvider',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsTunnelProvider',
+			summary: 'The services dev.tunnel can open a public tunnel through.'
+		},
+		{
+			name: 'StarsTypechecker',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsTypechecker',
+			summary: 'The type checker stars dev runs next to the bot.'
+		},
+		{
+			name: 'StarsViteConfig',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/StarsViteConfig',
+			summary:
+				"Raw options merged into the project's own vite.config., the way vite: {} in a Nuxt config is merged into Nuxt's own Vite config."
+		},
+		{
+			name: 'VarlockSchemaSource',
+			kind: 'type-alias',
+			href: '/documentation/api/schema/type-aliases/VarlockSchemaSource',
+			summary: 'Where a varlock schema was found, in the order @wolfstar/env-utilities looks.'
+		},
+		{
+			name: 'AUTO_ENV_VERSION',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/AUTO_ENV_VERSION',
+			summary: 'From this version on, env is registered automatically in the built entry.'
+		},
+		{
+			name: 'AUTO_VARLOCK_VERSION',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/AUTO_VARLOCK_VERSION',
+			summary:
+				'From this version on the CLI loads the variables through varlock when @wolfstar/env-utilities would pick it by itself (a .env.schema, varlo…'
+		},
+		{
+			name: 'BUILT_IN_CONFIG_KEYS',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/BUILT_IN_CONFIG_KEYS',
+			summary: 'The top-level keys of stars.config the schema owns.'
+		},
+		{ name: 'CONFIG_EXTENSIONS', kind: 'variable', href: '/documentation/api/schema/variables/CONFIG_EXTENSIONS' },
+		{ name: 'CONFIG_FILE_NAMES', kind: 'variable', href: '/documentation/api/schema/variables/CONFIG_FILE_NAMES' },
+		{
+			name: 'configDiagnostics',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/configDiagnostics',
+			summary: 'Structured, stable diagnostic codes for every way a stars.config.'
+		},
+		{
+			name: 'DEFAULT_APP_TSCONFIG',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/DEFAULT_APP_TSCONFIG',
+			summary: 'The generated tsconfig of the bot sources, written from future.compatibilityVersion 6 on.'
+		},
+		{
+			name: 'DEFAULT_COMPATIBILITY_VERSION',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/DEFAULT_COMPATIBILITY_VERSION',
+			summary: 'The version a project without future.compatibilityVersion runs on: today, the latest one.'
+		},
+		{
+			name: 'DEFAULT_LOG_LEVELS',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/DEFAULT_LOG_LEVELS',
+			summary: 'trace is the per-request noise: it starts hidden, and the dev UI turns it on.'
+		},
+		{
+			name: 'DEFAULT_NODE_TSCONFIG',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/DEFAULT_NODE_TSCONFIG',
+			summary: 'The generated tsconfig of the project root files that run in Node, written from future.compatibilityVersion 6 on.'
+		},
+		{ name: 'DEFAULT_TUNNEL_PROVIDER', kind: 'variable', href: '/documentation/api/schema/variables/DEFAULT_TUNNEL_PROVIDER' },
+		{ name: 'EMPTY_MODULES_RUNTIME', kind: 'variable', href: '/documentation/api/schema/variables/EMPTY_MODULES_RUNTIME' },
+		{
+			name: 'EOL_COMPATIBILITY_VERSIONS',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/EOL_COMPATIBILITY_VERSIONS',
+			summary: 'Versions still accepted but scheduled for removal in the next major.'
+		},
+		{ name: 'LATEST_COMPATIBILITY_VERSION', kind: 'variable', href: '/documentation/api/schema/variables/LATEST_COMPATIBILITY_VERSION' },
+		{ name: 'LEGACY_COMPATIBILITY_VERSION', kind: 'variable', href: '/documentation/api/schema/variables/LEGACY_COMPATIBILITY_VERSION' },
+		{
+			name: 'LOG_LEVELS',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/LOG_LEVELS',
+			summary: 'Every level dev.logs.levels accepts, from the most verbose to the most severe.'
+		},
+		{
+			name: 'SPLIT_TSCONFIG_VERSION',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/SPLIT_TSCONFIG_VERSION',
+			summary:
+				'From this version on stars prepare writes .stars/tsconfig.app.json and .stars/tsconfig.node.json instead of a single .stars/tsconfig.json,…'
+		},
+		{
+			name: 'STARS_CONFIG_TSDOWN_VERSION',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/STARS_CONFIG_TSDOWN_VERSION',
+			summary: 'From this version on, tsdown is configured from stars.config alone and auto imports are on by default.'
+		},
+		{ name: 'STARS_HOOK_NAMES', kind: 'variable', href: '/documentation/api/schema/variables/STARS_HOOK_NAMES' },
+		{
+			name: 'TUNNEL_PROVIDERS',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/TUNNEL_PROVIDERS',
+			summary: 'Every service dev.tunnel.provider accepts.'
+		},
+		{
+			name: 'assertModuleOptionsClaimed',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/assertModuleOptionsClaimed',
+			summary:
+				'Reports the first top-level stars.config key that is neither built in nor claimed by an installed module (its meta.configKey), the way the…'
+		},
+		{
+			name: 'defineConfig',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/defineConfig',
+			summary: 'Typed helper for stars.config.{ts,mts,cts,js,mjs,cjs} files.'
+		},
+		{
+			name: 'detectVarlock',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/detectVarlock',
+			summary: 'Detects varlock in the project at root.'
+		},
+		{
+			name: 'discoverConfigFile',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/discoverConfigFile',
+			summary: 'Finds the first stars.config.'
+		},
+		{
+			name: 'displayPath',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/displayPath',
+			summary: 'Presents an absolute path relative to root when possible, for display purposes.'
+		},
+		{
+			name: 'loadConfigFile',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/loadConfigFile',
+			summary: 'Loads the raw configuration object.'
+		},
+		{
+			name: 'loadStarsConfig',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/loadStarsConfig',
+			summary: "Loads, validates and resolves a project's stars.config.."
+		},
+		{
+			name: 'readProjectEnvFiles',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/readProjectEnvFiles',
+			summary:
+				"Reads the project's environment layers from src/.env and .env into a plain object, the way stars dev and stars commands need it: these file…"
+		},
+		{ name: 'resolveEnv', kind: 'function', href: '/documentation/api/schema/functions/resolveEnv', summary: 'Resolves the env block.' },
+		{
+			name: 'resolveHooks',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/resolveHooks',
+			summary: 'Flattens and validates hooks.'
+		},
+		{
+			name: 'resolveModules',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/resolveModules',
+			summary: 'Normalises modules: falsy entries are dropped, a bare specifier gets empty options.'
+		},
+		{
+			name: 'resolveStarsConfig',
+			kind: 'function',
+			href: '/documentation/api/schema/functions/resolveStarsConfig',
+			summary: 'Applies defaults, validates every option and resolves all paths to absolute ones.'
+		}
+	]}
+/>

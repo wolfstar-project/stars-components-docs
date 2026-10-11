@@ -1,0 +1,118 @@
+---
+title: 'Interface: PaginatedMessageSession'
+description: 'The JSON-serializable state of a paginated message, kept in a SessionStore between clicks. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L40',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:40'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+The JSON-serializable state of a paginated message, kept in a `SessionStore` between clicks.
+
+<ApiSignature tokens={['interface PaginatedMessageSession']} />
+
+## Properties
+
+### actions
+
+<ApiMember
+	kind="property"
+	signature={[
+		'actions: ',
+		['PaginatedMessageActionData', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionData'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L50',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:50'
+	}}
+/>
+
+### components?
+
+<ApiMember kind="property" badges={['optional']} signature={['components?: ', ['APIActionRowComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIActionRowComponent'], '<', ['APIComponentInMessageActionRow', 'https://discord-api-types.dev/api/discord-api-types-v10#APIComponentInMessageActionRow'], '>[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L73', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:73' }}>
+
+The last rendered components.
+
+</ApiMember>
+
+### expiredReply
+
+<ApiMember kind="property" signature={['expiredReply: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L60', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:60' }}>
+
+The notice for clicks that cannot be handled while the session is readable (e.g. a custom action unavailable on
+this process). Expired sessions use the process-wide `getDefaultExpiredReply()`.
+
+</ApiMember>
+
+### expiresAt?
+
+<ApiMember kind="property" badges={['optional']} signature={['expiresAt?: number']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L64', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:64' }}>
+
+When the session expires unless clicked again, in milliseconds since the epoch.
+
+</ApiMember>
+
+### idle
+
+<ApiMember kind="property" signature={['idle: number']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L54', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:54' }}>
+
+How long the session lives without interactions, in milliseconds.
+
+</ApiMember>
+
+### index
+
+<ApiMember
+	kind="property"
+	signature={['index: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L45',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:45'
+	}}
+/>
+
+### maximumExpiresAt?
+
+<ApiMember kind="property" badges={['optional']} signature={['maximumExpiresAt?: number | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L69', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:69' }}>
+
+The latest `expiresAt` allowed, for sessions whose only edit credential is the interaction token; `null` when
+unbounded. Set by `run`.
+
+</ApiMember>
+
+### ownerId
+
+<ApiMember kind="property" signature={['ownerId: string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L44', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:44' }}>
+
+The only user allowed to use the components, `null` when anyone can.
+
+</ApiMember>
+
+### pages
+
+<ApiMember kind="property" signature={['pages: (', ['PaginatedMessagePage', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePage'], ' | null)[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L49', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:49' }}>
+
+The resolved pages, `null` for lazy pages not displayed yet.
+
+</ApiMember>
+
+### wrongUserReply
+
+<ApiMember
+	kind="property"
+	signature={['wrongUserReply: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts#L55',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/types.ts:55'
+	}}
+/>

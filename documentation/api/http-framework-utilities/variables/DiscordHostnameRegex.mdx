@@ -1,0 +1,23 @@
+---
+title: 'Variable: DiscordHostnameRegex'
+description: 'Regex that matches links on the known Discord host names (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Regex that matches links on the known Discord host names
+
+<ApiSignature
+	tokens={['const DiscordHostnameRegex: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]}
+/>
+
+The regex is case insensitive
+
+Capture group 1 is the subdomain for this URL. It is named `subdomain`.
+
+Capture group 2 is the hostname for this URL, primarily `discord` but can also be `discordmerch`, `discordstatus`, `dis`, and `discordapp`. It is named `hostname`.
+
+Capture group 3 is the Top-Level Domain _without_ `.`. It is named `tld`.

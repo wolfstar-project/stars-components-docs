@@ -1,0 +1,167 @@
+---
+title: 'Class: RedisSessionStore'
+description: 'A SessionStore shared between processes through Redis. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L25',
+		label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:25'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+A [`SessionStore`](/documentation/api/http-framework-utilities/interfaces/SessionStore) shared between processes through Redis. Values are stored as JSON.
+
+<ApiSignature
+	tokens={[
+		'class RedisSessionStore<T = unknown> implements ',
+		['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'],
+		'<T>'
+	]}
+/>
+
+<ApiHierarchy implements={[[['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'], '<T>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="unknown" />
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L31', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:31' }}>
+
+<ApiSignature
+	tokens={[
+		'new RedisSessionStore<T = unknown>(options: ',
+		['RedisSessionStoreOptions', '/documentation/api/http-framework-utilities/interfaces/RedisSessionStoreOptions'],
+		'): ',
+		['RedisSessionStore', '/documentation/api/http-framework-utilities/classes/RedisSessionStore'],
+		'<T>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['RedisSessionStoreOptions', '/documentation/api/http-framework-utilities/interfaces/RedisSessionStoreOptions']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### scope
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly scope: "shared"']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L26',
+		label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:26'
+	}}
+/>
+
+## Methods
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L46', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(id: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L36', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:36' }}>
+
+<ApiSignature
+	tokens={[
+		'get(id: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<T | null>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<T | null>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L41', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:41' }}>
+
+<ApiSignature
+	tokens={[
+		'set(id: string, value: T, ttl: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+<ApiParam name="value" type={['T']} />
+
+<ApiParam name="ttl" type={['number']}>
+
+Time-to-live in milliseconds, refreshed on every write.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

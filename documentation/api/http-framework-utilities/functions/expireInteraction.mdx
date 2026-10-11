@@ -1,0 +1,47 @@
+---
+title: 'Function: expireInteraction()'
+description: 'updates the clicked message with its controls disabled, then sends content as an ephemeral followup. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/expire.ts#L38',
+		label: 'packages/http-framework-utilities/src/lib/expire.ts:38'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+`update`s the clicked message with its controls disabled, then sends `content` as an ephemeral followup. This is
+the interaction's single response: `update` first, `followup` second. Followup failures are logged, never thrown.
+
+<ApiSignature
+	tokens={[
+		'expireInteraction(interaction: ',
+		['ComponentInteraction', '/documentation/api/http-framework-utilities/type-aliases/ComponentInteraction'],
+		', content: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+`update`s the clicked message with its controls disabled, then sends `content` as an ephemeral followup. This is
+the interaction's single response: `update` first, `followup` second. Followup failures are logged, never thrown.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['ComponentInteraction', '/documentation/api/http-framework-utilities/type-aliases/ComponentInteraction']]} />
+
+<ApiParam name="content" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>

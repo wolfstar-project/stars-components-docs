@@ -10,8 +10,8 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 	kind="class"
 	badges={['since 3.2.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L19',
-		label: 'packages/http-framework/src/lib/errors/UserError.ts:19'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L24',
+		label: 'packages/http-framework/src/lib/errors/UserError.ts:24'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -35,6 +35,11 @@ The UserError class to be thrown and emitted by the pieces of the framework.
 This class is the root of every framework-thrown error, allowing consumers to distinguish
 errors that are meant to be shown to the user from unexpected, internal ones.
 
+When a command, an autocomplete handler, or an interaction handler throws a `UserError` (or any subclass), the
+client emits the matching `*Denied` event ([Events.ChatInputCommandDenied](/documentation/api/http-framework/enumerations/Events#member-chatinputcommanddenied), [Events.ContextMenuCommandDenied](/documentation/api/http-framework/enumerations/Events#member-contextmenucommanddenied),
+[Events.AutocompleteDenied](/documentation/api/http-framework/enumerations/Events#member-autocompletedenied), or [Events.InteractionHandlerDenied](/documentation/api/http-framework/enumerations/Events#member-interactionhandlerdenied)) instead of the `*Error` one, so listeners
+can reply to the user without reporting an expected failure as a bug. Use [isUserError](/documentation/api/http-framework/functions/isUserError) to apply the same check.
+
 **Example**
 
 ```typescript
@@ -49,7 +54,7 @@ throw new UserError({
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L36', label: 'packages/http-framework/src/lib/errors/UserError.ts:36' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L41', label: 'packages/http-framework/src/lib/errors/UserError.ts:41' }}>
 
 <ApiSignature
 	tokens={[
@@ -78,7 +83,7 @@ The UserError options
 
 ### context
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L30', label: 'packages/http-framework/src/lib/errors/UserError.ts:30' }}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L35', label: 'packages/http-framework/src/lib/errors/UserError.ts:35' }}>
 
 User-provided context.
 
@@ -86,7 +91,7 @@ User-provided context.
 
 ### identifier
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L24', label: 'packages/http-framework/src/lib/errors/UserError.ts:24' }}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L29', label: 'packages/http-framework/src/lib/errors/UserError.ts:29' }}>
 
 An identifier, useful to localize emitted errors.
 
@@ -96,7 +101,7 @@ An identifier, useful to localize emitted errors.
 
 ### name
 
-<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L42', label: 'packages/http-framework/src/lib/errors/UserError.ts:42' }}>
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L47', label: 'packages/http-framework/src/lib/errors/UserError.ts:47' }}>
 
 This will be `'UserError'` and can be used to distinguish the type of error when any error gets thrown.
 

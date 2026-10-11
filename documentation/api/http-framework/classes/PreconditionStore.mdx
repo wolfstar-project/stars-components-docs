@@ -1,0 +1,164 @@
+---
+title: 'Class: PreconditionStore'
+description: 'The store class which contains Pieces. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/PreconditionStore.ts#L13',
+		label: 'packages/http-framework/src/lib/structures/PreconditionStore.ts:13'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The store class which contains `Piece`s.
+
+<ApiSignature
+	tokens={[
+		'class PreconditionStore extends Store<',
+		['Precondition', '/documentation/api/http-framework/classes/Precondition'],
+		', "preconditions">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Store<', ['Precondition', '/documentation/api/http-framework/classes/Precondition'], ', "preconditions">']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/PreconditionStore.ts#L16', label: 'packages/http-framework/src/lib/structures/PreconditionStore.ts:16' }}>
+
+<ApiSignature tokens={['new PreconditionStore(): ', ['PreconditionStore', '/documentation/api/http-framework/classes/PreconditionStore']]} />
+
+</ApiMember>
+
+## Methods
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/PreconditionStore.ts#L65', label: 'packages/http-framework/src/lib/structures/PreconditionStore.ts:65' }}>
+
+<ApiSignature tokens={['clear(): void']} />
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/PreconditionStore.ts#L60', label: 'packages/http-framework/src/lib/structures/PreconditionStore.ts:60' }}>
+
+<ApiSignature tokens={['delete(key: string): boolean']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
+
+true if an element in the Map existed and has been removed, or false if the element does not exist.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### run()
+
+<ApiMember kind="method" badges={['since 6.3.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/PreconditionStore.ts#L31', label: 'packages/http-framework/src/lib/structures/PreconditionStore.ts:31' }}>
+
+<ApiSignature
+	tokens={[
+		'run(\n  kind: ',
+		['PreconditionKind', '/documentation/api/http-framework/type-aliases/PreconditionKind'],
+		',\n  interaction: ',
+		['PreconditionInteraction', '/documentation/api/http-framework/type-aliases/PreconditionInteraction'],
+		',\n  target: ',
+		['PreconditionTarget', '/documentation/api/http-framework/type-aliases/PreconditionTarget'],
+		',\n  context: ',
+		['PreconditionContext', '/documentation/api/http-framework/type-aliases/PreconditionContext'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<unknown, ',
+		['UserError', '/documentation/api/http-framework/classes/UserError'],
+		', boolean>>'
+	]}
+/>
+
+Runs the global preconditions, the ones with a `position`, in ascending order of it, stopping at the first one
+that denies the interaction.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="kind" type={[['PreconditionKind', '/documentation/api/http-framework/type-aliases/PreconditionKind']]}>
+
+What is being run.
+
+</ApiParam>
+
+<ApiParam name="interaction" type={[['PreconditionInteraction', '/documentation/api/http-framework/type-aliases/PreconditionInteraction']]}>
+
+The interaction being handled.
+
+</ApiParam>
+
+<ApiParam name="target" type={[['PreconditionTarget', '/documentation/api/http-framework/type-aliases/PreconditionTarget']]}>
+
+The command or interaction handler being run.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['PreconditionContext', '/documentation/api/http-framework/type-aliases/PreconditionContext']]} defaultValue={'{}'}>
+
+The context of the checks.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'], '<unknown, ', ['UserError', '/documentation/api/http-framework/classes/UserError'], ', boolean>>']}>
+
+The first `Err`, or `Result.ok()` when every global precondition lets the command run.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/PreconditionStore.ts#L45', label: 'packages/http-framework/src/lib/structures/PreconditionStore.ts:45' }}>
+
+<ApiSignature tokens={['set(key: string, value: ', ['Precondition', '/documentation/api/http-framework/classes/Precondition'], '): this']} />
+
+Adds a new element with a specified key and value to the Map. If an element with the same key already exists, the element will be updated.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={[['Precondition', '/documentation/api/http-framework/classes/Precondition']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

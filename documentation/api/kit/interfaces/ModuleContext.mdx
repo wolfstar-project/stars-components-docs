@@ -1,0 +1,163 @@
+---
+title: 'Interface: ModuleContext'
+description: 'API reference for ModuleContext, an interface exported by @wolfstar/kit.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L64',
+		label: 'packages/kit/src/types.ts:64'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+<ApiSignature tokens={['interface ModuleContext']} />
+
+## Properties
+
+### callHook
+
+<ApiMember kind="property" signature={['callHook: <Name extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '>(\n  name: Name,\n  ...args: ', ['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'], '<', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '[Name]>\n) => unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L77', label: 'packages/kit/src/types.ts:77' }}>
+
+Calls a hook of the `stars` CLI.
+
+</ApiMember>
+
+### config
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L68', label: 'packages/kit/src/types.ts:68' }}>
+
+The resolved `stars.config`, before any module contributed.
+
+</ApiMember>
+
+### hook
+
+<ApiMember kind="property" signature={['hook: <Name extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '>(name: Name, callback: ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '[Name]) => unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L75', label: 'packages/kit/src/types.ts:75' }}>
+
+Registers a hook of the `stars` CLI.
+
+</ApiMember>
+
+### root
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly root: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L66', label: 'packages/kit/src/types.ts:66' }}>
+
+Absolute project root.
+
+</ApiMember>
+
+### versions
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={[
+		'readonly versions: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['ModuleVersions', '/documentation/api/kit/interfaces/ModuleVersions'],
+		'>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L69',
+		label: 'packages/kit/src/types.ts:69'
+	}}
+/>
+
+## Methods
+
+### addImports()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L73', label: 'packages/kit/src/types.ts:73' }}>
+
+<ApiSignature tokens={['addImports(preset: string | { from: string }): void']} />
+
+Adds a package to the auto imports presets (`imports.presets`): all its exports become auto imports.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="preset" type={['string | { from: string }']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addPlugin()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L71', label: 'packages/kit/src/types.ts:71' }}>
+
+<ApiSignature
+	tokens={[
+		'addPlugin(plugin: string | ',
+		['ModulePluginSource', '/documentation/api/kit/interfaces/ModulePluginSource'],
+		' | ',
+		['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'],
+		'): void'
+	]}
+/>
+
+Registers a runtime plugin. See [ModulePluginSource](/documentation/api/kit/interfaces/ModulePluginSource).
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="plugin"
+	type={[
+		'string | ',
+		['ModulePluginSource', '/documentation/api/kit/interfaces/ModulePluginSource'],
+		' | ',
+		['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL']
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### installModule()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L79', label: 'packages/kit/src/types.ts:79' }}>
+
+<ApiSignature
+	tokens={[
+		'installModule<Options extends ',
+		['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions'],
+		'>(\n  module: ',
+		['ModuleInput', '/documentation/api/kit/type-aliases/ModuleInput'],
+		'<Options>,\n  options?: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Options>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Installs another module, once: a module that is already installed is left as it is, whatever options it got.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends ', ['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="module" type={[['ModuleInput', '/documentation/api/kit/type-aliases/ModuleInput'], '<Options>']} />
+
+<ApiParam name="options" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Options>']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

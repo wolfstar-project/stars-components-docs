@@ -1,40 +1,57 @@
 ---
 title: 'Function: createMethodDecorator()'
+description: 'Utility to make a method decorator from a function. (@wolfstar/decorators)'
 hidden: true
 ---
 
-> **createMethodDecorator**\<`TFunction`\>(`fn`): `TFunction`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/decorators/src/utils.ts:18](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/utils.ts#L18)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/utils.ts#L18',
+		label: 'utils.ts:18'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
 
 Utility to make a method decorator from a function.
 
-## Type Parameters
+<ApiSignature tokens={['createMethodDecorator<TFunction extends (...args: any[]) => unknown>(fn: TFunction): TFunction']} />
 
-### TFunction
-
-`TFunction` _extends_ (...`args`) => `unknown`
-
-## Parameters
-
-### fn
-
-`TFunction`
-
-The method to decorate.
-
-## Returns
-
-`TFunction`
-
-The decorator.
-
-## Remarks
+Utility to make a method decorator from a function.
 
 The decorator is returned with the signature it was given, rather than widened to `MethodDecorator`, so a
 decorator built on top of this keeps whatever constraint it declares on its target.
 
-## Example
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TFunction" type={['extends (...args: any[]) => unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="fn" type={['TFunction']}>
+
+The method to decorate.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TFunction']}>
+
+The decorator.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example**
 
 ```typescript
 // Enumerable function that will not append the property to the prototype:

@@ -1,0 +1,44 @@
+---
+title: 'Type Alias: PieceConstructor'
+description: 'The constructor signature shared by every Piece of @wolfstar/http-framework, such as Command, Listener, and InteractionHandler. (@wolfstar/decorators)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/ApplyOptions.ts#L8',
+		label: 'ApplyOptions.ts:8'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
+
+The constructor signature shared by every `Piece` of `@wolfstar/http-framework`, such as `Command`, `Listener`, and
+`InteractionHandler`.
+
+<ApiSignature
+	tokens={['type PieceConstructor<Options extends PieceOptions = PieceOptions> = (context: LoaderPieceContext, options?: Options) => unknown']}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={['LoaderPieceContext']} />
+
+<ApiParam name="options" type={['Options']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>

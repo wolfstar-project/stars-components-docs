@@ -1,0 +1,60 @@
+---
+title: 'Function: createViteServer()'
+description: 'A native Vite development server for an entry exporting a loaded Client (or any Fetch handler). (@wolfstar/vite-server)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/dev.ts#L17',
+		label: 'packages/vite-server/src/dev.ts:17'
+	}}
+	packageName="@wolfstar/vite-server"
+	packageHref="/documentation/api/vite-server"
+/>
+
+A native Vite development server for an entry exporting a loaded Client (or any Fetch handler).
+
+<ApiSignature
+	tokens={[
+		'createViteServer(\n  config: ',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		',\n  context: ',
+		['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext'],
+		' = defaultBuilderContext,\n  hooks: ',
+		['ViteHooks', '/documentation/api/vite-server/interfaces/ViteHooks'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StarsViteServer', '/documentation/api/vite-server/interfaces/StarsViteServer'],
+		'>'
+	]}
+/>
+
+A native Vite development server for an entry exporting a loaded Client (or any Fetch handler).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} />
+
+<ApiParam name="context" type={[['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext']]} defaultValue="defaultBuilderContext" />
+
+<ApiParam name="hooks" type={[['ViteHooks', '/documentation/api/vite-server/interfaces/ViteHooks']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StarsViteServer', '/documentation/api/vite-server/interfaces/StarsViteServer'],
+		'>'
+	]}
+/>
+
+</ApiParams>

@@ -1,0 +1,98 @@
+---
+title: 'Interface: RunnableInteraction'
+description: 'Anything an interactive message can be sent from: command and component interactions of @wolfstar/http-framework. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/interactions.ts#L52',
+		label: 'packages/http-framework-utilities/src/lib/interactions.ts:52'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Anything an interactive message can be sent from: command and component interactions of `@wolfstar/http-framework`.
+
+<ApiSignature tokens={['interface RunnableInteraction']} />
+
+## Properties
+
+### applicationId?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly applicationId?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/interactions.ts#L57', label: 'packages/http-framework-utilities/src/lib/interactions.ts:57' }}>
+
+With [`token`](/documentation/api/http-framework-utilities/interfaces/RunnableInteraction#token), used to edit the response when it times out. Without either, timeout cleanup is skipped.
+
+</ApiMember>
+
+### channel?
+
+<ApiMember
+	kind="property"
+	badges={['readonly', 'optional']}
+	signature={['readonly channel?: { readonly id: string }']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/interactions.ts#L62',
+		label: 'packages/http-framework-utilities/src/lib/interactions.ts:62'
+	}}
+/>
+
+### token?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly token?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/interactions.ts#L61', label: 'packages/http-framework-utilities/src/lib/interactions.ts:61' }}>
+
+The interaction token. Kept in process memory only, never stored in a session store or logged.
+
+</ApiMember>
+
+### user
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly user: { readonly id: string }']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/interactions.ts#L53',
+		label: 'packages/http-framework-utilities/src/lib/interactions.ts:53'
+	}}
+/>
+
+## Methods
+
+### reply()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/interactions.ts#L66', label: 'packages/http-framework-utilities/src/lib/interactions.ts:66' }}>
+
+<ApiSignature
+	tokens={[
+		'reply(data: ',
+		['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+`@wolfstar/http-framework` resolves a `PartialMessage` whose `get()` fetches the real message.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="data"
+	type={[['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData']]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>

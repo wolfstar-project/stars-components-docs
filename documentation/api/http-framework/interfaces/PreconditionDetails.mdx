@@ -1,0 +1,47 @@
+---
+title: 'Interface: PreconditionDetails'
+description: 'The name of a Precondition piece, with the context to give it. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L83',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:83'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The name of a [Precondition](/documentation/api/http-framework/classes/Precondition) piece, with the context to give it.
+
+<ApiSignature tokens={['interface PreconditionDetails']} />
+
+## Properties
+
+### context?
+
+<ApiMember kind="property" badges={['optional', 'since 6.3.0']} signature={['context?: ', ['PreconditionContext', '/documentation/api/http-framework/type-aliases/PreconditionContext']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L95', label: 'packages/http-framework/src/lib/utils/preconditions.ts:95' }}>
+
+The context to give to the precondition.
+
+**Default**
+
+```ts
+{
+}
+```
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['name: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L88', label: 'packages/http-framework/src/lib/utils/preconditions.ts:88' }}>
+
+The name of the precondition in the `preconditions` store.
+
+</ApiMember>

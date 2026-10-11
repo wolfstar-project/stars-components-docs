@@ -1,0 +1,80 @@
+---
+title: 'Class: PluginHookError'
+description: 'The error a StarsPlugin hook is wrapped in, so a failure points at the plugin that threw. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['since 6.1.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L89',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:89'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The error a [StarsPlugin](/documentation/api/http-framework/interfaces/StarsPlugin) hook is wrapped in, so a failure points at the plugin that threw. The original
+error is available as `cause`.
+
+<ApiSignature
+	tokens={['class PluginHookError extends ', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]}
+/>
+
+<ApiHierarchy extends={[[['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L93', label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:93' }}>
+
+<ApiSignature
+	tokens={[
+		'new PluginHookError(pluginName: string, hook: ',
+		['PluginHook', '/documentation/api/http-framework/enumerations/PluginHook'],
+		', cause: unknown): ',
+		['PluginHookError', '/documentation/api/http-framework/classes/PluginHookError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="pluginName" type={['string']} />
+
+<ApiParam name="hook" type={[['PluginHook', '/documentation/api/http-framework/enumerations/PluginHook']]} />
+
+<ApiParam name="cause" type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### hook
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly hook: ', ['PluginHook', '/documentation/api/http-framework/enumerations/PluginHook']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L91',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:91'
+	}}
+/>
+
+### pluginName
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly pluginName: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L90',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:90'
+	}}
+/>

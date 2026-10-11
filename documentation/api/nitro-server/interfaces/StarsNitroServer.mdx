@@ -1,0 +1,124 @@
+---
+title: 'Interface: StarsNitroServer'
+description: 'API reference for StarsNitroServer, an interface exported by @wolfstar/nitro-server.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/dev.ts#L9',
+		label: 'packages/nitro-server/src/dev.ts:9'
+	}}
+	packageName="@wolfstar/nitro-server"
+	packageHref="/documentation/api/nitro-server"
+/>
+
+<ApiSignature tokens={['interface StarsNitroServer']} />
+
+## Properties
+
+### nitro
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly nitro: Nitro']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/dev.ts#L12', label: 'packages/nitro-server/src/dev.ts:12' }}>
+
+The Nitro instance backing this server: routing, hooks, logger, and runtime config live here.
+
+</ApiMember>
+
+### vite
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly vite: ViteDevServer']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/dev.ts#L10',
+		label: 'packages/nitro-server/src/dev.ts:10'
+	}}
+/>
+
+## Methods
+
+### close()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/dev.ts#L16', label: 'packages/nitro-server/src/dev.ts:16' }}>
+
+<ApiSignature
+	tokens={['close(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/dev.ts#L14', label: 'packages/nitro-server/src/dev.ts:14' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(request: ',
+		['Request', 'https://developer.mozilla.org/en-US/docs/Web/API/Request'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>'
+	]}
+/>
+
+Dispatch through Nitro's own router, bypassing the HTTP socket entirely.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['Request', 'https://developer.mozilla.org/en-US/docs/Web/API/Request']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### listen()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/dev.ts#L15', label: 'packages/nitro-server/src/dev.ts:15' }}>
+
+<ApiSignature
+	tokens={[
+		'listen(port?: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="port" type={['number']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

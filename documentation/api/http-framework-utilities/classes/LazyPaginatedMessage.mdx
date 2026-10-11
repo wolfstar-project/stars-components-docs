@@ -1,0 +1,733 @@
+---
+title: 'Class: LazyPaginatedMessage'
+description: 'A PaginatedMessage resolving function pages only when first displayed. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/LazyPaginatedMessage.ts#L7',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/LazyPaginatedMessage.ts:7'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+A [`PaginatedMessage`](/documentation/api/http-framework-utilities/classes/PaginatedMessage) resolving function pages only when first displayed. Lazy pages are process-local:
+a click reaching another process shows them as expired.
+
+<ApiSignature
+	tokens={['class LazyPaginatedMessage extends ', ['PaginatedMessage', '/documentation/api/http-framework-utilities/classes/PaginatedMessage']]}
+/>
+
+<ApiHierarchy extends={[[['PaginatedMessage', '/documentation/api/http-framework-utilities/classes/PaginatedMessage']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L143', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:143' }} inheritedFrom={[['PaginatedMessage.constructor', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new LazyPaginatedMessage(options: ',
+		['PaginatedMessageOptions', '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageOptions'],
+		' = {}): ',
+		['LazyPaginatedMessage', '/documentation/api/http-framework-utilities/classes/LazyPaginatedMessage']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[['PaginatedMessageOptions', '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageOptions']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### actions
+
+<ApiMember
+	kind="property"
+	signature={[
+		'actions: ',
+		['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'],
+		'<string, ',
+		['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'],
+		'>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L127',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:127'
+	}}
+	inheritedFrom={[['PaginatedMessage.actions', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#actions']]}
+/>
+
+### eager
+
+<ApiMember kind="property" badges={['protected']} signature={['protected eager: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/LazyPaginatedMessage.ts#L8', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/LazyPaginatedMessage.ts:8' }}>
+
+Whether function pages are resolved when the message starts (`true`) or when first displayed (`false`).
+
+</ApiMember>
+
+### expiredReply
+
+<ApiMember
+	kind="property"
+	signature={['expiredReply: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L132',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:132'
+	}}
+	inheritedFrom={[['PaginatedMessage.expiredReply', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#expiredreply']]}
+/>
+
+### idle
+
+<ApiMember
+	kind="property"
+	signature={['idle: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L129',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:129'
+	}}
+	inheritedFrom={[['PaginatedMessage.idle', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#idle']]}
+/>
+
+### index
+
+<ApiMember
+	kind="property"
+	signature={['index: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L128',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:128'
+	}}
+	inheritedFrom={[['PaginatedMessage.index', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#index']]}
+/>
+
+### ownerOnly
+
+<ApiMember
+	kind="property"
+	signature={['ownerOnly: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L130',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:130'
+	}}
+	inheritedFrom={[['PaginatedMessage.ownerOnly', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#owneronly']]}
+/>
+
+### pages
+
+<ApiMember
+	kind="property"
+	signature={[
+		'pages: ',
+		['PaginatedMessagePageResolvable', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePageResolvable'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L126',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:126'
+	}}
+	inheritedFrom={[['PaginatedMessage.pages', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#pages']]}
+/>
+
+### store
+
+<ApiMember
+	kind="property"
+	signature={['store: ', ['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'], '<unknown> | undefined']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L134',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:134'
+	}}
+	inheritedFrom={[['PaginatedMessage.store', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#store']]}
+/>
+
+### timeoutBehavior
+
+<ApiMember
+	kind="property"
+	signature={['timeoutBehavior: ', ['TimeoutBehavior', '/documentation/api/http-framework-utilities/type-aliases/TimeoutBehavior']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L133',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:133'
+	}}
+	inheritedFrom={[['PaginatedMessage.timeoutBehavior', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#timeoutbehavior']]}
+/>
+
+### wrongUserReply
+
+<ApiMember
+	kind="property"
+	signature={['wrongUserReply: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L131',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:131'
+	}}
+	inheritedFrom={[['PaginatedMessage.wrongUserReply', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#wronguserreply']]}
+/>
+
+### defaultActions
+
+<ApiMember
+	kind="property"
+	badges={['static']}
+	signature={[
+		'static defaultActions: ',
+		['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L115',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:115'
+	}}
+	inheritedFrom={[['PaginatedMessage.defaultActions', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#defaultactions']]}
+/>
+
+### defaultIdle
+
+<ApiMember
+	kind="property"
+	badges={['static']}
+	signature={['static defaultIdle: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L124',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:124'
+	}}
+	inheritedFrom={[['PaginatedMessage.defaultIdle', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#defaultidle']]}
+/>
+
+## Methods
+
+### addAction()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L181', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:181' }} inheritedFrom={[['PaginatedMessage.addAction', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#addaction']]}>
+
+<ApiSignature
+	tokens={[
+		'addAction(action: ',
+		['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'],
+		'): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="action"
+	type={[['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry']]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addActions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L198', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:198' }} inheritedFrom={[['PaginatedMessage.addActions', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#addactions']]}>
+
+<ApiSignature
+	tokens={[
+		'addActions(actions: readonly ',
+		['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'],
+		'[]): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="actions"
+	type={[
+		'readonly ',
+		['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'],
+		'[]'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addPage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L154', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:154' }} inheritedFrom={[['PaginatedMessage.addPage', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#addpage']]}>
+
+<ApiSignature
+	tokens={[
+		'addPage(page: ',
+		['PaginatedMessagePageResolvable', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePageResolvable'],
+		'): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="page"
+	type={[['PaginatedMessagePageResolvable', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePageResolvable']]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addPageBuilder()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L172', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:172' }} inheritedFrom={[['PaginatedMessage.addPageBuilder', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#addpagebuilder']]}>
+
+<ApiSignature
+	tokens={[
+		'addPageBuilder(builder: ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		' | ((builder: ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		') => ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		')): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="builder"
+	type={[
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		' | ((builder: ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		') => ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		')'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addPageContent()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L164', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:164' }} inheritedFrom={[['PaginatedMessage.addPageContent', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#addpagecontent']]}>
+
+<ApiSignature tokens={['addPageContent(content: string): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="content" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addPageEmbed()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L168', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:168' }} inheritedFrom={[['PaginatedMessage.addPageEmbed', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#addpageembed']]}>
+
+<ApiSignature tokens={['addPageEmbed(embed: ', ['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed'], '): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="embed" type={[['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addPages()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L159', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:159' }} inheritedFrom={[['PaginatedMessage.addPages', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#addpages']]}>
+
+<ApiSignature
+	tokens={[
+		'addPages(pages: readonly ',
+		['PaginatedMessagePageResolvable', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePageResolvable'],
+		'[]): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="pages"
+	type={[
+		'readonly ',
+		['PaginatedMessagePageResolvable', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePageResolvable'],
+		'[]'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### clearPages()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L258', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:258' }} inheritedFrom={[['PaginatedMessage.clearPages', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#clearpages']]}>
+
+<ApiSignature tokens={['protected clearPages(): this']} />
+
+Resets the page list and any already-resolved pages. Subclasses that rebuild their pages from scratch (e.g. a
+`make()` method) should call this instead of resetting [`pages`](/documentation/api/http-framework-utilities/classes/PaginatedMessage#pages) directly, so stale resolved pages
+from a previous build are not served by `resolvePage`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### run()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L282', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:282' }} inheritedFrom={[['PaginatedMessage.run', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#run']]}>
+
+<ApiSignature
+	tokens={[
+		'run(interaction: ',
+		['RunnableInteraction', '/documentation/api/http-framework-utilities/interfaces/RunnableInteraction'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string>'
+	]}
+/>
+
+Replies to the interaction with the first page and schedules the timeout cleanup of the reply.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['RunnableInteraction', '/documentation/api/http-framework-utilities/interfaces/RunnableInteraction']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string>']}>
+
+The session id.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When [`idle`](/documentation/api/http-framework-utilities/classes/PaginatedMessage#idle) exceeds [`MaximumTokenLifetime`](/documentation/api/http-framework-utilities/variables/MaximumTokenLifetime) and the reply can only be
+edited with the interaction token (ephemeral, or no channel), before replying.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### sendBotMessage()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L333', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:333' }} inheritedFrom={[['PaginatedMessage.sendBotMessage', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#sendbotmessage']]}>
+
+<ApiSignature
+	tokens={[
+		'protected sendBotMessage(\n  ownerId: string | null,\n  send: (payload: ',
+		['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData'],
+		') => ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  channelId: string;\n  messageId: string;\n}>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string>'
+	]}
+/>
+
+Sends the first page as a bot-owned, non-ephemeral message through `send` (e.g. a gateway reply or a channel
+message) and schedules its timeout cleanup through the bot's REST route on the returned message, so
+[`idle`](/documentation/api/http-framework-utilities/classes/PaginatedMessage#idle) is not bound by [`MaximumTokenLifetime`](/documentation/api/http-framework-utilities/variables/MaximumTokenLifetime).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ownerId" type={['string | null']}>
+
+The user allowed to use the components, see [`start`](/documentation/api/http-framework-utilities/classes/PaginatedMessage#start).
+
+</ApiParam>
+
+<ApiParam name="send" type={['(payload: ', ['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData'], ') => ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<{\n  channelId: string;\n  messageId: string;\n}>']}>
+
+Sends the payload and resolves with the created message's id and channel id.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string>']}>
+
+The session id.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setActions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L176', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:176' }} inheritedFrom={[['PaginatedMessage.setActions', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#setactions']]}>
+
+<ApiSignature
+	tokens={[
+		'setActions(actions: readonly ',
+		['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'],
+		'[]): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="actions"
+	type={[
+		'readonly ',
+		['PaginatedMessageActionEntry', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'],
+		'[]'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setExpiredReply()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L227', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:227' }} inheritedFrom={[['PaginatedMessage.setExpiredReply', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#setexpiredreply']]}>
+
+<ApiSignature tokens={['setExpiredReply(reply: string): this']} />
+
+Sets the notice sent when a click cannot be handled while the session is still readable, see
+[`PaginatedMessageOptions.expiredReply`](/documentation/api/http-framework-utilities/interfaces/PaginatedMessageOptions#expiredreply). For expired sessions, use `setDefaultExpiredReply`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reply" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setIdle()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L208', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:208' }} inheritedFrom={[['PaginatedMessage.setIdle', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#setidle']]}>
+
+<ApiSignature tokens={['setIdle(idle: number): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="idle" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setIndex()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L203', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:203' }} inheritedFrom={[['PaginatedMessage.setIndex', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#setindex']]}>
+
+<ApiSignature tokens={['setIndex(index: number): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="index" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setOwnerOnly()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L213', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:213' }} inheritedFrom={[['PaginatedMessage.setOwnerOnly', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#setowneronly']]}>
+
+<ApiSignature tokens={['setOwnerOnly(ownerOnly: boolean): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ownerOnly" type={['boolean']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setTimeoutBehavior()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L232', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:232' }} inheritedFrom={[['PaginatedMessage.setTimeoutBehavior', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#settimeoutbehavior']]}>
+
+<ApiSignature
+	tokens={[
+		'setTimeoutBehavior(behavior: ',
+		['TimeoutBehavior', '/documentation/api/http-framework-utilities/type-aliases/TimeoutBehavior'],
+		'): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="behavior" type={[['TimeoutBehavior', '/documentation/api/http-framework-utilities/type-aliases/TimeoutBehavior']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setWrongUserInteractionReply()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L218', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:218' }} inheritedFrom={[['PaginatedMessage.setWrongUserInteractionReply', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#setwronguserinteractionreply']]}>
+
+<ApiSignature tokens={['setWrongUserInteractionReply(reply: string): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reply" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### start()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L270', label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:270' }} inheritedFrom={[['PaginatedMessage.start', '/documentation/api/http-framework-utilities/classes/PaginatedMessage#start']]}>
+
+<ApiSignature
+	tokens={[
+		'start(ownerId: string | null): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PaginatedMessageStart', '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageStart'],
+		'>'
+	]}
+/>
+
+Creates the session and returns the first payload, for flows that send it themselves (deferred replies,
+follow-ups).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ownerId" type={['string | null']}>
+
+The user allowed to use the components; ignored when [`ownerOnly`](/documentation/api/http-framework-utilities/classes/PaginatedMessage#owneronly) is `false`. Passing
+`null` lets anyone use the components even when [`ownerOnly`](/documentation/api/http-framework-utilities/classes/PaginatedMessage#owneronly) is `true`.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PaginatedMessageStart', '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageStart'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

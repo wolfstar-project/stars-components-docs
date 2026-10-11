@@ -10,7 +10,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 	kind="class"
 	badges={['since 2.0.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L10',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L10',
 		label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:10'
 	}}
 	packageName="@wolfstar/http-framework"
@@ -22,9 +22,9 @@ Represents an error that is thrown when a `ChatInputRouter` encounters an error.
 <ApiSignature
 	tokens={[
 		'class ChatInputRouterError<Options extends ',
-		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
 		' = ',
-		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
 		'> extends ',
 		['UserError', '/documentation/api/http-framework/classes/UserError']
 	]}
@@ -36,7 +36,7 @@ Represents an error that is thrown when a `ChatInputRouter` encounters an error.
 
 <ApiParam
 	name="Options"
-	type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options']]}
+	type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}
 	defaultValue="Command.Options"
 />
 
@@ -46,11 +46,15 @@ Represents an error that is thrown when a `ChatInputRouter` encounters an error.
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L35', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:35' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L35', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:35' }}>
 
 <ApiSignature
 	tokens={[
-		'new ChatInputRouterError<Options extends PieceOptions = PieceOptions>(\n  key: "DuplicatedSubcommandGroup" | "DuplicatedSubcommand" | "SubcommandGroupLinkInvalid" | "SubcommandLinkInvalid",\n  command: ',
+		'new ChatInputRouterError<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		' = ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(\n  key: "DuplicatedSubcommandGroup" | "DuplicatedSubcommand" | "SubcommandGroupLinkInvalid" | "SubcommandLinkInvalid",\n  command: ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
 		'<Options>,\n  group?: ',
 		[
@@ -67,7 +71,11 @@ Represents an error that is thrown when a `ChatInputRouter` encounters an error.
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+<ApiParam
+	name="Options"
+	type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}
+	defaultValue="Options"
+/>
 
 </ApiParams>
 
@@ -106,7 +114,7 @@ Represents an error that is thrown when a `ChatInputRouter` encounters an error.
 
 ### command
 
-<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly command: ', ['Command', '/documentation/api/http-framework/classes/Command'], '<Options>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L21', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:21' }}>
+<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly command: ', ['Command', '/documentation/api/http-framework/classes/Command'], '<Options>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L21', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:21' }}>
 
 The command that was being processed when the error was thrown.
 
@@ -114,7 +122,7 @@ The command that was being processed when the error was thrown.
 
 ### context
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L30', label: 'packages/http-framework/src/lib/errors/UserError.ts:30' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L35', label: 'packages/http-framework/src/lib/errors/UserError.ts:35' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
 
 User-provided context.
 
@@ -122,7 +130,7 @@ User-provided context.
 
 ### group
 
-<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly group: ', ['APIApplicationCommandSubcommandGroupOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandSubcommandGroupOption'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L27', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:27' }}>
+<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly group: ', ['APIApplicationCommandSubcommandGroupOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandSubcommandGroupOption'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L27', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:27' }}>
 
 The subcommand group that was being processed when the error was thrown, if any.
 
@@ -130,7 +138,7 @@ The subcommand group that was being processed when the error was thrown, if any.
 
 ### identifier
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L24', label: 'packages/http-framework/src/lib/errors/UserError.ts:24' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L29', label: 'packages/http-framework/src/lib/errors/UserError.ts:29' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
 
 An identifier, useful to localize emitted errors.
 
@@ -138,7 +146,7 @@ An identifier, useful to localize emitted errors.
 
 ### key
 
-<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly key: "DuplicatedSubcommandGroup" | "DuplicatedSubcommand" | "SubcommandGroupLinkInvalid" | "SubcommandLinkInvalid"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L15', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:15' }}>
+<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly key: "DuplicatedSubcommandGroup" | "DuplicatedSubcommand" | "SubcommandGroupLinkInvalid" | "SubcommandLinkInvalid"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L15', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:15' }}>
 
 The key identifying the error.
 
@@ -146,7 +154,7 @@ The key identifying the error.
 
 ### subcommand
 
-<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly subcommand: ', ['APIApplicationCommandSubcommandOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandSubcommandOption'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L33', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:33' }}>
+<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly subcommand: ', ['APIApplicationCommandSubcommandOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandSubcommandOption'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L33', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:33' }}>
 
 The subcommand that was being processed when the error was thrown, if any.
 
@@ -156,7 +164,7 @@ The subcommand that was being processed when the error was thrown, if any.
 
 ### name
 
-<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L60', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:60' }}>
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L60', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:60' }}>
 
 This will be `'UserError'` and can be used to distinguish the type of error when any error gets thrown.
 
@@ -164,7 +172,7 @@ This will be `'UserError'` and can be used to distinguish the type of error when
 
 ### path
 
-<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get path(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L56', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:56' }}>
+<ApiMember kind="accessor" badges={['since 2.0.0']} signature={['get path(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ChatInputRouterError.ts#L56', label: 'packages/http-framework/src/lib/errors/ChatInputRouterError.ts:56' }}>
 
 The path of the command that was being processed when the error was thrown.
 

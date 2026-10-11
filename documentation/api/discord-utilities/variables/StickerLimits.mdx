@@ -1,0 +1,38 @@
+---
+title: 'Variable: StickerLimits'
+description: 'Namespace containing limits related to Discord Stickers. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/limits.ts#L821',
+		label: 'packages/discord-utilities/src/lib/limits.ts:821'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Namespace containing limits related to Discord Stickers.
+
+<ApiSignature tokens={['const StickerLimits: {\n  MaximumStickerSize: number;\n  MaximumTagsLength: number;\n}']} />
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumStickerSize" type={['number']}>
+
+Maximum size allowed for a sticker.
+Size is in bytes, and corresponds to 512KB.
+
+</ApiParam>
+
+<ApiParam name="MaximumTagsLength" type={['number']}>
+
+Maximum number of characters allowed in the autocomplete/suggestion tags for the sticker.
+
+</ApiParam>
+
+</ApiParams>

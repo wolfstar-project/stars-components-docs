@@ -1,0 +1,55 @@
+---
+title: 'Function: toPluginEntries()'
+description: 'Converts plugin options into hook entries, one per defined hook. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L98',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:98'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Converts plugin options into hook entries, one per defined hook.
+
+<ApiSignature
+	tokens={[
+		'toPluginEntries(option: ',
+		['PluginOption', '/documentation/api/http-framework/type-aliases/PluginOption'],
+		'): ',
+		['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'],
+		'<',
+		['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'],
+		' | ',
+		['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'],
+		'>[]'
+	]}
+/>
+
+Converts plugin options into hook entries, one per defined hook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="option" type={[['PluginOption', '/documentation/api/http-framework/type-aliases/PluginOption']]}>
+
+The plugin(s) to convert.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['HttpFrameworkPluginHookEntry', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHookEntry'], '<', ['HttpFrameworkPluginAsyncHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginAsyncHook'], ' | ', ['HttpFrameworkPluginHook', '/documentation/api/http-framework/interfaces/HttpFrameworkPluginHook'], '>[]']}>
+
+The entries, in the plugin order and in [PluginHook](/documentation/api/http-framework/enumerations/PluginHook) order inside each plugin.
+
+</ApiParam>
+
+</ApiParams>

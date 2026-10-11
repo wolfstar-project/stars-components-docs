@@ -1,0 +1,94 @@
+---
+title: 'Class: NitroBuilder'
+description: 'API reference for NitroBuilder, a class exported by @wolfstar/nitro-server.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/build.ts#L8',
+		label: 'packages/nitro-server/src/build.ts:8'
+	}}
+	packageName="@wolfstar/nitro-server"
+	packageHref="/documentation/api/nitro-server"
+/>
+
+<ApiSignature tokens={['class NitroBuilder extends ServerBuilder']} />
+
+<ApiHierarchy extends={[['ServerBuilder']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/build.ts#L9', label: 'packages/nitro-server/src/build.ts:9' }}>
+
+<ApiSignature
+	tokens={[
+		'new NitroBuilder(\n  config: ',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		',\n  context?: ',
+		['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext'],
+		',\n  hooks: ',
+		['NitroBuilderHooks', '/documentation/api/nitro-server/interfaces/NitroBuilderHooks'],
+		' = {}\n): ',
+		['NitroBuilder', '/documentation/api/nitro-server/classes/NitroBuilder']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} />
+
+<ApiParam name="context" type={[['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext']]} optional />
+
+<ApiParam name="hooks" type={[['NitroBuilderHooks', '/documentation/api/nitro-server/interfaces/NitroBuilderHooks']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### compile()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/build.ts#L16', label: 'packages/nitro-server/src/build.ts:16' }}>
+
+<ApiSignature
+	tokens={[
+		'protected compile(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### startWatching()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/build.ts#L26', label: 'packages/nitro-server/src/build.ts:26' }}>
+
+<ApiSignature
+	tokens={[
+		'protected startWatching(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

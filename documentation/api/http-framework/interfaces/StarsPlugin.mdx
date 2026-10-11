@@ -1,0 +1,109 @@
+---
+title: 'Interface: StarsPlugin'
+description: 'A declarative, object-based plugin. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	badges={['since 6.1.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L32',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:32'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+A declarative, object-based plugin. Hook names match the [PluginHook](/documentation/api/http-framework/enumerations/PluginHook) lifecycle.
+
+<ApiSignature tokens={['interface StarsPlugin']} />
+
+## Properties
+
+### apply?
+
+<ApiMember kind="property" badges={['optional']} signature={['apply?: ', ['StarsPluginApply', '/documentation/api/http-framework/type-aliases/StarsPluginApply']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L47', label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:47' }}>
+
+Restricts the plugin to an environment, or to the clients a function accepts.
+
+</ApiMember>
+
+### enforce?
+
+<ApiMember kind="property" badges={['optional']} signature={['enforce?: "pre" | "post"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L42', label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:42' }}>
+
+Hooks of a `'pre'` plugin run before plain ones, and `'post'` ones run after them. Registration order is
+kept inside each group.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" signature={['name: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L36', label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:36' }}>
+
+The plugin's identity, used to attribute errors and in the `pluginLoaded` event. Must be non-empty.
+
+</ApiMember>
+
+### postInitialization?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['postInitialization?: ', ['StarsPluginHook', '/documentation/api/http-framework/type-aliases/StarsPluginHook'], '<false>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L51',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:51'
+	}}
+/>
+
+### postListen?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['postListen?: ', ['StarsPluginHook', '/documentation/api/http-framework/type-aliases/StarsPluginHook'], '<true>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L53',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:53'
+	}}
+/>
+
+### preGenericsInitialization?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['preGenericsInitialization?: ', ['StarsPluginHook', '/documentation/api/http-framework/type-aliases/StarsPluginHook'], '<false>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L49',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:49'
+	}}
+/>
+
+### preInitialization?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['preInitialization?: ', ['StarsPluginHook', '/documentation/api/http-framework/type-aliases/StarsPluginHook'], '<false>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L50',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:50'
+	}}
+/>
+
+### preLoad?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['preLoad?: ', ['StarsPluginHook', '/documentation/api/http-framework/type-aliases/StarsPluginHook'], '<true>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L52',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:52'
+	}}
+/>

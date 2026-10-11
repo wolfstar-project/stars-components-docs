@@ -1,0 +1,75 @@
+---
+title: 'Interface: ResolveConfigOptions'
+description: 'API reference for ResolveConfigOptions, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L199',
+		label: 'packages/schema/src/config/resolve.ts:199'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface ResolveConfigOptions']} />
+
+## Properties
+
+### config
+
+<ApiMember
+	kind="property"
+	signature={['config: ', ['StarsConfig', '/documentation/api/schema/interfaces/StarsConfig']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L202',
+		label: 'packages/schema/src/config/resolve.ts:202'
+	}}
+/>
+
+### configFile
+
+<ApiMember
+	kind="property"
+	signature={['configFile: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L201',
+		label: 'packages/schema/src/config/resolve.ts:201'
+	}}
+/>
+
+### cwd
+
+<ApiMember
+	kind="property"
+	signature={['cwd: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L200',
+		label: 'packages/schema/src/config/resolve.ts:200'
+	}}
+/>
+
+### env?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['env?: ProcessEnv']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L203',
+		label: 'packages/schema/src/config/resolve.ts:203'
+	}}
+/>
+
+### projectEnv?
+
+<ApiMember kind="property" badges={['optional']} signature={['projectEnv?: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L208', label: 'packages/schema/src/config/resolve.ts:208' }}>
+
+The variables the bot will load, when the host resolved them itself (e.g. through `varlock load`). Used instead
+of the project's env files for the defaults read from them, such as the `dev.url` port.
+
+</ApiMember>

@@ -1,0 +1,44 @@
+---
+title: '@wolfstar/vite-server'
+description: 'Generated API reference for @wolfstar/vite-server: Vite build and watch integration loaded by the stars CLI.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/vite-server"
+	version="0.4.5"
+	guideHref="/documentation/packages/vite-server"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/vite-server"
+/>
+
+<InstallPackage packages="@wolfstar/vite-server" />
+
+<ApiSymbolList
+	symbols={[
+		{ name: 'ViteBuilder', kind: 'class', href: '/documentation/api/vite-server/classes/ViteBuilder' },
+		{ name: 'ServerHooks', kind: 'interface', href: '/documentation/api/vite-server/interfaces/ServerHooks' },
+		{ name: 'StarsViteServer', kind: 'interface', href: '/documentation/api/vite-server/interfaces/StarsViteServer' },
+		{ name: 'ViteBuilderHooks', kind: 'interface', href: '/documentation/api/vite-server/interfaces/ViteBuilderHooks' },
+		{ name: 'ViteHooks', kind: 'interface', href: '/documentation/api/vite-server/interfaces/ViteHooks' },
+		{
+			name: 'defaultBuilderContext',
+			kind: 'variable',
+			href: '/documentation/api/vite-server/variables/defaultBuilderContext',
+			summary: 'Default host for standalone use.'
+		},
+		{
+			name: 'createViteConfig',
+			kind: 'function',
+			href: '/documentation/api/vite-server/functions/createViteConfig',
+			summary: 'Defaults are applied after Vite loads its config, so explicit project options win.'
+		},
+		{
+			name: 'createViteServer',
+			kind: 'function',
+			href: '/documentation/api/vite-server/functions/createViteServer',
+			summary: 'A native Vite development server for an entry exporting a loaded Client (or any Fetch handler).'
+		}
+	]}
+/>

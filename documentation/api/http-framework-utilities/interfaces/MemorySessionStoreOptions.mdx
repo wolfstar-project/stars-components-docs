@@ -1,0 +1,35 @@
+---
+title: 'Interface: MemorySessionStoreOptions'
+description: 'API reference for MemorySessionStoreOptions, an interface exported by @wolfstar/http-framework-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L3',
+		label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:3'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+<ApiSignature tokens={['interface MemorySessionStoreOptions']} />
+
+## Properties
+
+### sweepInterval?
+
+<ApiMember kind="property" badges={['optional']} signature={['sweepInterval?: number']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L8', label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:8' }}>
+
+How often expired entries are removed, in milliseconds. `0` disables the sweep; entries still expire on read.
+
+**Default**
+
+```ts
+60_000;
+```
+
+</ApiMember>

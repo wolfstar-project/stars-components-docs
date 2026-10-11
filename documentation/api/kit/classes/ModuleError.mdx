@@ -1,0 +1,80 @@
+---
+title: 'Class: ModuleError'
+description: 'Why a module could not be installed. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/errors.ts#L4',
+		label: 'packages/kit/src/errors.ts:4'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+Why a module could not be installed. `moduleName` is the module's `meta.name`, or the specifier it was listed by.
+
+<ApiSignature
+	tokens={['class ModuleError extends ', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]}
+/>
+
+<ApiHierarchy extends={[[['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/errors.ts#L8', label: 'packages/kit/src/errors.ts:8' }}>
+
+<ApiSignature
+	tokens={[
+		'new ModuleError(\n  code: ',
+		['ModuleErrorCode', '/documentation/api/kit/type-aliases/ModuleErrorCode'],
+		',\n  moduleName: string,\n  message: string,\n  cause?: unknown\n): ',
+		['ModuleError', '/documentation/api/kit/classes/ModuleError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={[['ModuleErrorCode', '/documentation/api/kit/type-aliases/ModuleErrorCode']]} />
+
+<ApiParam name="moduleName" type={['string']} />
+
+<ApiParam name="message" type={['string']} />
+
+<ApiParam name="cause" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### code
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly code: ', ['ModuleErrorCode', '/documentation/api/kit/type-aliases/ModuleErrorCode']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/errors.ts#L5',
+		label: 'packages/kit/src/errors.ts:5'
+	}}
+/>
+
+### moduleName
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly moduleName: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/errors.ts#L6',
+		label: 'packages/kit/src/errors.ts:6'
+	}}
+/>

@@ -10,8 +10,8 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 	kind="class"
 	badges={['since 3.2.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L20',
-		label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:20'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/PreconditionError.ts#L24',
+		label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:24'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -24,6 +24,10 @@ handler is executed, such as the guild restrictions applied by
 <ApiSignature tokens={['class PreconditionError extends ', ['UserError', '/documentation/api/http-framework/classes/UserError']]} />
 
 <ApiHierarchy extends={[[['UserError', '/documentation/api/http-framework/classes/UserError']]]} />
+
+Being a [UserError](/documentation/api/http-framework/classes/UserError), it is emitted as a `*Denied` event when thrown from a command, an autocomplete
+handler, or an interaction handler, and not as `commandError`. The framework has no precondition store: the
+decorators of `@wolfstar/decorators` are what throws it.
 
 **Example**
 
@@ -40,7 +44,7 @@ throw new PreconditionError({
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L27', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:27' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/PreconditionError.ts#L31', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:31' }}>
 
 <ApiSignature
 	tokens={[
@@ -63,7 +67,7 @@ throw new PreconditionError({
 
 ### context
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L30', label: 'packages/http-framework/src/lib/errors/UserError.ts:30' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L35', label: 'packages/http-framework/src/lib/errors/UserError.ts:35' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
 
 User-provided context.
 
@@ -71,7 +75,7 @@ User-provided context.
 
 ### identifier
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L24', label: 'packages/http-framework/src/lib/errors/UserError.ts:24' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L29', label: 'packages/http-framework/src/lib/errors/UserError.ts:29' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
 
 An identifier, useful to localize emitted errors.
 
@@ -79,7 +83,7 @@ An identifier, useful to localize emitted errors.
 
 ### precondition
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly precondition: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L25', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:25' }}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly precondition: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/PreconditionError.ts#L29', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:29' }}>
 
 The name of the precondition that caused the error.
 
@@ -89,7 +93,7 @@ The name of the precondition that caused the error.
 
 ### name
 
-<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/PreconditionError.ts#L32', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:32' }}>
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/PreconditionError.ts#L36', label: 'packages/http-framework/src/lib/errors/PreconditionError.ts:36' }}>
 
 This will be `'PreconditionError'` and can be used to distinguish the type of error when any error gets thrown.
 

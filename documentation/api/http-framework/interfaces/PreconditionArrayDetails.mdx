@@ -1,0 +1,52 @@
+---
+title: 'Interface: PreconditionArrayDetails'
+description: 'An array of preconditions with the PreconditionRunMode to run it with. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L150',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:150'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+An array of preconditions with the [PreconditionRunMode](/documentation/api/http-framework/enumerations/PreconditionRunMode) to run it with.
+
+<ApiSignature
+	tokens={[
+		'interface PreconditionArrayDetails<Function = ',
+		['PreconditionFunction', '/documentation/api/http-framework/type-aliases/PreconditionFunction'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Function" defaultValue="PreconditionFunction" />
+
+</ApiParams>
+
+## Properties
+
+### entries
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['entries: readonly ', ['PreconditionEntryResolvable', '/documentation/api/http-framework/type-aliases/PreconditionEntryResolvable'], '<Function>[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L155', label: 'packages/http-framework/src/lib/utils/preconditions.ts:155' }}>
+
+The entries of the array.
+
+</ApiMember>
+
+### mode
+
+<ApiMember kind="property" badges={['since 6.3.0']} signature={['mode: ', ['PreconditionRunMode', '/documentation/api/http-framework/enumerations/PreconditionRunMode']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L161', label: 'packages/http-framework/src/lib/utils/preconditions.ts:161' }}>
+
+The mode to run the array and the arrays nested in it with.
+
+</ApiMember>

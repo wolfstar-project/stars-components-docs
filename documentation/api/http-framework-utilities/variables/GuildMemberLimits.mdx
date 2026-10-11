@@ -1,0 +1,39 @@
+---
+title: 'Variable: GuildMemberLimits'
+description: 'Namespace containing limits related to Discord guild members. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Namespace containing limits related to Discord guild members.
+
+<ApiSignature
+	tokens={[
+		'const GuildMemberLimits: {\n  readonly MaximumDisplayNameLength: 32;\n  readonly MaximumMembersToFetch: 1000;\n  readonly MinimumMembersToFetch: 1;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumDisplayNameLength" type={['32']}>
+
+Maximum characters allowed in the display name of a guild member.
+
+</ApiParam>
+
+<ApiParam name="MaximumMembersToFetch" type={['1000']}>
+
+Maximum number of members to return from the guild members API.
+
+</ApiParam>
+
+<ApiParam name="MinimumMembersToFetch" type={['1']}>
+
+Minimum number of members to return from the guild members API.
+
+</ApiParam>
+
+</ApiParams>

@@ -1,0 +1,22 @@
+---
+title: 'Variable: InteractionTokenLifetime'
+description: "Discord's interaction token lifetime, in milliseconds. (@wolfstar/http-framework-utilities)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/cleanup.ts#L17',
+		label: 'packages/http-framework-utilities/src/lib/cleanup.ts:17'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Discord's interaction token lifetime, in milliseconds. Cleanups edit through the webhook until then, so the minute
+between [`MaximumTokenLifetime`](/documentation/api/http-framework-utilities/variables/MaximumTokenLifetime) (the session cap) and this bound is spent on the timeout edit.
+
+<ApiSignature tokens={['const InteractionTokenLifetime: number']} />

@@ -1,0 +1,104 @@
+---
+title: 'Function: definePlugin()'
+description: 'Defines a plugin. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	badges={['since 6.1.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L77',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:77'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Defines a plugin. This is an identity helper that gives the object (or the options factory) its types.
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature tokens={['definePlugin<T extends ', ['StarsPlugin', '/documentation/api/http-framework/interfaces/StarsPlugin'], '>(plugin: T): T']} />
+
+Defines a plugin. This is an identity helper that gives the object (or the options factory) its types.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" type={['extends ', ['StarsPlugin', '/documentation/api/http-framework/interfaces/StarsPlugin']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="plugin" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['T']} />
+
+</ApiParams>
+
+**Example**
+
+```ts
+export default definePlugin((options: { prefix?: string } = {}) => ({
+	name: 'wolfstar:my-plugin',
+	enforce: 'pre',
+	preLoad(client) {}
+}));
+```
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'definePlugin<Args extends unknown[], T extends ',
+		['StarsPlugin', '/documentation/api/http-framework/interfaces/StarsPlugin'],
+		'>(factory: (...args: Args) => T): (...args: Args) => T'
+	]}
+/>
+
+Defines a plugin. This is an identity helper that gives the object (or the options factory) its types.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Args" type={['extends unknown[]']} />
+
+<ApiParam name="T" type={['extends ', ['StarsPlugin', '/documentation/api/http-framework/interfaces/StarsPlugin']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="factory" type={['(...args: Args) => T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['(...args: Args) => T']} />
+
+</ApiParams>
+
+**Example**
+
+```ts
+export default definePlugin((options: { prefix?: string } = {}) => ({
+	name: 'wolfstar:my-plugin',
+	enforce: 'pre',
+	preLoad(client) {}
+}));
+```
+
+</Tab>
+
+</Tabs>

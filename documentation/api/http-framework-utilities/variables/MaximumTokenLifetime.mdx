@@ -1,0 +1,22 @@
+---
+title: 'Variable: MaximumTokenLifetime'
+description: "How long an interaction token is used to edit a response, in milliseconds: one minute below Discord's 15-minute token lifetime. (@wolfstar/http-framework-utilities)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/cleanup.ts#L11',
+		label: 'packages/http-framework-utilities/src/lib/cleanup.ts:11'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+How long an interaction token is used to edit a response, in milliseconds: one minute below Discord's 15-minute
+token lifetime. Sessions whose only edit credential is the token cap their absolute lifetime at this bound.
+
+<ApiSignature tokens={['const MaximumTokenLifetime: number']} />

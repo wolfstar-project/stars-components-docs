@@ -1,0 +1,55 @@
+---
+title: 'Type Alias: EnvValueFromVarlock'
+description: "Maps one value type of varlock's generated CoercedEnvSchema to the string form process.env holds, as understood by the envParse functions. (@wolfstar/env-utilities)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/env-utilities/src/lib/varlock-types.ts#L21',
+		label: 'varlock-types.ts:21'
+	}}
+	packageName="@wolfstar/env-utilities"
+	packageHref="/documentation/api/env-utilities"
+/>
+
+Maps one value type of varlock's generated `CoercedEnvSchema` to the string form `process.env` holds, as
+understood by the `envParse*` functions.
+
+- `boolean` becomes [BooleanString](/documentation/api/env-utilities/type-aliases/BooleanString).
+- `number` becomes a string that is both an [IntegerString](/documentation/api/env-utilities/type-aliases/IntegerString) and a [NumberString](/documentation/api/env-utilities/type-aliases/NumberString): the coerced type
+  cannot tell an integer from a float (and `port` is a number), so the key is accepted by `envParseInteger` and
+  `envParseNumber` alike.
+- `string` and `enum` (a union of string literals) are kept as they are, except an enum whose values look like a
+  boolean or a number (`'1' | '2'`): it is widened with `string`, so its key is read with `envParseString` and is not
+  handed to a parser that would turn `'1'` into `1`.
+- Anything else (an `array`, an `object`) becomes a plain `string`.
+
+<ApiSignature
+	tokens={[
+		'type EnvValueFromVarlock<V> = V extends boolean ? ',
+		['BooleanString', '/documentation/api/env-utilities/type-aliases/BooleanString'],
+		' : V extends number ? ',
+		['IntegerString', '/documentation/api/env-utilities/type-aliases/IntegerString'],
+		' & ',
+		['NumberString', '/documentation/api/env-utilities/type-aliases/NumberString'],
+		' : V extends string ? [V] extends [',
+		['BooleanString', '/documentation/api/env-utilities/type-aliases/BooleanString'],
+		' | ',
+		['IntegerString', '/documentation/api/env-utilities/type-aliases/IntegerString'],
+		' | ',
+		['NumberString', '/documentation/api/env-utilities/type-aliases/NumberString'],
+		'] ? V | string & ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<never, never> : V : V extends null | undefined ? undefined : string'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="V" />
+
+</ApiParams>

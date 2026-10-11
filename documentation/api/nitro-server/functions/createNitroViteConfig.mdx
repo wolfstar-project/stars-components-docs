@@ -1,0 +1,54 @@
+---
+title: 'Function: createNitroViteConfig()'
+description: 'API reference for createNitroViteConfig, a function exported by @wolfstar/nitro-server.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/config.ts#L51',
+		label: 'packages/nitro-server/src/config.ts:51'
+	}}
+	packageName="@wolfstar/nitro-server"
+	packageHref="/documentation/api/nitro-server"
+/>
+
+<ApiSignature
+	tokens={[
+		'createNitroViteConfig(\n  config: ',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		',\n  context: ',
+		['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext'],
+		' = defaultBuilderContext,\n  hooks: ',
+		['NitroHooks', '/documentation/api/nitro-server/interfaces/NitroHooks'],
+		' = {},\n  command: "build" | "serve" = \'build\'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  options: InlineConfig;\n  vite: __module;\n}>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} />
+
+<ApiParam name="context" type={[['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext']]} defaultValue="defaultBuilderContext" />
+
+<ApiParam name="hooks" type={[['NitroHooks', '/documentation/api/nitro-server/interfaces/NitroHooks']]} defaultValue={'{}'} />
+
+<ApiParam name="command" type={['"build" | "serve"']} defaultValue={"'build'"} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  options: InlineConfig;\n  vite: __module;\n}>'
+	]}
+/>
+
+</ApiParams>

@@ -9,7 +9,7 @@ import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-refe
 <ApiHeader
 	kind="function"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework-test-utils/src/commands.ts#L18',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-test-utils/src/commands.ts#L18',
 		label: 'packages/http-framework-test-utils/src/commands.ts:18'
 	}}
 	packageName="@wolfstar/http-framework-test-utils"
@@ -18,7 +18,9 @@ import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-refe
 
 <ApiSignature
 	tokens={[
-		'makeCommand<Options extends PieceOptions>(CommandClass: Constructor<',
+		'makeCommand<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(CommandClass: Constructor<',
 		['Command', '/documentation/api/http-framework/classes/Command'],
 		'<Options>>): ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
@@ -28,7 +30,7 @@ import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-refe
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']} />
+<ApiParam name="Options" type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]} />
 
 </ApiParams>
 

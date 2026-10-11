@@ -1,0 +1,28 @@
+---
+title: 'Variable: PaginatedMessageBuiltinActionIds'
+description: 'The ids of the built-in actions. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts#L36',
+		label: 'packages/http-framework-utilities/src/lib/PaginatedMessage/PaginatedMessage.ts:36'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+The ids of the built-in actions. The handler always applies the built-in behaviour for them, so a custom action with
+a `run` callback cannot use one; an action without `run` can, to restyle the default (e.g. another emoji).
+
+<ApiSignature
+	tokens={[
+		'const PaginatedMessageBuiltinActionIds: readonly ',
+		['PaginatedMessageBuiltinActionId', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageBuiltinActionId'],
+		'[]'
+	]}
+/>

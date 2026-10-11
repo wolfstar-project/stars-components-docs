@@ -1,0 +1,37 @@
+---
+title: 'Interface: VarlockSchema'
+description: 'API reference for VarlockSchema, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L8',
+		label: 'packages/schema/src/config/varlock.ts:8'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface VarlockSchema']} />
+
+## Properties
+
+### path?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly path?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L12', label: 'packages/schema/src/config/varlock.ts:12' }}>
+
+The directory handed to `varlock load --path`; left out when varlock finds the schema on its own.
+
+</ApiMember>
+
+### source
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly source: ', ['VarlockSchemaSource', '/documentation/api/schema/type-aliases/VarlockSchemaSource']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L10', label: 'packages/schema/src/config/varlock.ts:10' }}>
+
+Which lookup rule matched.
+
+</ApiMember>

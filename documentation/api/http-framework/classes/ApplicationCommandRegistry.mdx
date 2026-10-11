@@ -10,7 +10,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 	kind="class"
 	badges={['since 2.0.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L26',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L26',
 		label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:26'
 	}}
 	packageName="@wolfstar/http-framework"
@@ -68,7 +68,7 @@ This registry is globally available through `container.applicationCommandRegistr
 	kind="accessor"
 	signature={['get store(): ', ['CommandStore', '/documentation/api/http-framework/classes/CommandStore']]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L32',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L32',
 		label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:32'
 	}}
 />
@@ -77,11 +77,13 @@ This registry is globally available through `container.applicationCommandRegistr
 
 ### delete()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L70', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:70' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L70', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:70' }}>
 
 <ApiSignature
 	tokens={[
-		'delete<Options extends PieceOptions>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
+		'delete<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
 		'<any>;\n  }): boolean'
 	]}
@@ -91,7 +93,7 @@ Deletes a command from the registry.
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']}>
+<ApiParam name="Options" type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}>
 
 The options type for the command.
 
@@ -123,11 +125,13 @@ True if the command was successfully deleted, false otherwise.
 
 ### ensure()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L82', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:82' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L82', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:82' }}>
 
 <ApiSignature
 	tokens={[
-		'ensure<Options extends PieceOptions>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
+		'ensure<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
 		'<any>;\n  }): ',
 		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry']
@@ -138,7 +142,7 @@ Retrieves or creates an [`ApplicationCommandRegistryEntry`](/documentation/api/h
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']}>
+<ApiParam name="Options" type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}>
 
 The options type for the command.
 
@@ -170,11 +174,13 @@ The application command registry entry for the command.
 
 ### get()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L58', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:58' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L58', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:58' }}>
 
 <ApiSignature
 	tokens={[
-		'get<Options extends PieceOptions>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
+		'get<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(target: {\n    Location: typeof PieceLocation;\n    prototype: ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
 		'<any>;\n  }): ',
 		['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'],
@@ -186,7 +192,7 @@ Retrieves the [`ApplicationCommandRegistryEntry`](/documentation/api/http-framew
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']}>
+<ApiParam name="Options" type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}>
 
 The options type of the command class.
 
@@ -218,7 +224,7 @@ The [`ApplicationCommandRegistryEntry`](/documentation/api/http-framework/classe
 
 ### getLoadedChatInputCommands()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L118', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:118' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L118', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:118' }}>
 
 <ApiSignature
 	tokens={[
@@ -246,7 +252,7 @@ A collection of chat input commands.
 
 ### getLoadedContextMenuCommands()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L133', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:133' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L133', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:133' }}>
 
 <ApiSignature
 	tokens={[
@@ -274,7 +280,7 @@ A collection of context menu commands.
 
 ### getLoadedGlobalCommands()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L150', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:150' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L150', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:150' }}>
 
 <ApiSignature
 	tokens={[
@@ -300,7 +306,7 @@ An array of loaded global commands.
 
 ### getLoadedGuildCommands()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L163', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:163' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L163', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:163' }}>
 
 <ApiSignature
 	tokens={[
@@ -328,7 +334,7 @@ A collection of guild commands, where the key is the guild ID and the value is a
 
 ### loadCommands()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L104', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:104' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L104', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:104' }}>
 
 <ApiSignature
 	tokens={[
@@ -367,7 +373,7 @@ A promise that resolves when all the commands are loaded.
 
 ### pushAllCommandsInGuild()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L208', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:208' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L208', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:208' }}>
 
 <ApiSignature
 	tokens={[
@@ -408,7 +414,7 @@ The raw result from registering the commands in the specified guild.
 
 ### pushGlobalCommands()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L187', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:187' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L187', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:187' }}>
 
 <ApiSignature
 	tokens={[
@@ -436,7 +442,7 @@ The raw result from registering the commands globally.
 
 ### pushGlobalCommandsInGuild()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L198', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:198' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L198', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:198' }}>
 
 <ApiSignature
 	tokens={[
@@ -477,7 +483,7 @@ The raw result from registering the commands in the specified guild.
 
 ### pushGuildRestrictedCommands()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L217', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:217' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L217', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:217' }}>
 
 <ApiSignature
 	tokens={[
@@ -510,7 +516,7 @@ The settled promises from all the guild command registrations.
 
 ### setup()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L43', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:43' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L43', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:43' }}>
 
 <ApiSignature
 	tokens={[
@@ -552,7 +558,7 @@ The updated instance of the application command registry.
 
 ### toJSON()
 
-<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L92', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:92' }}>
+<ApiMember kind="method" badges={['since 2.0.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L92', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:92' }}>
 
 <ApiSignature
 	tokens={['toJSON(): ', ['Command', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistryEntry/type-aliases/Command'], '[]']}

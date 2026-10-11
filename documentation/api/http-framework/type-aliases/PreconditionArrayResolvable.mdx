@@ -1,0 +1,38 @@
+---
+title: 'Type Alias: PreconditionArrayResolvable'
+description: 'An array of preconditions: a list of entries, or a list with a PreconditionRunMode. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L169',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:169'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+An array of preconditions: a list of entries, or a list with a [PreconditionRunMode](/documentation/api/http-framework/enumerations/PreconditionRunMode).
+
+<ApiSignature
+	tokens={[
+		'type PreconditionArrayResolvable<Function = ',
+		['PreconditionFunction', '/documentation/api/http-framework/type-aliases/PreconditionFunction'],
+		'> = readonly ',
+		['PreconditionEntryResolvable', '/documentation/api/http-framework/type-aliases/PreconditionEntryResolvable'],
+		'<Function>[] | ',
+		['PreconditionArrayDetails', '/documentation/api/http-framework/interfaces/PreconditionArrayDetails'],
+		'<Function>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Function" defaultValue="PreconditionFunction" />
+
+</ApiParams>

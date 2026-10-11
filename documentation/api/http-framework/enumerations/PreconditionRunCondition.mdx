@@ -1,0 +1,32 @@
+---
+title: 'Enumeration: PreconditionRunCondition'
+description: 'How the results of the entries of an array of preconditions are combined. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiEnumMembers, ApiHeader } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="enum"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L131',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:131'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+How the results of the entries of an array of preconditions are combined.
+
+<ApiEnumMembers
+	members={[
+		{ name: 'And', value: '0', id: 'member-and', description: 'Every entry has to pass: the first Err is the result.' },
+		{
+			name: 'Or',
+			value: '1',
+			id: 'member-or',
+			description: 'One entry has to pass: the first Ok is the result, and when none does, the last Err.'
+		}
+	]}
+/>

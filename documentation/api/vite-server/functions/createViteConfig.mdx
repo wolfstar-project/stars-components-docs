@@ -1,0 +1,45 @@
+---
+title: 'Function: createViteConfig()'
+description: 'Defaults are applied after Vite loads its config, so explicit project options win. (@wolfstar/vite-server)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/config.ts#L12',
+		label: 'packages/vite-server/src/config.ts:12'
+	}}
+	packageName="@wolfstar/vite-server"
+	packageHref="/documentation/api/vite-server"
+/>
+
+Defaults are applied after Vite loads its config, so explicit project options win.
+
+<ApiSignature
+	tokens={[
+		'createViteConfig(\n  config: ',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		',\n  context: ',
+		['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext'],
+		' = defaultBuilderContext\n): InlineConfig'
+	]}
+/>
+
+Defaults are applied after Vite loads its config, so explicit project options win.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} />
+
+<ApiParam name="context" type={[['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext']]} defaultValue="defaultBuilderContext" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['InlineConfig']} />
+
+</ApiParams>

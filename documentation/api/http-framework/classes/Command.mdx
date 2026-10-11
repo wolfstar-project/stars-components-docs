@@ -10,8 +10,8 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 	kind="class"
 	badges={['abstract']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L7',
-		label: 'packages/http-framework/src/lib/structures/Command.ts:7'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L28',
+		label: 'packages/http-framework/src/lib/structures/Command.ts:28'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -22,9 +22,9 @@ The piece to be stored in `Store` instances.
 <ApiSignature
 	tokens={[
 		'abstract class Command<Options extends ',
-		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
 		' = ',
-		['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options'],
+		['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
 		'> extends Piece<Options, "commands">'
 	]}
 />
@@ -35,7 +35,7 @@ The piece to be stored in `Store` instances.
 
 <ApiParam
 	name="Options"
-	type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/type-aliases/Options']]}
+	type={['extends ', ['Command.Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}
 	defaultValue="Command.Options"
 />
 
@@ -45,11 +45,15 @@ The piece to be stored in `Store` instances.
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L14', label: 'packages/http-framework/src/lib/structures/Command.ts:14' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L35', label: 'packages/http-framework/src/lib/structures/Command.ts:35' }}>
 
 <ApiSignature
 	tokens={[
-		'new Command<Options extends PieceOptions = PieceOptions>(\n  context: ',
+		'new Command<Options extends ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		' = ',
+		['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options'],
+		'>(\n  context: ',
 		['LoaderContext', '/documentation/api/http-framework/namespaces/Command/type-aliases/LoaderContext'],
 		',\n  options: Options = ...\n): ',
 		['Command', '/documentation/api/http-framework/classes/Command'],
@@ -59,7 +63,11 @@ The piece to be stored in `Store` instances.
 
 <ApiParams title="Type Parameters">
 
-<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+<ApiParam
+	name="Options"
+	type={['extends ', ['Options', '/documentation/api/http-framework/namespaces/Command/interfaces/Options']]}
+	defaultValue="Options"
+/>
 
 </ApiParams>
 
@@ -77,7 +85,7 @@ The piece to be stored in `Store` instances.
 
 ### router
 
-<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly router: ', ['CommandRouter', '/documentation/api/http-framework/classes/CommandRouter'], '<Options>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L12', label: 'packages/http-framework/src/lib/structures/Command.ts:12' }}>
+<ApiMember kind="property" badges={['readonly', 'since 2.0.0']} signature={['readonly router: ', ['CommandRouter', '/documentation/api/http-framework/classes/CommandRouter'], '<Options>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L33', label: 'packages/http-framework/src/lib/structures/Command.ts:33' }}>
 
 The router for the command.
 
@@ -87,7 +95,7 @@ The router for the command.
 
 ### registry
 
-<ApiMember kind="accessor" signature={['get registry(): ', ['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L25', label: 'packages/http-framework/src/lib/structures/Command.ts:25' }}>
+<ApiMember kind="accessor" signature={['get registry(): ', ['ApplicationCommandRegistryEntry', '/documentation/api/http-framework/classes/ApplicationCommandRegistryEntry'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L46', label: 'packages/http-framework/src/lib/structures/Command.ts:46' }}>
 
 Gets the registry for this command.
 
@@ -97,7 +105,7 @@ Gets the registry for this command.
 
 ### autocompleteRun()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L78', label: 'packages/http-framework/src/lib/structures/Command.ts:78' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L99', label: 'packages/http-framework/src/lib/structures/Command.ts:99' }}>
 
 <ApiSignature
 	tokens={[
@@ -139,7 +147,7 @@ The response to the autocomplete interaction.
 
 ### chatInputRun()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L66', label: 'packages/http-framework/src/lib/structures/Command.ts:66' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L87', label: 'packages/http-framework/src/lib/structures/Command.ts:87' }}>
 
 <ApiSignature
 	tokens={[
@@ -177,7 +185,7 @@ The parsed arguments for this autocomplete interaction.
 
 ### registerApplicationCommands()
 
-<ApiMember kind="method" badges={['optional', 'since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/structures/Command.ts#L58', label: 'packages/http-framework/src/lib/structures/Command.ts:58' }}>
+<ApiMember kind="method" badges={['optional', 'since 3.1.0']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/structures/Command.ts#L79', label: 'packages/http-framework/src/lib/structures/Command.ts:79' }}>
 
 <ApiSignature
 	tokens={[

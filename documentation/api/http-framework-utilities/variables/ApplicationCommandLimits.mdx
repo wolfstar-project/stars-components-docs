@@ -1,0 +1,45 @@
+---
+title: 'Variable: ApplicationCommandLimits'
+description: 'Namespace containing limits related to Discord application commands (slash commands). (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Namespace containing limits related to Discord application commands (slash commands).
+
+<ApiSignature
+	tokens={[
+		'const ApplicationCommandLimits: {\n  readonly MaximumCombinedCharacters: 4000;\n  readonly MaximumDescriptionCharacters: 100;\n  readonly MaximumNameCharacters: 32;\n  readonly MaximumOptionsLength: 25;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumCombinedCharacters" type={['4000']}>
+
+Maximum combined characters allowed in the name, description, and value properties of an application command, its options (including subcommands and groups), and choices.
+
+</ApiParam>
+
+<ApiParam name="MaximumDescriptionCharacters" type={['100']}>
+
+Maximum characters allowed in an application command description.
+
+</ApiParam>
+
+<ApiParam name="MaximumNameCharacters" type={['32']}>
+
+Maximum characters allowed in an application command name.
+
+</ApiParam>
+
+<ApiParam name="MaximumOptionsLength" type={['25']}>
+
+Maximum options allowed in an application command.
+
+</ApiParam>
+
+</ApiParams>

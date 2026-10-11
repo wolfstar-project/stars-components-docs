@@ -1,0 +1,70 @@
+---
+title: 'Function: defineModule()'
+description: 'Defines an installable module. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/define.ts#L21',
+		label: 'packages/kit/src/define.ts:21'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+Defines an installable module. This is an identity helper that types the definition; the module is installed by
+listing its package in `modules` in `stars.config`.
+
+<ApiSignature
+	tokens={[
+		'defineModule<Options extends ',
+		['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions'],
+		' = ',
+		['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions'],
+		'>(module: ',
+		['StarsModule', '/documentation/api/kit/interfaces/StarsModule'],
+		'<Options>): ',
+		['StarsModule', '/documentation/api/kit/interfaces/StarsModule'],
+		'<Options>'
+	]}
+/>
+
+Defines an installable module. This is an identity helper that types the definition; the module is installed by
+listing its package in `modules` in `stars.config`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends ', ['ModuleOptions', '/documentation/api/kit/type-aliases/ModuleOptions']]} defaultValue="ModuleOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="module" type={[['StarsModule', '/documentation/api/kit/interfaces/StarsModule'], '<Options>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['StarsModule', '/documentation/api/kit/interfaces/StarsModule'], '<Options>']} />
+
+</ApiParams>
+
+**Example**
+
+```ts
+import { defineModule } from '@wolfstar/kit';
+
+export default defineModule<{ ttl: number }>({
+	meta: { name: '@wolfstar/plugin-cache', compatibility: { framework: '>=6.1.0' } },
+	defaults: { ttl: 60_000 },
+	setup(options, ctx) {
+		ctx.addPlugin({ from: new URL('./plugin.js', import.meta.url), options });
+		ctx.addImports('@wolfstar/plugin-cache');
+	}
+});
+```

@@ -1,0 +1,54 @@
+---
+title: 'Interface: RuntimePluginRegistration'
+description: 'A runtime plugin a module registered with ctx.addPlugin. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="interface" packageName="@wolfstar/kit" packageHref="/documentation/api/kit" />
+
+A runtime plugin a module registered with `ctx.addPlugin`. Plugins cross from the CLI process into the bot by
+source, not by value: the entry (or, for the `tsc`/`none` build tools, a `node --import` preload) imports `from` and
+passes its `export` to `Client.use` — as the plugin itself, or, when it is a function, the result of calling it with
+`options`.
+
+<ApiSignature tokens={['interface RuntimePluginRegistration']} />
+
+## Properties
+
+### export
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly export: string']}>
+
+**Default**
+
+```ts
+'default';
+```
+
+</ApiMember>
+
+### from
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly from: string']}>
+
+A package specifier or an absolute file path.
+
+</ApiMember>
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']}>
+
+The module that registered it.
+
+</ApiMember>
+
+### options?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly options?: unknown']}>
+
+JSON-serialisable options handed to the plugin when it is a factory.
+
+</ApiMember>

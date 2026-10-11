@@ -1,0 +1,46 @@
+---
+title: 'Interface: RedisSessionStoreOptions'
+description: 'API reference for RedisSessionStoreOptions, an interface exported by @wolfstar/http-framework-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L13',
+		label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:13'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+<ApiSignature tokens={['interface RedisSessionStoreOptions']} />
+
+## Properties
+
+### prefix?
+
+<ApiMember kind="property" badges={['optional']} signature={['prefix?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L19', label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:19' }}>
+
+Prefix of every key, sessions live at `<prefix>:<id>`.
+
+**Default**
+
+```ts
+'wolfstar:sessions';
+```
+
+</ApiMember>
+
+### redis
+
+<ApiMember
+	kind="property"
+	signature={['redis: ', ['RedisSessionClientLike', '/documentation/api/http-framework-utilities/interfaces/RedisSessionClientLike']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts#L14',
+		label: 'packages/http-framework-utilities/src/lib/sessions/RedisSessionStore.ts:14'
+	}}
+/>

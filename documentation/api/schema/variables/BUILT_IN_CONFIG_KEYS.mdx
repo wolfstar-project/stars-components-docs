@@ -1,0 +1,27 @@
+---
+title: 'Variable: BUILT_IN_CONFIG_KEYS'
+description: 'The top-level keys of stars.config the schema owns. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/module-options.ts#L11',
+		label: 'packages/schema/src/config/module-options.ts:11'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+The top-level keys of `stars.config` the schema owns. Any other key is kept aside as a module's options (see
+`ResolvedStarsConfig.moduleOptions`), so a module cannot claim one of these as its `meta.configKey`. Keep it equal
+to the keys of `StarsConfig`: `module-config.test-d.ts` fails when they drift.
+
+<ApiSignature
+	tokens={[
+		'const BUILT_IN_CONFIG_KEYS: readonly ["root", "entry", "build", "dev", "codegen", "imports", "env", "hooks", "modules", "experimental", "future", "vite", "tsdown"]'
+	]}
+/>

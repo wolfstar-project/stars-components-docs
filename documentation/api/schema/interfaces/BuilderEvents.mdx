@@ -1,0 +1,73 @@
+---
+title: 'Interface: BuilderEvents'
+description: 'API reference for BuilderEvents, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L14',
+		label: 'packages/schema/src/types/builder.ts:14'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface BuilderEvents']} />
+
+## Properties
+
+### failure
+
+<ApiMember
+	kind="property"
+	signature={['failure: [outcome: ', ['BuildOutcome', '/documentation/api/schema/interfaces/BuildOutcome'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L19',
+		label: 'packages/schema/src/types/builder.ts:19'
+	}}
+/>
+
+### log
+
+<ApiMember
+	kind="property"
+	signature={['log: [level: ', ['BuilderLogLevel', '/documentation/api/schema/type-aliases/BuilderLogLevel'], ', text: string]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L20',
+		label: 'packages/schema/src/types/builder.ts:20'
+	}}
+/>
+
+### progress
+
+<ApiMember kind="property" signature={['progress: [fraction: number, message: string]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L17', label: 'packages/schema/src/types/builder.ts:17' }}>
+
+Coarse, real lifecycle milestones, not an estimate of compiler work remaining.
+
+</ApiMember>
+
+### start
+
+<ApiMember
+	kind="property"
+	signature={['start: []']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L15',
+		label: 'packages/schema/src/types/builder.ts:15'
+	}}
+/>
+
+### success
+
+<ApiMember
+	kind="property"
+	signature={['success: [outcome: ', ['BuildOutcome', '/documentation/api/schema/interfaces/BuildOutcome'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L18',
+		label: 'packages/schema/src/types/builder.ts:18'
+	}}
+/>

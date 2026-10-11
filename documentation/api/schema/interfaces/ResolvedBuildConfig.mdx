@@ -1,0 +1,68 @@
+---
+title: 'Interface: ResolvedBuildConfig'
+description: 'API reference for ResolvedBuildConfig, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L43',
+		label: 'packages/schema/src/config/resolve.ts:43'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface ResolvedBuildConfig']} />
+
+## Properties
+
+### configFile
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly configFile: string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L59', label: 'packages/schema/src/config/resolve.ts:59' }}>
+
+Absolute path of the build tool's own configuration file (`tsdown.config.*`, `vite.config.*`), `null` when the
+tool has none — which is always the case for `tsdown` from `future.compatibilityVersion` 4 on, where the build is
+configured from `stars.config` alone.
+
+</ApiMember>
+
+### outDir
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly outDir: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L46', label: 'packages/schema/src/config/resolve.ts:46' }}>
+
+Absolute output directory.
+
+</ApiMember>
+
+### output
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly output: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L53', label: 'packages/schema/src/config/resolve.ts:53' }}>
+
+Absolute path of the file `node` runs, i.e. the built entry (or the entry itself when `tool` is `none`).
+
+</ApiMember>
+
+### tool
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly tool: ', ['StarsBuildTool', '/documentation/api/schema/type-aliases/StarsBuildTool']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L44',
+		label: 'packages/schema/src/config/resolve.ts:44'
+	}}
+/>
+
+### tsconfig
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly tsconfig: string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L51', label: 'packages/schema/src/config/resolve.ts:51' }}>
+
+Absolute `tsconfig` used by `tsc` and `tsdown`, `null` for the other tools. From `future.compatibilityVersion` 6
+the `tsdown` default is the generated [DEFAULT_APP_TSCONFIG](/documentation/api/schema/variables/DEFAULT_APP_TSCONFIG), which `stars prepare` writes before a build.
+
+</ApiMember>

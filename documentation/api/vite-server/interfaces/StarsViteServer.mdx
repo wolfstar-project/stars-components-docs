@@ -1,0 +1,116 @@
+---
+title: 'Interface: StarsViteServer'
+description: 'API reference for StarsViteServer, an interface exported by @wolfstar/vite-server.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/dev.ts#L8',
+		label: 'packages/vite-server/src/dev.ts:8'
+	}}
+	packageName="@wolfstar/vite-server"
+	packageHref="/documentation/api/vite-server"
+/>
+
+<ApiSignature tokens={['interface StarsViteServer']} />
+
+## Properties
+
+### vite
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly vite: ViteDevServer']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/dev.ts#L9',
+		label: 'packages/vite-server/src/dev.ts:9'
+	}}
+/>
+
+## Methods
+
+### close()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/dev.ts#L13', label: 'packages/vite-server/src/dev.ts:13' }}>
+
+<ApiSignature
+	tokens={['close(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/dev.ts#L11', label: 'packages/vite-server/src/dev.ts:11' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(request: ',
+		['Request', 'https://developer.mozilla.org/en-US/docs/Web/API/Request'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>'
+	]}
+/>
+
+Dispatch through Vite's SSR graph; changed modules are reloaded by Vite.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['Request', 'https://developer.mozilla.org/en-US/docs/Web/API/Request']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Response', 'https://developer.mozilla.org/en-US/docs/Web/API/Response'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### listen()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/vite-server/src/dev.ts#L12', label: 'packages/vite-server/src/dev.ts:12' }}>
+
+<ApiSignature
+	tokens={[
+		'listen(port?: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="port" type={['number']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

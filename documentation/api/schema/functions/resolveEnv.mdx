@@ -1,0 +1,68 @@
+---
+title: 'Function: resolveEnv()'
+description: 'Resolves the env block. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/env.ts#L32',
+		label: 'packages/schema/src/config/env.ts:32'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Resolves the `env` block. It is on by default from [AUTO_ENV_VERSION](/documentation/api/schema/variables/AUTO_ENV_VERSION) on, but only when the project depends on
+`@wolfstar/env-utilities` (the module the built entry imports) and does not build through Nitro, whose serverless
+presets have no `.env` files to load. `true`, `enabled: true` or any option at all is an explicit opt-in, which
+does require the dependency.
+
+Without a `root` the project is not inspected, so no loader is detected.
+
+<ApiSignature
+	tokens={[
+		'resolveEnv(\n  config: boolean | ',
+		['StarsEnvConfig', '/documentation/api/schema/interfaces/StarsEnvConfig'],
+		' | undefined,\n  packageJson: ',
+		['PackageJsonLike', '/documentation/api/schema/interfaces/PackageJsonLike'],
+		' | null,\n  future: ',
+		['ResolvedFutureConfig', '/documentation/api/schema/interfaces/ResolvedFutureConfig'],
+		',\n  experimental: ',
+		['ResolvedExperimentalConfig', '/documentation/api/schema/interfaces/ResolvedExperimentalConfig'],
+		',\n  validator: Validator,\n  root?: string\n): ',
+		['ResolvedEnvConfig', '/documentation/api/schema/interfaces/ResolvedEnvConfig']
+	]}
+/>
+
+Resolves the `env` block. It is on by default from [AUTO_ENV_VERSION](/documentation/api/schema/variables/AUTO_ENV_VERSION) on, but only when the project depends on
+`@wolfstar/env-utilities` (the module the built entry imports) and does not build through Nitro, whose serverless
+presets have no `.env` files to load. `true`, `enabled: true` or any option at all is an explicit opt-in, which
+does require the dependency.
+
+Without a `root` the project is not inspected, so no loader is detected.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={['boolean | ', ['StarsEnvConfig', '/documentation/api/schema/interfaces/StarsEnvConfig'], ' | undefined']} />
+
+<ApiParam name="packageJson" type={[['PackageJsonLike', '/documentation/api/schema/interfaces/PackageJsonLike'], ' | null']} />
+
+<ApiParam name="future" type={[['ResolvedFutureConfig', '/documentation/api/schema/interfaces/ResolvedFutureConfig']]} />
+
+<ApiParam name="experimental" type={[['ResolvedExperimentalConfig', '/documentation/api/schema/interfaces/ResolvedExperimentalConfig']]} />
+
+<ApiParam name="validator" type={['Validator']} />
+
+<ApiParam name="root" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ResolvedEnvConfig', '/documentation/api/schema/interfaces/ResolvedEnvConfig']]} />
+
+</ApiParams>

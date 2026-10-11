@@ -1,0 +1,50 @@
+---
+title: 'Function: isNsfwChannel()'
+description: 'Whether the channel is age-restricted. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L94',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:94'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Whether the channel is age-restricted. Raw payloads do not carry a thread's parent, so threads return `false`.
+
+<ApiSignature
+	tokens={[
+		'isNsfwChannel(channel: ',
+		['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish'],
+		' | ',
+		['ChannelLike', '/documentation/api/http-framework-utilities/interfaces/ChannelLike'],
+		'): boolean'
+	]}
+/>
+
+Whether the channel is age-restricted. Raw payloads do not carry a thread's parent, so threads return `false`.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="channel"
+	type={[
+		['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish'],
+		' | ',
+		['ChannelLike', '/documentation/api/http-framework-utilities/interfaces/ChannelLike']
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>

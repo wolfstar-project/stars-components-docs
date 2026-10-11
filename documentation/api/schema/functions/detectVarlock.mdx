@@ -1,0 +1,41 @@
+---
+title: 'Function: detectVarlock()'
+description: 'Detects varlock in the project at root. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L36',
+		label: 'packages/schema/src/config/varlock.ts:36'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Detects varlock in the project at `root`. The schema lookup mirrors `findVarlockSchema` in
+`@wolfstar/env-utilities` (`src/.env.schema`, then `.env.schema` at the root, then `varlock.loadPath` in
+`package.json`), except that it starts from `root` instead of `process.cwd()`: the CLI can run from a parent
+directory. `packages/schema/tests/config/varlock.test.ts` runs both over the same fixtures so the two cannot drift.
+
+<ApiSignature tokens={['detectVarlock(root: string): ', ['VarlockDetection', '/documentation/api/schema/interfaces/VarlockDetection']]} />
+
+Detects varlock in the project at `root`. The schema lookup mirrors `findVarlockSchema` in
+`@wolfstar/env-utilities` (`src/.env.schema`, then `.env.schema` at the root, then `varlock.loadPath` in
+`package.json`), except that it starts from `root` instead of `process.cwd()`: the CLI can run from a parent
+directory. `packages/schema/tests/config/varlock.test.ts` runs both over the same fixtures so the two cannot drift.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="root" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['VarlockDetection', '/documentation/api/schema/interfaces/VarlockDetection']]} />
+
+</ApiParams>

@@ -1,6 +1,6 @@
 ---
-title: 'Interface: HttpFrameworkPluginAsyncHook'
-description: 'API reference for HttpFrameworkPluginAsyncHook, an interface exported by @wolfstar/http-framework.'
+title: '~~Interface: HttpFrameworkPluginAsyncHook~~'
+description: 'A legacy hook: this is the client. (@wolfstar/http-framework)'
 hidden: true
 ---
 
@@ -8,12 +8,21 @@ import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
 
 <ApiHeader
 	kind="interface"
+	badges={['deprecated']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/plugins/PluginManager.ts#L8',
-		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:8'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/PluginManager.ts#L15',
+		label: 'packages/http-framework/src/lib/plugins/PluginManager.ts:15'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
 />
+
+<Warning>
+
+**Deprecated.** Use [StarsPlugin](/documentation/api/http-framework/interfaces/StarsPlugin) through `definePlugin` instead.
+
+</Warning>
+
+A legacy hook: `this` is the client.
 
 <ApiSignature tokens={['interface HttpFrameworkPluginAsyncHook']} />

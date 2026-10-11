@@ -1,0 +1,31 @@
+---
+title: 'Type Alias: PluginOption'
+description: 'Anything accepted where plugins are listed: a plugin, or nested arrays of plugins in which falsy entries are dropped, so plugins: [condition && plugi… (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['since 6.1.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/plugins/definePlugin.ts#L62',
+		label: 'packages/http-framework/src/lib/plugins/definePlugin.ts:62'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+Anything accepted where plugins are listed: a plugin, or nested arrays of plugins in which falsy entries are
+dropped, so `plugins: [condition && plugin()]` works.
+
+<ApiSignature
+	tokens={[
+		'type PluginOption = ',
+		['StarsPlugin', '/documentation/api/http-framework/interfaces/StarsPlugin'],
+		' | false | null | undefined | readonly ',
+		['PluginOption', '/documentation/api/http-framework/type-aliases/PluginOption'],
+		'[]'
+	]}
+/>

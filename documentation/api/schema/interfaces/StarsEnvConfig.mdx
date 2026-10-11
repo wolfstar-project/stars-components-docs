@@ -1,0 +1,95 @@
+---
+title: 'Interface: StarsEnvConfig'
+description: 'The environment stars registers in the built entry before any other module runs, the way a hand-written setup() from @wolfstar/env-utilities would. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L512',
+		label: 'packages/schema/src/types/config.ts:512'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+The environment `stars` registers in the built entry before any other module runs, the way a hand-written
+`setup()` from `@wolfstar/env-utilities` would. On by default from `future.compatibilityVersion: 5` when the project
+depends on `@wolfstar/env-utilities`, except with `experimental.enableNitro`.
+
+<ApiSignature tokens={['interface StarsEnvConfig extends ', ['StarsEnvSetupOptions', '/documentation/api/schema/interfaces/StarsEnvSetupOptions']]} />
+
+<ApiHierarchy extends={[[['StarsEnvSetupOptions', '/documentation/api/schema/interfaces/StarsEnvSetupOptions']]]} />
+
+## Properties
+
+### debug?
+
+<ApiMember kind="property" badges={['optional']} signature={['debug?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L499', label: 'packages/schema/src/types/config.ts:499' }} inheritedFrom={[['StarsEnvSetupOptions.debug', '/documentation/api/schema/interfaces/StarsEnvSetupOptions#debug']]}>
+
+Logs every file loaded and every prefix match.
+
+</ApiMember>
+
+### enabled?
+
+<ApiMember kind="property" badges={['optional']} signature={['enabled?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L514', label: 'packages/schema/src/types/config.ts:514' }}>
+
+`false` turns the automatic registration off while keeping the options (e.g. for `stars dev`'s port lookup).
+
+</ApiMember>
+
+### encoding?
+
+<ApiMember kind="property" badges={['optional']} signature={['encoding?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L504', label: 'packages/schema/src/types/config.ts:504' }} inheritedFrom={[['StarsEnvSetupOptions.encoding', '/documentation/api/schema/interfaces/StarsEnvSetupOptions#encoding']]}>
+
+The encoding of the `.env` files.
+
+**Default**
+
+```ts
+'utf8';
+```
+
+</ApiMember>
+
+### env?
+
+<ApiMember kind="property" badges={['optional']} signature={['env?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L488', label: 'packages/schema/src/types/config.ts:488' }} inheritedFrom={[['StarsEnvSetupOptions.env', '/documentation/api/schema/interfaces/StarsEnvSetupOptions#env']]}>
+
+A custom environment name, when `NODE_ENV` is not sufficient.
+
+</ApiMember>
+
+### loader?
+
+<ApiMember kind="property" badges={['optional']} signature={['loader?: "varlock" | "node" | "dotenv"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L497', label: 'packages/schema/src/types/config.ts:497' }} inheritedFrom={[['StarsEnvSetupOptions.loader', '/documentation/api/schema/interfaces/StarsEnvSetupOptions#loader']]}>
+
+**Experimental.** `'node'` parses the files with Node.js' own `util.parseEnv`, `'dotenv'` with `dotenv` and
+`dotenv-expand` (optional packages of `@wolfstar/env-utilities`), and `'varlock'` resolves the environment through
+[varlock](https://varlock.dev). When left out, `'varlock'` is used for a project with a `.env.schema`, otherwise
+`'dotenv'` if it is installed and `'node'` if it is not.
+
+</ApiMember>
+
+### path?
+
+<ApiMember kind="property" badges={['optional']} signature={['path?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L486', label: 'packages/schema/src/types/config.ts:486' }} inheritedFrom={[['StarsEnvSetupOptions.path', '/documentation/api/schema/interfaces/StarsEnvSetupOptions#path']]}>
+
+A custom `.env` path. Kept relative: `@wolfstar/env-utilities` resolves it against the bot's working directory
+at runtime, so the build output does not depend on the machine it was built on.
+
+**Default:** `src/.env*`, then `.env*`
+
+</ApiMember>
+
+### prefix?
+
+<ApiMember kind="property" badges={['optional']} signature={['prefix?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L490', label: 'packages/schema/src/types/config.ts:490' }} inheritedFrom={[['StarsEnvSetupOptions.prefix', '/documentation/api/schema/interfaces/StarsEnvSetupOptions#prefix']]}>
+
+Only keep the variables starting with this prefix (e.g. `BOT_`).
+
+</ApiMember>

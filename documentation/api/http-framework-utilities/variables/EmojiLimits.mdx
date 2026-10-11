@@ -1,0 +1,30 @@
+---
+title: 'Variable: EmojiLimits'
+description: 'Namespace containing limits related to Discord emojis. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Namespace containing limits related to Discord emojis.
+
+<ApiSignature tokens={['const EmojiLimits: {\n  readonly MaximumEmojiNameLength: 32;\n  readonly MaximumEmojiSize: 256000;\n}']} />
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumEmojiNameLength" type={['32']}>
+
+Maximum characters allowed in a custom guild emoji.
+
+</ApiParam>
+
+<ApiParam name="MaximumEmojiSize" type={['256000']}>
+
+Maximum size allowed for a custom guild emoji.
+Size is in bytes, and corresponds to 256KB.
+
+</ApiParam>
+
+</ApiParams>

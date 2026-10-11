@@ -1,0 +1,33 @@
+---
+title: 'Type Alias: If'
+description: 'API reference for If, a type alias exported by @wolfstar/discord-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/resolvers/util.ts#L4',
+		label: 'packages/discord-utilities/src/lib/resolvers/util.ts:4'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+<ApiSignature
+	tokens={[
+		'type If<Value extends boolean, TrueResult, FalseResult> = Value extends true ? TrueResult : Value extends false ? FalseResult : TrueResult | FalseResult'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends boolean']} />
+
+<ApiParam name="TrueResult" />
+
+<ApiParam name="FalseResult" />
+
+</ApiParams>

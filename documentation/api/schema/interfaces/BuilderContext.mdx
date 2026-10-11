@@ -1,0 +1,85 @@
+---
+title: 'Interface: BuilderContext'
+description: 'Services supplied by the host; server integrations never import the CLI. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L38',
+		label: 'packages/schema/src/types/builder.ts:38'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Services supplied by the host; server integrations never import the CLI.
+
+<ApiSignature tokens={['interface BuilderContext']} />
+
+## Methods
+
+### importFromProject()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L40', label: 'packages/schema/src/types/builder.ts:40' }}>
+
+<ApiSignature
+	tokens={[
+		'importFromProject<T>(root: string, id: string, hint: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<T>'
+	]}
+/>
+
+Resolve build dependencies from the consuming project and report missing dependencies.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="root" type={['string']} />
+
+<ApiParam name="id" type={['string']} />
+
+<ApiParam name="hint" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### pluginRegistrations()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L42', label: 'packages/schema/src/types/builder.ts:42' }}>
+
+<ApiSignature
+	tokens={['pluginRegistrations(config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'], '): object']}
+/>
+
+Create the host's entry transformation for installed plugin registrations.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['object']} />
+
+</ApiParams>
+
+</ApiMember>

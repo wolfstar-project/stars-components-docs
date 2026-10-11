@@ -1,0 +1,24 @@
+---
+title: 'Variable: TokenRegex'
+description: 'Regex that can capture a Discord Token (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Regex that can capture a Discord Token
+
+<ApiSignature
+	tokens={['const TokenRegex: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]}
+/>
+
+Capture group 1 can be used to retrieve a token for a User that has Multi-Factor Authentication enabled. It is named `mfaToken`.
+
+Capture group 2 can be used to retrieve a token for a User that doesn't have Multi-Factor Authentication enabled, or a Bot application. It is named `basicToken`.
+
+For a valid token, either Capture group 1 or Capture group 2 will always be undefined, whereas the other group will then be defined and
+contain the matched token.
+You can use the name of the capture group to determine if the validated token was configured for a user with Multi-Factor Authentication, for a user without Multi-Factor Authentication, or for a bot application.
+If both capture groups are undefined, then the token is invalid.

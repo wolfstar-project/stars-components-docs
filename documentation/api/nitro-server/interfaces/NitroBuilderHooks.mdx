@@ -1,0 +1,89 @@
+---
+title: 'Interface: NitroBuilderHooks'
+description: 'API reference for NitroBuilderHooks, an interface exported by @wolfstar/nitro-server.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/build.ts#L7',
+		label: 'packages/nitro-server/src/build.ts:7'
+	}}
+	packageName="@wolfstar/nitro-server"
+	packageHref="/documentation/api/nitro-server"
+/>
+
+<ApiSignature
+	tokens={[
+		'interface NitroBuilderHooks extends ',
+		['ServerHooks', '/documentation/api/vite-server/interfaces/ServerHooks'],
+		', ',
+		['NitroHooks', '/documentation/api/nitro-server/interfaces/NitroHooks']
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[['ServerHooks', '/documentation/api/vite-server/interfaces/ServerHooks']],
+		[['NitroHooks', '/documentation/api/nitro-server/interfaces/NitroHooks']]
+	]}
+/>
+
+## Methods
+
+### configureNitro()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/config.ts#L10', label: 'packages/nitro-server/src/config.ts:10' }} inheritedFrom={[['NitroHooks.configureNitro', '/documentation/api/nitro-server/interfaces/NitroHooks#configurenitro']]}>
+
+<ApiSignature
+	tokens={[
+		'configureNitro(options: NitroConfig): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['NitroConfig']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### configureVite()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/config.ts#L11', label: 'packages/nitro-server/src/config.ts:11' }} inheritedFrom={[['NitroHooks.configureVite', '/documentation/api/nitro-server/interfaces/NitroHooks#configurevite']]}>
+
+<ApiSignature
+	tokens={[
+		'configureVite(options: InlineConfig, command: "build" | "serve"): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['InlineConfig']} />
+
+<ApiParam name="command" type={['"build" | "serve"']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

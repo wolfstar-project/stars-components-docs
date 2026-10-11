@@ -1,0 +1,125 @@
+---
+title: 'Interface: SessionStore'
+description: 'Where interactive messages keep their state between clicks. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/SessionStore.ts#L12',
+		label: 'packages/http-framework-utilities/src/lib/sessions/SessionStore.ts:12'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Where interactive messages keep their state between clicks. Values must be JSON-serializable for stores other than
+[`MemorySessionStore`](/documentation/api/http-framework-utilities/classes/MemorySessionStore).
+
+<ApiSignature tokens={['interface SessionStore<T = unknown>']} />
+
+<ApiHierarchy
+	implementedBy={[
+		[['MemorySessionStore', '/documentation/api/http-framework-utilities/classes/MemorySessionStore']],
+		[['RedisSessionStore', '/documentation/api/http-framework-utilities/classes/RedisSessionStore']]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="unknown" />
+
+</ApiParams>
+
+## Properties
+
+### scope
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly scope: ', ['SessionStoreScope', '/documentation/api/http-framework-utilities/type-aliases/SessionStoreScope']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/SessionStore.ts#L13',
+		label: 'packages/http-framework-utilities/src/lib/sessions/SessionStore.ts:13'
+	}}
+/>
+
+## Methods
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/SessionStore.ts#L19', label: 'packages/http-framework-utilities/src/lib/sessions/SessionStore.ts:19' }}>
+
+<ApiSignature tokens={['delete(id: string): ', ['Awaitable', '/documentation/api/http-framework-utilities/type-aliases/Awaitable'], '<void>']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/http-framework-utilities/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/SessionStore.ts#L14', label: 'packages/http-framework-utilities/src/lib/sessions/SessionStore.ts:14' }}>
+
+<ApiSignature tokens={['get(id: string): ', ['Awaitable', '/documentation/api/http-framework-utilities/type-aliases/Awaitable'], '<T | null>']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/http-framework-utilities/type-aliases/Awaitable'], '<T | null>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/SessionStore.ts#L18', label: 'packages/http-framework-utilities/src/lib/sessions/SessionStore.ts:18' }}>
+
+<ApiSignature
+	tokens={[
+		'set(id: string, value: T, ttl: number): ',
+		['Awaitable', '/documentation/api/http-framework-utilities/type-aliases/Awaitable'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+<ApiParam name="value" type={['T']} />
+
+<ApiParam name="ttl" type={['number']}>
+
+Time-to-live in milliseconds, refreshed on every write.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/http-framework-utilities/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,77 @@
+---
+title: 'Interface: NitroHooks'
+description: 'API reference for NitroHooks, an interface exported by @wolfstar/nitro-server.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/config.ts#L9',
+		label: 'packages/nitro-server/src/config.ts:9'
+	}}
+	packageName="@wolfstar/nitro-server"
+	packageHref="/documentation/api/nitro-server"
+/>
+
+<ApiSignature tokens={['interface NitroHooks']} />
+
+<ApiHierarchy extendedBy={[[['NitroBuilderHooks', '/documentation/api/nitro-server/interfaces/NitroBuilderHooks']]]} />
+
+## Methods
+
+### configureNitro()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/config.ts#L10', label: 'packages/nitro-server/src/config.ts:10' }}>
+
+<ApiSignature
+	tokens={[
+		'configureNitro(options: NitroConfig): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['NitroConfig']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### configureVite()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/config.ts#L11', label: 'packages/nitro-server/src/config.ts:11' }}>
+
+<ApiSignature
+	tokens={[
+		'configureVite(options: InlineConfig, command: "build" | "serve"): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['InlineConfig']} />
+
+<ApiParam name="command" type={['"build" | "serve"']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

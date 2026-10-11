@@ -1,31 +1,57 @@
 ---
 title: 'Function: RequiresDMContext()'
+description: 'Decorator that only runs the decorated method when the interaction was not received from a guild, that is, from a DM or from a user-installed app con… (@wolfstar/decorators)'
 hidden: true
 ---
 
-> **RequiresDMContext**(`fallback?`): `MethodDecorator`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/decorators/src/RequiresContext.ts:58](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/RequiresContext.ts#L58)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/RequiresContext.ts#L58',
+		label: 'RequiresContext.ts:58'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
 
 Decorator that only runs the decorated method when the interaction was **not** received from a guild, that is, from a
 DM or from a user-installed app context.
 
-## Parameters
+<ApiSignature
+	tokens={[
+		'RequiresDMContext(fallback: ',
+		['ContextFallback', '/documentation/api/decorators/type-aliases/ContextFallback'],
+		' = ...): MethodDecorator'
+	]}
+/>
 
-### fallback?
+Decorator that only runs the decorated method when the interaction was **not** received from a guild, that is, from a
+DM or from a user-installed app context.
 
-`ContextFallback` = `...`
+<ApiParams title="Parameters">
+
+<ApiParam name="fallback" type={[['ContextFallback', '/documentation/api/decorators/type-aliases/ContextFallback']]} defaultValue="...">
 
 The fallback to run when the interaction came from a guild. Defaults to a no-op, which silently skips
 the method.
 
-## Returns
+</ApiParam>
 
-`MethodDecorator`
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['MethodDecorator']}>
 
 A method decorator.
 
-## Example
+</ApiParam>
+
+</ApiParams>
+
+**Example**
 
 ```typescript
 import { RequiresDMContext } from '@wolfstar/decorators';

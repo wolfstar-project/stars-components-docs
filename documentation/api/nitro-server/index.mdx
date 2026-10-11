@@ -1,0 +1,41 @@
+---
+title: '@wolfstar/nitro-server'
+description: 'Generated API reference for @wolfstar/nitro-server: Nitro build and dev server integration and the createNitroServer helper.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/nitro-server"
+	version="0.2.10"
+	guideHref="/documentation/packages/nitro-server"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/nitro-server"
+/>
+
+<InstallPackage packages="@wolfstar/nitro-server" />
+
+<ApiSymbolList
+	symbols={[
+		{ name: 'NitroBuilder', kind: 'class', href: '/documentation/api/nitro-server/classes/NitroBuilder' },
+		{ name: 'NitroBuilderHooks', kind: 'interface', href: '/documentation/api/nitro-server/interfaces/NitroBuilderHooks' },
+		{ name: 'NitroHooks', kind: 'interface', href: '/documentation/api/nitro-server/interfaces/NitroHooks' },
+		{ name: 'StarsNitroServer', kind: 'interface', href: '/documentation/api/nitro-server/interfaces/StarsNitroServer' },
+		{ name: 'NITRO_ENTRY_ID', kind: 'variable', href: '/documentation/api/nitro-server/variables/NITRO_ENTRY_ID' },
+		{ name: 'NITRO_ERROR_HANDLER_ID', kind: 'variable', href: '/documentation/api/nitro-server/variables/NITRO_ERROR_HANDLER_ID' },
+		{ name: 'createNitroConfig', kind: 'function', href: '/documentation/api/nitro-server/functions/createNitroConfig' },
+		{
+			name: 'createNitroServer',
+			kind: 'function',
+			href: '/documentation/api/nitro-server/functions/createNitroServer',
+			summary: 'Native Nitro development through its Vite plugin: server routes, HMR reload, and runtime dispatch.'
+		},
+		{ name: 'createNitroViteConfig', kind: 'function', href: '/documentation/api/nitro-server/functions/createNitroViteConfig' },
+		{
+			name: 'defineNitroConfig',
+			kind: 'function',
+			href: '/documentation/api/nitro-server/functions/defineNitroConfig',
+			summary: 'Type-check all upstream Nitro options without adding Nitro to the shared schema runtime.'
+		}
+	]}
+/>

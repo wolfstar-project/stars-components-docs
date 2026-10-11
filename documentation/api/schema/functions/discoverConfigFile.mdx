@@ -1,0 +1,35 @@
+---
+title: 'Function: discoverConfigFile()'
+description: 'Finds the first stars.config. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/load.ts#L25',
+		label: 'packages/schema/src/config/load.ts:25'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Finds the first `stars.config.*` file in `cwd`, in [CONFIG_FILE_NAMES](/documentation/api/schema/variables/CONFIG_FILE_NAMES) order.
+
+<ApiSignature tokens={['discoverConfigFile(cwd: string): string | null']} />
+
+Finds the first `stars.config.*` file in `cwd`, in [CONFIG_FILE_NAMES](/documentation/api/schema/variables/CONFIG_FILE_NAMES) order.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="cwd" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>

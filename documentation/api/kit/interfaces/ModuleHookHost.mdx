@@ -1,0 +1,107 @@
+---
+title: 'Interface: ModuleHookHost'
+description: 'The hook registry of the host. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L38',
+		label: 'packages/kit/src/types.ts:38'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+The hook registry of the host. The CLI hands over its `hookable` instance, so a module's hooks, `stars.config`'s
+`hooks` and the CLI's own `callHook` calls all share one registry.
+
+<ApiSignature tokens={['interface ModuleHookHost']} />
+
+## Methods
+
+### callHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L40', label: 'packages/kit/src/types.ts:40' }}>
+
+<ApiSignature
+	tokens={[
+		'callHook<Name extends keyof ',
+		['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'],
+		'>(\n  name: Name,\n  ...args: ',
+		['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'],
+		'<',
+		['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'],
+		'[Name]>\n): unknown'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Name" type={['extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['Name']} />
+
+<ApiParam
+	name="args"
+	type={[
+		['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'],
+		'<',
+		['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'],
+		'[Name]>'
+	]}
+	rest
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### hook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/types.ts#L39', label: 'packages/kit/src/types.ts:39' }}>
+
+<ApiSignature
+	tokens={[
+		'hook<Name extends keyof ',
+		['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'],
+		'>(name: Name, callback: ',
+		['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'],
+		'[Name]): unknown'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Name" type={['extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['Name']} />
+
+<ApiParam name="callback" type={[['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '[Name]']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

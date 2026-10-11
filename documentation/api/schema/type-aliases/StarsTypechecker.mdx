@@ -1,0 +1,26 @@
+---
+title: 'Type Alias: StarsTypechecker'
+description: 'The type checker stars dev runs next to the bot. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L138',
+		label: 'packages/schema/src/types/config.ts:138'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+The type checker `stars dev` runs next to the bot.
+
+- `tsc`: the project's own TypeScript, in watch mode.
+- `golar`: the project's `golar`, forwarding to TypeScript (`golar tsc`), in watch mode.
+- `tsz`: the project's `tsz` (or `try-tsz`). It has no watch mode, so it is re-run after every build instead.
+- `auto`: `golar` when the project depends on it, `tsc` otherwise (default).
+
+<ApiSignature tokens={['type StarsTypechecker = "tsc" | "golar" | "tsz"']} />

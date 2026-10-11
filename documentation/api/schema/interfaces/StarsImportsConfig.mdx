@@ -1,0 +1,94 @@
+---
+title: 'Interface: StarsImportsConfig'
+description: 'API reference for StarsImportsConfig, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L373',
+		label: 'packages/schema/src/types/config.ts:373'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface StarsImportsConfig']} />
+
+## Properties
+
+### dirs?
+
+<ApiMember kind="property" badges={['optional']} signature={['dirs?: string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L385', label: 'packages/schema/src/types/config.ts:385' }}>
+
+Directories, relative to [StarsConfig.root](/documentation/api/schema/interfaces/StarsConfig#root), whose exported values are auto-importable. Entries are glob
+path patterns: `'src/lib'` scans only the files directly inside it, `'src/lib/**'` scans recursively.
+
+**Default**
+
+```ts
+['src/lib/**', 'src/utils/**'];
+```
+
+</ApiMember>
+
+### dts?
+
+<ApiMember kind="property" badges={['optional']} signature={['dts?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L401', label: 'packages/schema/src/types/config.ts:401' }}>
+
+The generated declaration file that types the auto imports, relative to [StarsConfig.root](/documentation/api/schema/interfaces/StarsConfig#root).
+Include it in the project's tsconfig and add its directory to .gitignore.
+
+**Default**
+
+```ts
+'.stars/imports.d.ts';
+```
+
+</ApiMember>
+
+### enabled?
+
+<ApiMember kind="property" badges={['optional']} signature={['enabled?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L379', label: 'packages/schema/src/types/config.ts:379' }}>
+
+Whether auto imports are enabled. Requires the `tsdown` build tool: the imports are injected at build time by
+the `autoImports()` plugin from `@wolfstar/http-framework/auto-imports`, which the other tools cannot run.
+
+**Default**
+
+```ts
+true when the build tool is 'tsdown', false otherwise
+```
+
+</ApiMember>
+
+### exclude?
+
+<ApiMember kind="property" badges={['optional']} signature={['exclude?: string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L395', label: 'packages/schema/src/types/config.ts:395' }}>
+
+Export names excluded from auto imports, e.g. to avoid clashes with project-local names.
+
+**Default**
+
+```ts
+[];
+```
+
+</ApiMember>
+
+### presets?
+
+<ApiMember kind="property" badges={['optional']} signature={['presets?: string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L390', label: 'packages/schema/src/types/config.ts:390' }}>
+
+Packages whose exports are auto-importable. Packages that are not installed are skipped.
+
+**Default**
+
+```ts
+['@wolfstar/http-framework', '@wolfstar/decorators', '@wolfstar/env-utilities'];
+```
+
+</ApiMember>

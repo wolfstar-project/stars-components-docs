@@ -10,8 +10,8 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 	kind="class"
 	badges={['since 3.2.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L20',
-		label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:20'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ArgumentError.ts#L24',
+		label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:24'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -29,6 +29,10 @@ Errors thrown while resolving the options (arguments) of an interaction.
 
 </ApiParams>
 
+The framework never throws this error by itself: Discord validates the type and the bounds of the options
+before sending the interaction. It is meant to be thrown from a command that rejects a value, and, being a
+[UserError](/documentation/api/http-framework/classes/UserError), it is emitted as a `*Denied` event.
+
 **Example**
 
 ```typescript
@@ -45,7 +49,7 @@ throw new ArgumentError({
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L39', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:39' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ArgumentError.ts#L43', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:43' }}>
 
 <ApiSignature
 	tokens={[
@@ -75,7 +79,7 @@ throw new ArgumentError({
 
 ### argument
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly argument: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L25', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:25' }}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly argument: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ArgumentError.ts#L29', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:29' }}>
 
 The name of the option that caused the error.
 
@@ -83,7 +87,7 @@ The name of the option that caused the error.
 
 ### context
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L30', label: 'packages/http-framework/src/lib/errors/UserError.ts:30' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly context: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L35', label: 'packages/http-framework/src/lib/errors/UserError.ts:35' }} inheritedFrom={[['UserError.context', '/documentation/api/http-framework/classes/UserError#context']]}>
 
 User-provided context.
 
@@ -91,7 +95,7 @@ User-provided context.
 
 ### identifier
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/UserError.ts#L24', label: 'packages/http-framework/src/lib/errors/UserError.ts:24' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly identifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/UserError.ts#L29', label: 'packages/http-framework/src/lib/errors/UserError.ts:29' }} inheritedFrom={[['UserError.identifier', '/documentation/api/http-framework/classes/UserError#identifier']]}>
 
 An identifier, useful to localize emitted errors.
 
@@ -99,7 +103,7 @@ An identifier, useful to localize emitted errors.
 
 ### parameter
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly parameter: T']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L37', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:37' }}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly parameter: T']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ArgumentError.ts#L41', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:41' }}>
 
 The value that failed to be resolved.
 
@@ -107,7 +111,7 @@ The value that failed to be resolved.
 
 ### type
 
-<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly type: ', ['ApplicationCommandOptionType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationCommandOptionType'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L31', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:31' }}>
+<ApiMember kind="property" badges={['readonly', 'since 3.2.0']} signature={['readonly type: ', ['ApplicationCommandOptionType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationCommandOptionType'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ArgumentError.ts#L35', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:35' }}>
 
 The type of the option that caused the error, if known.
 
@@ -117,7 +121,7 @@ The type of the option that caused the error, if known.
 
 ### name
 
-<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/errors/ArgumentError.ts#L46', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:46' }}>
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/errors/ArgumentError.ts#L50', label: 'packages/http-framework/src/lib/errors/ArgumentError.ts:50' }}>
 
 This will be `'ArgumentError'` and can be used to distinguish the type of error when any error gets thrown.
 

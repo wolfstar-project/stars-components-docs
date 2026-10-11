@@ -1,0 +1,62 @@
+---
+title: 'Function: setupModules()'
+description: 'Installs the modules listed in config.modules, in order and each dependency first, and returns what they contributed. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/kit/src/setup.ts#L32',
+		label: 'packages/kit/src/setup.ts:32'
+	}}
+	packageName="@wolfstar/kit"
+	packageHref="/documentation/api/kit"
+/>
+
+Installs the modules listed in `config.modules`, in order and each dependency first, and returns what they
+contributed. A module that is already installed (by `meta.name`) is skipped.
+
+The options a module's `setup` receives are its `defaults`, then the `stars.config` key named by its
+`meta.configKey` (`config.moduleOptions`), then the options given inline (the `[specifier, options]` tuple, or the
+ones passed to `ctx.installModule`), each merged over the previous with [mergeOptions](/documentation/api/kit/functions/mergeOptions).
+
+<ApiSignature
+	tokens={[
+		'setupModules(options: ',
+		['SetupModulesOptions', '/documentation/api/kit/interfaces/SetupModulesOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ModulesRuntime', '/documentation/api/kit/interfaces/ModulesRuntime'],
+		'>'
+	]}
+/>
+
+Installs the modules listed in `config.modules`, in order and each dependency first, and returns what they
+contributed. A module that is already installed (by `meta.name`) is skipped.
+
+The options a module's `setup` receives are its `defaults`, then the `stars.config` key named by its
+`meta.configKey` (`config.moduleOptions`), then the options given inline (the `[specifier, options]` tuple, or the
+ones passed to `ctx.installModule`), each merged over the previous with [mergeOptions](/documentation/api/kit/functions/mergeOptions).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['SetupModulesOptions', '/documentation/api/kit/interfaces/SetupModulesOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ModulesRuntime', '/documentation/api/kit/interfaces/ModulesRuntime'],
+		'>'
+	]}
+/>
+
+</ApiParams>

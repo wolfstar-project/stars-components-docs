@@ -1,41 +1,62 @@
 ---
 title: 'Function: ApplyOptions()'
+description: 'Decorator that sets the options of a Piece, such as a Command, a Listener, or an InteractionHandler. (@wolfstar/decorators)'
 hidden: true
 ---
 
-> **ApplyOptions**\<`Options`\>(`optionsOrFn`): `ClassDecorator`
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
 
-Defined in: [packages/decorators/src/ApplyOptions.ts:42](https://github.com/wolfstar-project/stars-components/blob/3aa572c78006b3dffdba8ff804c781498fef6153/packages/decorators/src/ApplyOptions.ts#L42)
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/decorators/src/ApplyOptions.ts#L42',
+		label: 'ApplyOptions.ts:42'
+	}}
+	packageName="@wolfstar/decorators"
+	packageHref="/documentation/api/decorators"
+/>
 
 Decorator that sets the options of a `Piece`, such as a `Command`, a `Listener`, or an `InteractionHandler`.
 
-## Type Parameters
+<ApiSignature
+	tokens={[
+		'ApplyOptions<Options extends PieceOptions = PieceOptions>(optionsOrFn: Options | ((context: LoaderPieceContext) => Options)): ClassDecorator'
+	]}
+/>
 
-### Options
-
-`Options` _extends_ [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions) = [`PieceOptions`](/documentation/api/http-framework/interfaces/PieceOptions)
-
-## Parameters
-
-### optionsOrFn
-
-`Options` \| ((`context`) => `Options`)
-
-The options to pass to the piece's constructor, or a function that builds them from the loader
-context.
-
-## Returns
-
-`ClassDecorator`
-
-A class decorator.
-
-## Remarks
+Decorator that sets the options of a `Piece`, such as a `Command`, a `Listener`, or an `InteractionHandler`.
 
 The options are merged on top of the ones the piece was constructed with, so a piece that also passes
 options through `super(context, options)` will have the decorator's values win on conflicting keys.
 
-## Examples
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends PieceOptions']} defaultValue="PieceOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="optionsOrFn" type={['Options | ((context: LoaderPieceContext) => Options)']}>
+
+The options to pass to the piece's constructor, or a function that builds them from the loader
+context.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['ClassDecorator']}>
+
+A class decorator.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example 1**
 
 ```typescript
 import { ApplyOptions } from '@wolfstar/decorators';
@@ -49,6 +70,8 @@ export class UserCommand extends Command {
 	}
 }
 ```
+
+**Example 2**
 
 ```typescript
 (at)ApplyOptions<Command.Options>(({ name }) => ({ name: name.toLowerCase() }))

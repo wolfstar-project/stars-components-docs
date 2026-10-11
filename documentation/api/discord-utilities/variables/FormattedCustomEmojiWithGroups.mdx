@@ -1,0 +1,33 @@
+---
+title: 'Variable: FormattedCustomEmojiWithGroups'
+description: 'Regex that can capture any animated or non-animated custom Discord emoji. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/regexes.ts#L60',
+		label: 'packages/discord-utilities/src/lib/regexes.ts:60'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Regex that can capture any animated or non-animated custom Discord emoji.
+Similar to [FormattedCustomEmoji](/documentation/api/discord-utilities/variables/FormattedCustomEmoji) and unlike [EmojiRegex](/documentation/api/discord-utilities/variables/EmojiRegex) can also be a substring of a larger string.
+
+<ApiSignature
+	tokens={[
+		'const FormattedCustomEmojiWithGroups: ',
+		['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']
+	]}
+/>
+
+Capture group 1 can be used to determine whether the emoji is animated or not. It is named `animated`.
+
+Capture group 2 is the name of the emoji as it is typed in a message. It is named `name`.
+
+Capture group 3 is the ID of the emoji. It is named `id`.

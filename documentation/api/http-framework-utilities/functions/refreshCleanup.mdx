@@ -1,0 +1,52 @@
+---
+title: 'Function: refreshCleanup()'
+description: 'Moves a scheduled cleanup to a new deadline, optionally with the components now shown. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/cleanup.ts#L141',
+		label: 'packages/http-framework-utilities/src/lib/cleanup.ts:141'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Moves a scheduled cleanup to a new deadline, optionally with the components now shown. No-op when this process
+has no record for the session.
+
+<ApiSignature
+	tokens={[
+		'refreshCleanup(\n  sessionId: string,\n  deadline: number,\n  components?: ',
+		['APIActionRowComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIActionRowComponent'],
+		'<',
+		['APIComponentInMessageActionRow', 'https://discord-api-types.dev/api/discord-api-types-v10#APIComponentInMessageActionRow'],
+		'>[]\n): void'
+	]}
+/>
+
+Moves a scheduled cleanup to a new deadline, optionally with the components now shown. No-op when this process
+has no record for the session.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="sessionId" type={['string']} />
+
+<ApiParam name="deadline" type={['number']} />
+
+<ApiParam
+	name="components"
+	type={[
+		['APIActionRowComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIActionRowComponent'],
+		'<',
+		['APIComponentInMessageActionRow', 'https://discord-api-types.dev/api/discord-api-types-v10#APIComponentInMessageActionRow'],
+		'>[]'
+	]}
+	optional
+/>
+
+</ApiParams>

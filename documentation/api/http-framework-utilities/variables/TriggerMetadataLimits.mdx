@@ -1,0 +1,75 @@
+---
+title: 'Variable: TriggerMetadataLimits'
+description: 'Namespace containing limits related to Discord Auto Moderation Trigger Metadata. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Namespace containing limits related to Discord Auto Moderation Trigger Metadata.
+
+<ApiSignature
+	tokens={[
+		'const TriggerMetadataLimits: {\n  readonly MaximumCharactersPerRegexPattern: 260;\n  readonly MaximumKeywordAllowListKeywordLength: 60;\n  readonly MaximumKeywordAllowListLength: 100;\n  readonly MaximumKeywordFilterLength: 60;\n  readonly MaximumKeywordFilters: 1000;\n  readonly MaximumKeywordPresetAllowListKeywordPresetLength: 60;\n  readonly MaximumKeywordPresetAllowListLength: 1000;\n  readonly MaximumMentionSpamTotalMentions: 50;\n  readonly MaximumRegexPatterns: 10;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="MaximumCharactersPerRegexPattern" type={['260']}>
+
+Maximum number of characters allowed in a regular expression pattern.
+
+</ApiParam>
+
+<ApiParam name="MaximumKeywordAllowListKeywordLength" type={['60']}>
+
+Maximum characters per keyword that should not trigger the keyword rule.
+
+</ApiParam>
+
+<ApiParam name="MaximumKeywordAllowListLength" type={['100']}>
+
+Maximum number of substrings which should not trigger the keyword rule.
+
+</ApiParam>
+
+<ApiParam name="MaximumKeywordFilterLength" type={['60']}>
+
+Maximum number of characters allowed in a keyword filter.
+
+</ApiParam>
+
+<ApiParam name="MaximumKeywordFilters" type={['1000']}>
+
+Maximum number of substrings which will be searched for in content.
+
+</ApiParam>
+
+<ApiParam name="MaximumKeywordPresetAllowListKeywordPresetLength" type={['60']}>
+
+Maximum characters per keyword should not trigger the keyword preset rule.
+
+</ApiParam>
+
+<ApiParam name="MaximumKeywordPresetAllowListLength" type={['1000']}>
+
+Maximum number of substrings which should not trigger the keyword preset rule.
+
+</ApiParam>
+
+<ApiParam name="MaximumMentionSpamTotalMentions" type={['50']}>
+
+Maximum number of unique role and user mentions allowed per message.
+
+</ApiParam>
+
+<ApiParam name="MaximumRegexPatterns" type={['10']}>
+
+Maximum number of regular expression patterns which will be matched against content.
+
+</ApiParam>
+
+</ApiParams>

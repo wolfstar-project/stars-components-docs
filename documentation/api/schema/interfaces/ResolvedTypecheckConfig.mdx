@@ -1,0 +1,59 @@
+---
+title: 'Interface: ResolvedTypecheckConfig'
+description: 'API reference for ResolvedTypecheckConfig, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L62',
+		label: 'packages/schema/src/config/resolve.ts:62'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface ResolvedTypecheckConfig']} />
+
+## Properties
+
+### checker
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly checker: ', ['StarsTypechecker', '/documentation/api/schema/type-aliases/StarsTypechecker']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L73', label: 'packages/schema/src/config/resolve.ts:73' }}>
+
+The type checker to run, with `'auto'` already resolved.
+
+</ApiMember>
+
+### enabled
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly enabled: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L63',
+		label: 'packages/schema/src/config/resolve.ts:63'
+	}}
+/>
+
+### projects
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly projects: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L71', label: 'packages/schema/src/config/resolve.ts:71' }}>
+
+Every project `stars typecheck` checks. From `future.compatibilityVersion` 6 that is the generated app and node
+configs of a `tsdown` or `vite` project, and the project's own tsconfig plus the node config for `tsc` and `none`;
+a configured `tsconfig` is checked alone, and below 6 the single tsconfig is.
+
+</ApiMember>
+
+### tsconfig
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly tsconfig: string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/resolve.ts#L65', label: 'packages/schema/src/config/resolve.ts:65' }}>
+
+Absolute `tsconfig.json` the dev type checker runs against, `null` when it could not be found.
+
+</ApiMember>

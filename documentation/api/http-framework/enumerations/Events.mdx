@@ -10,8 +10,8 @@ import { ApiEnumMembers, ApiHeader } from '/snippets/api-reference.jsx';
 	kind="enum"
 	badges={['since 3.4.0']}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/1e49b8a94be9af38a297e145cedcd8cf16678b3c/packages/http-framework/src/lib/ClientEvents.ts#L45',
-		label: 'packages/http-framework/src/lib/ClientEvents.ts:45'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/ClientEvents.ts#L46',
+		label: 'packages/http-framework/src/lib/ClientEvents.ts:46'
 	}}
 	packageName="@wolfstar/http-framework"
 	packageHref="/documentation/api/http-framework"
@@ -21,10 +21,14 @@ The name of every event emitted by the [Client](/documentation/api/http-framewor
 
 <ApiEnumMembers
 	members={[
+		{ name: 'AutocompleteAccepted', value: '"autocompleteAccepted"', id: 'member-autocompleteaccepted', description: '' },
+		{ name: 'AutocompleteDenied', value: '"autocompleteDenied"', id: 'member-autocompletedenied', description: '' },
 		{ name: 'AutocompleteError', value: '"autocompleteError"', id: 'member-autocompleteerror', description: '' },
 		{ name: 'AutocompleteFinish', value: '"autocompleteFinish"', id: 'member-autocompletefinish', description: '' },
 		{ name: 'AutocompleteRun', value: '"autocompleteRun"', id: 'member-autocompleterun', description: '' },
 		{ name: 'AutocompleteSuccess', value: '"autocompleteSuccess"', id: 'member-autocompletesuccess', description: '' },
+		{ name: 'ChatInputCommandAccepted', value: '"chatInputCommandAccepted"', id: 'member-chatinputcommandaccepted', description: '' },
+		{ name: 'ChatInputCommandDenied', value: '"chatInputCommandDenied"', id: 'member-chatinputcommanddenied', description: '' },
 		{ name: 'CommandError', value: '"commandError"', id: 'member-commanderror', description: '' },
 		{ name: 'CommandFinish', value: '"commandFinish"', id: 'member-commandfinish', description: '' },
 		{ name: 'CommandMethodUnknown', value: '"commandMethodUnknown"', id: 'member-commandmethodunknown', description: '' },
@@ -32,6 +36,8 @@ The name of every event emitted by the [Client](/documentation/api/http-framewor
 		{ name: 'CommandNameUnknown', value: '"commandNameUnknown"', id: 'member-commandnameunknown', description: '' },
 		{ name: 'CommandRun', value: '"commandRun"', id: 'member-commandrun', description: '' },
 		{ name: 'CommandSuccess', value: '"commandSuccess"', id: 'member-commandsuccess', description: '' },
+		{ name: 'ContextMenuCommandAccepted', value: '"contextMenuCommandAccepted"', id: 'member-contextmenucommandaccepted', description: '' },
+		{ name: 'ContextMenuCommandDenied', value: '"contextMenuCommandDenied"', id: 'member-contextmenucommanddenied', description: '' },
 		{ name: 'Error', value: '"error"', id: 'member-error', description: '' },
 		{ name: 'HmrError', value: '"hmrError"', id: 'member-hmrerror', description: '' },
 		{ name: 'HmrPieceReloaded', value: '"hmrPieceReloaded"', id: 'member-hmrpiecereloaded', description: '' },
@@ -39,6 +45,8 @@ The name of every event emitted by the [Client](/documentation/api/http-framewor
 		{ name: 'HmrPieceUnloaded', value: '"hmrPieceUnloaded"', id: 'member-hmrpieceunloaded', description: '' },
 		{ name: 'HmrStart', value: '"hmrStart"', id: 'member-hmrstart', description: '' },
 		{ name: 'HmrStop', value: '"hmrStop"', id: 'member-hmrstop', description: '' },
+		{ name: 'InteractionHandlerAccepted', value: '"interactionHandlerAccepted"', id: 'member-interactionhandleraccepted', description: '' },
+		{ name: 'InteractionHandlerDenied', value: '"interactionHandlerDenied"', id: 'member-interactionhandlerdenied', description: '' },
 		{ name: 'InteractionHandlerError', value: '"interactionHandlerError"', id: 'member-interactionhandlererror', description: '' },
 		{ name: 'InteractionHandlerFinish', value: '"interactionHandlerFinish"', id: 'member-interactionhandlerfinish', description: '' },
 		{
@@ -55,7 +63,9 @@ The name of every event emitted by the [Client](/documentation/api/http-framewor
 		},
 		{ name: 'InteractionHandlerRun', value: '"interactionHandlerRun"', id: 'member-interactionhandlerrun', description: '' },
 		{ name: 'InteractionHandlerSuccess', value: '"interactionHandlerSuccess"', id: 'member-interactionhandlersuccess', description: '' },
-		{ name: 'PluginLoaded', value: '"pluginLoaded"', id: 'member-pluginloaded', description: '' }
+		{ name: 'PluginLoaded', value: '"pluginLoaded"', id: 'member-pluginloaded', description: '' },
+		{ name: 'PreChatInputCommandRun', value: '"preChatInputCommandRun"', id: 'member-prechatinputcommandrun', description: '' },
+		{ name: 'PreContextMenuCommandRun', value: '"preContextMenuCommandRun"', id: 'member-precontextmenucommandrun', description: '' }
 	]}
 />
 

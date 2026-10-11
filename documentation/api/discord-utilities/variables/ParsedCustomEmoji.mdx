@@ -1,0 +1,25 @@
+---
+title: 'Variable: ParsedCustomEmoji'
+description: 'Regex that matches any animated or non-animated custom Discord emoji without the wrapping <...> symbols. (@wolfstar/discord-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/discord-utilities/src/lib/regexes.ts#L85',
+		label: 'packages/discord-utilities/src/lib/regexes.ts:85'
+	}}
+	packageName="@wolfstar/discord-utilities"
+	packageHref="/documentation/api/discord-utilities"
+/>
+
+Regex that matches any animated or non-animated custom Discord emoji \*without the wrapping `<...>` symbols.
+This means that a string that matches this regex can directly be send inside a Discord message.
+Other than this difference it is similar to [FormattedCustomEmoji](/documentation/api/discord-utilities/variables/FormattedCustomEmoji).
+
+<ApiSignature
+	tokens={['const ParsedCustomEmoji: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]}
+/>

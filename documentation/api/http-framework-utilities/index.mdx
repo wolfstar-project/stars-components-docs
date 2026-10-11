@@ -1,0 +1,813 @@
+---
+title: '@wolfstar/http-framework-utilities'
+description: 'Generated API reference for @wolfstar/http-framework-utilities: type guards, app_permissions helpers, MessageBuilder, PaginatedMessage, MessagePrompter, and session stores.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/http-framework-utilities"
+	version="0.1.1"
+	guideHref="/documentation/packages/http-framework-utilities"
+	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework-utilities"
+/>
+
+<InstallPackage packages="@wolfstar/http-framework-utilities" />
+
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'AutocompleteInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/AutocompleteInteractionOptionResolver',
+			summary: 'Utility class for resolving (autocomplete) interaction options while working with the raw API.'
+		},
+		{
+			name: 'ChatInputInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/ChatInputInteractionOptionResolver',
+			summary: 'Utility class for resolving (application command) interaction options while working with the raw API.'
+		},
+		{
+			name: 'ContextMenuInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/ContextMenuInteractionOptionResolver',
+			summary: 'Utility class for resolving (context menu) interaction options while working with the raw API.'
+		},
+		{
+			name: 'LazyPaginatedMessage',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/LazyPaginatedMessage',
+			summary: 'A PaginatedMessage resolving function pages only when first displayed.'
+		},
+		{
+			name: 'MemorySessionStore',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/MemorySessionStore',
+			summary: 'A process-local SessionStore.'
+		},
+		{ name: 'MessageBuilder', kind: 'class', href: '/documentation/api/http-framework-utilities/classes/MessageBuilder' },
+		{
+			name: 'MessagePrompter',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/MessagePrompter',
+			summary: 'Asks the user a question answered with buttons.'
+		},
+		{ name: 'MessagePrompterHandler', kind: 'class', href: '/documentation/api/http-framework-utilities/classes/MessagePrompterHandler' },
+		{
+			name: 'ModalInteractionOptionResolver',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/ModalInteractionOptionResolver',
+			summary: 'Utility class for resolving (modal) interaction options while working with the raw API.'
+		},
+		{
+			name: 'PaginatedFieldMessageEmbed',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/PaginatedFieldMessageEmbed',
+			summary: 'A PaginatedMessage listing items as lines of a single embed field per page.'
+		},
+		{
+			name: 'PaginatedMessage',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/PaginatedMessage',
+			summary: 'A message whose pages are browsed with buttons and a page select, over HTTP interactions.'
+		},
+		{
+			name: 'PaginatedMessageEmbedFields',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/PaginatedMessageEmbedFields',
+			summary: 'A PaginatedMessage spreading embed fields over pages built from a template embed.'
+		},
+		{ name: 'PaginatedMessageHandler', kind: 'class', href: '/documentation/api/http-framework-utilities/classes/PaginatedMessageHandler' },
+		{
+			name: 'RedisSessionStore',
+			kind: 'class',
+			href: '/documentation/api/http-framework-utilities/classes/RedisSessionStore',
+			summary: 'A SessionStore shared between processes through Redis.'
+		},
+		{
+			name: 'ChannelLike',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/ChannelLike',
+			summary:
+				"The minimal shape shared by every raw channel payload (APIChannel, APIInteractionDataResolvedChannel, and the interaction's channel)."
+		},
+		{
+			name: 'CleanupCredentials',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/CleanupCredentials',
+			summary: 'The interaction token a cleanup edits with.'
+		},
+		{ name: 'CleanupRecord', kind: 'interface', href: '/documentation/api/http-framework-utilities/interfaces/CleanupRecord' },
+		{
+			name: 'CleanupTarget',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/CleanupTarget',
+			summary: 'The message a cleanup edits.'
+		},
+		{ name: 'DecodedCustomId', kind: 'interface', href: '/documentation/api/http-framework-utilities/interfaces/DecodedCustomId' },
+		{
+			name: 'MemorySessionStoreOptions',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/MemorySessionStoreOptions'
+		},
+		{ name: 'MessagePrompterOptions', kind: 'interface', href: '/documentation/api/http-framework-utilities/interfaces/MessagePrompterOptions' },
+		{
+			name: 'MessagePrompterStrategyReturns',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/MessagePrompterStrategyReturns'
+		},
+		{
+			name: 'PaginatedMessageAction',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageAction',
+			summary: 'A button action.'
+		},
+		{
+			name: 'PaginatedMessageActionContext',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageActionContext'
+		},
+		{
+			name: 'PaginatedMessageButtonActionData',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageButtonActionData'
+		},
+		{
+			name: 'PaginatedMessageOptions',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageOptions'
+		},
+		{
+			name: 'PaginatedMessageSelectActionData',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageSelectActionData'
+		},
+		{
+			name: 'PaginatedMessageSession',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageSession',
+			summary: 'The JSON-serializable state of a paginated message, kept in a SessionStore between clicks.'
+		},
+		{ name: 'PaginatedMessageStart', kind: 'interface', href: '/documentation/api/http-framework-utilities/interfaces/PaginatedMessageStart' },
+		{ name: 'PromptWaiter', kind: 'interface', href: '/documentation/api/http-framework-utilities/interfaces/PromptWaiter' },
+		{
+			name: 'RedisSessionClientLike',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/RedisSessionClientLike',
+			summary: 'The Redis commands RedisSessionStore needs.'
+		},
+		{
+			name: 'RedisSessionStoreOptions',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/RedisSessionStoreOptions'
+		},
+		{ name: 'RestErrorDescription', kind: 'interface', href: '/documentation/api/http-framework-utilities/interfaces/RestErrorDescription' },
+		{
+			name: 'RunnableInteraction',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/RunnableInteraction',
+			summary: 'Anything an interactive message can be sent from: command and component interactions of @wolfstar/http-framework.'
+		},
+		{
+			name: 'SessionStore',
+			kind: 'interface',
+			href: '/documentation/api/http-framework-utilities/interfaces/SessionStore',
+			summary: 'Where interactive messages keep their state between clicks.'
+		},
+		{ name: 'Awaitable', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/Awaitable' },
+		{
+			name: 'BasicApplicationCommandOptionType',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/BasicApplicationCommandOptionType'
+		},
+		{ name: 'ComponentInteraction', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/ComponentInteraction' },
+		{ name: 'If', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/If' },
+		{
+			name: 'MessageBuilderData',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/MessageBuilderData',
+			summary: 'The message body accepted by the interaction reply, update, and followup methods of @wolfstar/http-framework.'
+		},
+		{
+			name: 'MessagePrompterStrategy',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/MessagePrompterStrategy'
+		},
+		{ name: 'ModalComponentType', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/ModalComponentType' },
+		{ name: 'Nullish', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/Nullish' },
+		{
+			name: 'PaginatedMessageActionData',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionData'
+		},
+		{
+			name: 'PaginatedMessageActionEntry',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageActionEntry'
+		},
+		{
+			name: 'PaginatedMessageBuiltinActionId',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessageBuiltinActionId'
+		},
+		{ name: 'PaginatedMessagePage', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePage' },
+		{
+			name: 'PaginatedMessagePageResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePageResolvable'
+		},
+		{
+			name: 'PermissionsSource',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/PermissionsSource',
+			summary:
+				"Where the application's permissions come from: a bitfield, its string form, or anything carrying the interaction's apppermissions (raw payl…"
+		},
+		{ name: 'RequiredIf', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/RequiredIf' },
+		{
+			name: 'SessionStoreScope',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/SessionStoreScope',
+			summary: "'process': values stay in this process (functions allowed)."
+		},
+		{
+			name: 'TimeoutBehavior',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/TimeoutBehavior',
+			summary: "What happens to the controls of a timed-out message: 'disable' keeps them greyed out, 'remove' deletes them."
+		},
+		{
+			name: 'TypeToModalComponentMap',
+			kind: 'type-alias',
+			href: '/documentation/api/http-framework-utilities/type-aliases/TypeToModalComponentMap'
+		},
+		{ name: 'TypeToOptionMap', kind: 'type-alias', href: '/documentation/api/http-framework-utilities/type-aliases/TypeToOptionMap' },
+		{
+			name: 'ActionMetadataLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ActionMetadataLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Action Metadata.'
+		},
+		{
+			name: 'AllowedMentionsLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/AllowedMentionsLimits',
+			summary: 'Namespace containing limits related to Discord Message Allowed Mentions.'
+		},
+		{
+			name: 'ApplicationCommandLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ApplicationCommandLimits',
+			summary: 'Namespace containing limits related to Discord application commands (slash commands).'
+		},
+		{
+			name: 'ApplicationCommandOptionLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ApplicationCommandOptionLimits',
+			summary: 'Namespace containing limits related to Choices of Discord Application Commands.'
+		},
+		{
+			name: 'ApplicationCommandPermissionLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ApplicationCommandPermissionLimits',
+			summary: 'Namespace containing limits related to Permissions of Discord Application Commands.'
+		},
+		{
+			name: 'ApplicationRoleConnectionLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ApplicationRoleConnectionLimits',
+			summary: 'Namespace containing limits related to Discord Application Role Connections.'
+		},
+		{
+			name: 'AutoCompleteLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/AutoCompleteLimits',
+			summary: 'Namespace container limits related to Discord autocomplete interactions.'
+		},
+		{
+			name: 'AutoModerationRuleLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/AutoModerationRuleLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Rules.'
+		},
+		{
+			name: 'ButtonLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ButtonLimits',
+			summary: 'Namespace containing limits related to Message Buttons.'
+		},
+		{
+			name: 'ChannelInviteLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ChannelInviteLimits',
+			summary: 'Namespace containing limits related to Discord Channel Invites.'
+		},
+		{
+			name: 'ChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ChannelLimits',
+			summary: 'Namespace containing limits related to Discord channels.'
+		},
+		{
+			name: 'ChannelMentionRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ChannelMentionRegex',
+			summary: 'Regex that can capture the ID in Discord Channel mentions'
+		},
+		{
+			name: 'ChannelMessageRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ChannelMessageRegex',
+			summary:
+				'Regex that can capture the channel and message IDs in a channelId-messageId pattern This pattern can be found when you hold Shift and hover…'
+		},
+		{ name: 'DefaultExpiredReply', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/DefaultExpiredReply' },
+		{ name: 'DefaultSaveFailedReply', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/DefaultSaveFailedReply' },
+		{ name: 'DefaultWrongUserReply', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/DefaultWrongUserReply' },
+		{
+			name: 'DiscordHostnameRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/DiscordHostnameRegex',
+			summary: 'Regex that matches links on the known Discord host names'
+		},
+		{
+			name: 'DiscordInviteLinkRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/DiscordInviteLinkRegex',
+			summary: 'Regex that can can capture the code of Discord invite links'
+		},
+		{
+			name: 'EmbedLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/EmbedLimits',
+			summary: 'Namespace containing limits related to Discord embeds.'
+		},
+		{
+			name: 'EmojiLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/EmojiLimits',
+			summary: 'Namespace containing limits related to Discord emojis.'
+		},
+		{
+			name: 'EmojiRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/EmojiRegex',
+			summary: 'Regex that can capture the ID of any animated or non-animated custom Discord emoji'
+		},
+		{
+			name: 'FormattedCustomEmoji',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/FormattedCustomEmoji',
+			summary: 'Regex that matches any animated or non-animated custom Discord emoji.'
+		},
+		{
+			name: 'FormattedCustomEmojiWithGroups',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/FormattedCustomEmojiWithGroups',
+			summary: 'Regex that can capture any animated or non-animated custom Discord emoji.'
+		},
+		{
+			name: 'GuildAuditLogsLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/GuildAuditLogsLimits',
+			summary: 'Namespace containing limits related to Discord Guild Audit Logs.'
+		},
+		{
+			name: 'GuildBansLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/GuildBansLimits',
+			summary: 'Namespace containing limits related to Discord guild bans.'
+		},
+		{
+			name: 'GuildIntegrationLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/GuildIntegrationLimits',
+			summary: 'Namespace containing limits related to Discord Guild Integrations.'
+		},
+		{
+			name: 'GuildLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/GuildLimits',
+			summary: 'Namespace containing limits related to Discord guilds.'
+		},
+		{
+			name: 'GuildMemberLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/GuildMemberLimits',
+			summary: 'Namespace containing limits related to Discord guild members.'
+		},
+		{
+			name: 'GuildScheduledEventLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/GuildScheduledEventLimits',
+			summary: 'Namespace containing limits related to Discord guild scheduled events.'
+		},
+		{
+			name: 'HttpUrlRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/HttpUrlRegex',
+			summary: 'Regex that matches any URL starting with http or https'
+		},
+		{
+			name: 'InteractionLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/InteractionLimits',
+			summary: 'Namespace containing limits related to Discord interactions.'
+		},
+		{
+			name: 'InteractionTokenLifetime',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/InteractionTokenLifetime',
+			summary: "Discord's interaction token lifetime, in milliseconds."
+		},
+		{ name: 'isCategoryChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isCategoryChannel' },
+		{ name: 'isDMChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isDMChannel' },
+		{ name: 'isGroupChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isGroupChannel' },
+		{ name: 'isNewsChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isNewsChannel' },
+		{ name: 'isNewsThreadChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isNewsThreadChannel' },
+		{ name: 'isPrivateThreadChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isPrivateThreadChannel' },
+		{ name: 'isPublicThreadChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isPublicThreadChannel' },
+		{ name: 'isStageChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isStageChannel' },
+		{ name: 'isTextChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isTextChannel' },
+		{ name: 'isVoiceChannel', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/isVoiceChannel' },
+		{
+			name: 'MaximumTokenLifetime',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/MaximumTokenLifetime',
+			summary: "How long an interaction token is used to edit a response, in milliseconds: one minute below Discord's 15-minute token lifetime."
+		},
+		{
+			name: 'MessageLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/MessageLimits',
+			summary: 'Namespace containing limits related to Discord messages.'
+		},
+		{
+			name: 'MessageLinkRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/MessageLinkRegex',
+			summary: 'Regex that can capture the Guild, Channel, and Message ID based on a shareable Discord message link.'
+		},
+		{
+			name: 'MessagePrompterHandlerName',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/MessagePrompterHandlerName'
+		},
+		{
+			name: 'ModalLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ModalLimits',
+			summary: 'Namespace containing limits related to Discord Modals.'
+		},
+		{
+			name: 'ModerationLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ModerationLimits',
+			summary: 'Namespace containing limits related to built-in moderation features.'
+		},
+		{
+			name: 'PaginatedMessageBuiltinActionIds',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/PaginatedMessageBuiltinActionIds',
+			summary: 'The ids of the built-in actions.'
+		},
+		{
+			name: 'PaginatedMessageHandlerName',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/PaginatedMessageHandlerName'
+		},
+		{
+			name: 'ParsedCustomEmoji',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ParsedCustomEmoji',
+			summary: 'Regex that matches any animated or non-animated custom Discord emoji without the wrapping <...> symbols.'
+		},
+		{
+			name: 'ParsedCustomEmojiWithGroups',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ParsedCustomEmojiWithGroups',
+			summary: 'Regex that matches any animated or non-animated custom Discord emoji without the wrapping <...> symbols.'
+		},
+		{
+			name: 'PremiumGuildLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/PremiumGuildLimits',
+			summary: 'Namespace containing limits related to premium Discord guilds.'
+		},
+		{
+			name: 'ReactionLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ReactionLimits',
+			summary: 'Namespace containing limits related to Discord message reactions.'
+		},
+		{
+			name: 'RoleLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/RoleLimits',
+			summary: 'Namespace containing limits related to Discord roles.'
+		},
+		{
+			name: 'RoleMentionRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/RoleMentionRegex',
+			summary: 'Regex that can capture the ID in Discord Role mentions'
+		},
+		{
+			name: 'SelectMenuLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/SelectMenuLimits',
+			summary: 'Namespace containing limits related to Select Menus.'
+		},
+		{ name: 'SessionIdLength', kind: 'variable', href: '/documentation/api/http-framework-utilities/variables/SessionIdLength' },
+		{
+			name: 'SnowflakeRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/SnowflakeRegex',
+			summary: 'Regex that can capture any Discord Snowflake ID'
+		},
+		{
+			name: 'StageChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/StageChannelLimits',
+			summary: 'Namespace containing limits related to Discord stage channels.'
+		},
+		{
+			name: 'StickerLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/StickerLimits',
+			summary: 'Namespace containing limits related to Discord Stickers.'
+		},
+		{
+			name: 'TextChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/TextChannelLimits',
+			summary: 'Namespace containing limits related to Discord text channels.'
+		},
+		{
+			name: 'TextInputLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/TextInputLimits',
+			summary: 'Namespace containing limits related to Discord Modal Text Input component.'
+		},
+		{
+			name: 'ThreadLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/ThreadLimits',
+			summary: 'Namespace containing limits related to Discord threads.'
+		},
+		{
+			name: 'TokenRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/TokenRegex',
+			summary: 'Regex that can capture a Discord Token'
+		},
+		{
+			name: 'TriggerMetadataLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/TriggerMetadataLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Trigger Metadata.'
+		},
+		{
+			name: 'TriggerTypeLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/TriggerTypeLimits',
+			summary: 'Namespace containing limits related to Discord Auto Moderation Triggers.'
+		},
+		{
+			name: 'TwemojiRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/TwemojiRegex',
+			summary: 'Regex that can capture a Twemoji (Twitter Emoji)'
+		},
+		{
+			name: 'UserLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/UserLimits',
+			summary: 'Namespace containing limits related to Discord users and Direct Messages.'
+		},
+		{
+			name: 'UserOrMemberMentionRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/UserOrMemberMentionRegex',
+			summary: 'Regex that can capture the ID of a user in Discord user mentions'
+		},
+		{
+			name: 'VoiceChannelLimits',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/VoiceChannelLimits',
+			summary: 'Namespace containing limits related to Discord voice channels.'
+		},
+		{
+			name: 'WebhookRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/WebhookRegex',
+			summary: 'Regex that captures the Webhook ID and token from a Discord Webhook URL.'
+		},
+		{
+			name: 'WebSocketUrlRegex',
+			kind: 'variable',
+			href: '/documentation/api/http-framework-utilities/variables/WebSocketUrlRegex',
+			summary: 'Regex that matches any WebSocket URL starting with ws or wss'
+		},
+		{
+			name: 'assertSharedSessionState',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/assertSharedSessionState',
+			summary: 'Throws a TypeError naming the first path (e.g.'
+		},
+		{
+			name: 'cancelCleanup',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/cancelCleanup',
+			summary: "Releases a session's cleanup record without editing its message."
+		},
+		{
+			name: 'canJoinVoiceChannel',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/canJoinVoiceChannel',
+			summary: 'Whether the application can connect to a voice channel.'
+		},
+		{ name: 'canReact', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/canReact' },
+		{ name: 'canReadMessages', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/canReadMessages' },
+		{ name: 'canRemoveAllReactions', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/canRemoveAllReactions' },
+		{ name: 'canSendAttachments', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/canSendAttachments' },
+		{ name: 'canSendEmbeds', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/canSendEmbeds' },
+		{ name: 'canSendMessages', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/canSendMessages' },
+		{
+			name: 'createTwemojiRegex',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/createTwemojiRegex',
+			summary:
+				"Creates a fresh instance of the Twemoji regex, which is useful if you don't want to worry about the effects of a global regex and the lastI…"
+		},
+		{
+			name: 'decodeCustomIdContent',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/decodeCustomIdContent',
+			summary: 'Reads the content produced by StringIdParser for a custom id built by encodeCustomId.'
+		},
+		{
+			name: 'disableMessageComponents',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/disableMessageComponents',
+			summary: 'Every component of a message, with disabled: true.'
+		},
+		{
+			name: 'encodeCustomId',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/encodeCustomId',
+			summary: "Builds a customid readable by the framework's StringIdParser: <handler>.<sessionId>.<action>."
+		},
+		{
+			name: 'expireInteraction',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/expireInteraction',
+			summary: 'updates the clicked message with its controls disabled, then sends content as an ephemeral followup.'
+		},
+		{
+			name: 'getDefaultExpiredReply',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/getDefaultExpiredReply',
+			summary: 'The process-wide expiry notice, DefaultExpiredReply unless changed with setDefaultExpiredReply.'
+		},
+		{
+			name: 'getDefaultSaveFailedReply',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/getDefaultSaveFailedReply',
+			summary: 'The process-wide save-failed notice, DefaultSaveFailedReply unless changed with setDefaultSaveFailedReply.'
+		},
+		{ name: 'getSelectedValues', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/getSelectedValues' },
+		{
+			name: 'getSessionStore',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/getSessionStore',
+			summary: 'The store used by interactive messages that were not given their own.'
+		},
+		{
+			name: 'isAnyInteractableInteraction',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isAnyInteractableInteraction',
+			summary: 'Whether the interaction can be responded to with a message: application commands, message components, and modal submissions.'
+		},
+		{
+			name: 'isAnyInteraction',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isAnyInteraction',
+			summary: 'Whether the value is an interaction, either a raw payload or an @wolfstar/http-framework interaction structure.'
+		},
+		{ name: 'isComponentInteraction', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/isComponentInteraction' },
+		{ name: 'isGuildBasedChannel', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/isGuildBasedChannel' },
+		{
+			name: 'isGuildMember',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isGuildMember',
+			summary:
+				'Whether the value is a full guild member (APIGuildMember / APIInteractionGuildMember), as opposed to a resolved member from interaction dat…'
+		},
+		{ name: 'isImageAttachment', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/isImageAttachment' },
+		{ name: 'isMediaAttachment', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/isMediaAttachment' },
+		{
+			name: 'isMessageButtonInteractionData',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isMessageButtonInteractionData'
+		},
+		{
+			name: 'isMessageChannelSelectInteractionData',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isMessageChannelSelectInteractionData'
+		},
+		{
+			name: 'isMessageMentionableSelectInteractionData',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isMessageMentionableSelectInteractionData'
+		},
+		{
+			name: 'isMessageRoleSelectInteractionData',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isMessageRoleSelectInteractionData'
+		},
+		{
+			name: 'isMessageStringSelectInteractionData',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isMessageStringSelectInteractionData'
+		},
+		{
+			name: 'isMessageUserSelectInteractionData',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isMessageUserSelectInteractionData'
+		},
+		{
+			name: 'isNsfwChannel',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isNsfwChannel',
+			summary: 'Whether the channel is age-restricted.'
+		},
+		{
+			name: 'isTextBasedChannel',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/isTextBasedChannel',
+			summary: 'Whether the channel can hold messages sent by the application.'
+		},
+		{ name: 'isThreadChannel', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/isThreadChannel' },
+		{ name: 'isVoiceBasedChannel', kind: 'function', href: '/documentation/api/http-framework-utilities/functions/isVoiceBasedChannel' },
+		{
+			name: 'refreshCleanup',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/refreshCleanup',
+			summary: 'Moves a scheduled cleanup to a new deadline, optionally with the components now shown.'
+		},
+		{
+			name: 'registerSessionStore',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/registerSessionStore',
+			summary: 'Registers a store the paginated message handler also looks sessions up in, after the default store.'
+		},
+		{
+			name: 'registerUtilityHandlers',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/registerUtilityHandlers',
+			summary: 'Adds the wolfstar-pm and wolfstar-mp interaction handlers to the interaction-handlers store.'
+		},
+		{
+			name: 'resolveAppPermissions',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/resolveAppPermissions',
+			summary: "Resolves the application's permissions, null when the source carries none."
+		},
+		{
+			name: 'scheduleCleanup',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/scheduleCleanup',
+			summary:
+				"Schedules the cleanup of a session's message at record.deadline, replacing (and releasing) any previous record for the same session."
+		},
+		{
+			name: 'setDefaultExpiredReply',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/setDefaultExpiredReply',
+			summary:
+				'Sets the process-wide expiry notice, sent as an ephemeral followup when a click arrives for a session that cannot be read anymore (expired,…'
+		},
+		{
+			name: 'setDefaultSaveFailedReply',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/setDefaultSaveFailedReply',
+			summary:
+				'Sets the process-wide notice sent as an ephemeral followup when a paginated message click cannot be saved to its session store: the message…'
+		},
+		{
+			name: 'setSessionStore',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/setSessionStore',
+			summary: 'Sets the default store, e.g.'
+		},
+		{
+			name: 'validateMessage',
+			kind: 'function',
+			href: '/documentation/api/http-framework-utilities/functions/validateMessage',
+			summary: "Validates a message body against Discord's limits."
+		}
+	]}
+/>
