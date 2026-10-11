@@ -1,0 +1,31 @@
+---
+title: 'Type Alias: PreconditionResult'
+description: 'What a precondition returns: Result.ok() to let the command run, or a Result.err(error) with a UserError (usually a PreconditionError) to deny it. (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['since 6.3.0']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework/src/lib/utils/preconditions.ts#L16',
+		label: 'packages/http-framework/src/lib/utils/preconditions.ts:16'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+What a precondition returns: `Result.ok()` to let the command run, or a `Result.err(error)` with a
+[UserError](/documentation/api/http-framework/classes/UserError) (usually a `PreconditionError`) to deny it.
+
+<ApiSignature
+	tokens={[
+		'type PreconditionResult = Awaitable<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<unknown, ',
+		['UserError', '/documentation/api/http-framework/classes/UserError'],
+		'>>'
+	]}
+/>
