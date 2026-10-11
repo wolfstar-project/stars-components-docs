@@ -1,0 +1,61 @@
+---
+title: 'Interface: StarsFutureConfig'
+description: 'Nuxt-style compatibility block. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L100',
+		label: 'packages/schema/src/types/config.ts:100'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Nuxt-style compatibility block. New projects need not set it; version 4 stays available, and version 3 is kept only
+as an end-of-life migration escape hatch for projects that still use a standalone `tsdown.config.*`.
+
+<ApiSignature tokens={['interface StarsFutureConfig']} />
+
+## Properties
+
+### compatibilityVersion?
+
+<ApiMember kind="property" badges={['optional']} signature={['compatibilityVersion?: ', ['StarsCompatibilityVersion', '/documentation/api/schema/type-aliases/StarsCompatibilityVersion']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L127', label: 'packages/schema/src/types/config.ts:127' }}>
+
+The major whose defaults apply.
+
+`6` is the default: everything in `5`, plus the generated TypeScript configuration split in two, the way a Nuxt 4
+project has it. `stars prepare` writes `.stars/tsconfig.app.json` (the bot sources) and
+`.stars/tsconfig.node.json` (`stars.config.*`, `vitest.config.*`, `scripts/**`, ...) instead of a single
+`.stars/tsconfig.json`, and the project's own `tsconfig.json` becomes a solution-style file that only references
+them. The `tsdown` build uses the app config, and `stars typecheck` checks both. `5` and `4` keep the single
+`.stars/tsconfig.json` and the `extends` a project's `tsconfig.json` already has, byte for byte.
+
+`5`: everything in `4`, plus `env` registered automatically in the built entry
+(see [StarsConfig.env](/documentation/api/schema/interfaces/StarsConfig#env)) when the project depends on `@wolfstar/env-utilities`.
+
+`4`:
+
+- auto imports are on by default with the `tsdown` build tool ([StarsImportsConfig](/documentation/api/schema/interfaces/StarsImportsConfig)), and the
+  `autoImports()` plugin is wired into the build by `stars` itself.
+- `tsdown` is configured from [StarsConfig.tsdown](/documentation/api/schema/interfaces/StarsConfig#tsdown) only. A `tsdown.config.*` in the project root is
+  rejected rather than silently ignored, so a build never loses the plugins it declares.
+- `build.tool: 'auto'` resolves to `tsdown` for any TypeScript entry, without looking for a `tsdown.config.*`
+  or a `tsdown` dependency first.
+- `env` is opt-in.
+
+`3` (**end-of-life**) keeps the legacy behaviour: auto imports off unless asked for, and a `tsdown.config.*`
+loaded and merged with [StarsConfig.tsdown](/documentation/api/schema/interfaces/StarsConfig#tsdown). It prints a warning and is removed in the next major.
+
+**Default**
+
+```ts
+6;
+```
+
+</ApiMember>

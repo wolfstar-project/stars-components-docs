@@ -1,0 +1,57 @@
+---
+title: 'Interface: LoadStarsConfigOptions'
+description: 'API reference for LoadStarsConfigOptions, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/index.ts#L4',
+		label: 'packages/schema/src/config/index.ts:4'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface LoadStarsConfigOptions']} />
+
+## Properties
+
+### configFile?
+
+<ApiMember kind="property" badges={['optional']} signature={['configFile?: string | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/index.ts#L11', label: 'packages/schema/src/config/index.ts:11' }}>
+
+An explicit configuration file, resolved from `cwd`.
+
+</ApiMember>
+
+### cwd?
+
+<ApiMember kind="property" badges={['optional']} signature={['cwd?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/index.ts#L9', label: 'packages/schema/src/config/index.ts:9' }}>
+
+The directory to discover `stars.config.*` from.
+
+**Default**
+
+```ts
+process.cwd();
+```
+
+</ApiMember>
+
+### env?
+
+<ApiMember kind="property" badges={['optional']} signature={['env?: ProcessEnv']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/index.ts#L16', label: 'packages/schema/src/config/index.ts:16' }}>
+
+Environment used for defaults such as `HTTP_PORT`.
+
+**Default**
+
+```ts
+process.env;
+```
+
+</ApiMember>

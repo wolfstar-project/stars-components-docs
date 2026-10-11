@@ -1,0 +1,45 @@
+---
+title: 'Interface: VarlockDetection'
+description: 'API reference for VarlockDetection, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L15',
+		label: 'packages/schema/src/config/varlock.ts:15'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface VarlockDetection']} />
+
+## Properties
+
+### dependency
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly dependency: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L21', label: 'packages/schema/src/config/varlock.ts:21' }}>
+
+Whether `varlock` is listed in the project's `dependencies` or `devDependencies`.
+
+</ApiMember>
+
+### installed
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly installed: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L19', label: 'packages/schema/src/config/varlock.ts:19' }}>
+
+Whether `varlock` can be resolved from the project (the runtime needs `varlock/exec-sync-varlock`).
+
+</ApiMember>
+
+### schema
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly schema: ', ['VarlockSchema', '/documentation/api/schema/interfaces/VarlockSchema'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/varlock.ts#L17', label: 'packages/schema/src/config/varlock.ts:17' }}>
+
+The project's varlock schema, or `null` when it has none.
+
+</ApiMember>

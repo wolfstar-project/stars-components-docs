@@ -1,0 +1,49 @@
+---
+title: 'Interface: StarsTypecheckConfig'
+description: 'API reference for StarsTypecheckConfig, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L140',
+		label: 'packages/schema/src/types/config.ts:140'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface StarsTypecheckConfig']} />
+
+## Properties
+
+### checker?
+
+<ApiMember kind="property" badges={['optional']} signature={['checker?: ', ['StarsTypechecker', '/documentation/api/schema/type-aliases/StarsTypechecker'], ' | "auto"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L150', label: 'packages/schema/src/types/config.ts:150' }}>
+
+Which type checker to run.
+
+**Default**
+
+```ts
+'auto';
+```
+
+</ApiMember>
+
+### tsconfig?
+
+<ApiMember kind="property" badges={['optional']} signature={['tsconfig?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L145', label: 'packages/schema/src/types/config.ts:145' }}>
+
+The `tsconfig.json` the type checker runs against, relative to [StarsConfig.root](/documentation/api/schema/interfaces/StarsConfig#root).
+
+**Default**
+
+```ts
+the build tool's tsconfig, 'src/tsconfig.json' or 'tsconfig.json'
+```
+
+</ApiMember>

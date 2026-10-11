@@ -1,0 +1,36 @@
+---
+title: 'Type Alias: StarsHooksConfig'
+description: "The hooks block of stars.config: each hook keyed by its full name ('build:done') or nested under its namespace ({ build: { done() {} } }), as a funct… (@wolfstar/schema)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/hooks.ts#L57',
+		label: 'packages/schema/src/types/hooks.ts:57'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+The `hooks` block of `stars.config`: each hook keyed by its full name (`'build:done'`) or nested under its namespace
+(`{ build: { done() {} } }`), as a function or an array of functions.
+
+<ApiSignature
+	tokens={[
+		'type StarsHooksConfig = { [Name in ',
+		['StarsHookName', '/documentation/api/schema/type-aliases/StarsHookName'],
+		']+?: HookOrList<',
+		['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'],
+		'[Name]> } & { [Namespace in ',
+		['StarsHookNamespace', '/documentation/api/schema/type-aliases/StarsHookNamespace'],
+		']+?: { [Name in ',
+		['StarsHookName', '/documentation/api/schema/type-aliases/StarsHookName'],
+		' as Name extends `${Namespace}:${infer Rest}` ? Rest : never]+?: HookOrList<',
+		['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'],
+		'[Name]> } }'
+	]}
+/>

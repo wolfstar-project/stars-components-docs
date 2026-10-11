@@ -1,0 +1,53 @@
+---
+title: 'Function: defineConfig()'
+description: 'Typed helper for stars.config.{ts,mts,cts,js,mjs,cjs} files. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config.ts#L18',
+		label: 'packages/schema/src/config.ts:18'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Typed helper for `stars.config.{ts,mts,cts,js,mjs,cjs}` files.
+
+<ApiSignature
+	tokens={[
+		'defineConfig(config: ',
+		['StarsConfig', '/documentation/api/schema/interfaces/StarsConfig'],
+		'): ',
+		['StarsConfig', '/documentation/api/schema/interfaces/StarsConfig']
+	]}
+/>
+
+Typed helper for `stars.config.{ts,mts,cts,js,mjs,cjs}` files.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['StarsConfig', '/documentation/api/schema/interfaces/StarsConfig']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['StarsConfig', '/documentation/api/schema/interfaces/StarsConfig']]} />
+
+</ApiParams>
+
+**Example**
+
+```ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	entry: 'src/main.ts',
+	build: { tool: 'tsdown' }
+});
+```

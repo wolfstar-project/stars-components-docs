@@ -1,0 +1,107 @@
+---
+title: 'Interface: Builder'
+description: 'Turns project sources into the runnable output, once or continuously. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L27',
+		label: 'packages/schema/src/types/builder.ts:27'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Turns project sources into the runnable output, once or continuously.
+Implementations report progress through [BuilderEvents](/documentation/api/schema/interfaces/BuilderEvents).
+
+<ApiSignature tokens={['interface Builder extends EventEmitter<', ['BuilderEvents', '/documentation/api/schema/interfaces/BuilderEvents'], '>']} />
+
+<ApiHierarchy extends={[['EventEmitter<', ['BuilderEvents', '/documentation/api/schema/interfaces/BuilderEvents'], '>']]} />
+
+## Properties
+
+### tool
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly tool: ', ['StarsBuildTool', '/documentation/api/schema/type-aliases/StarsBuildTool']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L28',
+		label: 'packages/schema/src/types/builder.ts:28'
+	}}
+/>
+
+## Methods
+
+### build()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L30', label: 'packages/schema/src/types/builder.ts:30' }}>
+
+<ApiSignature
+	tokens={[
+		'build(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BuildOutcome', '/documentation/api/schema/interfaces/BuildOutcome'],
+		'>'
+	]}
+/>
+
+Runs a single build. Compilation failures are reported in the outcome; dependency loading may throw.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BuildOutcome', '/documentation/api/schema/interfaces/BuildOutcome'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### close()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L34', label: 'packages/schema/src/types/builder.ts:34' }}>
+
+<ApiSignature
+	tokens={['close(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Stops watching.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### watch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/builder.ts#L32', label: 'packages/schema/src/types/builder.ts:32' }}>
+
+<ApiSignature
+	tokens={['watch(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Starts watching. Resolves once the watcher is set up; builds are reported through events.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

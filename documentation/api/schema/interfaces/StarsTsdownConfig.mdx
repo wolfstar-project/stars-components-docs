@@ -1,0 +1,256 @@
+---
+title: 'Interface: StarsTsdownConfig'
+description: 'Options for tsdown, the bundler stars build uses by default. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L54',
+		label: 'packages/schema/src/types/config.ts:54'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Options for `tsdown`, the bundler `stars build` uses by default.
+
+From [StarsFutureConfig.compatibilityVersion](/documentation/api/schema/interfaces/StarsFutureConfig#compatibilityversion) `4` on these replace `tsdown.config.*` outright: the build is
+derived from `stars.config` (the entry's directory, `build.outDir`, `build.tsconfig`) and these options are layered
+on top, so a project keeps one configuration file instead of two. With `3` the project's own `tsdown.config.*` is
+still loaded and these are merged over it, the way `vite: {}` in a Nuxt config is merged into the project's own
+Vite config: values here win, and `plugins` are appended rather than replaced.
+
+The options named below are the ones a bot usually reaches for. Every other `tsdown` option is accepted as-is —
+the framework does not depend on `tsdown`, so they stay loosely typed here and `tsdown`'s own `UserConfig` is the
+reference.
+
+<ApiSignature tokens={['interface StarsTsdownConfig']} />
+
+## Properties
+
+### alias?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['alias?: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L70',
+		label: 'packages/schema/src/types/config.ts:70'
+	}}
+/>
+
+### clean?
+
+<ApiMember kind="property" badges={['optional']} signature={['clean?: boolean | readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L83', label: 'packages/schema/src/types/config.ts:83' }}>
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### copy?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['copy?: unknown']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L85',
+		label: 'packages/schema/src/types/config.ts:85'
+	}}
+/>
+
+### define?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['define?: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L71',
+		label: 'packages/schema/src/types/config.ts:71'
+	}}
+/>
+
+### deps?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['deps?: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L74',
+		label: 'packages/schema/src/types/config.ts:74'
+	}}
+/>
+
+### dts?
+
+<ApiMember kind="property" badges={['optional']} signature={['dts?: boolean | ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L81', label: 'packages/schema/src/types/config.ts:81' }}>
+
+**Default**
+
+```ts
+false — a bot is not a library, so no declaration files are emitted.
+```
+
+</ApiMember>
+
+### entry?
+
+<ApiMember kind="property" badges={['optional']} signature={['entry?: string | readonly string[] | ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L56', label: 'packages/schema/src/types/config.ts:56' }}>
+
+Entry files or glob patterns, relative to the project root. Defaults to every source file next to `entry`.
+
+</ApiMember>
+
+### external?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['external?: unknown']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L72',
+		label: 'packages/schema/src/types/config.ts:72'
+	}}
+/>
+
+### format?
+
+<ApiMember kind="property" badges={['optional']} signature={['format?: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown> | readonly string[] | "esm" | "cjs" | "iife" | "umd"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L58', label: 'packages/schema/src/types/config.ts:58' }}>
+
+**Default**
+
+```ts
+'esm';
+```
+
+</ApiMember>
+
+### hooks?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['hooks?: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L86',
+		label: 'packages/schema/src/types/config.ts:86'
+	}}
+/>
+
+### minify?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['minify?: unknown']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L79',
+		label: 'packages/schema/src/types/config.ts:79'
+	}}
+/>
+
+### noExternal?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['noExternal?: unknown']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L73',
+		label: 'packages/schema/src/types/config.ts:73'
+	}}
+/>
+
+### outExtensions?
+
+<ApiMember kind="property" badges={['optional']} signature={['outExtensions?: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L76', label: 'packages/schema/src/types/config.ts:76' }}>
+
+**Default**
+
+```ts
+() => ({ js: extname(build.output) });
+```
+
+</ApiMember>
+
+### platform?
+
+<ApiMember kind="property" badges={['optional']} signature={['platform?: "node" | "neutral" | "browser"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L60', label: 'packages/schema/src/types/config.ts:60' }}>
+
+**Default**
+
+```ts
+'node';
+```
+
+</ApiMember>
+
+### plugins?
+
+<ApiMember kind="property" badges={['optional']} signature={['plugins?: readonly unknown[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L69', label: 'packages/schema/src/types/config.ts:69' }}>
+
+Rolldown plugins. Appended to the ones `stars` adds (auto imports) and to those of a `tsdown.config.*`.
+
+</ApiMember>
+
+### sourcemap?
+
+<ApiMember kind="property" badges={['optional']} signature={['sourcemap?: boolean | "inline" | "hidden"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L78', label: 'packages/schema/src/types/config.ts:78' }}>
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### target?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['target?: string | false | readonly string[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L61',
+		label: 'packages/schema/src/types/config.ts:61'
+	}}
+/>
+
+### treeshake?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['treeshake?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L84',
+		label: 'packages/schema/src/types/config.ts:84'
+	}}
+/>
+
+### unbundle?
+
+<ApiMember kind="property" badges={['optional']} signature={['unbundle?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L67', label: 'packages/schema/src/types/config.ts:67' }}>
+
+Emits one output file per source file instead of a single bundle, so pieces stay loadable from `dist/commands`
+and friends at runtime.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>

@@ -1,0 +1,158 @@
+---
+title: 'Interface: StarsConfig'
+description: 'API reference for StarsConfig, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L517',
+		label: 'packages/schema/src/types/config.ts:517'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface StarsConfig']} />
+
+## Properties
+
+### build?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['build?: ', ['StarsBuildConfig', '/documentation/api/schema/interfaces/StarsBuildConfig']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L528',
+		label: 'packages/schema/src/types/config.ts:528'
+	}}
+/>
+
+### codegen?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['codegen?: ', ['StarsCodegenConfig', '/documentation/api/schema/interfaces/StarsCodegenConfig']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L530',
+		label: 'packages/schema/src/types/config.ts:530'
+	}}
+/>
+
+### dev?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['dev?: ', ['StarsDevConfig', '/documentation/api/schema/interfaces/StarsDevConfig']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L529',
+		label: 'packages/schema/src/types/config.ts:529'
+	}}
+/>
+
+### entry?
+
+<ApiMember kind="property" badges={['optional']} signature={['entry?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L527', label: 'packages/schema/src/types/config.ts:527' }}>
+
+The source entry point of the bot, relative to [StarsConfig.root](/documentation/api/schema/interfaces/StarsConfig#root).
+
+**Default**
+
+```ts
+the first of 'src/main.ts', 'src/main.js', 'src/index.ts', 'src/index.js' that exists
+```
+
+</ApiMember>
+
+### env?
+
+<ApiMember kind="property" badges={['optional']} signature={['env?: boolean | ', ['StarsEnvConfig', '/documentation/api/schema/interfaces/StarsEnvConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L541', label: 'packages/schema/src/types/config.ts:541' }}>
+
+`@wolfstar/env-utilities` options, registered automatically before the bot's own modules run.
+`false` disables the automatic registration, `true` forces it on with defaults.
+
+</ApiMember>
+
+### experimental?
+
+<ApiMember kind="property" badges={['optional']} signature={['experimental?: ', ['StarsExperimentalConfig', '/documentation/api/schema/type-aliases/StarsExperimentalConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L555', label: 'packages/schema/src/types/config.ts:555' }}>
+
+Opt-in flags for behaviour that is still landing.
+
+</ApiMember>
+
+### future?
+
+<ApiMember kind="property" badges={['optional']} signature={['future?: ', ['StarsFutureConfig', '/documentation/api/schema/interfaces/StarsFutureConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L557', label: 'packages/schema/src/types/config.ts:557' }}>
+
+Build-default compatibility. Omit for version 5; version 3 is end-of-life and only meant for migrating a standalone tsdown config.
+
+</ApiMember>
+
+### hooks?
+
+<ApiMember kind="property" badges={['optional']} signature={['hooks?: ', ['StarsHooksConfig', '/documentation/api/schema/type-aliases/StarsHooksConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L546', label: 'packages/schema/src/types/config.ts:546' }}>
+
+Lifecycle hooks of the `stars` CLI (see `StarsHooks`), keyed by full name (`'build:done'`) or nested under
+their namespace (`{ build: { done() {} } }`). Each value is a function or an array of functions.
+
+</ApiMember>
+
+### imports?
+
+<ApiMember kind="property" badges={['optional']} signature={['imports?: boolean | ', ['StarsImportsConfig', '/documentation/api/schema/interfaces/StarsImportsConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L536', label: 'packages/schema/src/types/config.ts:536' }}>
+
+Nuxt-style auto imports of the framework's exports and the project's own modules.
+`false` disables them, `true` forces them on (requires the `tsdown` build tool). On by default with
+`future.compatibilityVersion` 4 and later.
+
+</ApiMember>
+
+### modules?
+
+<ApiMember kind="property" badges={['optional']} signature={['modules?: readonly (false | ', ['StarsModuleEntry', '/documentation/api/schema/type-aliases/StarsModuleEntry'], ' | null | undefined)[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L553', label: 'packages/schema/src/types/config.ts:553' }}>
+
+Installable modules (see `defineModule` in `@wolfstar/kit`), each a package name or a `[name, options]` tuple.
+A package listed here is installed because the project says so, not because of its name: it is no longer
+activated through the `@wolfstar/plugin-*` `/register` import the CLI otherwise injects. Falsy entries are
+dropped.
+
+</ApiMember>
+
+### root?
+
+<ApiMember kind="property" badges={['optional']} signature={['root?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L522', label: 'packages/schema/src/types/config.ts:522' }}>
+
+The project root. Relative paths are resolved from the configuration file.
+
+**Default**
+
+```ts
+dirname(configFile);
+```
+
+</ApiMember>
+
+### tsdown?
+
+<ApiMember kind="property" badges={['optional']} signature={['tsdown?: ', ['StarsTsdownConfig', '/documentation/api/schema/interfaces/StarsTsdownConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L567', label: 'packages/schema/src/types/config.ts:567' }}>
+
+The project's `tsdown` build. Replaces `tsdown.config.*` from `future.compatibilityVersion: 4` on, and is merged
+over it with `3`. Only used with `build.tool: 'tsdown'`.
+
+</ApiMember>
+
+### vite?
+
+<ApiMember kind="property" badges={['optional']} signature={['vite?: ', ['StarsViteConfig', '/documentation/api/schema/type-aliases/StarsViteConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L562', label: 'packages/schema/src/types/config.ts:562' }}>
+
+Raw options merged into `vite.config.*`, the way `vite: {}` in a Nuxt config is merged into Nuxt's own Vite
+config. Only used with `build.tool: 'vite'` (see `experimental.enableVite`).
+
+</ApiMember>

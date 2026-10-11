@@ -1,0 +1,62 @@
+---
+title: 'Interface: RuntimePluginRegistration'
+description: 'A runtime plugin a module registered with ctx.addPlugin. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L22',
+		label: 'packages/schema/src/types/modules.ts:22'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+A runtime plugin a module registered with `ctx.addPlugin`. Plugins cross from the CLI process into the bot by
+source, not by value: the entry (or, for the `tsc`/`none` build tools, a `node --import` preload) imports `from` and
+passes its `export` to `Client.use` — as the plugin itself, or, when it is a function, the result of calling it with
+`options`.
+
+<ApiSignature tokens={['interface RuntimePluginRegistration']} />
+
+## Properties
+
+### export
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly export: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L28', label: 'packages/schema/src/types/modules.ts:28' }}>
+
+**Default**
+
+```ts
+'default';
+```
+
+</ApiMember>
+
+### from
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly from: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L26', label: 'packages/schema/src/types/modules.ts:26' }}>
+
+A package specifier or an absolute file path.
+
+</ApiMember>
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L24', label: 'packages/schema/src/types/modules.ts:24' }}>
+
+The module that registered it.
+
+</ApiMember>
+
+### options?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly options?: unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L30', label: 'packages/schema/src/types/modules.ts:30' }}>
+
+JSON-serialisable options handed to the plugin when it is a factory.
+
+</ApiMember>

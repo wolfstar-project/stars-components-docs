@@ -1,0 +1,29 @@
+---
+title: 'Type Alias: StarsModuleEntry'
+description: 'A module as listed in modules in stars.config: a package name (or a file path Node can import) on its own, or a [specifier, options] tuple whose opti… (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L6',
+		label: 'packages/schema/src/types/modules.ts:6'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+A module as listed in `modules` in `stars.config`: a package name (or a file path Node can import) on its own, or
+a `[specifier, options]` tuple whose options are merged over the module's `defaults`. Falsy entries are dropped, so
+`modules: [useCache && '@wolfstar/plugin-cache']` works.
+
+<ApiSignature
+	tokens={[
+		'type StarsModuleEntry = string | readonly [specifier: string, options?: ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, unknown>]'
+	]}
+/>

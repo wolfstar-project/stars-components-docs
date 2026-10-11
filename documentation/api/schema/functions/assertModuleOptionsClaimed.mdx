@@ -1,0 +1,61 @@
+---
+title: 'Function: assertModuleOptionsClaimed()'
+description: 'Reports the first top-level stars.config key that is neither built in nor claimed by an installed module (its meta.configKey), the way the schema rep… (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/config/module-options.ts#L45',
+		label: 'packages/schema/src/config/module-options.ts:45'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Reports the first top-level `stars.config` key that is neither built in nor claimed by an installed module (its
+`meta.configKey`), the way the schema reports any other unknown option. It runs once the modules were set up, since
+only then are the claimed keys known: a misspelled key is still an error, just a later one.
+
+<ApiSignature
+	tokens={[
+		'assertModuleOptionsClaimed(\n  config: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		', "configFile" | "moduleOptions">,\n  claimed: readonly string[]\n): void'
+	]}
+/>
+
+Reports the first top-level `stars.config` key that is neither built in nor claimed by an installed module (its
+`meta.configKey`), the way the schema reports any other unknown option. It runs once the modules were set up, since
+only then are the claimed keys known: a misspelled key is still an error, just a later one.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="config"
+	type={[
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		', "configFile" | "moduleOptions">'
+	]}
+/>
+
+<ApiParam name="claimed" type={['readonly string[]']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`UNKNOWN_OPTION`, listing the built-in and the claimed keys.
+
+</ApiParam>
+
+</ApiParams>

@@ -1,0 +1,41 @@
+---
+title: 'Interface: StarsCodegenConfig'
+description: 'API reference for StarsCodegenConfig, an interface exported by @wolfstar/schema.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L358',
+		label: 'packages/schema/src/types/config.ts:358'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+<ApiSignature tokens={['interface StarsCodegenConfig']} />
+
+## Properties
+
+### commands?
+
+<ApiMember kind="property" badges={['optional']} signature={['commands?: boolean | ', ['StarsCommandsCodegenConfig', '/documentation/api/schema/interfaces/StarsCommandsCodegenConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L370', label: 'packages/schema/src/types/config.ts:370' }}>
+
+Typed command options, generated from the commands the project registers (see `Command.OptionsOf`). It needs a
+build (`stars build`): the commands are read from the built bot, the same way `stars commands diff` does, because
+only running the builders (loops, factories, localized names) gives the exact payload Discord receives.
+`true` enables it with the default output, an object configures it, and it is off when unset.
+
+</ApiMember>
+
+### i18n?
+
+<ApiMember kind="property" badges={['optional']} signature={['i18n?: false | ', ['StarsI18nCodegenConfig', '/documentation/api/schema/interfaces/StarsI18nCodegenConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L363', label: 'packages/schema/src/types/config.ts:363' }}>
+
+i18next type generation through `@wolfstar/i18next-type-generator`.
+`false` disables it, an object enables it, unset auto-detects from the presence of the locales directory.
+
+</ApiMember>

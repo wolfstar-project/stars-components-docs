@@ -1,0 +1,39 @@
+---
+title: 'Interface: ResolvedModuleEntry'
+description: 'One entry of modules, normalised. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L9',
+		label: 'packages/schema/src/types/modules.ts:9'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+One entry of `modules`, normalised.
+
+<ApiSignature tokens={['interface ResolvedModuleEntry']} />
+
+## Properties
+
+### options
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly options: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown>>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L13', label: 'packages/schema/src/types/modules.ts:13' }}>
+
+The options written in `stars.config`, before the module's `defaults` are merged under them.
+
+</ApiMember>
+
+### specifier
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly specifier: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/modules.ts#L11', label: 'packages/schema/src/types/modules.ts:11' }}>
+
+A package name, or a file path/URL, the module is imported from.
+
+</ApiMember>

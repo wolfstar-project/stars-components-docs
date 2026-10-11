@@ -1,0 +1,34 @@
+---
+title: 'Type Alias: StarsExperimentalConfig'
+description: "Opt-in flags for work that is still landing, in the shape Nuxt's own experimental block has: every flag is a boolean, defaults to false, and is docum… (@wolfstar/schema)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/schema/src/types/config.ts#L433',
+		label: 'packages/schema/src/types/config.ts:433'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+Opt-in flags for work that is still landing, in the shape Nuxt's own `experimental` block has: every flag is a
+boolean, defaults to `false`, and is documented with what it changes and what it still needs. A flag stays here
+until the behaviour it guards is the default (or is dropped), so enabling one is a statement that breakage is
+acceptable in exchange for the feature.
+
+`enableExternalVite`, `enableNitro` and `nitro` build on `enableVite` (and `nitro` on `enableNitro` too): the type
+only accepts them once their prerequisite is `true`, so turning one on without the other is a type error here
+instead of a diagnostic at load time.
+
+<ApiSignature
+	tokens={[
+		'type StarsExperimentalConfig = {\n  enableExternalVite?: false;\n  enableNitro?: false;\n  enableVite?: false;\n} | {\n  enableExternalVite?: boolean;\n  enableNitro?: false;\n  enableVite: true;\n} | {\n  enableExternalVite?: boolean;\n  enableNitro: true;\n  enableVite: true;\n  nitro?: ',
+		['StarsNitroConfig', '/documentation/api/schema/interfaces/StarsNitroConfig'],
+		';\n}'
+	]}
+/>
