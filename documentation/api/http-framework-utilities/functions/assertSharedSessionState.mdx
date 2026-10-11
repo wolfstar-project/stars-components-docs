@@ -1,0 +1,37 @@
+---
+title: 'Function: assertSharedSessionState()'
+description: 'Throws a TypeError naming the first path (e.g. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/validate.ts#L65',
+		label: 'packages/http-framework-utilities/src/lib/sessions/validate.ts:65'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Throws a [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) naming the first path (e.g. `pages[2]`, `actions.jump.run`) that a shared session
+store cannot hold: functions, symbols, bigints, `undefined` inside arrays, non-plain objects (class instances
+other than `Array`/plain `Object`), `NaN`/`Infinity`, circular references, and unresolved lazy pages (`null`
+inside a `pages` array).
+
+<ApiSignature tokens={["assertSharedSessionState(value: unknown, path: string = ''): void"]} />
+
+Throws a [`TypeError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError) naming the first path (e.g. `pages[2]`, `actions.jump.run`) that a shared session
+store cannot hold: functions, symbols, bigints, `undefined` inside arrays, non-plain objects (class instances
+other than `Array`/plain `Object`), `NaN`/`Infinity`, circular references, and unresolved lazy pages (`null`
+inside a `pages` array).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['unknown']} />
+
+<ApiParam name="path" type={['string']} defaultValue={"''"} />
+
+</ApiParams>

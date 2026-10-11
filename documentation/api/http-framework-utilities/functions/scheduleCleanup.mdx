@@ -1,0 +1,39 @@
+---
+title: 'Function: scheduleCleanup()'
+description: "Schedules the cleanup of a session's message at record.deadline, replacing (and releasing) any previous record for the same session. (@wolfstar/http-framework-utilities)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/cleanup.ts#L129',
+		label: 'packages/http-framework-utilities/src/lib/cleanup.ts:129'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Schedules the cleanup of a session's message at `record.deadline`, replacing (and releasing) any previous record
+for the same session. The timer is unref'd and independent of the session store's expiry.
+
+<ApiSignature
+	tokens={[
+		'scheduleCleanup(sessionId: string, record: ',
+		['CleanupRecord', '/documentation/api/http-framework-utilities/interfaces/CleanupRecord'],
+		'): void'
+	]}
+/>
+
+Schedules the cleanup of a session's message at `record.deadline`, replacing (and releasing) any previous record
+for the same session. The timer is unref'd and independent of the session store's expiry.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="sessionId" type={['string']} />
+
+<ApiParam name="record" type={[['CleanupRecord', '/documentation/api/http-framework-utilities/interfaces/CleanupRecord']]} />
+
+</ApiParams>

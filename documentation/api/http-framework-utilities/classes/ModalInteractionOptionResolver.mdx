@@ -1,0 +1,319 @@
+---
+title: 'Class: ModalInteractionOptionResolver'
+description: 'Utility class for resolving (modal) interaction options while working with the raw API. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="class" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Utility class for resolving (modal) interaction options while working with the raw API.
+Based on [https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js](https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js)
+
+<ApiSignature tokens={['class ModalInteractionOptionResolver']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature
+	tokens={[
+		'new ModalInteractionOptionResolver(interaction: ',
+		['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction'],
+		'): ',
+		['ModalInteractionOptionResolver', '/documentation/api/http-framework-utilities/classes/ModalInteractionOptionResolver']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[['APIModalSubmitInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIModalSubmitInteraction']]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### get()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={['get(customId: string): ', ['ModalSubmitComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#ModalSubmitComponent']]}
+/>
+
+Gets a component.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ModalSubmitComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#ModalSubmitComponent']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getAttachments()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={['getAttachments(customId: string): ', ['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'], '[]']}
+/>
+
+Gets attachments.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the file upload component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'], '[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedChannels()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getSelectedChannels(customId: string): ',
+		['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'],
+		'[]'
+	]}
+/>
+
+Gets selected channels.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the channel select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'], '[]']}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedMembers()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getSelectedMembers(customId: string): ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'[]'
+	]}
+/>
+
+Gets selected members.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the member select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'[]'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedMentionables()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getSelectedMentionables(customId: string): (',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		')[]'
+	]}
+/>
+
+Gets selected mentionables.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the mentionable select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'(',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		')[]'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedRoles()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={['getSelectedRoles(customId: string): ', ['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], '[]']}
+/>
+
+Gets selected roles.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the role select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], '[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedStrings()
+
+<ApiMember kind="method">
+
+<ApiSignature tokens={['getSelectedStrings(customId: string): string[]']} />
+
+Gets a string select component.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the string select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSelectedUsers()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={['getSelectedUsers(customId: string): ', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'], '[]']}
+/>
+
+Gets selected users.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the user select component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'], '[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getTextInput()
+
+<ApiMember kind="method">
+
+<ApiSignature tokens={['getTextInput(customId: string): string']} />
+
+Gets a text input component.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID of the text input component to get.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>

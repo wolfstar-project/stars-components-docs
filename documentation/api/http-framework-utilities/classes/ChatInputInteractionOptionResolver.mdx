@@ -1,0 +1,687 @@
+---
+title: 'Class: ChatInputInteractionOptionResolver'
+description: 'Utility class for resolving (application command) interaction options while working with the raw API. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="class" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Utility class for resolving (application command) interaction options while working with the raw API.
+Based on [https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js](https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/structures/CommandInteractionOptionResolver.js)
+
+<ApiSignature tokens={['class ChatInputInteractionOptionResolver']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature
+	tokens={[
+		'new ChatInputInteractionOptionResolver(interaction: ',
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		],
+		'): ',
+		['ChatInputInteractionOptionResolver', '/documentation/api/http-framework-utilities/classes/ChatInputInteractionOptionResolver']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="interaction"
+	type={[
+		[
+			'APIChatInputApplicationCommandInteraction',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIChatInputApplicationCommandInteraction'
+		]
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### get()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'get<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'>'
+	]}
+/>
+
+Gets an option by its name
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		[
+			'APIApplicationCommandInteractionDataOption',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandInteractionDataOption'
+		],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getAttachment()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getAttachment<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'],
+		'>'
+	]}
+/>
+
+Gets an attachment option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getBoolean()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getBoolean<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, boolean>'
+	]}
+/>
+
+Gets a boolean option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['If', '/documentation/api/http-framework-utilities/type-aliases/If'], '<Required, boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getChannel()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getChannel<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'],
+		'>'
+	]}
+/>
+
+Gets a channel option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIInteractionDataResolvedChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getInteger()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getInteger<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, number>'
+	]}
+/>
+
+Gets an integer option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['If', '/documentation/api/http-framework-utilities/type-aliases/If'], '<Required, number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getMember()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getMember<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+Gets a member option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getMentionable()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getMentionable<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		' | ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+Gets a mentionable option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		' | ',
+		['APIInteractionDataResolvedGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionDataResolvedGuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getNumber()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getNumber<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, number>'
+	]}
+/>
+
+Gets a number option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['If', '/documentation/api/http-framework-utilities/type-aliases/If'], '<Required, number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getRole()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getRole<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		'>'
+	]}
+/>
+
+Gets a role option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### getString()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getString<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, string>'
+	]}
+/>
+
+Gets a string option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['If', '/documentation/api/http-framework-utilities/type-aliases/If'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSubcommand()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getSubcommand<Required extends boolean = false>(required?: Required): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, string>'
+	]}
+/>
+
+Gets the selected subcommand
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if there is no subcommand
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['If', '/documentation/api/http-framework-utilities/type-aliases/If'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSubcommandGroup()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getSubcommandGroup<Required extends boolean = false>(required?: Required): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, string>'
+	]}
+/>
+
+Gets the selected subcommand group
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if there is no subcommand group
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['If', '/documentation/api/http-framework-utilities/type-aliases/If'], '<Required, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getUser()
+
+<ApiMember kind="method">
+
+<ApiSignature
+	tokens={[
+		'getUser<Required extends boolean = false>(\n  name: string,\n  required?: Required\n): ',
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		'>'
+	]}
+/>
+
+Gets a user option
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Required" type={['extends boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the option
+
+</ApiParam>
+
+<ApiParam name="required" type={['Required']} optional>
+
+Whether to throw an error if the option is not found
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['If', '/documentation/api/http-framework-utilities/type-aliases/If'],
+		'<Required, ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

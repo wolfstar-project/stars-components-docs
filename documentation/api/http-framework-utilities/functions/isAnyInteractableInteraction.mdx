@@ -1,0 +1,54 @@
+---
+title: 'Function: isAnyInteractableInteraction()'
+description: 'Whether the interaction can be responded to with a message: application commands, message components, and modal submissions. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L123',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:123'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Whether the interaction can be responded to with a message: application commands, message components, and modal
+submissions. Pings and autocomplete are excluded.
+
+<ApiSignature
+	tokens={[
+		'isAnyInteractableInteraction<T extends { type: ',
+		['InteractionType', 'https://discord-api-types.dev/api/discord-api-types-v10#InteractionType'],
+		' }>(interaction: ',
+		['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish'],
+		' | T): interaction is T'
+	]}
+/>
+
+Whether the interaction can be responded to with a message: application commands, message components, and modal
+submissions. Pings and autocomplete are excluded.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="T"
+	type={['extends { type: ', ['InteractionType', 'https://discord-api-types.dev/api/discord-api-types-v10#InteractionType'], ' }']}
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish'], ' | T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['interaction is T']} />
+
+</ApiParams>

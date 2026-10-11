@@ -1,0 +1,184 @@
+---
+title: 'Class: MemorySessionStore'
+description: 'A process-local SessionStore. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L14',
+		label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:14'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+A process-local [`SessionStore`](/documentation/api/http-framework-utilities/interfaces/SessionStore). Sessions do not survive a restart and are not shared between processes.
+
+<ApiSignature
+	tokens={[
+		'class MemorySessionStore<T = unknown> implements ',
+		['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'],
+		'<T>'
+	]}
+/>
+
+<ApiHierarchy implements={[[['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'], '<T>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="unknown" />
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L20', label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:20' }}>
+
+<ApiSignature
+	tokens={[
+		'new MemorySessionStore<T = unknown>(options: ',
+		['MemorySessionStoreOptions', '/documentation/api/http-framework-utilities/interfaces/MemorySessionStoreOptions'],
+		' = {}): ',
+		['MemorySessionStore', '/documentation/api/http-framework-utilities/classes/MemorySessionStore'],
+		'<T>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[['MemorySessionStoreOptions', '/documentation/api/http-framework-utilities/interfaces/MemorySessionStoreOptions']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### scope
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly scope: "process"']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L15',
+		label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:15'
+	}}
+/>
+
+## Accessors
+
+### size
+
+<ApiMember
+	kind="accessor"
+	signature={['get size(): number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L28',
+		label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:28'
+	}}
+/>
+
+## Methods
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L47', label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:47' }}>
+
+<ApiSignature tokens={['delete(id: string): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### destroy()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L70', label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:70' }}>
+
+<ApiSignature tokens={['destroy(): void']} />
+
+Stops the sweep timer and drops every entry.
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L32', label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:32' }}>
+
+<ApiSignature tokens={['get(id: string): T | null']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['T | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L43', label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:43' }}>
+
+<ApiSignature tokens={['set(id: string, value: T, ttl: number): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+<ApiParam name="value" type={['T']} />
+
+<ApiParam name="ttl" type={['number']}>
+
+Time-to-live in milliseconds, refreshed on every write.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### sweep()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts#L55', label: 'packages/http-framework-utilities/src/lib/sessions/MemorySessionStore.ts:55' }}>
+
+<ApiSignature tokens={['sweep(): number']} />
+
+Removes every expired entry.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']}>
+
+The number of removed entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

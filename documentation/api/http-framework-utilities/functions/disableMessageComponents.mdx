@@ -1,0 +1,63 @@
+---
+title: 'Function: disableMessageComponents()'
+description: 'Every component of a message, with disabled: true. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/expire.ts#L17',
+		label: 'packages/http-framework-utilities/src/lib/expire.ts:17'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Every component of a message, with `disabled: true`. Action rows are kept, with their children disabled except
+link/premium buttons (which have no `custom_id` and cannot be disabled). Every other top-level component
+(containers, text displays, …) is dropped, since only action rows can be disabled.
+
+<ApiSignature
+	tokens={[
+		'disableMessageComponents(components: readonly ',
+		['APIMessageTopLevelComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageTopLevelComponent'],
+		'[] | undefined): ',
+		['APIActionRowComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIActionRowComponent'],
+		'<',
+		['APIComponentInMessageActionRow', 'https://discord-api-types.dev/api/discord-api-types-v10#APIComponentInMessageActionRow'],
+		'>[]'
+	]}
+/>
+
+Every component of a message, with `disabled: true`. Action rows are kept, with their children disabled except
+link/premium buttons (which have no `custom_id` and cannot be disabled). Every other top-level component
+(containers, text displays, …) is dropped, since only action rows can be disabled.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="components"
+	type={[
+		'readonly ',
+		['APIMessageTopLevelComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageTopLevelComponent'],
+		'[] | undefined'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['APIActionRowComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIActionRowComponent'],
+		'<',
+		['APIComponentInMessageActionRow', 'https://discord-api-types.dev/api/discord-api-types-v10#APIComponentInMessageActionRow'],
+		'>[]'
+	]}
+/>
+
+</ApiParams>

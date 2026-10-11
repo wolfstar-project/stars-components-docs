@@ -1,0 +1,251 @@
+---
+title: 'Class: MessagePrompter'
+description: 'Asks the user a question answered with buttons. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L69',
+		label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:69'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Asks the user a question answered with buttons. The answer must reach the process that called `run`: prompts are
+not shared through the session store.
+
+<ApiSignature
+	tokens={[
+		'class MessagePrompter<S extends ',
+		['MessagePrompterStrategy', '/documentation/api/http-framework-utilities/type-aliases/MessagePrompterStrategy'],
+		' = "confirm">'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="S"
+	type={['extends ', ['MessagePrompterStrategy', '/documentation/api/http-framework-utilities/type-aliases/MessagePrompterStrategy']]}
+	defaultValue={'"confirm"'}
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L74', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:74' }}>
+
+<ApiSignature
+	tokens={[
+		'new MessagePrompter<S extends ',
+		['MessagePrompterStrategy', '/documentation/api/http-framework-utilities/type-aliases/MessagePrompterStrategy'],
+		' = "confirm">(\n  message: string | ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		' | ',
+		['PaginatedMessagePage', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePage'],
+		',\n  strategy: S = ...,\n  options: ',
+		['MessagePrompterOptions', '/documentation/api/http-framework-utilities/interfaces/MessagePrompterOptions'],
+		' = {}\n): ',
+		['MessagePrompter', '/documentation/api/http-framework-utilities/classes/MessagePrompter'],
+		'<S>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="S"
+	type={['extends ', ['MessagePrompterStrategy', '/documentation/api/http-framework-utilities/type-aliases/MessagePrompterStrategy']]}
+	defaultValue={'"confirm"'}
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="message"
+	type={[
+		'string | ',
+		['MessageBuilder', '/documentation/api/http-framework-utilities/classes/MessageBuilder'],
+		' | ',
+		['PaginatedMessagePage', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePage']
+	]}
+/>
+
+<ApiParam name="strategy" type={['S']} defaultValue="..." />
+
+<ApiParam
+	name="options"
+	type={[['MessagePrompterOptions', '/documentation/api/http-framework-utilities/interfaces/MessagePrompterOptions']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### message
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly message: ', ['PaginatedMessagePage', '/documentation/api/http-framework-utilities/type-aliases/PaginatedMessagePage']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L70',
+		label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:70'
+	}}
+/>
+
+### options
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly options: ', ['MessagePrompterOptions', '/documentation/api/http-framework-utilities/interfaces/MessagePrompterOptions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L72',
+		label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:72'
+	}}
+/>
+
+### strategy
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly strategy: S']}
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L71',
+		label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:71'
+	}}
+/>
+
+## Methods
+
+### prepareRun()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L105', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:105' }}>
+
+<ApiSignature tokens={['protected prepareRun(tokenBound: boolean): number']} />
+
+Checks what every prompt needs before anything is sent: a process-scoped session store, and a valid timeout.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="tokenBound" type={['boolean']}>
+
+Whether the prompt is only editable with an interaction token, which bounds the timeout by
+[`MaximumTokenLifetime`](/documentation/api/http-framework-utilities/variables/MaximumTokenLifetime).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']}>
+
+The timeout, in milliseconds.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### run()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L85', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:85' }}>
+
+<ApiSignature
+	tokens={[
+		'run(interaction: ',
+		['RunnableInteraction', '/documentation/api/http-framework-utilities/interfaces/RunnableInteraction'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessagePrompterStrategyReturns', '/documentation/api/http-framework-utilities/interfaces/MessagePrompterStrategyReturns'],
+		'[S] | null>'
+	]}
+/>
+
+Replies with the question and waits for the user's answer.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="interaction" type={[['RunnableInteraction', '/documentation/api/http-framework-utilities/interfaces/RunnableInteraction']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['MessagePrompterStrategyReturns', '/documentation/api/http-framework-utilities/interfaces/MessagePrompterStrategyReturns'], '[S] | null>']}>
+
+The answer, or `null` when the timeout elapsed.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### sendBotPrompt()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts#L131', label: 'packages/http-framework-utilities/src/lib/MessagePrompter/MessagePrompter.ts:131' }}>
+
+<ApiSignature
+	tokens={[
+		'protected sendBotPrompt(\n  ownerId: string,\n  send: (payload: ',
+		['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData'],
+		') => ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  channelId: string;\n  messageId: string;\n}>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessagePrompterStrategyReturns', '/documentation/api/http-framework-utilities/interfaces/MessagePrompterStrategyReturns'],
+		'[S] | null>'
+	]}
+/>
+
+Sends the question with its buttons as a bot-owned, non-ephemeral message through `send` (e.g. a gateway reply or
+a channel message) and waits for the answer. Its timeout cleanup edits the returned message through the bot's REST
+route, so the timeout is not bound by [`MaximumTokenLifetime`](/documentation/api/http-framework-utilities/variables/MaximumTokenLifetime).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ownerId" type={['string']}>
+
+The user allowed to answer.
+
+</ApiParam>
+
+<ApiParam name="send" type={['(payload: ', ['APIInteractionResponseCallbackData', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteractionResponseCallbackData'], ') => ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<{\n  channelId: string;\n  messageId: string;\n}>']}>
+
+Sends the payload and resolves with the created message's id and channel id.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['MessagePrompterStrategyReturns', '/documentation/api/http-framework-utilities/interfaces/MessagePrompterStrategyReturns'], '[S] | null>']}>
+
+The answer, or `null` when the timeout elapsed.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

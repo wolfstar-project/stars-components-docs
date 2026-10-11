@@ -1,0 +1,37 @@
+---
+title: 'Function: registerSessionStore()'
+description: 'Registers a store the paginated message handler also looks sessions up in, after the default store. (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/sessions/config.ts#L28',
+		label: 'packages/http-framework-utilities/src/lib/sessions/config.ts:28'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+Registers a store the paginated message handler also looks sessions up in, after the default store. A paginated
+message given its own shared `store` is only known to the process that ran it; register that store on every replica
+(or make it the default with [`setSessionStore`](/documentation/api/http-framework-utilities/functions/setSessionStore)) so the others can handle its clicks too. Registering a
+store twice is a no-op.
+
+<ApiSignature
+	tokens={['registerSessionStore(value: ', ['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore'], '): void']}
+/>
+
+Registers a store the paginated message handler also looks sessions up in, after the default store. A paginated
+message given its own shared `store` is only known to the process that ran it; register that store on every replica
+(or make it the default with [`setSessionStore`](/documentation/api/http-framework-utilities/functions/setSessionStore)) so the others can handle its clicks too. Registering a
+store twice is a no-op.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={[['SessionStore', '/documentation/api/http-framework-utilities/interfaces/SessionStore']]} />
+
+</ApiParams>
