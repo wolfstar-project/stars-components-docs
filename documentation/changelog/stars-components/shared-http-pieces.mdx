@@ -20,10 +20,111 @@ Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-
 
 ### Updates
 
-- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.3.1`, `@wolfstar/http-framework` to `6.2.0`.
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.3.1` and `@wolfstar/http-framework` to `6.2.0`. ([#253](https://github.com/wolfstar-project/stars-components/pull/253))
 
-## 2026-09-17
+## `2.0.9`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `6.0.0`.
+
+## `2.0.8`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.2.1` and `@wolfstar/http-framework` to `5.1.3`. ([#227](https://github.com/wolfstar-project/stars-components/pull/227))
+
+## `2.0.7`
 
 ### Bug fixes
 
-- **Locale loading** — Consumer locale paths are preserved and the bundled `commands/shared` namespace loads correctly when using the register entrypoint.
+- **Preserve bundled locales on early register import** — Bundled locales are kept when `@wolfstar/plugin-i18next/register` is imported before `@wolfstar/shared-http-pieces/register`. ([#222](https://github.com/wolfstar-project/stars-components/pull/222))
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `5.1.1`.
+
+## `2.0.6`
+
+### Updates
+
+- **Dependencies** — Updated non-major dependencies. ([#210](https://github.com/wolfstar-project/stars-components/pull/210))
+
+## `2.0.5`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `5.0.0`.
+
+## `2.0.4`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.1.1` and `@wolfstar/http-framework` to `4.0.1`. ([#178](https://github.com/wolfstar-project/stars-components/pull/178))
+
+## `2.0.3`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `4.0.0` and `@wolfstar/env-utilities` to `2.1.0`.
+
+## `2.0.2`
+
+### Bug fixes
+
+- **Locale paths and namespace loading** — Consumer locale paths are preserved and the bundled `commands/shared` namespace loads correctly when using the register entrypoint. ([#176](https://github.com/wolfstar-project/stars-components/pull/176))
+
+## `2.0.1`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/plugin-i18next` to `v2`. ([#171](https://github.com/wolfstar-project/stars-components/pull/171))
+- **Dependencies** — Updated `@wolfstar/http-framework` to `3.6.0`. ([#169](https://github.com/wolfstar-project/stars-components/pull/169), [#146](https://github.com/wolfstar-project/stars-components/pull/146))
+
+## `2.0.0`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.8` and `@wolfstar/http-framework` to `3.2.1`.
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.8` and `@wolfstar/http-framework` to `3.2.1`.
+
+### Migration
+
+- The `T`, `FT`, `resolveKey`, and `resolveUserKey` APIs from `@wolfstar/http-framework-i18n` are deprecated. Use the i18next v25 native `getT` / `getSupportedLanguageT` helpers instead.
+
+## `1.2.9`
+
+### Updates
+
+- **Dependencies** — Updated `@sentry/node` to `v10`. ([#112](https://github.com/wolfstar-project/stars-components/pull/112))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.7` and `@wolfstar/http-framework` to `3.1.4`.
+
+## `1.2.8`
+
+### Updates
+
+- **Npm provenance** — Restored npm provenance attestation on publish for all packages. ([#107](https://github.com/wolfstar-project/stars-components/pull/107))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.5`, `@wolfstar/http-framework` to `3.1.2`, and `@wolfstar/http-framework-i18n` to `1.2.5`.
+
+## `1.2.7`
+
+### Updates
+
+- **Localization tooling** — Migrated localization tooling from Crowdin to Tolgee. ([#96](https://github.com/wolfstar-project/stars-components/pull/96))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.4`, `@wolfstar/http-framework-i18n` to `1.2.4`, and `@wolfstar/http-framework` to `3.1.1`.
+
+## `1.2.6`
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/http-framework` to `3.0.0`.
+
+## `1.2.5`
+
+### Updates
+
+- **Npm provenance** — Added provenance attestation to `publishConfig` for all packages. ([#59](https://github.com/wolfstar-project/stars-components/pull/59))
+- **Dependencies** — Updated `@wolfstar/env-utilities` to `2.0.3`, `@wolfstar/http-framework` to `2.3.1`, and `@wolfstar/http-framework-i18n` to `1.2.3`.
