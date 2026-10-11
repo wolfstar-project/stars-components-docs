@@ -1,0 +1,70 @@
+---
+title: 'Function: createNitroServer()'
+description: 'Native Nitro development through its Vite plugin: server routes, HMR reload, and runtime dispatch. (@wolfstar/nitro-server)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/nitro-server/src/dev.ts#L27',
+		label: 'packages/nitro-server/src/dev.ts:27'
+	}}
+	packageName="@wolfstar/nitro-server"
+	packageHref="/documentation/api/nitro-server"
+/>
+
+Native Nitro development through its Vite plugin: server routes, HMR reload, and runtime dispatch.
+
+A Nitro instance is created upfront and handed to the plugin via its `_nitro` option, the same
+extension point framework integrations like Nuxt rely on. Owning that instance is what lets
+`close` tear down Nitro's own watchers and hooks (they only run when its `close()` is
+called) and lets [StarsNitroServer.fetch](/documentation/api/nitro-server/interfaces/StarsNitroServer#fetch) dispatch requests without a listening socket.
+
+<ApiSignature
+	tokens={[
+		'createNitroServer(\n  config: ',
+		['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig'],
+		',\n  context: ',
+		['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext'],
+		' = defaultBuilderContext,\n  hooks: ',
+		['NitroHooks', '/documentation/api/nitro-server/interfaces/NitroHooks'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StarsNitroServer', '/documentation/api/nitro-server/interfaces/StarsNitroServer'],
+		'>'
+	]}
+/>
+
+Native Nitro development through its Vite plugin: server routes, HMR reload, and runtime dispatch.
+
+A Nitro instance is created upfront and handed to the plugin via its `_nitro` option, the same
+extension point framework integrations like Nuxt rely on. Owning that instance is what lets
+`close` tear down Nitro's own watchers and hooks (they only run when its `close()` is
+called) and lets [StarsNitroServer.fetch](/documentation/api/nitro-server/interfaces/StarsNitroServer#fetch) dispatch requests without a listening socket.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="config" type={[['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} />
+
+<ApiParam name="context" type={[['BuilderContext', '/documentation/api/schema/interfaces/BuilderContext']]} defaultValue="defaultBuilderContext" />
+
+<ApiParam name="hooks" type={[['NitroHooks', '/documentation/api/nitro-server/interfaces/NitroHooks']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StarsNitroServer', '/documentation/api/nitro-server/interfaces/StarsNitroServer'],
+		'>'
+	]}
+/>
+
+</ApiParams>
