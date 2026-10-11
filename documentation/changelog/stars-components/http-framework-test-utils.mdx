@@ -10,7 +10,7 @@ Changes to [`@wolfstar/http-framework-test-utils`](https://github.com/wolfstar-p
 
 ### Updates
 
-- **Dependencies** — Updated third-party dependencies.
+- **Dependencies** — Updated non-major dependencies. ([#253](https://github.com/wolfstar-project/stars-components/pull/253))
 
 ## `4.0.2`
 
@@ -22,7 +22,7 @@ Changes to [`@wolfstar/http-framework-test-utils`](https://github.com/wolfstar-p
 
 ### Updates
 
-- **Dependencies** — Updated third-party dependencies.
+- **Dependencies** — Updated non-major dependencies. ([#227](https://github.com/wolfstar-project/stars-components/pull/227))
 
 ## `4.0.0`
 
@@ -33,6 +33,7 @@ Changes to [`@wolfstar/http-framework-test-utils`](https://github.com/wolfstar-p
 ### Migration
 
 - **Upgrade Vitest** — Upgrade your project to `vitest` 5.0.0 or later before updating to this version.
+- Update your `vitest` dependency to `>=5.0.0` to keep the `Assertion` augmentation compatible.
 
 ## `3.0.9`
 
@@ -44,7 +45,7 @@ Changes to [`@wolfstar/http-framework-test-utils`](https://github.com/wolfstar-p
 
 ### Updates
 
-- **Dependencies** — Updated third-party dependencies.
+- **Dependencies** — Updated non-major dependencies. ([#178](https://github.com/wolfstar-project/stars-components/pull/178))
 
 ## `3.0.7`
 
@@ -56,19 +57,20 @@ Changes to [`@wolfstar/http-framework-test-utils`](https://github.com/wolfstar-p
 
 ### Updates
 
+- **Typechecker switch** — `typecheck` scripts now run `golar tsc` instead of `tsc` directly. This is a dev-tooling-only change with no effect on published output. ([#151](https://github.com/wolfstar-project/stars-components/pull/151))
 - **Maintenance** — Internal tooling update with no change to the published package.
 
 ## `3.0.5`
 
 ### Updates
 
-- **Dependencies** — Updated third-party dependencies.
+- **Dependencies** — Updated non-major dependencies. ([#126](https://github.com/wolfstar-project/stars-components/pull/126))
 
 ## `3.0.4`
 
 ### Updates
 
-- **Dependencies** — Updated third-party dependencies.
+- **Dependencies** — Updated non-major dependencies. ([#102](https://github.com/wolfstar-project/stars-components/pull/102))
 
 ## `3.0.3`
 
@@ -76,10 +78,15 @@ Changes to [`@wolfstar/http-framework-test-utils`](https://github.com/wolfstar-p
 
 - **npm provenance** — Published releases carry an npm provenance attestation again. ([#107](https://github.com/wolfstar-project/stars-components/pull/107))
 
+### Updates
+
+- **Npm provenance** — Restored npm provenance attestation on publish for all packages. ([#107](https://github.com/wolfstar-project/stars-components/pull/107))
+
 ## `3.0.2`
 
 ### Updates
 
+- **tsdown upgrade** — Upgraded tsdown to `0.22.14` and migrated `deps.skipNodeModulesBundle` to `deps.neverBundle`. ([#93](https://github.com/wolfstar-project/stars-components/pull/93))
 - **Maintenance** — Internal build tooling update with no change to the public API.
 
 ## `3.0.1`

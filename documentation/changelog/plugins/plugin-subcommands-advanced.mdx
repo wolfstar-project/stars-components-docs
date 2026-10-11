@@ -24,14 +24,53 @@ Changes to [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plu
 
 - **`http-framework` 6 support** — The peer range now accepts [`@wolfstar/http-framework`](/documentation/changelog/stars-components/http-framework) `^6.0.0`. ([#176](https://github.com/wolfstar-project/plugins/pull/176))
 
-## 2026-09-24
+### Bug fixes
 
-### Updates
+- **Peer range** — Accept `@wolfstar/http-framework` v6 in the peer range (`|| ^6.0.0`). ([#176](https://github.com/wolfstar-project/plugins/pull/176))
 
-- **`http-framework` 5 support** — The plugin now targets [`@wolfstar/http-framework`](/documentation/changelog/stars-components/http-framework) `5.x`.
-
-## 2026-09-17
+## `2.0.5`
 
 ### Bug fixes
 
-- **Deferred builder callbacks** — Subcommand builder callbacks are now deferred until every command piece has been constructed, fixing crashes when builders referenced not-yet-loaded siblings. See the [API reference](/documentation/api/plugin-subcommands-advanced).
+- **Peer dependency** — Accept `@wolfstar/http-framework` v5 as a peer dependency (`^3.1.0 || ^5.0.0`), so v5 projects no longer install the plugin with an unmet peer. ([#125](https://github.com/wolfstar-project/plugins/pull/125))
+
+## `2.0.4` (2026-09-17)
+
+### Bug fixes
+
+- **Deferred builder callbacks** — Subcommand builder callbacks are now deferred until every command piece has been constructed, fixing crashes when builders referenced not-yet-loaded siblings. ([#83](https://github.com/wolfstar-project/plugins/pull/83))
+- **Dependencies** — Updated all non-major dependencies. ([#75](https://github.com/wolfstar-project/plugins/pull/75))
+
+## `2.0.3`
+
+### Updates
+
+- **Type validation** — Validate every published subpath export with `are-the-types-wrong`, not just the main entrypoint. `createTsdownOptions` hardcoded `attw.entrypoints` to `["."]`, so the `./register` export of each package shipped unchecked. It now accepts an `attwEntrypoints` option, and all packages list their real entrypoints. ([#70](https://github.com/wolfstar-project/plugins/pull/70))
+
+## `2.0.2`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#47](https://github.com/wolfstar-project/plugins/pull/47))
+
+## `2.0.1`
+
+### Updates
+
+- **Dependencies** — Updated all non-major dependencies. ([#26](https://github.com/wolfstar-project/plugins/pull/26))
+
+### Bug fixes
+
+- **Registry registration** — Fix `RegisterAsSubcommand` and `RegisterAsSubcommandGroup` not registering the decorated subcommand piece in `applicationCommandRegistry`, which prevented modular subcommand classes from being recognized as application commands. ([#30](https://github.com/wolfstar-project/plugins/pull/30))
+
+## `2.0.0`
+
+### New features
+
+- **New package** — Add `@wolfstar/plugin-subcommands-advanced`: modular slash subcommands as separate command classes for `@wolfstar/http-framework`, adapted from `@kaname-png/plugin-subcommands-advanced`. ([#17](https://github.com/wolfstar-project/plugins/pull/17))
+
+## `1.0.0`
+
+### New features
+
+- **Initial release** — Modular slash subcommands as separate command classes for `@wolfstar/http-framework`.

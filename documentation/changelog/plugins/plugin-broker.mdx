@@ -66,3 +66,7 @@ Changes to [`@wolfstar/plugin-broker`](https://github.com/wolfstar-project/plugi
 - **New package** — `@wolfstar/plugin-broker` distributes gateway events across processes over Redis Streams. `createBroker` publishes events. `ClientOptions.broker` configures a `BrokerConsumer`, started automatically once the client starts listening. The consumer reads events through a consumer group and redelivers a restarted consumer's own pending entries.
 - **`BrokerListener` pieces** — Loaded from the `listeners` directory, like `EventGatewayListener` in `@wolfstar/plugin-gateway`. Listeners are typed per event through an augmentable `BrokerEvents` map. An entry is acknowledged only once every matching listener has resolved, so a throwing listener leaves its entry pending.
 - **Pluggable payload codec** — Payloads are encoded with a `CacheCodec` from [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) (`jsonCodec()` by default).
+
+### Updates
+
+- **Dependencies** — Updated [`@wolfstar/plugin-cache`](/documentation/changelog/plugins/plugin-cache) to `0.4.0`.
