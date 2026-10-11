@@ -1,0 +1,17 @@
+---
+title: 'Variable: DiscordInviteLinkRegex'
+description: 'Regex that can can capture the code of Discord invite links (@wolfstar/http-framework-utilities)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="variable" packageName="@wolfstar/http-framework-utilities" packageHref="/documentation/api/http-framework-utilities" />
+
+Regex that can can capture the code of Discord invite links
+
+<ApiSignature
+	tokens={['const DiscordInviteLinkRegex: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]}
+/>
+
+Capture group 1 is the invite URL's unique code. It is named `code`.

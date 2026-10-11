@@ -1,0 +1,39 @@
+---
+title: 'Variable: isDMChannel'
+description: 'API reference for isDMChannel, a variable exported by @wolfstar/http-framework-utilities.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/9d40129da57632753ba336f076c61dbe4a84131d/packages/http-framework-utilities/src/lib/type-guards.ts#L44',
+		label: 'packages/http-framework-utilities/src/lib/type-guards.ts:44'
+	}}
+	packageName="@wolfstar/http-framework-utilities"
+	packageHref="/documentation/api/http-framework-utilities"
+/>
+
+<ApiSignature
+	tokens={[
+		'const isDMChannel: <T extends ',
+		['ChannelLike', '/documentation/api/http-framework-utilities/interfaces/ChannelLike'],
+		'>(channel: ',
+		['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish'],
+		' | T) => channel is Narrow<T, DM>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={[['Nullish', '/documentation/api/http-framework-utilities/type-aliases/Nullish'], ' | T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['channel is Narrow<T, DM>']} />
+
+</ApiParams>
