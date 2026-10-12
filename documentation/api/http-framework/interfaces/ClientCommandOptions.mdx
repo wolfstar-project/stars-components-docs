@@ -1,0 +1,68 @@
+---
+title: 'Interface: ClientCommandOptions'
+description: 'API reference for ClientCommandOptions, an interface exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/c2542d72639334a6f68ac733336ee9e95abf4d15/packages/http-framework/src/lib/Client.ts#L293',
+		label: 'packages/http-framework/src/lib/Client.ts:293'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'interface ClientCommandOptions extends ',
+		['SyncOptions', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SyncOptions']
+	]}
+/>
+
+<ApiHierarchy extends={[[['SyncOptions', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SyncOptions']]]} />
+
+## Properties
+
+### guildIds?
+
+<ApiMember kind="property" badges={['optional']} signature={['guildIds?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/c2542d72639334a6f68ac733336ee9e95abf4d15/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L359', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:359' }} inheritedFrom={[['SyncOptions.guildIds', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SyncOptions#guildids']]}>
+
+Deploy global commands and each target guild's restricted commands to these guilds only.
+
+</ApiMember>
+
+### onConflict?
+
+<ApiMember kind="property" badges={['optional']} signature={['onConflict?: "overwrite" | "log" | "ignore"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/c2542d72639334a6f68ac733336ee9e95abf4d15/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L357', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:357' }} inheritedFrom={[['SyncOptions.onConflict', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SyncOptions#onconflict']]}>
+
+Overwrite differences (default), report without writing, or skip silently.
+
+</ApiMember>
+
+### register?
+
+<ApiMember kind="property" badges={['optional']} signature={['register?: "off" | "on-start"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/c2542d72639334a6f68ac733336ee9e95abf4d15/packages/http-framework/src/lib/Client.ts#L295', label: 'packages/http-framework/src/lib/Client.ts:295' }}>
+
+Register after postListen hooks. Defaults to off; on-start writes only differences.
+
+</ApiMember>
+
+### removeUnknown?
+
+<ApiMember kind="property" badges={['optional']} signature={['removeUnknown?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/c2542d72639334a6f68ac733336ee9e95abf4d15/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L361', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:361' }} inheritedFrom={[['SyncOptions.removeUnknown', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SyncOptions#removeunknown']]}>
+
+Delete unknown commands in the selected scopes. Defaults to false.
+
+</ApiMember>
+
+### when?
+
+<ApiMember kind="property" badges={['optional']} signature={['when?: () => boolean | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/c2542d72639334a6f68ac733336ee9e95abf4d15/packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts#L363', label: 'packages/http-framework/src/lib/interactions/shared/ApplicationCommandRegistry.ts:363' }} inheritedFrom={[['SyncOptions.when', '/documentation/api/http-framework/namespaces/ApplicationCommandRegistry/interfaces/SyncOptions#when']]}>
+
+Select one registering process; no distributed lock is taken.
+
+</ApiMember>
