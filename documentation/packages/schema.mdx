@@ -152,6 +152,24 @@ The hook signatures are exported as types:
 import type { StarsHooks, StarsHookName, StarsHooksConfig, StarsEnvConfig } from '@wolfstar/schema';
 ```
 
+The resolved [`ResolvedEnvConfig`](/documentation/api/schema/interfaces/ResolvedEnvConfig) keeps `options` exactly as
+`stars.config` wrote them, because that is what the bot receives. Its `loader` field holds the loader the bot will use:
+`options.loader` when it is set, otherwise `'varlock'` when `@wolfstar/env-utilities` would pick it by itself. From
+`future.compatibilityVersion` 6, that is a project with a varlock `.env.schema`, an installed `varlock`, and no
+`env.path`. `undefined` leaves the choice between `dotenv` and `node` to the runtime. Read `config.env.loader`, not
+`config.env.options.loader`, to know how the variables are loaded. Call
+[`detectVarlock(root)`](/documentation/api/schema/functions/detectVarlock) to inspect a project's schema, installation,
+and dependency yourself.
+
+```typescript
+import { detectVarlock, loadStarsConfig } from '@wolfstar/schema';
+
+const config = await loadStarsConfig({ cwd: process.cwd() });
+console.log(config.env.loader); // 'varlock' | 'dotenv' | 'node' | undefined
+
+const { schema, installed } = detectVarlock(config.root);
+```
+
 See the [framework reference](/documentation/packages/http-framework#environment-env) for what each `env` option and
 [hook](/documentation/packages/http-framework#hooks) does.
 
