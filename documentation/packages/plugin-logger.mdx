@@ -43,8 +43,10 @@ Every logging backend is an optional peer dependency. Install only the ones you 
 pnpm add consola   # for @wolfstar/plugin-logger/consola
 pnpm add evlog     # for @wolfstar/plugin-logger/evlog
 pnpm add winston   # for @wolfstar/plugin-logger/winston
-pnpm add @sentry/node
 ```
+
+`SentryTransport` takes the Sentry client you already use (`@sentry/node`, `@sentry/bun`, and so on) through its
+constructor, so it needs no extra dependency.
 
 ## Usage
 
@@ -76,6 +78,7 @@ export default defineConfig({
 ```
 
 Module options must be JSON-serialisable. Transports are objects, so set them through `ClientOptions.logger.transports`.
+The one exception is evlog, which the module can set up for you through its [`evlog` option](#evlog-through-the-module).
 
 Without the `stars` CLI, pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the
 `plugins` client option:
@@ -98,6 +101,31 @@ interface Transport {
 	log(payload: LogPayload): void | Promise<void>;
 	close?(): void | Promise<void>;
 }
+```
+
+A `LogPayload` carries the raw `values` the caller passed, plus three fields derived from them. Every transport reads
+an entry the same way through these fields:
+
+| Field     | Content                                                                                    |
+| --------- | ------------------------------------------------------------------------------------------ |
+| `message` | Strings and other non-object values joined by spaces. Falls back to the error's message.   |
+| `error`   | The first `Error` among the values.                                                        |
+| `context` | The plain objects among the values, shallow-merged.                                        |
+
+```ts
+container.logger.error('Failed to charge', { orderId: 7 }, error);
+// message: 'Failed to charge', context: { orderId: 7 }, error
+```
+
+The fields are computed the first time a transport reads them, then cached. To build a payload for a custom transport
+or a test, use `createLogPayload()`:
+
+```ts
+import { LogLevel } from '@wolfstar/http-framework';
+import { createLogPayload } from '@wolfstar/plugin-logger';
+
+const payload = createLogPayload(LogLevel.Error, ['Failed to charge', { orderId: 7 }, new Error('declined')]);
+await myTransport.log(payload);
 ```
 
 `level` filters on top of the logger's own level, so a Sentry sink can take only errors while the console keeps
@@ -126,12 +154,48 @@ reported to `console.error`.
 | Transport          | Entry point | Peer dependency |
 | ------------------ | ----------- | --------------- |
 | `ConsoleTransport` | `.`         | none            |
-| `SentryTransport`  | `.`         | `@sentry/node`  |
+| `SentryTransport`  | `.`         | none            |
+
+### Sentry
+
+`SentryTransport` takes its Sentry client through the constructor, so the package has no runtime dependency on a
+Sentry SDK. Pass the module namespace of the SDK you use. What Sentry receives depends on the entry's level:
+
+| Option            | Sends                                                        | Default          |
+| ----------------- | ------------------------------------------------------------ | ---------------- |
+| `level`           | An issue, with the message and context in `extra`.           | `LogLevel.Error` |
+| `breadcrumbLevel` | A breadcrumb, for entries below `level`.                     | off              |
+| `logLevel`        | A [Sentry Log](https://docs.sentry.io/product/explore/logs/). Requires `enableLogs: true` in `Sentry.init`. | off              |
+| `flushTimeout`    | Milliseconds to wait for the client to flush on close.       | `2000`           |
+
+```ts
+import * as Sentry from '@sentry/node';
+import { LogLevel } from '@wolfstar/http-framework';
+import { SentryTransport } from '@wolfstar/plugin-logger';
+
+new SentryTransport({
+	client: Sentry,
+	level: LogLevel.Error, // issues
+	breadcrumbLevel: LogLevel.Info, // context attached to the next issue
+	logLevel: LogLevel.Info // structured logs, searchable in Sentry
+});
+```
+
+When an entry has an `Error`, the transport reports it with `captureException` and keeps the entry's message and
+context in `extra`. Breadcrumbs are off by default because Sentry's default console integration already records
+them for `console.*`. Turning them on next to a `ConsoleTransport` duplicates them. Closing the logger flushes the
+client, so the last `fatal` entry before an exit is delivered.
 
 ### Backend adapters
 
 Each adapter wraps a third-party logger as a transport and lives behind its own subpath, so the dependency is only
 resolved when you import it:
+
+| Transport          | Entry point | Peer dependency |
+| ------------------ | ----------- | --------------- |
+| `ConsolaTransport` | `./consola` | `consola`       |
+| `EvlogTransport`   | `./evlog`   | `evlog` ^2.30.0 |
+| `WinstonTransport` | `./winston` | `winston`       |
 
 ```ts
 import { consola } from 'consola';
@@ -140,26 +204,165 @@ import { ConsolaTransport } from '@wolfstar/plugin-logger/consola';
 new ConsolaTransport({ instance: consola });
 ```
 
+#### evlog
+
+`EvlogTransport` hands each entry to [evlog](https://www.evlog.dev) as a structured event. The event holds `message`,
+the context fields, `tag`, and the `error` with its `cause` chain. The transport does not format or deliver anything
+itself. evlog owns the pipeline, so drains, enrichers, sampling, and redaction configured in `initLogger` apply to
+your bot's logs. All six levels map to the evlog method of the same name.
+
 ```ts
-import { log } from 'evlog';
+import { initLogger, log } from 'evlog';
+import { createAxiomDrain } from 'evlog/axiom';
+import { createDrainPipeline } from 'evlog/pipeline';
 import { EvlogTransport } from '@wolfstar/plugin-logger/evlog';
 
-new EvlogTransport({ instance: log, tag: 'bot' });
+const drain = createDrainPipeline()(createAxiomDrain());
+initLogger({ env: { service: 'bot' }, drain });
+
+new EvlogTransport({ instance: log, drain, tag: 'bot' });
 ```
+
+Pass the `drain` pipeline so closing the logger flushes it. Otherwise, events still buffered are lost when the
+process exits. evlog also ships a Sentry drain, which makes `SentryTransport` redundant when evlog is already your
+sink.
+
+#### winston
 
 ```ts
 import { createLogger, transports } from 'winston';
 import { WinstonTransport } from '@wolfstar/plugin-logger/winston';
 
 new WinstonTransport({
-	instance: createLogger({ transports: [new transports.File({ filename: 'bot.log' })] })
+	instance: createLogger({ level: 'silly', transports: [new transports.File({ filename: 'bot.log' })] })
 });
 ```
 
+`WinstonTransport` writes the message and the context fields, and serialises an `Error` into an `error` field with `name`, `message`, and `stack`. winston's default `npm` levels have no `fatal`, so a `fatal`
+entry is written as `error` with a `fatal: true` field. Closing the logger more than once is safe.
+
 <Note>
-	`evlog` has only four levels and `winston`'s default `npm` levels have no `fatal`, so `trace` collapses into `debug` and `fatal` into `error` on
-	those backends.
+	Create the winston logger with `level: 'silly'`. winston's own level (`info` by default) filters on top of the
+	plugin's and silently drops lower entries.
 </Note>
+
+## evlog plugin
+
+The `@wolfstar/plugin-logger/evlog/plugin` entry sets up evlog for you. It runs evlog's `initLogger`, adds an
+`EvlogTransport` to the logger, and emits one wide event per interaction. Use it when evlog is your logging backend
+and you want per-interaction events without wiring `initLogger` yourself.
+
+### evlog through the module
+
+With the Stars module, set the `evlog` option. Use `evlog: true` for evlog's defaults, or write the options inline:
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: [
+		[
+			'@wolfstar/plugin-logger/module',
+			{
+				level: 20,
+				evlog: {
+					env: { service: 'bot' },
+					sampling: { rates: { debug: 10 } },
+					redact: true,
+					pipeline: { batch: { size: 25 } },
+					drain: './src/evlog-drain.ts'
+				}
+			}
+		]
+	]
+});
+```
+
+```ts
+// src/evlog-drain.ts
+import { createAxiomDrain } from 'evlog/axiom';
+import { defineEvlogDrain } from '@wolfstar/plugin-logger/evlog/plugin';
+
+export default defineEvlogDrain(createAxiomDrain());
+```
+
+| Option         | Description                                                                                                |
+| -------------- | ---------------------------------------------------------------------------------------------------------- |
+| `drain`        | File that default-exports `defineEvlogDrain(...)`. Accepts a path (relative to the project root when it starts with `.`), a `file:` URL, a package specifier, or `{ from, export }` for a named export. |
+| `pipeline`     | Wraps the drain in evlog's drain pipeline (batching, retry, bounded buffer). `true` for its defaults, or its options. The drain then receives events in batches. |
+| `interactions` | Controls the [per-interaction wide events](#wide-events-per-interaction). Defaults to `true`.               |
+| `tag`          | Tag every entry is written under. Defaults to `'http-framework'`.                                          |
+| `level`        | Lowest level the `EvlogTransport` accepts. Defaults to the logger's level.                                 |
+
+Every other option (`env`, `pretty`, `silent`, `minLevel`, `sampling`, `redact`, and so on) goes to evlog's
+`initLogger`. The options must be JSON-serialisable, since they are written into the built entry. The drain is a
+function, so it comes from a file that Stars bundles with your bot. `evlog: true`, or options without `drain`, need
+no file.
+
+A drain that already has a `flush` method is used as is. Either way, closing the logger flushes it. evlog prints to
+the console itself, so the module adds no `ConsoleTransport` next to it. Set `silent: true` when the drain should be
+the only output.
+
+Without the `stars` CLI, pass the drain to the `evlogPlugin` factory directly, before the logger plugin:
+
+```ts
+import { createAxiomDrain } from 'evlog/axiom';
+import evlogPlugin from '@wolfstar/plugin-logger/evlog/plugin';
+import loggerPlugin from '@wolfstar/plugin-logger/plugin';
+
+const client = new Client({
+	plugins: [evlogPlugin({ env: { service: 'bot' }, pipeline: true, drain: createAxiomDrain() }), loggerPlugin()]
+});
+```
+
+### Wide events per interaction
+
+The evlog plugin follows the client's interaction lifecycle and drains one wide event per interaction. The event is
+created when a command, component, or modal starts, filled with its outcome, and emitted when it finishes. It goes
+through the same drain, sampling, redaction, and plugins as every other evlog event.
+
+| Field                                         | Content                                                    |
+| --------------------------------------------- | ---------------------------------------------------------- |
+| `method`                                      | `COMMAND`, `AUTOCOMPLETE`, `COMPONENT`, or `MODAL`.        |
+| `path`                                        | The command or handler name.                               |
+| `requestId`                                   | The interaction ID.                                        |
+| `outcome`                                     | How the interaction finished.                              |
+| `error`                                       | The error, when the interaction failed.                    |
+| `durationMs`                                  | How long the interaction took.                             |
+| `guildId`, `channelId`, `userId`, `locale`    | Where the interaction came from and who sent it.           |
+
+`interactions` accepts `true`, `false`, or an object with `commands`, `handlers`, and `autocomplete` flags. Commands
+and handlers are on by default. Autocomplete is off by default, since Discord sends a request for every keystroke.
+
+```ts
+// Add autocomplete
+const options = { evlog: { interactions: { autocomplete: true } } };
+// Turn the wide events off and keep only the container.logger entries
+const quiet = { evlog: { interactions: false } };
+```
+
+From a command, autocomplete, or handler, `useInteractionLogger()` returns the interaction's evlog request logger so
+you can add fields to its wide event. It throws when called outside an interaction.
+
+```ts
+import { useInteractionLogger } from '@wolfstar/plugin-logger/evlog/plugin';
+
+useInteractionLogger().set({ cart: { items: 3 } });
+```
+
+## Upgrading the transports
+
+The transport rework changes what some backends receive and which peer dependencies the package declares:
+
+- **Custom transports**: `LogPayload` now has `message`, `error`, and `context`. Read those instead of parsing
+  `values`, and build test payloads with `createLogPayload()`.
+- **Sentry**: the `@sentry/node` peer dependency is gone. Keep installing the Sentry SDK you pass as `client`.
+  Issues created from an `Error` now carry the message and context in `extra` instead of the raw `values`.
+- **evlog**: the `evlog` peer requires `^2.30.0`. Entries are structured events instead of flattened strings, and
+  `trace` and `fatal` no longer collapse into `debug` and `error`. Update queries or dashboards that relied on the
+  old string output.
+- **winston**: entries now spread the context fields at the top level instead of a `values` array. An `Error` is
+  written as an `error` field with `name`, `message`, and `stack` (JSON used to turn it into `{}`). `fatal` entries
+  are still written as `error`, now with a `fatal: true` field.
 
 ## Migration from @wolfstar/logger
 
