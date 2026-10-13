@@ -440,6 +440,10 @@ on its own (`id`, `version`, defaults such as `nsfw: false`) are ignored. `diff 
 `deploy` uses Discord's bulk overwrite, so a deployed command the project no longer defines is deleted. That is why it
 asks first. Outside a terminal, or with `--json`, it refuses to run without `--yes`.
 
+To deploy on every start instead of by hand, enable `commands: { register: 'on-start' }` in the `Client` options. The
+bot then writes only the differences after it listens, and keeps unknown deployed commands unless `removeUnknown` is
+set. See [Sync commands on startup](/documentation/packages/http-framework#sync-commands-on-startup).
+
 ### `stars typecheck`
 
 Type-checks the project once, the way `nuxt typecheck` does. `stars typecheck` first regenerates `.stars/` (the same

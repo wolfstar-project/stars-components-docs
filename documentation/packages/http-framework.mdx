@@ -931,6 +931,104 @@ See [Configuration Errors](/documentation/errors/config) for every `stars.config
 
 The `ApplicationCommandRegistry` is `@wolfstar/http-framework`'s centralized registry and uses [`@discordjs/rest`][`@discordjs/rest`] to register them in Discord.
 
+#### Sync commands on startup
+
+Command registration is off by default. Set `commands.register` to `'on-start'` in the `Client` options to synchronize
+the loaded commands with Discord every time the bot starts:
+
+```typescript
+import { Client } from '@wolfstar/http-framework';
+
+const client = new Client({
+	commands: {
+		register: 'on-start',
+		onConflict: 'overwrite',
+		removeUnknown: false
+	}
+});
+
+await client.load();
+await client.listen({ port: 3000 });
+```
+
+`client.listen()` runs the synchronization after the HTTP server listens and every plugin's `postListen` hook has
+finished. The registry first fetches the deployed commands and compares them with the loaded ones. It then writes only
+the differences: it creates missing commands with `POST`, updates changed commands with `PATCH`, and deletes commands
+with `DELETE` only when `removeUnknown` is enabled. When nothing differs, the client logs `Commands: N up to date`.
+Otherwise it logs the number of created, updated, and removed commands.
+
+If a Discord API call fails, the client logs a warning and keeps listening. Interactions are served with the commands
+that are already deployed. Startup registration is skipped when `STARS_COMMANDS_DUMP=1` is set, which is how
+[`stars commands`](/documentation/packages/cli#stars-commands) reads the registry without touching Discord.
+
+`commands` accepts these options:
+
+| Option          | Type                                    | Default       | Description                                                                                                            |
+| --------------- | --------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `register`      | `'off' \| 'on-start'`                   | `'off'`       | Synchronize commands after `listen()` finishes its `postListen` hooks.                                                 |
+| `onConflict`    | `'overwrite' \| 'log' \| 'ignore'`      | `'overwrite'` | `'overwrite'` writes the differences. `'log'` reports proposed changes without writing. `'ignore'` skips the sync.     |
+| `removeUnknown` | `boolean`                               | `false`       | Delete deployed commands the bot no longer defines in the selected scopes.                                            |
+| `guildIds`      | `readonly Snowflake[]`                  | `undefined`   | Synchronize only these guilds. Each receives the global commands plus the commands restricted to that guild.           |
+| `when`          | `() => boolean \| Promise<boolean>`     | `undefined`   | Predicate that decides whether this process registers. The sync is skipped when it returns `false`.                    |
+
+Unknown deployed commands are kept by default. As a result, removing or renaming a local command leaves its previous
+definition deployed. Enable `removeUnknown` only when this bot owns every command in the selected scopes.
+
+Without `guildIds`, global commands go to the global scope and guild-restricted commands go to their guilds. With
+`guildIds`, only those guilds are synchronized. Global-only fields such as `contexts` and `integration_types` are left
+out of guild writes. The registry does not discover guilds that no longer have restricted commands. Pass their IDs in
+`guildIds`, or clean them with [`stars commands clean`](/documentation/packages/cli#stars-commands).
+
+<Warning>
+The framework takes no distributed lock. In sharder or broker deployments, and across separate replicas, enable
+registration on one process only with `when`:
+
+```typescript
+const client = new Client({
+	commands: { register: 'on-start', when: () => shard.id === 0 }
+});
+```
+</Warning>
+
+#### Sync commands manually
+
+Bots that serve interactions through `client.fetch()`, such as Nitro deployments, never call `listen()`. Call
+`client.registry.sync()` yourself after loading the pieces. It accepts the same options as `commands`, except `register`:
+
+```typescript
+await client.load();
+
+const result = await client.registry.sync({ onConflict: 'overwrite', when: () => isRegistrar });
+// { created, updated, removed, unchanged }
+```
+
+`sync()` resolves with the counts of created, updated, removed, and unchanged commands. With `onConflict: 'log'`, the
+counts describe the proposed changes. Concurrent `sync()` calls in the same process share the running operation and
+its options.
+
+`sync()` attempts every scope even when one fails. After it logs the partial result, it rejects with an
+`AggregateError` that holds one error per failed scope. Each error names the scope (`global scope` or `guild <id>`) and
+keeps the original failure as its `cause`. Catch it to retry or to fail startup:
+
+```typescript
+try {
+	await client.registry.sync();
+} catch (error) {
+	if (error instanceof AggregateError) {
+		for (const scopeError of error.errors) console.error(scopeError.message, scopeError.cause);
+	}
+	throw error;
+}
+```
+
+To read what Discord has deployed, call `client.registry.fetchDeployed(guildId?)`. It returns the global commands, or
+the commands of the given guild, including their full localization dictionaries.
+
+#### Push commands in bulk
+
+To overwrite whole scopes with Discord's bulk endpoints instead, keep automatic registration off and push after loading
+the commands:
+
 ```typescript
 // Assuming you have the code above, and that you called `client.load()`:
 
