@@ -533,7 +533,8 @@ export default defineConfig({
   the project depends on it and `tsc` otherwise. Type errors are reported without blocking builds or restarts.
 - **`dev.tunnel`** exposes the interactions endpoint publicly: `true` opens a `cloudflared` quick tunnel (a new
   hostname on every run), a string is an https URL you already serve and the CLI only probes.
-  `dev.tunnel.updateEndpoint` writes that URL to the Discord application's `interactions_endpoint_url` — opt-in,
+  `dev.tunnel: { provider: 'ngrok' }` uses ngrok instead, with `domain` for a reserved hostname (see
+  [Tunnel providers](/documentation/packages/cli#tunnel-providers)). `dev.tunnel.updateEndpoint` writes that URL to the Discord application's `interactions_endpoint_url` — opt-in,
   because it edits a live application.
 - **`dev.logFile`** (default `.stars/dev.log`) mirrors the session's logs to disk, so a run can be read back once the
   terminal UI is gone.

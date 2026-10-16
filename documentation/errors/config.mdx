@@ -159,13 +159,33 @@ The tunnel URL isn't `https`.
 
 **Fix:** Discord only accepts an `https` interactions endpoint.
 
+## TUNNEL_OPTION_CONFLICT {#tunnel_option_conflict}
+
+A `dev.tunnel` option does not apply to the rest of the tunnel configuration. This happens when:
+
+- `dev.tunnel.provider` or `dev.tunnel.domain` is set next to `dev.tunnel.url`. A URL you already serve has no tunnel
+  provider.
+- `dev.tunnel.domain` is set without `provider: 'ngrok'`. Only ngrok can bind a reserved domain, and `cloudflared` is
+  the default provider.
+
+The message names the option and the reason.
+
+**Fix:** remove `provider` or `domain`, or remove `url` to let the CLI open the tunnel. For a reserved domain, set
+`dev.tunnel.provider` to `'ngrok'`:
+
+```ts
+export default defineConfig({
+	dev: { tunnel: { provider: 'ngrok', domain: 'bot.ngrok.app' } }
+});
+```
+
 ## INVALID_CHOICE {#invalid_choice}
 
-An option limited to a fixed set of values received an unknown one: `dev.layout`, `dev.logs.levels`, or
-`dev.commands.refresh`. The message names the option path and the value it received.
+An option limited to a fixed set of values received an unknown one: `dev.layout`, `dev.logs.levels`,
+`dev.commands.refresh`, or `dev.tunnel.provider`. The message names the option path and the value it received.
 
 **Fix:** use one of the values the message lists. For example, `dev.layout` accepts `'auto'`, `'dashboard'`, or
-`'panel'`.
+`'panel'`, and `dev.tunnel.provider` accepts `'cloudflared'` or `'ngrok'`.
 
 ## INVALID_TYPECHECKER {#invalid_typechecker}
 
