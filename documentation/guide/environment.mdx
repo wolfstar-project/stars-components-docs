@@ -58,6 +58,27 @@ The loader applies environment-specific files with the most specific value first
 
 Set the `loader` option or `DOTENV_LOADER` to choose one yourself. See [Loaders](/documentation/packages/env-utilities#loaders) for details.
 
+### How the CLI follows varlock
+
+With `future.compatibilityVersion` 6, the `stars` CLI follows the runtime when it picks varlock by itself. The CLI treats the loader as `varlock` when all of these are true:
+
+- The project depends on `@wolfstar/env-utilities`.
+- The project has a varlock schema (`src/.env.schema`, `.env.schema`, or a `varlock.loadPath` in `package.json`).
+- `varlock` is installed.
+- `stars.config` sets neither `env.path` nor `env.loader`.
+
+`stars dev` and `stars doctor` then read your variables through `varlock load`, the way the bot does, instead of the dotenv files. `dev.url` no longer takes its port from those dotenv files either.
+
+`stars prepare`, `stars build`, `stars dev`, and `stars info` print [`VARLOCK_LOADER_IMPLICIT`](/documentation/errors/cli#varlock_loader_implicit) when the CLI detects varlock but `stars.config` does not say so. Run `stars doctor --fix` to add `env: { loader: 'varlock' }` for you:
+
+```typescript stars.config.ts
+export default defineConfig({
+	env: { loader: 'varlock' }
+});
+```
+
+See [`stars doctor`](/documentation/packages/cli#stars-doctor) for the checks it runs.
+
 ## Type Application Keys
 
 Augment the package's `Env` interface so parsers accept your keys:

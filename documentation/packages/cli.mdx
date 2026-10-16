@@ -92,7 +92,7 @@ stars codegen [--check] [--json] [--config <file>] [--cwd <dir>]
 stars prepare [--check] [--json] [--config <file>] [--cwd <dir>]
 stars typecheck [--config <file>] [--cwd <dir>]
 stars commands [list|clean|diff|deploy] [--guild <id>] [--name <name>] [--check] [--yes] [--json]
-stars doctor [--online] [--json] [--config <file>] [--cwd <dir>]
+stars doctor [--online] [--fix] [--yes] [--json] [--config <file>] [--cwd <dir>]
 stars completions <bash|zsh|fish>
 stars --help | --version
 ```
@@ -512,15 +512,53 @@ It covers:
   `NGROK_AUTHTOKEN` is not set.
 - Whether `.stars/` is stale. It names each generated file that is out of date.
 - Whether the root `tsconfig.json` still extends `./.stars/tsconfig.json` ([`TSCONFIG_LEGACY_EXTENDS`](/documentation/errors/cli#tsconfig_legacy_extends)).
+- Whether a [varlock](https://varlock.dev) `.env.schema` and `env.loader` agree (the `varlock` check).
 
 `--online` also asks Discord whether the token works and where the application sends its interactions. `stars doctor`
-never changes anything. `--json` prints `{ ok, checks }` for scripts. The exit code is `1` when a check fails, with
-the `DOCTOR_FAILED` diagnostic.
+changes nothing unless you pass `--fix`. `--json` prints `{ ok, checks }` for scripts. The exit code is `1` when a
+check fails, with the `DOCTOR_FAILED` diagnostic.
 
 ```sh
 stars doctor --online
 stars doctor --json
 ```
+
+#### The `varlock` check
+
+The `varlock` check compares the project's varlock setup with `env.loader` in `stars.config`:
+
+| Status  | When                                                                                        | Fix                                                   |
+| ------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `ok`    | The environment is loaded through varlock                                                   | None                                                  |
+| `warn`  | A schema and an installed `varlock` are found, but `stars.config` does not set `env.loader` | Run `stars doctor --fix`                              |
+| `warn`  | A schema is found, but `varlock` is not installed, so the bot loads the dotenv files        | Install `varlock`, or remove the `.env.schema`        |
+| `warn`  | A schema is found, but `env.loader` is `'node'` or `'dotenv'`, so the schema is not used    | Set `env.loader` to `'varlock'`, or remove the schema |
+| `error` | `env.loader` is `'varlock'`, but `varlock` is not installed                                 | Install `varlock`                                     |
+
+A project that sets `env.path` without `env.loader: 'varlock'` is not checked, because the runtime only picks varlock by
+itself when no `env.path` is set.
+
+#### Fix the configuration
+
+`--fix` fixes what `stars doctor` can fix. Today that is a project where varlock loads the environment but
+`stars.config` does not set `env.loader`. `stars doctor --fix` adds `env: { loader: 'varlock' }`:
+
+- Without a `stars.config`, it creates `stars.config.ts` the way `@wolfstar/create-http-framework` scaffolds it.
+- With a literal `defineConfig({ ... })` or exported object, it edits that object.
+- With a configuration it cannot edit safely (a spread, a function, or an `env` that is not a literal), it changes
+  nothing and prints the line to add by hand.
+
+`stars doctor --fix` asks before it writes. Pass `--yes` (`-y`) to answer for scripts. It never writes in CI, with
+`--json` unless you pass `--yes`, or without a terminal to ask in.
+
+```sh
+stars doctor --fix
+stars doctor --fix --yes
+```
+
+`stars prepare`, `stars build`, `stars dev`, and `stars info` only report this case, with the
+[`VARLOCK_LOADER_IMPLICIT`](/documentation/errors/cli#varlock_loader_implicit) and
+[`VARLOCK_NOT_INSTALLED`](/documentation/errors/cli#varlock_not_installed) warnings.
 
 ### `stars completions`
 
@@ -676,12 +714,12 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
 [framework README](/documentation/packages/http-framework#compatibility-version) for the full reference):
 
-| Version       | What it changes                                                                                                               |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
-| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript           |
-| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                  |
-| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`          |
+| Version       | What it changes                                                                                                                                                             |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL`                                               |
+| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript                                                         |
+| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                                                                |
+| `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`, and the CLI follows the runtime when it picks varlock |
 
 Version 3 is end-of-life. It still works, but every command prints a
 [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and the next major
@@ -714,6 +752,10 @@ export default defineConfig({
 	}
 });
 ```
+
+With compatibility version 6, when the project has a varlock `.env.schema`, an installed `varlock`, and no `env.path`
+or `env.loader`, the CLI resolves the loader to `varlock` the way the runtime does. `stars dev` and `stars doctor` then
+read the variables through `varlock load`. See [How the CLI follows varlock](/documentation/guide/environment#how-the-cli-follows-varlock).
 
 `stars info` lists the env options and the registered hooks. See the
 [framework reference](/documentation/packages/http-framework#environment-env) for every `env` option and

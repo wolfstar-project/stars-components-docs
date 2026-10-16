@@ -186,3 +186,19 @@ you.
 
 **Fix:** start the production bot with `node --import ./.stars/modules.mjs <entry>`. `stars prepare` and `stars build`
 write that file.
+
+## VARLOCK_LOADER_IMPLICIT {#varlock_loader_implicit}
+
+A warning from `stars prepare`, `stars build`, `stars dev`, and `stars info`. The project has a varlock `.env.schema`
+and `varlock` is installed, so `@wolfstar/env-utilities` loads the environment through varlock. `stars.config` does not
+set `env.loader` or `env.path`.
+
+**Fix:** run `stars doctor --fix` to set `env: { loader: 'varlock' }`, or add it to `stars.config` by hand. See
+[Fix the configuration](/documentation/packages/cli#fix-the-configuration).
+
+## VARLOCK_NOT_INSTALLED {#varlock_not_installed}
+
+A warning from `stars prepare`, `stars build`, `stars dev`, and `stars info`. The project has a varlock `.env.schema`,
+but `varlock` is not installed, so the bot loads the dotenv files instead.
+
+**Fix:** install varlock (for example `pnpm add varlock`), or remove the `.env.schema`.
