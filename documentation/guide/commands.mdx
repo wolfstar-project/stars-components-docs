@@ -88,7 +88,25 @@ for AND/OR combinations, parallel runs, global preconditions, and interaction ha
 
 ## Publish Command Definitions
 
-After loading pieces, push the registry to Discord:
+To keep Discord in sync automatically, enable startup registration on the `Client`. After `listen()` runs its
+`postListen` hooks, the client compares the loaded commands with the deployed ones and writes only the differences:
+
+```typescript
+const client = new Client({
+	commands: { register: 'on-start' }
+});
+
+await client.load();
+await client.listen({ port: 3000 });
+```
+
+Deployed commands the bot no longer defines are kept unless you set `removeUnknown: true`. If registration fails, the
+client logs a warning and keeps serving interactions. In sharder or broker deployments, use `when` to register from one
+process only. Bots that use `client.fetch()` instead of `listen()` call `await client.registry.sync()` after
+`client.load()`. See [Sync commands on startup](/documentation/packages/http-framework#sync-commands-on-startup) for
+every option.
+
+To overwrite whole scopes instead, push the registry to Discord after loading pieces:
 
 ```typescript
 await client.load();
