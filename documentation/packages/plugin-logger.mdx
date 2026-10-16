@@ -106,11 +106,11 @@ interface Transport {
 A `LogPayload` carries the raw `values` the caller passed, plus three fields derived from them. Every transport reads
 an entry the same way through these fields:
 
-| Field     | Content                                                                                    |
-| --------- | ------------------------------------------------------------------------------------------ |
-| `message` | Strings and other non-object values joined by spaces. Falls back to the error's message.   |
-| `error`   | The first `Error` among the values.                                                        |
-| `context` | The plain objects among the values, shallow-merged.                                        |
+| Field     | Content                                                                                  |
+| --------- | ---------------------------------------------------------------------------------------- |
+| `message` | Strings and other non-object values joined by spaces. Falls back to the error's message. |
+| `error`   | The first `Error` among the values.                                                      |
+| `context` | The plain objects among the values, shallow-merged.                                      |
 
 ```ts
 container.logger.error('Failed to charge', { orderId: 7 }, error);
@@ -161,12 +161,12 @@ reported to `console.error`.
 `SentryTransport` takes its Sentry client through the constructor, so the package has no runtime dependency on a
 Sentry SDK. Pass the module namespace of the SDK you use. What Sentry receives depends on the entry's level:
 
-| Option            | Sends                                                        | Default          |
-| ----------------- | ------------------------------------------------------------ | ---------------- |
-| `level`           | An issue, with the message and context in `extra`.           | `LogLevel.Error` |
-| `breadcrumbLevel` | A breadcrumb, for entries below `level`.                     | off              |
+| Option            | Sends                                                                                                       | Default          |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- | ---------------- |
+| `level`           | An issue, with the message and context in `extra`.                                                          | `LogLevel.Error` |
+| `breadcrumbLevel` | A breadcrumb, for entries below `level`.                                                                    | off              |
 | `logLevel`        | A [Sentry Log](https://docs.sentry.io/product/explore/logs/). Requires `enableLogs: true` in `Sentry.init`. | off              |
-| `flushTimeout`    | Milliseconds to wait for the client to flush on close.       | `2000`           |
+| `flushTimeout`    | Milliseconds to wait for the client to flush on close.                                                      | `2000`           |
 
 ```ts
 import * as Sentry from '@sentry/node';
@@ -242,8 +242,8 @@ new WinstonTransport({
 entry is written as `error` with a `fatal: true` field. Closing the logger more than once is safe.
 
 <Note>
-	Create the winston logger with `level: 'silly'`. winston's own level (`info` by default) filters on top of the
-	plugin's and silently drops lower entries.
+	Create the winston logger with `level: 'silly'`. winston's own level (`info` by default) filters on top of the plugin's and silently drops lower
+	entries.
 </Note>
 
 ## evlog plugin
@@ -285,13 +285,13 @@ import { defineEvlogDrain } from '@wolfstar/plugin-logger/evlog/plugin';
 export default defineEvlogDrain(createAxiomDrain());
 ```
 
-| Option         | Description                                                                                                |
-| -------------- | ---------------------------------------------------------------------------------------------------------- |
+| Option         | Description                                                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `drain`        | File that default-exports `defineEvlogDrain(...)`. Accepts a path (relative to the project root when it starts with `.`), a `file:` URL, a package specifier, or `{ from, export }` for a named export. |
-| `pipeline`     | Wraps the drain in evlog's drain pipeline (batching, retry, bounded buffer). `true` for its defaults, or its options. The drain then receives events in batches. |
-| `interactions` | Controls the [per-interaction wide events](#wide-events-per-interaction). Defaults to `true`.               |
-| `tag`          | Tag every entry is written under. Defaults to `'http-framework'`.                                          |
-| `level`        | Lowest level the `EvlogTransport` accepts. Defaults to the logger's level.                                 |
+| `pipeline`     | Wraps the drain in evlog's drain pipeline (batching, retry, bounded buffer). `true` for its defaults, or its options. The drain then receives events in batches.                                        |
+| `interactions` | Controls the [per-interaction wide events](#wide-events-per-interaction). Defaults to `true`.                                                                                                           |
+| `tag`          | Tag every entry is written under. Defaults to `'http-framework'`.                                                                                                                                       |
+| `level`        | Lowest level the `EvlogTransport` accepts. Defaults to the logger's level.                                                                                                                              |
 
 Every other option (`env`, `pretty`, `silent`, `minLevel`, `sampling`, `redact`, and so on) goes to evlog's
 `initLogger`. The options must be JSON-serialisable, since they are written into the built entry. The drain is a
@@ -320,15 +320,15 @@ The evlog plugin follows the client's interaction lifecycle and drains one wide 
 created when a command, component, or modal starts, filled with its outcome, and emitted when it finishes. It goes
 through the same drain, sampling, redaction, and plugins as every other evlog event.
 
-| Field                                         | Content                                                    |
-| --------------------------------------------- | ---------------------------------------------------------- |
-| `method`                                      | `COMMAND`, `AUTOCOMPLETE`, `COMPONENT`, or `MODAL`.        |
-| `path`                                        | The command or handler name.                               |
-| `requestId`                                   | The interaction ID.                                        |
-| `outcome`                                     | How the interaction finished.                              |
-| `error`                                       | The error, when the interaction failed.                    |
-| `durationMs`                                  | How long the interaction took.                             |
-| `guildId`, `channelId`, `userId`, `locale`    | Where the interaction came from and who sent it.           |
+| Field                                      | Content                                             |
+| ------------------------------------------ | --------------------------------------------------- |
+| `method`                                   | `COMMAND`, `AUTOCOMPLETE`, `COMPONENT`, or `MODAL`. |
+| `path`                                     | The command or handler name.                        |
+| `requestId`                                | The interaction ID.                                 |
+| `outcome`                                  | How the interaction finished.                       |
+| `error`                                    | The error, when the interaction failed.             |
+| `durationMs`                               | How long the interaction took.                      |
+| `guildId`, `channelId`, `userId`, `locale` | Where the interaction came from and who sent it.    |
 
 `interactions` accepts `true`, `false`, or an object with `commands`, `handlers`, and `autocomplete` flags. Commands
 and handlers are on by default. Autocomplete is off by default, since Discord sends a request for every keystroke.
