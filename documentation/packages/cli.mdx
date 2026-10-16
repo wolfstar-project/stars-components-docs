@@ -556,10 +556,10 @@ Three `dev` options round out the dev loop (all documented in
 
 `dev.tunnel.provider` picks the service that opens the quick tunnel:
 
-| Provider                  | Account | Hostname                                               | Needs                                    |
-| ------------------------- | ------- | ------------------------------------------------------ | ---------------------------------------- |
-| `'cloudflared'` (default) | No      | A new one on every run                                 | Nothing (the binary downloads if missing) |
-| `'ngrok'`                 | Yes     | ngrok's own, or the `dev.tunnel.domain` you reserved   | `@ngrok/ngrok` and `NGROK_AUTHTOKEN`     |
+| Provider                  | Account | Hostname                                             | Needs                                     |
+| ------------------------- | ------- | ---------------------------------------------------- | ----------------------------------------- |
+| `'cloudflared'` (default) | No      | A new one on every run                               | Nothing (the binary downloads if missing) |
+| `'ngrok'`                 | Yes     | ngrok's own, or the `dev.tunnel.domain` you reserved | `@ngrok/ngrok` and `NGROK_AUTHTOKEN`      |
 
 `cloudflared` stays the default, so `dev.tunnel: true` and existing configurations behave as before. Use ngrok when
 you want a stable hostname: set `dev.tunnel.domain` to a domain reserved in your ngrok account, and the URL survives
@@ -570,25 +570,25 @@ To use ngrok:
 1. Install the official SDK in your project. `@ngrok/ngrok` is an optional peer dependency of the CLI, loaded only
    when the `ngrok` provider is used.
 
-   ```sh
-   pnpm add -D @ngrok/ngrok
-   ```
+    ```sh
+    pnpm add -D @ngrok/ngrok
+    ```
 
 2. Set `NGROK_AUTHTOKEN`. The CLI looks in `dev.env`, then in the environment, then in the project's env files, the
    way the bot does. The env files are read again each time the tunnel opens, so pressing `t` after adding the token
    works without restarting `stars dev`.
 
-   ```sh
-   NGROK_AUTHTOKEN=your-ngrok-authtoken
-   ```
+    ```sh
+    NGROK_AUTHTOKEN=your-ngrok-authtoken
+    ```
 
 3. Set the provider, and optionally a reserved domain:
 
-   ```ts
-   export default defineConfig({
-   	dev: { tunnel: { provider: 'ngrok', domain: 'bot.ngrok.app' } }
-   });
-   ```
+    ```ts
+    export default defineConfig({
+    	dev: { tunnel: { provider: 'ngrok', domain: 'bot.ngrok.app' } }
+    });
+    ```
 
 When the token is missing, opening the tunnel fails with the `NGROK_AUTHTOKEN_MISSING` diagnostic on the `tunnel`
 channel. Run `stars doctor` to check both the package and the token.
