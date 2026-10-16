@@ -6,6 +6,17 @@ description: 'Changelog for @wolfstar/schema: the stars.config.* schema and load
 
 Changes to [`@wolfstar/schema`](/documentation/packages/schema). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.10.0` (2026-10-09)
+
+### New features
+
+- **ngrok tunnel provider** — `dev.tunnel` accepts `provider: 'ngrok'` and a `domain` reserved in your ngrok account. `cloudflared` stays the default. The schema exports `TUNNEL_PROVIDERS` and `DEFAULT_TUNNEL_PROVIDER`, and `ResolvedTunnelConfig` quick mode now carries `provider` and `domain`. Conflicting options fail with `TUNNEL_OPTION_CONFLICT`. ([#305](https://github.com/wolfstar-project/stars-components/pull/305))
+- **`detectVarlock(root)`** — Inspects a project's `.env.schema`, `varlock` installation, and dependency. ([#308](https://github.com/wolfstar-project/stars-components/pull/308))
+
+### Updates
+
+- **varlock loader follows the runtime** — With `future.compatibilityVersion` 6, a project that depends on `@wolfstar/env-utilities`, has a `.env.schema`, has `varlock` installed, and sets no `env.path` or `env.loader` now resolves `ResolvedEnvConfig.loader` to `'varlock'`. `ResolvedEnvConfig.options` still holds what `stars.config` wrote.
+
 ## `0.9.0` (2026-10-07)
 
 ### New features

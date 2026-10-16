@@ -6,6 +6,32 @@ description: 'Changelog for @wolfstar/plugin-logger: the logging plugin and its 
 
 Changes to [`@wolfstar/plugin-logger`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-logger). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.4.0` (2026-10-09)
+
+### New features
+
+- **Shared payload fields** — Every `LogPayload` now carries a derived `message`, `error`, and `context`. Use `createLogPayload` to build payloads for custom transports and tests. ([#232](https://github.com/wolfstar-project/plugins/pull/232))
+- **`evlog` module option** — The Stars module gains an `evlog` option that runs `initLogger` and adds the transport. Pass `evlog: true`, or write the options inline (`env`, `sampling`, `redact`, `pipeline`, ...) with `drain` pointing to a file that default-exports `defineEvlogDrain(...)`.
+- **`@wolfstar/plugin-logger/evlog/plugin` entry** — Its default export is the plugin factory, taking the drain directly outside Stars.
+- **Interaction wide events** — The evlog plugin emits one evlog wide event per interaction (command, component, modal, and optionally autocomplete) with its outcome, error, duration, and who/where. Control it with the `interactions` option, and add fields from a command with `useInteractionLogger()`.
+- **Sentry breadcrumbs and Logs** — `SentryTransport` keeps the message and context next to an exception, can record breadcrumbs (`breadcrumbLevel`), and can send Sentry Logs (`logLevel`).
+
+### Updates
+
+- **`EvlogTransport`** — Writes structured events through evlog's pipeline instead of flattened strings, maps all six levels, and flushes the `drain` on close.
+- **`SentryTransport`** — Flushes the client on close.
+- **`WinstonTransport`** — Serialises errors and flags `fatal` entries.
+
+### Bug fixes
+
+- **`WinstonTransport` close** — Closing the transport twice no longer hangs.
+
+### Migration
+
+- **`@sentry/node` peer dropped** — The plugin no longer declares `@sentry/node` as a peer dependency.
+- **`evlog` peer raised** — Upgrade `evlog` to `^2.30.0`.
+- **Custom transports** — `LogPayload` now includes `message`, `error`, and `context`. Update custom transports and test fixtures that build payloads by hand, or use `createLogPayload`.
+
 ## `0.3.0` (2026-10-05)
 
 ### New features

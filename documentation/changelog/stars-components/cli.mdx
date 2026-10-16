@@ -6,6 +6,27 @@ description: 'Changelog for @wolfstar/cli: the stars command, dev UI, builders, 
 
 Changes to [`@wolfstar/cli`](/documentation/packages/cli). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.8.0` (2026-10-09)
+
+### New features
+
+- **varlock reported in `stars.config`** — When a project has a `.env.schema` and `varlock` but `stars.config` does not set `env.loader`, `stars prepare`, `build`, `dev`, and `info` now report it as `VARLOCK_LOADER_IMPLICIT`, or as `VARLOCK_NOT_INSTALLED` when `varlock` is missing. `stars doctor` checks that the schema and `env.loader` agree, flagging a schema with another loader or `loader: 'varlock'` without the package. ([#309](https://github.com/wolfstar-project/stars-components/pull/309))
+- **`stars doctor --fix`** — Writes `env: { loader: 'varlock' }` for you. It creates `stars.config.ts` the way `@wolfstar/create-http-framework` scaffolds it, or edits a literal `defineConfig({ ... })` or exported object. When the configuration is too dynamic to edit, it prints the line to add. It asks first (`--yes` answers for you) and never writes in CI or without a terminal.
+
+## `2.7.0` (2026-10-09)
+
+### New features
+
+- **ngrok tunnel provider** — Set `dev.tunnel: { provider: 'ngrok' }` to open the tunnel through ngrok's official Node SDK instead of a `cloudflared` quick tunnel. Add `dev.tunnel.domain` to bind a domain reserved in your ngrok account, so the hostname survives restarts. Install the optional peer `@ngrok/ngrok`, and set `NGROK_AUTHTOKEN` in the environment or the project's `.env`. ([#305](https://github.com/wolfstar-project/stars-components/pull/305))
+- **Provider-aware tooling** — The `t` key, `--tunnel`, `stars info`, and `stars doctor` use and report the configured provider. `stars doctor` checks that the ngrok package and authtoken are present.
+
+### Updates
+
+- **`cloudflared` stays the default** — `tunnel: true` and every existing configuration behave as before.
+- **`TUNNEL_OPTION_CONFLICT` diagnostic** — `provider` or `domain` next to a `url` you already serve, and `domain` without the `ngrok` provider, are rejected.
+- **CLI follows varlock auto-detection** — With `future.compatibilityVersion` 6, a project that depends on `@wolfstar/env-utilities`, has a `.env.schema` (`src/.env.schema`, `.env.schema`, or `varlock.loadPath`), has `varlock` installed, and sets no `env.path` or `env.loader` now resolves the loader to `'varlock'`. `stars dev` and `stars doctor` read variables through `varlock load` instead of dotenv files the bot does not load, and `dev.url` no longer takes its port from those files. ([#308](https://github.com/wolfstar-project/stars-components/pull/308))
+- **Dependencies** — Updated `@wolfstar/schema` to `0.10.0`, `@wolfstar/kit` to `0.2.1`, `@wolfstar/nitro-server` to `0.2.10`, `@wolfstar/vite-server` to `0.4.5`.
+
 ## `2.6.1` (2026-10-08)
 
 ### Bug fixes

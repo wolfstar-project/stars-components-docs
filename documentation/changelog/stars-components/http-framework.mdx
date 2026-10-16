@@ -6,6 +6,25 @@ description: 'Changelog for @wolfstar/http-framework: releases, new features, an
 
 Changes to [`@wolfstar/http-framework`](/documentation/packages/http-framework). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `6.4.0` (2026-10-12)
+
+### New features
+
+- **Startup command registration** — Opt in through `ClientOptions.commands` to register commands when the client starts. Synchronize global or guild commands, get conflicts reported, and keep unknown deployed commands by default. Use `when` to pick the single process that registers. A registration failure logs a warning without stopping the HTTP server. ([#325](https://github.com/wolfstar-project/stars-components/pull/325))
+- **`ApplicationCommandRegistry.sync()`** — Incrementally synchronizes registered commands with Discord.
+
+## `6.3.2` (2026-10-11)
+
+### Bug fixes
+
+- **No crash after an answered interaction** — A command, autocomplete, or interaction handler that threw right after answering no longer crashes the process with `ERR_STREAM_WRITE_AFTER_END`. The framework now skips the error reply when the response has already ended. The error is still emitted. ([#322](https://github.com/wolfstar-project/stars-components/pull/322))
+
+## `6.3.1` (2026-10-09)
+
+### Updates
+
+- **Dependencies** — Updated `@wolfstar/schema` to `0.10.0`, `@wolfstar/cli` to `2.7.0`.
+
 ## `6.3.0` (2026-10-08)
 
 ### New features
