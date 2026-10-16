@@ -176,6 +176,37 @@ export class PingCommand extends Command {
 }
 ```
 
+### Typed options
+
+`Command.OptionsOf<'path'>` and `Subcommand.OptionsOf<'path'>` type a handler's options from the
+`CommandOptionsRegistry` that `stars codegen` generates. They re-export the framework's `Command.OptionsOf`, so you can
+use them without importing `Command` from `@wolfstar/http-framework`. Key the type by the full command path, including
+the parent and group names:
+
+```typescript
+import { Command, RegisterAsSubcommandGroup } from '@wolfstar/plugin-subcommands-advanced';
+
+@RegisterAsSubcommandGroup('utils', 'poll', (builder) =>
+	builder
+		.setName('create')
+		.setDescription('Create a poll')
+		.addStringOption((option) => option.setName('question').setDescription('Poll question').setRequired(true))
+)
+export class PollCreateCommand extends Command {
+	public override chatInputRun(interaction: Command.ChatInputInteraction, { question }: Command.OptionsOf<'utils poll create'>) {
+		return interaction.reply({ content: `Created: ${question}` });
+	}
+}
+```
+
+<Note>
+	These types require `@wolfstar/http-framework` 6.2.0 or later. On an older framework, the type fails to resolve when you type-check with
+	`skipLibCheck` off.
+</Note>
+
+See [Typed command options](/documentation/packages/cli#typed-command-options) for how to enable `codegen.commands` and
+generate the registry.
+
 ## How it works
 
 `@wolfstar/http-framework` routes subcommands to **methods on the parent** command instance. This plugin:
