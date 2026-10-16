@@ -1,9 +1,11 @@
 # Existing privileged PR automation is intentionally isolated to these workflows:
-# they do not checkout pull request head code, and they only comment or set status.
+# they do not checkout pull request head code in a step, and they only comment, set status or hand the
+# failure to the sandboxed Pullfrog agent. pullfrog-pr-repair.yml runs for same-repo pull requests only.
 rules:
     dangerous-triggers:
         ignore:
             - semantic-pull-requests.yml
+            - pullfrog-pr-repair.yml
     # The Mintlify CLI is the tool that validates this site, so `ci` installs it with npm. Putting it in
     # package.json would resolve ~1000 packages into pnpm-lock.yaml and into every lint job, for a job that
     # has read-only contents access and no secrets.

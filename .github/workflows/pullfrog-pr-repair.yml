@@ -1,0 +1,137 @@
+name: Pullfrog PR repair
+
+# When `ci` or `Semantic Pull Requests` fails on a same-repo pull request, hand the failure to the
+# Pullfrog agent so it can fix lint/format errors or rewrite a non-conventional title. Bot-authored PRs
+# (Mintlify) are the main target: Pullfrog's built-in "Fix CI failures" skips bot commits.
+
+on:
+    # zizmor: ignore[dangerous-triggers]
+    workflow_run:
+        workflows:
+            - ci
+            - Semantic Pull Requests
+        types:
+            - completed
+
+permissions: {}
+
+# One repair at a time per pull request; never cancel an agent run mid-flight.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.workflow_run.pull_requests[0].number || github.run_id }}
+    cancel-in-progress: false
+
+env:
+    # Stop retrying a branch after this many runs in 24 hours so a failure the agent cannot fix does not loop.
+    MAX_RUNS_PER_BRANCH: 6
+
+jobs:
+    resolve:
+        name: 🔎 Resolve failure
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+        # Same-repo pull requests only: fork code never reaches a job that holds secrets.
+        if: >-
+            github.repository == 'wolfstar-project/stars-components-docs' &&
+            github.event.workflow_run.conclusion == 'failure' &&
+            github.event.workflow_run.head_repository.full_name == github.repository &&
+            github.event.workflow_run.head_branch != github.event.repository.default_branch &&
+            github.event.workflow_run.pull_requests[0] != null
+        permissions:
+            actions: read
+            pull-requests: read
+        outputs:
+            repair: ${{ steps.resolve.outputs.repair }}
+            kind: ${{ steps.resolve.outputs.kind }}
+            pr: ${{ steps.resolve.outputs.pr }}
+            run: ${{ steps.resolve.outputs.run }}
+        steps:
+            - name: Resolve pull request and failure kind
+              id: resolve
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  REPO: ${{ github.repository }}
+                  PR: ${{ github.event.workflow_run.pull_requests[0].number }}
+                  RUN_ID: ${{ github.event.workflow_run.id }}
+                  RUN_SHA: ${{ github.event.workflow_run.head_sha }}
+                  RUN_BRANCH: ${{ github.event.workflow_run.head_branch }}
+                  RUN_WORKFLOW: ${{ github.event.workflow_run.name }}
+              run: |
+                  set -euo pipefail
+
+                  skip() {
+                      echo "repair=false" >> "$GITHUB_OUTPUT"
+                      echo "::notice::Skipping repair: $1"
+                      exit 0
+                  }
+
+                  case "$RUN_WORKFLOW" in
+                      ci) kind=ci ;;
+                      "Semantic Pull Requests") kind=title ;;
+                      *) skip "unexpected workflow '$RUN_WORKFLOW'" ;;
+                  esac
+
+                  [[ "$PR" =~ ^[0-9]+$ ]] || skip "invalid pull request number"
+
+                  read -r state head_sha head_repo < <(
+                      gh api "repos/$REPO/pulls/$PR" --jq '[.state, .head.sha, .head.repo.full_name] | @tsv'
+                  )
+                  [ "$state" = open ] || skip "pull request #$PR is $state"
+                  [ "$head_repo" = "$REPO" ] || skip "pull request #$PR comes from a fork"
+                  [ "$head_sha" = "$RUN_SHA" ] || skip "run is stale, the branch has moved on"
+
+                  since=$(date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ)
+                  runs=$(gh api "repos/$REPO/actions/workflows/pullfrog-pr-repair.yml/runs?branch=$RUN_BRANCH&created=%3E%3D$since&per_page=100" \
+                      --jq '[.workflow_runs[] | select(.conclusion != "skipped")] | length')
+                  [ "$runs" -le "$MAX_RUNS_PER_BRANCH" ] || skip "$runs runs in 24h on $RUN_BRANCH, a human needs to look"
+
+                  {
+                      echo "repair=true"
+                      echo "kind=$kind"
+                      echo "pr=$PR"
+                      echo "run=$RUN_ID"
+                  } >> "$GITHUB_OUTPUT"
+
+    repair:
+        name: 🐸 Pullfrog repair
+        needs: resolve
+        if: needs.resolve.outputs.repair == 'true'
+        runs-on: ubuntu-latest
+        timeout-minutes: 30
+        permissions:
+            id-token: write # OIDC token exchanged by pullfrog/pullfrog for a scoped GitHub App token
+            contents: read # checkout the default branch; the agent pushes with its own app token
+        steps:
+            - name: Checkout Project
+              uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+              with:
+                  fetch-depth: 1
+                  persist-credentials: false
+
+            - name: Render prompt
+              env:
+                  KIND: ${{ needs.resolve.outputs.kind }}
+                  PR: ${{ needs.resolve.outputs.pr }}
+                  RUN_ID: ${{ needs.resolve.outputs.run }}
+                  REPO: ${{ github.repository }}
+              # The template comes from the default branch checkout. It is rendered inside .git so the agent never commits it.
+              # `resolve` already validated the values as a known kind and numeric ids.
+              run: |
+                  sed -e "s|{{KIND}}|$KIND|g" \
+                      -e "s|{{PR}}|$PR|g" \
+                      -e "s|{{RUN_ID}}|$RUN_ID|g" \
+                      -e "s|{{REPO}}|$REPO|g" \
+                      .github/pullfrog/pr-repair.md > .git/pullfrog-prompt.md
+
+            - name: Run agent
+              uses: pullfrog/pullfrog@0d318bef8c7cf7ae3f193ef32b2bc74e1d94b4d1 # v0.1.90
+              with:
+                  timeout: 20m
+                  # Title fixes only edit pull request metadata, so the agent cannot push for them.
+                  push: ${{ needs.resolve.outputs.kind == 'title' && 'disabled' || 'restricted' }}
+                  shell: restricted
+                  prompt_file: .git/pullfrog-prompt.md
+              env:
+                  # add at least one provider API key (or configure one in the Pullfrog console)
+                  ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+                  CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+                  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
