@@ -963,13 +963,13 @@ that are already deployed. Startup registration is skipped when `STARS_COMMANDS_
 
 `commands` accepts these options:
 
-| Option          | Type                                    | Default       | Description                                                                                                            |
-| --------------- | --------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `register`      | `'off' \| 'on-start'`                   | `'off'`       | Synchronize commands after `listen()` finishes its `postListen` hooks.                                                 |
-| `onConflict`    | `'overwrite' \| 'log' \| 'ignore'`      | `'overwrite'` | `'overwrite'` writes the differences. `'log'` reports proposed changes without writing. `'ignore'` skips the sync.     |
-| `removeUnknown` | `boolean`                               | `false`       | Delete deployed commands the bot no longer defines in the selected scopes.                                            |
-| `guildIds`      | `readonly Snowflake[]`                  | `undefined`   | Synchronize only these guilds. Each receives the global commands plus the commands restricted to that guild.           |
-| `when`          | `() => boolean \| Promise<boolean>`     | `undefined`   | Predicate that decides whether this process registers. The sync is skipped when it returns `false`.                    |
+| Option          | Type                                | Default       | Description                                                                                                        |
+| --------------- | ----------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `register`      | `'off' \| 'on-start'`               | `'off'`       | Synchronize commands after `listen()` finishes its `postListen` hooks.                                             |
+| `onConflict`    | `'overwrite' \| 'log' \| 'ignore'`  | `'overwrite'` | `'overwrite'` writes the differences. `'log'` reports proposed changes without writing. `'ignore'` skips the sync. |
+| `removeUnknown` | `boolean`                           | `false`       | Delete deployed commands the bot no longer defines in the selected scopes.                                         |
+| `guildIds`      | `readonly Snowflake[]`              | `undefined`   | Synchronize only these guilds. Each receives the global commands plus the commands restricted to that guild.       |
+| `when`          | `() => boolean \| Promise<boolean>` | `undefined`   | Predicate that decides whether this process registers. The sync is skipped when it returns `false`.                |
 
 Unknown deployed commands are kept by default. As a result, removing or renaming a local command leaves its previous
 definition deployed. Enable `removeUnknown` only when this bot owns every command in the selected scopes.
@@ -988,6 +988,7 @@ const client = new Client({
 	commands: { register: 'on-start', when: () => shard.id === 0 }
 });
 ```
+
 </Warning>
 
 #### Sync commands manually
