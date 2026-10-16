@@ -7,46 +7,29 @@
  *
  * Types are passed as token arrays: a plain string is literal text, a `[text, href]` pair is a link.
  *   ['Promise<', ['Foo', '/documentation/api/pkg/classes/Foo'], '>']
+ *
+ * Mintlify compiles named snippet exports independently. Keep helper components and
+ * constants inside each export so importing one component includes its dependencies.
  */
-const KIND_LABELS = {
-	class: 'Class',
-	interface: 'Interface',
-	function: 'Function',
-	'type-alias': 'Type',
-	enum: 'Enum',
-	variable: 'Variable',
-	namespace: 'Namespace',
-	constructor: 'Constructor',
-	property: 'Property',
-	method: 'Method',
-	accessor: 'Accessor',
-	package: 'Package'
+
+export const ApiKind = ({ kind }) => {
+	const KIND_LABELS = {
+		class: 'Class',
+		interface: 'Interface',
+		function: 'Function',
+		'type-alias': 'Type',
+		enum: 'Enum',
+		variable: 'Variable',
+		namespace: 'Namespace',
+		constructor: 'Constructor',
+		property: 'Property',
+		method: 'Method',
+		accessor: 'Accessor',
+		package: 'Package'
+	};
+
+	return <span className={`ws-api-kind ws-api-kind-${kind}`}>{KIND_LABELS[kind] ?? kind}</span>;
 };
-
-const KIND_GROUPS = [
-	['namespace', 'Namespaces'],
-	['class', 'Classes'],
-	['interface', 'Interfaces'],
-	['enum', 'Enumerations'],
-	['type-alias', 'Type Aliases'],
-	['function', 'Functions'],
-	['variable', 'Variables']
-];
-
-const Tokens = ({ tokens }) =>
-	(tokens ?? []).map((token, index) =>
-		typeof token === 'string' ? (
-			<span key={index}>{token}</span>
-		) : (
-			<a key={index} href={token[1]} className="ws-api-type-link">
-				{token[0]}
-			</a>
-		)
-	);
-
-const tokensToText = (tokens) => (tokens ?? []).map((token) => (typeof token === 'string' ? token : token[0])).join('');
-
-export const ApiKind = ({ kind }) => <span className={`ws-api-kind ws-api-kind-${kind}`}>{KIND_LABELS[kind] ?? kind}</span>;
 
 export const ApiBadge = ({ name, title }) => (
 	<span className={`ws-api-badge ws-api-badge-${String(name).split(' ')[0]}`} title={title}>
@@ -54,84 +37,160 @@ export const ApiBadge = ({ name, title }) => (
 	</span>
 );
 
-const Badges = ({ badges }) =>
-	badges && badges.length > 0 ? (
-		<span className="ws-api-badges">
-			{badges.map((badge) => (
-				<ApiBadge key={badge} name={badge} />
-			))}
-		</span>
-	) : null;
-
-const SourceLink = ({ source }) =>
-	source ? (
-		<a className="ws-api-source" href={source.url} target="_blank" rel="noopener noreferrer" title="View source on GitHub">
-			<svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-				<path d="M4.72 3.22a.75.75 0 0 1 1.06 1.06L2.06 8l3.72 3.72a.75.75 0 1 1-1.06 1.06L.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25Zm6.56 0a.75.75 0 0 0-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25Z" />
-			</svg>
-			{source.label}
-		</a>
-	) : null;
-
 /** Kind chip, modifier badges and the source link shown right under the page title. */
-export const ApiHeader = ({ kind, badges, source, packageName, packageHref }) => (
-	<div className="ws-api-header">
-		<ApiKind kind={kind} />
-		<Badges badges={badges} />
-		{packageName && (
-			<a className="ws-api-package" href={packageHref}>
-				{packageName}
-			</a>
-		)}
-		<SourceLink source={source} />
-	</div>
-);
+export const ApiHeader = ({ kind, badges, source, packageName, packageHref }) => {
+	const ApiKind = ({ kind }) => {
+		const KIND_LABELS = {
+			class: 'Class',
+			interface: 'Interface',
+			function: 'Function',
+			'type-alias': 'Type',
+			enum: 'Enum',
+			variable: 'Variable',
+			namespace: 'Namespace',
+			constructor: 'Constructor',
+			property: 'Property',
+			method: 'Method',
+			accessor: 'Accessor',
+			package: 'Package'
+		};
 
-/** Package name, version and links shown at the top of a package index. */
-export const ApiPackageHeader = ({ name, version, guideHref, sourceHref }) => (
-	<div className="ws-api-header ws-api-package-header">
-		<ApiKind kind="package" />
-		<code className="ws-api-package-name">{name}</code>
-		{version && <span className="ws-api-version">v{version}</span>}
-		{guideHref && (
-			<a className="ws-api-package" href={guideHref}>
-				Package guide
-			</a>
-		)}
-		{sourceHref && (
-			<a className="ws-api-source" href={sourceHref} target="_blank" rel="noopener noreferrer">
-				Source
-			</a>
-		)}
-	</div>
-);
+		return <span className={`ws-api-kind ws-api-kind-${kind}`}>{KIND_LABELS[kind] ?? kind}</span>;
+	};
 
-const HierarchyRow = ({ label, items }) =>
-	items && items.length > 0 ? (
-		<div className="ws-api-hierarchy-row">
-			<span className="ws-api-hierarchy-label">{label}</span>
-			<span className="ws-api-hierarchy-items">
-				{items.map((item, index) => (
-					<code key={index} className="ws-api-chip">
-						<Tokens tokens={item} />
-					</code>
+	const Badges = ({ badges }) => {
+		const ApiBadge = ({ name, title }) => (
+			<span className={`ws-api-badge ws-api-badge-${String(name).split(' ')[0]}`} title={title}>
+				{name}
+			</span>
+		);
+
+		return badges && badges.length > 0 ? (
+			<span className="ws-api-badges">
+				{badges.map((badge) => (
+					<ApiBadge key={badge} name={badge} />
 				))}
 			</span>
+		) : null;
+	};
+
+	const SourceLink = ({ source }) =>
+		source ? (
+			<a className="ws-api-source" href={source.url} target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+				<svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
+					<path d="M4.72 3.22a.75.75 0 0 1 1.06 1.06L2.06 8l3.72 3.72a.75.75 0 1 1-1.06 1.06L.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25Zm6.56 0a.75.75 0 0 0-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25Z" />
+				</svg>
+				{source.label}
+			</a>
+		) : null;
+
+	return (
+		<div className="ws-api-header">
+			<ApiKind kind={kind} />
+			<Badges badges={badges} />
+			{packageName && (
+				<a className="ws-api-package" href={packageHref}>
+					{packageName}
+				</a>
+			)}
+			<SourceLink source={source} />
 		</div>
-	) : null;
+	);
+};
+
+/** Package name, version and links shown at the top of a package index. */
+export const ApiPackageHeader = ({ name, version, guideHref, sourceHref }) => {
+	const ApiKind = ({ kind }) => {
+		const KIND_LABELS = {
+			class: 'Class',
+			interface: 'Interface',
+			function: 'Function',
+			'type-alias': 'Type',
+			enum: 'Enum',
+			variable: 'Variable',
+			namespace: 'Namespace',
+			constructor: 'Constructor',
+			property: 'Property',
+			method: 'Method',
+			accessor: 'Accessor',
+			package: 'Package'
+		};
+
+		return <span className={`ws-api-kind ws-api-kind-${kind}`}>{KIND_LABELS[kind] ?? kind}</span>;
+	};
+
+	return (
+		<div className="ws-api-header ws-api-package-header">
+			<ApiKind kind="package" />
+			<code className="ws-api-package-name">{name}</code>
+			{version && <span className="ws-api-version">v{version}</span>}
+			{guideHref && (
+				<a className="ws-api-package" href={guideHref}>
+					Package guide
+				</a>
+			)}
+			{sourceHref && (
+				<a className="ws-api-source" href={sourceHref} target="_blank" rel="noopener noreferrer">
+					Source
+				</a>
+			)}
+		</div>
+	);
+};
 
 /** Extends / Implements / Extended by / Implemented by chips. Each item is a token array. */
-export const ApiHierarchy = ({ extends: extendsTypes, implements: implementsTypes, extendedBy, implementedBy }) => (
-	<div className="ws-api-hierarchy">
-		<HierarchyRow label="Extends" items={extendsTypes} />
-		<HierarchyRow label="Implements" items={implementsTypes} />
-		<HierarchyRow label="Extended by" items={extendedBy} />
-		<HierarchyRow label="Implemented by" items={implementedBy} />
-	</div>
-);
+export const ApiHierarchy = ({ extends: extendsTypes, implements: implementsTypes, extendedBy, implementedBy }) => {
+	const HierarchyRow = ({ label, items }) => {
+		const Tokens = ({ tokens }) =>
+			(tokens ?? []).map((token, index) =>
+				typeof token === 'string' ? (
+					<span key={index}>{token}</span>
+				) : (
+					<a key={index} href={token[1]} className="ws-api-type-link">
+						{token[0]}
+					</a>
+				)
+			);
+
+		return items && items.length > 0 ? (
+			<div className="ws-api-hierarchy-row">
+				<span className="ws-api-hierarchy-label">{label}</span>
+				<span className="ws-api-hierarchy-items">
+					{items.map((item, index) => (
+						<code key={index} className="ws-api-chip">
+							<Tokens tokens={item} />
+						</code>
+					))}
+				</span>
+			</div>
+		) : null;
+	};
+
+	return (
+		<div className="ws-api-hierarchy">
+			<HierarchyRow label="Extends" items={extendsTypes} />
+			<HierarchyRow label="Implements" items={implementsTypes} />
+			<HierarchyRow label="Extended by" items={extendedBy} />
+			<HierarchyRow label="Implemented by" items={implementedBy} />
+		</div>
+	);
+};
 
 /** A highlighted signature with linked types and a copy button. */
 export const ApiSignature = ({ tokens }) => {
+	const Tokens = ({ tokens }) =>
+		(tokens ?? []).map((token, index) =>
+			typeof token === 'string' ? (
+				<span key={index}>{token}</span>
+			) : (
+				<a key={index} href={token[1]} className="ws-api-type-link">
+					{token[0]}
+				</a>
+			)
+		);
+
+	const tokensToText = (tokens) => (tokens ?? []).map((token) => (typeof token === 'string' ? token : token[0])).join('');
+
 	const [copied, setCopied] = useState(false);
 
 	const copy = async () => {
@@ -157,22 +216,118 @@ export const ApiSignature = ({ tokens }) => {
 };
 
 /** Card around one member (property, method, accessor, ...). The heading stays plain markdown above it. */
-export const ApiMember = ({ kind, badges, signature, source, inheritedFrom, children }) => (
-	<div className={`ws-api-member ws-api-member-${kind}`}>
-		<div className="ws-api-member-meta">
-			<ApiKind kind={kind} />
-			<Badges badges={badges} />
-			{inheritedFrom && (
-				<span className="ws-api-inherited">
-					Inherited from <Tokens tokens={inheritedFrom} />
-				</span>
-			)}
-			<SourceLink source={source} />
+export const ApiMember = ({ kind, badges, signature, source, inheritedFrom, children }) => {
+	const ApiKind = ({ kind }) => {
+		const KIND_LABELS = {
+			class: 'Class',
+			interface: 'Interface',
+			function: 'Function',
+			'type-alias': 'Type',
+			enum: 'Enum',
+			variable: 'Variable',
+			namespace: 'Namespace',
+			constructor: 'Constructor',
+			property: 'Property',
+			method: 'Method',
+			accessor: 'Accessor',
+			package: 'Package'
+		};
+
+		return <span className={`ws-api-kind ws-api-kind-${kind}`}>{KIND_LABELS[kind] ?? kind}</span>;
+	};
+
+	const Badges = ({ badges }) => {
+		const ApiBadge = ({ name, title }) => (
+			<span className={`ws-api-badge ws-api-badge-${String(name).split(' ')[0]}`} title={title}>
+				{name}
+			</span>
+		);
+
+		return badges && badges.length > 0 ? (
+			<span className="ws-api-badges">
+				{badges.map((badge) => (
+					<ApiBadge key={badge} name={badge} />
+				))}
+			</span>
+		) : null;
+	};
+
+	const SourceLink = ({ source }) =>
+		source ? (
+			<a className="ws-api-source" href={source.url} target="_blank" rel="noopener noreferrer" title="View source on GitHub">
+				<svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
+					<path d="M4.72 3.22a.75.75 0 0 1 1.06 1.06L2.06 8l3.72 3.72a.75.75 0 1 1-1.06 1.06L.47 8.53a.75.75 0 0 1 0-1.06l4.25-4.25Zm6.56 0a.75.75 0 0 0-1.06 1.06L13.94 8l-3.72 3.72a.75.75 0 1 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25Z" />
+				</svg>
+				{source.label}
+			</a>
+		) : null;
+
+	const Tokens = ({ tokens }) =>
+		(tokens ?? []).map((token, index) =>
+			typeof token === 'string' ? (
+				<span key={index}>{token}</span>
+			) : (
+				<a key={index} href={token[1]} className="ws-api-type-link">
+					{token[0]}
+				</a>
+			)
+		);
+
+	const ApiSignature = ({ tokens }) => {
+		const Tokens = ({ tokens }) =>
+			(tokens ?? []).map((token, index) =>
+				typeof token === 'string' ? (
+					<span key={index}>{token}</span>
+				) : (
+					<a key={index} href={token[1]} className="ws-api-type-link">
+						{token[0]}
+					</a>
+				)
+			);
+
+		const tokensToText = (tokens) => (tokens ?? []).map((token) => (typeof token === 'string' ? token : token[0])).join('');
+
+		const [copied, setCopied] = useState(false);
+
+		const copy = async () => {
+			try {
+				await navigator.clipboard.writeText(tokensToText(tokens));
+				setCopied(true);
+				setTimeout(() => setCopied(false), 1500);
+			} catch {}
+		};
+
+		return (
+			<div className="ws-api-signature">
+				<pre className="ws-api-signature-code">
+					<code>
+						<Tokens tokens={tokens} />
+					</code>
+				</pre>
+				<button type="button" className="ws-api-copy" onClick={copy} aria-label="Copy signature">
+					{copied ? 'Copied' : 'Copy'}
+				</button>
+			</div>
+		);
+	};
+
+	return (
+		<div className={`ws-api-member ws-api-member-${kind}`}>
+			<div className="ws-api-member-meta">
+				<ApiKind kind={kind} />
+				<Badges badges={badges} />
+				{inheritedFrom && (
+					<span className="ws-api-inherited">
+						Inherited from <Tokens tokens={inheritedFrom} />
+					</span>
+				)}
+				<SourceLink source={source} />
+			</div>
+			{signature && <ApiSignature tokens={signature} />}
+			<div className="ws-api-member-body">{children}</div>
 		</div>
-		{signature && <ApiSignature tokens={signature} />}
-		<div className="ws-api-member-body">{children}</div>
-	</div>
-);
+	);
+};
 
 /** Titled group of parameters, type parameters, returns, throws, ... */
 export const ApiParams = ({ title, children }) => (
@@ -183,62 +338,112 @@ export const ApiParams = ({ title, children }) => (
 );
 
 /** One row of an ApiParams group: name, type, flags and a markdown description as children. */
-export const ApiParam = ({ name, type, optional, rest, defaultValue, children }) => (
-	<div className="ws-api-param">
-		<div className="ws-api-param-head">
-			{name && (
-				<code className="ws-api-param-name">
-					{rest ? '...' : ''}
-					{name}
-					{optional ? '?' : ''}
-				</code>
-			)}
-			{type && (
-				<code className="ws-api-param-type">
-					<Tokens tokens={type} />
-				</code>
-			)}
-			{defaultValue && (
-				<span className="ws-api-param-default">
-					default <code>{defaultValue}</code>
-				</span>
-			)}
+export const ApiParam = ({ name, type, optional, rest, defaultValue, children }) => {
+	const Tokens = ({ tokens }) =>
+		(tokens ?? []).map((token, index) =>
+			typeof token === 'string' ? (
+				<span key={index}>{token}</span>
+			) : (
+				<a key={index} href={token[1]} className="ws-api-type-link">
+					{token[0]}
+				</a>
+			)
+		);
+
+	return (
+		<div className="ws-api-param">
+			<div className="ws-api-param-head">
+				{name && (
+					<code className="ws-api-param-name">
+						{rest ? '...' : ''}
+						{name}
+						{optional ? '?' : ''}
+					</code>
+				)}
+				{type && (
+					<code className="ws-api-param-type">
+						<Tokens tokens={type} />
+					</code>
+				)}
+				{defaultValue && (
+					<span className="ws-api-param-default">
+						default <code>{defaultValue}</code>
+					</span>
+				)}
+			</div>
+			{children && <div className="ws-api-param-body">{children}</div>}
 		</div>
-		{children && <div className="ws-api-param-body">{children}</div>}
-	</div>
-);
+	);
+};
 
 /** Enumeration members as a table: name, value, description. `members` = [{ name, value, id, deprecated, description }]. */
-export const ApiEnumMembers = ({ members }) => (
-	<div className="ws-api-enum">
-		<table className="ws-api-enum-table">
-			<thead>
-				<tr>
-					<th>Member</th>
-					<th>Value</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				{members.map((member) => (
-					<tr key={member.name} id={member.id}>
-						<td>
-							<code>{member.name}</code>
-							{member.deprecated && <ApiBadge name="deprecated" />}
-						</td>
-						<td>
-							<code>{member.value}</code>
-						</td>
-						<td>{member.description}</td>
+export const ApiEnumMembers = ({ members }) => {
+	const ApiBadge = ({ name, title }) => (
+		<span className={`ws-api-badge ws-api-badge-${String(name).split(' ')[0]}`} title={title}>
+			{name}
+		</span>
+	);
+
+	return (
+		<div className="ws-api-enum">
+			<table className="ws-api-enum-table">
+				<thead>
+					<tr>
+						<th>Member</th>
+						<th>Value</th>
+						<th>Description</th>
 					</tr>
-				))}
-			</tbody>
-		</table>
-	</div>
-);
+				</thead>
+				<tbody>
+					{members.map((member) => (
+						<tr key={member.name} id={member.id}>
+							<td>
+								<code>{member.name}</code>
+								{member.deprecated && <ApiBadge name="deprecated" />}
+							</td>
+							<td>
+								<code>{member.value}</code>
+							</td>
+							<td>{member.description}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
+	);
+};
 
 /** Package index: symbols grouped by kind with a client-side filter. `symbols` = [{ name, kind, href, summary, deprecated }]. */
 export const ApiSymbolList = ({ symbols }) => {
+	const KIND_GROUPS = [
+		['namespace', 'Namespaces'],
+		['class', 'Classes'],
+		['interface', 'Interfaces'],
+		['enum', 'Enumerations'],
+		['type-alias', 'Type Aliases'],
+		['function', 'Functions'],
+		['variable', 'Variables']
+	];
+
+	const ApiKind = ({ kind }) => {
+		const KIND_LABELS = {
+			class: 'Class',
+			interface: 'Interface',
+			function: 'Function',
+			'type-alias': 'Type',
+			enum: 'Enum',
+			variable: 'Variable',
+			namespace: 'Namespace',
+			constructor: 'Constructor',
+			property: 'Property',
+			method: 'Method',
+			accessor: 'Accessor',
+			package: 'Package'
+		};
+
+		return <span className={`ws-api-kind ws-api-kind-${kind}`}>{KIND_LABELS[kind] ?? kind}</span>;
+	};
+
 	const [query, setQuery] = useState('');
 	const needle = query.trim().toLowerCase();
 	const matches = (symbol) => !needle || symbol.name.toLowerCase().includes(needle) || (symbol.summary ?? '').toLowerCase().includes(needle);
