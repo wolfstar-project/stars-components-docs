@@ -174,8 +174,8 @@ transport.receive(async ({ payload, shardId, state }) => {
 });
 ```
 
-`READY` and `INTERACTION_CREATE` are not replayed. `client.replayDispatchTypes` lists the types `replayDispatch`
-handles.
+`READY` and `INTERACTION_CREATE` are not replayed, so `client.user` stays `null` and `client.application` stays partial
+until you call `client.application.fetch()`. `client.replayDispatchTypes` lists the types `replayDispatch` handles.
 
 ### The `clientReady` event
 
@@ -526,8 +526,8 @@ channel.permissionsFor(member).has('SendMessages');
 ```
 
 When an entity a getter needs is missing from the cache, it throws a `GatewayError` with the code `GuildUncached`,
-`GuildUncachedMe`, `ChannelUncached`, or `GuildMemberUncached`. Uncached roles are skipped, as in discord.js. If your
-cache may lack an entity, for example because it is size-limited or filtered, fetch what is missing, then read the
+`GuildUncachedMe`, `ChannelUncached`, or `GuildMemberUncached`. Uncached roles are skipped without an error, as in
+discord.js. See [Checks on a cache miss](#checks-on-a-cache-miss). If your cache may lack an entity, for example because it is size-limited or filtered, fetch what is missing, then read the
 getter:
 
 ```ts
@@ -559,12 +559,38 @@ if (await member.kickable) await member.kick();
 Relation getters such as `message.guild`, `member.voice`, and `channel.parent` stay `null` with an asynchronous store
 and never throw. Use the entity fetches, such as `fetchGuild()`, `fetchChannel()`, and `member.fetchPresence()`.
 
+#### Checks on a cache miss
+
+The getters skip a role that is not in the cache without an error. `member.roles.highest` returns the highest role the
+cache holds, and `member.permissions` and `permissionsIn(channel)` combine only the cached roles. With a filtered or
+size-limited cache, or on a `plugin-broker` worker, a role-hierarchy or permission check can under-report.
+`manageable`, `kickable`, `bannable`, and `moderatable` read `roles.highest`, so they under-report too.
+
+When a check must be right on a cache miss, use the calls that fetch the missing roles from the API. With a complete
+cache, they make no request:
+
+- `member.roles.fetchHighest()` instead of `member.roles.highest`.
+- `member.fetchPermissions()` instead of `member.permissions`.
+- `member.fetchPermissionsIn(channel)` instead of `member.permissionsIn(channel)`. It also fetches the channel.
+- For `manageable`, `kickable`, `bannable`, and `moderatable`, call `await member.roles.fetch()` and
+  `await me.roles.fetch()` for the bot's member before you read the getter.
+
+```ts
+// Right even when a role of either member is not cached:
+const [mine, theirs] = await Promise.all([me.roles.fetchHighest(), author.roles.fetchHighest()]);
+const canManageRoles = (await me.fetchPermissions()).has('ManageRoles');
+
+await Promise.all([member.roles.fetch(), me.roles.fetch()]);
+if (member.kickable) await member.kick();
+```
+
 #### Deprecated `fetch*` twins
 
-Each derived getter has a `fetch*` twin that asks the API for what is not cached, such as `member.fetchPermissions()`,
-`member.fetchKickable()`, `message.fetchDeletable()`, or `member.roles.fetchHighest()`. The twins are deprecated and
-will be removed in a later release, so use the getter instead. `Message#fetchEditable()` is removed. Entity fetches
-such as `fetchGuild`, `fetchMember`, `client.members.fetchMe`, `roles.fetch()`, and `member.fetchPresence()` stay.
+The other derived getters also have a `fetch*` twin that asks the API for what is not cached, such as
+`member.fetchKickable()` or `message.fetchDeletable()`. These twins are deprecated and will be removed in a later
+release, so use the getter instead. `Message#fetchEditable()` is removed. `roles.fetchHighest()`,
+`fetchPermissions()`, and `fetchPermissionsIn()` are not deprecated. Entity fetches such as `fetchGuild`,
+`fetchMember`, `client.members.fetchMe`, `roles.fetch()`, and `member.fetchPresence()` stay.
 
 ## Requesting guild members
 
@@ -720,6 +746,44 @@ the member's, message's, or given guild, and returns `null` on a miss.
 `Structure`, `StructureMixin`, `initStructure`, `Mixin`, and the `kData`, `kPatch`, and `kClone` symbols are exported,
 so you can subclass structures and write new mixins.
 
+### Application
+
+`client.application` is a `ClientApplication`, like discord.js's `Client#application`. Use it for what the application
+owns rather than a guild, such as its profile, owner, and role connection metadata. It lives on the client, not in the
+cache.
+
+Unlike discord.js, where it is `null` until `READY`, `client.application` is never `null`. The client builds it from
+`clientId`, so it exists before `READY` and without a gateway connection. Until you fetch or edit it, `partial` is
+`true`. Before `READY`, only `id` is known. `READY` patches the same instance with the application's `flags`, so
+references you hold stay valid. `fetch()` calls `GET /applications/@me` and patches in everything else:
+
+```ts
+client.application.partial; // true until fetch() or edit() resolves
+await client.application.fetch();
+client.application.name; // 'Wolf'
+client.application.owner; // a Team, a User, or null
+client.application.iconURL();
+
+await client.application.edit({ description: 'Awoo', tags: ['wolf'] });
+```
+
+After a fetch, `ClientApplication` exposes `tags`, `installParams`, `integrationTypesConfig`, `customInstallURL`,
+`botPublic`, `botRequireCodeGrant`, `guildId` and the cached `guild`, `approximateGuildCount`,
+`approximateUserInstallCount`, `interactionsEndpointURL`, `roleConnectionsVerificationURL`, and the event webhook
+settings `eventWebhooksURL`, `eventWebhooksStatus`, and `eventWebhooksTypes`.
+
+`owner` is a `Team` when a team owns the application, with its `members` as `TeamMember`s. Otherwise it is the owner
+`User`. It is `null` until the application is fetched.
+
+| Method                                       | Description                                                       |
+| -------------------------------------------- | ----------------------------------------------------------------- |
+| `fetch()`                                    | Fetches the application and patches `client.application` with it. |
+| `edit(options)`                              | Edits the application and patches `client.application` with it.   |
+| `fetchRoleConnectionMetadataRecords()`       | Fetches the application's role connection metadata records.       |
+| `editRoleConnectionMetadataRecords(records)` | Replaces the application's role connection metadata records.      |
+
+`Application`, `ClientApplication`, `Team`, and `TeamMember` are exported.
+
 ### Components
 
 Message components are structures too, like in discord.js: `ActionRow`, `InteractiveButtonComponent`,
@@ -783,6 +847,29 @@ const payload = MessagePayload.create(channel, {
 await channel.send(payload);
 ```
 
+#### `AttachmentBuilder`
+
+Files to send are `AttachmentBuilder`s, as in discord.js v14. `new AttachmentBuilder(file, { name, description })`
+takes a buffer, a path, a URL, a stream, or a blob. These methods chain:
+
+- `setFile(file, name?)`, `setName(name)`, and `setDescription(description)`.
+- `setSpoiler(spoiler = true)` adds or removes the `SPOILER_` prefix of the name. The `spoiler` getter reads it.
+- `setTitle(title)`, plus `setDuration(seconds)` and `setWaveform(waveform)` for voice messages.
+
+Pass builders in the `files` of a message. `AttachmentBuilder.from(other)` copies a builder, an attachment payload, or a
+received `Attachment`. `Attachment#attachment` returns the URL of a received attachment, as in discord.js, so you can
+send it again:
+
+```ts
+import { AttachmentBuilder } from '@wolfstar/plugin-gateway';
+
+const file = new AttachmentBuilder('./howl.ogg').setDescription('A howl').setSpoiler();
+await channel.send({ files: [file] });
+
+const original = message.attachments.first();
+if (original) await channel.send({ files: [AttachmentBuilder.from(original).setName('copy.png')] });
+```
+
 ### Resolvable types
 
 Methods accept discord.js's `Resolvable` types, so you can pass either a structure or an ID. Examples include
@@ -797,6 +884,10 @@ The package exports the discord.js helpers its structures use:
   returns `null` when the string holds a colon but no custom emoji.
 - `resolvePartialEmoji(emoji)` resolves any `EmojiIdentifierResolvable` without a cache lookup. A bare ID resolves to
   `{ id }`.
+- `resolveGuildEmoji(client, emojiId)` finds a custom emoji by ID across every cached guild, like discord.js's
+  `resolveGuildEmoji`. It resolves to the `GuildEmoji`, or `null` when no cached guild has it. It never calls the API.
+  It enumerates the whole emoji cache, so it needs a store that can list its entries, and throws a `TypeError` when the
+  store cannot.
 - DataResolver functions: `resolveFile`, `resolveBase64`, `resolveImage`, `resolveInviteCode`, and
   `resolveGuildTemplateCode`.
 - Transformers such as `toSnakeCase` and the `transformAPI*` functions convert between API payloads and discord.js-style
@@ -804,10 +895,11 @@ The package exports the discord.js helpers its structures use:
 - Util functions such as `resolveColor`, `cleanContent`, `parseWebhookURL`, `discordSort`, and `transformResolved`.
 
 ```ts
-import { parseEmoji, resolvePartialEmoji } from '@wolfstar/plugin-gateway';
+import { parseEmoji, resolveGuildEmoji, resolvePartialEmoji } from '@wolfstar/plugin-gateway';
 
 parseEmoji('<a:howl:123456789012345678>'); // { animated: true, name: 'howl', id: '123456789012345678' }
 resolvePartialEmoji('123456789012345678'); // { id: '123456789012345678' }
+await resolveGuildEmoji(client, '123456789012345678'); // the cached GuildEmoji, or null
 ```
 
 ## Errors
