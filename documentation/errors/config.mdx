@@ -111,8 +111,8 @@ no installed module claims it as its [`meta.configKey`](/documentation/packages/
 The check also runs when `modules` is empty. `loadStarsConfig` on its own does not report such keys.
 
 **Fix:** the message lists the known options for that section. Check for a typo. For a top-level key, the list
-includes the keys claimed by installed modules, and the hint asks you to check that the module is listed in
-`modules` and declares the key as its `configKey`.
+includes the keys claimed by installed modules. The hint asks you to check that the module is listed in `modules` and
+declares the key as its `configKey`.
 
 ## UNKNOWN_HOOK {#unknown_hook}
 
