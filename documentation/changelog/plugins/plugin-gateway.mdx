@@ -6,6 +6,18 @@ description: 'Changelog for @wolfstar/plugin-gateway: gateway events, Discord st
 
 Changes to [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway). The plugin extends the `@wolfstar/http-framework` client with Discord gateway events, structures, and API managers. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.14.0` (2026-10-09)
+
+### New features
+
+- **`client.application`** — A `ClientApplication` like discord.js's, with the `Application`, `Team`, and `TeamMember` structures. Unlike discord.js, where it is `null` until `READY`, it exists from client construction as a `partial` with only the client ID. `READY` patches the same instance with the application's flags, and `fetch()` (`GET /applications/@me`) fills in the rest. It also has `edit()`, `fetchRoleConnectionMetadataRecords()`, and `editRoleConnectionMetadataRecords()`, and exposes the install params, integration types config, `owner` (a `Team` or a `User`), event webhooks, and guild and user install counts. ([#238](https://github.com/wolfstar-project/plugins/pull/238))
+- **`resolveGuildEmoji(client, emojiId)`** — Finds a custom emoji by ID across every cached guild, like discord.js's `resolveGuildEmoji`. ([#236](https://github.com/wolfstar-project/plugins/pull/236))
+
+### Updates
+
+- **`fetch*` checks no longer deprecated** — `GuildMemberRoleManager#fetchHighest`, `GuildMember#fetchPermissions`, and `GuildMember#fetchPermissionsIn` are no longer `@deprecated`. The getters they mirror (`roles.highest`, `permissions`, `permissionsIn`, `manageable`, `kickable`, `bannable`, `moderatable`) skip roles missing from the cache without an error. With a filtered cache or a `plugin-broker` worker, use the `fetch*` call or `roles.fetch()` for accurate hierarchy and permission checks. ([#235](https://github.com/wolfstar-project/plugins/pull/235))
+- **`MessagePayload` file names** — URL and path files are now named with a shared `basename` helper.
+
 ## `0.13.0` (2026-10-08)
 
 ### New features
