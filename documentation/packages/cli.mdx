@@ -520,13 +520,13 @@ stars doctor --json
 
 The `varlock` check compares the project's varlock setup with `env.loader` in `stars.config`:
 
-| Status | When                                                                                     | Fix                                              |
-| ------ | ---------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| `ok`   | The environment is loaded through varlock                                                | None                                             |
-| `warn` | A schema and an installed `varlock` are found, but `stars.config` does not set `env.loader` | Run `stars doctor --fix`                         |
-| `warn` | A schema is found, but `varlock` is not installed, so the bot loads the dotenv files     | Install `varlock`, or remove the `.env.schema`   |
-| `warn` | A schema is found, but `env.loader` is `'node'` or `'dotenv'`, so the schema is not used | Set `env.loader` to `'varlock'`, or remove the schema |
-| `error` | `env.loader` is `'varlock'`, but `varlock` is not installed                              | Install `varlock`                                |
+| Status  | When                                                                                        | Fix                                                   |
+| ------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `ok`    | The environment is loaded through varlock                                                   | None                                                  |
+| `warn`  | A schema and an installed `varlock` are found, but `stars.config` does not set `env.loader` | Run `stars doctor --fix`                              |
+| `warn`  | A schema is found, but `varlock` is not installed, so the bot loads the dotenv files        | Install `varlock`, or remove the `.env.schema`        |
+| `warn`  | A schema is found, but `env.loader` is `'node'` or `'dotenv'`, so the schema is not used    | Set `env.loader` to `'varlock'`, or remove the schema |
+| `error` | `env.loader` is `'varlock'`, but `varlock` is not installed                                 | Install `varlock`                                     |
 
 A project that sets `env.path` without `env.loader: 'varlock'` is not checked, because the runtime only picks varlock by
 itself when no `env.path` is set.
@@ -658,11 +658,11 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 `future.compatibilityVersion` selects the legacy or current defaults, the way Nuxt's own compatibility setting does (see the
 [framework README](/documentation/packages/http-framework#compatibility-version) for the full reference):
 
-| Version       | What it changes                                                                                                               |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL` |
-| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript           |
-| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                  |
+| Version       | What it changes                                                                                                                                                             |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `3` (EOL)     | Legacy behaviour: a `tsdown.config.*` drives the build, auto imports off unless asked for; prints `COMPATIBILITY_VERSION_EOL`                                               |
+| `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript                                                         |
+| `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                                                                |
 | `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`, and the CLI follows the runtime when it picks varlock |
 
 Version 3 is end-of-life. It still works, but every command prints a
