@@ -8,7 +8,7 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 
 <ApiPackageHeader
 	name="@wolfstar/kit"
-	version="0.2.1"
+	version="0.3.1"
 	guideHref="/documentation/packages/kit"
 	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/kit"
 />
@@ -19,10 +19,30 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 	symbols={[
 		{ name: 'ModuleError', kind: 'class', href: '/documentation/api/kit/classes/ModuleError', summary: 'Why a module could not be installed.' },
 		{
+			name: 'ClientHookRegistration',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/ClientHookRegistration',
+			summary: "A runtime hook a module declared (hooks['client:'] or ctx.addClientHook)."
+		},
+		{
 			name: 'InstalledModule',
 			kind: 'interface',
 			href: '/documentation/api/kit/interfaces/InstalledModule',
 			summary: 'A module that was installed.'
+		},
+		{
+			name: 'LocalesRegistration',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/LocalesRegistration',
+			summary:
+				'A directory of locales a module registered with ctx.addLocales: <lng>/<namespace>.json, the layout @wolfstar/plugin-i18next reads.'
+		},
+		{
+			name: 'ModuleClientHookSource',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/ModuleClientHookSource',
+			summary:
+				"A runtime hook to run at a point of the client's lifecycle, given by source like a ModulePluginSource: the hook lives in the bot's process,…"
 		},
 		{ name: 'ModuleContext', kind: 'interface', href: '/documentation/api/kit/interfaces/ModuleContext' },
 		{
@@ -49,6 +69,12 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			kind: 'interface',
 			href: '/documentation/api/kit/interfaces/ModuleVersions',
 			summary: 'What the host knows about the project: null when a version could not be found.'
+		},
+		{
+			name: 'PiecesDirRegistration',
+			kind: 'interface',
+			href: '/documentation/api/kit/interfaces/PiecesDirRegistration',
+			summary: 'A directory of pieces a module registered with ctx.addPiecesDir.'
 		},
 		{
 			name: 'RuntimePluginRegistration',

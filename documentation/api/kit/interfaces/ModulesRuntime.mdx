@@ -14,6 +14,14 @@ What the installed modules contributed, known once the CLI ran their `setup`. Em
 
 ## Properties
 
+### clientHooks
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly clientHooks: readonly ', ['ClientHookRegistration', '/documentation/api/kit/interfaces/ClientHookRegistration'], '[]']}>
+
+Runtime hooks added by `hooks['client:*']` and `ctx.addClientHook`.
+
+</ApiMember>
+
 ### configKeys
 
 <ApiMember kind="property" badges={['readonly']} signature={['readonly configKeys: readonly string[]']}>
@@ -30,6 +38,14 @@ Packages added to `imports.presets` by `ctx.addImports`.
 
 </ApiMember>
 
+### locales
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly locales: readonly ', ['LocalesRegistration', '/documentation/api/kit/interfaces/LocalesRegistration'], '[]']}>
+
+Directories of locales added by `ctx.addLocales`.
+
+</ApiMember>
+
 ### modules
 
 <ApiMember
@@ -37,6 +53,14 @@ Packages added to `imports.presets` by `ctx.addImports`.
 	badges={['readonly']}
 	signature={['readonly modules: readonly ', ['InstalledModule', '/documentation/api/kit/interfaces/InstalledModule'], '[]']}
 />
+
+### piecesDirs
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly piecesDirs: readonly ', ['PiecesDirRegistration', '/documentation/api/kit/interfaces/PiecesDirRegistration'], '[]']}>
+
+Directories of pieces added by `ctx.addPiecesDir`.
+
+</ApiMember>
 
 ### plugins
 

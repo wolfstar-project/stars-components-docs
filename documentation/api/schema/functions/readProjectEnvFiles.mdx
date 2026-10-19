@@ -9,8 +9,8 @@ import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-refe
 <ApiHeader
 	kind="function"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/schema/src/config/resolve.ts#L531',
-		label: 'packages/schema/src/config/resolve.ts:531'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/config/resolve.ts#L555',
+		label: 'packages/schema/src/config/resolve.ts:555'
 	}}
 	packageName="@wolfstar/schema"
 	packageHref="/documentation/api/schema"
@@ -19,13 +19,12 @@ import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-refe
 Reads the project's environment layers from `src/.env*` and `.env*` into a plain object, the way `stars dev` and
 `stars commands` need it:
 these files are only loaded into `process.env` by the bot itself once it starts (see `@wolfstar/env-utilities`),
-so by the time the CLI runs they are not there yet. This is a minimal line reader, not a full dotenv
-implementation — quoting is stripped, but expansion (`dotenv-expand`) is not. Earlier files win, matching
-dotenv's own precedence.
+so by the time the CLI runs they are not there yet. Parsing and expansion stay local to this object: reading
+configuration never writes to process.env. Earlier files win, matching the runtime loader's precedence.
 
 <ApiSignature
 	tokens={[
-		"readProjectEnvFiles(\n  root: string,\n  environment: string = 'development',\n  options: { path?: string } = {}\n): ",
+		"readProjectEnvFiles(\n  root: string,\n  environment: string = 'development',\n  options: {\n    env?: ProcessEnv;\n    path?: string;\n  } = {}\n): ",
 		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
 		'<string, string>'
 	]}
@@ -34,9 +33,8 @@ dotenv's own precedence.
 Reads the project's environment layers from `src/.env*` and `.env*` into a plain object, the way `stars dev` and
 `stars commands` need it:
 these files are only loaded into `process.env` by the bot itself once it starts (see `@wolfstar/env-utilities`),
-so by the time the CLI runs they are not there yet. This is a minimal line reader, not a full dotenv
-implementation — quoting is stripped, but expansion (`dotenv-expand`) is not. Earlier files win, matching
-dotenv's own precedence.
+so by the time the CLI runs they are not there yet. Parsing and expansion stay local to this object: reading
+configuration never writes to process.env. Earlier files win, matching the runtime loader's precedence.
 
 <ApiParams title="Parameters">
 
@@ -44,7 +42,7 @@ dotenv's own precedence.
 
 <ApiParam name="environment" type={['string']} defaultValue={"'development'"} />
 
-<ApiParam name="options" type={['{ path?: string }']} defaultValue={'{}'} />
+<ApiParam name="options" type={['{\n  env?: ProcessEnv;\n  path?: string;\n}']} defaultValue={'{}'} />
 
 </ApiParams>
 

@@ -1,0 +1,61 @@
+---
+title: 'Interface: ClientHookRegistration'
+description: "A runtime hook a module declared (hooks['client:'] or ctx.addClientHook). (@wolfstar/schema)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L62',
+		label: 'packages/schema/src/types/modules.ts:62'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+A runtime hook a module declared (`hooks['client:*']` or `ctx.addClientHook`). Like a plugin it crosses into the
+bot by source: the entry (or the `node --import` preload) imports the `export` of `from` — a function called with
+`(client, clientOptions)` — and registers it on a plugin named after the module.
+
+<ApiSignature tokens={['interface ClientHookRegistration']} />
+
+## Properties
+
+### export
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly export: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L70', label: 'packages/schema/src/types/modules.ts:70' }}>
+
+**Default**
+
+```ts
+'default';
+```
+
+</ApiMember>
+
+### from
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly from: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L68', label: 'packages/schema/src/types/modules.ts:68' }}>
+
+A package specifier or an absolute file path.
+
+</ApiMember>
+
+### hook
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly hook: "preGenericsInitialization" | "preInitialization" | "postInitialization" | "preLoad" | "postListen"']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L66', label: 'packages/schema/src/types/modules.ts:66' }}>
+
+The plugin hook it runs at, without the `client:` prefix.
+
+</ApiMember>
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L64', label: 'packages/schema/src/types/modules.ts:64' }}>
+
+The module that registered it.
+
+</ApiMember>

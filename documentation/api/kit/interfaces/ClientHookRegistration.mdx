@@ -1,0 +1,53 @@
+---
+title: 'Interface: ClientHookRegistration'
+description: "A runtime hook a module declared (hooks['client:'] or ctx.addClientHook). (@wolfstar/kit)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="interface" packageName="@wolfstar/kit" packageHref="/documentation/api/kit" />
+
+A runtime hook a module declared (`hooks['client:*']` or `ctx.addClientHook`). Like a plugin it crosses into the
+bot by source: the entry (or the `node --import` preload) imports the `export` of `from` — a function called with
+`(client, clientOptions)` — and registers it on a plugin named after the module.
+
+<ApiSignature tokens={['interface ClientHookRegistration']} />
+
+## Properties
+
+### export
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly export: string']}>
+
+**Default**
+
+```ts
+'default';
+```
+
+</ApiMember>
+
+### from
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly from: string']}>
+
+A package specifier or an absolute file path.
+
+</ApiMember>
+
+### hook
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly hook: "preGenericsInitialization" | "preInitialization" | "postInitialization" | "preLoad" | "postListen"']}>
+
+The plugin hook it runs at, without the `client:` prefix.
+
+</ApiMember>
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']}>
+
+The module that registered it.
+
+</ApiMember>
