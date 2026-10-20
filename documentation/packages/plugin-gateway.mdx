@@ -155,6 +155,9 @@ Update events receive the previous state from the cache, and delete events recei
 when the entity was not cached. Delete events also receive `data`, the raw dispatch data, which always identifies the
 deleted entity. Every dispatch is also emitted as `raw`, with the payload and shard ID.
 
+`entitlementCreate` and `entitlementDelete` receive the `Entitlement`. `entitlementUpdate` receives the previous
+entitlement, or `null`, and the new one. See [Monetization](#monetization).
+
 ### Replaying dispatches on another process
 
 A client that never connects to Discord can emit the events of a connected client that shares its cache. The connected
@@ -515,7 +518,9 @@ Structures also have discord.js's synchronous getters, which read the cache alon
 
 - `GuildMember`: `permissions`, `permissionsIn(channel)`, `manageable`, `kickable`, `bannable`, `moderatable`,
   `displayColor`, and `displayHexColor`.
-- `Message`: `editable`, `deletable`, `bulkDeletable`, `pinnable`, and `crosspostable`.
+- `Message`: `editable`, `deletable`, `bulkDeletable`, `pinnable`, `crosspostable`, and `threadable`. `threadable` is
+  `true` when the bot can start a thread from the message: a text or announcement channel, no thread yet, and
+  `ViewChannel` plus `CreatePublicThreads`. Unlike discord.js, an administrator bot can always start one.
 - `Role`: `editable` and `permissionsIn(channel)`. Guild channels: `permissionsFor(target)`.
 - `GuildEmoji#deletable` and `GuildInvite#deletable`.
 
@@ -781,8 +786,129 @@ settings `eventWebhooksURL`, `eventWebhooksStatus`, and `eventWebhooksTypes`.
 | `edit(options)`                              | Edits the application and patches `client.application` with it.   |
 | `fetchRoleConnectionMetadataRecords()`       | Fetches the application's role connection metadata records.       |
 | `editRoleConnectionMetadataRecords(records)` | Replaces the application's role connection metadata records.      |
+| `fetchSKUs()`                                | Fetches the application's SKUs as a `Collection` of `SKU`s.       |
+| `subscriptions(sku)`                         | Returns the `SubscriptionManager` of a SKU or its ID.             |
 
 `Application`, `ClientApplication`, `Team`, and `TeamMember` are exported.
+
+#### Application commands
+
+`client.application.commands` is an `ApplicationCommandManager` for global commands. Pass a `guildId` option to its
+methods to reach the commands of a guild. `guild.commands`, or `client.guilds.commands(guildId)` when you only hold the
+ID, is a `GuildApplicationCommandManager` for the commands of one guild. Each access returns a new manager.
+
+These managers are fetch-only. Discord sends no event when a command changes, so the commands are never cached. Every
+method calls the API and returns new `ApplicationCommand` structures. The managers have `fetch`, `create`, `set`,
+`edit`, and `delete`. `create` and `edit` accept camel case data, raw payloads, and builders, or anything with
+`toJSON()`.
+
+```ts
+import { ApplicationCommandOptionType } from 'discord-api-types/v10';
+
+const commands = await client.application.commands.fetch(); // Collection<id, ApplicationCommand>
+const one = await guild.commands.fetch('123456789012345678');
+const localized = await client.application.commands.fetch({ locale: 'fr', withLocalizations: true });
+
+const created = await guild.commands.create({
+	name: 'awoo',
+	description: 'Howl',
+	defaultMemberPermissions: ['ManageGuild'],
+	options: [{ type: ApplicationCommandOptionType.Boolean, name: 'loud', description: 'Howl loud' }]
+});
+await created.setDescription('Howl at the moon'); // patches `created` in place
+await created.delete();
+```
+
+`ApplicationCommand` has the command's fields, `edit()`, the `set*()` helpers, `delete()`, and `permissions`.
+`command.equals(other)` compares every field `other` has, options included, and `command.equals(other, true)` also
+compares the order of the options. It returns `false` for a foreign argument.
+
+<Warning>
+	`set(commands)` replaces every command of the application, or of the guild, with the given ones. `@wolfstar/http-framework` registers the
+	commands of your pieces with the same API call, so `set()` deletes the commands the framework registered. Nothing in this package calls
+	`set()` for you. Use it only for commands the framework does not manage.
+</Warning>
+
+`ApplicationCommandPermissionsManager` manages the permissions of commands in a guild. It is
+`client.application.commands.permissions` (pass `guild` and `command`), `guild.commands.permissions` (pass `command`),
+and `command.permissions`. Without a guild, global command permissions throw `GlobalCommandPermissions`.
+
+- `fetch` and `has` use the bot's authorization. For one command, they read the `applicationCommandPermissions` cache,
+  which `APPLICATION_COMMAND_PERMISSIONS_UPDATE` keeps up to date. Pass `force: true` to `fetch` to skip the cache.
+- `set`, `add`, and `remove` need an OAuth2 bearer `token` of a user who can manage the guild, with the
+  `applications.commands.permissions.update` scope. Discord rejects the bot's token for these writes. Without `token`,
+  they throw `ApplicationCommandPermissionsTokenMissing`. The package has no OAuth2 flow, so you obtain the token
+  yourself.
+
+```ts
+import { ApplicationCommandPermissionType } from 'discord-api-types/v10';
+
+await command.permissions.fetch({ guild: guildId, force: true });
+await guild.commands.permissions.has({ command, permissionId: roleId });
+await guild.commands.permissions.add({
+	command,
+	token: userToken,
+	permissions: [{ id: roleId, type: ApplicationCommandPermissionType.Role, permission: false }]
+});
+```
+
+#### Application emojis
+
+`client.application.emojis` is an `ApplicationEmojiManager` for the emojis the application owns. The bot can use them in
+any guild. Discord sends no event for these emojis, so the manager is fetch-only and caches nothing. `fetch()` lists
+them in a `Collection`, and `fetch(id)` gets one. The manager also has `create`, `edit`, `delete`, and `fetchAuthor`.
+
+`ApplicationEmoji` extends `Emoji` with `author`, `application`, `edit`, `setName`, `delete`, and `fetchAuthor`. Unlike
+`GuildEmoji`, it has no `roles`, `managed`, `available`, or `requiresColons`, because the API does not send them.
+`equals()` compares only the ID, name, and `animated`.
+
+```ts
+const emojis = await client.application.emojis.fetch(); // Collection<string, ApplicationEmoji>
+const emoji = await client.application.emojis.create({ attachment: 'data:image/png;base64,...', name: 'howl' });
+
+await emoji.setName('awoo');
+const author = await emoji.fetchAuthor();
+await emoji.delete();
+```
+
+#### Monetization
+
+`client.application.entitlements` is an `EntitlementManager`, a cached manager like the others. `ENTITLEMENT_CREATE`,
+`ENTITLEMENT_UPDATE`, and `ENTITLEMENT_DELETE` keep `entitlements.cache` up to date and emit `entitlementCreate`,
+`entitlementUpdate`, and `entitlementDelete`. Processes that share a store share the cache. `fetch` takes an
+entitlement or its ID and reads the cache first, or takes filters and lists entitlements from the API:
+
+```ts
+const { entitlements } = client.application;
+
+await entitlements.fetch(entitlementId); // one, from the cache or the API
+await entitlements.fetch(entitlementId, { force: true });
+await entitlements.fetch({ user, skus: [sku], excludeEnded: true, limit: 50 }); // a Collection, from the API
+
+await entitlements.createTest({ sku, user }); // or { sku, guild }
+await entitlements.deleteTest(entitlement);
+await entitlements.consume(entitlement); // one-time purchase consumables, also entitlement.consume()
+
+entitlement.isActive(); // not deleted, and not ended
+entitlement.isTest();
+entitlement.isGuildSubscription(); // or isUserSubscription()
+```
+
+`createTest` takes either a `guild` or a `user`. Passing both or neither throws `EntitlementCreateInvalidOwner`.
+
+`client.application.fetchSKUs()` resolves to a `Collection` of `SKU`s. Each `SKU` has `flags`, a `SKUFlagsBitField`,
+and `subscriptions`, the `SubscriptionManager` of that SKU. When you only hold the SKU's ID, use
+`client.application.subscriptions(skuId)`. Subscriptions are fetch-only and never cached, because nothing keeps them up
+to date for the bot:
+
+```ts
+const skus = await client.application.fetchSKUs();
+const subscription = await skus.first()!.subscriptions.fetch(subscriptionId);
+const subscriptions = await client.application.subscriptions(skuId).fetch({ user, limit: 50 }); // a Collection
+```
+
+`Entitlement`, `SKU`, and `Subscription` are exported. `EntitlementResolvable`, `SKUResolvable`, and
+`SubscriptionResolvable` accept the structures or their IDs.
 
 ### Components
 
@@ -816,6 +942,38 @@ to a `Collection` of the deleted messages by ID. Each value is the cached `Messa
 const deleted = await channel.bulkDelete(10, true);
 const ids = [...deleted.keys()];
 ```
+
+`channel.messages` is one `ChannelMessageManager` for every kind of channel, where discord.js has a manager per kind.
+In a direct message or group direct message, its guild-only methods `crosspost`, `bulkDelete`, and `startThread` throw
+`ChannelMessagesGuildOnly` before any request. The other methods work in every channel. `crosspost` takes a message or
+its ID. `client.channels.createMessage(channel, options)` sends a message to a channel or its ID, like discord.js.
+`client.messages.send(channelId, options)` and `channel.send(options)` do the same.
+
+```ts
+await client.channels.createMessage(channelId, { content: 'Awoo' });
+await announcements.messages.crosspost(message);
+```
+
+#### Creating threads
+
+`channel.threads.create(options)` takes `ThreadCreateOptions`, which is `TextThreadCreateOptions` or
+`ForumThreadCreateOptions`. Pass `type` and `invitable` for a thread in a text or announcement channel. Pass `message`
+and `appliedTags` for a post in a forum or media channel. `name`, `autoArchiveDuration`, and `rateLimitPerUser` apply to
+both. Mixing the two is a compile error, and `create` throws a `GatewayTypeError` before any request:
+
+- `ThreadOptionsPostOnly` for `appliedTags` without `message`, or `message` in a text or announcement channel.
+- `ThreadOptionsThreadOnly` for `type` or `invitable` together with `message`.
+- `ThreadPostMessageRequired` for a forum or media channel without `message`.
+
+```ts
+import { ChannelType } from 'discord-api-types/v10';
+
+const thread = await textChannel.threads.create({ name: 'howls', type: ChannelType.PrivateThread, invitable: false });
+const post = await forum.threads.create({ name: 'Awoo', message: { content: 'First howl' }, appliedTags: [tagId] });
+```
+
+To start a thread from an existing message, call `message.startThread()`. Unlike discord.js, an explicit `type` is not
+overridden in an announcement channel.
 
 ### Searching guild messages
 
@@ -893,6 +1051,11 @@ The package exports the discord.js helpers its structures use:
 - Transformers such as `toSnakeCase` and the `transformAPI*` functions convert between API payloads and discord.js-style
   camel case objects.
 - Util functions such as `resolveColor`, `cleanContent`, `parseWebhookURL`, `discordSort`, and `transformResolved`.
+- `transformResolved({ client, guildId, channelId }, data)` resolves the `users`, `members`, `roles`, `channels`,
+  `messages`, and `attachments` of data such as an interaction's `resolved` into maps of structures. It writes nothing
+  to the cache. Message IDs are read from the cache of the `channelId` channel, so without `channelId` only raw messages
+  are resolved. Raw messages resolve to the cached message or are built from the data. Attachments are always built as
+  `Attachment`s.
 
 ```ts
 import { parseEmoji, resolveGuildEmoji, resolvePartialEmoji } from '@wolfstar/plugin-gateway';
@@ -932,6 +1095,18 @@ These errors extend `GatewayError` and carry extra data:
 | `GatewaySessionStoreError`          | A `sessionStore` read or write fails or times out.                           | `operation`, `shardId`, `cause`           |
 
 The client reports dispatch, cache, and session store failures through its `error` event.
+
+Codes thrown by the application, monetization, and message APIs include:
+
+| Code                                        | When                                                                                    |
+| ------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `ApplicationCommandPermissionsTokenMissing` | `set`, `add`, or `remove` on command permissions is called without a bearer `token`.    |
+| `GlobalCommandPermissions`                  | A command permissions method has no guild to read or write the permissions in.          |
+| `EntitlementCreateInvalidOwner`             | `entitlements.createTest` receives both a `guild` and a `user`, or neither.             |
+| `ThreadOptionsPostOnly`                     | `threads.create` receives `message` or `appliedTags` where only a thread is allowed.    |
+| `ThreadOptionsThreadOnly`                   | `threads.create` receives `type` or `invitable` together with `message`.                |
+| `ThreadPostMessageRequired`                 | `threads.create` in a forum or media channel has no `message`.                          |
+| `ChannelMessagesGuildOnly`                  | `crosspost`, `bulkDelete`, or `startThread` is called in a direct message channel.      |
 
 ## Limitations
 
