@@ -70,6 +70,25 @@ setRepository('wolfstar'); // setRepository('https://github.com/wolfstar-project
 setInvite('266624760782258186', '534185897078');
 ```
 
+### Activating with `modules`
+
+On framework 6.5 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({ modules: ['@wolfstar/shared-http-pieces/module'] });
+```
+
+The module adds this package's bundled locales with `ctx.addLocales`. The generated `stars:locales` plugin merges them into the `i18n` option before `@wolfstar/plugin-i18next` builds its handler, so your project's own languages and namespaces are kept.
+The module also registers the `@wolfstar/shared-http-pieces/pieces` plugin, which loads the shared commands and listeners and imports `@wolfstar/plugin-i18next/register`.
+
+You still define the `shared:infoEmbedDescription` key and the information variables, and Sentry is set up the same way as with `register`.
+
+Use either the module or `register`, not both. Combining them registers the shared pieces twice.
+
 Furthermore, error handling can be enabled by setting the `SENTRY_DSN`, `@wolfstar/shared-http-pieces` includes a way to register [Sentry](https://docs.sentry.io) and registers handlers to handle errors into Sentry. The plugin also reads `SENTRY_ROOT` to set [`RewriteFrames`](https://docs.sentry.io/platforms/node/configuration/integrations/pluggable-integrations/#rewriteframes)'s root, defaults to `process.cwd()`.
 
 The Sentry error listener does not report a `UserError`, such as a `PreconditionError`. These are expected failures, which

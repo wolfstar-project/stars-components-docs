@@ -66,3 +66,20 @@ container.influx = new InfluxClient({
 
 > [!IMPORTANT]
 > For manual registration to work as intended, you must register the instance in `container.influx` as shown above.
+
+### Activating with `modules`
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+
+```ts
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({ modules: ['@wolfstar/shared-influx-pieces/module'] });
+```
+
+The module registers the `@wolfstar/shared-influx-pieces/plugin` plugin, which does what `register` does. It creates `container.influx` and loads the listeners when `INFLUX_ENABLED` is not `false` and the `INFLUX_*` credentials are set.
+You still set the `INFLUX_URL`, `INFLUX_TOKEN`, `INFLUX_ORG`, and `INFLUX_BUCKET` environment variables. The environment is loaded before the module's plugins run.
+
+Use either the module or `register`, not both.
