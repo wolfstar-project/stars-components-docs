@@ -117,6 +117,28 @@ await client.load();
 	hooks twice. The CLI skips its injected `/register` import for packages listed in `modules`.
 </Warning>
 
+### Registering only modules
+
+By default, the `stars` CLI activates every installed `@wolfstar/plugin-*` package that is not a module by injecting
+its `/register` import. Set `future.compatibilityVersion: 7` to let `stars.config` alone decide what registers. Only
+the packages in `modules`, and the modules they install, are then registered:
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	future: { compatibilityVersion: 7 },
+	modules: ['@wolfstar/plugin-i18next/module', '@wolfstar/plugin-logger/module']
+});
+```
+
+Version 7 is opt-in and not the default. On it, the CLI warns with
+[`PLUGINS_NOT_REGISTERED`](/documentation/errors/cli#plugins_not_registered) about an installed plugin that no module
+covers. List that plugin in `modules`, import it in the bot yourself, or go back to version `6`. Below version 7,
+`stars info` (the **by name** row) and `stars doctor` (the `plugins` check) list the plugins still registered through
+`/register`.
+
 Check each plugin's package page for its exact entry points and options. See
 [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), [`@wolfstar/plugin-api`](/documentation/packages/plugin-api),
 [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger), and

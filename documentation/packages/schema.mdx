@@ -110,6 +110,39 @@ For type-only imports of the input and resolved shapes:
 import type { StarsConfig, ResolvedStarsConfig, BuilderContext } from '@wolfstar/schema';
 ```
 
+### Registering only modules
+
+`future.compatibilityVersion: 7` is an opt-in preview that makes the configuration decide what registers. It includes
+everything in version 6. In addition, the `@wolfstar/plugin-*` packages found in `package.json` are no longer
+activated by their name: the CLI injects no `import "<name>/register"` into the entry. Only the modules in `modules`,
+and the modules they install, are registered. A plugin that is not a module must be imported by the bot itself.
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/schema/config';
+
+export default defineConfig({
+	future: { compatibilityVersion: 7 },
+	modules: ['@wolfstar/plugin-i18next/module']
+});
+```
+
+Version 6 stays the default, and `LATEST_COMPATIBILITY_VERSION` does not point at 7. Tooling can compare
+`config.future.compatibilityVersion` against the exported `MODULES_ONLY_VERSION` constant to know whether a project
+registers only modules:
+
+```typescript
+import { MODULES_ONLY_VERSION, loadStarsConfig } from '@wolfstar/schema';
+
+const config = await loadStarsConfig({ cwd: process.cwd() });
+const modulesOnly = config.future.compatibilityVersion >= MODULES_ONLY_VERSION;
+```
+
+On version 7, the `stars` commands warn with
+[`PLUGINS_NOT_REGISTERED`](/documentation/errors/cli#plugins_not_registered) about an installed plugin that no module
+covers. Below version 7, `stars info` lists those plugins in a **by name** row and `stars doctor` in a `plugins` check.
+See [Registering only modules](/documentation/guide/plugins#registering-only-modules) for how to move a project over.
+
 ### Default auto imports presets
 
 When a project does not set `imports.presets`, `@wolfstar/schema` resolves it to `@wolfstar/http-framework`,

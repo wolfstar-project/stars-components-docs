@@ -33,7 +33,7 @@ bun add @wolfstar/kit
 `@wolfstar/kit` provides `defineModule` and the runtime that installs Stars modules, the counterpart of `@nuxt/kit`.
 A module is a package that a project lists in `modules` in `stars.config`. While the [`stars` CLI](/documentation/packages/cli)
 loads the project, it installs each module. A module can register runtime plugins in the bot, add auto import
-presets, and hook into the CLI.
+presets, add directories of pieces and locales, run code at the client's lifecycle points, and hook into the CLI.
 
 `@wolfstar/kit` depends on [`@wolfstar/schema`](/documentation/packages/schema) only. A module declares it as a peer
 dependency without pulling in the framework or the CLI.
@@ -62,7 +62,9 @@ export default defineConfig({
 The options are merged over the module's `defaults`: plain objects merge deeply, and arrays and other values replace
 the default. A module that declares a [`meta.configKey`](#reading-options-from-a-config-key) also reads its options
 from a top-level `stars.config` key of that name. A package listed in `modules` is no longer activated through the `/register` import the CLI otherwise
-injects for `@wolfstar/plugin-*` packages.
+injects for `@wolfstar/plugin-*` packages. With
+[`future.compatibilityVersion: 7`](/documentation/packages/cli#compatibility-version), the CLI injects no `/register`
+import at all, so only modules register.
 
 ## Writing a module
 
@@ -109,7 +111,7 @@ export default definePlugin((options: { ttl: number }) => ({
 | `meta`         | `name` (required, usually the package name), optional `version`, `compatibility`, and [`configKey`](#reading-options-from-a-config-key).                                                      |
 | `defaults`     | Default options, merged under the options written in `stars.config`.                                                                                                                          |
 | `dependencies` | Modules (specifiers or definitions) installed before this one.                                                                                                                                |
-| `hooks`        | `stars` CLI hooks, the same ones as `hooks` in `stars.config`. They are registered before `setup` runs. An unknown hook name or a non-function value fails the install with `MODULE_INVALID`. |
+| `hooks`        | `stars` CLI hooks, the same ones as `hooks` in `stars.config`. They are registered before `setup` runs. An unknown hook name or a non-function value fails the install with `MODULE_INVALID`. It also accepts [runtime `client:*` hooks](#runtime-client-hooks), given by source. |
 | `setup`        | `setup(options, ctx)` runs once, in the CLI process, while the project loads.                                                                                                                 |
 
 `meta.compatibility.framework` is a semver range checked against the project's installed `@wolfstar/http-framework`,
@@ -186,6 +188,9 @@ whatever options the second one passes.
 | `ctx.config`                       | The resolved `stars.config`, before any module contributed to it.                                               |
 | `ctx.versions`                     | The detected `framework` and `stars` versions, or `null` when unknown.                                          |
 | `ctx.addPlugin(source)`            | Registers a runtime plugin with `Client.use` in the bot. See below.                                             |
+| `ctx.addPiecesDir(directory)`      | Registers a directory of pieces, loaded next to the bot's own. See [Adding pieces](#adding-pieces).             |
+| `ctx.addLocales(directory)`        | Registers a directory of locales for `@wolfstar/plugin-i18next`. See [Adding locales](#adding-locales).         |
+| `ctx.addClientHook(name, source)`  | Runs a function in the bot at a point of the client's lifecycle. See [Runtime client hooks](#runtime-client-hooks). |
 | `ctx.addImports(preset)`           | Adds a package (a string or `{ from }`) to the auto imports presets, so all of its exports become auto imports. |
 | `ctx.hook(name, callback)`         | Registers a `stars` CLI hook.                                                                                   |
 | `ctx.callHook(name, ...args)`      | Calls a `stars` CLI hook.                                                                                       |
@@ -201,10 +206,115 @@ The plugin runs in the bot's process, while `setup` runs in the CLI's. That is w
   a factory with `options`. A legacy `Plugin` class is passed to `Client.use` as it is, never called.
 - `options` must be JSON-serialisable, because the CLI writes it into the built entry.
 
+### Adding pieces
+
+`ctx.addPiecesDir(directory)` registers a directory of pieces that the bot loads next to its own. Use it to ship
+commands, listeners, interaction handlers, or preconditions in a module. The directory holds one folder per store
+(`commands`, `listeners`, `interaction-handlers`, `preconditions`), like the bot's own `src`:
+
+```typescript
+// module.ts
+import { defineModule } from '@wolfstar/kit';
+
+export default defineModule({
+	meta: { name: 'my-moderation' },
+	setup(options, ctx) {
+		// pieces/commands/ban.js, pieces/listeners/ready.js, ...
+		ctx.addPiecesDir(new URL('./pieces', import.meta.url));
+	}
+});
+```
+
+- Give an absolute path or a `file:` URL. A relative path fails the install with `MODULE_PIECES_INVALID`.
+- The pieces are read from files at runtime, so the directory has to exist in the built bot. A build that bundles
+  everything (Vite, Nitro) has no such directory, so `addPiecesDir` is not useful there.
+- Only the stores that exist when the module runtime runs are covered: the framework's four, and any registered by an
+  earlier import. A folder for a store that a plugin registers later is ignored.
+
+### Adding locales
+
+`ctx.addLocales(directory)` registers a directory of translations next to the project's own languages directory. Use it
+when the pieces or plugins of a module need their own strings. The directory is laid out as
+`<language>/<namespace>.json`, and nested folders make namespaces such as `commands/shared`:
+
+```text
+locales/
+├── en-US/
+│   ├── moderation.json
+│   └── commands/
+│       └── shared.json
+└── it/
+    └── moderation.json
+```
+
+```typescript
+// module.ts
+setup(options, ctx) {
+	ctx.addLocales(new URL('./locales', import.meta.url));
+}
+```
+
+- Give an absolute path or a `file:` URL to a directory that exists when the module is set up. `setup` reads its
+  namespaces then.
+- A runtime plugin generated by the CLI merges the directory into the client's `i18n` option before
+  [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) builds its handler. The project's own languages
+  directory is kept.
+- It needs `@wolfstar/plugin-i18next`, and a framework that re-exports `getRootData` from `@wolfstar/http-framework`.
+- Like `addPiecesDir`, the absolute path is written into the generated source and read at runtime. A build that bundles
+  everything (Vite, Nitro), or one moved to another machine, does not find the directory.
+- A relative path, or a directory that cannot be read, fails the install with `MODULE_LOCALES_INVALID`.
+
+### Runtime client hooks
+
+A module can run code in the bot at the client's lifecycle points, without writing a full runtime plugin. Declare the
+hook in `hooks` with a `client:` name, or call `ctx.addClientHook(name, source)` from `setup`. The supported names are:
+
+- `client:preGenericsInitialization`
+- `client:preInitialization`
+- `client:postInitialization`
+- `client:preLoad`
+- `client:postListen`
+
+The hook runs in the bot's process, while `setup` runs in the CLI's, so it is given by source like a plugin: a package
+specifier, an absolute path or a `file:` URL, or `{ from, export? }`. The export (default `'default'`) is a function
+called with `(client, clientOptions)`, the same arguments a `definePlugin` hook gets.
+
+```typescript
+// module.ts
+import { defineModule } from '@wolfstar/kit';
+
+export default defineModule({
+	meta: { name: 'my-metrics' },
+	hooks: {
+		'client:preLoad': new URL('./hooks.js', import.meta.url)
+	},
+	setup(options, ctx) {
+		ctx.addClientHook('client:postListen', { from: new URL('./hooks.js', import.meta.url), export: 'onListen' });
+	}
+});
+```
+
+```typescript
+// hooks.ts
+import type { Client, ClientOptions } from '@wolfstar/http-framework';
+
+export default async function (client: Client, options: ClientOptions) {}
+
+export async function onListen(client: Client, options: ClientOptions) {}
+```
+
+- Only `client:preLoad` and `client:postListen` hooks may be async. The other three run inside the synchronous `Client`
+  constructor.
+- A module's hooks share one runtime plugin named after the module, so a failing hook is reported with the module's
+  name.
+- A module declares one hook per name. A second hook with the same name, an unknown `client:` name, or a hook that is
+  not given by source (such as a function, or a relative path) fails the install with `MODULE_HOOK_INVALID`.
+
 ## Production with `tsc` or `none`
 
 The `tsdown`, `vite`, and Nitro builds register the runtime plugins through the bot's entry. The `tsc` and `none`
-build tools cannot transform the entry, so the plugins are preloaded with `node --import` instead:
+build tools cannot transform the entry, so the plugins, pieces directories, locales, and client hooks are preloaded
+with `node --import` instead:
 
 - `stars dev` preloads them for you.
 - `stars prepare` and `stars build` write `.stars/modules.mjs`. Start the production bot with it preloaded:
@@ -229,6 +339,9 @@ When a module cannot be installed, `@wolfstar/kit` throws a `ModuleError`. Its `
 | `MODULE_INCOMPATIBLE`   | A `meta.compatibility` range does not match the installed versions.                                                                                                                                                            |
 | `MODULE_SETUP_FAILED`   | `setup` threw or rejected.                                                                                                                                                                                                     |
 | `MODULE_PLUGIN_INVALID` | `addPlugin` got no `from`, a relative path, or options that are not JSON-serialisable.                                                                                                                                         |
+| `MODULE_PIECES_INVALID` | `addPiecesDir` got a relative path instead of an absolute path or a `file:` URL.                                                                                                                                               |
+| `MODULE_HOOK_INVALID`   | A `client:*` hook has an unknown name, is declared twice by the same module, or is not given by source (a function, a missing `from`, or a relative path).                                                                     |
+| `MODULE_LOCALES_INVALID` | `addLocales` got a relative path, or a directory that cannot be read.                                                                                                                                                         |
 
 The `stars` CLI reports a failing module as a [`MODULE_FAILED`](/documentation/errors/cli#module_failed) diagnostic
 and exits with code `2`.
@@ -237,5 +350,6 @@ and exits with code `2`.
 
 `setupModules({ config, hooks, load, versions })` is the function the CLI calls. `load` imports a specifier from the
 project, and `hooks` is a `hookable`-shaped registry. The result, a `ModulesRuntime`, lists the installed modules and
-the runtime plugins, import presets, and `configKeys` they contributed. `mergeOptions(defaults, options)` exposes the merge used for
+the runtime plugins, pieces directories (`piecesDirs`), locales, client hooks (`clientHooks`), import presets, and
+`configKeys` they contributed. `mergeOptions(defaults, options)` exposes the merge used for
 module options.

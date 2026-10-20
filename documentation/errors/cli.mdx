@@ -176,16 +176,35 @@ A module listed in `modules` in `stars.config` could not be installed. The messa
   another module, and the value under it must be an object.
 - `MODULE_PLUGIN_INVALID`: pass `ctx.addPlugin` a package specifier, an absolute path or a `file:` URL, and
   JSON-serialisable options.
+- `MODULE_PIECES_INVALID`: pass `ctx.addPiecesDir` an absolute path or a `file:` URL, such as
+  `new URL('./pieces', import.meta.url)`.
+- `MODULE_HOOK_INVALID`: use one of the `client:*` hook names, declare each name once per module, and give the hook by
+  source (a package specifier, an absolute path, a `file:` URL, or `{ from, export }`), not as a function.
+- `MODULE_LOCALES_INVALID`: pass `ctx.addLocales` an absolute path or a `file:` URL to a directory that exists and is
+  readable when the module is set up.
 - Otherwise: fix the error the module threw (see the cause), or remove it from `modules`.
 
 ## MODULES_PRELOAD_REQUIRED {#modules_preload_required}
 
 A warning from `stars build`, `stars prepare`, and `stars info`. The project uses the `tsc` or `none` build tool and
-its modules add runtime plugins. Those plugins are registered through `node --import`, which only `stars dev` does for
-you.
+its modules add runtime plugins, pieces directories, locales, or client hooks. Those are registered through
+`node --import`, which only `stars dev` does for you.
 
 **Fix:** start the production bot with `node --import ./.stars/modules.mjs <entry>`. `stars prepare` and `stars build`
 write that file.
+
+## PLUGINS_NOT_REGISTERED {#plugins_not_registered}
+
+A warning from `stars build`, `stars prepare`, `stars dev`, `stars info`, and `stars doctor`. The project sets
+`future.compatibilityVersion: 7`, which registers only the modules in `modules`. An installed `@wolfstar/plugin-*`
+dependency that no module covers is no longer activated through its `/register` import, so it never runs. The message
+names those plugins.
+
+**Fix:** one of:
+
+- List the plugin in `modules` once its package exports a module, such as `'@wolfstar/plugin-i18next/module'`.
+- Import the plugin in the bot yourself.
+- Set `future.compatibilityVersion` back to `6`.
 
 ## VARLOCK_LOADER_IMPLICIT {#varlock_loader_implicit}
 
