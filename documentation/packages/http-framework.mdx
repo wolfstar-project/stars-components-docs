@@ -959,8 +959,8 @@ the differences: it creates missing commands with `POST`, updates changed comman
 with `DELETE` only when `removeUnknown` is enabled. When nothing differs, the client logs `Commands: N up to date`.
 Otherwise it logs the number of created, updated, and removed commands.
 
-If a Discord API call fails, the client logs a warning and keeps listening. Interactions are served with the commands
-that are already deployed. Startup registration is skipped when `STARS_COMMANDS_DUMP=1` is set, which is how
+If a Discord API call fails, the client logs a warning and keeps listening. The bot serves interactions with the commands
+that are already deployed. The client skips startup registration when `STARS_COMMANDS_DUMP=1` is set, which is how
 [`stars commands`](/documentation/packages/cli#stars-commands) reads the registry without touching Discord.
 
 `commands` accepts these options:
