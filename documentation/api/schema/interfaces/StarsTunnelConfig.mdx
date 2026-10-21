@@ -9,7 +9,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/config.ts#L162',
+		url: 'https://github.com/wolfstar-project/stars-components/blob/a79b487575d2b897a128e5a1f27abd82d614a24e/packages/schema/src/types/config.ts#L162',
 		label: 'packages/schema/src/types/config.ts:162'
 	}}
 	packageName="@wolfstar/schema"
@@ -22,7 +22,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 
 ### domain?
 
-<ApiMember kind="property" badges={['optional']} signature={['domain?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/config.ts#L179', label: 'packages/schema/src/types/config.ts:179' }}>
+<ApiMember kind="property" badges={['optional']} signature={['domain?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/a79b487575d2b897a128e5a1f27abd82d614a24e/packages/schema/src/types/config.ts#L179', label: 'packages/schema/src/types/config.ts:179' }}>
 
 A domain reserved in your ngrok account (for example `bot.ngrok.app`), so the tunnel keeps one hostname across runs.
 Only for the `ngrok` provider.
@@ -31,7 +31,7 @@ Only for the `ngrok` provider.
 
 ### path?
 
-<ApiMember kind="property" badges={['optional']} signature={['path?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/config.ts#L192', label: 'packages/schema/src/types/config.ts:192' }}>
+<ApiMember kind="property" badges={['optional']} signature={['path?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/a79b487575d2b897a128e5a1f27abd82d614a24e/packages/schema/src/types/config.ts#L192', label: 'packages/schema/src/types/config.ts:192' }}>
 
 The path the interactions endpoint is served on, appended to the tunnel URL.
 
@@ -45,7 +45,7 @@ The path the interactions endpoint is served on, appended to the tunnel URL.
 
 ### provider?
 
-<ApiMember kind="property" badges={['optional']} signature={['provider?: ', ['StarsTunnelProvider', '/documentation/api/schema/type-aliases/StarsTunnelProvider']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/config.ts#L174', label: 'packages/schema/src/types/config.ts:174' }}>
+<ApiMember kind="property" badges={['optional']} signature={['provider?: ', ['StarsTunnelProvider', '/documentation/api/schema/type-aliases/StarsTunnelProvider']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/a79b487575d2b897a128e5a1f27abd82d614a24e/packages/schema/src/types/config.ts#L174', label: 'packages/schema/src/types/config.ts:174' }}>
 
 The service that opens the tunnel. `cloudflared` needs no account (its hostname changes on every run); `ngrok` needs
 an authtoken (`NGROK_AUTHTOKEN` in the environment or the project's `.env`) and the `@ngrok/ngrok` package installed
@@ -61,7 +61,7 @@ in the project.
 
 ### updateEndpoint?
 
-<ApiMember kind="property" badges={['optional']} signature={['updateEndpoint?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/config.ts#L187', label: 'packages/schema/src/types/config.ts:187' }}>
+<ApiMember kind="property" badges={['optional']} signature={['updateEndpoint?: boolean']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/a79b487575d2b897a128e5a1f27abd82d614a24e/packages/schema/src/types/config.ts#L187', label: 'packages/schema/src/types/config.ts:187' }}>
 
 Writes the tunnel's URL to the Discord application's `interactions_endpoint_url` when it changes.
 
@@ -78,7 +78,7 @@ false;
 
 ### url?
 
-<ApiMember kind="property" badges={['optional']} signature={['url?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/config.ts#L167', label: 'packages/schema/src/types/config.ts:167' }}>
+<ApiMember kind="property" badges={['optional']} signature={['url?: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/a79b487575d2b897a128e5a1f27abd82d614a24e/packages/schema/src/types/config.ts#L167', label: 'packages/schema/src/types/config.ts:167' }}>
 
 An https URL you already serve; when unset a quick tunnel is opened instead (see [StarsTunnelConfig.provider](/documentation/api/schema/interfaces/StarsTunnelConfig#provider)).
 Cannot be combined with `provider` or `domain`: a URL you already serve has no provider.
