@@ -71,7 +71,7 @@ import { defineConfig } from '@wolfstar/http-framework/config';
 export default defineConfig({});
 ```
 
-`stars dev`'s URL needs no configuration either — it is detected from `HTTP_PORT` (env var, `src/.env*`/`.env*`, or `dev.env`) or `3000`, the same way Vite's and Nuxt's dev servers do, and `localhost` is swapped for `127.0.0.1` at runtime if that is what is actually reachable. Set `dev.url` only to override it.
+`stars dev`'s display URL needs no configuration either. It follows `dev.env.HTTP_PORT`/`PORT`, the process's `HTTP_PORT`, the project's env-file `HTTP_PORT`/`PORT`, or `3000`, the same way Vite's and Nuxt's dev servers do. An ambient process `PORT` is ignored in framework mode. `localhost` is swapped for `127.0.0.1` at startup if that is what is actually reachable. An explicit `dev.url` overrides only the display URL and health checks, so it can point at a local proxy or a remote tunnel. See [Port conflicts](#port-conflicts).
 
 The resolved configuration is also available programmatically, exactly as the commands see it (re-exported from this package for convenience, or import it directly from `@wolfstar/http-framework/config`):
 
@@ -85,10 +85,10 @@ console.log(config.entry, config.build.output);
 ## Commands
 
 ```sh
-stars dev [--no-tui] [--tunnel|--no-tunnel] [--layout <auto|dashboard|panel>] [--channel <name>] [--level <level>] [--theme <name>] [--config <file>] [--cwd <dir>]
+stars dev [--no-tui] [--style <nuxt-style|dashboard|none>] [--port|-p <port>] [--host [<address>]] [--port-conflict <prompt|next|error|continue>] [--tunnel|--no-tunnel] [--no-mouse] [--layout <auto|dashboard|panel>] [--channel <name>] [--level <level>] [--theme <name>] [--config <file>] [--cwd <dir>]
 stars build [--config <file>] [--cwd <dir>]
 stars info [--json] [--config <file>] [--cwd <dir>]
-stars codegen [--check] [--json] [--config <file>] [--cwd <dir>]
+stars codegen [--only <i18n|commands>] [--check] [--json] [--config <file>] [--cwd <dir>]
 stars prepare [--check] [--json] [--config <file>] [--cwd <dir>]
 stars typecheck [--config <file>] [--cwd <dir>]
 stars commands [list|clean|diff|deploy] [--guild <id>] [--name <name>] [--check] [--yes] [--json]
@@ -128,6 +128,96 @@ changes to pieces to the bot instead of restarting it. See [Hot reload](#hot-rel
 | `'panel'`          | The compact panel pinned to the bottom of the terminal, with the logs folded away |
 
 Press `v` to switch between the two while a session runs.
+
+#### Terminal style
+
+`tui.style` in `stars.config`, or `--style`, picks the presentation by name:
+
+| Value          | Presentation                                                 |
+| -------------- | ------------------------------------------------------------ |
+| `'nuxt-style'` | The compact [panel](#panel), following Nuxt CLI's dev output |
+| `'dashboard'`  | The full-screen [dashboard](#dashboard)                      |
+| `'none'`       | [Plain mode](#plain-mode) logs                               |
+
+```ts
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	tui: { style: 'nuxt-style' },
+	dev: { portConflict: 'prompt' }
+});
+```
+
+`dev.layout` is still supported. The first setting found wins, in this order: `--style`, `--layout`, `tui.style`, then
+`dev.layout`. Without any of them, `stars dev` keeps the automatic choice between the dashboard and the panel.
+`--no-tui` and `STARS_TUI=plain` always use plain logs. An explicit `--tui` overrides `tui.style: 'none'`, but
+`--style none` always uses plain logs.
+
+#### Startup checks
+
+Before `stars dev` creates the builder or writes generated files, it checks that:
+
+- The output, generated-file, and log directories can be written. A directory that can't be created or written, or a
+  file in its place, fails with [`DEV_DIRECTORY_UNWRITABLE`](/documentation/errors/cli#dev_directory_unwritable).
+- The bot's listener port is free. A bind error other than an occupied port, such as a missing permission, fails with
+  [`PORT_CHECK_FAILED`](/documentation/errors/cli#port_check_failed).
+- The listener port is an integer from 1 to 65535. An invalid value fails with
+  [`INVALID_PORT`](/documentation/errors/config#invalid_port).
+
+Listener ports are only validated when `stars dev` starts, so an unrelated shell value doesn't stop `stars build`,
+`stars info`, or `stars doctor` from inspecting the project.
+
+The framework listener binds `HTTP_ADDRESS` (default `0.0.0.0`). Its port comes from `dev.env.HTTP_PORT` or
+`dev.env.PORT`, then the process's `HTTP_PORT`, then the env file's `HTTP_PORT`, then the env file's `PORT` (only when
+`dev.url` isn't set), or `3000`. In Nitro mode, the listener uses `NITRO_HOST`/`HOST` and `NITRO_PORT` before `PORT`.
+
+#### Port conflicts
+
+When the listener port is occupied, `dev.portConflict` or `--port-conflict` decides what happens:
+
+| Value                | Behavior                                                                                                                                                  |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'prompt'` (default) | Asks whether to use the next available port, start anyway on the same port, or cancel startup. Without an interactive terminal, fails with `PORT_IN_USE`. |
+| `'next'`             | Uses the next free port, trying up to 100 higher ports. Fails with `NO_AVAILABLE_PORT` when none is free.                                                 |
+| `'error'`            | Fails right away with [`PORT_IN_USE`](/documentation/errors/cli#port_in_use).                                                                             |
+| `'continue'`         | Skips the bind check and starts on the configured port.                                                                                                   |
+
+The prompt also works with plain logs on a terminal. CI, piped input, and `TERM=dumb` never wait for an answer.
+Cancelling creates no builder and no generated files.
+
+`--port <port>` (or `-p <port>`) sets the listener port for one session:
+
+```sh
+stars dev --port 4000
+stars dev -p 4000
+stars dev --port-conflict next
+```
+
+`--port` and a port picked from the prompt set the child process's `HTTP_PORT`, `PORT`, and `NITRO_PORT` for this
+session only. `stars dev` doesn't rewrite your env files or global variables. An inferred display URL follows the chosen
+port. An explicit `dev.url` (and `dev.health`) stays unchanged, path and query included, and its host and port are never
+probed as the bot's listener. For example, `dev.url: 'https://localhost/bot'` can keep pointing at a proxy on port 443
+while the bot starts on 3000 or `--port 4000`.
+
+#### Listen address
+
+`--host <address>` sets the address the bot listens on, like Nuxt's `--host`. It accepts an IP address or a hostname.
+Use it to expose the dev server on your network or to bind a specific interface:
+
+```sh
+stars dev --host 192.168.1.20
+stars dev --host
+```
+
+A bare `--host` listens on every interface (`0.0.0.0`). `stars dev` passes the address to the bot as `HTTP_ADDRESS`, and
+as `NITRO_HOST` and `HOST` in Nitro mode. The Vite and Nitro dev servers bind to it, and the port check probes that
+address. An inferred display URL follows a concrete address. A wildcard address (`0.0.0.0` or `::`) or an explicit
+`dev.url` leaves the display URL unchanged. An invalid address fails with
+[`INVALID_OPTION`](/documentation/errors/cli#invalid_option).
+
+Port probes release their sockets before startup, so another process can still claim a free port before the bot binds
+it.
 
 `--tunnel` opens the public tunnel at startup for one session, whatever `dev.tunnel` says. When `dev.tunnel` is off,
 `stars dev` opens a `cloudflared` quick tunnel. Otherwise it uses the `dev.tunnel` provider. `--no-tunnel` keeps the tunnel closed at startup even when `dev.tunnel`
@@ -291,7 +381,7 @@ empties a guild whose last command was removed since the last deploy. Command re
 
 #### Panel
 
-The panel is used with `dev.layout: 'panel'`, `--layout panel`, the `v` key, or a terminal smaller than 90×20. It is a
+The panel is used with `tui.style: 'nuxt-style'`, `--style nuxt-style`, `dev.layout: 'panel'`, `--layout panel`, the `v` key, or a terminal smaller than 90×20. It is a
 bottom-aligned panel in the normal buffer, following the layout and keyboard conventions of
 [Nuxt CLI's dev TUI](https://github.com/nuxt/cli/tree/b4b366eafdd9ac4d5b81b6ae7dadda35364252c9/packages/nuxt-cli/src/dev/tui).
 It shows a Stars wordmark, aligned URLs, a 20-cell progress bar with elapsed time, status, and shortcuts. Logs are
@@ -323,7 +413,7 @@ TUI, use `createStarsBanner` from `@wolfstar/start-banner`.
 #### Plain mode
 
 Plain mode prints prefixed lines instead: the channel, then the message, with detail lines indented under it. The bot's
-own output is passed through untouched. It is selected by `--no-tui`, `STARS_TUI=plain`, redirected input/output, CI,
+own output is passed through untouched. It is selected by `--no-tui`, `--style none`, `tui.style: 'none'`, `STARS_TUI=plain`, redirected input/output, CI,
 `TERM=dumb`, or terminals smaller than 40×10. `STARS_TUI=1` overrides CI/size checks, never redirected streams or a
 dumb terminal. Both modes honour `NO_COLOR`/`FORCE_COLOR`; `STARS_REDUCED_MOTION=1` freezes the logo/spinner but keeps
 the elapsed clock. Both stop the bot cleanly on `SIGINT`/`SIGTERM`. `SIGUSR2` restarts the bot (not on Windows).
@@ -332,6 +422,8 @@ the elapsed clock. Both stop the bot cleanly on `SIGINT`/`SIGTERM`. `SIGUSR2` re
 
 Runs the code generators that `codegen` in `stars.config` enables and writes their files. Pass `--check` in CI to fail
 with `CODEGEN_OUTDATED` when a file is stale instead of writing it. Pass `--json` to print `{ check, results }`.
+Pass `--only i18n` or `--only commands` to run a single generator. Repeat the flag or comma-separate the values to run
+several (`--only i18n,commands`).
 
 - `codegen.i18n` types the i18next resources with `@wolfstar/i18next-type-generator`. It is on by default when
   `src/locales/en-US` exists.
@@ -397,6 +489,27 @@ so on) must be set. In CI, where the real secrets are not available, pass placeh
 stars build
 DISCORD_CLIENT_ID=1 DISCORD_TOKEN=x DISCORD_PUBLIC_KEY=0 stars codegen --check
 ```
+
+#### Run one generator in CI
+
+`--only` lets a CI job run the generator it can. The i18n types only read the locale files, so you can check them
+without the bot's secrets or a build. The command types need the built bot and the values it reads while starting:
+
+```sh
+stars codegen --check --only i18n
+stars build && DISCORD_CLIENT_ID=1 DISCORD_TOKEN=x DISCORD_PUBLIC_KEY=0 stars codegen --check --only commands
+```
+
+For example, a GitHub Actions step that checks the i18next types without any secrets:
+
+```yaml
+- name: Check i18n types
+  run: pnpm exec stars codegen --check --only i18n
+```
+
+A generator named in `--only` must be enabled. `--only commands` with `codegen.commands` off fails with
+[`CODEGEN_GENERATOR_DISABLED`](/documentation/errors/cli#codegen_generator_disabled) instead of passing without
+checking anything. An unknown name fails with [`INVALID_OPTION`](/documentation/errors/cli#invalid_option).
 
 `stars dev` does not generate command types, and neither does `stars prepare`, which has no build to read from yet. Run
 `stars codegen` after you change an option, and `stars codegen --check` in CI to keep the file up to date.

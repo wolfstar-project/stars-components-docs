@@ -135,10 +135,46 @@ with code `1`.
 
 ## INVALID_OPTION {#invalid_option}
 
-`stars dev` was given an unknown value for `--layout` or `--level`.
+A command was given an unknown value for one of its flags: `--layout`, `--style`, `--port`, `--host`, `--port-conflict`,
+or `--level` for `stars dev`, or `--only` for `stars codegen`.
 
-**Fix:** use one of the values the message lists. `--layout` accepts `auto`, `dashboard`, or `panel`. `--level`
-accepts `trace`, `debug`, `info`, `warn`, or `error`.
+**Fix:** use one of the values the message lists. `--layout` accepts `auto`, `dashboard`, or `panel`. `--style`
+accepts `nuxt-style`, `dashboard`, or `none`. `--port` accepts an integer from 1 to 65535. `--host` accepts an IP address or hostname. `--port-conflict` accepts
+`prompt`, `next`, `error`, or `continue`. `--level` accepts `trace`, `debug`, `info`, `warn`, or `error`. `--only`
+accepts `i18n` or `commands`.
+
+## PORT_IN_USE {#port_in_use}
+
+`stars dev` found the development listener port already occupied, and it couldn't ask what to do. This happens with
+`dev.portConflict: 'error'` (or `--port-conflict error`), or with the default `prompt` policy in CI, with piped input,
+or with `TERM=dumb`.
+
+**Fix:** stop the other server, pick another port with `--port <1..65535>`, or set `--port-conflict next` or
+`--port-conflict continue` (`dev.portConflict` in `stars.config`). See
+[Port conflicts](/documentation/packages/cli#port-conflicts).
+
+## PORT_CHECK_FAILED {#port_check_failed}
+
+`stars dev` couldn't check whether the listener host and port are free, because binding them failed for another reason
+than the port being occupied (for example, a missing permission or an unknown address). The message includes the host,
+port, and bind error.
+
+**Fix:** check the local address (`HTTP_ADDRESS` or `--host`) and your permission to bind it, or pick another port with `--port`.
+
+## NO_AVAILABLE_PORT {#no_available_port}
+
+With the `next` policy, or the "use the next available port" prompt choice, `stars dev` tried up to 100 ports above the
+occupied one and found none free.
+
+**Fix:** stop a server you no longer need, or pick another starting port with `--port`.
+
+## DEV_DIRECTORY_UNWRITABLE {#dev_directory_unwritable}
+
+Before building, `stars dev` couldn't write to one of its output, generated-file, or log directories. The directory
+can't be created or written, a file blocks its path, or no parent directory exists. The message names the path and
+the reason.
+
+**Fix:** use a writable directory, grant write and search access to it, or remove the file blocking it.
 
 ## INVALID_THEME {#invalid_theme}
 
@@ -151,6 +187,13 @@ accepts `trace`, `debug`, `info`, `warn`, or `error`.
 Generated files (i18n types, etc.) are out of date.
 
 **Fix:** run `stars codegen` to update them.
+
+## CODEGEN_GENERATOR_DISABLED {#codegen_generator_disabled}
+
+`stars codegen --only <generator>` named a generator that is off in `stars.config`, so nothing would have been
+checked.
+
+**Fix:** turn `codegen.<generator>` on, or leave the generator out of `--only`.
 
 ## DEPENDENCY_MISSING {#dependency_missing}
 
