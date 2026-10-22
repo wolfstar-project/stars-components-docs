@@ -87,7 +87,7 @@ if (!ShardClient.context) {
 ## Stars module
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` to add the package to the auto
-imports. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+imports. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
 
 ```ts
 // stars.config.ts
@@ -96,7 +96,8 @@ export default defineConfig({
 });
 ```
 
-The module registers no plugin and takes no options. You still construct the `ShardManager` yourself.
+The module registers no plugin and takes no options. It reserves the `sharder` key of `stars.config` for future options,
+so no other module can claim it. You still construct the `ShardManager` yourself.
 
 ## Layout
 

@@ -80,7 +80,7 @@ drops every entity of that guild. Reactions and poll votes update the cached mes
 ## Stars module
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` to add the package to the auto
-imports. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+imports. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
 
 ```ts
 // stars.config.ts
@@ -89,7 +89,8 @@ export default defineConfig({
 });
 ```
 
-The module registers no plugin and takes no options. `@wolfstar/plugin-gateway` still constructs the cache.
+The module registers no plugin and takes no options. It reserves the `cache` key of `stars.config` for future options,
+so no other module can claim it. `@wolfstar/plugin-gateway` still constructs the cache.
 
 ## Redis
 

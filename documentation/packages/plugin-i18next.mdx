@@ -93,14 +93,24 @@ The plugin registers three hooks:
 ### Activating with `modules`
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
-It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
 
 ```ts
 // stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+import '@wolfstar/plugin-i18next/module';
+
 export default defineConfig({
-	modules: [['@wolfstar/plugin-i18next/module', { defaultLanguageDirectory: './languages' }]]
+	modules: ['@wolfstar/plugin-i18next/module'],
+	i18n: { defaultLanguageDirectory: './languages' }
 });
 ```
+
+The module reads its options from the `i18n` key of `stars.config`. The `[specifier, options]` tuple of `modules`
+still works. Its options are merged over the `i18n` key, so they win.
+
+The optional [`@wolfstar/schema`](/documentation/packages/schema) peer dependency types the `i18n` key in `defineConfig`.
+TypeScript only loads that type once the module is imported, so import `@wolfstar/plugin-i18next/module` in `stars.config.ts`.
 
 Module options must be JSON-serialisable. Set `fetchLanguage` and functions in `hmr.options` through `ClientOptions.i18n`, which is shallowly merged over the module options. Because the merge is shallow, an `hmr` object set there replaces the module's whole `hmr` object, so include `enabled: true` in it.
 

@@ -77,14 +77,24 @@ await client.listen({ port: 8080 }); // interactions webhook; the API server sta
 ### Activating with `modules`
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
-It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
 
 ```ts
 // stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+import '@wolfstar/plugin-api/module';
+
 export default defineConfig({
-	modules: [['@wolfstar/plugin-api/module', { prefix: 'v1', listenOptions: { port: 4000 } }]]
+	modules: ['@wolfstar/plugin-api/module'],
+	api: { prefix: 'v1', listenOptions: { port: 4000 } }
 });
 ```
+
+The module reads its options from the `api` key of `stars.config`. The `[specifier, options]` tuple of `modules`
+still works. Its options are merged over the `api` key, so they win.
+
+The optional [`@wolfstar/schema`](/documentation/packages/schema) peer dependency types the `api` key in `defineConfig`.
+TypeScript only loads that type once the module is imported, so import `@wolfstar/plugin-api/module` in `stars.config.ts`.
 
 Module options must be JSON-serialisable. Set anything else, such as `server` options holding functions, through `ClientOptions.api`, which is merged over the module options.
 
