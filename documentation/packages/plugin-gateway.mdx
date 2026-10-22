@@ -181,6 +181,12 @@ transport.receive(async ({ payload, shardId, state }) => {
 `READY` and `INTERACTION_CREATE` are not replayed, so `client.user` stays `null` and `client.application` stays partial
 until you call `client.application.fetch()`. `client.replayDispatchTypes` lists the types `replayDispatch` handles.
 
+On `READY`, the client drops the cached guilds of that shard which `READY` no longer lists, and emits `guildDelete` for
+each. These are guilds the bot left while disconnected, or while the process was down with a persistent cache. Discord
+does not replay those removals. Each drop also emits `dispatch` as a `GUILD_DELETE` (with `s: 0` and no `raw`), so a
+process replaying this client's dispatches sees these deletions too. This is best effort: a failure, such as an
+unreachable cache or an unknown shard count, is reported through `error`, and the remaining guilds are kept.
+
 ### The `clientReady` event
 
 `clientReady` is emitted once, like discord.js's `Client#clientReady`. It fires after every shard this client manages has
@@ -235,6 +241,40 @@ export class LogMessagesListener extends EventGatewayListener<'messageCreate'> {
 	}
 }
 ```
+
+#### Run a listener on one process
+
+With [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker), the gateway process handles each dispatch, and
+every worker handles it again when it replays it. Pieces loaded on both processes would run twice. Use the
+`RegisterAsDispatchListener` decorator instead of `RegisterAsGatewayListener` to run a listener on one process only. It
+takes the same arguments:
+
+- While the gateway client forwards its dispatches, the listener runs on the workers and stays idle on the gateway
+  process. `forwardGatewayDispatches` marks the client as forwarding, which `client.forwardsDispatches` reports.
+- Otherwise, the listener runs on the gateway client itself, so it also works on a bot that does not use the broker.
+
+```ts
+import { EventGatewayListener, RegisterAsDispatchListener, type Message } from '@wolfstar/plugin-gateway';
+
+@RegisterAsDispatchListener('messageCreate')
+export class LogMessagesListener extends EventGatewayListener<'messageCreate'> {
+	public override run(message: Message) {
+		console.log(`${message.author.username}: ${message.content}`);
+	}
+}
+```
+
+The decorator checks `forwardsDispatches` on every emit, so the order in which forwarding starts and pieces load does not
+matter, and stopping the forwarding brings the listener back. A `once` listener is not spent while it idles.
+
+Only the gateway client emits `clientReady`, `shardReady`, `shardResume`, `shardClose`, `shardError`, `dispatch`,
+`cacheError`, and `cacheSweep`, so they never reach a worker. `RegisterAsDispatchListener` rejects them in its types and
+throws a `TypeError` at runtime. Keep `RegisterAsGatewayListener` for those events.
+
+<Warning>
+	With `events` set on `forwardGatewayDispatches`, a listener of an event built from a dispatch that is not forwarded runs nowhere. Workers receive
+	dispatches at least once, so keep the listener idempotent.
+</Warning>
 
 ## Caching
 

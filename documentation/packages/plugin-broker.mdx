@@ -160,6 +160,32 @@ const stopForwarding = forwardGatewayDispatches(gatewayClient, broker, {
 For a `GatewayClient`, each entry also carries the previous state of the dispatch's entity (for example, the cached
 message a `MESSAGE_UPDATE` replaces), the shard that received the dispatch, and its gateway sequence number.
 
+Forwarding includes the `GUILD_DELETE` the client emits on `dispatch` for a cached guild that a `READY` no longer lists,
+such as one the bot left while offline. Workers clean up those guilds too.
+
+### Run listeners on the workers only
+
+A bot that loads the same pieces on the gateway process and on the workers would handle each dispatch twice.
+`forwardGatewayDispatches` marks a `GatewayClient` as forwarding (`client.forwardsDispatches` returns `true`) until you
+call its stop function. `RegisterAsDispatchListener` from [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway#run-a-listener-on-one-process)
+reads that flag on every emit. It runs the listener on the workers while the gateway forwards, and on the gateway client
+when nothing is forwarded, with no environment variable to read:
+
+```ts
+import { EventGatewayListener, RegisterAsDispatchListener, type Message } from '@wolfstar/plugin-gateway';
+
+@RegisterAsDispatchListener('messageCreate')
+export class ModerationListener extends EventGatewayListener<'messageCreate'> {
+	public override run(message: Message) {
+		// Runs once per dispatch, on whichever process handles it
+	}
+}
+```
+
+The decorator throws for the events a worker never receives, such as `clientReady` and `shardReady`. With `events` set,
+a listener of an event built from a dispatch that is not forwarded runs nowhere. Delivery is at-least-once, so keep these
+listeners idempotent.
+
 ## Replaying gateway dispatches on workers
 
 `replayGatewayDispatches(consumer, client)` replays the dispatches `forwardGatewayDispatches` publishes on a worker's own
