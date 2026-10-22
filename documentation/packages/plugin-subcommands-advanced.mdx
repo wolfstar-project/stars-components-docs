@@ -80,7 +80,7 @@ const client = new Client({
 ### Activating with `modules`
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
-It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
 
 ```ts
 // stars.config.ts
@@ -89,7 +89,8 @@ export default defineConfig({
 });
 ```
 
-The module takes no options. Configure the package through `ClientOptions.subcommandsAdvanced`, as shown above.
+The module takes no options. It reserves the `subcommandsAdvanced` key of `stars.config` for future options, so no other module can claim it.
+Configure the package through `ClientOptions.subcommandsAdvanced`, as shown above.
 
 Without the `stars` CLI, pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the
 `plugins` client option:

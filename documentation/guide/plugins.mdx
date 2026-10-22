@@ -56,18 +56,41 @@ bun add @wolfstar/plugin-i18next
 ### Activating a plugin with `modules`
 
 On `@wolfstar/http-framework` 6.1 and later, every plugin ships a `./module` entry. List it in `modules` in
-`stars.config`, and the [`stars` CLI](/documentation/packages/cli) installs it while it loads the project. Pass options
-with a `[specifier, options]` tuple. The module entries need the optional
-[`@wolfstar/kit`](/documentation/packages/kit) peer dependency, so install it next to the plugin.
+`stars.config`, and the [`stars` CLI](/documentation/packages/cli) installs it while it loads the project. Set the
+module's options under its own top-level key of `stars.config`. The module entries need the optional
+[`@wolfstar/kit`](/documentation/packages/kit) peer dependency at `^0.2.0`, so install it next to the plugin.
 
 ```typescript
 // stars.config.ts
 import { defineConfig } from '@wolfstar/http-framework/config';
+import '@wolfstar/plugin-i18next/module';
 
 export default defineConfig({
-	modules: [['@wolfstar/plugin-i18next/module', { defaultLanguageDirectory: './languages' }]]
+	modules: ['@wolfstar/plugin-i18next/module'],
+	i18n: { defaultLanguageDirectory: './languages' }
 });
 ```
+
+Each module declares its key through [`meta.configKey`](/documentation/packages/kit#reading-options-from-a-config-key):
+
+| Package                                 | `stars.config` key    |
+| --------------------------------------- | --------------------- |
+| `@wolfstar/plugin-api`                  | `api`                 |
+| `@wolfstar/plugin-broker`               | `broker`              |
+| `@wolfstar/plugin-cache`                | `cache`               |
+| `@wolfstar/plugin-gateway`              | `gateway`             |
+| `@wolfstar/plugin-i18next`              | `i18n`                |
+| `@wolfstar/plugin-logger`               | `logger`              |
+| `@wolfstar/plugin-scheduled-tasks`      | `scheduledTasks`      |
+| `@wolfstar/plugin-sharder`              | `sharder`             |
+| `@wolfstar/plugin-subcommands-advanced` | `subcommandsAdvanced` |
+
+The `cache`, `gateway`, `sharder`, and `subcommandsAdvanced` keys take no options yet. They only reserve the name.
+
+The `[specifier, options]` tuple of `modules` still works. Its options are merged over the key, so they win.
+
+The optional [`@wolfstar/schema`](/documentation/packages/schema) peer dependency types each key in `defineConfig`.
+TypeScript only loads that type once the module is imported, so import the module in `stars.config.ts`.
 
 The CLI writes module options into the built entry, so they must be JSON-serialisable. Set anything else, such as
 functions, client instances, or per-process values, through the plugin's `ClientOptions` key. Each plugin merges that
