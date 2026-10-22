@@ -105,7 +105,9 @@ and experimental flags, the output lists:
 - **Dev**: the `dev` options in effect, including the log file, the per-run log directory and how many files it keeps,
   the layout, the channels and levels the dev UI starts with, the command refresh mode, and whether changes are left to
   the bot's hot reload.
-- **Modules**: the installed modules and the runtime plugins they registered.
+- **Modules**: the installed modules and what they registered: runtime plugins, pieces directories, locales, and client
+  hooks. Below compatibility version 7, a **by name** row lists the `@wolfstar/plugin-*` packages activated through
+  their `/register` import because no module covers them.
 
 The tunnel row names the configured provider and domain, for example `ngrok quick tunnel on bot.ngrok.app`.
 
@@ -547,6 +549,9 @@ It covers:
 - Whether `.stars/` is stale. It names each generated file that is out of date.
 - Whether the root `tsconfig.json` still extends `./.stars/tsconfig.json` ([`TSCONFIG_LEGACY_EXTENDS`](/documentation/errors/cli#tsconfig_legacy_extends)).
 - Whether a [varlock](https://varlock.dev) `.env.schema` and `env.loader` agree (the `varlock` check).
+- The plugins registered by name. Below compatibility version 7, the `plugins` check lists the `@wolfstar/plugin-*`
+  packages activated through `/register`. On version 7, the config check warns with
+  [`PLUGINS_NOT_REGISTERED`](/documentation/errors/cli#plugins_not_registered) about any of them left out.
 
 `--online` also asks Discord whether the token works and where the application sends its interactions. `stars doctor`
 changes nothing unless you pass `--fix`. `--json` prints `{ ok, checks }` for scripts. The exit code is `1` when a
@@ -709,6 +714,9 @@ declares no `exports`, is still injected so a missing install surfaces as a reso
 `ERR_PACKAGE_PATH_NOT_EXPORTED` on a library plugin, upgrade to `@wolfstar/cli@2.0.2` or newer, or refresh your
 lockfile so it resolves `@wolfstar/vite-server@0.2.2` or newer.
 
+With [`future.compatibilityVersion: 7`](#compatibility-version), `stars` no longer injects any `/register` import.
+Only the packages in `modules`, and the modules they install, are registered.
+
 ```typescript
 export default defineConfig({
 	tsdown: { dts: true }
@@ -754,6 +762,11 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 | `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript                                                         |
 | `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                                                                |
 | `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`, and the CLI follows the runtime when it picks varlock |
+| `7` (opt-in)  | Everything in `6`, plus only modules register: installed `@wolfstar/plugin-*` packages are no longer activated through an injected `/register` import                       |
+
+Version 7 is an opt-in preview, not the default. On version 7, `stars build`, `stars prepare`, `stars dev`,
+`stars info`, and `stars doctor` warn with [`PLUGINS_NOT_REGISTERED`](/documentation/errors/cli#plugins_not_registered)
+about an installed plugin that no module covers.
 
 Version 3 is end-of-life. It still works, but every command prints a
 [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and the next major
