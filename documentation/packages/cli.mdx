@@ -443,15 +443,12 @@ With `--json`, the output lists whole commands under `deleted` and subcommands o
 
 ```json
 {
-  "deleted": [],
-  "removed": [{ "id": "1234567890", "path": "settings server" }]
+	"deleted": [],
+	"removed": [{ "id": "1234567890", "path": "settings server" }]
 }
 ```
 
-<Warning>
-`clean` reads the deployed command and writes it back. A deploy that runs between the read and the write is
-overwritten.
-</Warning>
+<Warning>`clean` reads the deployed command and writes it back. A deploy that runs between the read and the write is overwritten.</Warning>
 
 #### Compare and deploy
 
