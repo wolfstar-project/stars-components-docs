@@ -504,10 +504,17 @@ stars commands list                 # global commands
 stars commands list --guild 1234    # a guild's commands
 stars commands clean                # checklist wizard, then a confirmation
 stars commands clean --name ping    # delete one, asking first
+stars commands clean --name "settings server"   # remove one subcommand, the rest of /settings stays
 ```
 
 It reads `DISCORD_TOKEN` and `DISCORD_APPLICATION_ID` (or `APPLICATION_ID`) from the environment or the project's
 `.env`, the same place the bot reads them from. Outside a terminal, `clean` refuses to run without `--yes` or `--name`.
+
+`--name` also takes the path of a subcommand or a group (`settings server`, `settings group sub`). `clean` fetches the
+deployed command, drops that entry, and sends it back with a `PATCH`, so the parent and its other subcommands stay. An
+exact command name, including a context menu name such as `Report User`, matches first. Removing a command's last
+subcommand deletes the whole command. See [`stars commands`](/documentation/packages/cli#remove-a-subcommand-or-group)
+for the details.
 
 ### Dev Loop Options <Badge type="tip" text="optional" />
 

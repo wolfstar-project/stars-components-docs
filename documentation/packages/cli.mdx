@@ -409,12 +409,49 @@ stars commands list                 # global commands
 stars commands list --guild 1234    # a guild's commands
 stars commands clean                # wizard: pick from a checklist, then confirm
 stars commands clean --name ping    # delete one, asking first
+stars commands clean --name "settings server" --yes   # remove one subcommand, the rest of /settings stays
 stars commands clean --guild 1234 --yes
 ```
 
 It reads `DISCORD_TOKEN` and `DISCORD_APPLICATION_ID` (or `APPLICATION_ID`) from the environment or the project's
 `.env`, the same place the bot reads them from. `clean` deletes deployed commands, so on a terminal it opens a wizard
 (a checklist of what is deployed, then a confirmation). Anywhere else it refuses to run without `--yes` or `--name`.
+
+#### Remove a subcommand or group
+
+`--name` also takes the path of a subcommand or a group: `settings server` removes the `server` subcommand (or group)
+of `/settings`, and `settings group sub` removes one subcommand inside a group. Use it to drop a single subcommand you
+no longer register without deleting the whole command. Discord has no endpoint to delete a subcommand, so `clean`
+fetches the deployed command, drops that entry from its `options`, and sends the command back with a `PATCH`. The
+parent command and its other subcommands stay. Paths under the same command share one request.
+
+```sh
+stars commands clean --name "settings server"                  # remove one subcommand, asking first
+stars commands clean --name "settings group sub" --yes         # remove a subcommand inside a group
+stars commands clean --name "settings server" --name "settings audit" --json
+```
+
+- A value that exactly matches a deployed command's name deletes that command first. This keeps context menu commands
+  with spaces in their names, such as `Report User`, working.
+- A group left without subcommands is removed along with its last one, since Discord rejects an empty group.
+- A command cannot exist without a subcommand. Removing a command's last subcommand deletes the whole command. The
+  confirmation says so, and `--yes` accepts it.
+- A path that matches nothing fails with [`COMMAND_NOT_FOUND`](/documentation/errors/cli#command_not_found).
+- The wizard still lists whole commands only. Pass `--name` to remove a subcommand or group.
+
+With `--json`, the output lists whole commands under `deleted` and subcommands or groups under `removed`:
+
+```json
+{
+  "deleted": [],
+  "removed": [{ "id": "1234567890", "path": "settings server" }]
+}
+```
+
+<Warning>
+`clean` reads the deployed command and writes it back. A deploy that runs between the read and the write is
+overwritten.
+</Warning>
 
 #### Compare and deploy
 
