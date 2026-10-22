@@ -824,9 +824,9 @@ await created.delete();
 compares the order of the options. It returns `false` for a foreign argument.
 
 <Warning>
-	`set(commands)` replaces every command of the application, or of the guild, with the given ones. `@wolfstar/http-framework` registers the
-	commands of your pieces with the same API call, so `set()` deletes the commands the framework registered. Nothing in this package calls
-	`set()` for you. Use it only for commands the framework does not manage.
+	`set(commands)` replaces every command of the application, or of the guild, with the given ones. `@wolfstar/http-framework` registers the commands
+	of your pieces with the same API call, so `set()` deletes the commands the framework registered. Nothing in this package calls `set()` for you.
+	Use it only for commands the framework does not manage.
 </Warning>
 
 `ApplicationCommandPermissionsManager` manages the permissions of commands in a guild. It is
@@ -1098,15 +1098,15 @@ The client reports dispatch, cache, and session store failures through its `erro
 
 Codes thrown by the application, monetization, and message APIs include:
 
-| Code                                        | When                                                                                    |
-| ------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `ApplicationCommandPermissionsTokenMissing` | `set`, `add`, or `remove` on command permissions is called without a bearer `token`.    |
-| `GlobalCommandPermissions`                  | A command permissions method has no guild to read or write the permissions in.          |
-| `EntitlementCreateInvalidOwner`             | `entitlements.createTest` receives both a `guild` and a `user`, or neither.             |
-| `ThreadOptionsPostOnly`                     | `threads.create` receives `message` or `appliedTags` where only a thread is allowed.    |
-| `ThreadOptionsThreadOnly`                   | `threads.create` receives `type` or `invitable` together with `message`.                |
-| `ThreadPostMessageRequired`                 | `threads.create` in a forum or media channel has no `message`.                          |
-| `ChannelMessagesGuildOnly`                  | `crosspost`, `bulkDelete`, or `startThread` is called in a direct message channel.      |
+| Code                                        | When                                                                                 |
+| ------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `ApplicationCommandPermissionsTokenMissing` | `set`, `add`, or `remove` on command permissions is called without a bearer `token`. |
+| `GlobalCommandPermissions`                  | A command permissions method has no guild to read or write the permissions in.       |
+| `EntitlementCreateInvalidOwner`             | `entitlements.createTest` receives both a `guild` and a `user`, or neither.          |
+| `ThreadOptionsPostOnly`                     | `threads.create` receives `message` or `appliedTags` where only a thread is allowed. |
+| `ThreadOptionsThreadOnly`                   | `threads.create` receives `type` or `invitable` together with `message`.             |
+| `ThreadPostMessageRequired`                 | `threads.create` in a forum or media channel has no `message`.                       |
+| `ChannelMessagesGuildOnly`                  | `crosspost`, `bulkDelete`, or `startThread` is called in a direct message channel.   |
 
 ## Limitations
 
