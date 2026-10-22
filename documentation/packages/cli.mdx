@@ -174,12 +174,12 @@ The framework listener binds `HTTP_ADDRESS` (default `0.0.0.0`). Its port comes 
 
 When the listener port is occupied, `dev.portConflict` or `--port-conflict` decides what happens:
 
-| Value                | Behavior                                                                                                                                                     |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Value                | Behavior                                                                                                                                                  |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `'prompt'` (default) | Asks whether to use the next available port, start anyway on the same port, or cancel startup. Without an interactive terminal, fails with `PORT_IN_USE`. |
-| `'next'`             | Uses the next free port, trying up to 100 higher ports. Fails with `NO_AVAILABLE_PORT` when none is free.                                                    |
-| `'error'`            | Fails right away with [`PORT_IN_USE`](/documentation/errors/cli#port_in_use).                                                                               |
-| `'continue'`         | Skips the bind check and starts on the configured port.                                                                                                      |
+| `'next'`             | Uses the next free port, trying up to 100 higher ports. Fails with `NO_AVAILABLE_PORT` when none is free.                                                 |
+| `'error'`            | Fails right away with [`PORT_IN_USE`](/documentation/errors/cli#port_in_use).                                                                             |
+| `'continue'`         | Skips the bind check and starts on the configured port.                                                                                                   |
 
 The prompt also works with plain logs on a terminal. CI, piped input, and `TERM=dumb` never wait for an answer.
 Cancelling creates no builder and no generated files.
