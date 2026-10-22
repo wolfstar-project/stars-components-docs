@@ -728,7 +728,7 @@ Setting `imports.presets` replaces the default list, so keep `@wolfstar/decorato
 | `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript                                                         |
 | `5`           | Everything in `4`, plus `env` registered automatically when the project depends on `@wolfstar/env-utilities`                                                                |
 | `6` (default) | Everything in `5`, plus the generated tsconfig split into `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`, and the CLI follows the runtime when it picks varlock |
-| `7` (opt-in)  | Everything in `6`, plus only modules register: installed `@wolfstar/plugin-*` packages are no longer activated through an injected `/register` import |
+| `7` (opt-in)  | Everything in `6`, plus only modules register: installed `@wolfstar/plugin-*` packages are no longer activated through an injected `/register` import                       |
 
 Version 7 is an opt-in preview, not the default. On version 7, `stars build`, `stars prepare`, `stars dev`,
 `stars info`, and `stars doctor` warn with [`PLUGINS_NOT_REGISTERED`](/documentation/errors/cli#plugins_not_registered)

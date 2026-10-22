@@ -780,7 +780,7 @@ export default defineConfig({
 | `4`           | `tsdown` configured from `stars.config` alone, auto imports on and wired in, `'auto'` picks `tsdown` for TypeScript; [`env`](#environment-env) is opt-in |
 | `5`           | Everything in `4`, plus [`env`](#environment-env) registered automatically when the project depends on `@wolfstar/env-utilities`                         |
 | `6` (default) | Everything in `5`, plus the generated TypeScript configuration split in two: `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`                  |
-| `7` (opt-in)  | Everything in `6`, plus only the modules in `modules` register: `@wolfstar/plugin-*` dependencies are no longer activated by their `/register` import   |
+| `7` (opt-in)  | Everything in `6`, plus only the modules in `modules` register: `@wolfstar/plugin-*` dependencies are no longer activated by their `/register` import    |
 
 From version 4 on:
 
