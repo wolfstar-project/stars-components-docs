@@ -8,7 +8,7 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 
 <ApiPackageHeader
 	name="@wolfstar/schema"
-	version="0.10.0"
+	version="0.12.0"
 	guideHref="/documentation/packages/schema"
 	sourceHref="https://github.com/wolfstar-project/stars-components/tree/main/packages/schema"
 />
@@ -32,6 +32,12 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		{ name: 'BuilderEvents', kind: 'interface', href: '/documentation/api/schema/interfaces/BuilderEvents' },
 		{ name: 'BuildOutcome', kind: 'interface', href: '/documentation/api/schema/interfaces/BuildOutcome' },
 		{
+			name: 'ClientHookRegistration',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/ClientHookRegistration',
+			summary: "A runtime hook a module declared (hooks['client:'] or ctx.addClientHook)."
+		},
+		{
 			name: 'InstalledModule',
 			kind: 'interface',
 			href: '/documentation/api/schema/interfaces/InstalledModule',
@@ -41,12 +47,25 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		{ name: 'LoadedConfigFile', kind: 'interface', href: '/documentation/api/schema/interfaces/LoadedConfigFile' },
 		{ name: 'LoadStarsConfigOptions', kind: 'interface', href: '/documentation/api/schema/interfaces/LoadStarsConfigOptions' },
 		{
+			name: 'LocalesRegistration',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/LocalesRegistration',
+			summary:
+				'A directory of locales a module registered with ctx.addLocales: <lng>/<namespace>.json, the layout @wolfstar/plugin-i18next reads.'
+		},
+		{
 			name: 'ModulesRuntime',
 			kind: 'interface',
 			href: '/documentation/api/schema/interfaces/ModulesRuntime',
 			summary: 'What the installed modules contributed, known once the CLI ran their setup.'
 		},
 		{ name: 'PackageJsonLike', kind: 'interface', href: '/documentation/api/schema/interfaces/PackageJsonLike' },
+		{
+			name: 'PiecesDirRegistration',
+			kind: 'interface',
+			href: '/documentation/api/schema/interfaces/PiecesDirRegistration',
+			summary: 'A directory of pieces a module registered with ctx.addPiecesDir.'
+		},
 		{
 			name: 'PrepareProjectResult',
 			kind: 'interface',
@@ -73,6 +92,7 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 		},
 		{ name: 'ResolvedNitroConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedNitroConfig' },
 		{ name: 'ResolvedStarsConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedStarsConfig' },
+		{ name: 'ResolvedTuiConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedTuiConfig' },
 		{ name: 'ResolvedTypecheckConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/ResolvedTypecheckConfig' },
 		{
 			name: 'RuntimePluginRegistration',
@@ -127,11 +147,13 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			href: '/documentation/api/schema/interfaces/StarsTsdownConfig',
 			summary: 'Options for tsdown, the bundler stars build uses by default.'
 		},
+		{ name: 'StarsTuiConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsTuiConfig' },
 		{ name: 'StarsTunnelConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsTunnelConfig' },
 		{ name: 'StarsTypecheckConfig', kind: 'interface', href: '/documentation/api/schema/interfaces/StarsTypecheckConfig' },
 		{ name: 'VarlockDetection', kind: 'interface', href: '/documentation/api/schema/interfaces/VarlockDetection' },
 		{ name: 'VarlockSchema', kind: 'interface', href: '/documentation/api/schema/interfaces/VarlockSchema' },
 		{ name: 'BuilderLogLevel', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/BuilderLogLevel' },
+		{ name: 'ClientHookName', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/ClientHookName' },
 		{ name: 'ConfigDiagnosticCode', kind: 'type-alias', href: '/documentation/api/schema/type-aliases/ConfigDiagnosticCode' },
 		{
 			name: 'ResolvedHooksConfig',
@@ -231,6 +253,12 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			href: '/documentation/api/schema/variables/BUILT_IN_CONFIG_KEYS',
 			summary: 'The top-level keys of stars.config the schema owns.'
 		},
+		{
+			name: 'CLIENT_HOOK_NAMES',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/CLIENT_HOOK_NAMES',
+			summary: 'The lifecycle hooks of a runtime plugin, as a module names them in hooks: client: followed by the plugin hook.'
+		},
 		{ name: 'CONFIG_EXTENSIONS', kind: 'variable', href: '/documentation/api/schema/variables/CONFIG_EXTENSIONS' },
 		{ name: 'CONFIG_FILE_NAMES', kind: 'variable', href: '/documentation/api/schema/variables/CONFIG_FILE_NAMES' },
 		{
@@ -278,6 +306,13 @@ import { InstallPackage } from '/snippets/install-package.jsx';
 			kind: 'variable',
 			href: '/documentation/api/schema/variables/LOG_LEVELS',
 			summary: 'Every level dev.logs.levels accepts, from the most verbose to the most severe.'
+		},
+		{
+			name: 'MODULES_ONLY_VERSION',
+			kind: 'variable',
+			href: '/documentation/api/schema/variables/MODULES_ONLY_VERSION',
+			summary:
+				'From this version on the configuration decides what registers: the @wolfstar/plugin- packages found in package.json are no longer activated…'
 		},
 		{
 			name: 'SPLIT_TSCONFIG_VERSION',

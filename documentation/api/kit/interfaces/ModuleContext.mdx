@@ -9,8 +9,8 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L64',
-		label: 'packages/kit/src/types.ts:64'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L77',
+		label: 'packages/kit/src/types.ts:77'
 	}}
 	packageName="@wolfstar/kit"
 	packageHref="/documentation/api/kit"
@@ -22,7 +22,7 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 
 ### callHook
 
-<ApiMember kind="property" signature={['callHook: <Name extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '>(\n  name: Name,\n  ...args: ', ['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'], '<', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '[Name]>\n) => unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L77', label: 'packages/kit/src/types.ts:77' }}>
+<ApiMember kind="property" signature={['callHook: <Name extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '>(\n  name: Name,\n  ...args: ', ['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'], '<', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '[Name]>\n) => unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L114', label: 'packages/kit/src/types.ts:114' }}>
 
 Calls a hook of the `stars` CLI.
 
@@ -30,7 +30,7 @@ Calls a hook of the `stars` CLI.
 
 ### config
 
-<ApiMember kind="property" badges={['readonly']} signature={['readonly config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L68', label: 'packages/kit/src/types.ts:68' }}>
+<ApiMember kind="property" badges={['readonly']} signature={['readonly config: ', ['ResolvedStarsConfig', '/documentation/api/schema/interfaces/ResolvedStarsConfig']]} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L81', label: 'packages/kit/src/types.ts:81' }}>
 
 The resolved `stars.config`, before any module contributed.
 
@@ -38,7 +38,7 @@ The resolved `stars.config`, before any module contributed.
 
 ### hook
 
-<ApiMember kind="property" signature={['hook: <Name extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '>(name: Name, callback: ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '[Name]) => unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L75', label: 'packages/kit/src/types.ts:75' }}>
+<ApiMember kind="property" signature={['hook: <Name extends keyof ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '>(name: Name, callback: ', ['StarsHooks', '/documentation/api/schema/interfaces/StarsHooks'], '[Name]) => unknown']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L112', label: 'packages/kit/src/types.ts:112' }}>
 
 Registers a hook of the `stars` CLI.
 
@@ -46,7 +46,7 @@ Registers a hook of the `stars` CLI.
 
 ### root
 
-<ApiMember kind="property" badges={['readonly']} signature={['readonly root: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L66', label: 'packages/kit/src/types.ts:66' }}>
+<ApiMember kind="property" badges={['readonly']} signature={['readonly root: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L79', label: 'packages/kit/src/types.ts:79' }}>
 
 Absolute project root.
 
@@ -65,16 +65,54 @@ Absolute project root.
 		'>'
 	]}
 	source={{
-		url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L69',
-		label: 'packages/kit/src/types.ts:69'
+		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L82',
+		label: 'packages/kit/src/types.ts:82'
 	}}
 />
 
 ## Methods
 
+### addClientHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L110', label: 'packages/kit/src/types.ts:110' }}>
+
+<ApiSignature
+	tokens={[
+		'addClientHook(\n  name: "client:preGenericsInitialization" | "client:preInitialization" | "client:postInitialization" | "client:preLoad" | "client:postListen",\n  hook: string | ',
+		['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'],
+		' | ',
+		['ModuleClientHookSource', '/documentation/api/kit/interfaces/ModuleClientHookSource'],
+		'\n): void'
+	]}
+/>
+
+Registers a function to run in the bot at `name` (`client:preLoad`, …). It goes on a runtime plugin named after
+the module, so a failing hook is reported with the module's name. One hook per name and module.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="name"
+	type={['"client:preGenericsInitialization" | "client:preInitialization" | "client:postInitialization" | "client:preLoad" | "client:postListen"']}
+/>
+
+<ApiParam
+	name="hook"
+	type={[
+		'string | ',
+		['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'],
+		' | ',
+		['ModuleClientHookSource', '/documentation/api/kit/interfaces/ModuleClientHookSource']
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
 ### addImports()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L73', label: 'packages/kit/src/types.ts:73' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L105', label: 'packages/kit/src/types.ts:105' }}>
 
 <ApiSignature tokens={['addImports(preset: string | { from: string }): void']} />
 
@@ -88,9 +126,52 @@ Adds a package to the auto imports presets (`imports.presets`): all its exports 
 
 </ApiMember>
 
+### addLocales()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L103', label: 'packages/kit/src/types.ts:103' }}>
+
+<ApiSignature tokens={['addLocales(directory: string | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'], '): void']} />
+
+Registers a directory of locales, `<lng>/<namespace>.json` (nested folders make namespaces such as
+`commands/shared`), next to the project's own. Give an absolute path or a `file:` URL; the directory has to exist
+when the module is set up, because its namespaces are read then. It is merged into the `i18n` option of the
+client by a runtime plugin that runs before `@wolfstar/plugin-i18next` builds its handler, so the project's
+languages directory is kept. It needs `@wolfstar/plugin-i18next` and a framework that exports `getRootData`. Like
+`addPiecesDir`, the absolute path is written into the generated source and read at runtime, so a build that bundles
+everything (Vite, Nitro) or one moved to another machine will not find the directory.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="directory" type={['string | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### addPiecesDir()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L93', label: 'packages/kit/src/types.ts:93' }}>
+
+<ApiSignature tokens={['addPiecesDir(directory: string | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL'], '): void']} />
+
+Registers a directory of pieces. It holds one folder per store (`commands`, `listeners`, `interaction-handlers`,
+`preconditions`), like the bot's own `src`, and is loaded next to the bot's pieces. Give an absolute path or a
+`file:` URL (`new URL('./pieces', import.meta.url)`); a relative path is rejected. The pieces are loaded from files
+at runtime, so the directory has to exist in the built bot: a build that bundles everything (Vite, Nitro) has none.
+Only the stores that exist when the modules source runs are covered (the framework's four, and any registered by an
+earlier import): a folder for a store that a plugin registers later is ignored.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="directory" type={['string | ', ['URL', 'https://developer.mozilla.org/en-US/docs/Web/API/URL']]} />
+
+</ApiParams>
+
+</ApiMember>
+
 ### addPlugin()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L71', label: 'packages/kit/src/types.ts:71' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L84', label: 'packages/kit/src/types.ts:84' }}>
 
 <ApiSignature
 	tokens={[
@@ -122,7 +203,7 @@ Registers a runtime plugin. See [ModulePluginSource](/documentation/api/kit/inte
 
 ### installModule()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/ba9c7fb1421c5927ca0cc59466c2ca8b6459ba64/packages/kit/src/types.ts#L79', label: 'packages/kit/src/types.ts:79' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/kit/src/types.ts#L116', label: 'packages/kit/src/types.ts:116' }}>
 
 <ApiSignature
 	tokens={[

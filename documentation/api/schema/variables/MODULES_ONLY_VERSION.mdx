@@ -1,0 +1,24 @@
+---
+title: 'Variable: MODULES_ONLY_VERSION'
+description: 'From this version on the configuration decides what registers: the @wolfstar/plugin- packages found in package.json are no longer activated by name (… (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/config/compatibility.ts#L37',
+		label: 'packages/schema/src/config/compatibility.ts:37'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+From this version on the configuration decides what registers: the `@wolfstar/plugin-*` packages found in
+`package.json` are no longer activated by name (`import "<name>/register"` is not injected), only the modules in
+`modules` and the ones they install are. It is opt-in and not the default (nor `LATEST_COMPATIBILITY_VERSION`) until
+the external plugins ship a module entry.
+
+<ApiSignature tokens={['const MODULES_ONLY_VERSION: 7']} />

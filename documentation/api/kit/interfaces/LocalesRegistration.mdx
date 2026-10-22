@@ -1,0 +1,40 @@
+---
+title: 'Interface: LocalesRegistration'
+description: 'A directory of locales a module registered with ctx.addLocales: <lng>/<namespace>.json, the layout @wolfstar/plugin-i18next reads. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="interface" packageName="@wolfstar/kit" packageHref="/documentation/api/kit" />
+
+A directory of locales a module registered with `ctx.addLocales`: `<lng>/<namespace>.json`, the layout
+`@wolfstar/plugin-i18next` reads. The namespaces are read from the files when the module is set up.
+
+<ApiSignature tokens={['interface LocalesRegistration']} />
+
+## Properties
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']}>
+
+The module that registered it.
+
+</ApiMember>
+
+### namespaces
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly namespaces: readonly string[]']}>
+
+Every namespace found below the language folders, e.g. `commands/shared`.
+
+</ApiMember>
+
+### path
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly path: string']}>
+
+An absolute path.
+
+</ApiMember>

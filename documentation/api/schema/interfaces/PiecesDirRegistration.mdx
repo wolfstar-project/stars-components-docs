@@ -1,0 +1,40 @@
+---
+title: 'Interface: PiecesDirRegistration'
+description: 'A directory of pieces a module registered with ctx.addPiecesDir. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L37',
+		label: 'packages/schema/src/types/modules.ts:37'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+A directory of pieces a module registered with `ctx.addPiecesDir`. It holds one folder per store (`commands`,
+`listeners`, …), like the bot's own `src`, and is handed to `container.stores.registerPath` before the bot loads.
+
+<ApiSignature tokens={['interface PiecesDirRegistration']} />
+
+## Properties
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L39', label: 'packages/schema/src/types/modules.ts:39' }}>
+
+The module that registered it.
+
+</ApiMember>
+
+### path
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly path: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L41', label: 'packages/schema/src/types/modules.ts:41' }}>
+
+An absolute path.
+
+</ApiMember>

@@ -1,0 +1,32 @@
+---
+title: 'Interface: PiecesDirRegistration'
+description: 'A directory of pieces a module registered with ctx.addPiecesDir. (@wolfstar/kit)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader kind="interface" packageName="@wolfstar/kit" packageHref="/documentation/api/kit" />
+
+A directory of pieces a module registered with `ctx.addPiecesDir`. It holds one folder per store (`commands`,
+`listeners`, …), like the bot's own `src`, and is handed to `container.stores.registerPath` before the bot loads.
+
+<ApiSignature tokens={['interface PiecesDirRegistration']} />
+
+## Properties
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']}>
+
+The module that registered it.
+
+</ApiMember>
+
+### path
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly path: string']}>
+
+An absolute path.
+
+</ApiMember>

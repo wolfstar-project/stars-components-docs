@@ -1,0 +1,48 @@
+---
+title: 'Interface: LocalesRegistration'
+description: 'A directory of locales a module registered with ctx.addLocales: <lng>/<namespace>.json, the layout @wolfstar/plugin-i18next reads. (@wolfstar/schema)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L77',
+		label: 'packages/schema/src/types/modules.ts:77'
+	}}
+	packageName="@wolfstar/schema"
+	packageHref="/documentation/api/schema"
+/>
+
+A directory of locales a module registered with `ctx.addLocales`: `<lng>/<namespace>.json`, the layout
+`@wolfstar/plugin-i18next` reads. The namespaces are read from the files when the module is set up.
+
+<ApiSignature tokens={['interface LocalesRegistration']} />
+
+## Properties
+
+### module
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly module: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L79', label: 'packages/schema/src/types/modules.ts:79' }}>
+
+The module that registered it.
+
+</ApiMember>
+
+### namespaces
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly namespaces: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L83', label: 'packages/schema/src/types/modules.ts:83' }}>
+
+Every namespace found below the language folders, e.g. `commands/shared`.
+
+</ApiMember>
+
+### path
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly path: string']} source={{ url: 'https://github.com/wolfstar-project/stars-components/blob/3785ac54e2c681b0525fad9f298b406992acafd5/packages/schema/src/types/modules.ts#L81', label: 'packages/schema/src/types/modules.ts:81' }}>
+
+An absolute path.
+
+</ApiMember>
