@@ -85,7 +85,7 @@ console.log(config.entry, config.build.output);
 ## Commands
 
 ```sh
-stars dev [--no-tui] [--style <nuxt-style|dashboard|none>] [--port <port>] [--port-conflict <prompt|next|error|continue>] [--tunnel|--no-tunnel] [--no-mouse] [--layout <auto|dashboard|panel>] [--channel <name>] [--level <level>] [--theme <name>] [--config <file>] [--cwd <dir>]
+stars dev [--no-tui] [--style <nuxt-style|dashboard|none>] [--port|-p <port>] [--host [<address>]] [--port-conflict <prompt|next|error|continue>] [--tunnel|--no-tunnel] [--no-mouse] [--layout <auto|dashboard|panel>] [--channel <name>] [--level <level>] [--theme <name>] [--config <file>] [--cwd <dir>]
 stars build [--config <file>] [--cwd <dir>]
 stars info [--json] [--config <file>] [--cwd <dir>]
 stars codegen [--only <i18n|commands>] [--check] [--json] [--config <file>] [--cwd <dir>]
@@ -184,10 +184,11 @@ When the listener port is occupied, `dev.portConflict` or `--port-conflict` deci
 The prompt also works with plain logs on a terminal. CI, piped input, and `TERM=dumb` never wait for an answer.
 Cancelling creates no builder and no generated files.
 
-`--port <port>` sets the listener port for one session:
+`--port <port>` (or `-p <port>`) sets the listener port for one session:
 
 ```sh
 stars dev --port 4000
+stars dev -p 4000
 stars dev --port-conflict next
 ```
 
@@ -196,6 +197,22 @@ session only. `stars dev` doesn't rewrite your env files or global variables. An
 port. An explicit `dev.url` (and `dev.health`) stays unchanged, path and query included, and its host and port are never
 probed as the bot's listener. For example, `dev.url: 'https://localhost/bot'` can keep pointing at a proxy on port 443
 while the bot starts on 3000 or `--port 4000`.
+
+#### Listen address
+
+`--host <address>` sets the address the bot listens on, like Nuxt's `--host`. It accepts an IP address or a hostname.
+Use it to expose the dev server on your network or to bind a specific interface:
+
+```sh
+stars dev --host 192.168.1.20
+stars dev --host
+```
+
+A bare `--host` listens on every interface (`0.0.0.0`). `stars dev` passes the address to the bot as `HTTP_ADDRESS`, and
+as `NITRO_HOST` and `HOST` in Nitro mode. The Vite and Nitro dev servers bind to it, and the port check probes that
+address. An inferred display URL follows a concrete address. A wildcard address (`0.0.0.0` or `::`) or an explicit
+`dev.url` leaves the display URL unchanged. An invalid address fails with
+[`INVALID_OPTION`](/documentation/errors/cli#invalid_option).
 
 Port probes release their sockets before startup, so another process can still claim a free port before the bot binds
 it.

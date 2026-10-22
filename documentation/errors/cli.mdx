@@ -135,11 +135,11 @@ with code `1`.
 
 ## INVALID_OPTION {#invalid_option}
 
-A command was given an unknown value for one of its flags: `--layout`, `--style`, `--port`, `--port-conflict`, or
-`--level` for `stars dev`, or `--only` for `stars codegen`.
+A command was given an unknown value for one of its flags: `--layout`, `--style`, `--port`, `--host`, `--port-conflict`,
+or `--level` for `stars dev`, or `--only` for `stars codegen`.
 
 **Fix:** use one of the values the message lists. `--layout` accepts `auto`, `dashboard`, or `panel`. `--style`
-accepts `nuxt-style`, `dashboard`, or `none`. `--port` accepts an integer from 1 to 65535. `--port-conflict` accepts
+accepts `nuxt-style`, `dashboard`, or `none`. `--port` accepts an integer from 1 to 65535. `--host` accepts an IP address or hostname. `--port-conflict` accepts
 `prompt`, `next`, `error`, or `continue`. `--level` accepts `trace`, `debug`, `info`, `warn`, or `error`. `--only`
 accepts `i18n` or `commands`.
 
@@ -159,7 +159,7 @@ or with `TERM=dumb`.
 than the port being occupied (for example, a missing permission or an unknown address). The message includes the host,
 port, and bind error.
 
-**Fix:** check the local address (`HTTP_ADDRESS`) and your permission to bind it, or pick another port with `--port`.
+**Fix:** check the local address (`HTTP_ADDRESS` or `--host`) and your permission to bind it, or pick another port with `--port`.
 
 ## NO_AVAILABLE_PORT {#no_available_port}
 
