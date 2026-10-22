@@ -268,8 +268,8 @@ Only the gateway client emits `clientReady`, `shardReady`, `shardResume`, `shard
 throws a `TypeError` at runtime. Keep `RegisterAsGatewayListener` for those events.
 
 <Warning>
-	With `events` set on `forwardGatewayDispatches`, a listener of an event built from a dispatch that is not forwarded runs
-	nowhere. Workers receive dispatches at least once, so keep the listener idempotent.
+	With `events` set on `forwardGatewayDispatches`, a listener of an event built from a dispatch that is not forwarded runs nowhere. Workers receive
+	dispatches at least once, so keep the listener idempotent.
 </Warning>
 
 ## Caching
