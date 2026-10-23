@@ -6,6 +6,26 @@ description: 'Changelog for @wolfstar/plugin-subcommands-advanced: advanced subc
 
 Changes to [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.3.0` (2026-10-20)
+
+### New features
+
+- **Own `stars.config` key** — The module sets `meta.configKey`, so you can write its options under the top-level `subcommandsAdvanced` key of `stars.config` instead of the `[specifier, options]` tuple of `modules`. The tuple still works and is merged over the key. The key is typed in `defineConfig` once the module is imported in `stars.config.ts`. `subcommandsAdvanced` takes no options yet and only reserves its name. ([#259](https://github.com/wolfstar-project/plugins/pull/259))
+
+### Updates
+
+- **New optional peer** — `@wolfstar/schema` (`^0.9.0`) is a new optional peer that carries the `StarsConfig` type the keys extend.
+
+### Migration
+
+- **`@wolfstar/kit` peer raised** — The `@wolfstar/kit` peer range moves from `^0.1.0` to `^0.2.0`, the first version that reads `configKey`. If your project uses `@wolfstar/kit` 0.1, update it.
+
+## `2.2.1` (2026-10-17)
+
+### Bug fixes
+
+- **Stable subcommand order** — Modular subcommands and groups now register sorted by name instead of in store load order, which changed between starts. `@wolfstar/http-framework` compares deployed commands by position, so every parent with modular subcommands used to update on each start. The first start after upgrading may update those commands once. Subcommands the parent declares itself keep their place before the registered ones. ([#257](https://github.com/wolfstar-project/plugins/pull/257))
+
 ## `2.2.0` (2026-10-08)
 
 ### New features

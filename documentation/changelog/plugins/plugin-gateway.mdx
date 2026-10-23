@@ -6,6 +6,47 @@ description: 'Changelog for @wolfstar/plugin-gateway: gateway events, Discord st
 
 Changes to [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway). The plugin extends the `@wolfstar/http-framework` client with Discord gateway events, structures, and API managers. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.16.0` (2026-10-20)
+
+### New features
+
+- **Own `stars.config` key** — The module sets `meta.configKey`, so you can write its options under the top-level `gateway` key of `stars.config` instead of the `[specifier, options]` tuple of `modules`. The tuple still works and is merged over the key. The key is typed in `defineConfig` once the module is imported in `stars.config.ts`. `gateway` takes no options yet and only reserves its name. ([#259](https://github.com/wolfstar-project/plugins/pull/259))
+
+### Updates
+
+- **New optional peer** — `@wolfstar/schema` (`^0.9.0`) is a new optional peer that carries the `StarsConfig` type the keys extend.
+- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.8.0`.
+
+### Migration
+
+- **`@wolfstar/kit` peer raised** — The `@wolfstar/kit` peer range moves from `^0.1.0` to `^0.2.0`, the first version that reads `configKey`. If your project uses `@wolfstar/kit` 0.1, update it.
+
+## `0.15.0` (2026-10-17)
+
+### New features
+
+- **Application command managers** — `client.application.commands` (`ApplicationCommandManager`) and `guild.commands` (`GuildApplicationCommandManager`, a new instance on every access, also `client.guilds.commands(guildId)`) are fetch-only, like `WebhookManager`. They have `fetch`, `create`, `set`, `edit`, `delete`, `commandPath`, and the static `transformCommand`, which accepts camel-cased data, raw payloads, and builders. `set()` is a bulk overwrite that replaces what `@wolfstar/http-framework` registered, and nothing calls it for you. ([#252](https://github.com/wolfstar-project/plugins/pull/252))
+- **`ApplicationCommand`** — Has the command's fields, `edit()`, the `set*()` helpers, `delete()`, `permissions`, `equals(command, enforceOptionOrder?)` (`false` for a foreign argument), and the static `optionsEqual()` and `transformOption()`.
+- **Command permissions** — `ApplicationCommandPermissionsManager` has `fetch` and `has`, plus `set`, `add`, and `remove`, which take an explicit bearer `token` (no OAuth handling). It reads through the `applicationCommandPermissions` cache, kept up to date by `APPLICATION_COMMAND_PERMISSIONS_UPDATE`. `GatewayError` gains the `ApplicationCommandPermissionsTokenMissing` and `GlobalCommandPermissions` codes.
+- **Application emojis** — `client.application.emojis` is a fetch-only `ApplicationEmojiManager` for emojis owned by the application rather than a guild. `fetch()` lists them in a `Collection` and `fetch(id)` gets one, with `create`, `edit`, `delete`, and `fetchAuthor`. Nothing is cached, because Discord sends no event for these emojis. `ApplicationEmoji` extends `Emoji` with `author`, `application`, `edit`, `setName`, `delete`, `fetchAuthor`, and `equals`, which compares only the ID, name, and `animated`. ([#250](https://github.com/wolfstar-project/plugins/pull/250))
+- **Entitlements** — `client.application.entitlements` is an `EntitlementManager`, cached from `ENTITLEMENT_CREATE`, `ENTITLEMENT_UPDATE`, and `ENTITLEMENT_DELETE`, which emit the new `entitlementCreate`, `entitlementUpdate`, and `entitlementDelete` events. It has `fetch()` for one entitlement or a filtered `Collection`, `createTest()`, `deleteTest()`, and `consume()`. ([#253](https://github.com/wolfstar-project/plugins/pull/253))
+- **SKUs and subscriptions** — `client.application.fetchSKUs()` returns the application's `SKU`s. `sku.subscriptions` (or `client.application.subscriptions(sku)`) is a fetch-only `SubscriptionManager`. Adds the `Entitlement`, `SKU`, and `Subscription` structures, `SKUFlagsBitField`, and the `EntitlementCreateInvalidOwner` error.
+- **`RegisterAsDispatchListener`** — A `RegisterAsGatewayListener` whose listener runs on one process only: the workers while the gateway client forwards dispatches, the gateway client otherwise. A bot loading the same pieces on both no longer handles each dispatch twice. `GatewayClient` gains `forwardsDispatches` and `markDispatchesForwarded()`. `DispatchEventName`, `GatewayOnlyEventName`, and `gatewayOnlyEvents` separate the events a worker receives from those only the gateway client emits, which the decorator rejects. ([#245](https://github.com/wolfstar-project/plugins/pull/245))
+- **`Message#threadable`** — Tells whether the bot can start a thread from the message: a text or announcement channel, no thread yet, and `ViewChannel` plus `CreatePublicThreads`. It reads the cache, so it returns a promise with an asynchronous cache and throws `ChannelUncached`, `GuildUncachedMe`, or `GuildUncached` on a miss. Unlike discord.js, an administrator bot is threadable, as the API allows it. ([#248](https://github.com/wolfstar-project/plugins/pull/248))
+- **`createMessage` and crosspost by ID** — `client.channels.createMessage(channel, options)` sends a message to a channel or its ID, and `channel.messages.crosspost` takes a message or its ID. ([#255](https://github.com/wolfstar-project/plugins/pull/255))
+
+### Updates
+
+- **Resolved messages and attachments** — `transformResolved` now resolves `messages` (IDs read from the cache of the new `channelId` option) and `attachments` (built as `Attachment`). `MessageMentions#parsedUsers` now includes mentioned users even when they are not cached. Nothing is written to the cache. ([#249](https://github.com/wolfstar-project/plugins/pull/249))
+- **Resolvables accept structures** — `EntitlementResolvable`, `SKUResolvable`, and `SubscriptionResolvable` now also accept the structures.
+- **Thread option checks** — `ThreadCreateOptions` is now `TextThreadCreateOptions | ForumThreadCreateOptions`. Mixing thread options (`type`, `invitable`) with forum or media post options (`message`, `appliedTags`) is a compile error. At runtime it throws a `GatewayTypeError` before any request (`ThreadOptionsPostOnly`, `ThreadOptionsThreadOnly`, or `ThreadPostMessageRequired` in a forum or media channel without `message`) instead of being dropped silently. ([#254](https://github.com/wolfstar-project/plugins/pull/254))
+- **Guild-only message methods** — In a DM or group DM, `messages.crosspost`, `messages.bulkDelete`, and `messages.startThread` now throw `ChannelMessagesGuildOnly` before any request. `ChannelThreadManager` and `ChannelMessageManager` take the channel type as an optional last constructor argument (`channelType`).
+
+### Bug fixes
+
+- **`clientReady` no longer stalls** — The guilds `clientReady` waits for are tracked by shard. A shard's new `READY` replaces the unavailable guilds its previous one listed, so a guild the bot left between two `READY`s no longer holds `clientReady` back until `waitGuildTimeout`. The client also stops collecting these guild IDs once `clientReady` fires. ([#247](https://github.com/wolfstar-project/plugins/pull/247))
+- **`guildDelete` forwarded for dropped guilds** — When a `READY` no longer lists a cached guild, `GatewayClient` emits `dispatch` for the `GUILD_DELETE` it applies, before `guildDelete`. `forwardGatewayDispatches` publishes it, so `plugin-broker` workers clean these guilds up too. The synthesized dispatch carries `s: 0` and is not emitted as `raw`.
+
 ## `0.14.0` (2026-10-09)
 
 ### New features

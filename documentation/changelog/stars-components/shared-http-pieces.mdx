@@ -6,6 +6,17 @@ description: 'Changelog for @wolfstar/shared-http-pieces: shared commands and li
 
 Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.1.0` (2026-10-17)
+
+### New features
+
+- **`/module` entry** — List `@wolfstar/shared-http-pieces/module` in `modules` in `stars.config` instead of importing `/register`. It adds the bundled locales with `ctx.addLocales` and registers a `@wolfstar/shared-http-pieces/pieces` plugin that loads the shared commands and listeners. `@wolfstar/kit` is an optional peer dependency. ([#341](https://github.com/wolfstar-project/stars-components/pull/341))
+
+### Updates
+
+- **`@wolfstar/http-framework` range** — The published peer range is now `^6.4.0`. npm still listed `^6.0.0`. ([#332](https://github.com/wolfstar-project/stars-components/pull/332))
+- **Dependencies** — Updated `@wolfstar/http-framework` to `6.5.0`.
+
 ## `2.0.12` (2026-10-11)
 
 ### Updates

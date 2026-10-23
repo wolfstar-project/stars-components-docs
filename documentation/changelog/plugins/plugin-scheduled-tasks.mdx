@@ -6,6 +6,20 @@ description: 'Changelog for @wolfstar/plugin-scheduled-tasks: one-off and repeat
 
 Changes to [`@wolfstar/plugin-scheduled-tasks`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-scheduled-tasks). The plugin runs tasks later or on a schedule, storing their jobs in Redis through [BullMQ](https://docs.bullmq.io/) so they survive restarts and are shared by every process of your bot. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.3.0` (2026-10-20)
+
+### New features
+
+- **Own `stars.config` key** — The module sets `meta.configKey`, so you can write its options under the top-level `scheduledTasks` key of `stars.config` instead of the `[specifier, options]` tuple of `modules`. The tuple still works and is merged over the key. The key is typed in `defineConfig` once the module is imported in `stars.config.ts`. ([#259](https://github.com/wolfstar-project/plugins/pull/259))
+
+### Updates
+
+- **New optional peer** — `@wolfstar/schema` (`^0.9.0`) is a new optional peer that carries the `StarsConfig` type the keys extend.
+
+### Migration
+
+- **`@wolfstar/kit` peer raised** — The `@wolfstar/kit` peer range moves from `^0.1.0` to `^0.2.0`, the first version that reads `configKey`. If your project uses `@wolfstar/kit` 0.1, update it.
+
 ## `0.2.0` (2026-10-07)
 
 ### New features

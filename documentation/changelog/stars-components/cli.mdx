@@ -6,6 +6,62 @@ description: 'Changelog for @wolfstar/cli: the stars command, dev UI, builders, 
 
 Changes to [`@wolfstar/cli`](/documentation/packages/cli). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.12.0` (2026-10-21)
+
+### New features
+
+- **Remove a subcommand or group** — `stars commands clean --name` accepts the path of a subcommand or a group (`settings server`, `settings group sub`). Discord can't delete one, so the CLI sends the deployed command back with a `PATCH` without that entry, keeping the parent and its other subcommands. Paths under one command share a request. A path that matches nothing still fails with `COMMAND_NOT_FOUND`. ([#351](https://github.com/wolfstar-project/stars-components/pull/351))
+- **Last subcommand deletes the command** — Removing a command's last subcommand deletes the command, and the confirmation says so. `--json` output gains a `removed` list next to `deleted`.
+- **`stars dev --host [address]`** — Sets the address the application listens on (`HTTP_ADDRESS`, plus `NITRO_HOST`/`HOST` for Nitro). A bare `--host` listens on every interface. The occupied-port check probes that address, and an inferred display URL follows a concrete one. ([#348](https://github.com/wolfstar-project/stars-components/pull/348))
+- **`-p` alias** — `-p` is now short for `--port`, as in Nuxt's dev command.
+
+### Updates
+
+- **Ink 8** — The terminal UI now uses `ink` v8. ([#320](https://github.com/wolfstar-project/stars-components/pull/320))
+- **Dependencies** — Updated `@wolfstar/vite-server` to `0.5.2`, `@wolfstar/nitro-server` to `0.2.13`.
+
+## `2.11.0` (2026-10-18)
+
+### New features
+
+- **Dev output styles** — Pick Nuxt-style, dashboard, or plain `stars dev` output with `tui.style` or `--style`. `dev.layout` keeps working. ([#344](https://github.com/wolfstar-project/stars-components/pull/344))
+- **Startup port checks** — `stars dev` checks local development ports before startup and offers to continue, cancel, or use the next port. Use `--port` or a conflict policy for automation. The chosen port is passed to the runtime.
+- **Startup validation** — `stars dev` validates HTTP endpoints and dev listener ports, and reports unwritable development directories before building.
+
+### Updates
+
+- **Display URLs** — Explicit display and health URLs stay independent of the bot listener and are kept across port overrides. In framework mode, unrelated ambient `PORT` values are ignored. Nitro runtime ports are read from `NITRO_PORT` before `PORT`.
+- **Dependencies** — Updated `@wolfstar/schema` to `0.12.0`, `@wolfstar/kit` to `0.3.1`, `@wolfstar/nitro-server` to `0.2.12`, `@wolfstar/vite-server` to `0.5.1`.
+
+## `2.10.0` (2026-10-17)
+
+### New features
+
+- **`ctx.addPiecesDir(directory)`** — Modules can register a directory of pieces, with one folder per store (`commands`, `listeners`, …). The pieces are registered before the bot loads, including for `tsc` and `none` builds. `ModulesRuntime` gains `piecesDirs`, `stars info` lists them, and a relative path fails with `MODULE_PIECES_INVALID`. ([#335](https://github.com/wolfstar-project/stars-components/pull/335))
+- **Client lifecycle hooks** — `hooks` in `defineModule` accepts `client:preGenericsInitialization`, `client:preInitialization`, `client:postInitialization`, `client:preLoad`, and `client:postListen`. Give each hook by source (`{ from, export }`), a function called with `(client, clientOptions)`. `ctx.addClientHook(name, source)` does the same from `setup`. A module's hooks share one runtime plugin named after it. `ModulesRuntime` gains `clientHooks`, `stars info` lists them, and a bad hook fails with `MODULE_HOOK_INVALID`. ([#337](https://github.com/wolfstar-project/stars-components/pull/337))
+- **`ctx.addLocales(directory)`** — Modules can add a directory of locales laid out as `<language>/<namespace>.json`. The locales merge into the client's `i18n` option before `@wolfstar/plugin-i18next` builds its handler, and your project's own languages directory is kept. `ModulesRuntime` gains `locales`, `stars info` lists them, and a bad directory fails with `MODULE_LOCALES_INVALID`. ([#339](https://github.com/wolfstar-project/stars-components/pull/339))
+- **`future.compatibilityVersion: 7`** — Opt in to let `stars.config` decide what registers. `@wolfstar/plugin-*` packages in `package.json` are no longer activated by their name. Only the modules in `modules`, and the ones they install, are. `stars build`, `prepare`, `dev`, `info`, and `doctor` warn with `PLUGINS_NOT_REGISTERED` about an installed plugin that is left out. ([#338](https://github.com/wolfstar-project/stars-components/pull/338))
+
+### Updates
+
+- **Registered plugins listed** — On compatibility version 6 and below nothing changes, but `stars info` and `stars doctor` now list the plugins registered by name.
+- **Dependencies** — Updated `@wolfstar/schema` to `0.11.0`, `@wolfstar/kit` to `0.3.0`, `@wolfstar/vite-server` to `0.5.0`, `@wolfstar/nitro-server` to `0.2.11`.
+
+### Bug fixes
+
+- **Tunnel error kept when repair fails** — `stars dev --tunnel` keeps reporting the original `cloudflared` error, and enters the `failed` state, when it can't delete the broken binary, instead of rejecting. ([#334](https://github.com/wolfstar-project/stars-components/pull/334))
+- **No more dashboard flicker** — The `stars dev` dashboard repaints only the lines that changed instead of rewriting the whole screen on every tick. Switching between the dashboard, the panel, and the overlays redraws the screen once. ([#330](https://github.com/wolfstar-project/stars-components/pull/330))
+
+## `2.9.0` (2026-10-17)
+
+### New features
+
+- **`stars codegen --only <i18n|commands>`** — Runs a single generator. Repeat the flag or comma-separate values to run several. A CI job can now check the i18next types, which only read the locale files, without the bot's secrets or a build. Naming a generator that is off in `stars.config` fails with `CODEGEN_GENERATOR_DISABLED`. ([#329](https://github.com/wolfstar-project/stars-components/pull/329))
+
+### Bug fixes
+
+- **Broken `cloudflared` binary** — `stars dev --tunnel` no longer fails on every run when the downloaded `cloudflared` binary is broken (an interrupted download, or a file without the execute bit). The CLI deletes the file, logs a warning, and opens the tunnel again, once per run. ([#328](https://github.com/wolfstar-project/stars-components/pull/328))
+
 ## `2.8.0` (2026-10-09)
 
 ### New features
