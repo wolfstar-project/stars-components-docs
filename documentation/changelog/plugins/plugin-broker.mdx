@@ -6,6 +6,31 @@ description: 'Changelog for @wolfstar/plugin-broker: distribute gateway events a
 
 Changes to [`@wolfstar/plugin-broker`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-broker). The plugin distributes gateway events across processes over [Redis Streams](https://redis.io/docs/latest/develop/data-types/streams/), with consumer-group semantics and at-least-once delivery. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.7.0` (2026-10-20)
+
+### New features
+
+- **Own `stars.config` key** — The module sets `meta.configKey`, so you can write its options under the top-level `broker` key of `stars.config` instead of the `[specifier, options]` tuple of `modules`. The tuple still works and is merged over the key. The key is typed in `defineConfig` once the module is imported in `stars.config.ts`. ([#259](https://github.com/wolfstar-project/plugins/pull/259))
+
+### Updates
+
+- **New optional peer** — `@wolfstar/schema` (`^0.9.0`) is a new optional peer that carries the `StarsConfig` type the keys extend.
+- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.8.0`.
+
+### Migration
+
+- **`@wolfstar/kit` peer raised** — The `@wolfstar/kit` peer range moves from `^0.1.0` to `^0.2.0`, the first version that reads `configKey`. If your project uses `@wolfstar/kit` 0.1, update it.
+
+## `0.6.0` (2026-10-17)
+
+### New features
+
+- **Worker-only dispatch listeners** — `forwardGatewayDispatches` marks a `GatewayClient` as forwarding (`forwardsDispatches`) until its stop function is called, through the new optional `GatewayDispatchEmitterLike#markDispatchesForwarded`. Listeners registered with `RegisterAsDispatchListener` from `@wolfstar/plugin-gateway` then run on the workers only. Emitters without it forward as before. ([#245](https://github.com/wolfstar-project/plugins/pull/245))
+
+### Bug fixes
+
+- **`guildDelete` for guilds dropped on `READY`** — When a `READY` no longer lists a cached guild (the bot left it while offline), its `GUILD_DELETE` is now forwarded like any other dispatch, so a worker's `guildDelete` listeners clean these guilds up too. ([#247](https://github.com/wolfstar-project/plugins/pull/247))
+
 ## `0.5.1` (2026-10-07)
 
 ### Updates

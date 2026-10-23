@@ -6,6 +6,30 @@ description: 'Changelog for @wolfstar/schema: the stars.config.* schema and load
 
 Changes to [`@wolfstar/schema`](/documentation/packages/schema). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.12.0` (2026-10-18)
+
+### New features
+
+- **`tui.style`** — Configure Nuxt-style, dashboard, or plain `stars dev` output. `dev.layout` keeps working. ([#344](https://github.com/wolfstar-project/stars-components/pull/344))
+- **Port conflict policies** — Configure how `stars dev` handles an occupied development port for automation.
+
+### Updates
+
+- **Display URLs** — Explicit display and health URLs stay independent of the bot listener and are kept across port overrides. In framework mode, unrelated ambient `PORT` values are ignored. Nitro runtime ports are read from `NITRO_PORT` before `PORT`.
+
+## `0.11.0` (2026-10-17)
+
+### New features
+
+- **`ctx.addPiecesDir(directory)`** — Modules can register a directory of pieces, with one folder per store (`commands`, `listeners`, …). The pieces are registered before the bot loads, including for `tsc` and `none` builds. `ModulesRuntime` gains `piecesDirs`, `stars info` lists them, and a relative path fails with `MODULE_PIECES_INVALID`. ([#335](https://github.com/wolfstar-project/stars-components/pull/335))
+- **Client lifecycle hooks** — `hooks` in `defineModule` accepts `client:preGenericsInitialization`, `client:preInitialization`, `client:postInitialization`, `client:preLoad`, and `client:postListen`. Give each hook by source (`{ from, export }`), a function called with `(client, clientOptions)`. `ctx.addClientHook(name, source)` does the same from `setup`. A module's hooks share one runtime plugin named after it. `ModulesRuntime` gains `clientHooks`, `stars info` lists them, and a bad hook fails with `MODULE_HOOK_INVALID`. ([#337](https://github.com/wolfstar-project/stars-components/pull/337))
+- **`ctx.addLocales(directory)`** — Modules can add a directory of locales laid out as `<language>/<namespace>.json`. The locales merge into the client's `i18n` option before `@wolfstar/plugin-i18next` builds its handler, and your project's own languages directory is kept. `ModulesRuntime` gains `locales`, `stars info` lists them, and a bad directory fails with `MODULE_LOCALES_INVALID`. ([#339](https://github.com/wolfstar-project/stars-components/pull/339))
+- **`future.compatibilityVersion: 7`** — Opt in to let `stars.config` decide what registers. `@wolfstar/plugin-*` packages in `package.json` are no longer activated by their name. Only the modules in `modules`, and the ones they install, are. `stars build`, `prepare`, `dev`, `info`, and `doctor` warn with `PLUGINS_NOT_REGISTERED` about an installed plugin that is left out. ([#338](https://github.com/wolfstar-project/stars-components/pull/338))
+
+### Updates
+
+- **Registered plugins listed** — On compatibility version 6 and below nothing changes, but `stars info` and `stars doctor` now list the plugins registered by name.
+
 ## `0.10.0` (2026-10-09)
 
 ### New features
