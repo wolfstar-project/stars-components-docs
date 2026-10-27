@@ -3,6 +3,11 @@ name: Pullfrog PR repair
 # When `ci` or `Semantic Pull Requests` fails on a same-repo pull request, hand the failure to the
 # Pullfrog agent so it can fix lint/format errors or rewrite a non-conventional title. Bot-authored PRs
 # (Mintlify) are the main target: Pullfrog's built-in "Fix CI failures" skips bot commits.
+#
+# A `workflow_run` run is not scoped to a pull request, so Pullfrog can neither push to the PR branch nor
+# edit the PR title. The agent therefore only proposes the change (a working-tree diff or a title, through
+# its structured `result` output) and the `apply` job validates it and writes it with `WOLFSTAR_TOKEN`.
+# That token is a bot PAT, so the push and the title edit trigger `ci` and `Semantic Pull Requests` again.
 
 on:
     # zizmor: ignore[dangerous-triggers]
@@ -44,6 +49,8 @@ jobs:
             kind: ${{ steps.resolve.outputs.kind }}
             pr: ${{ steps.resolve.outputs.pr }}
             run: ${{ steps.resolve.outputs.run }}
+            sha: ${{ steps.resolve.outputs.sha }}
+            branch: ${{ steps.resolve.outputs.branch }}
         steps:
             - name: Resolve pull request and failure kind
               id: resolve
@@ -71,13 +78,15 @@ jobs:
                   esac
 
                   [[ "$PR" =~ ^[0-9]+$ ]] || skip "invalid pull request number"
+                  [[ "$RUN_SHA" =~ ^[0-9a-f]{40}$ ]] || skip "invalid head sha"
 
-                  read -r state head_sha head_repo < <(
-                      gh api "repos/$REPO/pulls/$PR" --jq '[.state, .head.sha, .head.repo.full_name] | @tsv'
+                  read -r state head_sha head_repo head_ref < <(
+                      gh api "repos/$REPO/pulls/$PR" --jq '[.state, .head.sha, .head.repo.full_name, .head.ref] | @tsv'
                   )
                   [ "$state" = open ] || skip "pull request #$PR is $state"
                   [ "$head_repo" = "$REPO" ] || skip "pull request #$PR comes from a fork"
                   [ "$head_sha" = "$RUN_SHA" ] || skip "run is stale, the branch has moved on"
+                  [ "$head_ref" = "$RUN_BRANCH" ] || skip "run branch does not match the pull request head"
 
                   since=$(date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ)
                   runs=$(gh api "repos/$REPO/actions/workflows/pullfrog-pr-repair.yml/runs?branch=$RUN_BRANCH&created=%3E%3D$since&per_page=100" \
@@ -89,6 +98,8 @@ jobs:
                       echo "kind=$kind"
                       echo "pr=$PR"
                       echo "run=$RUN_ID"
+                      echo "sha=$RUN_SHA"
+                      echo "branch=$RUN_BRANCH"
                   } >> "$GITHUB_OUTPUT"
 
     repair:
@@ -99,7 +110,12 @@ jobs:
         timeout-minutes: 30
         permissions:
             id-token: write # OIDC token exchanged by pullfrog/pullfrog for a scoped GitHub App token
-            contents: read # checkout the default branch; the agent pushes with its own app token
+            contents: read
+            actions: read # read the failed job logs
+            pull-requests: read # read the pull request title and changed files
+        outputs:
+            result: ${{ steps.agent.outputs.result }}
+            patch: ${{ steps.patch.outputs.patch }}
         steps:
             - name: Checkout Project
               uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -107,31 +123,210 @@ jobs:
                   fetch-depth: 1
                   persist-credentials: false
 
-            - name: Render prompt
+            - name: Prepare prompt and context
               env:
+                  GH_TOKEN: ${{ github.token }}
                   KIND: ${{ needs.resolve.outputs.kind }}
                   PR: ${{ needs.resolve.outputs.pr }}
                   RUN_ID: ${{ needs.resolve.outputs.run }}
                   REPO: ${{ github.repository }}
-              # The template comes from the default branch checkout. It is rendered inside .git so the agent never commits it.
-              # `resolve` already validated the values as a known kind and numeric ids.
+              # The template comes from the default branch checkout and is rendered outside the workspace, so the
+              # PR checkout below cannot replace it and the agent never commits it. `resolve` already validated
+              # the values as a known kind and numeric ids. The context files hold untrusted data.
               run: |
+                  set -euo pipefail
+                  context="$RUNNER_TEMP/pullfrog"
+                  mkdir -p "$context"
+
                   sed -e "s|{{KIND}}|$KIND|g" \
                       -e "s|{{PR}}|$PR|g" \
                       -e "s|{{RUN_ID}}|$RUN_ID|g" \
                       -e "s|{{REPO}}|$REPO|g" \
-                      .github/pullfrog/pr-repair.md > .git/pullfrog-prompt.md
+                      -e "s|{{CONTEXT}}|$context|g" \
+                      .github/pullfrog/pr-repair.md > "$context/prompt.md"
+
+                  gh api "repos/$REPO/pulls/$PR" --jq '.title' > "$context/title.txt"
+                  gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[].filename' > "$context/files.txt"
+                  gh run view "$RUN_ID" --repo "$REPO" --log-failed 2>&1 | tail -n 400 > "$context/failure.log" || true
+
+            - name: Checkout pull request head
+              if: needs.resolve.outputs.kind == 'ci'
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ needs.resolve.outputs.sha }}
+                  fetch-depth: 1
+                  persist-credentials: false
 
             - name: Run agent
-              uses: pullfrog/pullfrog@ad4283a862b8377cb525a0f5bf30f17c023b18ea # v0.1.98
+              id: agent
+              uses: pullfrog/pullfrog@25a837a2b078177c3acdce790506d1fd1acedd82 # v0.1.102
               with:
                   timeout: 20m
-                  # Title fixes only edit pull request metadata, so the agent cannot push for them.
-                  push: ${{ needs.resolve.outputs.kind == 'title' && 'disabled' || 'restricted' }}
+                  # The run is not scoped to the pull request, so Pullfrog cannot push to it: `apply` writes instead.
+                  push: disabled
                   shell: restricted
-                  prompt_file: .git/pullfrog-prompt.md
+                  prompt_file: ${{ runner.temp }}/pullfrog/prompt.md
+                  output_schema: |
+                      {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": ["outcome", "summary"],
+                          "properties": {
+                              "outcome": { "type": "string", "enum": ["fixed", "not_fixed", "not_this_pr"] },
+                              "title": { "type": "string" },
+                              "commit_message": { "type": "string" },
+                              "summary": { "type": "string" }
+                          }
+                      }
               env:
                   # add at least one provider API key (or configure one in the Pullfrog console)
                   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
                   CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
                   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+            - name: Collect the fix
+              id: patch
+              if: needs.resolve.outputs.kind == 'ci'
+              env:
+                  HEAD_SHA: ${{ needs.resolve.outputs.sha }}
+              # Diff the working tree against the pull request head, so a local commit by the agent is kept too.
+              # The patch reaches `apply` through an environment variable, which Linux caps at 128 KiB.
+              run: |
+                  set -euo pipefail
+                  patch=$(git diff --binary "$HEAD_SHA" | base64 -w0)
+                  if [ "${#patch}" -gt 120000 ]; then
+                      echo "::error::The fix is too large to apply automatically (${#patch} bytes encoded)"
+                      exit 1
+                  fi
+                  echo "patch=$patch" >> "$GITHUB_OUTPUT"
+
+    apply:
+        name: ✍️ Apply repair
+        needs: [resolve, repair]
+        # Also after a failed agent run, so the pull request always gets a report.
+        if: always() && needs.resolve.outputs.repair == 'true'
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        # Only used when `WOLFSTAR_TOKEN` is missing. GITHUB_TOKEN writes do not trigger other workflows, so
+        # the checks then stay red until the next push.
+        permissions:
+            contents: write
+            pull-requests: write
+        env:
+            GH_TOKEN: ${{ secrets.WOLFSTAR_TOKEN || github.token }}
+            REPO: ${{ github.repository }}
+            KIND: ${{ needs.resolve.outputs.kind }}
+            PR: ${{ needs.resolve.outputs.pr }}
+            HEAD_SHA: ${{ needs.resolve.outputs.sha }}
+            HEAD_BRANCH: ${{ needs.resolve.outputs.branch }}
+            RESULT: ${{ needs.repair.outputs.result }}
+            PATCH: ${{ needs.repair.outputs.patch }}
+            # Mirrors `semantic-pull-requests.yml`: allowed types and scopes, subject not starting uppercase.
+            CONVENTIONAL: '^(feat|fix|docs|style|refactor|perf|build|ci|chore|revert)(\((guide|packages|api|changelog|errors|config|deps|ci)\))?!?: [^A-Z[:space:]].*$'
+        steps:
+            - name: Read agent result
+              id: result
+              run: |
+                  set -euo pipefail
+                  if ! jq -e 'type == "object"' <<< "$RESULT" > /dev/null 2>&1; then
+                      echo "outcome=invalid" >> "$GITHUB_OUTPUT"
+                      echo "::warning::The agent returned no structured result"
+                      exit 0
+                  fi
+                  echo "outcome=$(jq -r '.outcome // "invalid"' <<< "$RESULT")" >> "$GITHUB_OUTPUT"
+                  jq -r '.summary // ""' <<< "$RESULT" > "$RUNNER_TEMP/summary.md"
+
+            - name: Rename pull request
+              id: title
+              if: env.KIND == 'title' && steps.result.outputs.outcome == 'fixed'
+              run: |
+                  set -euo pipefail
+                  title=$(jq -r '.title // ""' <<< "$RESULT")
+                  if [[ "$title" == *$'\n'* || ${#title} -gt 100 || ! "$title" =~ $CONVENTIONAL ]]; then
+                      echo "error=the proposed title \`$title\` is not a valid Conventional Commits title" >> "$GITHUB_OUTPUT"
+                      exit 0
+                  fi
+                  gh api --method PATCH "repos/$REPO/pulls/$PR" -f title="$title" > /dev/null
+                  echo "applied=renamed the pull request to \`$title\`" >> "$GITHUB_OUTPUT"
+
+            - name: Checkout pull request branch
+              if: env.KIND == 'ci' && steps.result.outputs.outcome == 'fixed' && env.PATCH != ''
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ needs.resolve.outputs.branch }}
+                  fetch-depth: 1
+                  persist-credentials: false
+
+            - name: Push fix
+              id: push
+              if: env.KIND == 'ci' && steps.result.outputs.outcome == 'fixed'
+              run: |
+                  set -euo pipefail
+                  fail() {
+                      echo "error=$1" >> "$GITHUB_OUTPUT"
+                      exit 0
+                  }
+
+                  [ -n "$PATCH" ] || fail "the agent reported a fix but changed no files"
+                  [ "$(git rev-parse HEAD)" = "$HEAD_SHA" ] || fail "the branch moved on while the agent was running"
+
+                  patch="$RUNNER_TEMP/fix.patch"
+                  base64 -d <<< "$PATCH" > "$patch"
+
+                  # Only edits to files the pull request already changes. No new, deleted or renamed files, no
+                  # workflows and no generated API reference.
+                  [ -z "$(git apply --summary "$patch")" ] || fail "the fix creates, deletes or renames files"
+                  gh api --paginate "repos/$REPO/pulls/$PR/files" --jq '.[].filename' > "$RUNNER_TEMP/pr-files.txt"
+                  while IFS= read -r file; do
+                      case "$file" in
+                          .github/* | documentation/api/*) fail "the fix touches \`$file\`, which repairs may not change" ;;
+                      esac
+                      grep -Fxq -- "$file" "$RUNNER_TEMP/pr-files.txt" || fail "the fix touches \`$file\`, which the pull request does not change"
+                  done < <(git apply --numstat "$patch" | cut -f3-)
+
+                  git apply --index "$patch"
+
+                  message=$(jq -r '.commit_message // ""' <<< "$RESULT")
+                  if [[ "$message" == *$'\n'* || ${#message} -gt 100 || ! "$message" =~ $CONVENTIONAL ]]; then
+                      message="style: fix failing ci checks"
+                  fi
+                  git -c user.name="wolfstarbot" -c user.email="169603024+wolfstarbot@users.noreply.github.com" \
+                      commit --quiet --message "$message"
+
+                  auth=$(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)
+                  echo "::add-mask::$auth"
+                  git -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+                      push origin "HEAD:refs/heads/$HEAD_BRANCH"
+                  echo "applied=pushed $(git rev-parse --short HEAD) (\`$message\`)" >> "$GITHUB_OUTPUT"
+
+            - name: Report on the pull request
+              if: always()
+              env:
+                  OUTCOME: ${{ steps.result.outputs.outcome }}
+                  APPLIED: ${{ steps.title.outputs.applied || steps.push.outputs.applied }}
+                  ERROR: ${{ steps.title.outputs.error || steps.push.outputs.error }}
+                  RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+              run: |
+                  set -euo pipefail
+                  {
+                      echo "**Pullfrog repair** (\`$KIND\`)"
+                      echo
+                      if [ -n "$APPLIED" ]; then
+                          echo "Applied: $APPLIED."
+                      elif [ -n "$ERROR" ]; then
+                          echo "Not applied: $ERROR. A human needs to fix this."
+                      elif [ "$OUTCOME" = "invalid" ]; then
+                          echo "Not applied: the agent run failed or returned no result. See the run log."
+                      elif [ "$OUTCOME" != "fixed" ]; then
+                          echo "No change applied (outcome: \`$OUTCOME\`)."
+                      else
+                          echo "Not applied: the apply step failed. See the run log."
+                      fi
+                      if [ -s "$RUNNER_TEMP/summary.md" ]; then
+                          echo
+                          cat "$RUNNER_TEMP/summary.md"
+                      fi
+                      echo
+                      echo "[Workflow run]($RUN_URL)"
+                  } > "$RUNNER_TEMP/comment.md"
+                  gh pr comment "$PR" --repo "$REPO" --body-file "$RUNNER_TEMP/comment.md"
