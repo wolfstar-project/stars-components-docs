@@ -1,0 +1,176 @@
+---
+title: '@wolfstar/plugin-opentelemetry'
+description: 'Trace an HTTP Framework bot with OpenTelemetry: a preload that starts the SDK, and a plugin that opens one span per interaction.'
+---
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-opentelemetry @opentelemetry/api
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-opentelemetry @opentelemetry/api
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-opentelemetry @opentelemetry/api
+```
+
+```bash bun
+bun add @wolfstar/plugin-opentelemetry @opentelemetry/api
+```
+
+</CodeGroup>
+
+<CardGroup cols={2}>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-opentelemetry"></Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-opentelemetry"></Card>
+</CardGroup>
+
+<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+
+## Description
+
+`@wolfstar/plugin-opentelemetry` traces a [`@wolfstar/http-framework`](/documentation/packages/http-framework) bot with
+OpenTelemetry. It has two parts. You can use them together or apart:
+
+- **A preload**, `@wolfstar/plugin-opentelemetry/preload`, loaded with `--import`. It starts the OpenTelemetry SDK with the
+  automatic instrumentations before the bot imports anything. It also handles the problems a Discord bot runs into when it
+  does that. See [What the preload handles](#what-the-preload-handles).
+- **A plugin**, `@wolfstar/plugin-opentelemetry/plugin`, that opens one span per interaction. The `pg`, `ioredis`, or
+  `undici` spans of a command then have the command as their parent, instead of floating in the trace of the HTTP request.
+
+The package requires Node.js 22.15 or newer, which the OpenTelemetry SDK requires.
+
+`@opentelemetry/api` is a peer dependency because the process must hold a single copy of it. The SDK, the
+instrumentations, and the OTLP exporters are dependencies of this package.
+
+## The preload
+
+Add the preload to the command that starts the bot:
+
+```bash
+node --import @wolfstar/plugin-opentelemetry/preload dist/main.mjs
+```
+
+The preload does nothing unless an OTLP endpoint is set. The same command therefore runs locally with no tracing.
+Everything else uses the standard OpenTelemetry environment variables:
+
+| Variable                                                             | Effect                                                                                                                                         |
+| -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` / `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` | Turns tracing on and sets where the spans go.                                                                                                  |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` / `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` | `http/protobuf` (the default), `http/json`, or `grpc`.                                                                                         |
+| `OTEL_EXPORTER_OTLP_HEADERS` / `OTEL_EXPORTER_OTLP_TRACES_HEADERS`   | The headers of that destination, including its token.                                                                                          |
+| `OTEL_TRACES_EXPORTER`                                               | Only `none` is honored. It turns this destination off. The package exports OTLP only, so `console`, `zipkin`, and other values still get OTLP. |
+| `SENTRY_DSN`                                                         | Also sends the spans to the OTLP endpoint of that Sentry project, using only the key of the DSN.                                               |
+| `OTEL_SERVICE_NAME`, `OTEL_RESOURCE_ATTRIBUTES`, and others          | Read by the SDK as usual.                                                                                                                      |
+
+### What the preload handles
+
+- **ES modules.** The bot is ESM, so the SDK must register the `import-in-the-middle` loader hook before anything is
+  imported. A preload is the only place that runs early enough.
+- **Worker threads.** A worker thread inherits `--import` and would start its own SDK, costing seconds and hundreds of
+  megabytes each. The preload only starts the SDK on the main thread.
+- **`SIGTERM`.** The preload shuts the SDK down on `SIGTERM` to export the last spans. A `SIGTERM` listener stops the
+  process from exiting on that signal, so the preload raises the signal again once no other listener is left. The broker
+  consumer of a `BOT_MODE=worker` process does the same, and the two do not keep each other alive.
+- **Tokens in URLs.** Webhook and interaction callback URLs hold a token that lets anybody post there. The preload
+  replaces that token with `REDACTED` in `undici` spans before they start.
+- **The gateway WebSocket.** `@discordjs/ws` opens the gateway with an `http` request carrying `Upgrade: websocket`.
+  Everything the bot does with the dispatches it receives afterwards runs in that request's context, producing one trace
+  that never closes. The preload does not trace WebSocket handshakes.
+- **Sentry's transport.** Requests from `@sentry/node` carry the key of the DSN in the query string. The preload does not
+  trace them.
+- **Two destinations.** An OTLP exporter adds the `OTEL_EXPORTER_OTLP_*` headers to the ones it receives, so a second
+  exporter would send the first destination's token to Sentry. The preload hides those variables while it creates the
+  Sentry exporter.
+
+## The plugin
+
+The plugin opens the interaction spans. It cannot start the SDK, so load the [preload](#the-preload) as well.
+
+### Activating with `modules`
+
+On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` and write its options under the
+`opentelemetry` key. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
+
+```ts
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+import type {} from '@wolfstar/plugin-opentelemetry/module'; // types the `opentelemetry` key in `defineConfig`
+
+export default defineConfig({
+	modules: ['@wolfstar/plugin-opentelemetry/module'],
+	opentelemetry: { interactions: { autocomplete: true } }
+});
+```
+
+The `[specifier, options]` tuple of `modules` still works. Its options are merged over the `opentelemetry` key, so they win.
+
+### Without the `stars` CLI
+
+Pass the `./plugin` [`definePlugin`](/documentation/packages/http-framework#plugins) factory to the `plugins` client option:
+
+```ts
+import { Client } from '@wolfstar/http-framework';
+import openTelemetryPlugin from '@wolfstar/plugin-opentelemetry/plugin';
+
+const client = new Client({
+	plugins: [openTelemetryPlugin({ interactions: { autocomplete: true } })]
+});
+```
+
+Without a running SDK, `@opentelemetry/api` hands out no-op spans and the plugin costs nothing.
+
+### Options
+
+| Option                      | Default | Spans for                                          |
+| --------------------------- | ------- | -------------------------------------------------- |
+| `interactions.commands`     | `true`  | Slash, user, and message commands.                 |
+| `interactions.autocomplete` | `false` | Autocomplete requests. Discord sends one per key.  |
+| `interactions.handlers`     | `true`  | Message components and modals.                     |
+
+Set `interactions: false` to turn them all off. Set `interactions: true` to use the defaults.
+
+### Spans
+
+Each span is named `<kind> <name>`, for example `command ping` or `component confirm`. It carries these attributes:
+
+| Attribute                | Value                                              |
+| ------------------------ | -------------------------------------------------- |
+| `interaction.kind`       | `command`, `autocomplete`, `component`, or `modal`. |
+| `interaction.name`       | The name of the command or handler.                |
+| `interaction.outcome`    | `success` or `error`.                              |
+| `discord.interaction.id` | The ID of the interaction.                         |
+| `discord.guild.id`       | The guild, when the interaction came from one.     |
+| `discord.channel.id`     | The channel.                                       |
+
+When a run fails, the plugin records the exception and sets the span status to `ERROR`.
+
+<Note>
+	The framework's events do not wrap the run of a command. The plugin makes the span active with `context.attach` from
+	the `*Run` event, and restores the previous context on `*Finish`. This needs a context manager that implements
+	`attach`, such as the SDK's `AsyncLocalStorageContextManager` (`@opentelemetry/api` 1.10 and later). With a context
+	manager that does not, the plugin still creates the spans, but the work a command starts is not attached to them.
+</Note>
+
+## `flushTraces()`
+
+`flushTraces()` exports the spans waiting in the batch. Call it from a shutdown path before the process exits. It never
+rejects, and does nothing when no SDK is running.
+
+```ts
+import { flushTraces } from '@wolfstar/plugin-opentelemetry';
+
+process.once('SIGINT', async () => {
+	await flushTraces();
+	process.exit(0);
+});
+```
+
+## Sentry
+
+`@sentry/node` 11 does not register a tracer provider by default, because `enableOpenTelemetrySetup` defaults to `false`.
+This lets `@wolfstar/plugin-opentelemetry` own the SDK. Add Sentry's `openTelemetryIntegration()` to `Sentry.init` to put
+the errors Sentry captures on the active trace. Each error is then linked to the span of the command that raised it.
