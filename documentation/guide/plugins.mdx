@@ -24,6 +24,7 @@ Every plugin requires `@wolfstar/http-framework@^3.1.0` or newer as a peer depen
 | [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker)                             | Distributes gateway events across processes over Redis Streams |
 | [`@wolfstar/plugin-cache`](/documentation/packages/plugin-cache)                               | Discord entity cache, in memory or in Redis                    |
 | [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger)                             | Pluggable logging with swappable transports                    |
+| [`@wolfstar/plugin-opentelemetry`](/documentation/packages/plugin-opentelemetry)               | OpenTelemetry tracing with one span per interaction            |
 | [`@wolfstar/plugin-scheduled-tasks`](/documentation/packages/plugin-scheduled-tasks)           | Schedules one-off and repeated tasks, backed by BullMQ         |
 | [`@wolfstar/plugin-sharder`](/documentation/packages/plugin-sharder)                           | Spreads gateway shards across processes and machines           |
 | [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) | Modularizes slash subcommands into separate command classes    |
@@ -81,6 +82,7 @@ Each module declares its key through [`meta.configKey`](/documentation/packages/
 | `@wolfstar/plugin-gateway`              | `gateway`             |
 | `@wolfstar/plugin-i18next`              | `i18n`                |
 | `@wolfstar/plugin-logger`               | `logger`              |
+| `@wolfstar/plugin-opentelemetry`        | `opentelemetry`       |
 | `@wolfstar/plugin-scheduled-tasks`      | `scheduledTasks`      |
 | `@wolfstar/plugin-sharder`              | `sharder`             |
 | `@wolfstar/plugin-subcommands-advanced` | `subcommandsAdvanced` |
@@ -98,7 +100,7 @@ key over the module options.
 
 What a module does depends on the plugin:
 
-- `plugin-i18next`, `plugin-api`, `plugin-logger`, `plugin-broker`, and `plugin-subcommands-advanced` register their
+- `plugin-i18next`, `plugin-api`, `plugin-logger`, `plugin-broker`, `plugin-opentelemetry`, and `plugin-subcommands-advanced` register their
   runtime plugin in the bot.
 - `plugin-cache`, `plugin-gateway`, and `plugin-sharder` are libraries. Their module only adds the package to the
   auto imports, and takes no options. You still construct their classes yourself.
