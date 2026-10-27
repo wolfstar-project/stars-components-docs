@@ -125,11 +125,11 @@ Without a running SDK, `@opentelemetry/api` hands out no-op spans and the plugin
 
 ### Options
 
-| Option                      | Default | Spans for                                          |
-| --------------------------- | ------- | -------------------------------------------------- |
-| `interactions.commands`     | `true`  | Slash, user, and message commands.                 |
-| `interactions.autocomplete` | `false` | Autocomplete requests. Discord sends one per key.  |
-| `interactions.handlers`     | `true`  | Message components and modals.                     |
+| Option                      | Default | Spans for                                         |
+| --------------------------- | ------- | ------------------------------------------------- |
+| `interactions.commands`     | `true`  | Slash, user, and message commands.                |
+| `interactions.autocomplete` | `false` | Autocomplete requests. Discord sends one per key. |
+| `interactions.handlers`     | `true`  | Message components and modals.                    |
 
 Set `interactions: false` to turn them all off. Set `interactions: true` to use the defaults.
 
@@ -137,22 +137,22 @@ Set `interactions: false` to turn them all off. Set `interactions: true` to use 
 
 Each span is named `<kind> <name>`, for example `command ping` or `component confirm`. It carries these attributes:
 
-| Attribute                | Value                                              |
-| ------------------------ | -------------------------------------------------- |
+| Attribute                | Value                                               |
+| ------------------------ | --------------------------------------------------- |
 | `interaction.kind`       | `command`, `autocomplete`, `component`, or `modal`. |
-| `interaction.name`       | The name of the command or handler.                |
-| `interaction.outcome`    | `success` or `error`.                              |
-| `discord.interaction.id` | The ID of the interaction.                         |
-| `discord.guild.id`       | The guild, when the interaction came from one.     |
-| `discord.channel.id`     | The channel.                                       |
+| `interaction.name`       | The name of the command or handler.                 |
+| `interaction.outcome`    | `success` or `error`.                               |
+| `discord.interaction.id` | The ID of the interaction.                          |
+| `discord.guild.id`       | The guild, when the interaction came from one.      |
+| `discord.channel.id`     | The channel.                                        |
 
 When a run fails, the plugin records the exception and sets the span status to `ERROR`.
 
 <Note>
-	The framework's events do not wrap the run of a command. The plugin makes the span active with `context.attach` from
-	the `*Run` event, and restores the previous context on `*Finish`. This needs a context manager that implements
-	`attach`, such as the SDK's `AsyncLocalStorageContextManager` (`@opentelemetry/api` 1.10 and later). With a context
-	manager that does not, the plugin still creates the spans, but the work a command starts is not attached to them.
+	The framework's events do not wrap the run of a command. The plugin makes the span active with `context.attach` from the `*Run` event, and
+	restores the previous context on `*Finish`. This needs a context manager that implements `attach`, such as the SDK's
+	`AsyncLocalStorageContextManager` (`@opentelemetry/api` 1.10 and later). With a context manager that does not, the plugin still creates the spans,
+	but the work a command starts is not attached to them.
 </Note>
 
 ## `flushTraces()`
