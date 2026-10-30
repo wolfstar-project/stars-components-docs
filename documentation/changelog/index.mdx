@@ -49,11 +49,20 @@ Weekly summaries of user-facing changes to Stars Components and the WolfStar plu
 | `@wolfstar/plugin-gateway`              | `0.16.0`       | [View](/documentation/changelog/plugins/plugin-gateway)              |
 | `@wolfstar/plugin-i18next`              | `2.3.0`        | [View](/documentation/changelog/plugins/plugin-i18next)              |
 | `@wolfstar/plugin-logger`               | `0.5.0`        | [View](/documentation/changelog/plugins/plugin-logger)               |
+| `@wolfstar/plugin-opentelemetry`        | `0.1.0`        | [View](/documentation/changelog/plugins/plugin-opentelemetry)        |
 | `@wolfstar/plugin-scheduled-tasks`      | `0.3.0`        | [View](/documentation/changelog/plugins/plugin-scheduled-tasks)      |
 | `@wolfstar/plugin-sharder`              | `0.3.0`        | [View](/documentation/changelog/plugins/plugin-sharder)              |
 | `@wolfstar/plugin-subcommands-advanced` | `2.3.0`        | [View](/documentation/changelog/plugins/plugin-subcommands-advanced) |
 
 ## Weekly summaries
+
+## 2026-10-30
+
+The new `@wolfstar/plugin-opentelemetry` `0.1.0` traces your bot with OpenTelemetry.
+
+### New features
+
+- **New `@wolfstar/plugin-opentelemetry` package** — Load `@wolfstar/plugin-opentelemetry/preload` with `--import` to start the OpenTelemetry SDK when an OTLP endpoint is set, with an optional Sentry exporter from `SENTRY_DSN`. The plugin, or the module under the `opentelemetry` key of `stars.config`, opens one span per command and handler. `flushTraces()` exports pending spans on shutdown. See [`@wolfstar/plugin-opentelemetry`](/documentation/packages/plugin-opentelemetry).
 
 ## 2026-10-23
 
