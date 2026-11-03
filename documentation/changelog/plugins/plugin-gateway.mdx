@@ -12,10 +12,10 @@ Changes to [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plug
 
 - **`Message` optional IDs are `null` when absent** — `Message#webhookId`, `applicationId`, `nonce`, and `position` now return `null` when the message has none, like discord.js. They used to return the `undefined` inherited from `@discordjs/structures`, so a check such as `message.webhookId !== null` treated every message as a webhook message. ([#276](https://github.com/wolfstar-project/plugins/pull/276))
 
-  ```ts
-  // Skip messages sent by webhooks
-  if (message.webhookId !== null) return;
-  ```
+    ```ts
+    // Skip messages sent by webhooks
+    if (message.webhookId !== null) return;
+    ```
 
 ### Updates
 
