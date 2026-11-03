@@ -1,0 +1,18 @@
+---
+title: '@wolfstar/plugin-opentelemetry'
+sidebarTitle: 'plugin-opentelemetry'
+description: 'Changelog for @wolfstar/plugin-opentelemetry: OpenTelemetry tracing for @wolfstar/http-framework bots.'
+---
+
+Changes to [`@wolfstar/plugin-opentelemetry`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-opentelemetry). The plugin traces a bot with OpenTelemetry: a preload starts the SDK, and a plugin opens one span per interaction. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.1.0` (2026-10-24)
+
+### New features
+
+- **New package** — Trace an `@wolfstar/http-framework` bot with OpenTelemetry. See the [package docs](/documentation/packages/plugin-opentelemetry). ([#262](https://github.com/wolfstar-project/plugins/pull/262))
+- **Preload** — Load `@wolfstar/plugin-opentelemetry/preload` with `--import`. It starts the SDK only on the main thread and only when an OTLP endpoint is set, and picks the exporter from `OTEL_EXPORTER_OTLP_PROTOCOL`.
+- **Sentry exporter** — The preload can add a Sentry exporter from `SENTRY_DSN` without leaking the headers of the first destination.
+- **Safe defaults** — The preload redacts Discord tokens in `undici` spans, skips WebSocket handshakes and the Sentry transport, and exports the last spans on `SIGTERM` without keeping the process alive.
+- **Interaction spans** — The `./plugin` entry, or the `./module` entry under the `opentelemetry` key of `stars.config`, opens one span per command and handler, and on request per autocomplete. Each span is the parent of the calls the command makes.
+- **`flushTraces()`** — Exports the spans waiting in the batch from a shutdown path.
