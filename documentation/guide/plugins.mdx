@@ -59,7 +59,7 @@ bun add @wolfstar/plugin-i18next
 On `@wolfstar/http-framework` 6.1 and later, every plugin ships a `./module` entry. List it in `modules` in
 `stars.config`, and the [`stars` CLI](/documentation/packages/cli) installs it while it loads the project. Set the
 module's options under its own top-level key of `stars.config`. The module entries need the optional
-[`@wolfstar/kit`](/documentation/packages/kit) peer dependency at `^0.2.0`, so install it next to the plugin.
+[`@wolfstar/kit`](/documentation/packages/kit) peer dependency at `^0.2.0 || ^0.3.0`, so install it next to the plugin.
 
 ```typescript
 // stars.config.ts
