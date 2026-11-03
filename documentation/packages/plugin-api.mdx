@@ -52,7 +52,7 @@ claims every path on its port and answers 404 for anything that doesn't match. T
 pnpm add @wolfstar/plugin-api
 ```
 
-Requires Node.js `>=20.18.1` and `@wolfstar/http-framework` `^3.6.0 || ^5.0.0`.
+Requires Node.js `>=22.0.0` and `@wolfstar/http-framework` `^3.6.0 || ^5.0.0 || ^6.0.0`.
 
 ## Usage
 
@@ -77,7 +77,7 @@ await client.listen({ port: 8080 }); // interactions webhook; the API server sta
 ### Activating with `modules`
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
-It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0 || ^0.3.0`.
 
 ```ts
 // stars.config.ts
@@ -295,6 +295,15 @@ optional request and response.
 
 Listener piece names are PascalCase (for example `PluginServerRequest`).
 
+## Migrating from 2.x
+
+Version 3.0.0 drops Node.js 20. The only breaking change is the Node.js requirement, which is now `>=22.0.0`. The API
+is the same as in 2.x, so upgrade Node.js and bump the package:
+
+```bash
+pnpm add @wolfstar/plugin-api@^3.0.0
+```
+
 ## Migrating from 1.x
 
 Version 2.0.0 contains breaking changes. Update your code as follows:
@@ -322,7 +331,8 @@ Behavior changes:
 - **`OPTIONS`** pre-flight requests answer `200` with an empty body instead of `204`. `404` and `405`
   responses from the `headers` middleware also have empty bodies.
 - **Listener piece names** are PascalCase, and `ServerEvent.Error` carries an optional request and response.
-- **Requirements.** Node.js `>=20.18.1` and `@wolfstar/http-framework` `^3.6.0 || ^5.0.0`.
+- **Requirements.** `@wolfstar/http-framework` `^3.6.0 || ^5.0.0 || ^6.0.0`. Version 3.0.0 also requires Node.js
+  `>=22.0.0` (see [Migrating from 2.x](#migrating-from-2x)).
 
 ## Scope
 
