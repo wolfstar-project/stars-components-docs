@@ -3,6 +3,12 @@ name: Pullfrog PR repair
 # When `ci` or `Semantic Pull Requests` fails on a same-repo pull request, hand the failure to the
 # Pullfrog agent so it can fix lint/format errors or rewrite a non-conventional title. Bot-authored PRs
 # (Mintlify) are the main target: Pullfrog's built-in "Fix CI failures" skips bot commits.
+#
+# A `workflow_run` event carries no pull request, so Pullfrog treats the run as unscoped:
+# - its push guard refuses to push a `pr-<n>` branch made by `checkout_pr`. The workflow checks out the
+#   head branch under its own name, so the agent pushes `origin/<branch>` without `checkout_pr`.
+# - it has no tool that edits a pull request title. The agent returns the title as structured output and
+#   the `apply-title` job sets it.
 
 on:
     # zizmor: ignore[dangerous-triggers]
@@ -44,6 +50,7 @@ jobs:
             kind: ${{ steps.resolve.outputs.kind }}
             pr: ${{ steps.resolve.outputs.pr }}
             run: ${{ steps.resolve.outputs.run }}
+            branch: ${{ steps.resolve.outputs.branch }}
         steps:
             - name: Resolve pull request and failure kind
               id: resolve
@@ -72,12 +79,14 @@ jobs:
 
                   [[ "$PR" =~ ^[0-9]+$ ]] || skip "invalid pull request number"
 
-                  read -r state head_sha head_repo < <(
-                      gh api "repos/$REPO/pulls/$PR" --jq '[.state, .head.sha, .head.repo.full_name] | @tsv'
+                  read -r state head_sha head_repo head_ref < <(
+                      gh api "repos/$REPO/pulls/$PR" --jq '[.state, .head.sha, .head.repo.full_name, .head.ref] | @tsv'
                   )
                   [ "$state" = open ] || skip "pull request #$PR is $state"
                   [ "$head_repo" = "$REPO" ] || skip "pull request #$PR comes from a fork"
                   [ "$head_sha" = "$RUN_SHA" ] || skip "run is stale, the branch has moved on"
+                  [ "$head_ref" = "$RUN_BRANCH" ] || skip "run branch '$RUN_BRANCH' is not the head of #$PR"
+                  [[ "$head_ref" =~ ^[A-Za-z0-9][A-Za-z0-9._/-]*$ ]] || skip "unsupported branch name"
 
                   since=$(date -u -d '24 hours ago' +%Y-%m-%dT%H:%M:%SZ)
                   runs=$(gh api "repos/$REPO/actions/workflows/pullfrog-pr-repair.yml/runs?branch=$RUN_BRANCH&created=%3E%3D$since&per_page=100" \
@@ -89,6 +98,7 @@ jobs:
                       echo "kind=$kind"
                       echo "pr=$PR"
                       echo "run=$RUN_ID"
+                      echo "branch=$head_ref"
                   } >> "$GITHUB_OUTPUT"
 
     repair:
@@ -99,9 +109,11 @@ jobs:
         timeout-minutes: 30
         permissions:
             id-token: write # OIDC token exchanged by pullfrog/pullfrog for a scoped GitHub App token
-            contents: read # checkout the default branch; the agent pushes with its own app token
+            contents: read # checkout; the agent pushes with its own app token
+        outputs:
+            result: ${{ steps.agent.outputs.result }}
         steps:
-            - name: Checkout Project
+            - name: Checkout default branch
               uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
               with:
                   fetch-depth: 1
@@ -112,26 +124,76 @@ jobs:
                   KIND: ${{ needs.resolve.outputs.kind }}
                   PR: ${{ needs.resolve.outputs.pr }}
                   RUN_ID: ${{ needs.resolve.outputs.run }}
+                  BRANCH: ${{ needs.resolve.outputs.branch }}
                   REPO: ${{ github.repository }}
-              # The template comes from the default branch checkout. It is rendered inside .git so the agent never commits it.
-              # `resolve` already validated the values as a known kind and numeric ids.
+              # The template always comes from the default branch, never from the pull request. It is rendered
+              # outside the workspace so the agent never commits it and the second checkout cannot touch it.
+              # `resolve` already validated the values as a known kind, numeric ids and a plain branch name.
               run: |
                   sed -e "s|{{KIND}}|$KIND|g" \
                       -e "s|{{PR}}|$PR|g" \
                       -e "s|{{RUN_ID}}|$RUN_ID|g" \
+                      -e "s|{{BRANCH}}|$BRANCH|g" \
                       -e "s|{{REPO}}|$REPO|g" \
-                      .github/pullfrog/pr-repair.md > .git/pullfrog-prompt.md
+                      .github/pullfrog/pr-repair.md > "$RUNNER_TEMP/pullfrog-prompt.md"
+
+            # Check out the head branch under its own name: push_branch then targets `origin/<branch>`, which the
+            # unscoped-run guard allows. `checkout_pr` would create `pr-<n>`, which that guard refuses to push.
+            - name: Checkout pull request branch
+              if: needs.resolve.outputs.kind == 'ci'
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ needs.resolve.outputs.branch }}
+                  fetch-depth: 1
+                  persist-credentials: false
 
             - name: Run agent
+              id: agent
               uses: pullfrog/pullfrog@895164fc90f5c493e72693c919c6cf269af158eb # v0.1.110
               with:
                   timeout: 20m
-                  # Title fixes only edit pull request metadata, so the agent cannot push for them.
+                  # Title fixes only return a title as output, so the agent cannot push for them.
                   push: ${{ needs.resolve.outputs.kind == 'title' && 'disabled' || 'restricted' }}
                   shell: restricted
-                  prompt_file: .git/pullfrog-prompt.md
+                  prompt_file: ${{ runner.temp }}/pullfrog-prompt.md
+                  output_schema: >-
+                      ${{ needs.resolve.outputs.kind == 'title' &&
+                      '{"type":"object","properties":{"title":{"type":"string"}},"required":["title"],"additionalProperties":false}' || '' }}
               env:
                   # add at least one provider API key (or configure one in the Pullfrog console)
                   ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
                   CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
                   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+    apply-title:
+        name: ✏️ Apply title
+        needs:
+            - resolve
+            - repair
+        if: needs.resolve.outputs.kind == 'title' && needs.repair.result == 'success'
+        runs-on: ubuntu-latest
+        timeout-minutes: 5
+        permissions:
+            pull-requests: write
+        steps:
+            - name: Validate and set the pull request title
+              env:
+                  # An edit made with the default GITHUB_TOKEN does not trigger `Semantic Pull Requests` again, so the
+                  # check would stay red. WOLFSTAR_TOKEN (already used by the labeler) re-runs it.
+                  GH_TOKEN: ${{ secrets.WOLFSTAR_TOKEN || github.token }}
+                  REPO: ${{ github.repository }}
+                  PR: ${{ needs.resolve.outputs.pr }}
+                  RESULT: ${{ needs.repair.outputs.result }}
+              run: |
+                  set -euo pipefail
+
+                  title=$(jq -er '.title' <<< "$RESULT") || { echo "::error::Agent output has no title: $RESULT"; exit 1; }
+                  # Same rules as `Semantic Pull Requests`: allowed type, optional allowed scope, lowercase subject.
+                  pattern='^(feat|fix|docs|style|refactor|perf|build|ci|chore|revert)(\((guide|packages|api|changelog|errors|config|deps|ci)\))?!?: [^A-Z[:space:]].*$'
+                  if [ "${#title}" -gt 100 ] || [[ "$title" == *$'\n'* ]] || ! [[ "$title" =~ $pattern ]]; then
+                      echo "::error::Rejected title from the agent: $title"
+                      exit 1
+                  fi
+
+                  gh api -X PATCH "repos/$REPO/pulls/$PR" -f title="$title" --jq '.title'
+                  echo "::notice::Renamed #$PR to: $title"
