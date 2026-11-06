@@ -60,6 +60,8 @@ Adapted from [`@kaname-png/plugin-subcommands-advanced`](https://github.com/sawa
 pnpm add @wolfstar/http-framework @wolfstar/plugin-subcommands-advanced
 ```
 
+Requires Node.js `>=22.0.0`.
+
 ## Usage
 
 Import the register entrypoint **before** creating the client:
@@ -80,7 +82,7 @@ const client = new Client({
 ### Activating with `modules`
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
-It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0 || ^0.3.0`.
 
 ```ts
 // stars.config.ts

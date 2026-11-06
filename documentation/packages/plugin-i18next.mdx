@@ -60,6 +60,8 @@ Interactions arrive over HTTP as raw payloads, so every helper operates on `disc
 pnpm add @wolfstar/http-framework @wolfstar/plugin-i18next
 ```
 
+Requires Node.js `>=22.22.0`.
+
 ## Usage
 
 Import the register entrypoint **before** creating the client:
@@ -93,7 +95,7 @@ The plugin registers three hooks:
 ### Activating with `modules`
 
 On framework 6.1 and later, list the `./module` entry in `modules` in `stars.config` instead of importing `register`.
-It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0`.
+It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency, at `^0.2.0 || ^0.3.0`.
 
 ```ts
 // stars.config.ts
