@@ -43,18 +43,32 @@ Weekly summaries of user-facing changes to Stars Components and the WolfStar plu
 
 | Package                                 | Latest version | Changelog                                                            |
 | --------------------------------------- | -------------- | -------------------------------------------------------------------- |
-| `@wolfstar/plugin-api`                  | `2.2.0`        | [View](/documentation/changelog/plugins/plugin-api)                  |
-| `@wolfstar/plugin-broker`               | `0.7.0`        | [View](/documentation/changelog/plugins/plugin-broker)               |
-| `@wolfstar/plugin-cache`                | `0.8.0`        | [View](/documentation/changelog/plugins/plugin-cache)                |
-| `@wolfstar/plugin-gateway`              | `0.16.0`       | [View](/documentation/changelog/plugins/plugin-gateway)              |
-| `@wolfstar/plugin-i18next`              | `2.3.0`        | [View](/documentation/changelog/plugins/plugin-i18next)              |
-| `@wolfstar/plugin-logger`               | `0.5.0`        | [View](/documentation/changelog/plugins/plugin-logger)               |
-| `@wolfstar/plugin-opentelemetry`        | `0.1.0`        | [View](/documentation/changelog/plugins/plugin-opentelemetry)        |
-| `@wolfstar/plugin-scheduled-tasks`      | `0.3.0`        | [View](/documentation/changelog/plugins/plugin-scheduled-tasks)      |
-| `@wolfstar/plugin-sharder`              | `0.3.0`        | [View](/documentation/changelog/plugins/plugin-sharder)              |
-| `@wolfstar/plugin-subcommands-advanced` | `2.3.0`        | [View](/documentation/changelog/plugins/plugin-subcommands-advanced) |
+| `@wolfstar/plugin-api`                  | `3.0.0`        | [View](/documentation/changelog/plugins/plugin-api)                  |
+| `@wolfstar/plugin-broker`               | `0.8.0`        | [View](/documentation/changelog/plugins/plugin-broker)               |
+| `@wolfstar/plugin-cache`                | `0.9.0`        | [View](/documentation/changelog/plugins/plugin-cache)                |
+| `@wolfstar/plugin-gateway`              | `0.16.2`       | [View](/documentation/changelog/plugins/plugin-gateway)              |
+| `@wolfstar/plugin-i18next`              | `3.0.0`        | [View](/documentation/changelog/plugins/plugin-i18next)              |
+| `@wolfstar/plugin-logger`               | `0.6.0`        | [View](/documentation/changelog/plugins/plugin-logger)               |
+| `@wolfstar/plugin-opentelemetry`        | `0.2.1`        | [View](/documentation/changelog/plugins/plugin-opentelemetry)        |
+| `@wolfstar/plugin-scheduled-tasks`      | `0.4.0`        | [View](/documentation/changelog/plugins/plugin-scheduled-tasks)      |
+| `@wolfstar/plugin-sharder`              | `0.4.0`        | [View](/documentation/changelog/plugins/plugin-sharder)              |
+| `@wolfstar/plugin-subcommands-advanced` | `3.0.0`        | [View](/documentation/changelog/plugins/plugin-subcommands-advanced) |
 
 ## Weekly summaries
+
+## 2026-11-06
+
+Every plugin now accepts `@wolfstar/kit` 0.3 and `@wolfstar/schema` 0.12, most plugins require Node.js 22, and `plugin-opentelemetry` `0.2.0` shortens its span attribute names.
+
+### Updates
+
+- **Breaking: Node.js 22 required** — [`plugin-api`](/documentation/changelog/plugins/plugin-api) `3.0.0`, [`plugin-i18next`](/documentation/changelog/plugins/plugin-i18next) `3.0.0`, [`plugin-subcommands-advanced`](/documentation/changelog/plugins/plugin-subcommands-advanced) `3.0.0`, [`plugin-broker`](/documentation/changelog/plugins/plugin-broker) `0.8.0`, [`plugin-cache`](/documentation/changelog/plugins/plugin-cache) `0.9.0`, [`plugin-logger`](/documentation/changelog/plugins/plugin-logger) `0.6.0`, [`plugin-scheduled-tasks`](/documentation/changelog/plugins/plugin-scheduled-tasks) `0.4.0`, and [`plugin-sharder`](/documentation/changelog/plugins/plugin-sharder) `0.4.0` drop Node.js 20.
+- **`@wolfstar/kit` 0.3 and `@wolfstar/schema` 0.12 peers** — Every plugin accepts [`@wolfstar/kit`](/documentation/packages/kit) `^0.3.0` and [`@wolfstar/schema`](/documentation/packages/schema) `^0.12.0` next to the previous ranges.
+- **Breaking: OpenTelemetry span attributes** — [`@wolfstar/plugin-opentelemetry`](/documentation/packages/plugin-opentelemetry) `0.2.0` renames `wolfstar.interaction.kind`, `wolfstar.interaction.name`, and `wolfstar.interaction.outcome` to `interaction.kind`, `interaction.name`, and `interaction.outcome`. Update dashboards and queries that filter on the old names.
+
+### Bug fixes
+
+- **`null` message fields** — [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway) `0.16.2` returns `null` instead of `undefined` for `Message#webhookId`, `applicationId`, `nonce`, and `position` when the message has none, so `message.webhookId !== null` no longer matches every message.
 
 ## 2026-10-30
 

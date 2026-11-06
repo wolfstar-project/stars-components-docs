@@ -6,6 +6,22 @@ description: 'Changelog for @wolfstar/plugin-scheduled-tasks: one-off and repeat
 
 Changes to [`@wolfstar/plugin-scheduled-tasks`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-scheduled-tasks). The plugin runs tasks later or on a schedule, storing their jobs in Redis through [BullMQ](https://docs.bullmq.io/) so they survive restarts and are shared by every process of your bot. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.4.0` (2026-11-02)
+
+### Updates
+
+- **`@wolfstar/kit` 0.3 and `@wolfstar/schema` 0.12** — The `@wolfstar/kit` peer now accepts `^0.2.0 || ^0.3.0` and the `@wolfstar/schema` peer accepts `^0.9.0 || ^0.12.0`, next to the previous ranges. ([#275](https://github.com/wolfstar-project/plugins/pull/275))
+
+### Migration
+
+- **Node.js 22 required** — The package now requires Node.js 22 or later. Node.js 20 is no longer supported. If you still run Node.js 20, upgrade it before you update. ([#275](https://github.com/wolfstar-project/plugins/pull/275))
+
+## `0.3.1` (2026-10-31)
+
+### Updates
+
+- **Dependencies** — Updated third-party dependencies. ([#240](https://github.com/wolfstar-project/plugins/pull/240))
+
 ## `0.3.0` (2026-10-20)
 
 ### New features
