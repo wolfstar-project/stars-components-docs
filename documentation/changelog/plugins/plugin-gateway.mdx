@@ -8,14 +8,19 @@ Changes to [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plug
 
 ## `0.16.2` (2026-11-02)
 
-### Updates
-
-- **`@wolfstar/kit` 0.3 and `@wolfstar/schema` 0.12** — The `@wolfstar/kit` peer now accepts `^0.2.0 || ^0.3.0` and the `@wolfstar/schema` peer accepts `^0.9.0 || ^0.12.0`, next to the previous ranges. ([#275](https://github.com/wolfstar-project/plugins/pull/275))
-- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.9.0`.
-
 ### Bug fixes
 
-- **`null` message fields** — `Message#webhookId`, `applicationId`, `nonce`, and `position` are `null` when the message has none, like discord.js, instead of the `undefined` they inherited from `@discordjs/structures`. A check such as `message.webhookId !== null` no longer treats every message as a webhook message. ([#276](https://github.com/wolfstar-project/plugins/pull/276))
+- **`Message` optional IDs are `null` when absent** — `Message#webhookId`, `applicationId`, `nonce`, and `position` now return `null` when the message has none, like discord.js. They used to return the `undefined` inherited from `@discordjs/structures`, so a check such as `message.webhookId !== null` treated every message as a webhook message. ([#276](https://github.com/wolfstar-project/plugins/pull/276))
+
+    ```ts
+    // Skip messages sent by webhooks
+    if (message.webhookId !== null) return;
+    ```
+
+### Updates
+
+- **`@wolfstar/kit` 0.3 and `@wolfstar/schema` 0.12 peers** — The optional peer ranges now also accept `@wolfstar/kit` `^0.3.0` and `@wolfstar/schema` `^0.12.0`, next to the previous `^0.2.0` and `^0.9.0`. You can upgrade those packages without a peer dependency warning. ([#275](https://github.com/wolfstar-project/plugins/pull/275))
+- **Dependencies** — Updated `@wolfstar/plugin-cache` to `0.9.0`.
 
 ## `0.16.1` (2026-10-31)
 
