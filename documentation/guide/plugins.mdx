@@ -137,6 +137,8 @@ const client = new Client({
 await client.load();
 ```
 
+`@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway`, and `@wolfstar/plugin-sharder` are libraries you use directly, not through `/register`. They have no hooks to install, so their `/register` entry is a no-op, and releases before `plugin-cache` 0.3.0, `plugin-gateway` 0.2.0, and `plugin-sharder` 0.1.1 ship none. Import their classes from the package root and construct them yourself.
+
 <Warning>
 	Use one activation path per plugin. The module, the `./plugin` factory, and `/register` install the same hooks, so combining them installs the
 	hooks twice. The CLI skips its injected `/register` import for packages listed in `modules`.
