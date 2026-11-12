@@ -1,0 +1,37 @@
+---
+title: 'Type Alias: MessageComponentResolved'
+description: 'The resolved data of a message component interaction: the entities behind the selected values for the user, role, channel and mentionable selects, an… (@wolfstar/http-framework)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/f9af4deb25a8ddd56339f91baef621d1ab1e192b/packages/http-framework/src/lib/interactions/structures/interactions/base/MessageComponentInteraction.ts#L33',
+		label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/MessageComponentInteraction.ts:33'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+The `resolved` data of a message component interaction: the entities behind the selected values for the user, role,
+channel and mentionable selects, and `null` for the button and the string select, which have none.
+
+<ApiSignature
+	tokens={[
+		'type MessageComponentResolved<T extends ',
+		['MessageComponentInteractionType', '/documentation/api/http-framework/type-aliases/MessageComponentInteractionType'],
+		'> = T extends { data: { resolved: infer R } } ? R : null'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="T"
+	type={['extends ', ['MessageComponentInteractionType', '/documentation/api/http-framework/type-aliases/MessageComponentInteractionType']]}
+/>
+
+</ApiParams>

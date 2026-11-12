@@ -1,0 +1,33 @@
+---
+title: 'Type Alias: InDM'
+description: 'API reference for InDM, a type alias exported by @wolfstar/http-framework.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/stars-components/blob/f9af4deb25a8ddd56339f91baef621d1ab1e192b/packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts#L281',
+		label: 'packages/http-framework/src/lib/interactions/structures/interactions/base/BaseInteraction.ts:281'
+	}}
+	packageName="@wolfstar/http-framework"
+	packageHref="/documentation/api/http-framework"
+/>
+
+<ApiSignature
+	tokens={[
+		'type InDM<T extends ',
+		['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction'],
+		'> = T & {\n  guild_id: undefined;\n  guild_locale: undefined;\n  guildId: undefined;\n  guildLocale: undefined;\n  member: undefined;\n  user: ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		';\n}'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" type={['extends ', ['BaseInteraction', '/documentation/api/http-framework/classes/BaseInteraction']]} />
+
+</ApiParams>
