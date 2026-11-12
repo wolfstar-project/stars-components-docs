@@ -536,15 +536,15 @@ The permission decorators of [`@wolfstar/decorators`](/documentation/packages/de
 The interaction wrappers expose the resolved payload, so a handler does not walk `interaction.data` by hand. The raw `data`
 getter and the response methods are unchanged.
 
-| Interaction                                 | Accessors                                                                                                     |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| Any                                         | `inGuild()` and `inDM()` narrow `guildId`, `guildLocale`, `member` and `user` to what the context guarantees. |
-| `ChatInputCommandInteraction`               | `options`: the resolved options, with `subCommand` and `subCommandGroup`.                                     |
-| `AutocompleteInteraction`                   | `options`, and `focused`: the option being typed, or `null`.                                                  |
-| `UserContextMenuCommandInteraction`         | `targetId`, `targetUser`, `targetMember` (`null` outside a guild).                                            |
-| `MessageContextMenuCommandInteraction`      | `targetId`, `targetMessage`.                                                                                  |
-| Message components                          | `resolved`: the resolved users, roles, channels or members, or `null` for buttons and string selects.         |
-| `ModalSubmitInteraction`                    | `fields`: reads a submitted field by its custom ID.                                                           |
+| Interaction                            | Accessors                                                                                                     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Any                                    | `inGuild()` and `inDM()` narrow `guildId`, `guildLocale`, `member` and `user` to what the context guarantees. |
+| `ChatInputCommandInteraction`          | `options`: the resolved options, with `subCommand` and `subCommandGroup`.                                     |
+| `AutocompleteInteraction`              | `options`, and `focused`: the option being typed, or `null`.                                                  |
+| `UserContextMenuCommandInteraction`    | `targetId`, `targetUser`, `targetMember` (`null` outside a guild).                                            |
+| `MessageContextMenuCommandInteraction` | `targetId`, `targetMessage`.                                                                                  |
+| Message components                     | `resolved`: the resolved users, roles, channels or members, or `null` for buttons and string selects.         |
+| `ModalSubmitInteraction`               | `fields`: reads a submitted field by its custom ID.                                                           |
 
 ```typescript
 if (interaction.inGuild()) {
