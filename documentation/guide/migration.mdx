@@ -125,7 +125,12 @@ export default defineConfig({
 
 ## Migrating from v4 to v5 {#v5}
 
-::: info Current releases The v5 build defaults are stable in `@wolfstar/http-framework@5.0.0`. The matching developer tooling is `@wolfstar/cli@1.0.0`. :::
+<Info>
+  **Current releases**
+
+The v5 build defaults are stable in `@wolfstar/http-framework@5.0.0`. The matching developer tooling is `@wolfstar/cli@1.0.0`.
+
+</Info>
 
 v5 is a small, mostly opt-in release. The only breaking change to the framework's public API is the removal of the previously-unannounced `@wolfstar/http-framework/fetch` submodule, replaced by a `fetch()` method on `Client` itself. Everything else is either purely additive (`experimental.enableNitro`) or an internal error-handling change (`nostics` diagnostics) that only matters to code that caught `ConfigError`/`CliError` by name.
 
@@ -138,29 +143,29 @@ v5 is a small, mostly opt-in release. The only breaking change to the framework'
 
 ### Upgrading the Packages
 
-::: code-group
+<CodeGroup>
 
-```bash [pnpm]
+```bash pnpm
 pnpm add @wolfstar/http-framework@^5
 pnpm add -D @wolfstar/cli@^1
 ```
 
-```bash [npm]
+```bash npm
 npm install @wolfstar/http-framework@^5
 npm install --save-dev @wolfstar/cli@^1
 ```
 
-```bash [yarn]
+```bash yarn
 yarn add @wolfstar/http-framework@^5
 yarn add --dev @wolfstar/cli@^1
 ```
 
-```bash [bun]
+```bash bun
 bun add @wolfstar/http-framework@^5
 bun add --dev @wolfstar/cli@^1
 ```
 
-:::
+</CodeGroup>
 
 No `stars.config.*` changes are required to move from v4 to v5 — the configuration shape is unchanged.
 
@@ -205,7 +210,10 @@ export default defineConfig({
 
 Install `vite` and `nitro` as `devDependencies`. `stars build` now produces `build.outDir` (`.output` by default under Nitro, instead of `dist`) laid out for the configured preset rather than a `node:http` process; `stars dev` rebuilds and restarts on every change, the same as the other build tools.
 
-::: warning The entry's default export changes The generated Nitro server entry imports the entry file's **default export** and calls `.fetch(request)` on it — the entry must export the already-`load()`ed `Client` instance, not call `listen()`:
+<Warning>
+  **The entry's default export changes**
+
+The generated Nitro server entry imports the entry file's **default export** and calls `.fetch(request)` on it — the entry must export the already-`load()`ed `Client` instance, not call `listen()`:
 
 ```typescript
 import { Client } from '@wolfstar/http-framework';
@@ -219,7 +227,7 @@ await client.load();
 export default client;
 ```
 
-:::
+</Warning>
 
 Vite's native `resolve.tsconfigPaths` is turned on automatically under Nitro (see [Nitro's import alias guide](https://nitro.build/examples/import-alias)), so a project's own `tsconfig.json#paths`/package.json `imports` aliases — including the ones `stars prepare`'s generated `.stars/tsconfig.json` adds — keep working without a `vite-tsconfig-paths` plugin.
 
