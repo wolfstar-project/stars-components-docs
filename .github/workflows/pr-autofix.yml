@@ -1,0 +1,113 @@
+name: PR autofix
+
+# On every same-repo pull request update, run the lint autofixers on the files the pull request changes and push
+# the result to its head branch. Bot-authored PRs (Mintlify, generate-api) are the main target: their tables and
+# lists often fail `oxfmt --check` in `ci`.
+#
+# This is deterministic on purpose. An agent cannot push here: Pullfrog refused every `push_branch` as "not scoped
+# to the PR". The pull request title is still checked by `semantic-pull-requests.yml`.
+#
+# Trust boundary: only same-repo pull requests run this job, so the code it formats was pushed by someone who can
+# already write to the repository. The push token is only handed to git in the last step.
+
+on:
+    pull_request:
+        types:
+            - opened
+            - reopened
+            - synchronize
+            - ready_for_review
+
+permissions: {}
+
+# A newer push makes the running fix stale, and the job is idempotent, so cancelling is safe.
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+    cancel-in-progress: true
+
+jobs:
+    autofix:
+        name: 🔧 Autofix lint and format
+        runs-on: ubuntu-26.04-arm
+        timeout-minutes: 10
+        if: >-
+            github.repository == 'wolfstar-project/stars-components-docs' &&
+            github.event.pull_request.head.repo.full_name == github.repository &&
+            github.event.pull_request.draft == false
+        permissions:
+            contents: write # push the fix to the pull request head branch when WOLFSTAR_TOKEN is not set
+            pull-requests: read # list the files the pull request changes
+        steps:
+            - name: Checkout Project
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+                  fetch-depth: 1
+                  persist-credentials: false
+
+            - name: Setup pnpm + Node.js
+              uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
+              with:
+                  runtime: node@26
+                  cache: true
+                  install: false
+
+            # `--ignore-scripts` skips the husky `prepare` hook: nothing here needs git hooks.
+            - name: Install Dependencies
+              run: pnpm install --frozen-lockfile --ignore-scripts
+
+            - name: List changed files
+              id: files
+              env:
+                  GH_TOKEN: ${{ github.token }}
+                  REPO: ${{ github.repository }}
+                  PR: ${{ github.event.pull_request.number }}
+              run: |
+                  set -euo pipefail
+                  gh api --paginate "repos/$REPO/pulls/$PR/files" \
+                      --jq '.[] | select(.status != "removed") | .filename' > "$RUNNER_TEMP/changed-files"
+                  echo "count=$(wc -l < "$RUNNER_TEMP/changed-files")" >> "$GITHUB_OUTPUT"
+
+            # Only the files the pull request changes are fixed, so the push never touches unrelated pages.
+            # A lint error the fixer cannot resolve is left for `ci` to report.
+            - name: Run autofixers
+              if: steps.files.outputs.count != '0'
+              run: |
+                  set -uo pipefail
+                  xargs -d '\n' -a "$RUNNER_TEMP/changed-files" \
+                      pnpm exec oxlint --fix --no-error-on-unmatched-pattern \
+                      || echo "::warning::oxlint left errors it cannot fix, see the ci workflow"
+                  xargs -d '\n' -a "$RUNNER_TEMP/changed-files" \
+                      pnpm exec oxfmt --write --no-error-on-unmatched-pattern
+
+            - name: Commit fix
+              id: commit
+              run: |
+                  set -euo pipefail
+                  if git diff --quiet; then
+                      echo "changed=false" >> "$GITHUB_OUTPUT"
+                      echo "::notice::Nothing to fix"
+                      exit 0
+                  fi
+                  git diff --stat
+                  git config user.name 'github-actions[bot]'
+                  git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+                  git commit --all --no-verify --message 'style: apply oxlint and oxfmt fixes'
+                  echo "changed=true" >> "$GITHUB_OUTPUT"
+
+            # A push made with the default GITHUB_TOKEN does not trigger other workflows, so `ci` would not run on
+            # the fixed commit. Set the `WOLFSTAR_TOKEN` secret (a PAT or GitHub App token) so it does.
+            # Pushing to the head SHA's branch fails as a non-fast-forward if the branch moved meanwhile; the newer
+            # push starts its own run.
+            - name: Push fix
+              if: steps.commit.outputs.changed == 'true'
+              env:
+                  TOKEN: ${{ secrets.WOLFSTAR_TOKEN || github.token }}
+                  REPO: ${{ github.repository }}
+                  BRANCH: ${{ github.event.pull_request.head.ref }}
+              run: |
+                  set -euo pipefail
+                  auth=$(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)
+                  echo "::add-mask::$auth"
+                  git -c core.hooksPath=/dev/null -c "http.https://github.com/.extraheader=AUTHORIZATION: basic $auth" \
+                      push "https://github.com/$REPO.git" "HEAD:refs/heads/$BRANCH"
