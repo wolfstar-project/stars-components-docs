@@ -531,6 +531,41 @@ Preconditions follow the design of `@sapphire/framework`, without the message fl
 `NSFW`, `GuildOnly`, ...), and the typed registry of precondition names. The framework ships no built-in preconditions.
 The permission decorators of [`@wolfstar/decorators`](/documentation/packages/decorators) keep working alongside them.
 
+### Typed interaction accessors
+
+The interaction wrappers expose the resolved payload, so a handler does not walk `interaction.data` by hand. The raw `data`
+getter and the response methods are unchanged.
+
+| Interaction                            | Accessors                                                                                                     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Any                                    | `inGuild()` and `inDM()` narrow `guildId`, `guildLocale`, `member` and `user` to what the context guarantees. |
+| `ChatInputCommandInteraction`          | `options`: the resolved options, with `subCommand` and `subCommandGroup`.                                     |
+| `AutocompleteInteraction`              | `options`, and `focused`: the option being typed, or `null`.                                                  |
+| `UserContextMenuCommandInteraction`    | `targetId`, `targetUser`, `targetMember` (`null` outside a guild).                                            |
+| `MessageContextMenuCommandInteraction` | `targetId`, `targetMessage`.                                                                                  |
+| Message components                     | `resolved`: the resolved users, roles, channels or members, or `null` for buttons and string selects.         |
+| `ModalSubmitInteraction`               | `fields`: reads a submitted field by its custom ID.                                                           |
+
+```typescript
+if (interaction.inGuild()) {
+	// `member` is not optional here, and `user` is the member's user.
+	console.log(interaction.member.user.id === interaction.user.id);
+}
+
+// In a modal submit handler:
+const reason = interaction.fields.getTextInput('reason');
+const roles = interaction.fields.getSelectedRoles('roles');
+```
+
+`options` builds a new object on every access, so read it once when you need several values. Per-command option types
+still come from `Command.OptionsOf` and `stars codegen`.
+
+`fields` returns the `ModalInteractionOptionResolver` from
+[`@wolfstar/discord-utilities`](/documentation/packages/discord-utilities#option-resolvers-over-a-raw-payload). It reads
+text inputs, selects and uploaded files, inside action rows or labels. Its getters throw when a custom ID is missing or
+belongs to a component of another type. The select getters also throw when the payload has no resolved data, for example
+`getSelectedMembers` in a DM. Radio and checkbox groups have no typed getter, so read them with `fields.get(customId)`.
+
 ### Hot Module Reloading
 
 `@wolfstar/http-framework` ships with Hot Module Reloading (HMR) as a core feature, no plugin required. When enabled,
