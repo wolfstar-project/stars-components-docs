@@ -6,6 +6,12 @@ description: 'Changelog for @wolfstar/shared-http-pieces: shared commands and li
 
 Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.1.1` (2026-11-07)
+
+### Bug fixes
+
+- **Shared pieces kept in bundled bots** — `/info` and the shared listeners now stay in bots that bundle the package. `sideEffects` lists the `dist/_load-*.js` chunk that registers them, so a bundler no longer drops it from `dist/pieces.js` and `dist/register.js`. ([#362](https://github.com/wolfstar-project/stars-components/pull/362))
+
 ## `2.1.0` (2026-10-17)
 
 ### New features
