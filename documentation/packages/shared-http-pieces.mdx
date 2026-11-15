@@ -89,6 +89,14 @@ You still define the `shared:infoEmbedDescription` key and the information varia
 
 Use either the module or `register`, not both. Combining them registers the shared pieces twice.
 
+The module takes no options. It reserves the `httpPieces` key of `stars.config` for future options, so no other module can claim it.
+To type the key in `defineConfig`, install the optional `@wolfstar/schema` peer dependency (0.9.0 or later) and import the package's types in `stars.config.ts`:
+
+```ts
+// stars.config.ts
+import type {} from '@wolfstar/shared-http-pieces/module';
+```
+
 Furthermore, error handling can be enabled by setting the `SENTRY_DSN`, `@wolfstar/shared-http-pieces` includes a way to register [Sentry](https://docs.sentry.io) and registers handlers to handle errors into Sentry. The plugin also reads `SENTRY_ROOT` to set [`RewriteFrames`](https://docs.sentry.io/platforms/node/configuration/integrations/pluggable-integrations/#rewriteframes)'s root, defaults to `process.cwd()`.
 
 The Sentry error listener does not report a `UserError`, such as a `PreconditionError`. These are expected failures, which
