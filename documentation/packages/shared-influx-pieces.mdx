@@ -83,3 +83,11 @@ The module registers the `@wolfstar/shared-influx-pieces/plugin` plugin, which d
 You still set the `INFLUX_URL`, `INFLUX_TOKEN`, `INFLUX_ORG`, and `INFLUX_BUCKET` environment variables. The environment is loaded before the module's plugins run.
 
 Use either the module or `register`, not both.
+
+The module takes no options. It reserves the `influxPieces` key of `stars.config` for future options, so no other module can claim it.
+To type the key in `defineConfig`, install the optional `@wolfstar/schema` peer dependency (0.9.0 or later) and import the package's types in `stars.config.ts`:
+
+```ts
+// stars.config.ts
+import type {} from '@wolfstar/shared-influx-pieces/module';
+```
