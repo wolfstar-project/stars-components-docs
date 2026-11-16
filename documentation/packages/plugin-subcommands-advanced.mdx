@@ -215,7 +215,7 @@ generate the registry.
 `@wolfstar/http-framework` routes subcommands to **methods on the parent** command instance. This plugin:
 
 1. Lets child command classes register themselves into in-memory registries (by parent name).
-2. After all command pieces are constructed, rebuilds the parent’s chat-input resolver and `CommandRouter`, installing thin delegate methods that call each child’s `chatInputRun`.
+2. After all command pieces are constructed, rebuilds the parent’s chat-input resolver and `CommandRouter`, installing thin delegate methods that run each child’s `preconditions`, then its `chatInputRun`.
 
 You do not need to call the optional `hooks.subcommands` / `hooks.groups` helpers unless you are registering the parent imperatively and want to attach builders yourself.
 
@@ -224,3 +224,4 @@ You do not need to call the optional `hooks.subcommands` / `hooks.groups` helper
 - HTTP-only: there is no message-command support (unlike the Sapphire original).
 - Child classes should **not** use `@RegisterCommand` — only the parent registers the top-level slash command.
 - Subcommand groups must still be declared on the parent (via `@RegisterCommand` builder or `registerApplicationCommands`).
+- Preconditions: the framework runs the global preconditions and the parent's `preconditions` option for every subcommand. The delegate then runs the `preconditions` option of the child piece before its `chatInputRun`. A denial emits `chatInputCommandDenied`, as for any command, and the subcommand does not run. The child check needs `@wolfstar/http-framework` 6.3.0 or later, the release that added the option. The global preconditions run a second time for a modular subcommand, so keep them free of side effects such as a cooldown counter.
