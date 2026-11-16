@@ -133,6 +133,17 @@ Without a running SDK, `@opentelemetry/api` hands out no-op spans and the plugin
 
 Set `interactions: false` to turn them all off. Set `interactions: true` to use the defaults.
 
+On a `GatewayClient` of [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway), these options also apply:
+
+| Option              | Default | What it does                                                                  |
+| ------------------- | ------- | ----------------------------------------------------------------------------- |
+| `dispatches`        | `true`  | Opens a span per gateway dispatch. Set it to `false` to turn the spans off.   |
+| `dispatches.ignore` | `[]`    | Dispatch types that get no span, such as `PRESENCE_UPDATE` or `TYPING_START`. |
+| `flushOnDestroy`    | `true`  | Calls `flushTraces()` at the end of `GatewayClient#destroy`.                  |
+
+`dispatches` and `flushOnDestroy` need `@wolfstar/plugin-gateway` 0.17 or later. The plugin ignores them on a client that
+does not connect to the gateway.
+
 ### Spans
 
 Each span is named `<kind> <name>`, for example `command ping` or `component confirm`. It carries these attributes:
@@ -148,6 +159,24 @@ Each span is named `<kind> <name>`, for example `command ping` or `component con
 
 When a run fails, the plugin records the exception and sets the span status to `ERROR`.
 
+#### Dispatch spans
+
+A gateway dispatch gets a span named `dispatch <type>`, for example `dispatch MESSAGE_CREATE`. The span wraps the
+dispatch's cache writes and listeners, so the work they start has it as a parent. It carries these attributes:
+
+| Attribute                    | Value                                                                                                         |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `discord.dispatch.type`      | The type of the dispatch.                                                                                     |
+| `discord.shard.id`           | The gateway shard it came from.                                                                               |
+| `discord.dispatch.partition` | The partition it is ordered in, when it has one.                                                              |
+| `discord.guild.id`           | The guild, when the dispatch belongs to one (its `id` for `GUILD_CREATE`, `GUILD_UPDATE` and `GUILD_DELETE`). |
+| `dispatch.outcome`           | `success` or `error`.                                                                                         |
+
+Each dispatch span is the root of a trace of its own. `@discordjs/ws` receives every dispatch in the context of the
+request that opened the WebSocket, so a span started there would put all of the gateway's work in one trace that never
+ends. Dispatches replayed with `replayDispatch`, as [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker)
+does, get no span.
+
 <Note>
 	The framework's events do not wrap the run of a command. The plugin makes the span active with `context.attach` from the `*Run` event, and
 	restores the previous context on `*Finish`. This needs a context manager that implements `attach`, such as the SDK's
@@ -159,6 +188,20 @@ When a run fails, the plugin records the exception and sets the span status to `
 
 `flushTraces()` exports the spans waiting in the batch. Call it from a shutdown path before the process exits. It never
 rejects, and does nothing when no SDK is running.
+
+On a `GatewayClient`, the plugin already calls it at the end of `destroy()` (see `flushOnDestroy`). The preload calls it
+on `SIGTERM` and `beforeExit`, but `process.exit` skips `beforeExit`, and that is how the shards of
+[`@wolfstar/plugin-sharder`](/documentation/packages/plugin-sharder) stop. The plugin cannot see the shard or the
+manager, so wire it into their hooks yourself (`@wolfstar/plugin-sharder` 0.5 or later):
+
+```ts
+import { flushTraces } from '@wolfstar/plugin-opentelemetry';
+
+shard.addExitHook(flushTraces); // in a shard: before exit(), restart(), or a close from the manager
+manager.addDestroyHook(flushTraces); // in the manager: at the end of manager.destroy()
+```
+
+For any other path that ends the process:
 
 ```ts
 import { flushTraces } from '@wolfstar/plugin-opentelemetry';
