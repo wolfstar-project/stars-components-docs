@@ -27,9 +27,11 @@ This repo does not vendor package source. Packages live in
 
 Same as CI (`.github/workflows/ci.yml`):
 
-1. `mint format` — must leave no diff.
-2. `mint validate` — strict build, fails on broken config or links.
-3. `pnpm lint` — `oxlint . && oxfmt --check .`.
+1. `mint validate` — strict build, fails on broken config or links.
+2. `pnpm lint` — `oxlint . && oxfmt --check .`.
+
+CI does not run `mint format`. On the current tree it rewrites hundreds of generated API pages, so its diff is not a
+failure. Formatting is enforced by `oxfmt`.
 
 Preview locally with `mint dev` (install with `npm install --global mint`).
 
