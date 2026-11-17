@@ -1,0 +1,39 @@
+---
+title: 'Interface: ActivityParty'
+description: 'The party of an activity. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/presences/Activity.ts#L25',
+		label: 'packages/plugin-gateway/src/structures/presences/Activity.ts:25'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The party of an activity.
+
+<ApiSignature tokens={['interface ActivityParty']} />
+
+## Properties
+
+### id
+
+<ApiMember kind="property" signature={['id: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/presences/Activity.ts#L29', label: 'packages/plugin-gateway/src/structures/presences/Activity.ts:29' }}>
+
+The ID of the party.
+
+</ApiMember>
+
+### size
+
+<ApiMember kind="property" signature={['size: readonly [number, number] | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/presences/Activity.ts#L33', label: 'packages/plugin-gateway/src/structures/presences/Activity.ts:33' }}>
+
+The size of the party, as `[current, max]`.
+
+</ApiMember>

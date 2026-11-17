@@ -1,0 +1,62 @@
+---
+title: 'Interface: ChannelPosition'
+description: "A channel's new position, for GuildChannelManager.setPositions. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L37',
+		label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:37'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A channel's new position, for [GuildChannelManager.setPositions](/documentation/api/plugin-gateway/classes/GuildChannelManager#setpositions).
+
+<ApiSignature tokens={['interface ChannelPosition']} />
+
+## Properties
+
+### channel
+
+<ApiMember
+	kind="property"
+	signature={['channel: ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L38',
+		label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:38'
+	}}
+/>
+
+### lockPermissions?
+
+<ApiMember kind="property" badges={['optional']} signature={['lockPermissions?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L47', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:47' }}>
+
+Whether to copy the new category's overwrites, when `parent` is set.
+
+</ApiMember>
+
+### parent?
+
+<ApiMember kind="property" badges={['optional']} signature={['parent?: ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L43', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:43' }}>
+
+The new category, `null` to move the channel out of its category.
+
+</ApiMember>
+
+### position?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['position?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L39',
+		label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:39'
+	}}
+/>

@@ -1,0 +1,154 @@
+---
+title: 'Interface: GuildScheduledEventEditOptions'
+description: 'The fields of a scheduled event that can be edited. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L27',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:27'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The fields of a scheduled event that can be edited.
+
+<ApiSignature tokens={['interface GuildScheduledEventEditOptions']} />
+
+## Properties
+
+### channel?
+
+<ApiMember kind="property" badges={['optional']} signature={['channel?: ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L33', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:33' }}>
+
+The stage or voice channel, `null` for an external event.
+
+</ApiMember>
+
+### description?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['description?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L29',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:29'
+	}}
+/>
+
+### entityMetadata?
+
+<ApiMember kind="property" badges={['optional']} signature={['entityMetadata?: ', ['APIGuildScheduledEventEntityMetadata', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEventEntityMetadata'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L41', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:41' }}>
+
+Where an external event takes place.
+
+</ApiMember>
+
+### entityType?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'entityType?: ',
+		['GuildScheduledEventEntityType', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventEntityType']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L37',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:37'
+	}}
+/>
+
+### image?
+
+<ApiMember kind="property" badges={['optional']} signature={['image?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L49', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:49' }}>
+
+The cover image: a data URI, or anything `resolveImage` reads. `null` removes it.
+
+</ApiMember>
+
+### name?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['name?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L28',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:28'
+	}}
+/>
+
+### privacyLevel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['privacyLevel?: GuildScheduledEventPrivacyLevel']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L36',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:36'
+	}}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L57',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:57'
+	}}
+/>
+
+### recurrenceRule?
+
+<ApiMember kind="property" badges={['optional']} signature={['recurrenceRule?: ', ['GuildScheduledEventRecurrenceRuleOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRecurrenceRuleOptions'], ' | ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIGuildScheduledEventRecurrenceRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEventRecurrenceRule'], '> | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L53', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:53' }}>
+
+How the event repeats, camel-cased like discord.js's `GuildScheduledEventRecurrenceRuleOptions` or raw.
+
+</ApiMember>
+
+### scheduledEndTime?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'scheduledEndTime?: number | ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L35',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:35'
+	}}
+/>
+
+### scheduledStartTime?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['scheduledStartTime?: number | ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L34',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:34'
+	}}
+/>
+
+### status?
+
+<ApiMember kind="property" badges={['optional']} signature={['status?: ', ['GuildScheduledEventStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventStatus']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L45', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:45' }}>
+
+Starts, ends, or cancels the event.
+
+</ApiMember>

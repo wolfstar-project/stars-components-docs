@@ -1,0 +1,53 @@
+---
+title: 'Interface: SweeperLifetimeOptions'
+description: 'Sweeps an entity every interval seconds, evicting the entries older than lifetime seconds. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L100',
+		label: 'packages/plugin-gateway/src/util/Sweepers.ts:100'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Sweeps an entity every `interval` seconds, evicting the entries older than `lifetime` seconds.
+
+<ApiSignature tokens={['interface SweeperLifetimeOptions']} />
+
+## Properties
+
+### filter?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['filter?: undefined']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L111',
+		label: 'packages/plugin-gateway/src/util/Sweepers.ts:111'
+	}}
+/>
+
+### interval
+
+<ApiMember kind="property" signature={['interval: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L104', label: 'packages/plugin-gateway/src/util/Sweepers.ts:104' }}>
+
+The seconds between two sweeps. A non-positive or infinite interval does not schedule any.
+
+</ApiMember>
+
+### lifetime
+
+<ApiMember kind="property" signature={['lifetime: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L110', label: 'packages/plugin-gateway/src/util/Sweepers.ts:110' }}>
+
+The seconds an entry lives: messages since they were created or last edited, threads since they were archived (an
+active thread is never swept), invites since they expired (an invite that never expires is never swept). A
+non-positive lifetime skips the sweep.
+
+</ApiMember>

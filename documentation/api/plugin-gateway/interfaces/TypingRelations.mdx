@@ -1,0 +1,77 @@
+---
+title: 'Interface: TypingRelations'
+description: 'The relations of a Typing, resolved from the cache by the typingStart event. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/Typing.ts#L12',
+		label: 'packages/plugin-gateway/src/structures/channels/Typing.ts:12'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of a [Typing](/documentation/api/plugin-gateway/classes/Typing), resolved from the cache by the `typingStart` event.
+
+<ApiSignature tokens={['interface TypingRelations']} />
+
+## Properties
+
+### channel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['channel?: ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/Typing.ts#L13',
+		label: 'packages/plugin-gateway/src/structures/channels/Typing.ts:13'
+	}}
+/>
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/Typing.ts#L15',
+		label: 'packages/plugin-gateway/src/structures/channels/Typing.ts:15'
+	}}
+/>
+
+### member?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'member?: ',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		' | ',
+		['PartialGuildMember', '/documentation/api/plugin-gateway/type-aliases/PartialGuildMember'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/Typing.ts#L16',
+		label: 'packages/plugin-gateway/src/structures/channels/Typing.ts:16'
+	}}
+/>
+
+### user?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['user?: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/Typing.ts#L14',
+		label: 'packages/plugin-gateway/src/structures/channels/Typing.ts:14'
+	}}
+/>

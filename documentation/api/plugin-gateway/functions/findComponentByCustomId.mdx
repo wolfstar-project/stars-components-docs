@@ -1,0 +1,61 @@
+---
+title: 'Function: findComponentByCustomId()'
+description: "Finds a component by its custom ID in a component tree, like discord.js' findComponentByCustomId. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/components.ts#L276',
+		label: 'packages/plugin-gateway/src/util/components.ts:276'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Finds a component by its custom ID in a component tree, like discord.js' `findComponentByCustomId`.
+
+<ApiSignature
+	tokens={[
+		'findComponentByCustomId(\n  components: readonly (',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		' | ',
+		['AnyComponent', '/documentation/api/plugin-gateway/type-aliases/AnyComponent'],
+		')[],\n  customId: string\n): ',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		' | ',
+		['AnyComponent', '/documentation/api/plugin-gateway/type-aliases/AnyComponent'],
+		' | null'
+	]}
+/>
+
+Finds a component by its custom ID in a component tree, like discord.js' `findComponentByCustomId`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="components" type={['readonly (', ['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'], ' | ', ['AnyComponent', '/documentation/api/plugin-gateway/type-aliases/AnyComponent'], ')[]']}>
+
+The components, or raw component data, to search in, like a message's top-level components.
+
+</ApiParam>
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'], ' | ', ['AnyComponent', '/documentation/api/plugin-gateway/type-aliases/AnyComponent'], ' | null']}>
+
+The component, as given, `null` when none has the custom ID.
+
+</ApiParam>
+
+</ApiParams>

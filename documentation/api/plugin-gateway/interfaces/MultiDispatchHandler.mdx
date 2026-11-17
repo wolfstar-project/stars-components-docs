@@ -1,0 +1,118 @@
+---
+title: 'Interface: MultiDispatchHandler'
+description: 'Describes how a gateway dispatch turns into any number of GatewayEventMap events, e.g. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatch.ts#L126',
+		label: 'packages/plugin-gateway/src/util/dispatch.ts:126'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Describes how a gateway dispatch turns into any number of [GatewayEventMap](/documentation/api/plugin-gateway/interfaces/GatewayEventMap) events, e.g. one per emoji a
+`GUILD_EMOJIS_UPDATE` changes.
+
+<ApiSignature
+	tokens={[
+		'interface MultiDispatchHandler<Type extends ',
+		['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Type"
+	type={['extends ', ['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents']]}
+/>
+
+</ApiParams>
+
+## Methods
+
+### before()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatch.ts#L130', label: 'packages/plugin-gateway/src/util/dispatch.ts:130' }}>
+
+<ApiSignature
+	tokens={[
+		'before(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		', data: ',
+		['DispatchData', '/documentation/api/plugin-gateway/type-aliases/DispatchData'],
+		'<Type>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+Runs before the dispatch is written to the cache, used to read the previous state.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="data" type={[['DispatchData', '/documentation/api/plugin-gateway/type-aliases/DispatchData'], '<Type>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### emit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatch.ts#L134', label: 'packages/plugin-gateway/src/util/dispatch.ts:134' }}>
+
+<ApiSignature
+	tokens={[
+		'emit(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  data: ',
+		['DispatchData', '/documentation/api/plugin-gateway/type-aliases/DispatchData'],
+		'<Type>,\n  state: any\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['GatewayEventTuple', '/documentation/api/plugin-gateway/type-aliases/GatewayEventTuple'],
+		'[]>'
+	]}
+/>
+
+Runs after the dispatch is written to the cache, and lists the events to emit, in order.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="data" type={[['DispatchData', '/documentation/api/plugin-gateway/type-aliases/DispatchData'], '<Type>']} />
+
+<ApiParam name="state" type={['any']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['GatewayEventTuple', '/documentation/api/plugin-gateway/type-aliases/GatewayEventTuple'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

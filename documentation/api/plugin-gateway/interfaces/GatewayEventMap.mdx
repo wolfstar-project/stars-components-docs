@@ -1,0 +1,970 @@
+---
+title: 'Interface: GatewayEventMap'
+description: "The events a GatewayClient emits on top of the base Client's ones, and their arguments. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L109',
+		label: 'packages/plugin-gateway/src/util/events.ts:109'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The events a [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) emits on top of the base `Client`'s ones, and their arguments.
+
+<ApiSignature tokens={['interface GatewayEventMap']} />
+
+Update events receive the previous state of the entity as read from the cache before the dispatch was applied, or
+`null` when it was not cached. Delete events receive the cached entity (or `null`) alongside the raw dispatch data,
+which always identifies the deleted entity.
+
+With the matching `Partials` enabled, uncached messages, users, members, thread members, scheduled events,
+soundboard sounds, polls, and direct messages are partial structures (`partial` is `true`) instead of `null`.
+
+## Properties
+
+### autoModerationActionExecution
+
+<ApiMember kind="property" signature={['autoModerationActionExecution: [execution: ', ['AutoModerationActionExecution', '/documentation/api/plugin-gateway/classes/AutoModerationActionExecution'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L367', label: 'packages/plugin-gateway/src/util/events.ts:367' }}>
+
+Emitted when auto moderation takes an action. Needs the `AutoModerationExecution` intent.
+
+</ApiMember>
+
+### autoModerationRuleCreate
+
+<ApiMember
+	kind="property"
+	signature={['autoModerationRuleCreate: [rule: ', ['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L361',
+		label: 'packages/plugin-gateway/src/util/events.ts:361'
+	}}
+/>
+
+### autoModerationRuleDelete
+
+<ApiMember
+	kind="property"
+	signature={['autoModerationRuleDelete: [rule: ', ['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L363',
+		label: 'packages/plugin-gateway/src/util/events.ts:363'
+	}}
+/>
+
+### autoModerationRuleUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'autoModerationRuleUpdate: [oldRule: ',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		' | null, newRule: ',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L362',
+		label: 'packages/plugin-gateway/src/util/events.ts:362'
+	}}
+/>
+
+### cacheError
+
+<ApiMember kind="property" signature={['cacheError: [error: unknown, context: ', ['CacheErrorContext', '/documentation/api/plugin-gateway/interfaces/CacheErrorContext'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L156', label: 'packages/plugin-gateway/src/util/events.ts:156' }}>
+
+Emitted when a manager's cache read or write fails, e.g. while Redis is unreachable. With the default
+`cacheErrors: "miss"`, the manager then carries on as if the entry was not cached.
+
+</ApiMember>
+
+### cacheSweep
+
+<ApiMember kind="property" signature={['cacheSweep: [entity: keyof ', ['SweepableEntities', '/documentation/api/plugin-gateway/interfaces/SweepableEntities'], ', swept: number]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L160', label: 'packages/plugin-gateway/src/util/events.ts:160' }}>
+
+Emitted when a sweep of an entity's cache ran, with the amount of entries it evicted, see `Sweepers`.
+
+</ApiMember>
+
+### channelCreate
+
+<ApiMember
+	kind="property"
+	signature={['channelCreate: [channel: ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L170',
+		label: 'packages/plugin-gateway/src/util/events.ts:170'
+	}}
+/>
+
+### channelDelete
+
+<ApiMember
+	kind="property"
+	signature={['channelDelete: [channel: ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L172',
+		label: 'packages/plugin-gateway/src/util/events.ts:172'
+	}}
+/>
+
+### channelInfo
+
+<ApiMember kind="property" signature={['channelInfo: [channels: ', ['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'], '[], guild: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L406', label: 'packages/plugin-gateway/src/util/events.ts:406' }}>
+
+Emitted with the cached voice channels of a guild whose info Discord sent, in answer to
+`client.channels.requestInfo`.
+
+</ApiMember>
+
+### channelPinsUpdate
+
+<ApiMember kind="property" signature={['channelPinsUpdate: [data: ', ['GatewayChannelPinsUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelPinsUpdateDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L176', label: 'packages/plugin-gateway/src/util/events.ts:176' }}>
+
+Emitted when a message is pinned or unpinned; `data.last_pin_timestamp` is the time of the last pin left.
+
+</ApiMember>
+
+### channelUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'channelUpdate: [oldChannel: ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		' | null, newChannel: ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L171',
+		label: 'packages/plugin-gateway/src/util/events.ts:171'
+	}}
+/>
+
+### clientReady
+
+<ApiMember kind="property" signature={['clientReady: [client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L139', label: 'packages/plugin-gateway/src/util/events.ts:139' }}>
+
+Emitted once, when every shard this client manages has connected and every guild `READY` listed as initially
+unavailable became available, or [GatewayClientOptions.waitGuildTimeout](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#waitguildtimeout) elapsed, like discord.js's
+`Client#clientReady` (`ready` before discord.js deprecated it).
+
+</ApiMember>
+
+### dispatch
+
+<ApiMember kind="property" signature={['dispatch: [payload: ', ['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'], ', shardId: number, state: unknown]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L129', label: 'packages/plugin-gateway/src/util/events.ts:129' }}>
+
+Emitted for every gateway dispatch once it has been written to the cache (right away without one), before the
+matching event, with the raw payload. Unlike `raw`, a listener reading the cache sees the dispatch applied, which
+is what forwarding it to other processes sharing the cache needs.
+
+Not emitted for `INTERACTION_CREATE`, served by the HTTP endpoint, nor for a dispatch dropped because its cache
+write failed with [GatewayClientOptions.cacheFailure](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cachefailure) set to `"skip"`.
+
+Also emitted, with `s: 0` and no `raw` before it, for the `GUILD_DELETE` the client makes up for a cached guild a
+`READY` no longer lists, see [GatewayClient.reconcileGuilds](/documentation/api/plugin-gateway/classes/GatewayClient#reconcileguilds).
+
+`state` is what the dispatch's handler read before the cache write, e.g. the cached message a `MESSAGE_UPDATE`
+replaces, or `undefined`. It is what [GatewayClient.serializeDispatchState](/documentation/api/plugin-gateway/classes/GatewayClient#serializedispatchstate) serializes for other processes.
+
+</ApiMember>
+
+### emojiCreate
+
+<ApiMember kind="property" signature={['emojiCreate: [emoji: ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L285', label: 'packages/plugin-gateway/src/util/events.ts:285' }}>
+
+Emitted for each emoji a `GUILD_EMOJIS_UPDATE` adds, compared with the cache. Without an emojis cache (able to
+enumerate its entries), the emoji events are not emitted: listen to `guildEmojisUpdate` instead.
+
+</ApiMember>
+
+### emojiDelete
+
+<ApiMember
+	kind="property"
+	signature={['emojiDelete: [emoji: ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L287',
+		label: 'packages/plugin-gateway/src/util/events.ts:287'
+	}}
+/>
+
+### emojiUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'emojiUpdate: [oldEmoji: ',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		', newEmoji: ',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L286',
+		label: 'packages/plugin-gateway/src/util/events.ts:286'
+	}}
+/>
+
+### entitlementCreate
+
+<ApiMember kind="property" signature={['entitlementCreate: [entitlement: ', ['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L378', label: 'packages/plugin-gateway/src/util/events.ts:378' }}>
+
+Emitted when a user or a guild is granted a SKU of the application, by a purchase or a test entitlement.
+
+</ApiMember>
+
+### entitlementDelete
+
+<ApiMember kind="property" signature={['entitlementDelete: [entitlement: ', ['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L387', label: 'packages/plugin-gateway/src/util/events.ts:387' }}>
+
+Emitted when an entitlement is deleted, which Discord only does for test entitlements and refunds.
+
+</ApiMember>
+
+### entitlementUpdate
+
+<ApiMember kind="property" signature={['entitlementUpdate: [oldEntitlement: ', ['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'], ' | null, newEntitlement: ', ['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L383', label: 'packages/plugin-gateway/src/util/events.ts:383' }}>
+
+Emitted when an entitlement changes, e.g. a subscription renews. `oldEntitlement` is `null` when it was not
+cached.
+
+</ApiMember>
+
+### guildAuditLogEntryCreate
+
+<ApiMember kind="property" signature={['guildAuditLogEntryCreate: [entry: ', ['GuildAuditLogsEntry', '/documentation/api/plugin-gateway/classes/GuildAuditLogsEntry'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L360', label: 'packages/plugin-gateway/src/util/events.ts:360' }}>
+
+Emitted when an entry is added to a guild's audit log. Needs the `GuildModeration` intent.
+
+</ApiMember>
+
+### guildBanAdd
+
+<ApiMember
+	kind="property"
+	signature={['guildBanAdd: [ban: ', ['GuildBan', '/documentation/api/plugin-gateway/classes/GuildBan'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L352',
+		label: 'packages/plugin-gateway/src/util/events.ts:352'
+	}}
+/>
+
+### guildBanRemove
+
+<ApiMember kind="property" signature={['guildBanRemove: [ban: ', ['GuildBan', '/documentation/api/plugin-gateway/classes/GuildBan'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L356', label: 'packages/plugin-gateway/src/util/events.ts:356' }}>
+
+Emitted when a ban is lifted, with the cached ban (and its reason, if it was fetched) when there is one.
+
+</ApiMember>
+
+### guildCreate
+
+<ApiMember
+	kind="property"
+	signature={['guildCreate: [guild: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L162',
+		label: 'packages/plugin-gateway/src/util/events.ts:162'
+	}}
+/>
+
+### guildDelete
+
+<ApiMember kind="property" signature={['guildDelete: [guild: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null, data: ', ['GatewayGuildDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildDeleteDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L168', label: 'packages/plugin-gateway/src/util/events.ts:168' }}>
+
+Emitted when the client leaves a guild, or when it becomes unavailable because of an outage, in which case
+`data.unavailable` is `true`.
+
+</ApiMember>
+
+### guildEmojisUpdate
+
+<ApiMember kind="property" signature={['guildEmojisUpdate: [guildId: string, emojis: ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], '[]]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L280', label: 'packages/plugin-gateway/src/util/events.ts:280' }}>
+
+Emitted for every `GUILD_EMOJIS_UPDATE`, with every emoji the guild now has. Always emitted, cache or not: the
+granular `emojiCreate`, `emojiUpdate`, and `emojiDelete` need the previous emojis, so the emojis cache.
+
+</ApiMember>
+
+### guildIntegrationsUpdate
+
+<ApiMember kind="property" signature={['guildIntegrationsUpdate: [guild: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null, data: ', ['GatewayGuildIntegrationsUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildIntegrationsUpdateDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L371', label: 'packages/plugin-gateway/src/util/events.ts:371' }}>
+
+Emitted when an integration of a guild is created, updated, or deleted.
+
+</ApiMember>
+
+### guildMemberAdd
+
+<ApiMember
+	kind="property"
+	signature={['guildMemberAdd: [member: ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L248',
+		label: 'packages/plugin-gateway/src/util/events.ts:248'
+	}}
+/>
+
+### guildMemberRemove
+
+<ApiMember kind="property" signature={['guildMemberRemove: [member: ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | ', ['PartialGuildMember', '/documentation/api/plugin-gateway/type-aliases/PartialGuildMember'], ' | null, data: ', ['GatewayGuildMemberRemoveDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberRemoveDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L256', label: 'packages/plugin-gateway/src/util/events.ts:256' }}>
+
+`member` is partial with `Partials.GuildMember` when the member was not cached.
+
+</ApiMember>
+
+### guildMembersChunk
+
+<ApiMember kind="property" signature={['guildMembersChunk: [members: ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], '[], guild: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null, data: ', ['GatewayGuildMembersChunkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMembersChunkDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L264', label: 'packages/plugin-gateway/src/util/events.ts:264' }}>
+
+Emitted for each chunk of members Discord sends in answer to `client.members.request`, once it is cached.
+`data` has the chunk's index and count, its nonce, and the requested IDs that are not members (`not_found`).
+
+</ApiMember>
+
+### guildMemberUpdate
+
+<ApiMember kind="property" signature={['guildMemberUpdate: [oldMember: ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | ', ['PartialGuildMember', '/documentation/api/plugin-gateway/type-aliases/PartialGuildMember'], ' | null, newMember: ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L252', label: 'packages/plugin-gateway/src/util/events.ts:252' }}>
+
+`oldMember` is partial with `Partials.GuildMember` when the member was not cached.
+
+</ApiMember>
+
+### guildRoleCreate
+
+<ApiMember
+	kind="property"
+	signature={['guildRoleCreate: [role: ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L270',
+		label: 'packages/plugin-gateway/src/util/events.ts:270'
+	}}
+/>
+
+### guildRoleDelete
+
+<ApiMember
+	kind="property"
+	signature={[
+		'guildRoleDelete: [role: ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null, data: ',
+		['GatewayGuildRoleDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleDeleteDispatchData'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L272',
+		label: 'packages/plugin-gateway/src/util/events.ts:272'
+	}}
+/>
+
+### guildRoleUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'guildRoleUpdate: [oldRole: ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null, newRole: ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L271',
+		label: 'packages/plugin-gateway/src/util/events.ts:271'
+	}}
+/>
+
+### guildScheduledEventCreate
+
+<ApiMember kind="property" signature={['guildScheduledEventCreate: [event: ', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L315', label: 'packages/plugin-gateway/src/util/events.ts:315' }}>
+
+Emitted when a user is banned. Bans from the gateway have no reason.
+
+</ApiMember>
+
+### guildScheduledEventDelete
+
+<ApiMember
+	kind="property"
+	signature={['guildScheduledEventDelete: [event: ', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L317',
+		label: 'packages/plugin-gateway/src/util/events.ts:317'
+	}}
+/>
+
+### guildScheduledEventUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'guildScheduledEventUpdate: [oldEvent: ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		' | null, newEvent: ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L316',
+		label: 'packages/plugin-gateway/src/util/events.ts:316'
+	}}
+/>
+
+### guildScheduledEventUserAdd
+
+<ApiMember kind="property" signature={['guildScheduledEventUserAdd: [event: ', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'], ' | null, user: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null, data: ', ['GatewayGuildScheduledEventUserAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserAddDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L321', label: 'packages/plugin-gateway/src/util/events.ts:321' }}>
+
+Emitted when a user subscribes to a scheduled event, with the cached event and user when there are.
+
+</ApiMember>
+
+### guildScheduledEventUserRemove
+
+<ApiMember
+	kind="property"
+	signature={[
+		'guildScheduledEventUserRemove: [event: ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		' | null, user: ',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		' | null, data: ',
+		[
+			'GatewayGuildScheduledEventUserRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserRemoveDispatchData'
+		],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L326',
+		label: 'packages/plugin-gateway/src/util/events.ts:326'
+	}}
+/>
+
+### guildSoundboardSoundCreate
+
+<ApiMember
+	kind="property"
+	signature={['guildSoundboardSoundCreate: [sound: ', ['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L334',
+		label: 'packages/plugin-gateway/src/util/events.ts:334'
+	}}
+/>
+
+### guildSoundboardSoundDelete
+
+<ApiMember kind="property" signature={['guildSoundboardSoundDelete: [sound: ', ['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'], ' | null, data: ', ['GatewayGuildSoundboardSoundDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundDeleteDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L339', label: 'packages/plugin-gateway/src/util/events.ts:339' }}>
+
+Emitted when a soundboard sound is deleted, with the cached sound when there is one.
+
+</ApiMember>
+
+### guildSoundboardSoundsUpdate
+
+<ApiMember kind="property" signature={['guildSoundboardSoundsUpdate: [sounds: ', ['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'], '[], guildId: string]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L346', label: 'packages/plugin-gateway/src/util/events.ts:346' }}>
+
+Emitted when several soundboard sounds of a guild change at once.
+
+</ApiMember>
+
+### guildSoundboardSoundUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'guildSoundboardSoundUpdate: [oldSound: ',
+		['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'],
+		' | null, newSound: ',
+		['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L335',
+		label: 'packages/plugin-gateway/src/util/events.ts:335'
+	}}
+/>
+
+### guildStickersUpdate
+
+<ApiMember kind="property" signature={['guildStickersUpdate: [guildId: string, stickers: ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], '[]]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L292', label: 'packages/plugin-gateway/src/util/events.ts:292' }}>
+
+Emitted for every `GUILD_STICKERS_UPDATE`, with every sticker the guild now has, like `guildEmojisUpdate`.
+
+</ApiMember>
+
+### guildUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'guildUpdate: [oldGuild: ',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null, newGuild: ',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L163',
+		label: 'packages/plugin-gateway/src/util/events.ts:163'
+	}}
+/>
+
+### integrationCreate
+
+<ApiMember
+	kind="property"
+	signature={['integrationCreate: [integration: ', ['Integration', '/documentation/api/plugin-gateway/classes/Integration'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L372',
+		label: 'packages/plugin-gateway/src/util/events.ts:372'
+	}}
+/>
+
+### integrationDelete
+
+<ApiMember
+	kind="property"
+	signature={[
+		'integrationDelete: [integration: ',
+		['Integration', '/documentation/api/plugin-gateway/classes/Integration'],
+		' | null, data: ',
+		['GatewayIntegrationDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationDeleteDispatchData'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L374',
+		label: 'packages/plugin-gateway/src/util/events.ts:374'
+	}}
+/>
+
+### integrationUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'integrationUpdate: [oldIntegration: ',
+		['Integration', '/documentation/api/plugin-gateway/classes/Integration'],
+		' | null, newIntegration: ',
+		['Integration', '/documentation/api/plugin-gateway/classes/Integration'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L373',
+		label: 'packages/plugin-gateway/src/util/events.ts:373'
+	}}
+/>
+
+### inviteCreate
+
+<ApiMember
+	kind="property"
+	signature={['inviteCreate: [invite: ', ['GuildInvite', '/documentation/api/plugin-gateway/classes/GuildInvite'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L300',
+		label: 'packages/plugin-gateway/src/util/events.ts:300'
+	}}
+/>
+
+### inviteDelete
+
+<ApiMember kind="property" signature={['inviteDelete: [invite: ', ['GuildInvite', '/documentation/api/plugin-gateway/classes/GuildInvite'], ' | null, data: ', ['GatewayInviteDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteDeleteDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L304', label: 'packages/plugin-gateway/src/util/events.ts:304' }}>
+
+Emitted when an invite is deleted or expires, with the cached invite if any.
+
+</ApiMember>
+
+### messageCreate
+
+<ApiMember
+	kind="property"
+	signature={['messageCreate: [message: ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L207',
+		label: 'packages/plugin-gateway/src/util/events.ts:207'
+	}}
+/>
+
+### messageDelete
+
+<ApiMember
+	kind="property"
+	signature={[
+		'messageDelete: [message: ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | null, data: ',
+		['GatewayMessageDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteDispatchData'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L209',
+		label: 'packages/plugin-gateway/src/util/events.ts:209'
+	}}
+/>
+
+### messageDeleteBulk
+
+<ApiMember
+	kind="property"
+	signature={[
+		'messageDeleteBulk: [messages: ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>[], data: ',
+		['GatewayMessageDeleteBulkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteBulkDispatchData'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L210',
+		label: 'packages/plugin-gateway/src/util/events.ts:210'
+	}}
+/>
+
+### messagePollVoteAdd
+
+<ApiMember kind="property" signature={['messagePollVoteAdd: [answer: ', ['PollAnswer', '/documentation/api/plugin-gateway/classes/PollAnswer'], ', userId: string]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L245', label: 'packages/plugin-gateway/src/util/events.ts:245' }}>
+
+Emitted when a user votes for a poll answer. The answer has its text and counts when the message is cached.
+
+</ApiMember>
+
+### messagePollVoteRemove
+
+<ApiMember
+	kind="property"
+	signature={['messagePollVoteRemove: [answer: ', ['PollAnswer', '/documentation/api/plugin-gateway/classes/PollAnswer'], ', userId: string]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L246',
+		label: 'packages/plugin-gateway/src/util/events.ts:246'
+	}}
+/>
+
+### messageReactionAdd
+
+<ApiMember kind="property" signature={['messageReactionAdd: [reaction: ', ['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'], ', user: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null, details: ', ['MessageReactionEventDetails', '/documentation/api/plugin-gateway/interfaces/MessageReactionEventDetails'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L216', label: 'packages/plugin-gateway/src/util/events.ts:216' }}>
+
+Emitted when a user reacts to a message. The reaction has its counts when the message is cached (`count` is
+`null` otherwise), and the user is `null` when neither the payload (outside of guilds) nor the cache has it.
+
+</ApiMember>
+
+### messageReactionRemove
+
+<ApiMember kind="property" signature={['messageReactionRemove: [reaction: ', ['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'], ', user: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null, details: ', ['MessageReactionEventDetails', '/documentation/api/plugin-gateway/interfaces/MessageReactionEventDetails'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L225', label: 'packages/plugin-gateway/src/util/events.ts:225' }}>
+
+Emitted when a user removes their reaction. Like `messageReactionAdd`, `count` is `null` only when the message is
+not cached: removing the last reaction of an emoji from a cached message gives a count of `0`.
+
+</ApiMember>
+
+### messageReactionRemoveAll
+
+<ApiMember kind="property" signature={['messageReactionRemoveAll: [message: ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean> | null, reactions: ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'], '>, data: ', ['GatewayMessageReactionRemoveData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L233', label: 'packages/plugin-gateway/src/util/events.ts:233' }}>
+
+Emitted when every reaction is removed from a message, with the reactions the cache held, by emoji.
+
+</ApiMember>
+
+### messageReactionRemoveEmoji
+
+<ApiMember kind="property" signature={['messageReactionRemoveEmoji: [reaction: ', ['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L241', label: 'packages/plugin-gateway/src/util/events.ts:241' }}>
+
+Emitted when every reaction with one emoji is removed from a message.
+
+</ApiMember>
+
+### messageUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'messageUpdate: [oldMessage: ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | null, newMessage: ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L208',
+		label: 'packages/plugin-gateway/src/util/events.ts:208'
+	}}
+/>
+
+### presenceUpdate
+
+<ApiMember kind="property" signature={['presenceUpdate: [oldPresence: ', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], ' | null, newPresence: ', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L410', label: 'packages/plugin-gateway/src/util/events.ts:410' }}>
+
+Emitted when a member's status or activities change. Needs the `GuildPresences` intent.
+
+</ApiMember>
+
+### raw
+
+<ApiMember kind="property" signature={['raw: [payload: ', ['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'], ', shardId: number]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L113', label: 'packages/plugin-gateway/src/util/events.ts:113' }}>
+
+Emitted for every gateway dispatch, before any processing, with the raw payload.
+
+</ApiMember>
+
+### shardClose
+
+<ApiMember kind="property" signature={['shardClose: [shardId: number, code: number]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L147', label: 'packages/plugin-gateway/src/util/events.ts:147' }}>
+
+Emitted when a shard's connection closes, it reconnects on its own unless the close code is fatal.
+
+</ApiMember>
+
+### shardError
+
+<ApiMember kind="property" signature={['shardError: [error: ', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'], ', shardId: number]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L151', label: 'packages/plugin-gateway/src/util/events.ts:151' }}>
+
+Emitted when a shard runs into an error.
+
+</ApiMember>
+
+### shardReady
+
+<ApiMember kind="property" signature={['shardReady: [shardId: number, user: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L133', label: 'packages/plugin-gateway/src/util/events.ts:133' }}>
+
+Emitted when a shard receives `READY`.
+
+</ApiMember>
+
+### shardResume
+
+<ApiMember kind="property" signature={['shardResume: [shardId: number]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L143', label: 'packages/plugin-gateway/src/util/events.ts:143' }}>
+
+Emitted when a shard resumes its session.
+
+</ApiMember>
+
+### soundboardSounds
+
+<ApiMember kind="property" signature={['soundboardSounds: [sounds: ', ['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'], '[], guildId: string]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L350', label: 'packages/plugin-gateway/src/util/events.ts:350' }}>
+
+Emitted with the sounds of a guild, in answer to a request for them over the gateway.
+
+</ApiMember>
+
+### stageInstanceCreate
+
+<ApiMember
+	kind="property"
+	signature={['stageInstanceCreate: [stageInstance: ', ['StageInstance', '/documentation/api/plugin-gateway/classes/StageInstance'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L331',
+		label: 'packages/plugin-gateway/src/util/events.ts:331'
+	}}
+/>
+
+### stageInstanceDelete
+
+<ApiMember
+	kind="property"
+	signature={['stageInstanceDelete: [stageInstance: ', ['StageInstance', '/documentation/api/plugin-gateway/classes/StageInstance'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L333',
+		label: 'packages/plugin-gateway/src/util/events.ts:333'
+	}}
+/>
+
+### stageInstanceUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'stageInstanceUpdate: [oldStageInstance: ',
+		['StageInstance', '/documentation/api/plugin-gateway/classes/StageInstance'],
+		' | null, newStageInstance: ',
+		['StageInstance', '/documentation/api/plugin-gateway/classes/StageInstance'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L332',
+		label: 'packages/plugin-gateway/src/util/events.ts:332'
+	}}
+/>
+
+### stickerCreate
+
+<ApiMember kind="property" signature={['stickerCreate: [sticker: ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L296', label: 'packages/plugin-gateway/src/util/events.ts:296' }}>
+
+Emitted for each sticker a `GUILD_STICKERS_UPDATE` adds, compared with the cache, like the emoji events.
+
+</ApiMember>
+
+### stickerDelete
+
+<ApiMember
+	kind="property"
+	signature={['stickerDelete: [sticker: ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L298',
+		label: 'packages/plugin-gateway/src/util/events.ts:298'
+	}}
+/>
+
+### stickerUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'stickerUpdate: [oldSticker: ',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		', newSticker: ',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L297',
+		label: 'packages/plugin-gateway/src/util/events.ts:297'
+	}}
+/>
+
+### threadCreate
+
+<ApiMember
+	kind="property"
+	signature={['threadCreate: [thread: ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L182',
+		label: 'packages/plugin-gateway/src/util/events.ts:182'
+	}}
+/>
+
+### threadDelete
+
+<ApiMember
+	kind="property"
+	signature={[
+		'threadDelete: [thread: ',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		' | null, data: ',
+		['GatewayThreadDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadDeleteDispatchData'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L184',
+		label: 'packages/plugin-gateway/src/util/events.ts:184'
+	}}
+/>
+
+### threadListSync
+
+<ApiMember kind="property" signature={['threadListSync: [threads: ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], '[], members: ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'], '[], data: ', ['GatewayThreadListSync', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadListSync'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L188', label: 'packages/plugin-gateway/src/util/events.ts:188' }}>
+
+Emitted when the bot gains access to a channel's threads, with the active ones and the bot's membership of each.
+
+</ApiMember>
+
+### threadMembersUpdate
+
+<ApiMember kind="property" signature={['threadMembersUpdate: [added: ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'], '[], removed: ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'], '[], thread: ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], ' | null, data: ', ['GatewayThreadMembersUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMembersUpdate'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L200', label: 'packages/plugin-gateway/src/util/events.ts:200' }}>
+
+Emitted when members are added to or removed from a thread. The removed members are the ones the cache held.
+
+</ApiMember>
+
+### threadMemberUpdate
+
+<ApiMember kind="property" signature={['threadMemberUpdate: [oldMember: ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'], ' | null, newMember: ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L196', label: 'packages/plugin-gateway/src/util/events.ts:196' }}>
+
+Emitted when the bot's own thread member changes, e.g. its notification settings.
+
+</ApiMember>
+
+### threadUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'threadUpdate: [oldThread: ',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		' | null, newThread: ',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L183',
+		label: 'packages/plugin-gateway/src/util/events.ts:183'
+	}}
+/>
+
+### typingStart
+
+<ApiMember
+	kind="property"
+	signature={['typingStart: [typing: ', ['Typing', '/documentation/api/plugin-gateway/classes/Typing'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L306',
+		label: 'packages/plugin-gateway/src/util/events.ts:306'
+	}}
+/>
+
+### userUpdate
+
+<ApiMember
+	kind="property"
+	signature={[
+		'userUpdate: [oldUser: ',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		' | null, newUser: ',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L274',
+		label: 'packages/plugin-gateway/src/util/events.ts:274'
+	}}
+/>
+
+### voiceChannelStartTimeUpdate
+
+<ApiMember kind="property" signature={['voiceChannelStartTimeUpdate: [oldChannel: ', ['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'], ', newChannel: ', ['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L401', label: 'packages/plugin-gateway/src/util/events.ts:401' }}>
+
+Emitted when the start time of the voice session of a cached voice channel changes. Not emitted for a channel
+that is not cached.
+
+</ApiMember>
+
+### voiceChannelStatusUpdate
+
+<ApiMember kind="property" signature={['voiceChannelStatusUpdate: [oldChannel: ', ['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'], ', newChannel: ', ['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L396', label: 'packages/plugin-gateway/src/util/events.ts:396' }}>
+
+Emitted when the status of a cached voice channel changes. Not emitted for a channel that is not cached, which
+leaves nothing to compare the new status with.
+
+</ApiMember>
+
+### voiceServerUpdate
+
+<ApiMember kind="property" signature={['voiceServerUpdate: [data: ', ['GatewayVoiceServerUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceServerUpdateDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L310', label: 'packages/plugin-gateway/src/util/events.ts:310' }}>
+
+Emitted when a guild's voice server changes, e.g. to hand a voice connection a new endpoint.
+
+</ApiMember>
+
+### voiceStateUpdate
+
+<ApiMember kind="property" signature={['voiceStateUpdate: [oldState: ', ['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'], ' | null, newState: ', ['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L391', label: 'packages/plugin-gateway/src/util/events.ts:391' }}>
+
+Emitted when a member joins, leaves, or moves between voice channels, or changes their voice settings.
+
+</ApiMember>
+
+### webhooksUpdate
+
+<ApiMember kind="property" signature={['webhooksUpdate: [data: ', ['GatewayWebhooksUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayWebhooksUpdateDispatchData'], ']']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L180', label: 'packages/plugin-gateway/src/util/events.ts:180' }}>
+
+Emitted when a webhook of a channel is created, updated, or deleted.
+
+</ApiMember>

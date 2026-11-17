@@ -1,0 +1,56 @@
+---
+title: 'Interface: CacheEntityOptions'
+description: "The options of the cache of one entity, set per entity through the client's cacheOptions option. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L219',
+		label: 'packages/plugin-gateway/src/util/cache.ts:219'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options of the cache of one entity, set per entity through the client's `cacheOptions` option.
+
+<ApiSignature tokens={['interface CacheEntityOptions']} />
+
+<ApiHierarchy extendedBy={[[['CacheConstructorOptions', '/documentation/api/plugin-gateway/interfaces/CacheConstructorOptions']]]} />
+
+## Properties
+
+### keepOverLimit?
+
+<ApiMember kind="property" badges={['optional']} signature={['keepOverLimit?: (value: any, key: string, cache: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, any>) => boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L234', label: 'packages/plugin-gateway/src/util/cache.ts:234' }}>
+
+Decides which entries `maxSize` never evicts, like discord.js's `LimitedCollection#keepOverLimit`: called with
+the oldest entries in turn, the first one it answers `false` for is evicted. When it answers `true` for all of
+them, the cache grows past `maxSize`.
+
+**Default**
+
+```ts
+undefined;
+```
+
+</ApiMember>
+
+### maxSize?
+
+<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L226', label: 'packages/plugin-gateway/src/util/cache.ts:226' }}>
+
+The maximum amount of entries the cache holds, the oldest one being evicted when a new one would exceed it. `0`
+holds nothing.
+
+**Default**
+
+```ts
+Infinity;
+```
+
+</ApiMember>

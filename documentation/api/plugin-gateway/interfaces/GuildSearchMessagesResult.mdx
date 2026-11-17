@@ -1,0 +1,71 @@
+---
+title: 'Interface: GuildSearchMessagesResult'
+description: 'The result of GuildManager.searchMessages. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/messageSearch.ts#L143',
+		label: 'packages/plugin-gateway/src/util/messageSearch.ts:143'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The result of [GuildManager.searchMessages](/documentation/api/plugin-gateway/classes/GuildManager#searchmessages).
+
+<ApiSignature tokens={['interface GuildSearchMessagesResult']} />
+
+## Properties
+
+### documentsIndexed?
+
+<ApiMember kind="property" badges={['optional']} signature={['documentsIndexed?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/messageSearch.ts#L167', label: 'packages/plugin-gateway/src/util/messageSearch.ts:167' }}>
+
+How many documents the current indexing indexed so far, only when Discord sends it.
+
+</ApiMember>
+
+### doingDeepHistoricalIndex
+
+<ApiMember kind="property" signature={['doingDeepHistoricalIndex: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/messageSearch.ts#L163', label: 'packages/plugin-gateway/src/util/messageSearch.ts:163' }}>
+
+Whether the guild is going through a deep historical indexing.
+
+</ApiMember>
+
+### messages
+
+<ApiMember kind="property" signature={['messages: ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/messageSearch.ts#L147', label: 'packages/plugin-gateway/src/util/messageSearch.ts:147' }}>
+
+The matching messages, in the order of the response.
+
+</ApiMember>
+
+### threadMembers
+
+<ApiMember kind="property" signature={['threadMembers: ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'], '>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/messageSearch.ts#L155', label: 'packages/plugin-gateway/src/util/messageSearch.ts:155' }}>
+
+The thread members of the threads the bot joined, by thread ID and then user ID.
+
+</ApiMember>
+
+### threads
+
+<ApiMember kind="property" signature={['threads: ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/messageSearch.ts#L151', label: 'packages/plugin-gateway/src/util/messageSearch.ts:151' }}>
+
+The threads holding the messages.
+
+</ApiMember>
+
+### totalResults
+
+<ApiMember kind="property" signature={['totalResults: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/messageSearch.ts#L159', label: 'packages/plugin-gateway/src/util/messageSearch.ts:159' }}>
+
+How many messages match the query. Approximate while messages are created or deleted.
+
+</ApiMember>

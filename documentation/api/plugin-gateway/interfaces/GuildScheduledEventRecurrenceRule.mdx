@@ -1,0 +1,181 @@
+---
+title: 'Interface: GuildScheduledEventRecurrenceRule'
+description: "The recurrence rule of a scheduled event, like discord.js's GuildScheduledEventRecurrenceRule. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L490',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:490'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The recurrence rule of a scheduled event, like discord.js's `GuildScheduledEventRecurrenceRule`.
+
+<ApiSignature tokens={['interface GuildScheduledEventRecurrenceRule']} />
+
+## Properties
+
+### byMonth
+
+<ApiMember
+	kind="property"
+	signature={[
+		'byMonth: ',
+		['GuildScheduledEventRecurrenceRuleMonth', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventRecurrenceRuleMonth'],
+		'[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L499',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:499'
+	}}
+/>
+
+### byMonthDay
+
+<ApiMember
+	kind="property"
+	signature={['byMonthDay: number[] | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L500',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:500'
+	}}
+/>
+
+### byNWeekday
+
+<ApiMember
+	kind="property"
+	signature={[
+		'byNWeekday: ',
+		[
+			'APIGuildScheduledEventRecurrenceRuleNWeekday',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEventRecurrenceRuleNWeekday'
+		],
+		'[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L498',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:498'
+	}}
+/>
+
+### byWeekday
+
+<ApiMember
+	kind="property"
+	signature={[
+		'byWeekday: ',
+		[
+			'GuildScheduledEventRecurrenceRuleWeekday',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventRecurrenceRuleWeekday'
+		],
+		'[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L497',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:497'
+	}}
+/>
+
+### byYearDay
+
+<ApiMember
+	kind="property"
+	signature={['byYearDay: number[] | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L501',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:501'
+	}}
+/>
+
+### count
+
+<ApiMember
+	kind="property"
+	signature={['count: number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L502',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:502'
+	}}
+/>
+
+### endAt
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly endAt: ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L494',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:494'
+	}}
+/>
+
+### endTimestamp
+
+<ApiMember
+	kind="property"
+	signature={['endTimestamp: number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L493',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:493'
+	}}
+/>
+
+### frequency
+
+<ApiMember
+	kind="property"
+	signature={[
+		'frequency: ',
+		[
+			'GuildScheduledEventRecurrenceRuleFrequency',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventRecurrenceRuleFrequency'
+		]
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L495',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:495'
+	}}
+/>
+
+### interval
+
+<ApiMember
+	kind="property"
+	signature={['interval: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L496',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:496'
+	}}
+/>
+
+### startAt
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly startAt: ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L492',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:492'
+	}}
+/>
+
+### startTimestamp
+
+<ApiMember
+	kind="property"
+	signature={['startTimestamp: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L491',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:491'
+	}}
+/>

@@ -1,0 +1,83 @@
+---
+title: 'Interface: GuildOnboardingEditOptions'
+description: 'The options to edit an onboarding with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L203',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:203'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to edit an onboarding with. The prompts replace every existing one.
+
+<ApiSignature tokens={['interface GuildOnboardingEditOptions']} />
+
+## Properties
+
+### defaultChannels?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['defaultChannels?: readonly ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L205',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:205'
+	}}
+/>
+
+### enabled?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['enabled?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L206',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:206'
+	}}
+/>
+
+### mode?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['mode?: ', ['GuildOnboardingMode', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildOnboardingMode']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L207',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:207'
+	}}
+/>
+
+### prompts?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['prompts?: readonly ', ['GuildOnboardingPromptData', '/documentation/api/plugin-gateway/interfaces/GuildOnboardingPromptData'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L204',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:204'
+	}}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L208',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:208'
+	}}
+/>

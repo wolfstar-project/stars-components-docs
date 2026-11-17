@@ -1,0 +1,170 @@
+---
+title: 'Interface: WebhookMessageEditOptions'
+description: 'The options to edit a message sent by a webhook with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L246',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:246'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to edit a message sent by a webhook with.
+
+<ApiSignature
+	tokens={[
+		'interface WebhookMessageEditOptions extends ',
+		['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'],
+		', ',
+		['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions']],
+		[['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']]
+	]}
+/>
+
+## Properties
+
+### allowedMentions?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['allowedMentions?: ', ['MessageMentionOptions', '/documentation/api/plugin-gateway/type-aliases/MessageMentionOptions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L171',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:171'
+	}}
+	inheritedFrom={[['MessageEditOptions.allowedMentions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#allowedmentions']]}
+/>
+
+### attachments?
+
+<ApiMember kind="property" badges={['optional']} signature={['attachments?: readonly (', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'], '> | ', ['JSONEncodable', '/documentation/api/plugin-gateway/interfaces/JSONEncodable'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'], '>>)[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L170', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:170' }} inheritedFrom={[['MessageEditOptions.attachments', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#attachments']]}>
+
+The attachments to keep, when editing, or their metadata.
+
+</ApiMember>
+
+### components?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'components?: readonly (',
+		['APIMessageTopLevelComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageTopLevelComponent'],
+		' | ',
+		['JSONEncodable', '/documentation/api/plugin-gateway/interfaces/JSONEncodable'],
+		'<',
+		['APIMessageTopLevelComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessageTopLevelComponent'],
+		'>)[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L160',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:160'
+	}}
+	inheritedFrom={[['MessageEditOptions.components', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#components']]}
+/>
+
+### content?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['content?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L158',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:158'
+	}}
+	inheritedFrom={[['MessageEditOptions.content', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#content']]}
+/>
+
+### embeds?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'embeds?: readonly (',
+		['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed'],
+		' | ',
+		['JSONEncodable', '/documentation/api/plugin-gateway/interfaces/JSONEncodable'],
+		'<',
+		['APIEmbed', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmbed'],
+		'>)[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L159',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:159'
+	}}
+	inheritedFrom={[['MessageEditOptions.embeds', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#embeds']]}
+/>
+
+### files?
+
+<ApiMember kind="property" badges={['optional']} signature={['files?: readonly ', ['AttachmentResolvable', '/documentation/api/plugin-gateway/type-aliases/AttachmentResolvable'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L166', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:166' }} inheritedFrom={[['MessageEditOptions.files', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#files']]}>
+
+The files to upload.
+
+</ApiMember>
+
+### flags?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['flags?: ', ['MessageFlagsResolvable', '/documentation/api/plugin-gateway/type-aliases/MessageFlagsResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L172',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:172'
+	}}
+	inheritedFrom={[['MessageEditOptions.flags', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#flags']]}
+/>
+
+### poll?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'poll?: ',
+		['PollCreateData', '/documentation/api/plugin-gateway/interfaces/PollCreateData'],
+		' | ',
+		['RESTAPIPoll', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTAPIPoll'],
+		' | ',
+		['JSONEncodable', '/documentation/api/plugin-gateway/interfaces/JSONEncodable'],
+		'<',
+		['RESTAPIPoll', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTAPIPoll'],
+		'>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L173',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:173'
+	}}
+	inheritedFrom={[['MessageEditOptions.poll', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions#poll']]}
+/>
+
+### threadId?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['threadId?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L232',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:232'
+	}}
+	inheritedFrom={[['WebhookThreadOptions.threadId', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions#threadid']]}
+/>

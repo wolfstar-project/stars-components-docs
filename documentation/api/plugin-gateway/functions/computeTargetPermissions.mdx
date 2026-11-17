@@ -1,0 +1,63 @@
+---
+title: 'Function: computeTargetPermissions()'
+description: "Computes the permissions of a member or role in a channel, given the channel's overwrites. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L140',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:140'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Computes the permissions of a member or role in a channel, given the channel's overwrites.
+
+<ApiSignature
+	tokens={[
+		'computeTargetPermissions(\n  guildId: string,\n  overwrites: readonly ',
+		['APIOverwrite', 'https://discord-api-types.dev/api/discord-api-types-v10#APIOverwrite'],
+		'[],\n  target: string | ',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		' | ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<PermissionsBitField>'
+	]}
+/>
+
+Computes the permissions of a member or role in a channel, given the channel's overwrites.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the channel's guild.
+
+</ApiParam>
+
+<ApiParam name="overwrites" type={['readonly ', ['APIOverwrite', 'https://discord-api-types.dev/api/discord-api-types-v10#APIOverwrite'], '[]']}>
+
+The channel's permission overwrites.
+
+</ApiParam>
+
+<ApiParam name="target" type={['string | ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">']}>
+
+A member, a role, or the ID of a member.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<PermissionsBitField>']} />
+
+</ApiParams>

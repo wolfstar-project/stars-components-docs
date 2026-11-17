@@ -1,0 +1,109 @@
+---
+title: 'Interface: InviteCreateOptions'
+description: 'The options to create an invite with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L18',
+		label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:18'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to create an invite with.
+
+<ApiSignature tokens={['interface InviteCreateOptions']} />
+
+## Properties
+
+### maxAge?
+
+<ApiMember kind="property" badges={['optional']} signature={['maxAge?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L24', label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:24' }}>
+
+How long the invite lasts, in seconds, up to 7 days. `0` never expires.
+
+**Default**
+
+```ts
+86_400;
+```
+
+</ApiMember>
+
+### maxUses?
+
+<ApiMember kind="property" badges={['optional']} signature={['maxUses?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L28', label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:28' }}>
+
+How many times the invite can be used, `0` for unlimited.
+
+</ApiMember>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L40',
+		label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:40'
+	}}
+/>
+
+### targetApplicationId?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['targetApplicationId?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L39',
+		label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:39'
+	}}
+/>
+
+### targetType?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['targetType?: ', ['InviteTargetType', 'https://discord-api-types.dev/api/discord-api-types-v10#InviteTargetType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L37',
+		label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:37'
+	}}
+/>
+
+### targetUserId?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['targetUserId?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L38',
+		label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:38'
+	}}
+/>
+
+### temporary?
+
+<ApiMember kind="property" badges={['optional']} signature={['temporary?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L32', label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:32' }}>
+
+Whether the invite only grants temporary membership.
+
+</ApiMember>
+
+### unique?
+
+<ApiMember kind="property" badges={['optional']} signature={['unique?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildInviteManager.ts#L36', label: 'packages/plugin-gateway/src/managers/GuildInviteManager.ts:36' }}>
+
+Whether to always create a new invite, instead of reusing a similar one.
+
+</ApiMember>

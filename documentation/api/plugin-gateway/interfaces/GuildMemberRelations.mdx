@@ -1,0 +1,67 @@
+---
+title: 'Interface: GuildMemberRelations'
+description: 'The relations of a GuildMember, resolved from the cache by client.members. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L50',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:50'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of a [GuildMember](/documentation/api/plugin-gateway/classes/GuildMember), resolved from the cache by `client.members`.
+
+<ApiSignature tokens={['interface GuildMemberRelations']} />
+
+## Properties
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L52',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:52'
+	}}
+/>
+
+### presence?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['presence?: ', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L57',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:57'
+	}}
+/>
+
+### user?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['user?: ', ['User', '/documentation/api/plugin-gateway/classes/User']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L51',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:51'
+	}}
+/>
+
+### voice?
+
+<ApiMember kind="property" badges={['optional']} signature={['voice?: ', ['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L56', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:56' }}>
+
+The member's voice state, `null` when they are not connected.
+
+</ApiMember>

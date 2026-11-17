@@ -1,0 +1,128 @@
+---
+title: 'Interface: GuildScheduledEventRecurrenceRuleOptions'
+description: "The recurrence rule to set on a scheduled event, like discord.js's GuildScheduledEventRecurrenceRuleOptions. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L508',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:508'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The recurrence rule to set on a scheduled event, like discord.js's `GuildScheduledEventRecurrenceRuleOptions`.
+
+<ApiSignature tokens={['interface GuildScheduledEventRecurrenceRuleOptions']} />
+
+## Properties
+
+### byMonth?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'byMonth?: readonly ',
+		['GuildScheduledEventRecurrenceRuleMonth', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventRecurrenceRuleMonth'],
+		'[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L514',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:514'
+	}}
+/>
+
+### byMonthDay?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['byMonthDay?: readonly number[] | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L515',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:515'
+	}}
+/>
+
+### byNWeekday?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'byNWeekday?: readonly ',
+		[
+			'APIGuildScheduledEventRecurrenceRuleNWeekday',
+			'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEventRecurrenceRuleNWeekday'
+		],
+		'[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L513',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:513'
+	}}
+/>
+
+### byWeekday?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'byWeekday?: readonly ',
+		[
+			'GuildScheduledEventRecurrenceRuleWeekday',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventRecurrenceRuleWeekday'
+		],
+		'[] | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L512',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:512'
+	}}
+/>
+
+### frequency
+
+<ApiMember
+	kind="property"
+	signature={[
+		'frequency: ',
+		[
+			'GuildScheduledEventRecurrenceRuleFrequency',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventRecurrenceRuleFrequency'
+		]
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L510',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:510'
+	}}
+/>
+
+### interval
+
+<ApiMember
+	kind="property"
+	signature={['interval: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L511',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:511'
+	}}
+/>
+
+### startAt
+
+<ApiMember
+	kind="property"
+	signature={['startAt: ', ['DateResolvable', '/documentation/api/plugin-gateway/type-aliases/DateResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L509',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:509'
+	}}
+/>

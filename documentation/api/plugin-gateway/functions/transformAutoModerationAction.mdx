@@ -1,0 +1,50 @@
+---
+title: 'Function: transformAutoModerationAction()'
+description: "Transforms a camel-cased auto moderation action to the API's shape. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L243',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:243'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Transforms a camel-cased auto moderation action to the API's shape. Raw actions are passed through.
+
+<ApiSignature
+	tokens={[
+		'transformAutoModerationAction(action: ',
+		['AutoModerationActionOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationActionOptions'],
+		' | ',
+		['APIAutoModerationAction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationAction'],
+		' | ',
+		['AutoModerationAction', '/documentation/api/plugin-gateway/interfaces/AutoModerationAction'],
+		'): ',
+		['APIAutoModerationAction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationAction']
+	]}
+/>
+
+Transforms a camel-cased auto moderation action to the API's shape. Raw actions are passed through.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="action" type={[['AutoModerationActionOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationActionOptions'], ' | ', ['APIAutoModerationAction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationAction'], ' | ', ['AutoModerationAction', '/documentation/api/plugin-gateway/interfaces/AutoModerationAction']]}>
+
+The action to transform.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIAutoModerationAction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationAction']]} />
+
+</ApiParams>

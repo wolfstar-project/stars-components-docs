@@ -1,0 +1,39 @@
+---
+title: 'Interface: SetPositionOptions'
+description: 'The options to move a channel or role among its siblings with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L23',
+		label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:23'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to move a channel or role among its siblings with.
+
+<ApiSignature tokens={['interface SetPositionOptions']} />
+
+## Properties
+
+### reason?
+
+<ApiMember kind="property" badges={['optional']} signature={['reason?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L31', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:31' }}>
+
+The reason for the audit log.
+
+</ApiMember>
+
+### relative?
+
+<ApiMember kind="property" badges={['optional']} signature={['relative?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L27', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:27' }}>
+
+Whether the position is an offset from the current one.
+
+</ApiMember>

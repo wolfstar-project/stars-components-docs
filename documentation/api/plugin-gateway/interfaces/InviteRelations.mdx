@@ -1,0 +1,71 @@
+---
+title: 'Interface: InviteRelations'
+description: 'The relations of an invite, resolved from the cache by client.guilds.invites(). (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L26',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:26'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of an invite, resolved from the cache by `client.guilds.invites()`.
+
+<ApiSignature tokens={['interface InviteRelations']} />
+
+## Properties
+
+### channel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['channel?: ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L30',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:30'
+	}}
+/>
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L29',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:29'
+	}}
+/>
+
+### inviter?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['inviter?: ', ['User', '/documentation/api/plugin-gateway/classes/User']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L27',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:27'
+	}}
+/>
+
+### targetUser?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['targetUser?: ', ['User', '/documentation/api/plugin-gateway/classes/User']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L28',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:28'
+	}}
+/>

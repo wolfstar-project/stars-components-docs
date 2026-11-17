@@ -1,0 +1,51 @@
+---
+title: 'Function: toChannelBody()'
+description: "Converts GuildChannelEditOptions to the API's body, without lockPermissions which needs the parent. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L173',
+		label: 'packages/plugin-gateway/src/util/channels.ts:173'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Converts [GuildChannelEditOptions](/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions) to the API's body, without `lockPermissions` which needs the parent.
+
+<ApiSignature
+	tokens={[
+		'toChannelBody(options: ',
+		['GuildChannelEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions'],
+		' | ',
+		['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions'],
+		'): ',
+		['RESTPatchAPIChannelJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPatchAPIChannelJSONBody']
+	]}
+/>
+
+Converts [GuildChannelEditOptions](/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions) to the API's body, without `lockPermissions` which needs the parent.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[
+		['GuildChannelEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions'],
+		' | ',
+		['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions']
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RESTPatchAPIChannelJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPatchAPIChannelJSONBody']]} />
+
+</ApiParams>

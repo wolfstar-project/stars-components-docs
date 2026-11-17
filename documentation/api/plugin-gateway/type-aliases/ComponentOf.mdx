@@ -1,0 +1,86 @@
+---
+title: 'Type Alias: ComponentOf'
+description: 'The component createComponent builds for some raw component data, Component for the types this package has no class for. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/components.ts#L117',
+		label: 'packages/plugin-gateway/src/util/components.ts:117'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The component [createComponent](/documentation/api/plugin-gateway/functions/createComponent) builds for some raw component data, [Component](/documentation/api/plugin-gateway/classes/Component) for the types this
+package has no class for.
+
+<ApiSignature
+	tokens={[
+		'type ComponentOf<Data extends ',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		'> = Data extends ',
+		['APIActionRowComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIActionRowComponent'],
+		'<infer Child> ? ',
+		['ActionRow', '/documentation/api/plugin-gateway/classes/ActionRow'],
+		'<',
+		['Extract', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#extracttype'],
+		'<',
+		['ComponentOf', '/documentation/api/plugin-gateway/type-aliases/ComponentOf'],
+		'<Child>, ',
+		['MessageActionRowComponent', '/documentation/api/plugin-gateway/type-aliases/MessageActionRowComponent'],
+		' | ',
+		['ModalActionRowComponent', '/documentation/api/plugin-gateway/type-aliases/ModalActionRowComponent'],
+		'>> : Data extends ',
+		['APIButtonComponentWithCustomId', 'https://discord-api-types.dev/api/discord-api-types-v10#APIButtonComponentWithCustomId'],
+		' ? ',
+		['InteractiveButtonComponent', '/documentation/api/plugin-gateway/classes/InteractiveButtonComponent'],
+		' : Data extends ',
+		['APIButtonComponentWithURL', 'https://discord-api-types.dev/api/discord-api-types-v10#APIButtonComponentWithURL'],
+		' ? ',
+		['LinkButtonComponent', '/documentation/api/plugin-gateway/classes/LinkButtonComponent'],
+		' : Data extends ',
+		['APIButtonComponentWithSKUId', 'https://discord-api-types.dev/api/discord-api-types-v10#APIButtonComponentWithSKUId'],
+		' ? ',
+		['PremiumButtonComponent', '/documentation/api/plugin-gateway/classes/PremiumButtonComponent'],
+		' : Data extends ',
+		['APIStringSelectComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIStringSelectComponent'],
+		' ? ',
+		['StringSelectMenuComponent', '/documentation/api/plugin-gateway/classes/StringSelectMenuComponent'],
+		' : Data extends ',
+		['APIUserSelectComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUserSelectComponent'],
+		' ? ',
+		['UserSelectMenuComponent', '/documentation/api/plugin-gateway/classes/UserSelectMenuComponent'],
+		' : Data extends ',
+		['APIRoleSelectComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRoleSelectComponent'],
+		' ? ',
+		['RoleSelectMenuComponent', '/documentation/api/plugin-gateway/classes/RoleSelectMenuComponent'],
+		' : Data extends ',
+		['APIMentionableSelectComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMentionableSelectComponent'],
+		' ? ',
+		['MentionableSelectMenuComponent', '/documentation/api/plugin-gateway/classes/MentionableSelectMenuComponent'],
+		' : Data extends ',
+		['APIChannelSelectComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChannelSelectComponent'],
+		' ? ',
+		['ChannelSelectMenuComponent', '/documentation/api/plugin-gateway/classes/ChannelSelectMenuComponent'],
+		' : Data extends ',
+		['APITextInputComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APITextInputComponent'],
+		' ? ',
+		['TextInputComponent', '/documentation/api/plugin-gateway/classes/TextInputComponent'],
+		' : ... extends ... ? ... : ...'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends ', ['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent']]}>
+
+The raw component data.
+
+</ApiParam>
+
+</ApiParams>

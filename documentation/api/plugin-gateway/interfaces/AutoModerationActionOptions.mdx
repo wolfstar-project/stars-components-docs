@@ -1,0 +1,50 @@
+---
+title: 'Interface: AutoModerationActionOptions'
+description: "An action to set on an auto moderation rule, like discord.js's AutoModerationActionOptions. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L169',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:169'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+An action to set on an auto moderation rule, like discord.js's `AutoModerationActionOptions`.
+
+<ApiSignature tokens={['interface AutoModerationActionOptions']} />
+
+## Properties
+
+### metadata?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'metadata?: {\n  channel?: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		';\n  customMessage?: string;\n  durationSeconds?: number;\n}'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L171',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:171'
+	}}
+/>
+
+### type
+
+<ApiMember
+	kind="property"
+	signature={['type: ', ['AutoModerationActionType', 'https://discord-api-types.dev/api/discord-api-types-v10#AutoModerationActionType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L170',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:170'
+	}}
+/>

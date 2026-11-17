@@ -1,0 +1,76 @@
+---
+title: 'Function: RegisterAsGatewayListener()'
+description: 'Class decorator that binds the decorated EventGatewayListener to a gateway event, so it does not need to declare a constructor. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/decorators.ts#L25',
+		label: 'packages/plugin-gateway/src/util/decorators.ts:25'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Class decorator that binds the decorated [EventGatewayListener](/documentation/api/plugin-gateway/classes/EventGatewayListener) to a gateway event, so it does not need to
+declare a constructor.
+
+<ApiSignature
+	tokens={[
+		'RegisterAsGatewayListener<Event extends keyof ',
+		['GatewayEventMap', '/documentation/api/plugin-gateway/interfaces/GatewayEventMap'],
+		'>(\n  event: Event,\n  options: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['EventGatewayListener.Options', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/Options'],
+		'<Event>, "event"> = {}\n): <T extends ListenerConstructor>(target: T) => T'
+	]}
+/>
+
+Class decorator that binds the decorated [EventGatewayListener](/documentation/api/plugin-gateway/classes/EventGatewayListener) to a gateway event, so it does not need to
+declare a constructor.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Event" type={['extends keyof ', ['GatewayEventMap', '/documentation/api/plugin-gateway/interfaces/GatewayEventMap']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['Event']}>
+
+The event to listen to.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['EventGatewayListener.Options', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/Options'], '<Event>, "event">']} defaultValue={'{}'}>
+
+The additional listener options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['<T extends ListenerConstructor>(target: T) => T']} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { EventGatewayListener, RegisterAsGatewayListener, type Message } from '@wolfstar/plugin-gateway';
+
+@RegisterAsGatewayListener('messageCreate')
+export class LogMessagesListener extends EventGatewayListener<'messageCreate'> {
+	public override run(message: Message) {
+		console.log(`${message.author.username}: ${message.content}`);
+	}
+}
+```

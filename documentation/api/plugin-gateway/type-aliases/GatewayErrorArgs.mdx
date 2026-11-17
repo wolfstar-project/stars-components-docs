@@ -1,0 +1,35 @@
+---
+title: 'Type Alias: GatewayErrorArgs'
+description: 'The arguments the message of Code is formatted with, none when the message is a plain string. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L13',
+		label: 'packages/plugin-gateway/src/errors/GatewayError.ts:13'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The arguments the message of `Code` is formatted with, none when the message is a plain string.
+
+<ApiSignature
+	tokens={[
+		'type GatewayErrorArgs<Code extends ',
+		['GatewayErrorCode', '/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode'],
+		'> = typeof ',
+		['GatewayErrorMessages', '/documentation/api/plugin-gateway/variables/GatewayErrorMessages'],
+		'[Code] extends ((...args: infer Args) => string) ? Args : []'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Code" type={['extends ', ['GatewayErrorCode', '/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode']]} />
+
+</ApiParams>

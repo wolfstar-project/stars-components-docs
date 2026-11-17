@@ -1,0 +1,73 @@
+---
+title: 'Interface: ApplicationCommandOptionChoice'
+description: 'A choice of an application command option, as the API returns it. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L25',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:25'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A choice of an application command option, as the API returns it.
+
+<ApiSignature tokens={['interface ApplicationCommandOptionChoice']} />
+
+## Properties
+
+### name
+
+<ApiMember
+	kind="property"
+	signature={['name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L26',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:26'
+	}}
+/>
+
+### nameLocalizations?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'nameLocalizations?: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L31',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:31'
+	}}
+/>
+
+### nameLocalized?
+
+<ApiMember kind="property" badges={['optional']} signature={['nameLocalized?: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L30', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:30' }}>
+
+The name in the locale the command was fetched with.
+
+</ApiMember>
+
+### value
+
+<ApiMember
+	kind="property"
+	signature={['value: string | number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L32',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:32'
+	}}
+/>

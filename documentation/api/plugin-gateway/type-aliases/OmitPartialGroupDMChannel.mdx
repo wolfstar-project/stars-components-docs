@@ -1,0 +1,38 @@
+---
+title: 'Type Alias: OmitPartialGroupDMChannel'
+description: "A structure whose channel can not be a group direct message, like discord.js's OmitPartialGroupDMChannel: what the message actions resolve to. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L144',
+		label: 'packages/plugin-gateway/src/structures/messages/Message.ts:144'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A structure whose `channel` can not be a group direct message, like discord.js's `OmitPartialGroupDMChannel`: what
+the message actions resolve to.
+
+<ApiSignature
+	tokens={[
+		'type OmitPartialGroupDMChannel<Structure extends { channel: ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		' | null }> = Structure & { channel: ',
+		['Exclude', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#excludetype'],
+		'<Structure["channel"], ',
+		['GroupDMChannel', '/documentation/api/plugin-gateway/classes/GroupDMChannel'],
+		'> }'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Structure" type={['extends { channel: ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null }']} />
+
+</ApiParams>

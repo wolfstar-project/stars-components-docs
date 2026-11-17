@@ -1,0 +1,104 @@
+---
+title: 'Interface: SoundboardSoundCreateOptions'
+description: 'The options to upload a soundboard sound with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L37',
+		label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:37'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to upload a soundboard sound with.
+
+<ApiSignature
+	tokens={[
+		'interface SoundboardSoundCreateOptions extends ',
+		['SoundboardSoundEditOptions', '/documentation/api/plugin-gateway/interfaces/SoundboardSoundEditOptions']
+	]}
+/>
+
+<ApiHierarchy extends={[[['SoundboardSoundEditOptions', '/documentation/api/plugin-gateway/interfaces/SoundboardSoundEditOptions']]]} />
+
+## Properties
+
+### contentType?
+
+<ApiMember kind="property" badges={['optional']} signature={['contentType?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L46', label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:46' }}>
+
+The content type of the sound, `audio/mpeg` or `audio/ogg`, when it cannot be inferred from a download or a blob.
+
+</ApiMember>
+
+### emojiId?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['emojiId?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L29',
+		label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:29'
+	}}
+	inheritedFrom={[['SoundboardSoundEditOptions.emojiId', '/documentation/api/plugin-gateway/interfaces/SoundboardSoundEditOptions#emojiid']]}
+/>
+
+### emojiName?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['emojiName?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L30',
+		label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:30'
+	}}
+	inheritedFrom={[['SoundboardSoundEditOptions.emojiName', '/documentation/api/plugin-gateway/interfaces/SoundboardSoundEditOptions#emojiname']]}
+/>
+
+### name
+
+<ApiMember
+	kind="property"
+	signature={['name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L38',
+		label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:38'
+	}}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L31',
+		label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:31'
+	}}
+	inheritedFrom={[['SoundboardSoundEditOptions.reason', '/documentation/api/plugin-gateway/interfaces/SoundboardSoundEditOptions#reason']]}
+/>
+
+### sound
+
+<ApiMember kind="property" signature={['sound: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L42', label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:42' }}>
+
+The MP3 or OGG sound: a data URI, or anything `resolveFile` reads (contents, a path, a URL, a stream, a blob).
+
+</ApiMember>
+
+### volume?
+
+<ApiMember kind="property" badges={['optional']} signature={['volume?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts#L28', label: 'packages/plugin-gateway/src/managers/GuildSoundboardSoundManager.ts:28' }} inheritedFrom={[['SoundboardSoundEditOptions.volume', '/documentation/api/plugin-gateway/interfaces/SoundboardSoundEditOptions#volume']]}>
+
+The volume, from 0 to 1.
+
+</ApiMember>

@@ -1,0 +1,29 @@
+---
+title: 'Type Alias: ColorResolvable'
+description: 'A color: a number, a #rrggbb string, an RGB tuple, the name of one of the Colors, or Random. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/types.ts#L419',
+		label: 'packages/plugin-gateway/src/types.ts:419'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A color: a number, a `#rrggbb` string, an RGB tuple, the name of one of the [Colors](/documentation/api/plugin-gateway/variables/Colors), or `Random`.
+
+<ApiSignature
+	tokens={[
+		'type ColorResolvable = ',
+		['HexColorString', '/documentation/api/plugin-gateway/type-aliases/HexColorString'],
+		' | number | keyof typeof ',
+		['Colors', '/documentation/api/plugin-gateway/variables/Colors'],
+		' | readonly [red: number, green: number, blue: number] | "Random"'
+	]}
+/>

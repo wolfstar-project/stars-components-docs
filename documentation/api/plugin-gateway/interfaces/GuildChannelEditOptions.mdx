@@ -1,0 +1,303 @@
+---
+title: 'Interface: GuildChannelEditOptions'
+description: 'The fields of a guild channel that can be edited. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L113',
+		label: 'packages/plugin-gateway/src/util/channels.ts:113'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The fields of a guild channel that can be edited. Each applies to the channel types that have it.
+
+<ApiSignature tokens={['interface GuildChannelEditOptions']} />
+
+## Properties
+
+### appliedTags?
+
+<ApiMember kind="property" badges={['optional']} signature={['appliedTags?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L166', label: 'packages/plugin-gateway/src/util/channels.ts:166' }}>
+
+The IDs of the tags of a thread of a forum or media channel.
+
+</ApiMember>
+
+### archived?
+
+<ApiMember kind="property" badges={['optional']} signature={['archived?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L150', label: 'packages/plugin-gateway/src/util/channels.ts:150' }}>
+
+Whether a thread is archived.
+
+</ApiMember>
+
+### autoArchiveDuration?
+
+<ApiMember kind="property" badges={['optional']} signature={['autoArchiveDuration?: ', ['ThreadAutoArchiveDuration', 'https://discord-api-types.dev/api/discord-api-types-v10#ThreadAutoArchiveDuration']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L162', label: 'packages/plugin-gateway/src/util/channels.ts:162' }}>
+
+The minutes of inactivity after which a thread is archived.
+
+</ApiMember>
+
+### availableTags?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['availableTags?: readonly ', ['GuildForumTagData', '/documentation/api/plugin-gateway/type-aliases/GuildForumTagData'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L138',
+		label: 'packages/plugin-gateway/src/util/channels.ts:138'
+	}}
+/>
+
+### bitrate?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['bitrate?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L123',
+		label: 'packages/plugin-gateway/src/util/channels.ts:123'
+	}}
+/>
+
+### defaultAutoArchiveDuration?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'defaultAutoArchiveDuration?: ',
+		['ThreadAutoArchiveDuration', 'https://discord-api-types.dev/api/discord-api-types-v10#ThreadAutoArchiveDuration']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L137',
+		label: 'packages/plugin-gateway/src/util/channels.ts:137'
+	}}
+/>
+
+### defaultForumLayout?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['defaultForumLayout?: ', ['ForumLayoutType', 'https://discord-api-types.dev/api/discord-api-types-v10#ForumLayoutType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L145',
+		label: 'packages/plugin-gateway/src/util/channels.ts:145'
+	}}
+/>
+
+### defaultReactionEmoji?
+
+<ApiMember kind="property" badges={['optional']} signature={['defaultReactionEmoji?: ', ['APIGuildForumDefaultReactionEmoji', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildForumDefaultReactionEmoji'], ' | ', ['GuildForumTagEmoji', '/documentation/api/plugin-gateway/interfaces/GuildForumTagEmoji'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L142', label: 'packages/plugin-gateway/src/util/channels.ts:142' }}>
+
+The default reaction, camel-cased (`{ id, name }`) or raw.
+
+</ApiMember>
+
+### defaultSortOrder?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['defaultSortOrder?: ', ['SortOrderType', 'https://discord-api-types.dev/api/discord-api-types-v10#SortOrderType'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L144',
+		label: 'packages/plugin-gateway/src/util/channels.ts:144'
+	}}
+/>
+
+### defaultThreadRateLimitPerUser?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['defaultThreadRateLimitPerUser?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L143',
+		label: 'packages/plugin-gateway/src/util/channels.ts:143'
+	}}
+/>
+
+### flags?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['flags?: ', ['ChannelFlags', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelFlags']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L146',
+		label: 'packages/plugin-gateway/src/util/channels.ts:146'
+	}}
+/>
+
+### invitable?
+
+<ApiMember kind="property" badges={['optional']} signature={['invitable?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L158', label: 'packages/plugin-gateway/src/util/channels.ts:158' }}>
+
+Whether non-moderators can add members to a private thread.
+
+</ApiMember>
+
+### locked?
+
+<ApiMember kind="property" badges={['optional']} signature={['locked?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L154', label: 'packages/plugin-gateway/src/util/channels.ts:154' }}>
+
+Whether a thread is locked: only moderators can unarchive it.
+
+</ApiMember>
+
+### lockPermissions?
+
+<ApiMember kind="property" badges={['optional']} signature={['lockPermissions?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L134', label: 'packages/plugin-gateway/src/util/channels.ts:134' }}>
+
+Whether to copy the category's overwrites: the new one with `parent`, else the current one. Exclusive with
+`permissionOverwrites`.
+
+</ApiMember>
+
+### name?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['name?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L114',
+		label: 'packages/plugin-gateway/src/util/channels.ts:114'
+	}}
+/>
+
+### nsfw?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['nsfw?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L121',
+		label: 'packages/plugin-gateway/src/util/channels.ts:121'
+	}}
+/>
+
+### parent?
+
+<ApiMember kind="property" badges={['optional']} signature={['parent?: ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L129', label: 'packages/plugin-gateway/src/util/channels.ts:129' }}>
+
+The category, `null` to move the channel out of its category.
+
+</ApiMember>
+
+### permissionOverwrites?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['permissionOverwrites?: readonly ', ['OverwriteData', '/documentation/api/plugin-gateway/interfaces/OverwriteData'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L125',
+		label: 'packages/plugin-gateway/src/util/channels.ts:125'
+	}}
+/>
+
+### position?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['position?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L119',
+		label: 'packages/plugin-gateway/src/util/channels.ts:119'
+	}}
+/>
+
+### rateLimitPerUser?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['rateLimitPerUser?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L122',
+		label: 'packages/plugin-gateway/src/util/channels.ts:122'
+	}}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L167',
+		label: 'packages/plugin-gateway/src/util/channels.ts:167'
+	}}
+/>
+
+### rtcRegion?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['rtcRegion?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L135',
+		label: 'packages/plugin-gateway/src/util/channels.ts:135'
+	}}
+/>
+
+### topic?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['topic?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L120',
+		label: 'packages/plugin-gateway/src/util/channels.ts:120'
+	}}
+/>
+
+### type?
+
+<ApiMember kind="property" badges={['optional']} signature={['type?: GuildText | GuildAnnouncement']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L118', label: 'packages/plugin-gateway/src/util/channels.ts:118' }}>
+
+Converts a text channel to an announcement channel, or back.
+
+</ApiMember>
+
+### userLimit?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['userLimit?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L124',
+		label: 'packages/plugin-gateway/src/util/channels.ts:124'
+	}}
+/>
+
+### videoQualityMode?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['videoQualityMode?: ', ['VideoQualityMode', 'https://discord-api-types.dev/api/discord-api-types-v10#VideoQualityMode']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L136',
+		label: 'packages/plugin-gateway/src/util/channels.ts:136'
+	}}
+/>

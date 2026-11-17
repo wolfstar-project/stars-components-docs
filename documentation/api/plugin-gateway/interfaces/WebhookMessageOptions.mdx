@@ -1,0 +1,73 @@
+---
+title: 'Interface: WebhookMessageOptions'
+description: 'The options only webhooks accept. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L211',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:211'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options only webhooks accept.
+
+<ApiSignature tokens={['interface WebhookMessageOptions']} />
+
+<ApiHierarchy extendedBy={[[['WebhookMessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageCreateOptions']]]} />
+
+## Properties
+
+### appliedTags?
+
+<ApiMember kind="property" badges={['optional']} signature={['appliedTags?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L221', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:221' }}>
+
+The tags of the post to create, for webhooks of forum and media channels.
+
+</ApiMember>
+
+### avatarURL?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['avatarURL?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L213',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:213'
+	}}
+/>
+
+### threadName?
+
+<ApiMember kind="property" badges={['optional']} signature={['threadName?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L217', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:217' }}>
+
+The name of the post to create, for webhooks of forum and media channels.
+
+</ApiMember>
+
+### username?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['username?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L212',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:212'
+	}}
+/>
+
+### withComponents?
+
+<ApiMember kind="property" badges={['optional']} signature={['withComponents?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L225', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:225' }}>
+
+Whether to allow components on a message of a webhook not owned by an application.
+
+</ApiMember>

@@ -1,0 +1,85 @@
+---
+title: 'Interface: GuildPruneOptions'
+description: 'The options to prune the inactive members of a guild with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L109',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:109'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to prune the inactive members of a guild with.
+
+<ApiSignature tokens={['interface GuildPruneOptions']} />
+
+## Properties
+
+### count?
+
+<ApiMember kind="property" badges={['optional']} signature={['count?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L131', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:131' }}>
+
+Whether to return the count; turning it off is recommended for large guilds.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### days?
+
+<ApiMember kind="property" badges={['optional']} signature={['days?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L115', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:115' }}>
+
+How many days of inactivity make a member prunable.
+
+**Default**
+
+```ts
+7;
+```
+
+</ApiMember>
+
+### dry?
+
+<ApiMember kind="property" badges={['optional']} signature={['dry?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L125', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:125' }}>
+
+Whether to only count the members that would be pruned.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L132',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:132'
+	}}
+/>
+
+### roles?
+
+<ApiMember kind="property" badges={['optional']} signature={['roles?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L119', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:119' }}>
+
+The roles whose members are also prunable; members with roles are kept otherwise.
+
+</ApiMember>

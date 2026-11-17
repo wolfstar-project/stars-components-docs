@@ -1,0 +1,79 @@
+---
+title: 'Interface: AttachmentPayload'
+description: "A file described along with its attachment metadata, like discord.js's AttachmentPayload. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L41',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:41'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A file described along with its attachment metadata, like discord.js's `AttachmentPayload`.
+
+<ApiSignature tokens={['interface AttachmentPayload']} />
+
+## Properties
+
+### attachment
+
+<ApiMember kind="property" signature={['attachment: ', ['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L45', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:45' }}>
+
+The contents of the file.
+
+</ApiMember>
+
+### description?
+
+<ApiMember kind="property" badges={['optional']} signature={['description?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L53', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:53' }}>
+
+The description (alt text) of the file.
+
+</ApiMember>
+
+### duration?
+
+<ApiMember kind="property" badges={['optional']} signature={['duration?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L65', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:65' }}>
+
+The duration of a voice message, in seconds.
+
+</ApiMember>
+
+### name?
+
+<ApiMember kind="property" badges={['optional']} signature={['name?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L49', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:49' }}>
+
+The name of the file, inferred from a path or URL when omitted.
+
+</ApiMember>
+
+### spoiler?
+
+<ApiMember kind="property" badges={['optional']} signature={['spoiler?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L61', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:61' }}>
+
+Whether to mark the file as a spoiler, by prefixing its name with `SPOILER_`.
+
+</ApiMember>
+
+### title?
+
+<ApiMember kind="property" badges={['optional']} signature={['title?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L57', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:57' }}>
+
+The title of the file.
+
+</ApiMember>
+
+### waveform?
+
+<ApiMember kind="property" badges={['optional']} signature={['waveform?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L69', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:69' }}>
+
+The waveform of a voice message, base64-encoded.
+
+</ApiMember>

@@ -1,0 +1,31 @@
+---
+title: 'Type Alias: ApplicationCommandPermissionIdResolvable'
+description: 'Whom an application command permission targets: a channel, a role, or a user. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/types.ts#L382',
+		label: 'packages/plugin-gateway/src/types.ts:382'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Whom an application command permission targets: a channel, a role, or a user. The guild ID stands for `@everyone`
+and the guild ID minus one for every channel.
+
+<ApiSignature
+	tokens={[
+		'type ApplicationCommandPermissionIdResolvable = ',
+		['GuildChannelResolvable', '/documentation/api/plugin-gateway/type-aliases/GuildChannelResolvable'],
+		' | ',
+		['RoleResolvable', '/documentation/api/plugin-gateway/type-aliases/RoleResolvable'],
+		' | ',
+		['UserResolvable', '/documentation/api/plugin-gateway/type-aliases/UserResolvable']
+	]}
+/>

@@ -1,0 +1,38 @@
+---
+title: 'Type Alias: InviteData'
+description: 'The raw data of an invite, from the REST API (APIExtendedInvite, with a nested channel and guild) or from an INVITECREATE dispatch (with channelid an… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L20',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:20'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The raw data of an invite, from the REST API (`APIExtendedInvite`, with a nested `channel` and `guild`) or from an
+`INVITE_CREATE` dispatch (with `channel_id` and `guild_id`).
+
+<ApiSignature
+	tokens={[
+		'type InviteData = { code: string } & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['APIExtendedInvite', 'https://discord-api-types.dev/api/discord-api-types-v10#APIExtendedInvite'],
+		', "code" | "uses">> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['GatewayInviteCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteCreateDispatchData'],
+		', "code" | "uses">> & { uses?: number }'
+	]}
+/>

@@ -1,0 +1,40 @@
+---
+title: 'Type Alias: GuildArgs'
+description: "The arguments of a method of a manager the client holds for every guild: they start with the guild's ID, which a manager built for one guild (guild.m… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L56',
+		label: 'packages/plugin-gateway/src/managers/CachedManager.ts:56'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The arguments of a method of a manager the client holds for every guild: they start with the guild's ID, which a
+manager built for one guild (`guild.members`, `client.guilds.members(guildId)`) fills in.
+
+<ApiSignature
+	tokens={['type GuildArgs<InGuild extends boolean, Args extends readonly unknown[]> = InGuild extends true ? Args : [guildId: string, ...Args]']}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']}>
+
+Whether the manager was built for one guild.
+
+</ApiParam>
+
+<ApiParam name="Args" type={['extends readonly unknown[]']}>
+
+The arguments after the guild's ID.
+
+</ApiParam>
+
+</ApiParams>

@@ -1,0 +1,48 @@
+---
+title: 'Function: dispatchPartition()'
+description: 'Gets the partition a dispatch is processed in: its guild, else its channel (direct messages), else null. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DispatchQueue.ts#L38',
+		label: 'packages/plugin-gateway/src/util/DispatchQueue.ts:38'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Gets the partition a dispatch is processed in: its guild, else its channel (direct messages), else `null`.
+
+<ApiSignature
+	tokens={[
+		'dispatchPartition(payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		'): string | null'
+	]}
+/>
+
+Gets the partition a dispatch is processed in: its guild, else its channel (direct messages), else `null`.
+
+A `null` partition is a barrier: the dispatch waits for every pending dispatch of its shard, and every later one
+waits for it. `READY`, `RESUMED`, and user-level dispatches such as `USER_UPDATE` are barriers.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload']]}>
+
+The dispatch payload.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>

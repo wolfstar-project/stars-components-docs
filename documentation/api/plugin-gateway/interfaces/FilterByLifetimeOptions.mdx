@@ -1,0 +1,71 @@
+---
+title: 'Interface: FilterByLifetimeOptions'
+description: 'The options of Sweepers.filterByLifetime. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L126',
+		label: 'packages/plugin-gateway/src/util/Sweepers.ts:126'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options of [Sweepers.filterByLifetime](/documentation/api/plugin-gateway/classes/Sweepers#filterbylifetime).
+
+<ApiSignature tokens={['interface FilterByLifetimeOptions<Value>']} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" />
+
+</ApiParams>
+
+## Properties
+
+### excludeFromSweep?
+
+<ApiMember kind="property" badges={['optional']} signature={['excludeFromSweep?: ', ['SweepFilter', '/documentation/api/plugin-gateway/type-aliases/SweepFilter'], '<Value>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L148', label: 'packages/plugin-gateway/src/util/Sweepers.ts:148' }}>
+
+Whether an entry is never swept.
+
+**Default**
+
+```ts
+() => false;
+```
+
+</ApiMember>
+
+### getComparisonTimestamp?
+
+<ApiMember kind="property" badges={['optional']} signature={['getComparisonTimestamp?: (\n  value: Value,\n  key: string,\n  collection: ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, Value>\n) => number | null | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L138', label: 'packages/plugin-gateway/src/util/Sweepers.ts:138' }}>
+
+Gets the timestamp the lifetime is counted from, an entry without one is never swept.
+
+**Default**
+
+```ts
+(value) => value.createdTimestamp;
+```
+
+</ApiMember>
+
+### lifetime?
+
+<ApiMember kind="property" badges={['optional']} signature={['lifetime?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L132', label: 'packages/plugin-gateway/src/util/Sweepers.ts:132' }}>
+
+The seconds an entry lives, a non-positive value skips the sweep.
+
+**Default**
+
+```ts
+14400;
+```
+
+</ApiMember>

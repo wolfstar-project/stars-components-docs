@@ -1,0 +1,45 @@
+---
+title: 'Interface: ReplyOptions'
+description: 'The message a message replies to. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L100',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:100'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The message a message replies to.
+
+<ApiSignature tokens={['interface ReplyOptions']} />
+
+## Properties
+
+### failIfNotExists?
+
+<ApiMember kind="property" badges={['optional']} signature={['failIfNotExists?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L110', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:110' }}>
+
+Whether to fail when the message no longer exists, rather than sending a regular message.
+
+**Default**
+
+```ts
+GatewayClientOptions.failIfNotExists ?? true;
+```
+
+</ApiMember>
+
+### messageReference
+
+<ApiMember kind="property" signature={['messageReference: string | {\n  readonly channelId?: string;\n  readonly id: string;\n}']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L104', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:104' }}>
+
+The message, or its ID.
+
+</ApiMember>

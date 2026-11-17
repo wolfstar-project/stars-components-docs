@@ -1,0 +1,55 @@
+---
+title: 'Interface: SoundboardSoundRelations'
+description: "The relations of a SoundboardSound, resolved from the cache by the guild's soundboard manager. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts#L17',
+		label: 'packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts:17'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of a [SoundboardSound](/documentation/api/plugin-gateway/classes/SoundboardSound), resolved from the cache by the guild's soundboard manager.
+
+<ApiSignature tokens={['interface SoundboardSoundRelations']} />
+
+## Properties
+
+### emoji?
+
+<ApiMember kind="property" badges={['optional']} signature={['emoji?: ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts#L23', label: 'packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts:23' }}>
+
+The custom emoji of the sound, when it belongs to the sound's guild and is cached.
+
+</ApiMember>
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts#L19',
+		label: 'packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts:19'
+	}}
+/>
+
+### user?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['user?: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts#L18',
+		label: 'packages/plugin-gateway/src/structures/soundboards/SoundboardSound.ts:18'
+	}}
+/>

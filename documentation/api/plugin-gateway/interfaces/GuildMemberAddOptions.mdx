@@ -1,0 +1,78 @@
+---
+title: 'Interface: GuildMemberAddOptions'
+description: 'The options to add a user to a guild with, through an OAuth2 access token with the guilds.join scope. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L84',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:84'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to add a user to a guild with, through an OAuth2 access token with the `guilds.join` scope.
+
+<ApiSignature tokens={['interface GuildMemberAddOptions']} />
+
+## Properties
+
+### accessToken
+
+<ApiMember
+	kind="property"
+	signature={['accessToken: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L85',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:85'
+	}}
+/>
+
+### deaf?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['deaf?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L92',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:92'
+	}}
+/>
+
+### mute?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['mute?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L91',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:91'
+	}}
+/>
+
+### nick?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['nick?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L86',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:86'
+	}}
+/>
+
+### roles?
+
+<ApiMember kind="property" badges={['optional']} signature={['roles?: ', ['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L90', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:90' }}>
+
+The roles the member starts with: an array of roles or IDs, or a `Collection` of roles.
+
+</ApiMember>

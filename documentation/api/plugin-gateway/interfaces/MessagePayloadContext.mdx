@@ -1,0 +1,39 @@
+---
+title: 'Interface: MessagePayloadContext'
+description: 'The extra flags telling a MessagePayload what its target accepts. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L256',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:256'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The extra flags telling a [MessagePayload](/documentation/api/plugin-gateway/classes/MessagePayload) what its target accepts.
+
+<ApiSignature tokens={['interface MessagePayloadContext']} />
+
+## Properties
+
+### edit?
+
+<ApiMember kind="property" badges={['optional']} signature={['edit?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L264', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:264' }}>
+
+Whether the message is edited rather than created: `null` clears fields instead of leaving them out.
+
+</ApiMember>
+
+### webhook?
+
+<ApiMember kind="property" badges={['optional']} signature={['webhook?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L260', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:260' }}>
+
+Whether the message is sent through a webhook, which accepts [WebhookMessageOptions](/documentation/api/plugin-gateway/interfaces/WebhookMessageOptions).
+
+</ApiMember>

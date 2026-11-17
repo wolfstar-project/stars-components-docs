@@ -1,0 +1,72 @@
+---
+title: 'Interface: GuildPermissionsContext'
+description: 'What computeGuildPermissions needs to know about a member of a guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L22',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:22'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+What [computeGuildPermissions](/documentation/api/plugin-gateway/functions/computeGuildPermissions) needs to know about a member of a guild.
+
+<ApiSignature tokens={['interface GuildPermissionsContext']} />
+
+## Properties
+
+### guildId
+
+<ApiMember
+	kind="property"
+	signature={['guildId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L23',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:23'
+	}}
+/>
+
+### memberRoleIds
+
+<ApiMember kind="property" signature={['memberRoleIds: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L29', label: 'packages/plugin-gateway/src/util/permissions.ts:29' }}>
+
+The IDs of the member's roles, without `@everyone`.
+
+</ApiMember>
+
+### ownerId
+
+<ApiMember
+	kind="property"
+	signature={['ownerId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L24',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:24'
+	}}
+/>
+
+### roles
+
+<ApiMember kind="property" signature={['roles: readonly ', ['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'], '<', ['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], ', "id" | "permissions">[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L33', label: 'packages/plugin-gateway/src/util/permissions.ts:33' }}>
+
+Every role of the guild, `@everyone` (whose ID is the guild's) included.
+
+</ApiMember>
+
+### userId
+
+<ApiMember
+	kind="property"
+	signature={['userId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L25',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:25'
+	}}
+/>

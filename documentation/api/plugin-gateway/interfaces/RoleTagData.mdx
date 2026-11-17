@@ -1,0 +1,71 @@
+---
+title: 'Interface: RoleTagData'
+description: "The tags of a role, like discord.js's RoleTagData: each is only set when it applies. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L408',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:408'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The tags of a role, like discord.js's `RoleTagData`: each is only set when it applies.
+
+<ApiSignature tokens={['interface RoleTagData']} />
+
+## Properties
+
+### availableForPurchase?
+
+<ApiMember kind="property" badges={['optional']} signature={['availableForPurchase?: true']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L428', label: 'packages/plugin-gateway/src/util/Transformers.ts:428' }}>
+
+Whether the role can be purchased.
+
+</ApiMember>
+
+### botId?
+
+<ApiMember kind="property" badges={['optional']} signature={['botId?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L412', label: 'packages/plugin-gateway/src/util/Transformers.ts:412' }}>
+
+The ID of the bot the role belongs to.
+
+</ApiMember>
+
+### guildConnections?
+
+<ApiMember kind="property" badges={['optional']} signature={['guildConnections?: true']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L432', label: 'packages/plugin-gateway/src/util/Transformers.ts:432' }}>
+
+Whether this is a linked role of the guild.
+
+</ApiMember>
+
+### integrationId?
+
+<ApiMember kind="property" badges={['optional']} signature={['integrationId?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L416', label: 'packages/plugin-gateway/src/util/Transformers.ts:416' }}>
+
+The ID of the integration the role belongs to.
+
+</ApiMember>
+
+### premiumSubscriberRole?
+
+<ApiMember kind="property" badges={['optional']} signature={['premiumSubscriberRole?: true']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L420', label: 'packages/plugin-gateway/src/util/Transformers.ts:420' }}>
+
+Whether this is the guild's booster role.
+
+</ApiMember>
+
+### subscriptionListingId?
+
+<ApiMember kind="property" badges={['optional']} signature={['subscriptionListingId?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L424', label: 'packages/plugin-gateway/src/util/Transformers.ts:424' }}>
+
+The ID of the role's subscription SKU and listing.
+
+</ApiMember>

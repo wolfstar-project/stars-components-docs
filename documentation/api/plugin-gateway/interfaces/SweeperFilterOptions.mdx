@@ -1,0 +1,57 @@
+---
+title: 'Interface: SweeperFilterOptions'
+description: 'Sweeps an entity with a filter, every interval seconds. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L85',
+		label: 'packages/plugin-gateway/src/util/Sweepers.ts:85'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Sweeps an entity with a filter, every `interval` seconds.
+
+<ApiSignature tokens={['interface SweeperFilterOptions<Value>']} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" />
+
+</ApiParams>
+
+## Properties
+
+### filter
+
+<ApiMember kind="property" signature={['filter: ', ['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'], '<Value>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L93', label: 'packages/plugin-gateway/src/util/Sweepers.ts:93' }}>
+
+Builds the filter of each sweep, see [SweepFilterFactory](/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory).
+
+</ApiMember>
+
+### interval
+
+<ApiMember kind="property" signature={['interval: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L89', label: 'packages/plugin-gateway/src/util/Sweepers.ts:89' }}>
+
+The seconds between two sweeps. A non-positive or infinite interval does not schedule any.
+
+</ApiMember>
+
+### lifetime?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['lifetime?: undefined']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L94',
+		label: 'packages/plugin-gateway/src/util/Sweepers.ts:94'
+	}}
+/>

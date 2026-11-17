@@ -1,0 +1,32 @@
+---
+title: 'Variable: MultiDispatchHandlers'
+description: 'The table of the dispatches that turn into several events, diffed against the cache. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatch.ts#L715',
+		label: 'packages/plugin-gateway/src/util/dispatch.ts:715'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The table of the dispatches that turn into several events, diffed against the cache.
+
+<ApiSignature
+	tokens={[
+		'const MultiDispatchHandlers: { [Type in ',
+		['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents'],
+		']+?: ',
+		['MultiDispatchHandler', '/documentation/api/plugin-gateway/interfaces/MultiDispatchHandler'],
+		'<Type> }'
+	]}
+/>
+
+Their aggregate event (e.g. `guildEmojisUpdate`) is always emitted. Without a cache there is nothing to diff
+against, so the granular events are not.

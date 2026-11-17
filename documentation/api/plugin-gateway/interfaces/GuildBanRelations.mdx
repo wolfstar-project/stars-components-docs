@@ -1,0 +1,47 @@
+---
+title: 'Interface: GuildBanRelations'
+description: "The relations of a GuildBan, resolved from the cache by the guild's ban manager. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildBan.ts#L15',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildBan.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of a [GuildBan](/documentation/api/plugin-gateway/classes/GuildBan), resolved from the cache by the guild's ban manager.
+
+<ApiSignature tokens={['interface GuildBanRelations']} />
+
+## Properties
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildBan.ts#L17',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildBan.ts:17'
+	}}
+/>
+
+### user?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['user?: ', ['User', '/documentation/api/plugin-gateway/classes/User']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildBan.ts#L16',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildBan.ts:16'
+	}}
+/>

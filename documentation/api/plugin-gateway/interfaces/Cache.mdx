@@ -1,0 +1,248 @@
+---
+title: 'Interface: Cache'
+description: 'The cache of a manager, as in the discord.js RFC #11426: it hands out structures. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L118',
+		label: 'packages/plugin-gateway/src/util/cache.ts:118'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The cache of a manager, as in the discord.js RFC #11426: it hands out [structures](/documentation/api/plugin-gateway/classes/StructureMixin).
+
+<ApiSignature
+	tokens={[
+		'interface Cache<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>, Raw extends ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value> = ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value>>'
+	]}
+/>
+
+<ApiHierarchy
+	implementedBy={[
+		[['CollectionCache', '/documentation/api/plugin-gateway/classes/CollectionCache']],
+		[['EntityStoreCache', '/documentation/api/plugin-gateway/classes/EntityStoreCache']],
+		[['NullCache', '/documentation/api/plugin-gateway/classes/NullCache']]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>']}>
+
+The structure the cache hands out.
+
+</ApiParam>
+
+<ApiParam name="Raw" type={['extends ', ['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'], '<Value>']} defaultValue={'RawAPIType<Value>'}>
+
+The raw API data the structure wraps.
+
+</ApiParam>
+
+</ApiParams>
+
+Every method is [Awaitable](/documentation/api/plugin-cache/type-aliases/Awaitable): synchronous on an in-memory cache ([Cache.synchronous](/documentation/api/plugin-gateway/interfaces/Cache#synchronous)), a promise on a
+remote one. `await` works with both.
+
+## Properties
+
+### construct
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly construct: ', ['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value, Raw>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L130', label: 'packages/plugin-gateway/src/util/cache.ts:130' }}>
+
+The function used to construct instances of the structure this cache holds.
+
+</ApiMember>
+
+### synchronous
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly synchronous: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L125', label: 'packages/plugin-gateway/src/util/cache.ts:125' }}>
+
+Whether every method answers synchronously, never with a promise.
+
+</ApiMember>
+
+## Methods
+
+### add()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L136', label: 'packages/plugin-gateway/src/util/cache.ts:136' }}>
+
+<ApiSignature
+	tokens={[
+		'add(data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Raw>, overwrite?: boolean): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<Value>'
+	]}
+/>
+
+Adds or updates data in the cache, returning the instantiated structure. If the item exists, it patches it with
+the new data unless `overwrite` is true. If it does not exist, it constructs a new instance and stores it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>']} />
+
+<ApiParam name="overwrite" type={['boolean']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L141', label: 'packages/plugin-gateway/src/util/cache.ts:141' }}>
+
+<ApiSignature tokens={['clear(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+Clears all items from the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L146', label: 'packages/plugin-gateway/src/util/cache.ts:146' }}>
+
+<ApiSignature tokens={['delete(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+Deletes an item from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L151', label: 'packages/plugin-gateway/src/util/cache.ts:151' }}>
+
+<ApiSignature tokens={['get(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | undefined>']} />
+
+Retrieves an item from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | undefined>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L156', label: 'packages/plugin-gateway/src/util/cache.ts:156' }}>
+
+<ApiSignature tokens={['getSize(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
+
+Gets the number of items in the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L161', label: 'packages/plugin-gateway/src/util/cache.ts:161' }}>
+
+<ApiSignature tokens={['has(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+Checks if an item exists in the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L166', label: 'packages/plugin-gateway/src/util/cache.ts:166' }}>
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: Value): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<Value, Raw>>'
+	]}
+/>
+
+Sets an item in the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['Value']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<Value, Raw>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

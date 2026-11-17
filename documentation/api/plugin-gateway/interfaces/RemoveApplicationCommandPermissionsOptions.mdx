@@ -1,0 +1,87 @@
+---
+title: 'Interface: RemoveApplicationCommandPermissionsOptions'
+description: 'The options to remove permissions with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L95',
+		label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:95'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to remove permissions with. At least one of `users`, `roles`, and `channels` is required.
+
+<ApiSignature
+	tokens={[
+		'interface RemoveApplicationCommandPermissionsOptions extends ',
+		['BaseApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/BaseApplicationCommandPermissionsOptions']
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[['BaseApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/BaseApplicationCommandPermissionsOptions']]
+	]}
+/>
+
+## Properties
+
+### channels?
+
+<ApiMember kind="property" badges={['optional']} signature={['channels?: readonly ', ['GuildChannelResolvable', '/documentation/api/plugin-gateway/type-aliases/GuildChannelResolvable'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L109', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:109' }}>
+
+The channels to remove: channels, or IDs, or the ID of the guild minus one for every channel.
+
+</ApiMember>
+
+### command?
+
+<ApiMember kind="property" badges={['optional']} signature={['command?: ', ['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L58', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:58' }} inheritedFrom={[['BaseApplicationCommandPermissionsOptions.command', '/documentation/api/plugin-gateway/interfaces/BaseApplicationCommandPermissionsOptions#command']]}>
+
+The command to modify or check permissions of. Ignored by a manager bound to a command.
+
+</ApiMember>
+
+### guild?
+
+<ApiMember kind="property" badges={['optional']} signature={['guild?: ', ['GuildResolvable', '/documentation/api/plugin-gateway/type-aliases/GuildResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L54', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:54' }} inheritedFrom={[['BaseApplicationCommandPermissionsOptions.guild', '/documentation/api/plugin-gateway/interfaces/BaseApplicationCommandPermissionsOptions#guild']]}>
+
+The guild to modify or check permissions in. Ignored by a manager bound to a guild.
+
+</ApiMember>
+
+### roles?
+
+<ApiMember kind="property" badges={['optional']} signature={['roles?: readonly ', ['RoleResolvable', '/documentation/api/plugin-gateway/type-aliases/RoleResolvable'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L105', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:105' }}>
+
+The roles to remove: roles, or IDs, or the ID of the guild for `@everyone`.
+
+</ApiMember>
+
+### token
+
+<ApiMember kind="property" signature={['token: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L100', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:100' }}>
+
+The OAuth2 bearer token of a user able to manage the guild, with the `applications.commands.permissions.update`
+scope.
+
+</ApiMember>
+
+### users?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['users?: readonly ', ['UserResolvable', '/documentation/api/plugin-gateway/type-aliases/UserResolvable'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L101',
+		label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:101'
+	}}
+/>

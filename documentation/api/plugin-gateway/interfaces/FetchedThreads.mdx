@@ -1,0 +1,53 @@
+---
+title: 'Interface: FetchedThreads'
+description: "Threads fetched in bulk, with the bot's membership of each. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L123',
+		label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:123'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Threads fetched in bulk, with the bot's membership of each.
+
+<ApiSignature tokens={['interface FetchedThreads']} />
+
+## Properties
+
+### hasMore
+
+<ApiMember kind="property" signature={['hasMore: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L129', label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:129' }}>
+
+Whether more archived threads are left to fetch.
+
+</ApiMember>
+
+### members
+
+<ApiMember
+	kind="property"
+	signature={['members: ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L125',
+		label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:125'
+	}}
+/>
+
+### threads
+
+<ApiMember
+	kind="property"
+	signature={['threads: ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L124',
+		label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:124'
+	}}
+/>

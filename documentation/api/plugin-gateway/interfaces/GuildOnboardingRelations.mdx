@@ -1,0 +1,72 @@
+---
+title: 'Interface: GuildOnboardingRelations'
+description: 'The relations of a GuildOnboarding, shared with its prompts and their options: its guild, and the channels, roles, and custom emojis its prompts refe… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts#L20',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts:20'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of a [GuildOnboarding](/documentation/api/plugin-gateway/classes/GuildOnboarding), shared with its prompts and their options: its guild, and the channels,
+roles, and custom emojis its prompts refer to, resolved from the cache by `client.guilds`.
+
+<ApiSignature tokens={['interface GuildOnboardingRelations']} />
+
+## Properties
+
+### channels?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['channels?: ReadonlyMap<string, ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], '>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts#L22',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts:22'
+	}}
+/>
+
+### emojis?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['emojis?: ReadonlyMap<string, ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], '>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts#L24',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts:24'
+	}}
+/>
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts#L21',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts:21'
+	}}
+/>
+
+### roles?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['roles?: ReadonlyMap<string, ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts#L23',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildOnboarding.ts:23'
+	}}
+/>

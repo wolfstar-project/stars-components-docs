@@ -1,0 +1,45 @@
+---
+title: 'Function: parseEmoji()'
+description: 'Parses an emoji out of a string: a Unicode emoji (URL-encoded or not), a custom emoji mention (<a:name:id>), or a name:id pair. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L64',
+		label: 'packages/plugin-gateway/src/util/Util.ts:64'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Parses an emoji out of a string: a Unicode emoji (URL-encoded or not), a custom emoji mention (`<a:name:id>`), or a
+`name:id` pair.
+
+<ApiSignature tokens={['parseEmoji(text: string): ', ['PartialEmoji', '/documentation/api/plugin-gateway/interfaces/PartialEmoji'], ' | null']} />
+
+Parses an emoji out of a string: a Unicode emoji (URL-encoded or not), a custom emoji mention (`<a:name:id>`), or a
+`name:id` pair.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="text" type={['string']}>
+
+The string to parse.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PartialEmoji', '/documentation/api/plugin-gateway/interfaces/PartialEmoji'], ' | null']}>
+
+The emoji, or `null` when the string holds a colon but no custom emoji.
+
+</ApiParam>
+
+</ApiParams>

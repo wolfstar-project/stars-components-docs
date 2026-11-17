@@ -1,0 +1,50 @@
+---
+title: 'Function: createChannel()'
+description: 'Builds the channel structure matching the type of a raw channel, BaseChannel for unknown types. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelManager.ts#L69',
+		label: 'packages/plugin-gateway/src/managers/ChannelManager.ts:69'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Builds the channel structure matching the type of a raw channel, [BaseChannel](/documentation/api/plugin-gateway/classes/BaseChannel) for unknown types.
+
+<ApiSignature
+	tokens={[
+		'createChannel(\n  data: ',
+		['APIChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChannel'],
+		' & { guild_id?: string },\n  relations: ',
+		['ChannelRelations', '/documentation/api/plugin-gateway/interfaces/ChannelRelations'],
+		' = {}\n): ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel']
+	]}
+/>
+
+Builds the channel structure matching the type of a raw channel, [BaseChannel](/documentation/api/plugin-gateway/classes/BaseChannel) for unknown types.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChannel'], ' & { guild_id?: string }']}>
+
+The raw channel.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['ChannelRelations', '/documentation/api/plugin-gateway/interfaces/ChannelRelations']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel']]} />
+
+</ApiParams>

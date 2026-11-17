@@ -1,0 +1,69 @@
+---
+title: 'Function: compareRolePositions()'
+description: 'Compares two roles the way Discord orders them: by position, then by ID for equal positions (older first). (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L65',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:65'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Compares two roles the way Discord orders them: by position, then by ID for equal positions (older first).
+
+<ApiSignature
+	tokens={[
+		'compareRolePositions(\n  a: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		', "id" | "position">,\n  b: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		', "id" | "position">\n): number'
+	]}
+/>
+
+Compares two roles the way Discord orders them: by position, then by ID for equal positions (older first).
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="a"
+	type={[
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		', "id" | "position">'
+	]}
+/>
+
+<ApiParam
+	name="b"
+	type={[
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		', "id" | "position">'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']}>
+
+A negative number when `a` is lower than `b`, a positive one when it is higher, `0` when they are the same.
+
+</ApiParam>
+
+</ApiParams>

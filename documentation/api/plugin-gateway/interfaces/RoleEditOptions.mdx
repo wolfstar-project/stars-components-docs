@@ -1,0 +1,125 @@
+---
+title: 'Interface: RoleEditOptions'
+description: 'The options to create or edit a role with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L20',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:20'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to create or edit a role with.
+
+<ApiSignature tokens={['interface RoleEditOptions']} />
+
+## Properties
+
+### color?
+
+<ApiMember kind="property" badges={['optional']} signature={['color?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L25', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:25' }}>
+
+The primary color alone, see [RoleEditOptions.colors](/documentation/api/plugin-gateway/interfaces/RoleEditOptions#colors) for gradients.
+
+</ApiMember>
+
+### colors?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'colors?: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['RoleColors', '/documentation/api/plugin-gateway/interfaces/RoleColors'],
+		'> & { primaryColor: number }'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L26',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:26'
+	}}
+/>
+
+### hoist?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['hoist?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L27',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:27'
+	}}
+/>
+
+### icon?
+
+<ApiMember kind="property" badges={['optional']} signature={['icon?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L33', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:33' }}>
+
+The icon: a data URI (`data:image/png;base64,...`), or anything `resolveImage` reads. `null` removes it.
+
+</ApiMember>
+
+### mentionable?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['mentionable?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L29',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:29'
+	}}
+/>
+
+### name?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['name?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L21',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:21'
+	}}
+/>
+
+### permissions?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['permissions?: ', ['PermissionResolvable', '/documentation/api/plugin-gateway/type-aliases/PermissionResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L28',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:28'
+	}}
+/>
+
+### reason?
+
+<ApiMember kind="property" badges={['optional']} signature={['reason?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L38', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:38' }}>
+
+The reason for the audit log.
+
+</ApiMember>
+
+### unicodeEmoji?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['unicodeEmoji?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L34',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:34'
+	}}
+/>

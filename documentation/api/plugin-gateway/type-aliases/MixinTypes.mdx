@@ -1,0 +1,56 @@
+---
+title: 'Type Alias: MixinTypes'
+description: 'The members Mixins add to a class extending Base, for the interface declaring them. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Mixin.ts#L34',
+		label: 'packages/plugin-gateway/src/structures/Mixin.ts:34'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The members `Mixins` add to a class extending `Base`, for the interface declaring them.
+
+<ApiSignature
+	tokens={[
+		'type MixinTypes<Base extends object, Mixins extends readonly object[]> = ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<UnionToIntersection<Mixins[number]>, keyof Base | keyof ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Base" type={['extends object']}>
+
+The class the mixins are mixed into.
+
+</ApiParam>
+
+<ApiParam name="Mixins" type={['extends readonly object[]']}>
+
+The instance types of the mixins.
+
+</ApiParam>
+
+</ApiParams>
+
+Following `@discordjs/structures`' `MixinTypes`, the members `Base` already declares are left out: `Base` keeps typing
+them, even though the mixins' implementations win at runtime, which must therefore stay assignable to `Base`'s types.
+[StructureMixin](/documentation/api/plugin-gateway/classes/StructureMixin)'s members are left out too: the interface extends it directly, so they keep their `this` type.
+
+```typescript
+export interface TextChannel
+	extends StructureMixin<ChannelDataType<ChannelType.GuildText>>, MixinTypes<BaseTextChannel, [TextChannelMixin<ChannelType.GuildText>]> {}
+export class TextChannel extends BaseTextChannel {}
+Mixin(TextChannel, [TextChannelMixin]);
+```
