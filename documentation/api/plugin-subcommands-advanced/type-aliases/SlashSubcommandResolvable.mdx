@@ -1,0 +1,33 @@
+---
+title: 'Type Alias: SlashSubcommandResolvable'
+description: 'Resolvable slash-subcommand payload accepted by the plugin. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L8',
+		label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:8'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Resolvable slash-subcommand payload accepted by the plugin.
+
+<ApiSignature
+	tokens={[
+		'type SlashSubcommandResolvable = SlashCommandSubcommandBuilder | { toJSON(): ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIApplicationCommandSubcommandOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandSubcommandOption'],
+		', "name" | "description"> } | ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIApplicationCommandSubcommandOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandSubcommandOption'],
+		', "name" | "description"> | ((\n  builder: SlashCommandSubcommandBuilder,\n  Container: typeof container\n) => SlashCommandSubcommandBuilder | void)'
+	]}
+/>

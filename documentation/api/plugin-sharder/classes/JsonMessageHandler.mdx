@@ -1,0 +1,85 @@
+---
+title: 'Class: JsonMessageHandler'
+description: 'Serializes packets as JSON: every body must be JSON-serializable. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L27',
+		label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:27'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Serializes packets as JSON: every body must be JSON-serializable. The default.
+
+<ApiSignature tokens={['class JsonMessageHandler implements ', ['MessageHandler', '/documentation/api/plugin-sharder/interfaces/MessageHandler']]} />
+
+<ApiHierarchy implements={[[['MessageHandler', '/documentation/api/plugin-sharder/interfaces/MessageHandler']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new JsonMessageHandler(): ', ['JsonMessageHandler', '/documentation/api/plugin-sharder/classes/JsonMessageHandler']]} />
+
+</ApiMember>
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: "json"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L28', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:28' }}>
+
+The name of the handler in the registry.
+
+</ApiMember>
+
+## Methods
+
+### deserialize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L34', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:34' }}>
+
+<ApiSignature tokens={['deserialize(data: unknown): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### serialize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L30', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:30' }}>
+
+<ApiSignature tokens={['serialize(packet: unknown): string']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="packet" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>

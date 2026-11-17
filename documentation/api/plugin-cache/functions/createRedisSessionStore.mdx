@@ -1,0 +1,55 @@
+---
+title: 'Function: createRedisSessionStore()'
+description: "Creates a GatewaySessionStore stored in Redis, for @wolfstar/plugin-gateway's sessionStore option. (@wolfstar/plugin-cache)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L141',
+		label: 'packages/plugin-cache/src/lib/sessions.ts:141'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Creates a [GatewaySessionStore](/documentation/api/plugin-cache/interfaces/GatewaySessionStore) stored in Redis, for `@wolfstar/plugin-gateway`'s `sessionStore` option.
+
+<ApiSignature
+	tokens={[
+		'createRedisSessionStore(options: ',
+		['RedisSessionStoreOptions', '/documentation/api/plugin-cache/interfaces/RedisSessionStoreOptions'],
+		'): ',
+		['RedisSessionStore', '/documentation/api/plugin-cache/classes/RedisSessionStore']
+	]}
+/>
+
+Creates a [GatewaySessionStore](/documentation/api/plugin-cache/interfaces/GatewaySessionStore) stored in Redis, for `@wolfstar/plugin-gateway`'s `sessionStore` option.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['RedisSessionStoreOptions', '/documentation/api/plugin-cache/interfaces/RedisSessionStoreOptions']]}>
+
+The options for the store.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisSessionStore', '/documentation/api/plugin-cache/classes/RedisSessionStore']]} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { createRedisSessionStore } from '@wolfstar/plugin-cache';
+import { Redis } from 'ioredis';
+
+const sessionStore = createRedisSessionStore({ redis: new Redis(process.env.REDIS_URL!) });
+```

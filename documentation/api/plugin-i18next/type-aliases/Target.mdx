@@ -1,0 +1,36 @@
+---
+title: 'Type Alias: Target'
+description: 'Any value the localization helpers accept as the source of a language. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L127',
+		label: 'packages/plugin-i18next/src/lib/types.ts:127'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Any value the localization helpers accept as the source of a language.
+
+<ApiSignature
+	tokens={[
+		'type Target = ',
+		['Interaction', '/documentation/api/plugin-i18next/type-aliases/Interaction'],
+		' | ',
+		['MessageTarget', '/documentation/api/plugin-i18next/interfaces/MessageTarget'],
+		' | ',
+		['ChannelTarget', '/documentation/api/plugin-i18next/interfaces/ChannelTarget'],
+		' | ',
+		['GuildTarget', '/documentation/api/plugin-i18next/interfaces/GuildTarget']
+	]}
+/>
+
+The four members are told apart structurally, in this order: an [Interaction](/documentation/api/plugin-i18next/type-aliases/Interaction) has `locale`,
+a [MessageTarget](/documentation/api/plugin-i18next/interfaces/MessageTarget) has `channel_id`, a [ChannelTarget](/documentation/api/plugin-i18next/interfaces/ChannelTarget) has `type`, and anything else is
+a [GuildTarget](/documentation/api/plugin-i18next/interfaces/GuildTarget).

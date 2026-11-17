@@ -1,10 +1,165 @@
 ---
 title: '@wolfstar/plugin-subcommands-advanced'
-description: 'No generated per-symbol API reference for this plugin; the package guide documents Subcommand, RegisterAsSubcommand, and RegisterAsSubcommandGroup.'
+description: 'Generated API reference for @wolfstar/plugin-subcommands-advanced: Subcommand, RegisterAsSubcommand, and RegisterAsSubcommandGroup.'
 ---
 
-<Note>
-	A generated per-symbol API reference is not available for this package (its typedoc output only produced module stubs). See the [package
-	guide](/documentation/packages/plugin-subcommands-advanced) for the full documented API surface, including `Subcommand`, `RegisterAsSubcommand`,
-	and `RegisterAsSubcommandGroup`.
-</Note>
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-subcommands-advanced"
+	version="3.0.2"
+	guideHref="/documentation/packages/plugin-subcommands-advanced"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-subcommands-advanced"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-subcommands-advanced" />
+
+<ApiSymbolList
+	symbols={[
+		{ name: 'Command', kind: 'namespace', href: '/documentation/api/plugin-subcommands-advanced/namespaces/Command' },
+		{ name: 'Subcommand', kind: 'namespace', href: '/documentation/api/plugin-subcommands-advanced/namespaces/Subcommand' },
+		{
+			name: 'Command',
+			kind: 'class',
+			href: '/documentation/api/plugin-subcommands-advanced/classes/Command',
+			summary:
+				'Command class that can register itself as a modular subcommand (or grouped subcommand) of a parent Subcommand / chat-input command.'
+		},
+		{
+			name: 'Subcommand',
+			kind: 'class',
+			href: '/documentation/api/plugin-subcommands-advanced/classes/Subcommand',
+			summary: 'Parent command marker.'
+		},
+		{
+			name: 'SubcommandsAdvancedLoaderStrategy',
+			kind: 'class',
+			href: '/documentation/api/plugin-subcommands-advanced/classes/SubcommandsAdvancedLoaderStrategy',
+			summary:
+				'Loader strategy that wires modular subcommands onto parent commands before chat-input mappings are published to CommandStore.router.'
+		},
+		{
+			name: 'PluginSubcommandOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-subcommands-advanced/interfaces/PluginSubcommandOptions',
+			summary: 'Plugin options under ClientOptions.subcommandsAdvanced.'
+		},
+		{
+			name: 'RegisterSubCommandGroupOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-subcommands-advanced/interfaces/RegisterSubCommandGroupOptions',
+			summary: 'Options to register a command class as a subcommand inside a parent subcommand group.'
+		},
+		{
+			name: 'RegisterSubCommandOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-subcommands-advanced/interfaces/RegisterSubCommandOptions',
+			summary: 'Options to register a command class as a subcommand of a parent command.'
+		},
+		{
+			name: 'SubcommandCommandOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-subcommands-advanced/interfaces/SubcommandCommandOptions',
+			summary: 'Extra Command options accepted by the advanced subcommands Command class.'
+		},
+		{
+			name: 'SubcommandMappingCollection',
+			kind: 'interface',
+			href: '/documentation/api/plugin-subcommands-advanced/interfaces/SubcommandMappingCollection',
+			summary: 'Entry stored in the subcommand / group registries.'
+		},
+		{
+			name: 'SlashSubcommandResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-subcommands-advanced/type-aliases/SlashSubcommandResolvable',
+			summary: 'Resolvable slash-subcommand payload accepted by the plugin.'
+		},
+		{
+			name: 'RegisterSubcommandsHooks',
+			kind: 'variable',
+			href: '/documentation/api/plugin-subcommands-advanced/variables/RegisterSubcommandsHooks',
+			summary: 'Optional hooks for parent commands that register chat-input commands imperatively via Command.registerApplicationCommands.'
+		},
+		{
+			name: 'subCommandsGroupRegistry',
+			kind: 'variable',
+			href: '/documentation/api/plugin-subcommands-advanced/variables/subCommandsGroupRegistry',
+			summary: 'Registry of grouped subcommands keyed by parent → group → subcommand name.'
+		},
+		{
+			name: 'subCommandsRegistry',
+			kind: 'variable',
+			href: '/documentation/api/plugin-subcommands-advanced/variables/subCommandsRegistry',
+			summary: 'Registry of direct subcommands keyed by parent command name, then subcommand name.'
+		},
+		{
+			name: 'analyzeSubcommandGroupParsed',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/analyzeSubcommandGroupParsed',
+			summary: 'Register a command piece as a subcommand inside a group of parentCommandName.'
+		},
+		{
+			name: 'analyzeSubCommandParsed',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/analyzeSubCommandParsed',
+			summary: 'Register a command piece as a direct subcommand of parentCommandName.'
+		},
+		{
+			name: 'clearSubcommandRegistries',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/clearSubcommandRegistries',
+			summary: 'Reset subcommand registries (useful between tests).'
+		},
+		{
+			name: 'hasRegisteredSubcommands',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/hasRegisteredSubcommands',
+			summary: 'Whether this piece is a parent that has registered modular subcommands.'
+		},
+		{
+			name: 'parseSlashSubcommand',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/parseSlashSubcommand',
+			summary: 'Normalize slash subcommand input into a builder.'
+		},
+		{
+			name: 'RegisterAsSubcommand',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/RegisterAsSubcommand',
+			summary: 'Class decorator that registers the decorated command as a direct subcommand of parentCommandName.'
+		},
+		{
+			name: 'RegisterAsSubcommandGroup',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/RegisterAsSubcommandGroup',
+			summary: 'Class decorator that registers the decorated command as a subcommand inside a group.'
+		},
+		{
+			name: 'subcommandGroupMethodName',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/subcommandGroupMethodName',
+			summary: 'Stable method name linked on the parent command for a grouped subcommand.'
+		},
+		{
+			name: 'subcommandMethodName',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/subcommandMethodName',
+			summary: 'Stable method name linked on the parent command for a direct subcommand.'
+		},
+		{
+			name: 'wireParentSubcommands',
+			kind: 'function',
+			href: '/documentation/api/plugin-subcommands-advanced/functions/wireParentSubcommands',
+			summary:
+				'Install delegate methods on the parent and rebuild its chat-input resolver + router so modular child command classes handle each subcommand.'
+		},
+		{
+			name: 'SubcommandsAdvancedPlugin',
+			kind: 'class',
+			href: '/documentation/api/plugin-subcommands-advanced/classes/SubcommandsAdvancedPlugin',
+			summary:
+				'Installs the advanced subcommands loader strategy so modular child command classes are wired onto their parent chat-input commands after lo…'
+		}
+	]}
+/>

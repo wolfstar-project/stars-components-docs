@@ -1,0 +1,45 @@
+---
+title: 'Interface: CacheUpsertResult'
+description: 'What EntityCache.upsert resolves to. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L105',
+		label: 'packages/plugin-cache/src/lib/types.ts:105'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+What [EntityCache.upsert](/documentation/api/plugin-cache/interfaces/EntityCache#upsert) resolves to.
+
+<ApiSignature tokens={['interface CacheUpsertResult<Raw>']} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+## Properties
+
+### added
+
+<ApiMember kind="property" signature={['added: Raw']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L113', label: 'packages/plugin-cache/src/lib/types.ts:113' }}>
+
+The entry after the upsert, returned even when the store (or its policy) did not keep it.
+
+</ApiMember>
+
+### existing?
+
+<ApiMember kind="property" badges={['optional']} signature={['existing?: Raw']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L109', label: 'packages/plugin-cache/src/lib/types.ts:109' }}>
+
+The entry before the upsert, `undefined` when it was not cached.
+
+</ApiMember>

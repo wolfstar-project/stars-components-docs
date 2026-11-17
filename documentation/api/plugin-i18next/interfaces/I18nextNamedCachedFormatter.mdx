@@ -1,0 +1,73 @@
+---
+title: 'Interface: I18nextNamedCachedFormatter'
+description: 'Represents a cached formatter that is added to i18next with i18next.services.formatter.addCached. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L293',
+		label: 'packages/plugin-i18next/src/lib/types.ts:293'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Represents a cached formatter that is added to i18next with `i18next.services.formatter.addCached`.
+
+<ApiSignature tokens={['interface I18nextNamedCachedFormatter']} />
+
+**See also**
+
+- [https://www.i18next.com/translation-function/formatting#adding-custom-format-function](https://www.i18next.com/translation-function/formatting#adding-custom-format-function)
+
+## Properties
+
+### cached
+
+<ApiMember
+	kind="property"
+	signature={['cached: true']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L294',
+		label: 'packages/plugin-i18next/src/lib/types.ts:294'
+	}}
+/>
+
+### name
+
+<ApiMember
+	kind="property"
+	signature={['name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L295',
+		label: 'packages/plugin-i18next/src/lib/types.ts:295'
+	}}
+/>
+
+## Methods
+
+### format()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L296', label: 'packages/plugin-i18next/src/lib/types.ts:296' }}>
+
+<ApiSignature tokens={['format(lng: string | undefined, options: any): (value: any) => string']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="lng" type={['string | undefined']} />
+
+<ApiParam name="options" type={['any']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['(value: any) => string']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,415 @@
+---
+title: '@wolfstar/plugin-cache'
+description: 'Generated API reference for @wolfstar/plugin-cache: the in-memory and Redis Discord entity cache for plugin-gateway.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-cache"
+	version="0.9.1"
+	guideHref="/documentation/packages/plugin-cache"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-cache"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-cache" />
+
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'CacheValueError',
+			kind: 'class',
+			href: '/documentation/api/plugin-cache/classes/CacheValueError',
+			summary: 'Thrown when a value stored in Redis cannot be read back: invalid JSON, or compressed bytes that fail to decompress.'
+		},
+		{
+			name: 'MemoryEntityCache',
+			kind: 'class',
+			href: '/documentation/api/plugin-cache/classes/MemoryEntityCache',
+			summary:
+				'An IterableEntityCache backed by a Map, optionally bounded as a least-recently-used cache, with optional per-entry time-to-live.'
+		},
+		{
+			name: 'RedisEntityCache',
+			kind: 'class',
+			href: '/documentation/api/plugin-cache/classes/RedisEntityCache',
+			summary: 'An EntityCache backed by Redis.'
+		},
+		{
+			name: 'RedisSessionStore',
+			kind: 'class',
+			href: '/documentation/api/plugin-cache/classes/RedisSessionStore',
+			summary: 'A GatewaySessionStore backed by Redis, storing every session as JSON at <prefix>:<shardId>.'
+		},
+		{
+			name: 'Cache',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/Cache',
+			summary: 'A storage-agnostic Discord cache: one EntityCache per cached entity kind, and nothing else.'
+		},
+		{
+			name: 'CacheCodec',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheCodec',
+			summary: 'Encodes and decodes cached values to and from their stored representation.'
+		},
+		{
+			name: 'CacheEntityTypes',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheEntityTypes',
+			summary: 'The raw, JSON-serializable shape stored for every entity kind.'
+		},
+		{
+			name: 'CacheGatewayOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheGatewayOptions',
+			summary: 'What createCacheOperations needs to know besides the dispatch.'
+		},
+		{
+			name: 'CacheOperationContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheOperationContext',
+			summary: 'What createCacheOperations needs to know besides the dispatch.'
+		},
+		{
+			name: 'CacheOperationResult',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheOperationResult',
+			summary: 'The outcome of one write applyCacheOperations made.'
+		},
+		{
+			name: 'CachePolicy',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CachePolicy',
+			summary: 'Decides what gets cached, and for how long, entry by entry, see withPolicy.'
+		},
+		{
+			name: 'CacheSetOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheSetOptions',
+			summary: 'The options of EntityCache.set.'
+		},
+		{
+			name: 'CacheUpsertOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions',
+			summary: 'The options of EntityCache.upsert.'
+		},
+		{
+			name: 'CacheUpsertResult',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CacheUpsertResult',
+			summary: 'What EntityCache.upsert resolves to.'
+		},
+		{
+			name: 'CreateCacheOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/CreateCacheOptions',
+			summary: 'The options of createCache.'
+		},
+		{
+			name: 'EntityCache',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/EntityCache',
+			summary: 'A Map-like, per-entity key-value store, the Cache interface of the discord.js RFC #11426.'
+		},
+		{
+			name: 'GatewayDispatchSource',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/GatewayDispatchSource',
+			summary: 'A gateway that emits the dispatch event used by @discordjs/ws and @discordjs/core.'
+		},
+		{
+			name: 'GatewaySessionInfo',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo',
+			summary: "What a gateway shard needs to resume its session, the same shape as @discordjs/ws's SessionInfo."
+		},
+		{
+			name: 'GatewaySessionStore',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/GatewaySessionStore',
+			summary:
+				"Stores the gateway sessions of the shards, so a restarted process resumes them instead of identifying again, see @wolfstar/plugin-gateway's…"
+		},
+		{ name: 'InMemoryCacheOptions', kind: 'interface', href: '/documentation/api/plugin-cache/interfaces/InMemoryCacheOptions' },
+		{
+			name: 'IterableEntityCache',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/IterableEntityCache',
+			summary: 'An EntityCache that can enumerate its entries.'
+		},
+		{
+			name: 'MemoryEntityCacheOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/MemoryEntityCacheOptions',
+			summary: 'The options of a MemoryEntityCache, besides its maxSize.'
+		},
+		{ name: 'RedisCacheOptions', kind: 'interface', href: '/documentation/api/plugin-cache/interfaces/RedisCacheOptions' },
+		{
+			name: 'RedisClientLike',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/RedisClientLike',
+			summary: 'The subset of the ioredis client API the Redis cache relies on.'
+		},
+		{ name: 'RedisEntityCacheOptions', kind: 'interface', href: '/documentation/api/plugin-cache/interfaces/RedisEntityCacheOptions' },
+		{ name: 'RedisSessionStoreOptions', kind: 'interface', href: '/documentation/api/plugin-cache/interfaces/RedisSessionStoreOptions' },
+		{
+			name: 'RedisTransactionLike',
+			kind: 'interface',
+			href: '/documentation/api/plugin-cache/interfaces/RedisTransactionLike',
+			summary:
+				'The subset of an ioredis MULTI transaction the Redis cache relies on: every queued command returns the transaction, and exec runs them atom…'
+		},
+		{
+			name: 'Awaitable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/Awaitable',
+			summary: 'A value that may or may not be wrapped in a promise.'
+		},
+		{
+			name: 'CacheEntities',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/CacheEntities',
+			summary: 'One optional EntityCache per entity kind: an entity without one is not cached.'
+		},
+		{
+			name: 'CacheEntityName',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/CacheEntityName',
+			summary: 'The name of any of the entity caches held by a Cache.'
+		},
+		{
+			name: 'CacheFactory',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/CacheFactory',
+			summary: "Creates the store of an entity kind, or returns null/undefined not to cache it: the RFC's CacheConstructor."
+		},
+		{
+			name: 'CacheOperation',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/CacheOperation',
+			summary: 'A single mutation a gateway dispatch produces on a Cache.'
+		},
+		{
+			name: 'CachePolicies',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/CachePolicies',
+			summary: 'One optional CachePolicy per entity kind.'
+		},
+		{
+			name: 'InMemoryCache',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/InMemoryCache',
+			summary: 'A Cache created by createInMemoryCache.',
+			deprecated: true
+		},
+		{
+			name: 'RedisCache',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/RedisCache',
+			summary: 'A Cache created by createRedisCache.',
+			deprecated: true
+		},
+		{
+			name: 'RedisCacheCompression',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-cache/type-aliases/RedisCacheCompression',
+			summary: 'The algorithm used to compress values before writing them to Redis.'
+		},
+		{
+			name: 'CacheEntityNames',
+			kind: 'variable',
+			href: '/documentation/api/plugin-cache/variables/CacheEntityNames',
+			summary: 'The name of every entity cache held by a Cache.'
+		},
+		{
+			name: 'DefaultRedisCachePrefix',
+			kind: 'variable',
+			href: '/documentation/api/plugin-cache/variables/DefaultRedisCachePrefix',
+			summary: 'The default prefix of every Redis key owned by a cache created with createRedisCache.'
+		},
+		{
+			name: 'DefaultRedisSessionStorePrefix',
+			kind: 'variable',
+			href: '/documentation/api/plugin-cache/variables/DefaultRedisSessionStorePrefix',
+			summary: 'The default prefix of every Redis key owned by a store created with createRedisSessionStore.'
+		},
+		{
+			name: 'applicationCommandPermissionsKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/applicationCommandPermissionsKey',
+			summary: 'Creates a stable key for application command permissions.'
+		},
+		{
+			name: 'applyCacheOperations',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/applyCacheOperations',
+			summary: 'Applies a list of CacheOperations to a Cache, sequentially and in order.'
+		},
+		{
+			name: 'applyGatewayDispatch',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/applyGatewayDispatch',
+			summary: 'Writes a gateway dispatch into every relevant entity cache of a Cache.'
+		},
+		{
+			name: 'attachCacheToGateway',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/attachCacheToGateway',
+			summary: 'Writes gateway dispatches into a cache.'
+		},
+		{
+			name: 'autoModerationRuleKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/autoModerationRuleKey',
+			summary: 'Creates a stable key for a guild auto moderation rule.'
+		},
+		{
+			name: 'banKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/banKey',
+			summary: 'Creates a stable key for a guild ban.'
+		},
+		{
+			name: 'createCache',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/createCache',
+			summary: 'Creates a Cache out of a factory, holding only the stores it returns.'
+		},
+		{
+			name: 'createCacheOperations',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/createCacheOperations',
+			summary: 'Translates a gateway dispatch into the list of CacheOperations it implies, including the cascades (e.g.'
+		},
+		{
+			name: 'createInMemoryCache',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/createInMemoryCache',
+			summary: "Creates a Cache that keeps everything in the process' memory."
+		},
+		{
+			name: 'createRedisCache',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/createRedisCache',
+			summary: 'Creates a Cache stored in Redis, optionally compressing its values.'
+		},
+		{
+			name: 'createRedisSessionStore',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/createRedisSessionStore',
+			summary: "Creates a GatewaySessionStore stored in Redis, for @wolfstar/plugin-gateway's sessionStore option."
+		},
+		{
+			name: 'emojiKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/emojiKey',
+			summary: 'Creates a stable key for a guild emoji.'
+		},
+		{
+			name: 'guildScopedKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/guildScopedKey',
+			summary: 'Creates a stable key for a guild-scoped entity.'
+		},
+		{
+			name: 'integrationKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/integrationKey',
+			summary: 'Creates a stable key for a guild integration.'
+		},
+		{
+			name: 'inviteKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/inviteKey',
+			summary: 'Creates a stable key for an invite, using @global for invites that do not belong to a guild.'
+		},
+		{
+			name: 'isIterableCache',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/isIterableCache',
+			summary: 'Whether an EntityCache can enumerate its entries.'
+		},
+		{
+			name: 'jsonCodec',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/jsonCodec',
+			summary: "The default CacheCodec: plain JSON, matching the Redis cache's original behavior."
+		},
+		{
+			name: 'memberKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/memberKey',
+			summary: 'Creates a stable key for a guild member.'
+		},
+		{
+			name: 'mergeValues',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/mergeValues',
+			summary: 'Shallow-merges value onto existing when both are plain objects, returning value otherwise.'
+		},
+		{
+			name: 'messageKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/messageKey',
+			summary: 'Creates a stable key for a channel message.'
+		},
+		{
+			name: 'presenceKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/presenceKey',
+			summary: 'Creates a stable key for a guild presence.'
+		},
+		{
+			name: 'roleKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/roleKey',
+			summary: 'Creates a stable key for a guild role.'
+		},
+		{
+			name: 'scheduledEventKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/scheduledEventKey',
+			summary: 'Creates a stable key for a guild scheduled event.'
+		},
+		{
+			name: 'soundboardSoundKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/soundboardSoundKey',
+			summary: 'Creates a stable key for a guild soundboard sound.'
+		},
+		{
+			name: 'stageInstanceKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/stageInstanceKey',
+			summary: 'Creates a stable key for a stage instance.'
+		},
+		{
+			name: 'stickerKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/stickerKey',
+			summary: 'Creates a stable key for a guild sticker.'
+		},
+		{
+			name: 'threadMemberKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/threadMemberKey',
+			summary: 'Creates a stable key for a thread member.'
+		},
+		{
+			name: 'voiceStateKey',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/voiceStateKey',
+			summary: 'Creates a stable key for a guild voice state.'
+		},
+		{
+			name: 'withPolicy',
+			kind: 'function',
+			href: '/documentation/api/plugin-cache/functions/withPolicy',
+			summary:
+				"Wraps an EntityCache so its writes follow a CachePolicy: entries the policy's filter rejects are not cached (and deleted when they were), a…"
+		}
+	]}
+/>

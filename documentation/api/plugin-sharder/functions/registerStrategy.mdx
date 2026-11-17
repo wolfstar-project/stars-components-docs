@@ -1,0 +1,53 @@
+---
+title: 'Function: registerStrategy()'
+description: 'Registers a strategy under a name, so managers and proxies can be given its name, like the built-in "fork", "cluster", "worker", and "network". (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/registry.ts#L21',
+		label: 'packages/plugin-sharder/src/strategies/registry.ts:21'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Registers a strategy under a name, so managers and proxies can be given its name, like the built-in `"fork"`,
+`"cluster"`, `"worker"`, and `"network"`.
+
+<ApiSignature
+	tokens={[
+		'registerStrategy<Options>(\n  name: string,\n  factory: (options: Options) => ',
+		['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy'],
+		'\n): void'
+	]}
+/>
+
+Registers a strategy under a name, so managers and proxies can be given its name, like the built-in `"fork"`,
+`"cluster"`, `"worker"`, and `"network"`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the strategy.
+
+</ApiParam>
+
+<ApiParam name="factory" type={['(options: Options) => ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]}>
+
+Builds the strategy from the `strategyOptions`.
+
+</ApiParam>
+
+</ApiParams>

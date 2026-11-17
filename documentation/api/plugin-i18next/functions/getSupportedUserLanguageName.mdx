@@ -1,0 +1,55 @@
+---
+title: 'Function: getSupportedUserLanguageName()'
+description: "Resolves the loaded language that best matches the user's locale, falling back to the guild's one, then to InternationalizationOptions.defaultName, a… (@wolfstar/plugin-i18next)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L151',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:151'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Resolves the loaded language that best matches the user's locale, falling back to the guild's one,
+then to [InternationalizationOptions.defaultName](/documentation/api/plugin-i18next/interfaces/InternationalizationOptions#defaultname), and finally to `'en-US'`.
+
+<ApiSignature
+	tokens={[
+		'getSupportedUserLanguageName(target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		'): "id" | "en-US" | "en-GB" | "bg" | "zh-CN" | "zh-TW" | "hr" | "cs" | "da" | "nl" | "fi" | "fr" | "de" | "el" | "hi" | "hu" | "it" | "ja" | "ko" | "lt" | "no" | "pl" | "pt-BR" | "ro" | "ru" | "es-ES" | "es-419" | "sv-SE" | "th" | "tr" | "uk" | "vi"'
+	]}
+/>
+
+Resolves the loaded language that best matches the user's locale, falling back to the guild's one,
+then to [InternationalizationOptions.defaultName](/documentation/api/plugin-i18next/interfaces/InternationalizationOptions#defaultname), and finally to `'en-US'`.
+
+Only an [Interaction](/documentation/api/plugin-i18next/type-aliases/Interaction) carries a user locale. For a [GuildTarget](/documentation/api/plugin-i18next/interfaces/GuildTarget) this is equivalent to
+[getSupportedLanguageName](/documentation/api/plugin-i18next/functions/getSupportedLanguageName), and a [ChannelTarget](/documentation/api/plugin-i18next/interfaces/ChannelTarget) or [MessageTarget](/documentation/api/plugin-i18next/interfaces/MessageTarget) always
+resolves to the fallback.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]}>
+
+The target to read the locales from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'"id" | "en-US" | "en-GB" | "bg" | "zh-CN" | "zh-TW" | "hr" | "cs" | "da" | "nl" | "fi" | "fr" | "de" | "el" | "hi" | "hu" | "it" | "ja" | "ko" | "lt" | "no" | "pl" | "pt-BR" | "ro" | "ru" | "es-ES" | "es-419" | "sv-SE" | "th" | "tr" | "uk" | "vi"'
+	]}
+/>
+
+</ApiParams>

@@ -1,0 +1,491 @@
+---
+title: 'Class: ScheduledTaskHandler'
+description: 'API reference for ScheduledTaskHandler, a class exported by @wolfstar/plugin-scheduled-tasks.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L35',
+		label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:35'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+<ApiSignature tokens={['class ScheduledTaskHandler']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L53', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:53' }}>
+
+<ApiSignature
+	tokens={[
+		'new ScheduledTaskHandler(options: ',
+		['ScheduledTaskHandlerOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions'],
+		'): ',
+		['ScheduledTaskHandler', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTaskHandler']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[['ScheduledTaskHandlerOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions']]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### options
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly options: QueueOptions']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L39', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:39' }}>
+
+The queue options for the scheduled task handler.
+
+</ApiMember>
+
+### queue
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly queue: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L44', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:44' }}>
+
+The name of the queue associated with the scheduled task handler.
+
+</ApiMember>
+
+## Accessors
+
+### client
+
+<ApiMember
+	kind="accessor"
+	signature={['get client(): ', ['BullClient', '/documentation/api/plugin-scheduled-tasks/type-aliases/BullClient']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L80',
+		label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:80'
+	}}
+/>
+
+## Methods
+
+### close()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L101', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:101' }}>
+
+<ApiSignature
+	tokens={['close(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Closes the internal client and worker.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L115', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:115' }}>
+
+<ApiSignature
+	tokens={[
+		'create<T extends ',
+		['ScheduledTasksResolvable', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksResolvable'],
+		'>(\n  task: T,\n  options?: number | ',
+		['ScheduledTasksTaskOptions', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksTaskOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ScheduledTasksJob', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksJob'],
+		'<T>>'
+	]}
+/>
+
+Creates a scheduled task.
+
+A repeated task is a BullMQ job scheduler whose id is the task's name: creating it again replaces its schedule,
+and the returned job is its next run.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="T"
+	type={['extends ', ['ScheduledTasksResolvable', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksResolvable']]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="task" type={['T']}>
+
+The task to be scheduled.
+
+</ApiParam>
+
+<ApiParam name="options" type={['number | ', ['ScheduledTasksTaskOptions', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksTaskOptions']]} optional>
+
+The options for the task, or the delay in milliseconds.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ScheduledTasksJob', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksJob'],
+		'<T>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createRepeated()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L152', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:152' }}>
+
+<ApiSignature
+	tokens={[
+		'createRepeated(tasks?: ',
+		['ScheduledTaskCreateRepeatedTask', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskCreateRepeatedTask'],
+		'[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Creates repeated tasks.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="tasks" type={[['ScheduledTaskCreateRepeatedTask', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskCreateRepeatedTask'], '[]']} optional>
+
+An optional array of tasks to create. If not provided, it will create tasks based on the stored repeated tasks.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L180', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:180' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(id: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a scheduled task by its ID.
+
+This removes a job. To stop a repeated task, use [ScheduledTaskHandler.deleteRepeated](/documentation/api/plugin-scheduled-tasks/classes/ScheduledTaskHandler#deleterepeated).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']}>
+
+The ID of the task to delete.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### deleteRepeated()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L191', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:191' }}>
+
+<ApiSignature
+	tokens={[
+		'deleteRepeated(name: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+Deletes a repeated task: its job scheduler and the next run it had queued.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the repeated task.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']}>
+
+Whether a repeated task of that name existed.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L224', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:224' }}>
+
+<ApiSignature
+	tokens={[
+		'get<T extends never = never>(id: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Job<undefined, any, string, JobProgress> | undefined>'
+	]}
+/>
+
+Retrieves a scheduled task by its ID.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" type={['extends never']} defaultValue="never" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']}>
+
+The ID of the scheduled task to retrieve.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Job<undefined, any, string, JobProgress> | undefined>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### list()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L200', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:200' }}>
+
+<ApiSignature
+	tokens={[
+		'list(options: ',
+		['ScheduledTaskListOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskListOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Job<unknown, any, string, JobProgress>[]>'
+	]}
+/>
+
+Retrieves a list of scheduled tasks based on the provided options.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ScheduledTaskListOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskListOptions']]}>
+
+The options for filtering the list of scheduled tasks.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Job<unknown, any, string, JobProgress>[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### listRepeated()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L211', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:211' }}>
+
+<ApiSignature
+	tokens={[
+		'listRepeated(options: ',
+		['ScheduledTaskListRepeatedOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskListRepeatedOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ScheduledTaskListRepeatedReturnType', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskListRepeatedReturnType'],
+		'>'
+	]}
+/>
+
+Retrieves a list of repeated scheduled tasks based on the provided options.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ScheduledTaskListRepeatedOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskListRepeatedOptions']]} defaultValue={'{}'}>
+
+The options for filtering the list of repeated scheduled tasks.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ScheduledTaskListRepeatedReturnType', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskListRepeatedReturnType'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### run()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L273', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:273' }}>
+
+<ApiSignature
+	tokens={[
+		'run(\n  task: ',
+		['ScheduledTasksResolvable', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksResolvable'],
+		',\n  context: ',
+		['ScheduledTaskRunContext', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskRunContext'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number | undefined>'
+	]}
+/>
+
+Runs a scheduled task with the given name and payload.
+
+- `undefined` will be returned if the task was not found, or if it waits for the app to be ready, which it was
+  not after the timeout, and there is no job to delay.
+- With a job, a task that was not ready in time moves its job to `delayed` and throws BullMQ's `DelayedError`,
+  which the worker takes as "leave the job alone": it costs no attempt and is not a task error.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="task" type={[['ScheduledTasksResolvable', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksResolvable']]}>
+
+The name of the scheduled task to run.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['ScheduledTaskRunContext', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskRunContext']]} defaultValue={'{}'}>
+
+The job being processed, which lets a task that waits for the app to be ready be delayed.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number | undefined>']}>
+
+The duration of the run in milliseconds.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### start()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L90', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:90' }}>
+
+<ApiSignature tokens={['start(): void']} />
+
+Starts the worker, which runs the tasks as their jobs become due. Calling it again does nothing.
+
+The plugin calls it from `postListen`, after the task pieces are loaded.
+
+</ApiMember>
+
+### waitForReady()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts#L242', label: 'packages/plugin-scheduled-tasks/src/lib/ScheduledTaskHandler.ts:242' }}>
+
+<ApiSignature
+	tokens={[
+		'waitForReady(timeout: number = ...): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+Waits for the app to be ready, as defined by the `ready` option.
+
+A `ready` that returns `false` is polled until the timeout, and a promise is waited for until it. If `ready`
+throws or rejects, so does this.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="timeout" type={['number']} defaultValue="...">
+
+How long to wait, in milliseconds.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']}>
+
+Whether the app is ready: `false` if it still was not after the timeout. Without a `ready` option, the
+app is always ready.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

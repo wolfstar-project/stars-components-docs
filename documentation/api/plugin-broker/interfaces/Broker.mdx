@@ -1,0 +1,71 @@
+---
+title: 'Interface: Broker'
+description: 'API reference for Broker, an interface exported by @wolfstar/plugin-broker.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L45',
+		label: 'packages/plugin-broker/src/lib/broker.ts:45'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+<ApiSignature tokens={['interface Broker']} />
+
+## Methods
+
+### publish()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L53', label: 'packages/plugin-broker/src/lib/broker.ts:53' }}>
+
+<ApiSignature
+	tokens={[
+		'publish(event: string, payload: unknown, options?: ',
+		['BrokerPublishOptions', '/documentation/api/plugin-broker/interfaces/BrokerPublishOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string>'
+	]}
+/>
+
+Publishes an event to the stream.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['string']}>
+
+The event name, read by [BrokerListener](/documentation/api/plugin-broker/namespaces/BrokerListener) pieces to route the payload.
+
+</ApiParam>
+
+<ApiParam name="payload" type={['unknown']}>
+
+The payload, encoded with the configured codec.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['BrokerPublishOptions', '/documentation/api/plugin-broker/interfaces/BrokerPublishOptions']]} optional>
+
+The state, shard and sequence number to publish next to the payload.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string>']}>
+
+The ID of the published entry.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

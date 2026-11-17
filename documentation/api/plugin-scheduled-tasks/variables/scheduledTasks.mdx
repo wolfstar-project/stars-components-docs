@@ -1,0 +1,62 @@
+---
+title: 'Variable: scheduledTasks'
+description: 'The scheduled tasks plugin: installs a ScheduledTaskHandler on container.tasks, registers the scheduled-tasks store, and starts the worker once the c… (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/plugin.ts#L27',
+		label: 'packages/plugin-scheduled-tasks/src/plugin.ts:27'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+The scheduled tasks plugin: installs a [ScheduledTaskHandler](/documentation/api/plugin-scheduled-tasks/classes/ScheduledTaskHandler) on `container.tasks`, registers the
+`scheduled-tasks` store, and starts the worker once the client is listening.
+
+<ApiSignature
+	tokens={[
+		'const scheduledTasks: (...args: [pluginOptions: ',
+		['ScheduledTasksPluginOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksPluginOptions'],
+		']) => {\n  name: string;\n  postInitialization(_client: Client, options: ClientOptions): void;\n  postListen(client: Client): void;\n  preGenericsInitialization(_client: Client, options: ClientOptions): void;\n}'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="args"
+	type={[
+		'[pluginOptions: ',
+		['ScheduledTasksPluginOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksPluginOptions'],
+		']'
+	]}
+	rest
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'{\n  name: string;\n  postInitialization(_client: Client, options: ClientOptions): void;\n  postListen(client: Client): void;\n  preGenericsInitialization(_client: Client, options: ClientOptions): void;\n}'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```ts
+import { scheduledTasks } from '@wolfstar/plugin-scheduled-tasks';
+
+const client = new Client({
+	plugins: [scheduledTasks({ bull: { connection: { host: 'localhost', port: 6379 } } })]
+});
+```

@@ -1,0 +1,49 @@
+---
+title: 'Function: parseSentryDsn()'
+description: 'Reads a Sentry DSN (<scheme>://<key>@<host>[/<path>]/<project>). (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L37',
+		label: 'lib/dsn.ts:37'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Reads a Sentry DSN (`<scheme>://<key>@<host>[/<path>]/<project>`).
+
+<ApiSignature
+	tokens={[
+		'parseSentryDsn(dsn: string | undefined): ',
+		['SentryDsn', '/documentation/api/plugin-opentelemetry/interfaces/SentryDsn'],
+		' | undefined'
+	]}
+/>
+
+Reads a Sentry DSN (`<scheme>://<key>@<host>[/<path>]/<project>`).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="dsn" type={['string | undefined']}>
+
+The DSN.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['SentryDsn', '/documentation/api/plugin-opentelemetry/interfaces/SentryDsn'], ' | undefined']}>
+
+The parts of the DSN, `undefined` when it cannot be read or has no project.
+
+</ApiParam>
+
+</ApiParams>

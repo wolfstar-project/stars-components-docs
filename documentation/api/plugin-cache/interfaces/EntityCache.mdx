@@ -1,0 +1,256 @@
+---
+title: 'Interface: EntityCache'
+description: 'A Map-like, per-entity key-value store, the Cache interface of the discord.js RFC #11426. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L124',
+		label: 'packages/plugin-cache/src/lib/types.ts:124'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+A Map-like, per-entity key-value store, the `Cache` interface of the discord.js RFC #11426.
+
+<ApiSignature tokens={['interface EntityCache<Raw>']} />
+
+<ApiHierarchy extendedBy={[[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache']]]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+Every method returns an [Awaitable](/documentation/api/plugin-cache/type-aliases/Awaitable), so synchronous (in-memory) and asynchronous (Redis) stores implement the
+exact same contract. Enumerating the entries is an optional extension, see [IterableEntityCache](/documentation/api/plugin-cache/interfaces/IterableEntityCache): a remote
+store may not be able to do it cheaply.
+
+## Properties
+
+### synchronous?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly synchronous?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L133', label: 'packages/plugin-cache/src/lib/types.ts:133' }}>
+
+Whether every method returns its result synchronously, never a promise. Optional: a cache without it is treated
+as asynchronous, which is always safe.
+
+An [Awaitable](/documentation/api/plugin-cache/type-aliases/Awaitable) cannot be told apart from a promise without calling the method, so this is how consumers
+know they can read the cache without awaiting it, e.g. `@wolfstar/plugin-gateway`'s `cached` accessors.
+
+</ApiMember>
+
+## Methods
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L151', label: 'packages/plugin-cache/src/lib/types.ts:151' }}>
+
+<ApiSignature tokens={['clear(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L150', label: 'packages/plugin-cache/src/lib/types.ts:150' }}>
+
+<ApiSignature tokens={['delete(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### deleteGuild()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L160', label: 'packages/plugin-cache/src/lib/types.ts:160' }}>
+
+<ApiSignature
+	tokens={['deleteGuild(guildId: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number | null>']}
+/>
+
+Deletes every entry belonging to a guild through an index, rather than a scan of the whole cache. Optional:
+[applyGatewayDispatch](/documentation/api/plugin-cache/functions/applyGatewayDispatch) falls back to a scan for caches without it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number | null>']}>
+
+The amount of deleted entries, or `null` when this cache does not index its entries by guild.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L134', label: 'packages/plugin-cache/src/lib/types.ts:134' }}>
+
+<ApiSignature tokens={['get(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Raw | undefined>']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Raw | undefined>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L152', label: 'packages/plugin-cache/src/lib/types.ts:152' }}>
+
+<ApiSignature tokens={['getSize(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L149', label: 'packages/plugin-cache/src/lib/types.ts:149' }}>
+
+<ApiSignature tokens={['has(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L135', label: 'packages/plugin-cache/src/lib/types.ts:135' }}>
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: Raw, options?: ',
+		['CacheSetOptions', '/documentation/api/plugin-cache/interfaces/CacheSetOptions'],
+		'): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['Raw']} />
+
+<ApiParam name="options" type={[['CacheSetOptions', '/documentation/api/plugin-cache/interfaces/CacheSetOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### upsert()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L144', label: 'packages/plugin-cache/src/lib/types.ts:144' }}>
+
+<ApiSignature
+	tokens={[
+		'upsert(\n  key: string,\n  data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Raw>,\n  options?: ',
+		['CacheUpsertOptions', '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions'],
+		'\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['CacheUpsertResult', '/documentation/api/plugin-cache/interfaces/CacheUpsertResult'],
+		'<Raw>>'
+	]}
+/>
+
+Adds data to the cache, shallowly merging it into the cached entry unless `overwrite` is set: the RFC's `add`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The key of the entry.
+
+</ApiParam>
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>']}>
+
+The data, stored as is when the key is not cached.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['CacheUpsertOptions', '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions']]} optional>
+
+Whether to overwrite the cached entry, and its time-to-live.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['CacheUpsertResult', '/documentation/api/plugin-cache/interfaces/CacheUpsertResult'], '<Raw>>']}>
+
+The entry before and after the upsert.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

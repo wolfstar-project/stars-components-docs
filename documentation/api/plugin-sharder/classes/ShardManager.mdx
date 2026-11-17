@@ -1,0 +1,1059 @@
+---
+title: 'Class: ShardManager'
+description: 'Spawns shards, keeps them alive, and carries messages between them. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L274',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:274'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Spawns shards, keeps them alive, and carries messages between them.
+
+<ApiSignature
+	tokens={[
+		'class ShardManager extends EventEmitter<',
+		['ShardManagerEvents', '/documentation/api/plugin-sharder/interfaces/ShardManagerEvents'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy extends={[['EventEmitter<', ['ShardManagerEvents', '/documentation/api/plugin-sharder/interfaces/ShardManagerEvents'], '>']]} />
+
+Follows discord.js's sharder RFC (discordjs/discord.js#8084): a "shard" is a process, cluster worker, worker
+thread, or remote process, which may connect several gateway shards, and the manager talks to each through a
+[ShardChannel](/documentation/api/plugin-sharder/classes/ShardChannel). The manager is agnostic of the bot: a shard runs any script using [ShardClient](/documentation/api/plugin-sharder/classes/ShardClient).
+
+**Example**
+
+```ts
+const manager = new ShardManager({ strategy: new ForkStrategy({ path: "./bot.js" }), clusters: 4 });
+manager.setRequestHandler((body, { channel }) => ...);
+await manager.spawn();
+const guilds = await manager.broadcastRequest({ type: "guildCount" });
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L324', label: 'packages/plugin-sharder/src/ShardManager.ts:324' }}>
+
+<ApiSignature
+	tokens={[
+		'new ShardManager(options: ',
+		['ShardManagerOptions', '/documentation/api/plugin-sharder/interfaces/ShardManagerOptions'],
+		' = {}): ',
+		['ShardManager', '/documentation/api/plugin-sharder/classes/ShardManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ShardManagerOptions', '/documentation/api/plugin-sharder/interfaces/ShardManagerOptions']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### channels
+
+<ApiMember kind="property" signature={['channels: readonly ', ['ShardChannel', '/documentation/api/plugin-sharder/classes/ShardChannel'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L280', label: 'packages/plugin-sharder/src/ShardManager.ts:280' }}>
+
+The channels to the shards, by ID. Empty until [ShardManager.spawn](/documentation/api/plugin-sharder/classes/ShardManager#spawn) for `"auto"` layouts.
+
+</ApiMember>
+
+### pingOptions
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={[
+		'readonly pingOptions: ',
+		['Required', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#requiredtype'],
+		'<',
+		['ShardPingOptions', '/documentation/api/plugin-sharder/interfaces/ShardPingOptions'],
+		'>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L292',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:292'
+	}}
+/>
+
+### readyHint
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly readyHint: number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L289',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:289'
+	}}
+/>
+
+### readyHintMargin
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly readyHintMargin: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L290',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:290'
+	}}
+/>
+
+### requestTimeout
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly requestTimeout: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L291',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:291'
+	}}
+/>
+
+### shardCount
+
+<ApiMember kind="property" signature={['shardCount: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L285', label: 'packages/plugin-sharder/src/ShardManager.ts:285' }}>
+
+The total number of gateway shards, `0` until resolved for `"auto"` layouts.
+
+</ApiMember>
+
+### spawnDelay
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly spawnDelay: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L287',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:287'
+	}}
+/>
+
+### spawnTimeout
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly spawnTimeout: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L288',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:288'
+	}}
+/>
+
+### strategy
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly strategy: ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L275',
+		label: 'packages/plugin-sharder/src/ShardManager.ts:275'
+	}}
+/>
+
+## Accessors
+
+### readyEstimate
+
+<ApiMember kind="accessor" signature={['get readyEstimate(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L373', label: 'packages/plugin-sharder/src/ShardManager.ts:373' }}>
+
+How long a shard is expected to take to be ready: `spawn.readyHint`, or the average of the shards so far.
+
+</ApiMember>
+
+## Methods
+
+### addDestroyHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L662', label: 'packages/plugin-sharder/src/ShardManager.ts:662' }}>
+
+<ApiSignature
+	tokens={[
+		'addDestroyHook(hook: ',
+		['ShardManagerDestroyHook', '/documentation/api/plugin-sharder/type-aliases/ShardManagerDestroyHook'],
+		'): () => void'
+	]}
+/>
+
+Runs a hook at the end of every [ShardManager.destroy](/documentation/api/plugin-sharder/classes/ShardManager#destroy), once the shards are closed: the place to flush what
+is left to export, such as traces, before the manager's process exits.
+
+The hooks run one after the other, in the order they were added, even when closing the shards failed. A hook that
+throws is reported through the `error` event (or logged when nothing listens) and does not stop the others. Adding
+the same function twice adds it once.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['ShardManagerDestroyHook', '/documentation/api/plugin-sharder/type-aliases/ShardManagerDestroyHook']]}>
+
+The hook.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']}>
+
+A function that removes the hook.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### broadcast()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L468', label: 'packages/plugin-sharder/src/ShardManager.ts:468' }}>
+
+<ApiSignature
+	tokens={[
+		'broadcast(body: unknown, options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Sends a message to every shard.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="body" type={['unknown']}>
+
+The message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional>
+
+How long to wait for the shards to be ready, and an abort signal.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### broadcastRequest()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L479', label: 'packages/plugin-sharder/src/ShardManager.ts:479' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'broadcastRequest<Reply = unknown>(\n  body: unknown,\n  options: ',
+		['BroadcastRequestOptions', '/documentation/api/plugin-sharder/interfaces/BroadcastRequestOptions'],
+		' & { partial: true }\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PromiseSettledResult', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Reply>[]>'
+	]}
+/>
+
+Sends a request to every shard, like discord.js's `broadcastEval` without the `eval`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Reply" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="body" type={['unknown']}>
+
+The request.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['BroadcastRequestOptions', '/documentation/api/plugin-sharder/interfaces/BroadcastRequestOptions'], ' & { partial: true }']}>
+
+The timeout and abort signal of every request, and whether to keep partial results.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['PromiseSettledResult', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Reply>[]>']}>
+
+The replies by shard ID, or with `partial`, the outcome of every request.
+
+</ApiParam>
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'broadcastRequest<Reply = unknown>(\n  body: unknown,\n  options?: ',
+		['BroadcastRequestOptions', '/documentation/api/plugin-sharder/interfaces/BroadcastRequestOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Reply[]>'
+	]}
+/>
+
+Sends a request to every shard, like discord.js's `broadcastEval` without the `eval`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Reply" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="body" type={['unknown']}>
+
+The request.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['BroadcastRequestOptions', '/documentation/api/plugin-sharder/interfaces/BroadcastRequestOptions']]} optional>
+
+The timeout and abort signal of every request, and whether to keep partial results.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Reply[]>']}>
+
+The replies by shard ID, or with `partial`, the outcome of every request.
+
+</ApiParam>
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### channelFor()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L413', label: 'packages/plugin-sharder/src/ShardManager.ts:413' }}>
+
+<ApiSignature
+	tokens={['channelFor(shardId: number): ', ['ShardChannel', '/documentation/api/plugin-sharder/classes/ShardChannel'], ' | undefined']}
+/>
+
+Gets the channel to the shard connecting a gateway shard.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the gateway shard.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ShardChannel', '/documentation/api/plugin-sharder/classes/ShardChannel'], ' | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### channelForGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L422', label: 'packages/plugin-sharder/src/ShardManager.ts:422' }}>
+
+<ApiSignature
+	tokens={['channelForGuild(guildId: string): ', ['ShardChannel', '/documentation/api/plugin-sharder/classes/ShardChannel'], ' | undefined']}
+/>
+
+Gets the channel to the shard receiving the events of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ShardChannel', '/documentation/api/plugin-sharder/classes/ShardChannel'], ' | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### closeShard()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L596', label: 'packages/plugin-sharder/src/ShardManager.ts:596' }}>
+
+<ApiSignature
+	tokens={[
+		'closeShard(shardId: number, options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Asks the shard connecting a gateway shard to close it, through its [ShardClient.setShardHandler](/documentation/api/plugin-sharder/classes/ShardClient#setshardhandler).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the gateway shard.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional>
+
+The timeout and abort signal of the request.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### destroy()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L630', label: 'packages/plugin-sharder/src/ShardManager.ts:630' }}>
+
+<ApiSignature
+	tokens={['destroy(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Closes every shard for good, and releases the strategy.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGatewayInformation()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L398', label: 'packages/plugin-sharder/src/ShardManager.ts:398' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGatewayInformation(force: boolean = false): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GatewayInformation', '/documentation/api/plugin-sharder/interfaces/GatewayInformation'],
+		'>'
+	]}
+/>
+
+Fetches `GET /gateway/bot`, cached for every shard, with its session start limit kept up to date.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="force" type={['boolean']} defaultValue="false">
+
+Whether to skip the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GatewayInformation', '/documentation/api/plugin-sharder/interfaces/GatewayInformation'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### request()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L454', label: 'packages/plugin-sharder/src/ShardManager.ts:454' }}>
+
+<ApiSignature
+	tokens={[
+		'request<Reply = unknown>(\n  channelId: number,\n  body: unknown,\n  options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Reply>'
+	]}
+/>
+
+Sends a request to a shard, answered by its [ShardClient](/documentation/api/plugin-sharder/classes/ShardClient)'s request handler.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Reply" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+<ApiParam name="body" type={['unknown']}>
+
+The request.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional>
+
+The timeout and abort signal of the request.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Reply>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### reshard()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L560', label: 'packages/plugin-sharder/src/ShardManager.ts:560' }}>
+
+<ApiSignature
+	tokens={[
+		'reshard(layout: ',
+		['ShardLayoutOptions', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions'],
+		' = ...): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Reshards with close to no downtime: spawns the shards of a new layout while the current ones keep running, then
+closes the current ones once every new one is ready.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="layout" type={[['ShardLayoutOptions', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions']]} defaultValue="...">
+
+The new layout. Left out, Discord's recommendation split across `clusters`.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### restart()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L533', label: 'packages/plugin-sharder/src/ShardManager.ts:533' }}>
+
+<ApiSignature
+	tokens={[
+		'restart(channelId: number, options: ',
+		['ShardRestartOptions', '/documentation/api/plugin-sharder/interfaces/ShardRestartOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Restarts a shard: closes it then spawns it again, or with `rolling`, spawns the new one first and closes the old
+one once the new one is ready.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['ShardRestartOptions', '/documentation/api/plugin-sharder/interfaces/ShardRestartOptions']]} defaultValue={'{}'}>
+
+Whether to restart it rolling, and the timeout.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### restartAll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L550', label: 'packages/plugin-sharder/src/ShardManager.ts:550' }}>
+
+<ApiSignature
+	tokens={[
+		'restartAll(options?: ',
+		['ShardRestartOptions', '/documentation/api/plugin-sharder/interfaces/ShardRestartOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Restarts every shard, one after the other, with the spawn delay between them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ShardRestartOptions', '/documentation/api/plugin-sharder/interfaces/ShardRestartOptions']]} optional>
+
+Whether to restart them rolling, and the timeout.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### restartShard()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L606', label: 'packages/plugin-sharder/src/ShardManager.ts:606' }}>
+
+<ApiSignature
+	tokens={[
+		'restartShard(shardId: number, options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Closes then starts a gateway shard, see [ShardManager.startShard](/documentation/api/plugin-sharder/classes/ShardManager#startshard).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the gateway shard.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional>
+
+The timeout and abort signal of each request.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L443', label: 'packages/plugin-sharder/src/ShardManager.ts:443' }}>
+
+<ApiSignature
+	tokens={[
+		'send(channelId: number, body: unknown, options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Sends a message to a shard, emitted as `message` by its [ShardClient](/documentation/api/plugin-sharder/classes/ShardClient).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+<ApiParam name="body" type={['unknown']}>
+
+The message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional>
+
+How long to wait for the shard to be ready, and an abort signal.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setRequestHandler()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L431', label: 'packages/plugin-sharder/src/ShardManager.ts:431' }}>
+
+<ApiSignature
+	tokens={[
+		'setRequestHandler(handler: ',
+		['RequestHandler', '/documentation/api/plugin-sharder/type-aliases/RequestHandler'],
+		'<{ channel: ',
+		['ShardChannel', '/documentation/api/plugin-sharder/classes/ShardChannel'],
+		' }> | null): this'
+	]}
+/>
+
+Sets the handler answering the requests the shards send to the manager.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="handler" type={[['RequestHandler', '/documentation/api/plugin-sharder/type-aliases/RequestHandler'], '<{ channel: ', ['ShardChannel', '/documentation/api/plugin-sharder/classes/ShardChannel'], ' }> | null']}>
+
+The handler; its return value is the reply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### spawn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L383', label: 'packages/plugin-sharder/src/ShardManager.ts:383' }}>
+
+<ApiSignature
+	tokens={['spawn(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Spawns every shard, one after the other, each waiting for the previous one to be ready plus the spawn delay. A
+shard not ready in time is killed and tried again at the end of the queue, as long as the supervisor allows.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### startShard()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L586', label: 'packages/plugin-sharder/src/ShardManager.ts:586' }}>
+
+<ApiSignature
+	tokens={[
+		'startShard(shardId: number, options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Asks the shard connecting a gateway shard to start it, through its [ShardClient.setShardHandler](/documentation/api/plugin-sharder/classes/ShardClient#setshardhandler).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the gateway shard.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional>
+
+The timeout and abort signal of the request.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### tryBroadcastRequest()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L517', label: 'packages/plugin-sharder/src/ShardManager.ts:517' }}>
+
+<ApiSignature
+	tokens={[
+		'tryBroadcastRequest<Reply = unknown>(\n  body: unknown,\n  options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<Reply, ',
+		['ShardError', '/documentation/api/plugin-sharder/type-aliases/ShardError'],
+		', boolean>[]>'
+	]}
+/>
+
+[ShardManager.broadcastRequest](/documentation/api/plugin-sharder/classes/ShardManager#broadcastrequest), resolving with one `Result` per shard, by shard ID.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Reply" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="body" type={['unknown']} />
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<Reply, ',
+		['ShardError', '/documentation/api/plugin-sharder/type-aliases/ShardError'],
+		', boolean>[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### tryRequest()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L506', label: 'packages/plugin-sharder/src/ShardManager.ts:506' }}>
+
+<ApiSignature
+	tokens={[
+		'tryRequest<Reply = unknown>(\n  channelId: number,\n  body: unknown,\n  options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<Reply, ',
+		['ShardError', '/documentation/api/plugin-sharder/type-aliases/ShardError'],
+		', boolean>>'
+	]}
+/>
+
+[ShardManager.request](/documentation/api/plugin-sharder/classes/ShardManager#request), resolving with a `Result` rather than rejecting.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Reply" defaultValue="unknown" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['number']} />
+
+<ApiParam name="body" type={['unknown']} />
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<Reply, ',
+		['ShardError', '/documentation/api/plugin-sharder/type-aliases/ShardError'],
+		', boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### trySend()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L495', label: 'packages/plugin-sharder/src/ShardManager.ts:495' }}>
+
+<ApiSignature
+	tokens={[
+		'trySend(\n  channelId: number,\n  body: unknown,\n  options?: ',
+		['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<void, ',
+		['ShardError', '/documentation/api/plugin-sharder/type-aliases/ShardError'],
+		', boolean>>'
+	]}
+/>
+
+[ShardManager.send](/documentation/api/plugin-sharder/classes/ShardManager#send), resolving with a `Result` rather than rejecting.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['number']} />
+
+<ApiParam name="body" type={['unknown']} />
+
+<ApiParam name="options" type={[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Result', 'https://www.sapphirejs.dev/docs/Reference/result/classes/Result'],
+		'<void, ',
+		['ShardError', '/documentation/api/plugin-sharder/type-aliases/ShardError'],
+		', boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### waitForIdentify()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L617', label: 'packages/plugin-sharder/src/ShardManager.ts:617' }}>
+
+<ApiSignature
+	tokens={[
+		'waitForIdentify(shardId: number, signal?: AbortSignal): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Waits for a gateway shard's turn to identify, like [ShardClient.identifyThrottler](/documentation/api/plugin-sharder/classes/ShardClient#identifythrottler) does from a shard.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the gateway shard.
+
+</ApiParam>
+
+<ApiParam name="signal" type={['AbortSignal']} optional>
+
+Aborts the wait.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

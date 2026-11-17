@@ -1,0 +1,350 @@
+---
+title: 'Interface: RedisClientLike'
+description: 'The subset of the ioredis client API the Redis cache relies on. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L31',
+		label: 'packages/plugin-cache/src/lib/redis.ts:31'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+The subset of the [`ioredis`](https://github.com/redis/ioredis) client API the Redis cache relies on. An `ioredis`
+`Redis` or `Cluster` instance satisfies it, as can any other client exposing the same commands.
+
+<ApiSignature tokens={['interface RedisClientLike']} />
+
+## Methods
+
+### del()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L36', label: 'packages/plugin-cache/src/lib/redis.ts:36' }}>
+
+<ApiSignature
+	tokens={[
+		'del(...keys: string[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="keys" type={['string[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### exists()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L37', label: 'packages/plugin-cache/src/lib/redis.ts:37' }}>
+
+<ApiSignature
+	tokens={[
+		'exists(...keys: string[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="keys" type={['string[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L32', label: 'packages/plugin-cache/src/lib/redis.ts:32' }}>
+
+<ApiSignature
+	tokens={[
+		'get(key: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string | null>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string | null>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### mget()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L33', label: 'packages/plugin-cache/src/lib/redis.ts:33' }}>
+
+<ApiSignature
+	tokens={[
+		'mget(...keys: string[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<(string | null)[]>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="keys" type={['string[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<(string | null)[]>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### multi()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L43', label: 'packages/plugin-cache/src/lib/redis.ts:43' }}>
+
+<ApiSignature tokens={['multi(): ', ['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L34', label: 'packages/plugin-cache/src/lib/redis.ts:34' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: string, mode: "PX", milliseconds: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string']} />
+
+<ApiParam name="mode" type={['"PX"']} />
+
+<ApiParam name="milliseconds" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### zadd()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L38', label: 'packages/plugin-cache/src/lib/redis.ts:38' }}>
+
+<ApiSignature
+	tokens={[
+		'zadd(key: string, ...scoreMembers: (string | number)[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="scoreMembers" type={['(string | number)[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### zcard()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L41', label: 'packages/plugin-cache/src/lib/redis.ts:41' }}>
+
+<ApiSignature
+	tokens={[
+		'zcard(key: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### zrange()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L40', label: 'packages/plugin-cache/src/lib/redis.ts:40' }}>
+
+<ApiSignature
+	tokens={[
+		'zrange(key: string, start: string, stop: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string[]>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="start" type={['string']} />
+
+<ApiParam name="stop" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string[]>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### zrem()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L39', label: 'packages/plugin-cache/src/lib/redis.ts:39' }}>
+
+<ApiSignature
+	tokens={[
+		'zrem(key: string, ...members: string[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="members" type={['string[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### zremrangebyscore()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L42', label: 'packages/plugin-cache/src/lib/redis.ts:42' }}>
+
+<ApiSignature
+	tokens={[
+		'zremrangebyscore(key: string, min: string | number, max: string | number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="min" type={['string | number']} />
+
+<ApiParam name="max" type={['string | number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>

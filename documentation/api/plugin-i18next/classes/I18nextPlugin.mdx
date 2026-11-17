@@ -1,0 +1,101 @@
+---
+title: 'Class: I18nextPlugin'
+description: 'Registers the i18next-powered InternationalizationHandler on container.i18n, loading the languages before the stores are loaded so command builders c… (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/register.ts#L23',
+		label: 'packages/plugin-i18next/src/register.ts:23'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Registers the i18next-powered `InternationalizationHandler` on `container.i18n`, loading the
+languages before the stores are loaded so command builders can be localized at registration time.
+
+Activate by importing the side-effecting entrypoint before creating the client:
+
+```ts
+import '@wolfstar/plugin-i18next/register';
+```
+
+<ApiSignature tokens={['class I18nextPlugin extends Plugin']} />
+
+<ApiHierarchy extends={[['Plugin']]} />
+
+## Properties
+
+### watcher
+
+<ApiMember kind="property" badges={['static']} signature={['static watcher: FSWatcher | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/register.ts#L28', label: 'packages/plugin-i18next/src/register.ts:28' }}>
+
+The chokidar watcher started by the `postListen` hook when HMR is enabled, or `null` when it is
+not. Exposed so it can be closed on shutdown.
+
+</ApiMember>
+
+## Methods
+
+### \[postListen\]()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/register.ts#L38', label: 'packages/plugin-i18next/src/register.ts:38' }}>
+
+<ApiSignature tokens={['static [postListen](this: Client, options: ClientOptions): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="this" type={['Client']} />
+
+<ApiParam name="options" type={['ClientOptions']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### \[preGenericsInitialization\]()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/register.ts#L30', label: 'packages/plugin-i18next/src/register.ts:30' }}>
+
+<ApiSignature tokens={['static [preGenericsInitialization](this: Client, options: ClientOptions): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="this" type={['Client']} />
+
+<ApiParam name="options" type={['ClientOptions']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### \[preLoad\]()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/register.ts#L34', label: 'packages/plugin-i18next/src/register.ts:34' }}>
+
+<ApiSignature
+	tokens={[
+		'static [preLoad](this: Client): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="this" type={['Client']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

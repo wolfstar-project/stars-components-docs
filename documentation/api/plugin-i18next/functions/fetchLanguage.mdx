@@ -1,0 +1,59 @@
+---
+title: 'Function: fetchLanguage()'
+description: 'Retrieves the language name for a target, using InternationalizationHandler.fetchLanguage. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L348',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:348'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Retrieves the language name for a target, using [InternationalizationHandler.fetchLanguage](/documentation/api/plugin-i18next/classes/InternationalizationHandler#fetchlanguage).
+
+If that hook is not defined or returns a nullish value, the language is resolved from the
+locales the target carries through [getSupportedLanguageName](/documentation/api/plugin-i18next/functions/getSupportedLanguageName), which itself falls back to
+[InternationalizationOptions.defaultName](/documentation/api/plugin-i18next/interfaces/InternationalizationOptions#defaultname) and then to `'en-US'`.
+
+<ApiSignature
+	tokens={[
+		'fetchLanguage(target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string>'
+	]}
+/>
+
+Retrieves the language name for a target, using [InternationalizationHandler.fetchLanguage](/documentation/api/plugin-i18next/classes/InternationalizationHandler#fetchlanguage).
+
+If that hook is not defined or returns a nullish value, the language is resolved from the
+locales the target carries through [getSupportedLanguageName](/documentation/api/plugin-i18next/functions/getSupportedLanguageName), which itself falls back to
+[InternationalizationOptions.defaultName](/documentation/api/plugin-i18next/interfaces/InternationalizationOptions#defaultname) and then to `'en-US'`.
+
+This is the only helper that can resolve a language for a [ChannelTarget](/documentation/api/plugin-i18next/interfaces/ChannelTarget) or a
+[MessageTarget](/documentation/api/plugin-i18next/interfaces/MessageTarget), since those payloads carry no locale and the hook receives their
+`guildId` and `channelId`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]}>
+
+The target to fetch the language from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string>']} />
+
+</ApiParams>

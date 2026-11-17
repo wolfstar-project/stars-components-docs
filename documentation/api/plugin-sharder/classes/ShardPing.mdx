@@ -1,0 +1,143 @@
+---
+title: 'Class: ShardPing'
+description: 'Pings a shard, measures its latency, and notices when it stops answering. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L29',
+		label: 'packages/plugin-sharder/src/ShardPing.ts:29'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Pings a shard, measures its latency, and notices when it stops answering.
+
+<ApiSignature tokens={['class ShardPing']} />
+
+## Properties
+
+### delaySinceReceived
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly delaySinceReceived: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L47',
+		label: 'packages/plugin-sharder/src/ShardPing.ts:47'
+	}}
+/>
+
+### interval
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly interval: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L45',
+		label: 'packages/plugin-sharder/src/ShardPing.ts:45'
+	}}
+/>
+
+### lastReceivedTimestamp
+
+<ApiMember kind="property" signature={['lastReceivedTimestamp: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L38', label: 'packages/plugin-sharder/src/ShardPing.ts:38' }}>
+
+When the last answer came, `-1` before the first one.
+
+</ApiMember>
+
+### lastSentTimestamp
+
+<ApiMember kind="property" signature={['lastSentTimestamp: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L33', label: 'packages/plugin-sharder/src/ShardPing.ts:33' }}>
+
+When the last ping was sent, `-1` before the first one.
+
+</ApiMember>
+
+### latency
+
+<ApiMember kind="property" signature={['latency: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L43', label: 'packages/plugin-sharder/src/ShardPing.ts:43' }}>
+
+The round trip of the last ping, in milliseconds; `-1` before the first answer.
+
+</ApiMember>
+
+### timeout
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly timeout: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L46',
+		label: 'packages/plugin-sharder/src/ShardPing.ts:46'
+	}}
+/>
+
+## Accessors
+
+### enabled
+
+<ApiMember kind="accessor" signature={['get enabled(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L137', label: 'packages/plugin-sharder/src/ShardPing.ts:137' }}>
+
+Whether the manager pings at all.
+
+</ApiMember>
+
+### hasReceivedResponse
+
+<ApiMember kind="accessor" signature={['get hasReceivedResponse(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L79', label: 'packages/plugin-sharder/src/ShardPing.ts:79' }}>
+
+Whether the last ping was answered.
+
+</ApiMember>
+
+### lastReceivedAt
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get lastReceivedAt(): ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L87',
+		label: 'packages/plugin-sharder/src/ShardPing.ts:87'
+	}}
+/>
+
+### lastSentAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get lastSentAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L83',
+		label: 'packages/plugin-sharder/src/ShardPing.ts:83'
+	}}
+/>
+
+### nextPingTimestamp
+
+<ApiMember kind="accessor" signature={['get nextPingTimestamp(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L94', label: 'packages/plugin-sharder/src/ShardPing.ts:94' }}>
+
+When the next ping is due, or `null` when the pings are not running.
+
+</ApiMember>
+
+### running
+
+<ApiMember kind="accessor" signature={['get running(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L72', label: 'packages/plugin-sharder/src/ShardPing.ts:72' }}>
+
+Whether the pings are running.
+
+</ApiMember>

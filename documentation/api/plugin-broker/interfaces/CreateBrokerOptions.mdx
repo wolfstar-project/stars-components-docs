@@ -1,0 +1,62 @@
+---
+title: 'Interface: CreateBrokerOptions'
+description: 'API reference for CreateBrokerOptions, an interface exported by @wolfstar/plugin-broker.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L4',
+		label: 'packages/plugin-broker/src/lib/broker.ts:4'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+<ApiSignature tokens={['interface CreateBrokerOptions']} />
+
+## Properties
+
+### codec?
+
+<ApiMember kind="property" badges={['optional']} signature={['codec?: ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L26', label: 'packages/plugin-broker/src/lib/broker.ts:26' }}>
+
+The codec used to encode published payloads.
+
+Every consumer of this stream must be configured with the same codec.
+
+**Default**
+
+```ts
+jsonCodec();
+```
+
+</ApiMember>
+
+### maxLength?
+
+<ApiMember kind="property" badges={['optional']} signature={['maxLength?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L17', label: 'packages/plugin-broker/src/lib/broker.ts:17' }}>
+
+Trims the stream to approximately this many entries on every publish (`XADD ... MAXLEN ~`). Left unset, the
+stream is never trimmed.
+
+</ApiMember>
+
+### redis
+
+<ApiMember kind="property" signature={['redis: ', ['BrokerRedisClientLike', '/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L8', label: 'packages/plugin-broker/src/lib/broker.ts:8' }}>
+
+The Redis client to use, e.g. an [`ioredis`](https://github.com/redis/ioredis) instance.
+
+</ApiMember>
+
+### stream
+
+<ApiMember kind="property" signature={['stream: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L12', label: 'packages/plugin-broker/src/lib/broker.ts:12' }}>
+
+The Redis key of the stream to publish to.
+
+</ApiMember>

@@ -1,0 +1,91 @@
+---
+title: 'Function: applyLocalizedBuilder()'
+description: 'Applies the localized names and descriptions on the builder, calling applyNameLocalizedBuilder and applyDescriptionLocalizedBuilder. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L582',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:582'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Applies the localized names and descriptions on the builder, calling
+[applyNameLocalizedBuilder](/documentation/api/plugin-i18next/functions/applyNameLocalizedBuilder) and [applyDescriptionLocalizedBuilder](/documentation/api/plugin-i18next/functions/applyDescriptionLocalizedBuilder).
+
+<ApiSignature
+	tokens={[
+		'applyLocalizedBuilder<T extends ',
+		['BuilderWithNameAndDescription', '/documentation/api/plugin-i18next/type-aliases/BuilderWithNameAndDescription'],
+		', const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', KPrefix = undefined>(\n  builder: T,\n  ...params: [root: `${string}:${string}`] | [name: string, description: string]\n): T'
+	]}
+/>
+
+Applies the localized names and descriptions on the builder, calling
+[applyNameLocalizedBuilder](/documentation/api/plugin-i18next/functions/applyNameLocalizedBuilder) and [applyDescriptionLocalizedBuilder](/documentation/api/plugin-i18next/functions/applyDescriptionLocalizedBuilder).
+
+If only 2 parameters were passed, `name` will be defined as `${root}Name` and `description` as
+`${root}Description`, being `root` the second parameter in the function, after `builder`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="T"
+	type={['extends ', ['BuilderWithNameAndDescription', '/documentation/api/plugin-i18next/type-aliases/BuilderWithNameAndDescription']]}
+/>
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="KPrefix" defaultValue="undefined" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="builder" type={['T']}>
+
+The builder to apply the localizations to.
+
+</ApiParam>
+
+<ApiParam name="params" type={['[root: `${string}:${string}`] | [name: string, description: string]']} rest>
+
+The root key, or the key for the name and the key for the description.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['T']}>
+
+The updated builder. You can chain subsequent builder methods on this.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example 1**
+
+```typescript
+// Both keys given explicitly:
+applyLocalizedBuilder(builder, 'commands/names:userinfo', 'commands/descriptions:userinfo');
+```
+
+**Example 2**
+
+```typescript
+// Root key only, resolves `commands/userinfo:nameName` and `commands/userinfo:nameDescription`:
+applyLocalizedBuilder(builder, 'commands/userinfo:name');
+```

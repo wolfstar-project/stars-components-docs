@@ -1,9 +1,110 @@
 ---
 title: '@wolfstar/plugin-api'
-description: 'No generated per-symbol API reference is available for @wolfstar/plugin-api; the package guide documents Route, Middleware, and ServerOptions.'
+description: 'Generated API reference for @wolfstar/plugin-api: Route, Middleware, ServerOptions, and the standalone REST API server.'
 ---
 
-<Note>
-	A generated per-symbol API reference is not available for this package (its typedoc output only produced module stubs). See the [package
-	guide](/documentation/packages/plugin-api) for the full documented API surface, including `Route`, `Middleware`, and `ServerOptions`.
-</Note>
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-api"
+	version="3.0.1"
+	guideHref="/documentation/packages/plugin-api"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-api"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-api" />
+
+<ApiSymbolList
+	symbols={[
+		{ name: 'Middleware', kind: 'namespace', href: '/documentation/api/plugin-api/namespaces/Middleware' },
+		{ name: 'Route', kind: 'namespace', href: '/documentation/api/plugin-api/namespaces/Route' },
+		{ name: 'ServerEvent', kind: 'enum', href: '/documentation/api/plugin-api/enumerations/ServerEvent' },
+		{ name: 'ApiRequest', kind: 'class', href: '/documentation/api/plugin-api/classes/ApiRequest' },
+		{ name: 'ApiResponse', kind: 'class', href: '/documentation/api/plugin-api/classes/ApiResponse' },
+		{ name: 'CookieStore', kind: 'class', href: '/documentation/api/plugin-api/classes/CookieStore' },
+		{
+			name: 'Middleware',
+			kind: 'class',
+			href: '/documentation/api/plugin-api/classes/Middleware',
+			summary: 'The base class for every middleware.'
+		},
+		{ name: 'MiddlewareStore', kind: 'class', href: '/documentation/api/plugin-api/classes/MiddlewareStore' },
+		{ name: 'Route', kind: 'class', href: '/documentation/api/plugin-api/classes/Route', summary: 'The base class for every route.' },
+		{ name: 'RouterBranch', kind: 'class', href: '/documentation/api/plugin-api/classes/RouterBranch' },
+		{ name: 'RouterNode', kind: 'class', href: '/documentation/api/plugin-api/classes/RouterNode' },
+		{ name: 'RouterRoot', kind: 'class', href: '/documentation/api/plugin-api/classes/RouterRoot' },
+		{ name: 'RouteStore', kind: 'class', href: '/documentation/api/plugin-api/classes/RouteStore' },
+		{
+			name: 'Server',
+			kind: 'class',
+			href: '/documentation/api/plugin-api/classes/Server',
+			summary: 'A standalone HTTP server for auxiliary REST routes (health checks, dashboards, webhooks from other services, etc).'
+		},
+		{ name: 'MiddlewareOptions', kind: 'interface', href: '/documentation/api/plugin-api/interfaces/MiddlewareOptions' },
+		{ name: 'RouteOptions', kind: 'interface', href: '/documentation/api/plugin-api/interfaces/RouteOptions' },
+		{ name: 'SecureCookieStoreSetOptions', kind: 'interface', href: '/documentation/api/plugin-api/interfaces/SecureCookieStoreSetOptions' },
+		{ name: 'ServerEvents', kind: 'interface', href: '/documentation/api/plugin-api/interfaces/ServerEvents' },
+		{ name: 'ServerOptions', kind: 'interface', href: '/documentation/api/plugin-api/interfaces/ServerOptions' },
+		{
+			name: 'AuthLessServerOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-api/type-aliases/AuthLessServerOptions',
+			summary: 'Upstream separates the auth-enabled options from the auth-less ones; auth is not implemented here, so they are the same type.'
+		},
+		{
+			name: 'ContentTypeParameter',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-api/type-aliases/ContentTypeParameter',
+			summary: 'A Content-Type parameter, for example charset=utf-8.'
+		},
+		{
+			name: 'ContentTypeType',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-api/type-aliases/ContentTypeType',
+			summary: 'The top-level type of a Content-Type value, as defined by RFC 1341 section 4.'
+		},
+		{
+			name: 'GenericMimeType',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-api/type-aliases/GenericMimeType',
+			summary: 'A type/subtype mime type.'
+		},
+		{
+			name: 'GenericParametrizedMimeType',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-api/type-aliases/GenericParametrizedMimeType',
+			summary: 'A type/subtype; parameter mime type.'
+		},
+		{ name: 'MethodName', kind: 'type-alias', href: '/documentation/api/plugin-api/type-aliases/MethodName' },
+		{ name: 'ValidatorFunction', kind: 'type-alias', href: '/documentation/api/plugin-api/type-aliases/ValidatorFunction' },
+		{ name: 'MethodNames', kind: 'variable', href: '/documentation/api/plugin-api/variables/MethodNames' },
+		{
+			name: 'version',
+			kind: 'variable',
+			href: '/documentation/api/plugin-api/variables/version',
+			summary:
+				'The @wolfstar/plugin-api version, replaced with the package.json version at build time by @redstardev/unplugin-version-injector.'
+		},
+		{
+			name: 'loadListeners',
+			kind: 'function',
+			href: '/documentation/api/plugin-api/functions/loadListeners',
+			summary:
+				"Registers the built-in dispatch-pipeline listeners into the framework's existing listener store, targeting the server container entry (see…"
+		},
+		{
+			name: 'loadMiddlewares',
+			kind: 'function',
+			href: '/documentation/api/plugin-api/functions/loadMiddlewares',
+			summary: 'Registers the built-in middlewares (body, cookies, headers) into Server.middlewares.'
+		},
+		{
+			name: 'Api',
+			kind: 'class',
+			href: '/documentation/api/plugin-api/classes/Api',
+			summary:
+				'Registers a standalone Server for auxiliary REST routes (health checks, dashboards, webhooks from other services, etc), independent from th…'
+		}
+	]}
+/>

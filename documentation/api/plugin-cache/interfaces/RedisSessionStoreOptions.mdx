@@ -1,0 +1,61 @@
+---
+title: 'Interface: RedisSessionStoreOptions'
+description: 'API reference for RedisSessionStoreOptions, an interface exported by @wolfstar/plugin-cache.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L51',
+		label: 'packages/plugin-cache/src/lib/sessions.ts:51'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+<ApiSignature tokens={['interface RedisSessionStoreOptions']} />
+
+## Properties
+
+### prefix?
+
+<ApiMember kind="property" badges={['optional']} signature={['prefix?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L61', label: 'packages/plugin-cache/src/lib/sessions.ts:61' }}>
+
+The prefix of every Redis key owned by the store, sessions live at `<prefix>:<shardId>`.
+
+**Default**
+
+```ts
+'wolfstar:sessions';
+```
+
+</ApiMember>
+
+### redis
+
+<ApiMember kind="property" signature={['redis: ', ['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'], '<', ['RedisClientLike', '/documentation/api/plugin-cache/interfaces/RedisClientLike'], ', "get" | "set" | "del">']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L55', label: 'packages/plugin-cache/src/lib/sessions.ts:55' }}>
+
+The Redis client to use, e.g. an [`ioredis`](https://github.com/redis/ioredis) instance.
+
+</ApiMember>
+
+### ttl?
+
+<ApiMember kind="property" badges={['optional']} signature={['ttl?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L72', label: 'packages/plugin-cache/src/lib/sessions.ts:72' }}>
+
+The time-to-live of a session since its last write, in seconds, `null` to keep sessions until they are dropped.
+
+Discord only lets a session be resumed for a while after its connection closes, and resuming an expired one costs
+a connection before identifying. Every dispatch pushes the expiration back, so a shard receiving none for longer
+than the ttl identifies on the next restart.
+
+**Default**
+
+```ts
+600;
+```
+
+</ApiMember>

@@ -1,0 +1,72 @@
+---
+title: 'Function: applyGatewayDispatch()'
+description: 'Writes a gateway dispatch into every relevant entity cache of a Cache. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L912',
+		label: 'packages/plugin-cache/src/lib/operations.ts:912'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Writes a gateway dispatch into every relevant entity cache of a [Cache](/documentation/api/plugin-cache/interfaces/Cache).
+
+<ApiSignature
+	tokens={[
+		'applyGatewayDispatch(\n  cache: ',
+		['Cache', '/documentation/api/plugin-cache/interfaces/Cache'],
+		',\n  payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		',\n  context?: ',
+		['CacheOperationContext', '/documentation/api/plugin-cache/interfaces/CacheOperationContext'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['CacheOperationResult', '/documentation/api/plugin-cache/interfaces/CacheOperationResult'],
+		'[]>'
+	]}
+/>
+
+Writes a gateway dispatch into every relevant entity cache of a [Cache](/documentation/api/plugin-cache/interfaces/Cache).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="cache" type={[['Cache', '/documentation/api/plugin-cache/interfaces/Cache']]}>
+
+The cache to mutate.
+
+</ApiParam>
+
+<ApiParam name="payload" type={[['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload']]}>
+
+The gateway dispatch payload.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['CacheOperationContext', '/documentation/api/plugin-cache/interfaces/CacheOperationContext']]} optional>
+
+The bot's user ID, for the `me` flags of reactions and poll votes.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['CacheOperationResult', '/documentation/api/plugin-cache/interfaces/CacheOperationResult'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>

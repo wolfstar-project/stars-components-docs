@@ -1,0 +1,95 @@
+---
+title: 'Interface: NetworkStrategyOptions'
+description: 'The options of NetworkStrategy. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L26',
+		label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:26'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of [NetworkStrategy](/documentation/api/plugin-sharder/classes/NetworkStrategy).
+
+<ApiSignature tokens={['interface NetworkStrategyOptions']} />
+
+## Properties
+
+### heartbeat?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['heartbeat?: {\n  interval?: number;\n  timeout?: number;\n}']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L52',
+		label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:52'
+	}}
+/>
+
+### host?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['host?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L31',
+		label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:31'
+	}}
+/>
+
+### id?
+
+<ApiMember kind="property" badges={['optional']} signature={['id?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L39', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:39' }}>
+
+The ID of the manager, which proxies serving several managers tell them apart by. Defaults to a random UUID.
+
+</ApiMember>
+
+### port
+
+<ApiMember kind="property" signature={['port: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L30', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:30' }}>
+
+The port to listen on for proxies.
+
+</ApiMember>
+
+### reconnectGrace?
+
+<ApiMember kind="property" badges={['optional']} signature={['reconnectGrace?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L51', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:51' }}>
+
+How long a proxy that lost its connection has to come back before its shards are deemed dead and spawned
+elsewhere, in milliseconds.
+
+**Default**
+
+```ts
+30_000;
+```
+
+</ApiMember>
+
+### tls?
+
+<ApiMember kind="property" badges={['optional']} signature={['tls?: TlsOptions']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L44', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:44' }}>
+
+The TLS options (`key`, `cert`, ...) to encrypt the connections, recommended. Left out, the connections are plain
+TCP: only for trusted networks.
+
+</ApiMember>
+
+### token
+
+<ApiMember kind="property" signature={['token: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L35', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:35' }}>
+
+The shared secret proxies authenticate with.
+
+</ApiMember>

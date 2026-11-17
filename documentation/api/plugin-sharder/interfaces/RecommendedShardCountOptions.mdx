@@ -1,0 +1,51 @@
+---
+title: 'Interface: RecommendedShardCountOptions'
+description: 'The options of fetchRecommendedShardCount. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L22',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:22'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of [fetchRecommendedShardCount](/documentation/api/plugin-sharder/functions/fetchRecommendedShardCount).
+
+<ApiSignature tokens={['interface RecommendedShardCountOptions']} />
+
+## Properties
+
+### guildsPerShard?
+
+<ApiMember kind="property" badges={['optional']} signature={['guildsPerShard?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L28', label: 'packages/plugin-sharder/src/util/gateway.ts:28' }}>
+
+How many guilds a gateway shard should hold. Discord's recommendation is based on 1000.
+
+**Default**
+
+```ts
+1000;
+```
+
+</ApiMember>
+
+### multipleOf?
+
+<ApiMember kind="property" badges={['optional']} signature={['multipleOf?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L34', label: 'packages/plugin-sharder/src/util/gateway.ts:34' }}>
+
+Rounds the count up to a multiple of it, e.g. 16 for large bot sharding.
+
+**Default**
+
+```ts
+1;
+```
+
+</ApiMember>

@@ -1,7 +1,7 @@
 name: generate-api
 
 # Regenerates documentation/api/** from the TypeDoc JSON that wolfstar-project/docs publishes for
-# stars-components, then opens (or updates) a single pull request with the result.
+# stars-components and plugins, then opens (or updates) a single pull request with the result.
 on:
     schedule:
         - cron: '0 6 * * *'
@@ -56,6 +56,6 @@ jobs:
                   title: 'docs(api): refresh generated API reference'
                   body: |
                       Regenerated `documentation/api/**` with `pnpm generate:api --refresh` from the latest
-                      TypeDoc JSON published by [wolfstar-project/docs](https://github.com/wolfstar-project/docs/tree/docs/stars-components).
+                      TypeDoc JSON published by [wolfstar-project/docs](https://github.com/wolfstar-project/docs/tree/docs) for stars-components and plugins.
 
                       Generated files — do not edit by hand. Packages are selected in `scripts/api-config.json`.

@@ -1,0 +1,69 @@
+---
+title: 'Interface: ShardTransportEvents'
+description: "The callbacks a ChannelStrategy reports a spawned shard's activity through. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L43',
+		label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:43'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The callbacks a [ChannelStrategy](/documentation/api/plugin-sharder/interfaces/ChannelStrategy) reports a spawned shard's activity through.
+
+<ApiSignature tokens={['interface ShardTransportEvents']} />
+
+## Methods
+
+### error()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L52', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:52' }}>
+
+<ApiSignature tokens={['error(error: unknown): void']} />
+
+The shard failed, e.g. a worker that could not start.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="error" type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### exit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L48', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:48' }}>
+
+<ApiSignature tokens={['exit(code: number | null): void']} />
+
+The shard stopped. Called once per spawn.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### message()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L44', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:44' }}>
+
+<ApiSignature tokens={['message(data: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

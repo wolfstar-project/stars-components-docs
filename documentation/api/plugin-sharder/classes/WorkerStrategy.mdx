@@ -1,0 +1,106 @@
+---
+title: 'Class: WorkerStrategy'
+description: "Spawns every shard as a worker thread of the manager's process. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L30',
+		label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:30'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Spawns every shard as a worker thread of the manager's process. Messages are the fastest, but the shards share the
+process: a crash of the process stops them all.
+
+<ApiSignature tokens={['class WorkerStrategy implements ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]} />
+
+<ApiHierarchy implements={[[['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L34', label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:34' }}>
+
+<ApiSignature
+	tokens={[
+		'new WorkerStrategy(options: ',
+		['WorkerStrategyOptions', '/documentation/api/plugin-sharder/interfaces/WorkerStrategyOptions'],
+		'): ',
+		['WorkerStrategy', '/documentation/api/plugin-sharder/classes/WorkerStrategy']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['WorkerStrategyOptions', '/documentation/api/plugin-sharder/interfaces/WorkerStrategyOptions']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: "worker"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L31', label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:31' }}>
+
+The name of the strategy in the registry, see [registerStrategy](/documentation/api/plugin-sharder/functions/registerStrategy).
+
+</ApiMember>
+
+### options
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly options: ', ['WorkerStrategyOptions', '/documentation/api/plugin-sharder/interfaces/WorkerStrategyOptions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L32',
+		label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:32'
+	}}
+/>
+
+## Methods
+
+### spawn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L38', label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:38' }}>
+
+<ApiSignature
+	tokens={[
+		'spawn(\n  context: ',
+		['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'],
+		',\n  events: ',
+		['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents'],
+		',\n  options: ',
+		['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions'],
+		'\n): ',
+		['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} />
+
+<ApiParam name="events" type={[['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents']]} />
+
+<ApiParam name="options" type={[['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']]} />
+
+</ApiParams>
+
+</ApiMember>

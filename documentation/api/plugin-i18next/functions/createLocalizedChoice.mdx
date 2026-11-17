@@ -1,0 +1,76 @@
+---
+title: 'Function: createLocalizedChoice()'
+description: 'Constructs an object that can be passed into setChoices for a String or Number option with localized names. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L615',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:615'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Constructs an object that can be passed into `setChoices` for a String or Number option with
+localized names.
+
+<ApiSignature
+	tokens={[
+		'createLocalizedChoice<ValueType = string | number, const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', KPrefix = undefined>(\n  key: string,\n  options: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['APIApplicationCommandOptionChoice', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandOptionChoice'],
+		'<ValueType>, "name" | "name_localizations">\n): ',
+		['APIApplicationCommandOptionChoice', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandOptionChoice'],
+		'<ValueType>'
+	]}
+/>
+
+Constructs an object that can be passed into `setChoices` for a String or Number option with
+localized names.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="ValueType" defaultValue="string | number" />
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="KPrefix" defaultValue="undefined" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The i18next key for the name of the choice.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIApplicationCommandOptionChoice', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandOptionChoice'], '<ValueType>, "name" | "name_localizations">']}>
+
+The remaining choice options. This should _at least_ include the `value` key.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIApplicationCommandOptionChoice', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandOptionChoice'], '<ValueType>']}>
+
+An object with anything provided through `options`, with `name` and `name_localizations`
+added.
+
+</ApiParam>
+
+</ApiParams>

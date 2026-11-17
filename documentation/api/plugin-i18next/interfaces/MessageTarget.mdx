@@ -1,0 +1,78 @@
+---
+title: 'Interface: MessageTarget'
+description: 'The subset of a message payload the localization helpers need. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L112',
+		label: 'packages/plugin-i18next/src/lib/types.ts:112'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+The subset of a message payload the localization helpers need. `APIMessage` satisfies it, and
+gateway message payloads additionally carry `guild_id`.
+
+<ApiSignature tokens={['interface MessageTarget']} />
+
+Like [ChannelTarget](/documentation/api/plugin-i18next/interfaces/ChannelTarget), a message carries no locale of its own.
+
+## Properties
+
+### author?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'author?: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		', "id">'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L116',
+		label: 'packages/plugin-i18next/src/lib/types.ts:116'
+	}}
+/>
+
+### channel_id
+
+<ApiMember
+	kind="property"
+	signature={['channel_id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L114',
+		label: 'packages/plugin-i18next/src/lib/types.ts:114'
+	}}
+/>
+
+### guild_id?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild_id?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L115',
+		label: 'packages/plugin-i18next/src/lib/types.ts:115'
+	}}
+/>
+
+### id
+
+<ApiMember
+	kind="property"
+	signature={['id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L113',
+		label: 'packages/plugin-i18next/src/lib/types.ts:113'
+	}}
+/>

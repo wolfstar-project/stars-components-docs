@@ -1,0 +1,184 @@
+---
+title: 'Class: ScheduledTask'
+description: 'Represents a scheduled task that can be run at a specified interval or pattern. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L9',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:9'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+Represents a scheduled task that can be run at a specified interval or pattern.
+
+<ApiSignature
+	tokens={[
+		'abstract class ScheduledTask<Task extends ',
+		['ScheduledTasksKeys', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys'],
+		' = ',
+		['ScheduledTasksKeys', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys'],
+		', Options extends ',
+		['ScheduledTask.Options', '/documentation/api/plugin-scheduled-tasks/namespaces/ScheduledTask/type-aliases/Options'],
+		' = ',
+		['ScheduledTask.Options', '/documentation/api/plugin-scheduled-tasks/namespaces/ScheduledTask/type-aliases/Options'],
+		'> extends Piece<Options, "scheduled-tasks">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Piece<Options, "scheduled-tasks">']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Task"
+	type={['extends ', ['ScheduledTasksKeys', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys']]}
+	defaultValue="ScheduledTasksKeys"
+/>
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['ScheduledTask.Options', '/documentation/api/plugin-scheduled-tasks/namespaces/ScheduledTask/type-aliases/Options']]}
+	defaultValue="ScheduledTask.Options"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L19', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:19' }}>
+
+<ApiSignature
+	tokens={[
+		'new ScheduledTask<Task extends never = never, Options extends ',
+		['ScheduledTaskOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskOptions'],
+		' = ',
+		['ScheduledTaskOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskOptions'],
+		'>(\n  context: ',
+		['LoaderContext', '/documentation/api/plugin-scheduled-tasks/namespaces/ScheduledTask/type-aliases/LoaderContext'],
+		',\n  options: Options = ...\n): ',
+		['ScheduledTask', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTask'],
+		'<Task, Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Task" type={['extends never']} defaultValue="never" />
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['ScheduledTaskOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskOptions']]}
+	defaultValue="ScheduledTaskOptions"
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="context"
+	type={[['LoaderContext', '/documentation/api/plugin-scheduled-tasks/namespaces/ScheduledTask/type-aliases/LoaderContext']]}
+/>
+
+<ApiParam name="options" type={['Options']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### customJobOptions?
+
+<ApiMember
+	kind="property"
+	badges={['readonly', 'optional']}
+	signature={[
+		'readonly customJobOptions?: ',
+		['ScheduledTaskCustomJobOptions', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskCustomJobOptions']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L16',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:16'
+	}}
+/>
+
+### interval
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly interval: number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L13',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:13'
+	}}
+/>
+
+### pattern
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly pattern: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L14',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:14'
+	}}
+/>
+
+### timezone
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly timezone: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L15',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:15'
+	}}
+/>
+
+### waitForReady
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly waitForReady: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L17',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:17'
+	}}
+/>
+
+## Methods
+
+### run()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L28', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:28' }}>
+
+<ApiSignature tokens={['abstract run(payload: undefined): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={['undefined']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

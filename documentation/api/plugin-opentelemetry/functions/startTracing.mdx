@@ -1,0 +1,45 @@
+---
+title: 'Function: startTracing()'
+description: 'Starts the OpenTelemetry SDK with the automatic instrumentations, the W3C trace context propagator and an exporter for each place the spans go to: th… (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/tracing.ts#L25',
+		label: 'lib/tracing.ts:25'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Starts the OpenTelemetry SDK with the automatic instrumentations, the W3C trace context propagator and an exporter
+for each place the spans go to: the one the `OTEL_EXPORTER_OTLP_*` environment configures, and Sentry, when
+`SENTRY_DSN` is set.
+
+<ApiSignature
+	tokens={[
+		'startTracing(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<NodeSDK>'
+	]}
+/>
+
+Starts the OpenTelemetry SDK with the automatic instrumentations, the W3C trace context propagator and an exporter
+for each place the spans go to: the one the `OTEL_EXPORTER_OTLP_*` environment configures, and Sentry, when
+`SENTRY_DSN` is set.
+
+Call it before anything the instrumentations patch is imported, which is what the `./preload` entrypoint does.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<NodeSDK>']}>
+
+The SDK, which is shut down on `SIGTERM` to export the last spans, without keeping the process from ending.
+
+</ApiParam>
+
+</ApiParams>

@@ -1,0 +1,37 @@
+---
+title: 'Type Alias: ScheduledTasksJob'
+description: 'API reference for ScheduledTasksJob, a type alias exported by @wolfstar/plugin-scheduled-tasks.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L215',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:215'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+<ApiSignature
+	tokens={[
+		'type ScheduledTasksJob<T> = T extends ',
+		['ScheduledTasksResolvableNoPayload', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksResolvableNoPayload'],
+		'<infer R> ? Job<',
+		['ScheduledTasksPayload', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksPayload'],
+		'<R>> : T extends ',
+		['ScheduledTasksResolvablePayload', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksResolvablePayload'],
+		'<infer R> ? Job<',
+		['ScheduledTasksPayload', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksPayload'],
+		'<R>> : Job<undefined>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>

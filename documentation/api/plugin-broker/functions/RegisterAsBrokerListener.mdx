@@ -1,0 +1,74 @@
+---
+title: 'Function: RegisterAsBrokerListener()'
+description: 'Class decorator that binds the decorated BrokerListener to a broker event, so it does not need to declare a constructor. (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/util/decorators.ts#L28',
+		label: 'packages/plugin-broker/src/util/decorators.ts:28'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+Class decorator that binds the decorated [BrokerListener](/documentation/api/plugin-broker/classes/BrokerListener) to a broker event, so it does not need to declare
+a constructor.
+
+<ApiSignature
+	tokens={[
+		'RegisterAsBrokerListener<Event extends never>(\n  event: Event,\n  options: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['BrokerListener.Options', '/documentation/api/plugin-broker/namespaces/BrokerListener/interfaces/Options'],
+		'<Event>, "event"> = {}\n): <T extends ListenerConstructor>(target: T) => T'
+	]}
+/>
+
+Class decorator that binds the decorated [BrokerListener](/documentation/api/plugin-broker/classes/BrokerListener) to a broker event, so it does not need to declare
+a constructor.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Event" type={['extends never']} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['Event']}>
+
+The event to listen to.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['BrokerListener.Options', '/documentation/api/plugin-broker/namespaces/BrokerListener/interfaces/Options'], '<Event>, "event">']} defaultValue={'{}'}>
+
+The additional listener options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['<T extends ListenerConstructor>(target: T) => T']} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { BrokerListener, RegisterAsBrokerListener, type BrokerMessage } from '@wolfstar/plugin-broker';
+
+@RegisterAsBrokerListener('messageCreate')
+export class LogMessagesListener extends BrokerListener<'messageCreate'> {
+	public override run(payload: unknown, message: BrokerMessage) {
+		console.log(`[${message.id}]`, payload);
+	}
+}
+```

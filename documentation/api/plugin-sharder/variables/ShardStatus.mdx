@@ -1,0 +1,71 @@
+---
+title: 'Variable: ShardStatus'
+description: 'The lifecycle status of a shard, as it signals it to its manager. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/protocol.ts#L7',
+		label: 'packages/plugin-sharder/src/messages/protocol.ts:7'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The lifecycle status of a shard, as it signals it to its manager.
+
+<ApiSignature
+	tokens={[
+		'const ShardStatus: {\n  readonly Disconnected: "Disconnected";\n  readonly Exiting: "Exiting";\n  readonly Idle: "Idle";\n  readonly Ready: "Ready";\n  readonly Reconnecting: "Reconnecting";\n  readonly Restarting: "Restarting";\n  readonly Starting: "Starting";\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="Disconnected" type={['"Disconnected"']}>
+
+Running, but disconnected from what it serves, e.g. the gateway.
+
+</ApiParam>
+
+<ApiParam name="Exiting" type={['"Exiting"']}>
+
+Shutting down, not to be restarted.
+
+</ApiParam>
+
+<ApiParam name="Idle" type={['"Idle"']}>
+
+Not spawned yet, or stopped.
+
+</ApiParam>
+
+<ApiParam name="Ready" type={['"Ready"']}>
+
+Fully operative.
+
+</ApiParam>
+
+<ApiParam name="Reconnecting" type={['"Reconnecting"']}>
+
+Running, and reconnecting to what it serves.
+
+</ApiParam>
+
+<ApiParam name="Restarting" type={['"Restarting"']}>
+
+Shutting down, to be restarted.
+
+</ApiParam>
+
+<ApiParam name="Starting" type={['"Starting"']}>
+
+Spawned, and not ready to answer yet.
+
+</ApiParam>
+
+</ApiParams>

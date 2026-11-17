@@ -1,0 +1,137 @@
+---
+title: 'Interface: RedisCacheOptions'
+description: 'API reference for RedisCacheOptions, an interface exported by @wolfstar/plugin-cache.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L516',
+		label: 'packages/plugin-cache/src/lib/redis.ts:516'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+<ApiSignature tokens={['interface RedisCacheOptions']} />
+
+## Properties
+
+### codec?
+
+<ApiMember kind="property" badges={['optional']} signature={['codec?: ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L544', label: 'packages/plugin-cache/src/lib/redis.ts:544' }}>
+
+The codec used to encode and decode values.
+
+**Default**
+
+```ts
+jsonCodec();
+```
+
+</ApiMember>
+
+### compression?
+
+<ApiMember kind="property" badges={['optional']} signature={['compression?: ', ['RedisCacheCompression', '/documentation/api/plugin-cache/type-aliases/RedisCacheCompression']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L532', label: 'packages/plugin-cache/src/lib/redis.ts:532' }}>
+
+The compression algorithm to use for values of at least [RedisCacheOptions.compressionThreshold](/documentation/api/plugin-cache/interfaces/RedisCacheOptions#compressionthreshold) bytes.
+
+**Default**
+
+```ts
+'none';
+```
+
+</ApiMember>
+
+### compressionThreshold?
+
+<ApiMember kind="property" badges={['optional']} signature={['compressionThreshold?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L538', label: 'packages/plugin-cache/src/lib/redis.ts:538' }}>
+
+The minimum size, in bytes, a serialized value must reach to be compressed.
+
+**Default**
+
+```ts
+1024;
+```
+
+</ApiMember>
+
+### entities?
+
+<ApiMember kind="property" badges={['optional']} signature={['entities?: readonly (keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], ')[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L553', label: 'packages/plugin-cache/src/lib/redis.ts:553' }}>
+
+The entity kinds to cache, every other one is not. Every entity kind is cached when omitted.
+
+</ApiMember>
+
+### indexGuilds?
+
+<ApiMember kind="property" badges={['optional']} signature={['indexGuilds?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L573', label: 'packages/plugin-cache/src/lib/redis.ts:573' }}>
+
+Whether to index the guild-scoped entity caches by guild, so a `GUILD_DELETE` drops a guild's entries without
+scanning every entity cache. It costs one more sorted-set write per write, and a read before every delete.
+
+Entries written while it was off are not indexed: turning it on for a populated cache leaves them behind on
+`GUILD_DELETE`, until they expire or the cache is cleared.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### legacyCodecs?
+
+<ApiMember kind="property" badges={['optional']} signature={['legacyCodecs?: readonly ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L549', label: 'packages/plugin-cache/src/lib/redis.ts:549' }}>
+
+Former [RedisCacheOptions.codec](/documentation/api/plugin-cache/interfaces/RedisCacheOptions#codec) values this cache's entries may still be tagged with. See
+[RedisEntityCacheOptions.legacyCodecs](/documentation/api/plugin-cache/interfaces/RedisEntityCacheOptions#legacycodecs).
+
+</ApiMember>
+
+### policies?
+
+<ApiMember kind="property" badges={['optional']} signature={['policies?: ', ['CachePolicies', '/documentation/api/plugin-cache/type-aliases/CachePolicies']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L562', label: 'packages/plugin-cache/src/lib/redis.ts:562' }}>
+
+The policies deciding which entries get cached and for how long, per entity cache, see `withPolicy`.
+
+</ApiMember>
+
+### prefix?
+
+<ApiMember kind="property" badges={['optional']} signature={['prefix?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L526', label: 'packages/plugin-cache/src/lib/redis.ts:526' }}>
+
+The prefix of every Redis key owned by the cache, which allows several caches to share a database.
+
+**Default**
+
+```ts
+'wolfstar:cache';
+```
+
+</ApiMember>
+
+### redis
+
+<ApiMember kind="property" signature={['redis: ', ['RedisClientLike', '/documentation/api/plugin-cache/interfaces/RedisClientLike']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L520', label: 'packages/plugin-cache/src/lib/redis.ts:520' }}>
+
+The Redis client to use, e.g. an [`ioredis`](https://github.com/redis/ioredis) instance.
+
+</ApiMember>
+
+### ttl?
+
+<ApiMember kind="property" badges={['optional']} signature={['ttl?: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], ', number>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L558', label: 'packages/plugin-cache/src/lib/redis.ts:558' }}>
+
+The default time-to-live per entity cache, in seconds. Entity caches left out never expire their entries, unless
+a write (or a policy) sets one.
+
+</ApiMember>

@@ -1,0 +1,105 @@
+---
+title: 'Interface: Transport'
+description: 'A sink a Logger writes entries to. (@wolfstar/plugin-logger)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L49',
+		label: 'packages/plugin-logger/src/lib/types.ts:49'
+	}}
+	packageName="@wolfstar/plugin-logger"
+	packageHref="/documentation/api/plugin-logger"
+/>
+
+A sink a [Logger](/documentation/api/plugin-logger/classes/Logger) writes entries to.
+
+Transports are the extension point that replaces forking the package: implement this interface to
+add a custom sink, and pass the instance through `ClientLoggerOptions.transports`.
+
+<ApiSignature tokens={['interface Transport']} />
+
+<ApiHierarchy
+	implementedBy={[
+		[['ConsoleTransport', '/documentation/api/plugin-logger/classes/ConsoleTransport']],
+		[['SentryTransport', '/documentation/api/plugin-logger/classes/SentryTransport']]
+	]}
+/>
+
+## Properties
+
+### level?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly level?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L56', label: 'packages/plugin-logger/src/lib/types.ts:56' }}>
+
+The lowest `LogLevel` this transport accepts. Entries below it are dropped before
+[Transport.log](/documentation/api/plugin-logger/interfaces/Transport#log) is called, independently from the logger's own level.
+
+**Default**
+
+```ts
+undefined; // the logger's level applies
+```
+
+</ApiMember>
+
+## Methods
+
+### close()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L71', label: 'packages/plugin-logger/src/lib/types.ts:71' }}>
+
+<ApiSignature
+	tokens={['close(): void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Flushes and releases the underlying sink, when it holds one.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### log()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L66', label: 'packages/plugin-logger/src/lib/types.ts:66' }}>
+
+<ApiSignature
+	tokens={[
+		'log(payload: ',
+		['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload'],
+		'): void | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Writes an entry to the underlying sink.
+
+A rejected promise or a thrown error is caught by the logger and reported to `console.error`,
+so a broken sink never interrupts the caller.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload']]}>
+
+The entry to write.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['void | ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

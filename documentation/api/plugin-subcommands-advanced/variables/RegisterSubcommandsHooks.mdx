@@ -1,0 +1,44 @@
+---
+title: 'Variable: RegisterSubcommandsHooks'
+description: 'Optional hooks for parent commands that register chat-input commands imperatively via Command.registerApplicationCommands. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/hooks.ts#L15',
+		label: 'packages/plugin-subcommands-advanced/src/lib/utils/hooks.ts:15'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Optional hooks for parent commands that register chat-input commands imperatively
+via [Command.registerApplicationCommands](/documentation/api/plugin-subcommands-advanced/classes/Command). Prefer relying on the automatic
+wiring performed by [SubcommandsAdvancedLoaderStrategy](/documentation/api/plugin-subcommands-advanced/classes/SubcommandsAdvancedLoaderStrategy); these helpers are
+useful when you want to inspect or manually attach builders during registration.
+
+<ApiSignature
+	tokens={[
+		'const RegisterSubcommandsHooks: {\n  groups(piece: Command, context?: SlashCommandBuilder): void;\n  subcommands(piece: Command, context?: SlashCommandBuilder): void;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="groups" type={['(piece: Command, context?: SlashCommandBuilder) => void']}>
+
+Attach registered grouped subcommands onto matching groups on a `SlashCommandBuilder`.
+
+</ApiParam>
+
+<ApiParam name="subcommands" type={['(piece: Command, context?: SlashCommandBuilder) => void']}>
+
+Attach registered direct subcommands onto a `SlashCommandBuilder`.
+
+</ApiParam>
+
+</ApiParams>

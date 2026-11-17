@@ -1,0 +1,97 @@
+---
+title: 'Interface: ServerOptions'
+description: 'API reference for ServerOptions, an interface exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L73',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:73'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature tokens={['interface ServerOptions']} />
+
+## Properties
+
+### automaticallyConnect?
+
+<ApiMember kind="property" badges={['optional']} signature={['automaticallyConnect?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L108', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:108' }}>
+
+Whether to start listening automatically once the interaction webhook is up (during the
+`postListen` plugin hook).
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### listenOptions?
+
+<ApiMember kind="property" badges={['optional']} signature={['listenOptions?: ListenOptions']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L101', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:101' }}>
+
+Raw options forwarded to `Server#listen`.
+
+**Default**
+
+```ts
+{
+	port: 4000;
+}
+```
+
+</ApiMember>
+
+### maximumBodyLength?
+
+<ApiMember kind="property" badges={['optional']} signature={['maximumBodyLength?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L90', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:90' }}>
+
+The maximum request body size in bytes, enforced by the built-in `body` middleware. A route can
+lower or raise it with `RouteOptions.maximumBodyLength`.
+
+**Default**
+
+```ts
+1024 * 1024 * 50;
+```
+
+</ApiMember>
+
+### origin?
+
+<ApiMember kind="property" badges={['optional']} signature={['origin?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L83', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:83' }}>
+
+The value of the `Access-Control-Allow-Origin` header set by the built-in `headers` middleware.
+
+**Default**
+
+```ts
+'*';
+```
+
+</ApiMember>
+
+### prefix?
+
+<ApiMember kind="property" badges={['optional']} signature={['prefix?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L77', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:77' }}>
+
+A path segment prefix applied to every route, e.g. `/api`.
+
+</ApiMember>
+
+### server?
+
+<ApiMember kind="property" badges={['optional']} signature={['server?: ServerOptions<typeof ', ['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'], ', typeof ', ['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L95', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:95' }}>
+
+Raw options forwarded to `node:http`'s `createServer`.
+
+</ApiMember>

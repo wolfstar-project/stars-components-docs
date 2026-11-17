@@ -1,0 +1,68 @@
+---
+title: 'Function: getInstrumentationConfig()'
+description: 'The configuration of the automatic instrumentations that differs from their defaults. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/instrumentation.ts#L42',
+		label: 'lib/instrumentation.ts:42'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+The configuration of the automatic instrumentations that differs from their defaults.
+
+<ApiSignature
+	tokens={[
+		'getInstrumentationConfig(dsn?: string): {\n  @opentelemetry/instrumentation-http: { ignoreOutgoingRequestHook: (request: ',
+		['OutgoingRequestOptions', '/documentation/api/plugin-opentelemetry/interfaces/OutgoingRequestOptions'],
+		') => boolean };\n  @opentelemetry/instrumentation-undici: {\n    startSpanHook: (request: ',
+		['UndiciRequestLike', '/documentation/api/plugin-opentelemetry/interfaces/UndiciRequestLike'],
+		') => {\n      url.full: string;\n      url.path: string;\n    };\n  };\n}'
+	]}
+/>
+
+The configuration of the automatic instrumentations that differs from their defaults.
+
+The URL of a request to a webhook of Discord holds its token, and so does the answer to an interaction: the logs
+sent through the webhook of their channel, and the follow-ups of a command, would put a token that lets anybody
+post there in every span of `undici`, which go to every destination of the traces. The token is replaced before the
+span starts.
+
+The transport of Sentry sends each event with `https.request` and the key of the DSN in the query, so its requests
+are not traced at all ([isSentryEnvelopeRequest](/documentation/api/plugin-opentelemetry/functions/isSentryEnvelopeRequest)): their spans would hold the key and add a span to every
+error.
+
+Nor is the handshake of a WebSocket ([isWebSocketHandshake](/documentation/api/plugin-opentelemetry/functions/isWebSocketHandshake)): the gateway of Discord opens its connection with
+one, and the connection lasts for hours. What the bot does with the dispatches it receives runs in the context of
+that request, so every span of the gateway would end up in one trace that never closes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="dsn" type={['string']} optional>
+
+The DSN of Sentry, `SENTRY_DSN`.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'{\n  @opentelemetry/instrumentation-http: { ignoreOutgoingRequestHook: (request: ',
+		['OutgoingRequestOptions', '/documentation/api/plugin-opentelemetry/interfaces/OutgoingRequestOptions'],
+		') => boolean };\n  @opentelemetry/instrumentation-undici: {\n    startSpanHook: (request: ',
+		['UndiciRequestLike', '/documentation/api/plugin-opentelemetry/interfaces/UndiciRequestLike'],
+		') => {\n      url.full: string;\n      url.path: string;\n    };\n  };\n}'
+	]}
+/>
+
+</ApiParams>

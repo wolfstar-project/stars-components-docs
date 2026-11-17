@@ -1,0 +1,259 @@
+---
+title: 'Class: RouterBranch'
+description: 'API reference for RouterBranch, a class exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L9',
+		label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:9'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature tokens={['class RouterBranch']} />
+
+<ApiHierarchy extendedBy={[[['RouterRoot', '/documentation/api/plugin-api/classes/RouterRoot']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L38', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:38' }}>
+
+<ApiSignature
+	tokens={[
+		'new RouterBranch(\n  name: string,\n  dynamic: boolean,\n  parent: ',
+		['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'],
+		' | null\n): ',
+		['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']} />
+
+<ApiParam name="dynamic" type={['boolean']} />
+
+<ApiParam name="parent" type={[['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'], ' | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### dynamic
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly dynamic: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L18', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:18' }}>
+
+Whether or not the branch is dynamic.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L13', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:13' }}>
+
+The name of the branch.
+
+</ApiMember>
+
+### node
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly node: ', ['RouterNode', '/documentation/api/plugin-api/classes/RouterNode']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L28', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:28' }}>
+
+The node this branch is associated with.
+
+</ApiMember>
+
+### parent
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly parent: ', ['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L23', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:23' }}>
+
+The parent branch, if any.
+
+</ApiMember>
+
+### supportedMethods
+
+<ApiMember kind="property" signature={['supportedMethods: readonly ("GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE")[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L33', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:33' }}>
+
+The methods supported by the branch's node or any of its descendants.
+
+</ApiMember>
+
+## Accessors
+
+### children
+
+<ApiMember kind="accessor" signature={['get children(): ', ['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L54', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:54' }}>
+
+The branches directly below this one, static ones first.
+
+</ApiMember>
+
+### empty
+
+<ApiMember kind="accessor" signature={['get empty(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L61', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:61' }}>
+
+Whether or not the branch has no children.
+
+</ApiMember>
+
+### path
+
+<ApiMember kind="accessor" signature={['get path(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L47', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:47' }}>
+
+The path representing this branch, including every ancestor.
+
+</ApiMember>
+
+## Methods
+
+### find()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L71', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:71' }}>
+
+<ApiSignature tokens={['find(parts: readonly string[]): ', ['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'], ' | null']} />
+
+Tries to find the branch that answers a path. A branch whose node has no methods never answers.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="parts" type={['readonly string[]']}>
+
+The normalized parts of a path
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'], ' | null']}>
+
+The branch found, or null if not found
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### insertAt()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L97', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:97' }}>
+
+<ApiSignature
+	tokens={[
+		'protected insertAt(parts: readonly string[], index: number, route: ',
+		['Route', '/documentation/api/plugin-api/classes/Route'],
+		'): ',
+		['RouterNode', '/documentation/api/plugin-api/classes/RouterNode']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="parts" type={['readonly string[]']} />
+
+<ApiParam name="index" type={['number']} />
+
+<ApiParam name="route" type={[['Route', '/documentation/api/plugin-api/classes/Route']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RouterNode', '/documentation/api/plugin-api/classes/RouterNode']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### matches()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L78', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:78' }}>
+
+<ApiSignature tokens={['matches(name: string): boolean']} />
+
+Checks if the given name matches the branch.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### nodes()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L86', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:86' }}>
+
+<ApiSignature tokens={['nodes(): IterableIterator<', ['RouterNode', '/documentation/api/plugin-api/classes/RouterNode'], '>']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['IterableIterator<', ['RouterNode', '/documentation/api/plugin-api/classes/RouterNode'], '>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### removeAt()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L127', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:127' }}>
+
+<ApiSignature
+	tokens={[
+		'protected removeAt(parts: readonly string[], index: number, route: ',
+		['Route', '/documentation/api/plugin-api/classes/Route'],
+		'): boolean'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="parts" type={['readonly string[]']} />
+
+<ApiParam name="index" type={['number']} />
+
+<ApiParam name="route" type={[['Route', '/documentation/api/plugin-api/classes/Route']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterBranch.ts#L82', label: 'packages/plugin-api/src/lib/structures/router/RouterBranch.ts:82' }}>
+
+<ApiSignature tokens={['toString(): string']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>

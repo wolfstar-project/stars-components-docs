@@ -1,0 +1,61 @@
+---
+title: 'Interface: ChannelTarget'
+description: 'The subset of a channel payload the localization helpers need. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L99',
+		label: 'packages/plugin-i18next/src/lib/types.ts:99'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+The subset of a channel payload the localization helpers need. Every `APIChannel` member
+satisfies it.
+
+<ApiSignature tokens={['interface ChannelTarget']} />
+
+A channel payload carries no locale of its own, so the language is resolved from
+[InternationalizationHandler.fetchLanguage](/documentation/api/plugin-i18next/classes/InternationalizationHandler#fetchlanguage) and then from the configured default.
+
+## Properties
+
+### guild_id?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild_id?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L102',
+		label: 'packages/plugin-i18next/src/lib/types.ts:102'
+	}}
+/>
+
+### id
+
+<ApiMember
+	kind="property"
+	signature={['id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L100',
+		label: 'packages/plugin-i18next/src/lib/types.ts:100'
+	}}
+/>
+
+### type
+
+<ApiMember
+	kind="property"
+	signature={['type: ', ['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L101',
+		label: 'packages/plugin-i18next/src/lib/types.ts:101'
+	}}
+/>

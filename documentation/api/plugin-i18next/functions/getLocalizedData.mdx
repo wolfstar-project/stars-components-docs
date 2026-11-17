@@ -1,0 +1,62 @@
+---
+title: 'Function: getLocalizedData()'
+description: 'Gets the value and the localizations from a language key. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L511',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:511'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Gets the value and the localizations from a language key.
+
+<ApiSignature
+	tokens={[
+		'getLocalizedData<const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', KPrefix = undefined>(key: string): ',
+		['LocalizedData', '/documentation/api/plugin-i18next/interfaces/LocalizedData']
+	]}
+/>
+
+Gets the value and the localizations from a language key.
+
+This should be called **strictly** after loading the locales.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="KPrefix" defaultValue="undefined" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The key to get the localizations from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['LocalizedData', '/documentation/api/plugin-i18next/interfaces/LocalizedData']]}>
+
+The retrieved data.
+
+</ApiParam>
+
+</ApiParams>

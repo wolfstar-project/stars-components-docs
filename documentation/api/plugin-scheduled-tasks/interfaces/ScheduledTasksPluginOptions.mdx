@@ -1,0 +1,126 @@
+---
+title: 'Interface: ScheduledTasksPluginOptions'
+description: 'The options the plugin factory and the module accept: ScheduledTaskHandlerOptions, all optional because ClientOptions.tasks is merged over them. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L65',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:65'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+The options the plugin factory and the module accept: [ScheduledTaskHandlerOptions](/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions), all optional because
+`ClientOptions.tasks` is merged over them.
+
+<ApiSignature
+	tokens={[
+		'interface ScheduledTasksPluginOptions extends ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['ScheduledTaskHandlerOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+			'<',
+			['ScheduledTaskHandlerOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions'],
+			'>'
+		]
+	]}
+/>
+
+## Properties
+
+### bull?
+
+<ApiMember kind="property" badges={['optional']} signature={['bull?: QueueOptions<ConnectionOptions>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L16', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:16' }} inheritedFrom={[['Partial.bull', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions#bull']]}>
+
+The BullMQ queue options. The worker shares its `connection`, `prefix`, and the other options common to both.
+
+</ApiMember>
+
+### loadErrorListeners?
+
+<ApiMember kind="property" badges={['optional']} signature={['loadErrorListeners?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L70', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:70' }}>
+
+If the pre-included scheduled task error listeners should be loaded.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### queue?
+
+<ApiMember kind="property" badges={['optional']} signature={['queue?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L12', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:12' }} inheritedFrom={[['Partial.queue', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions#queue']]}>
+
+The name of the BullMQ queue.
+
+**Default**
+
+```ts
+'scheduled-tasks';
+```
+
+</ApiMember>
+
+### ready?
+
+<ApiMember kind="property" badges={['optional']} signature={['ready?: () => boolean | ', ['PromiseLike', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean | void>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L29', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:29' }} inheritedFrom={[['Partial.ready', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions#ready']]}>
+
+Whether the app is ready to run the tasks that set the `waitForReady` task option: `true` or a promise
+that resolves (to anything but `false`) means it is. A job waits for it before its task runs.
+
+A function cannot be written in `stars.config`, so this is for `scheduledTasks()` and `ClientOptions.tasks`.
+
+**Example**
+
+```ts
+scheduledTasks({ ready: () => container.gatewayClient.isClientReady() });
+```
+
+</ApiMember>
+
+### readyDelay?
+
+<ApiMember kind="property" badges={['optional']} signature={['readyDelay?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L43', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:43' }} inheritedFrom={[['Partial.readyDelay', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions#readydelay']]}>
+
+How long (in milliseconds) a job that timed out waiting for the app is pushed back before it is picked up again.
+
+**Default**
+
+```ts
+30_000;
+```
+
+</ApiMember>
+
+### readyTimeout?
+
+<ApiMember kind="property" badges={['optional']} signature={['readyTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L38', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:38' }} inheritedFrom={[['Partial.readyTimeout', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions#readytimeout']]}>
+
+How long (in milliseconds) a job waits for [ScheduledTaskHandlerOptions.ready](/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions#ready) before it is delayed.
+
+The worker runs one job at a time, so a waiting job holds back the others for up to this long.
+
+**Default**
+
+```ts
+30_000;
+```
+
+</ApiMember>

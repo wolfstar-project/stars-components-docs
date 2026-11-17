@@ -1,0 +1,71 @@
+---
+title: 'Function: applyDescriptionLocalizedBuilder()'
+description: 'Applies the localized descriptions on the builder, calling setDescription and setDescriptionLocalizations. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L548',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:548'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Applies the localized descriptions on the builder, calling `setDescription` and
+`setDescriptionLocalizations`.
+
+<ApiSignature
+	tokens={[
+		'applyDescriptionLocalizedBuilder<T extends ',
+		['BuilderWithDescription', '/documentation/api/plugin-i18next/interfaces/BuilderWithDescription'],
+		', const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', KPrefix = undefined>(\n  builder: T,\n  key: string\n): T'
+	]}
+/>
+
+Applies the localized descriptions on the builder, calling `setDescription` and
+`setDescriptionLocalizations`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" type={['extends ', ['BuilderWithDescription', '/documentation/api/plugin-i18next/interfaces/BuilderWithDescription']]} />
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="KPrefix" defaultValue="undefined" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="builder" type={['T']}>
+
+The builder to apply the localizations to.
+
+</ApiParam>
+
+<ApiParam name="key" type={['string']}>
+
+The key to get the localizations from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['T']}>
+
+The updated builder.
+
+</ApiParam>
+
+</ApiParams>

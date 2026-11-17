@@ -1,0 +1,49 @@
+---
+title: 'Function: getSentryOtlpEndpoint()'
+description: 'The OTLP traces endpoint of the Sentry project of a DSN, and the header that authenticates an export to it. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L67',
+		label: 'lib/dsn.ts:67'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+The OTLP traces endpoint of the Sentry project of a DSN, and the header that authenticates an export to it.
+
+<ApiSignature
+	tokens={[
+		'getSentryOtlpEndpoint(dsn: string | undefined): {\n  headers: ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, string>;\n  url: string;\n} | undefined'
+	]}
+/>
+
+The OTLP traces endpoint of the Sentry project of a DSN, and the header that authenticates an export to it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="dsn" type={['string | undefined']}>
+
+The DSN of the Sentry project.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['{\n  headers: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>;\n  url: string;\n} | undefined']}>
+
+The endpoint, `undefined` when the DSN cannot be read or holds no public key.
+
+</ApiParam>
+
+</ApiParams>

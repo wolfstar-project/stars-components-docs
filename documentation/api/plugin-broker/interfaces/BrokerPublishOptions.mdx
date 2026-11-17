@@ -1,0 +1,46 @@
+---
+title: 'Interface: BrokerPublishOptions'
+description: 'API reference for BrokerPublishOptions, an interface exported by @wolfstar/plugin-broker.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L29',
+		label: 'packages/plugin-broker/src/lib/broker.ts:29'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+<ApiSignature tokens={['interface BrokerPublishOptions']} />
+
+## Properties
+
+### sequence?
+
+<ApiMember kind="property" badges={['optional']} signature={['sequence?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L42', label: 'packages/plugin-broker/src/lib/broker.ts:42' }}>
+
+The sequence number of the dispatch on its shard, handed to listeners as [BrokerMessage.sequence](/documentation/api/plugin-broker/interfaces/BrokerMessage#sequence).
+
+</ApiMember>
+
+### shard?
+
+<ApiMember kind="property" badges={['optional']} signature={['shard?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L38', label: 'packages/plugin-broker/src/lib/broker.ts:38' }}>
+
+The shard the event came from, handed to listeners as [BrokerMessage.shard](/documentation/api/plugin-broker/interfaces/BrokerMessage#shard).
+
+</ApiMember>
+
+### state?
+
+<ApiMember kind="property" badges={['optional']} signature={['state?: unknown']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L34', label: 'packages/plugin-broker/src/lib/broker.ts:34' }}>
+
+Context published next to the payload, encoded with the configured codec, and handed to listeners as
+[BrokerMessage.state](/documentation/api/plugin-broker/interfaces/BrokerMessage#state).
+
+</ApiMember>

@@ -1,0 +1,65 @@
+---
+title: 'Function: createSelectMenuChoiceName()'
+description: 'Constructs a select menu option with a localized name, spreading any extra value on top. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L638',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:638'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Constructs a select menu option with a localized `name`, spreading any extra value on top.
+
+<ApiSignature
+	tokens={[
+		'createSelectMenuChoiceName<V extends object, const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', KPrefix = undefined>(\n  key: string,\n  value?: V\n): ',
+		['Result', '/documentation/api/plugin-i18next/namespaces/createSelectMenuChoiceName/type-aliases/Result'],
+		'<V>'
+	]}
+/>
+
+Constructs a select menu option with a localized `name`, spreading any extra value on top.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="V" type={['extends object']} />
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="KPrefix" defaultValue="undefined" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The i18next key for the name of the select option.
+
+</ApiParam>
+
+<ApiParam name="value" type={['V']} optional>
+
+The additional select option properties.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Result', '/documentation/api/plugin-i18next/namespaces/createSelectMenuChoiceName/type-aliases/Result'], '<V>']} />
+
+</ApiParams>

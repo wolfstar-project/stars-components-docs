@@ -1,0 +1,51 @@
+---
+title: 'Function: attachCacheToGateway()'
+description: 'Writes gateway dispatches into a cache. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/gateway.ts#L26',
+		label: 'packages/plugin-cache/src/lib/gateway.ts:26'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Writes gateway dispatches into a cache. Call the returned function to stop listening.
+Use this when a gateway has no GatewayClient managing its dispatch queue.
+
+<ApiSignature
+	tokens={[
+		'attachCacheToGateway(\n  gateway: ',
+		['GatewayDispatchSource', '/documentation/api/plugin-cache/interfaces/GatewayDispatchSource'],
+		',\n  cache: ',
+		['Cache', '/documentation/api/plugin-cache/interfaces/Cache'],
+		',\n  options: ',
+		['CacheGatewayOptions', '/documentation/api/plugin-cache/interfaces/CacheGatewayOptions'],
+		' = {}\n): () => void'
+	]}
+/>
+
+Writes gateway dispatches into a cache. Call the returned function to stop listening.
+Use this when a gateway has no GatewayClient managing its dispatch queue.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="gateway" type={[['GatewayDispatchSource', '/documentation/api/plugin-cache/interfaces/GatewayDispatchSource']]} />
+
+<ApiParam name="cache" type={[['Cache', '/documentation/api/plugin-cache/interfaces/Cache']]} />
+
+<ApiParam name="options" type={[['CacheGatewayOptions', '/documentation/api/plugin-cache/interfaces/CacheGatewayOptions']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']} />
+
+</ApiParams>

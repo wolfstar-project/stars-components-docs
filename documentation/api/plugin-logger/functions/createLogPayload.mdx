@@ -1,0 +1,64 @@
+---
+title: 'Function: createLogPayload()'
+description: 'Builds the LogPayload handed to every transport. (@wolfstar/plugin-logger)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/payload.ts#L20',
+		label: 'packages/plugin-logger/src/lib/payload.ts:20'
+	}}
+	packageName="@wolfstar/plugin-logger"
+	packageHref="/documentation/api/plugin-logger"
+/>
+
+Builds the [LogPayload](/documentation/api/plugin-logger/interfaces/LogPayload) handed to every transport.
+
+`message`, `error` and `context` are derived from `values` the first time a transport reads them
+and then memoised, so a logger that only has a [ConsoleTransport](/documentation/api/plugin-logger/classes/ConsoleTransport) never pays for them.
+
+<ApiSignature
+	tokens={[
+		'createLogPayload(\n  level: LogLevel,\n  values: readonly unknown[],\n  timestamp: ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		' = ...\n): ',
+		['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload']
+	]}
+/>
+
+Builds the [LogPayload](/documentation/api/plugin-logger/interfaces/LogPayload) handed to every transport.
+
+`message`, `error` and `context` are derived from `values` the first time a transport reads them
+and then memoised, so a logger that only has a [ConsoleTransport](/documentation/api/plugin-logger/classes/ConsoleTransport) never pays for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="level" type={['LogLevel']}>
+
+The level the entry was written at.
+
+</ApiParam>
+
+<ApiParam name="values" type={['readonly unknown[]']}>
+
+The values passed to the logger method.
+
+</ApiParam>
+
+<ApiParam name="timestamp" type={[['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]} defaultValue="...">
+
+The moment the entry was created.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload']]} />
+
+</ApiParams>

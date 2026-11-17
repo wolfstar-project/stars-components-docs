@@ -1,0 +1,144 @@
+---
+title: 'Class: BrokerListener'
+description: 'A Listener bound to one of the BrokerEvents events of a BrokerConsumer, with strongly typed payloads. (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerListener.ts#L26',
+		label: 'packages/plugin-broker/src/BrokerListener.ts:26'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+A `Listener` bound to one of the [BrokerEvents](/documentation/api/plugin-broker/interfaces/BrokerEvents) events of a [BrokerConsumer](/documentation/api/plugin-broker/classes/BrokerConsumer), with strongly
+typed payloads. It is loaded from the `listeners` directory by `client.load()` like any other listener.
+
+<ApiSignature
+	tokens={[
+		'abstract class BrokerListener<Event extends ',
+		['BrokerEventName', '/documentation/api/plugin-broker/type-aliases/BrokerEventName'],
+		' = ',
+		['BrokerEventName', '/documentation/api/plugin-broker/type-aliases/BrokerEventName'],
+		'> extends Listener<',
+		['BrokerListener.ResolvedOptions', '/documentation/api/plugin-broker/namespaces/BrokerListener/interfaces/ResolvedOptions'],
+		'<Event>>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			'Listener<',
+			['BrokerListener.ResolvedOptions', '/documentation/api/plugin-broker/namespaces/BrokerListener/interfaces/ResolvedOptions'],
+			'<Event>>'
+		]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Event"
+	type={['extends ', ['BrokerEventName', '/documentation/api/plugin-broker/type-aliases/BrokerEventName']]}
+	defaultValue="BrokerEventName"
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+// listeners/log-messages.ts
+import { BrokerListener, type BrokerMessage } from '@wolfstar/plugin-broker';
+
+export class LogMessagesListener extends BrokerListener<'messageCreate'> {
+	public constructor(context: BrokerListener.LoaderContext) {
+		super(context, { event: 'messageCreate' });
+	}
+
+	public override run(payload: BrokerEvents['messageCreate'], message: BrokerMessage) {
+		console.log(`[${message.id}] ${payload}`);
+	}
+}
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerListener.ts#L34', label: 'packages/plugin-broker/src/BrokerListener.ts:34' }}>
+
+<ApiSignature
+	tokens={[
+		'new BrokerListener<Event extends never = never>(\n  context: LoaderContext,\n  options: ',
+		['Options', '/documentation/api/plugin-broker/namespaces/BrokerListener/interfaces/Options'],
+		'<Event>\n): ',
+		['BrokerListener', '/documentation/api/plugin-broker/classes/BrokerListener'],
+		'<Event>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Event" type={['extends never']} defaultValue="never" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={['LoaderContext']} />
+
+<ApiParam name="options" type={[['Options', '/documentation/api/plugin-broker/namespaces/BrokerListener/interfaces/Options'], '<Event>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### once
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly once: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerListener.ts#L32', label: 'packages/plugin-broker/src/BrokerListener.ts:32' }}>
+
+Whether this listener unloads itself after its first run.
+
+</ApiMember>
+
+## Methods
+
+### run()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerListener.ts#L54', label: 'packages/plugin-broker/src/BrokerListener.ts:54' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract run(payload: ',
+		['BrokerEvents', '/documentation/api/plugin-broker/interfaces/BrokerEvents'],
+		'[Event], message: ',
+		['BrokerMessage', '/documentation/api/plugin-broker/interfaces/BrokerMessage'],
+		'): unknown'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['BrokerEvents', '/documentation/api/plugin-broker/interfaces/BrokerEvents'], '[Event]']} />
+
+<ApiParam name="message" type={[['BrokerMessage', '/documentation/api/plugin-broker/interfaces/BrokerMessage']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

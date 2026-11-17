@@ -1,0 +1,43 @@
+---
+title: 'Function: wireParentSubcommands()'
+description: 'Install delegate methods on the parent and rebuild its chat-input resolver + router so modular child command classes handle each subcommand. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/wiring.ts#L36',
+		label: 'packages/plugin-subcommands-advanced/src/lib/utils/wiring.ts:36'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Install delegate methods on the parent and rebuild its chat-input resolver + router
+so modular child command classes handle each subcommand.
+
+Must run after every command piece has been constructed (e.g. from
+`CommandLoaderStrategy.onLoad`), so the registries contain every child.
+
+Delegates are installed on the parent **prototype** so reconstructed instances
+(Store `loadAll` rebuilds pieces) still satisfy `CommandRouter`'s method checks.
+
+<ApiSignature tokens={['wireParentSubcommands(parent: Command): void']} />
+
+Install delegate methods on the parent and rebuild its chat-input resolver + router
+so modular child command classes handle each subcommand.
+
+Must run after every command piece has been constructed (e.g. from
+`CommandLoaderStrategy.onLoad`), so the registries contain every child.
+
+Delegates are installed on the parent **prototype** so reconstructed instances
+(Store `loadAll` rebuilds pieces) still satisfy `CommandRouter`'s method checks.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="parent" type={['Command']} />
+
+</ApiParams>

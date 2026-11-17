@@ -1,0 +1,33 @@
+---
+title: 'Type Alias: Commands'
+description: 'The commands a handler answers, by name. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/commands.ts#L14',
+		label: 'packages/plugin-sharder/src/util/commands.ts:14'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The commands a handler answers, by name.
+
+<ApiSignature
+	tokens={[
+		'type Commands<Context = unknown> = ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, (data: any, context: Context & { signal: AbortSignal }) => unknown>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Context" defaultValue="unknown" />
+
+</ApiParams>

@@ -1,0 +1,82 @@
+---
+title: 'Class: Command'
+description: 'Command class that can register itself as a modular subcommand (or grouped subcommand) of a parent Subcommand / chat-input command. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/structures/command.ts#L37',
+		label: 'packages/plugin-subcommands-advanced/src/lib/structures/command.ts:37'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Command class that can register itself as a modular subcommand (or grouped subcommand)
+of a parent [Subcommand](/documentation/api/plugin-subcommands-advanced/classes/Subcommand) / chat-input command.
+
+<ApiSignature tokens={['class Command<Options extends AdvancedCommandOptions = AdvancedCommandOptions> extends Command<Options>']} />
+
+<ApiHierarchy extends={[['Command<Options>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends AdvancedCommandOptions']} defaultValue="AdvancedCommandOptions" />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { Command } from '@wolfstar/plugin-subcommands-advanced';
+
+export class PingCommand extends Command {
+	public constructor(context: Command.LoaderContext, options: Command.Options) {
+		super(context, {
+			...options,
+			registerSubCommand: {
+				parentCommandName: 'utils',
+				slashSubcommand: (builder) => builder.setName('ping').setDescription('Ping!')
+			}
+		});
+	}
+
+	public override chatInputRun(interaction: Command.ChatInputInteraction) {
+		return interaction.reply({ content: 'Pong!' });
+	}
+}
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/structures/command.ts#L40', label: 'packages/plugin-subcommands-advanced/src/lib/structures/command.ts:40' }}>
+
+<ApiSignature
+	tokens={[
+		'new Command<Options extends AdvancedCommandOptions = AdvancedCommandOptions>(\n  context: LoaderContext,\n  options: Options = ...\n): ',
+		['Command', '/documentation/api/plugin-subcommands-advanced/classes/Command'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends AdvancedCommandOptions']} defaultValue="AdvancedCommandOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={['LoaderContext']} />
+
+<ApiParam name="options" type={['Options']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>

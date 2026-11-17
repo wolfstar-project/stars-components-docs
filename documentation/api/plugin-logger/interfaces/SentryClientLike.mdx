@@ -1,0 +1,147 @@
+---
+title: 'Interface: SentryClientLike'
+description: "The subset of Sentry's API SentryTransport relies on. (@wolfstar/plugin-logger)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L204',
+		label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:204'
+	}}
+	packageName="@wolfstar/plugin-logger"
+	packageHref="/documentation/api/plugin-logger"
+/>
+
+The subset of Sentry's API [SentryTransport](/documentation/api/plugin-logger/classes/SentryTransport) relies on. Declared structurally so no
+Sentry SDK type import is needed. Only the capture methods are required; the rest unlock the
+optional signals.
+
+<ApiSignature tokens={['interface SentryClientLike']} />
+
+## Properties
+
+### logger?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['logger?: ', ['SentryLoggerLike', '/documentation/api/plugin-logger/type-aliases/SentryLoggerLike']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L209',
+		label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:209'
+	}}
+/>
+
+## Methods
+
+### addBreadcrumb()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L207', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:207' }}>
+
+<ApiSignature
+	tokens={['addBreadcrumb(breadcrumb: ', ['SentryBreadcrumb', '/documentation/api/plugin-logger/interfaces/SentryBreadcrumb'], '): void']}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="breadcrumb" type={[['SentryBreadcrumb', '/documentation/api/plugin-logger/interfaces/SentryBreadcrumb']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### captureException()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L205', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:205' }}>
+
+<ApiSignature
+	tokens={[
+		'captureException(exception: unknown, hint?: ',
+		['SentryCaptureHint', '/documentation/api/plugin-logger/interfaces/SentryCaptureHint'],
+		'): string'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="exception" type={['unknown']} />
+
+<ApiParam name="hint" type={[['SentryCaptureHint', '/documentation/api/plugin-logger/interfaces/SentryCaptureHint']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### captureMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L206', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:206' }}>
+
+<ApiSignature
+	tokens={[
+		'captureMessage(\n  message: string,\n  captureContext?: ',
+		['SentrySeverity', '/documentation/api/plugin-logger/type-aliases/SentrySeverity'],
+		' | ',
+		['SentryCaptureHint', '/documentation/api/plugin-logger/interfaces/SentryCaptureHint'],
+		'\n): string'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="message" type={['string']} />
+
+<ApiParam
+	name="captureContext"
+	type={[
+		['SentrySeverity', '/documentation/api/plugin-logger/type-aliases/SentrySeverity'],
+		' | ',
+		['SentryCaptureHint', '/documentation/api/plugin-logger/interfaces/SentryCaptureHint']
+	]}
+	optional
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### flush()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L208', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:208' }}>
+
+<ApiSignature
+	tokens={[
+		'flush(timeout?: number): ',
+		['PromiseLike', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="timeout" type={['number']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PromiseLike', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>

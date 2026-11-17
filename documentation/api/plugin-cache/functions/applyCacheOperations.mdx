@@ -1,0 +1,64 @@
+---
+title: 'Function: applyCacheOperations()'
+description: 'Applies a list of CacheOperations to a Cache, sequentially and in order. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L834',
+		label: 'packages/plugin-cache/src/lib/operations.ts:834'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Applies a list of [CacheOperation](/documentation/api/plugin-cache/type-aliases/CacheOperation)s to a [Cache](/documentation/api/plugin-cache/interfaces/Cache), sequentially and in order.
+
+<ApiSignature
+	tokens={[
+		'applyCacheOperations(\n  cache: ',
+		['Cache', '/documentation/api/plugin-cache/interfaces/Cache'],
+		',\n  operations: readonly ',
+		['CacheOperation', '/documentation/api/plugin-cache/type-aliases/CacheOperation'],
+		'[]\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['CacheOperationResult', '/documentation/api/plugin-cache/interfaces/CacheOperationResult'],
+		'[]>'
+	]}
+/>
+
+Applies a list of [CacheOperation](/documentation/api/plugin-cache/type-aliases/CacheOperation)s to a [Cache](/documentation/api/plugin-cache/interfaces/Cache), sequentially and in order.
+
+Operations on an entity cache the cache does not hold are skipped, and so are the scans (`deletePrefix` and
+`deleteWhere` without a guild index) of an entity cache that cannot enumerate its entries.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="cache" type={[['Cache', '/documentation/api/plugin-cache/interfaces/Cache']]}>
+
+The cache to mutate.
+
+</ApiParam>
+
+<ApiParam name="operations" type={['readonly ', ['CacheOperation', '/documentation/api/plugin-cache/type-aliases/CacheOperation'], '[]']}>
+
+The operations to apply, usually created by [createCacheOperations](/documentation/api/plugin-cache/functions/createCacheOperations).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['CacheOperationResult', '/documentation/api/plugin-cache/interfaces/CacheOperationResult'], '[]>']}>
+
+One result per entry written or deleted, in order. `deleteGuild` deletions are not listed.
+
+</ApiParam>
+
+</ApiParams>

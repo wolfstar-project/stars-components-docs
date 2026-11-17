@@ -1,0 +1,293 @@
+---
+title: 'Interface: BrokerRedisClientLike'
+description: 'The subset of the ioredis client API the broker relies on for Redis Streams. (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L6',
+		label: 'packages/plugin-broker/src/lib/redis.ts:6'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+The subset of the [`ioredis`](https://github.com/redis/ioredis) client API the broker relies on for Redis
+Streams. An `ioredis` `Redis` or `Cluster` instance satisfies it, as can any other client exposing the same
+commands.
+
+<ApiSignature tokens={['interface BrokerRedisClientLike']} />
+
+## Methods
+
+### xack()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L37', label: 'packages/plugin-broker/src/lib/redis.ts:37' }}>
+
+<ApiSignature
+	tokens={[
+		'xack(key: string, group: string, ...ids: string[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="group" type={['string']} />
+
+<ApiParam name="ids" type={['string[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### xadd()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L7', label: 'packages/plugin-broker/src/lib/redis.ts:7' }}>
+
+<ApiSignature
+	tokens={[
+		'xadd(key: string, ...args: (string | number)[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string | null>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="args" type={['(string | number)[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string | null>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### xautoclaim()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L41', label: 'packages/plugin-broker/src/lib/redis.ts:41' }}>
+
+<ApiSignature
+	tokens={[
+		'xautoclaim(\n  key: string,\n  group: string,\n  consumer: string,\n  minIdleTime: number,\n  start: string,\n  countToken: "COUNT",\n  count: number\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown[]>'
+	]}
+/>
+
+Resolves to `[nextCursor, entries, deletedIds]` (`deletedIds` since Redis 7), each entry being `[id, fields]`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="group" type={['string']} />
+
+<ApiParam name="consumer" type={['string']} />
+
+<ApiParam name="minIdleTime" type={['number']} />
+
+<ApiParam name="start" type={['string']} />
+
+<ApiParam name="countToken" type={['"COUNT"']} />
+
+<ApiParam name="count" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown[]>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### xgroup()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L8', label: 'packages/plugin-broker/src/lib/redis.ts:8' }}>
+
+<ApiSignature
+	tokens={[
+		'xgroup(\n  subcommand: "CREATE",\n  key: string,\n  group: string,\n  id: "$",\n  mkstream: "MKSTREAM"\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="subcommand" type={['"CREATE"']} />
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="group" type={['string']} />
+
+<ApiParam name="id" type={['"$"']} />
+
+<ApiParam name="mkstream" type={['"MKSTREAM"']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### xpending()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L53', label: 'packages/plugin-broker/src/lib/redis.ts:53' }}>
+
+<ApiSignature
+	tokens={[
+		'xpending(\n  key: string,\n  group: string,\n  start: string,\n  end: string,\n  count: number\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown[]>'
+	]}
+/>
+
+The extended form, resolving to one `[id, consumer, idleTime, deliveries]` tuple per pending entry.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="group" type={['string']} />
+
+<ApiParam name="start" type={['string']} />
+
+<ApiParam name="end" type={['string']} />
+
+<ApiParam name="count" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown[]>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### xreadgroup()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L15', label: 'packages/plugin-broker/src/lib/redis.ts:15' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'xreadgroup(\n  groupToken: "GROUP",\n  group: string,\n  consumer: string,\n  countToken: "COUNT",\n  count: number,\n  blockToken: "BLOCK",\n  block: number,\n  streamsToken: "STREAMS",\n  stream: string,\n  cursor: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<[key: string, entries: [id: string, fields: string[] | null][]][] | null>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="groupToken" type={['"GROUP"']} />
+
+<ApiParam name="group" type={['string']} />
+
+<ApiParam name="consumer" type={['string']} />
+
+<ApiParam name="countToken" type={['"COUNT"']} />
+
+<ApiParam name="count" type={['number']} />
+
+<ApiParam name="blockToken" type={['"BLOCK"']} />
+
+<ApiParam name="block" type={['number']} />
+
+<ApiParam name="streamsToken" type={['"STREAMS"']} />
+
+<ApiParam name="stream" type={['string']} />
+
+<ApiParam name="cursor" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<[key: string, entries: [id: string, fields: string[] | null][]][] | null>'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'xreadgroup(\n  groupToken: "GROUP",\n  group: string,\n  consumer: string,\n  countToken: "COUNT",\n  count: number,\n  streamsToken: "STREAMS",\n  stream: string,\n  cursor: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<[key: string, entries: [id: string, fields: string[] | null][]][] | null>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="groupToken" type={['"GROUP"']} />
+
+<ApiParam name="group" type={['string']} />
+
+<ApiParam name="consumer" type={['string']} />
+
+<ApiParam name="countToken" type={['"COUNT"']} />
+
+<ApiParam name="count" type={['number']} />
+
+<ApiParam name="streamsToken" type={['"STREAMS"']} />
+
+<ApiParam name="stream" type={['string']} />
+
+<ApiParam name="cursor" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<[key: string, entries: [id: string, fields: string[] | null][]][] | null>'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>

@@ -1,0 +1,55 @@
+---
+title: 'Interface: MemoryEntityCacheOptions'
+description: 'The options of a MemoryEntityCache, besides its maxSize. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L23',
+		label: 'packages/plugin-cache/src/lib/memory.ts:23'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+The options of a [MemoryEntityCache](/documentation/api/plugin-cache/classes/MemoryEntityCache), besides its `maxSize`.
+
+<ApiSignature tokens={['interface MemoryEntityCacheOptions']} />
+
+## Properties
+
+### sweepInterval?
+
+<ApiMember kind="property" badges={['optional']} signature={['sweepInterval?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L40', label: 'packages/plugin-cache/src/lib/memory.ts:40' }}>
+
+How often, in milliseconds, to drop the expired entries, `null` to only drop them when they are read. Without
+it, expired entries nothing reads anymore stay in memory until they are evicted or the cache is cleared.
+
+The timer does not keep the process alive, and [MemoryEntityCache.dispose](/documentation/api/plugin-cache/classes/MemoryEntityCache#dispose) stops it.
+
+**Default**
+
+```ts
+null;
+```
+
+</ApiMember>
+
+### ttl?
+
+<ApiMember kind="property" badges={['optional']} signature={['ttl?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L30', label: 'packages/plugin-cache/src/lib/memory.ts:30' }}>
+
+The default time-to-live of every entry, in milliseconds, `null` for entries to never expire. Each write can
+override it, see [CacheSetOptions.ttl](/documentation/api/plugin-cache/interfaces/CacheSetOptions#ttl).
+
+**Default**
+
+```ts
+null;
+```
+
+</ApiMember>

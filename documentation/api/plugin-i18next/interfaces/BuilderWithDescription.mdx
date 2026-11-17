@@ -1,0 +1,81 @@
+---
+title: 'Interface: BuilderWithDescription'
+description: 'API reference for BuilderWithDescription, an interface exported by @wolfstar/plugin-i18next.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L309',
+		label: 'packages/plugin-i18next/src/lib/types.ts:309'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+<ApiSignature tokens={['interface BuilderWithDescription']} />
+
+## Methods
+
+### setDescription()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L310', label: 'packages/plugin-i18next/src/lib/types.ts:310' }}>
+
+<ApiSignature tokens={['setDescription(description: string): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="description" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setDescriptionLocalizations()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L311', label: 'packages/plugin-i18next/src/lib/types.ts:311' }}>
+
+<ApiSignature
+	tokens={[
+		'setDescriptionLocalizations(localizedDescriptions: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="localizedDescriptions"
+	type={[
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

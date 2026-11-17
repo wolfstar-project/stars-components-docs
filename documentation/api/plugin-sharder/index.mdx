@@ -1,0 +1,497 @@
+---
+title: '@wolfstar/plugin-sharder'
+description: 'Generated API reference for @wolfstar/plugin-sharder: spread gateway shards across processes, workers, and machines.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-sharder"
+	version="0.5.0"
+	guideHref="/documentation/packages/plugin-sharder"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-sharder" />
+
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'BrotliTransformer',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/BrotliTransformer',
+			summary: 'Compresses messages with Brotli, smaller than gzip at a higher CPU cost.'
+		},
+		{
+			name: 'ClusterStrategy',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ClusterStrategy',
+			summary: 'Spawns every shard as a node:cluster worker.'
+		},
+		{
+			name: 'ForkStrategy',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ForkStrategy',
+			summary: 'Spawns every shard as a child process with childprocess.fork.'
+		},
+		{
+			name: 'GzipTransformer',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/GzipTransformer',
+			summary: 'Compresses messages with gzip.'
+		},
+		{
+			name: 'JsonMessageHandler',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/JsonMessageHandler',
+			summary: 'Serializes packets as JSON: every body must be JSON-serializable.'
+		},
+		{
+			name: 'NetworkStrategy',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/NetworkStrategy',
+			summary: "Spawns shards on other machines, through ShardManagerProxys connecting to the manager: the sharder RFC's network strategy."
+		},
+		{
+			name: 'ProcessStrategy',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ProcessStrategy',
+			summary:
+				'The base of ForkStrategy and ClusterStrategy: a shard is a process with an IPC channel, using the advanced serialization so binary data (an…'
+		},
+		{
+			name: 'RawMessageHandler',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/RawMessageHandler',
+			summary:
+				'Passes packets as they are, for channels that clone values themselves: worker threads, and processes with the advanced IPC serialization.'
+		},
+		{
+			name: 'ShardChannel',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardChannel',
+			summary:
+				"The manager's channel to one shard: a process, cluster worker, worker thread, or remote process, connecting some gateway shards."
+		},
+		{
+			name: 'ShardClient',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardClient',
+			summary: "The shard's side of the sharder: it tells the manager its status, and messages the manager and the other shards."
+		},
+		{
+			name: 'ShardManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardManager',
+			summary: 'Spawns shards, keeps them alive, and carries messages between them.'
+		},
+		{
+			name: 'ShardManagerProxy',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardManagerProxy',
+			summary: "Runs shards for remote ShardManagers using a NetworkStrategy: the sharder RFC's ShardManagerProxy."
+		},
+		{
+			name: 'ShardPing',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardPing',
+			summary: 'Pings a shard, measures its latency, and notices when it stops answering.'
+		},
+		{
+			name: 'ShardRequestError',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardRequestError',
+			summary: 'The handler of a request threw, or there was none: the error is the remote one, rebuilt.'
+		},
+		{
+			name: 'ShardRequestTimeoutError',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardRequestTimeoutError',
+			summary: 'A request got no reply in time.'
+		},
+		{
+			name: 'ShardSpawnError',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardSpawnError',
+			summary: 'A shard failed before it was ready: its process exited, or its worker could not start.'
+		},
+		{
+			name: 'ShardUnavailableError',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/ShardUnavailableError',
+			summary: 'A shard stopped, is not ready in time, or does not exist.'
+		},
+		{
+			name: 'V8MessageHandler',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/V8MessageHandler',
+			summary: 'Serializes packets with node:v8, which keeps Maps, Sets, Dates, BigInts, typed arrays, and circular references.'
+		},
+		{
+			name: 'WorkerStrategy',
+			kind: 'class',
+			href: '/documentation/api/plugin-sharder/classes/WorkerStrategy',
+			summary: "Spawns every shard as a worker thread of the manager's process."
+		},
+		{
+			name: 'BroadcastRequestOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/BroadcastRequestOptions',
+			summary: 'The options of a broadcast request.'
+		},
+		{
+			name: 'ChannelStrategy',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ChannelStrategy',
+			summary: 'Spawns shards: as child processes, cluster workers, worker threads, on other machines, or anything else.'
+		},
+		{
+			name: 'ClientTransport',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ClientTransport',
+			summary: "The shard's end of the channel to its manager (or proxy)."
+		},
+		{
+			name: 'ClusterStrategyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ClusterStrategyOptions',
+			summary: 'The options of ClusterStrategy.'
+		},
+		{
+			name: 'CommandRequest',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/CommandRequest',
+			summary: 'A request naming a command, the optional command layer on top of raw requests.'
+		},
+		{
+			name: 'ControlRequest',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ControlRequest',
+			summary: 'What a shard asks its manager to start, close, or restart.'
+		},
+		{
+			name: 'ForkStrategyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ForkStrategyOptions',
+			summary: 'The options of ForkStrategy.'
+		},
+		{
+			name: 'GatewayInformation',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/GatewayInformation',
+			summary:
+				"The GET /gateway/bot payload, the same shape as discord-api-types' APIGatewayBotInfo, which @discordjs/ws's WebSocketManager#fetchGatewayIn…"
+		},
+		{
+			name: 'IdentifyThrottler',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/IdentifyThrottler',
+			summary: "Paces identifies across every shard, the shape of @discordjs/ws's IIdentifyThrottler."
+		},
+		{
+			name: 'MessageHandler',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/MessageHandler',
+			summary: 'Turns the packets exchanged by the manager and its shards into data a channel carries, and back.'
+		},
+		{
+			name: 'MessageTransformer',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/MessageTransformer',
+			summary: 'Transforms serialized data on its way to the channel, and back: compression, encryption, signing, ...'
+		},
+		{
+			name: 'NetworkStrategyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/NetworkStrategyOptions',
+			summary: 'The options of NetworkStrategy.'
+		},
+		{
+			name: 'ProcessStrategyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ProcessStrategyOptions',
+			summary: 'The options shared by the strategies spawning processes.'
+		},
+		{
+			name: 'ProxyInfo',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ProxyInfo',
+			summary: 'A proxy connected to a NetworkStrategy.'
+		},
+		{
+			name: 'ProxyManagerAddress',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ProxyManagerAddress',
+			summary: 'A manager a proxy connects to.'
+		},
+		{
+			name: 'ProxyPeerOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ProxyPeerOptions',
+			summary: 'How a proxy accepts connections from other proxies, to carry the messages between their shards directly.'
+		},
+		{
+			name: 'RecommendedShardCountOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions',
+			summary: 'The options of fetchRecommendedShardCount.'
+		},
+		{
+			name: 'RequestOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/RequestOptions',
+			summary: 'The options of a request.'
+		},
+		{
+			name: 'ShardChannelEvents',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardChannelEvents',
+			summary: 'The events of a ShardChannel.'
+		},
+		{
+			name: 'ShardClientEvents',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardClientEvents',
+			summary: 'The events of a ShardClient.'
+		},
+		{
+			name: 'ShardClientOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardClientOptions',
+			summary: 'The options of a ShardClient.'
+		},
+		{
+			name: 'ShardContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardContext',
+			summary: 'What a shard is told about itself when spawned, read back by ShardClient.'
+		},
+		{
+			name: 'ShardHandler',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardHandler',
+			summary: 'Starts and closes the gateway shards of this shard, when the manager asks.'
+		},
+		{
+			name: 'ShardLayoutOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions',
+			summary: 'How the gateway shards are laid out across shards.'
+		},
+		{
+			name: 'ShardManagerEvents',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardManagerEvents',
+			summary: 'The events of a ShardManager.'
+		},
+		{
+			name: 'ShardManagerOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardManagerOptions',
+			summary: 'The options of a ShardManager.'
+		},
+		{
+			name: 'ShardManagerProxyEvents',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardManagerProxyEvents',
+			summary: 'The events of a ShardManagerProxy.'
+		},
+		{
+			name: 'ShardManagerProxyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardManagerProxyOptions',
+			summary: 'The options of a ShardManagerProxy.'
+		},
+		{
+			name: 'ShardPingOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardPingOptions',
+			summary: "The options of the manager's pings."
+		},
+		{
+			name: 'ShardRestartOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardRestartOptions',
+			summary: 'The options of a restart.'
+		},
+		{
+			name: 'ShardTransport',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardTransport',
+			summary: "The manager's end of the channel to one spawned shard."
+		},
+		{
+			name: 'ShardTransportEvents',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents',
+			summary: "The callbacks a ChannelStrategy reports a spawned shard's activity through."
+		},
+		{
+			name: 'SpawnOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/SpawnOptions',
+			summary: 'What a strategy spawns a shard with, on top of its context.'
+		},
+		{
+			name: 'SupervisorOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/SupervisorOptions',
+			summary:
+				"How a manager restarts crashing shards, after Erlang/OTP's supervisors: a shard crashing more than intensity times within period is given u…"
+		},
+		{
+			name: 'TransformerContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/TransformerContext',
+			summary: 'The channel a transformer reads or writes on.'
+		},
+		{
+			name: 'WorkerStrategyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-sharder/interfaces/WorkerStrategyOptions',
+			summary: 'The options of WorkerStrategy.'
+		},
+		{
+			name: 'ChannelData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/ChannelData',
+			summary: 'The data a channel carries between the manager and a shard, once serialized and transformed.'
+		},
+		{
+			name: 'CommandReply',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/CommandReply',
+			summary: 'The reply of a command.'
+		},
+		{
+			name: 'Commands',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/Commands',
+			summary: 'The commands a handler answers, by name.'
+		},
+		{
+			name: 'RequestHandler',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/RequestHandler',
+			summary: 'Answers the requests of the other side.'
+		},
+		{
+			name: 'ShardError',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/ShardError',
+			summary: "What a sharder operation fails with: the E of the try methods' Result<T, E>."
+		},
+		{
+			name: 'ShardExitHook',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/ShardExitHook',
+			summary: "Runs before a shard's process or thread stops, see ShardClient.addExitHook."
+		},
+		{
+			name: 'ShardManagerDestroyHook',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/ShardManagerDestroyHook',
+			summary: 'Runs at the end of ShardManager.destroy, see ShardManager.addDestroyHook.'
+		},
+		{
+			name: 'ShardStatus',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/ShardStatus',
+			summary: 'The lifecycle status of a shard, as it signals it to its manager.'
+		},
+		{
+			name: 'ShardTarget',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/ShardTarget',
+			summary: 'Where a message or a request goes: a shard\'s ID, or "all" for every shard.'
+		},
+		{
+			name: 'SupervisorStrategy',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-sharder/type-aliases/SupervisorStrategy',
+			summary: "What else restarts when a shard crashes, after Erlang/OTP's supervisor strategies."
+		},
+		{
+			name: 'ShardContextVariable',
+			kind: 'variable',
+			href: '/documentation/api/plugin-sharder/variables/ShardContextVariable',
+			summary: 'The environment variable carrying the ShardContext of a shard.'
+		},
+		{
+			name: 'ShardStatus',
+			kind: 'variable',
+			href: '/documentation/api/plugin-sharder/variables/ShardStatus',
+			summary: 'The lifecycle status of a shard, as it signals it to its manager.'
+		},
+		{ name: 'command', kind: 'function', href: '/documentation/api/plugin-sharder/functions/command', summary: 'Builds a CommandRequest.' },
+		{
+			name: 'createCommandHandler',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/createCommandHandler',
+			summary:
+				'Builds a request handler answering CommandRequests: the sharder stays raw data (as the RFC settled), and this is the optional, typed layer…'
+		},
+		{
+			name: 'fetchGatewayInformation',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/fetchGatewayInformation',
+			summary: 'Fetches GET /gateway/bot.'
+		},
+		{
+			name: 'fetchRecommendedShardCount',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/fetchRecommendedShardCount',
+			summary: "Fetches how many gateway shards Discord recommends for the bot, like discord.js's fetchRecommendedShardCount."
+		},
+		{
+			name: 'registerMessageHandler',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/registerMessageHandler',
+			summary: 'Registers a message handler under its name, so managers and shards can refer to it by name.'
+		},
+		{
+			name: 'registerMessageTransformer',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/registerMessageTransformer',
+			summary: 'Registers a message transformer under its name, so managers and shards can refer to it by name.'
+		},
+		{
+			name: 'registerStrategy',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/registerStrategy',
+			summary:
+				'Registers a strategy under a name, so managers and proxies can be given its name, like the built-in "fork", "cluster", "worker", and "netwo…'
+		},
+		{
+			name: 'resolveMessageHandler',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/resolveMessageHandler',
+			summary: 'Resolves a message handler, or the name of a registered one.'
+		},
+		{
+			name: 'resolveMessageTransformer',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/resolveMessageTransformer',
+			summary: 'Resolves a message transformer, or the name of a registered one.'
+		},
+		{
+			name: 'resolveRecommendedShardCount',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/resolveRecommendedShardCount',
+			summary: "Turns Discord's recommended shard count into the one to spawn."
+		},
+		{
+			name: 'resolveStrategy',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/resolveStrategy',
+			summary: 'Resolves a strategy, or the name of a registered one.'
+		},
+		{
+			name: 'shardIdForGuild',
+			kind: 'function',
+			href: '/documentation/api/plugin-sharder/functions/shardIdForGuild',
+			summary: 'Gets the gateway shard receiving the events of a guild.'
+		}
+	]}
+/>

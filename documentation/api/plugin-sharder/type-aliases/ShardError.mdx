@@ -1,0 +1,34 @@
+---
+title: 'Type Alias: ShardError'
+description: "What a sharder operation fails with: the E of the try methods' Result<T, E>. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/errors.ts#L4',
+		label: 'packages/plugin-sharder/src/util/errors.ts:4'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+What a sharder operation fails with: the `E` of the `try*` methods' `Result<T, E>`.
+
+<ApiSignature
+	tokens={[
+		'type ShardError = ',
+		['ShardRequestError', '/documentation/api/plugin-sharder/classes/ShardRequestError'],
+		' | ',
+		['ShardRequestTimeoutError', '/documentation/api/plugin-sharder/classes/ShardRequestTimeoutError'],
+		' | ',
+		['ShardUnavailableError', '/documentation/api/plugin-sharder/classes/ShardUnavailableError'],
+		' | ',
+		['ShardSpawnError', '/documentation/api/plugin-sharder/classes/ShardSpawnError'],
+		' | ',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']
+	]}
+/>

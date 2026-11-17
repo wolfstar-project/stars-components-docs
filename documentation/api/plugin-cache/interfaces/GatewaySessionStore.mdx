@@ -1,0 +1,104 @@
+---
+title: 'Interface: GatewaySessionStore'
+description: "Stores the gateway sessions of the shards, so a restarted process resumes them instead of identifying again, see @wolfstar/plugin-gateway's GatewayCl… (@wolfstar/plugin-cache)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L34',
+		label: 'packages/plugin-cache/src/lib/sessions.ts:34'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Stores the gateway sessions of the shards, so a restarted process resumes them instead of identifying again, see
+`@wolfstar/plugin-gateway`'s `GatewayClientOptions.sessionStore`.
+
+<ApiSignature tokens={['interface GatewaySessionStore']} />
+
+<ApiHierarchy implementedBy={[[['RedisSessionStore', '/documentation/api/plugin-cache/classes/RedisSessionStore']]]} />
+
+## Methods
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L41', label: 'packages/plugin-cache/src/lib/sessions.ts:41' }}>
+
+<ApiSignature
+	tokens={[
+		'get(shardId: number): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'],
+		' | null>'
+	]}
+/>
+
+Reads the session of a shard.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'], ' | null>']}>
+
+The session, or `null` when there is none to resume.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L48', label: 'packages/plugin-cache/src/lib/sessions.ts:48' }}>
+
+<ApiSignature
+	tokens={[
+		'set(shardId: number, info: ',
+		['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'],
+		' | null): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<void>'
+	]}
+/>
+
+Writes the session of a shard.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+<ApiParam name="info" type={[['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'], ' | null']}>
+
+The session, or `null` once it can no longer be resumed.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

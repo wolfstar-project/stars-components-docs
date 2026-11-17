@@ -1,0 +1,55 @@
+---
+title: 'Interface: ShardClientOptions'
+description: 'The options of a ShardClient. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L65',
+		label: 'packages/plugin-sharder/src/ShardClient.ts:65'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of a [ShardClient](/documentation/api/plugin-sharder/classes/ShardClient).
+
+<ApiSignature tokens={['interface ShardClientOptions']} />
+
+## Properties
+
+### context?
+
+<ApiMember kind="property" badges={['optional']} signature={['context?: ', ['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L77', label: 'packages/plugin-sharder/src/ShardClient.ts:77' }}>
+
+The shard's context. Defaults to the one its manager passed when spawning it.
+
+</ApiMember>
+
+### messageHandler?
+
+<ApiMember kind="property" badges={['optional']} signature={['messageHandler?: string | ', ['MessageHandler', '/documentation/api/plugin-sharder/interfaces/MessageHandler']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L69', label: 'packages/plugin-sharder/src/ShardClient.ts:69' }}>
+
+How messages are serialized. Defaults to the manager's, built from the registry.
+
+</ApiMember>
+
+### transformers?
+
+<ApiMember kind="property" badges={['optional']} signature={['transformers?: readonly (string | ', ['MessageTransformer', '/documentation/api/plugin-sharder/interfaces/MessageTransformer'], ')[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L73', label: 'packages/plugin-sharder/src/ShardClient.ts:73' }}>
+
+How serialized messages are transformed. Defaults to the manager's, built from the registry.
+
+</ApiMember>
+
+### transport?
+
+<ApiMember kind="property" badges={['optional']} signature={['transport?: ', ['ClientTransport', '/documentation/api/plugin-sharder/interfaces/ClientTransport']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L81', label: 'packages/plugin-sharder/src/ShardClient.ts:81' }}>
+
+The channel to the manager. Defaults to the one of [ShardContext.transport](/documentation/api/plugin-sharder/interfaces/ShardContext#transport).
+
+</ApiMember>

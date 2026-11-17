@@ -1,0 +1,46 @@
+---
+title: 'Function: createEnvironmentSpanExporter()'
+description: 'Creates the exporter the environment configures: the endpoint, the headers and the protocol are read from the OTELEXPORTEROTLP variables, and the pro… (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/exporters.ts#L15',
+		label: 'lib/exporters.ts:15'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Creates the exporter the environment configures: the endpoint, the headers and the protocol are read from the
+`OTEL_EXPORTER_OTLP_*` variables, and the protocol picks the exporter as the SDK does (`http/protobuf` when none is
+given, and with a warning when it is not one of the three).
+
+<ApiSignature
+	tokens={[
+		'createEnvironmentSpanExporter(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<SpanExporter | undefined>'
+	]}
+/>
+
+Creates the exporter the environment configures: the endpoint, the headers and the protocol are read from the
+`OTEL_EXPORTER_OTLP_*` variables, and the protocol picks the exporter as the SDK does (`http/protobuf` when none is
+given, and with a warning when it is not one of the three).
+
+`OTEL_TRACES_EXPORTER` is honoured as far as turning this destination off: `none` on its own, as the SDK reads it,
+gives no exporter. This package only exports OTLP, so any other value (`console`, `zipkin`, ...) still gets OTLP.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<SpanExporter | undefined>']}>
+
+The exporter, `undefined` when `OTEL_TRACES_EXPORTER` is `none`.
+
+</ApiParam>
+
+</ApiParams>

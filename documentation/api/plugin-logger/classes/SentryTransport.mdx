@@ -1,0 +1,128 @@
+---
+title: 'Class: SentryTransport'
+description: 'A Transport forwarding entries to Sentry. (@wolfstar/plugin-logger)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L54',
+		label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:54'
+	}}
+	packageName="@wolfstar/plugin-logger"
+	packageHref="/documentation/api/plugin-logger"
+/>
+
+A [Transport](/documentation/api/plugin-logger/interfaces/Transport) forwarding entries to Sentry. What Sentry receives depends on the entry's
+level, from the cheapest signal to the most prominent:
+
+- from [`logLevel`](/documentation/api/plugin-logger/interfaces/SentryTransportOptions#loglevel): a Sentry Log (needs `enableLogs`);
+- from [`breadcrumbLevel`](/documentation/api/plugin-logger/interfaces/SentryTransportOptions#breadcrumblevel), below `level`: a
+  breadcrumb attached to the next issue;
+- from [`level`](/documentation/api/plugin-logger/interfaces/SentryTransportOptions#level) (default `error`): an issue, so an
+  application's issue stream is not flooded with lifecycle logs.
+
+Logs and breadcrumbs are off unless asked for. Sentry's default console integration already
+records breadcrumbs for `console.*`, so enabling them next to a [ConsoleTransport](/documentation/api/plugin-logger/classes/ConsoleTransport) would
+duplicate them.
+
+The Sentry client is injected rather than imported, exactly like `WinstonTransport` takes a
+winston instance: this keeps `@wolfstar/plugin-logger` free of a runtime dependency on any Sentry
+SDK, so it works with `@sentry/node`, `@sentry/bun` and the like alike.
+
+<ApiSignature tokens={['class SentryTransport implements ', ['Transport', '/documentation/api/plugin-logger/interfaces/Transport']]} />
+
+<ApiHierarchy implements={[[['Transport', '/documentation/api/plugin-logger/interfaces/Transport']]]} />
+
+**Example**
+
+```ts
+import * as Sentry from '@sentry/node';
+import { SentryTransport } from '@wolfstar/plugin-logger';
+
+const transport = new SentryTransport({ client: Sentry, breadcrumbLevel: LogLevel.Info });
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L73', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:73' }}>
+
+<ApiSignature
+	tokens={[
+		'new SentryTransport(options: ',
+		['SentryTransportOptions', '/documentation/api/plugin-logger/interfaces/SentryTransportOptions'],
+		'): ',
+		['SentryTransport', '/documentation/api/plugin-logger/classes/SentryTransport']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['SentryTransportOptions', '/documentation/api/plugin-logger/interfaces/SentryTransportOptions']]}>
+
+The transport options.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### level
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly level: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L58', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:58' }}>
+
+The lowest level any of the enabled signals accepts.
+
+</ApiMember>
+
+## Methods
+
+### close()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L113', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:113' }}>
+
+<ApiSignature
+	tokens={['close(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Flushes the Sentry client so the last entries — typically the `fatal` one preceding an exit —
+are delivered. The client itself stays open: it belongs to the application.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### log()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L99', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:99' }}>
+
+<ApiSignature tokens={['log(payload: ', ['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload'], '): void']} />
+
+Writes an entry to the underlying sink.
+
+A rejected promise or a thrown error is caught by the logger and reported to `console.error`,
+so a broken sink never interrupts the caller.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload']]}>
+
+The entry to write.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

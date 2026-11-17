@@ -1,0 +1,187 @@
+---
+title: 'Interface: ShardManagerProxyOptions'
+description: 'The options of a ShardManagerProxy. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L90',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:90'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of a [ShardManagerProxy](/documentation/api/plugin-sharder/classes/ShardManagerProxy).
+
+<ApiSignature tokens={['interface ShardManagerProxyOptions']} />
+
+## Properties
+
+### capacity?
+
+<ApiMember kind="property" badges={['optional']} signature={['capacity?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L120', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:120' }}>
+
+How many shards the proxy runs at most, across all its managers.
+
+**Default**
+
+```ts
+os.availableParallelism();
+```
+
+</ApiMember>
+
+### heartbeat?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['heartbeat?: {\n  interval?: number;\n  timeout?: number;\n}']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L160',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:160'
+	}}
+/>
+
+### localRouting?
+
+<ApiMember kind="property" badges={['optional']} signature={['localRouting?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L154', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:154' }}>
+
+Whether to carry the messages and requests between shards of this proxy (and, with `peer`, of other proxies)
+without going through the manager. It decodes their packets with the manager's message handler and
+transformers, built from the registry: custom ones must be registered in the proxy too.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### managerLoss?
+
+<ApiMember kind="property" badges={['optional']} signature={['managerLoss?: "exit" | "keep"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L140', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:140' }}>
+
+What the proxy does with the shards of a manager it loses: keep them running and reconnect (the manager takes
+them back within its `reconnectGrace`), or stop them.
+
+**Default**
+
+```ts
+'keep';
+```
+
+</ApiMember>
+
+### managers
+
+<ApiMember kind="property" signature={['managers: readonly (string | ', ['ProxyManagerAddress', '/documentation/api/plugin-sharder/interfaces/ProxyManagerAddress'], ')[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L94', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:94' }}>
+
+The managers to connect to, as `{ host, port }` or `"host:port"`.
+
+</ApiMember>
+
+### mode?
+
+<ApiMember kind="property" badges={['optional']} signature={['mode?: "all" | "failover"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L103', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:103' }}>
+
+How the proxy serves its managers:
+
+- `"failover"`: one at a time, the first reachable, failing over to the next ones when it loses it.
+- `"all"`: all of them at once, sharing its capacity, e.g. managers each running part of the gateway shards.
+
+**Default**
+
+```ts
+'failover';
+```
+
+</ApiMember>
+
+### name?
+
+<ApiMember kind="property" badges={['optional']} signature={['name?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L114', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:114' }}>
+
+The name of the proxy, unique across the proxies of a manager. It finds its shards back under it after a
+reconnection.
+
+**Default:** `${os.hostname()}:${process.pid}`
+
+</ApiMember>
+
+### peer?
+
+<ApiMember kind="property" badges={['optional']} signature={['peer?: ', ['ProxyPeerOptions', '/documentation/api/plugin-sharder/interfaces/ProxyPeerOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L159', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:159' }}>
+
+Accepts connections from other proxies, and connects to them, to carry the messages between shards of different
+proxies directly. Needs `localRouting`.
+
+</ApiMember>
+
+### reconnectDelay?
+
+<ApiMember kind="property" badges={['optional']} signature={['reconnectDelay?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L146', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:146' }}>
+
+How long to wait between connection attempts, in milliseconds.
+
+**Default**
+
+```ts
+5_000;
+```
+
+</ApiMember>
+
+### strategy?
+
+<ApiMember kind="property" badges={['optional']} signature={['strategy?: string | ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L126', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:126' }}>
+
+How the proxy spawns its shards locally: a strategy, or the name of a registered one.
+
+**Default**
+
+```ts
+'fork';
+```
+
+</ApiMember>
+
+### strategyOptions?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['strategyOptions?: unknown']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L127',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:127'
+	}}
+/>
+
+### tls?
+
+<ApiMember kind="property" badges={['optional']} signature={['tls?: boolean | ConnectionOptions']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L133', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:133' }}>
+
+Connects to the managers with TLS: `true` with the default options, or the options (`ca`, `servername`, ...).
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>
+
+### token
+
+<ApiMember kind="property" signature={['token: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L107', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:107' }}>
+
+The shared secret of the managers' [NetworkStrategy](/documentation/api/plugin-sharder/classes/NetworkStrategy).
+
+</ApiMember>

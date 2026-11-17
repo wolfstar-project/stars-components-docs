@@ -1,0 +1,123 @@
+---
+title: 'Interface: GatewayDispatchEmitterLike'
+description: "The subset of @wolfstar/plugin-gateway's GatewayClient forwardGatewayDispatches relies on, so this package does not depend on it. (@wolfstar/plugin-broker)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L34',
+		label: 'packages/plugin-broker/src/lib/gateway.ts:34'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+The subset of `@wolfstar/plugin-gateway`'s `GatewayClient` [forwardGatewayDispatches](/documentation/api/plugin-broker/functions/forwardGatewayDispatches) relies on, so this
+package does not depend on it.
+
+<ApiSignature tokens={['interface GatewayDispatchEmitterLike']} />
+
+## Methods
+
+### markDispatchesForwarded()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L45', label: 'packages/plugin-broker/src/lib/gateway.ts:45' }}>
+
+<ApiSignature tokens={['markDispatchesForwarded(): () => void']} />
+
+Marks the emitter as forwarding its dispatches, until the returned function is called, so that listeners meant to
+run on one process only (`RegisterAsDispatchListener`) stay idle on it. An emitter without it forwards without
+telling.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### off()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L47', label: 'packages/plugin-broker/src/lib/gateway.ts:47' }}>
+
+<ApiSignature
+	tokens={[
+		'off(event: "dispatch", listener: ',
+		['GatewayDispatchListener', '/documentation/api/plugin-broker/type-aliases/GatewayDispatchListener'],
+		'): unknown'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['"dispatch"']} />
+
+<ApiParam name="listener" type={[['GatewayDispatchListener', '/documentation/api/plugin-broker/type-aliases/GatewayDispatchListener']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### on()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L46', label: 'packages/plugin-broker/src/lib/gateway.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'on(event: "dispatch", listener: ',
+		['GatewayDispatchListener', '/documentation/api/plugin-broker/type-aliases/GatewayDispatchListener'],
+		'): unknown'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['"dispatch"']} />
+
+<ApiParam name="listener" type={[['GatewayDispatchListener', '/documentation/api/plugin-broker/type-aliases/GatewayDispatchListener']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### serializeDispatchState()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L39', label: 'packages/plugin-broker/src/lib/gateway.ts:39' }}>
+
+<ApiSignature tokens={['serializeDispatchState(type: string, state: unknown): unknown']} />
+
+Serializes the previous state of a dispatch's entity, which workers revive with
+[GatewayReplayTargetLike.reviveDispatchState](/documentation/api/plugin-broker/interfaces/GatewayReplayTargetLike#revivedispatchstate). An emitter without it forwards dispatches without state.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="type" type={['string']} />
+
+<ApiParam name="state" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

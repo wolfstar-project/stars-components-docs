@@ -1,0 +1,31 @@
+---
+title: 'Interface: TransformerContext'
+description: 'The channel a transformer reads or writes on. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L8',
+		label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:8'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The channel a transformer reads or writes on.
+
+<ApiSignature tokens={['interface TransformerContext']} />
+
+## Properties
+
+### channelId
+
+<ApiMember kind="property" signature={['channelId: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L12', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:12' }}>
+
+The ID of the channel: the shard the data comes from or goes to.
+
+</ApiMember>

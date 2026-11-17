@@ -1,0 +1,488 @@
+---
+title: 'Class: RedisEntityCache'
+description: 'An EntityCache backed by Redis. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L181',
+		label: 'packages/plugin-cache/src/lib/redis.ts:181'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+An [EntityCache](/documentation/api/plugin-cache/interfaces/EntityCache) backed by Redis.
+
+<ApiSignature
+	tokens={[
+		'class RedisEntityCache<Raw> implements ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<Raw>'
+	]}
+/>
+
+<ApiHierarchy implements={[[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<Raw>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+Every entry is stored as its own string key (`<prefix>:<key>`), and a sorted set (`<prefix>:@index`) tracks the
+stored keys with their expiration time as score, which is what `keys`, `entries`, `getSize`, and `clear` read from.
+
+With [RedisEntityCacheOptions.guildOf](/documentation/api/plugin-cache/interfaces/RedisEntityCacheOptions#guildof), one more sorted set per guild (`<prefix>:@guild:<guildId>`) tracks the
+keys of that guild's entries the same way, and `<prefix>:@guilds` lists the guilds having one, for `clear`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L199', label: 'packages/plugin-cache/src/lib/redis.ts:199' }}>
+
+<ApiSignature
+	tokens={[
+		'new RedisEntityCache<Raw>(\n  redis: ',
+		['RedisClientLike', '/documentation/api/plugin-cache/interfaces/RedisClientLike'],
+		',\n  options: ',
+		['RedisEntityCacheOptions', '/documentation/api/plugin-cache/interfaces/RedisEntityCacheOptions'],
+		'<Raw>\n): ',
+		['RedisEntityCache', '/documentation/api/plugin-cache/classes/RedisEntityCache'],
+		'<Raw>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="redis" type={[['RedisClientLike', '/documentation/api/plugin-cache/interfaces/RedisClientLike']]} />
+
+<ApiParam name="options" type={[['RedisEntityCacheOptions', '/documentation/api/plugin-cache/interfaces/RedisEntityCacheOptions'], '<Raw>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### compression
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly compression: ', ['RedisCacheCompression', '/documentation/api/plugin-cache/type-aliases/RedisCacheCompression']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L189',
+		label: 'packages/plugin-cache/src/lib/redis.ts:189'
+	}}
+/>
+
+### compressionThreshold
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly compressionThreshold: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L190',
+		label: 'packages/plugin-cache/src/lib/redis.ts:190'
+	}}
+/>
+
+### prefix
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly prefix: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L187',
+		label: 'packages/plugin-cache/src/lib/redis.ts:187'
+	}}
+/>
+
+### synchronous
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly synchronous: false']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L185', label: 'packages/plugin-cache/src/lib/redis.ts:185' }}>
+
+Always `false`: every method returns a promise, compressed or not.
+
+</ApiMember>
+
+### ttl
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly ttl: number | undefined']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L188',
+		label: 'packages/plugin-cache/src/lib/redis.ts:188'
+	}}
+/>
+
+## Accessors
+
+### guildsKey
+
+<ApiMember kind="accessor" signature={['get guildsKey(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L392', label: 'packages/plugin-cache/src/lib/redis.ts:392' }}>
+
+The Redis key of the sorted set listing the guilds having an index.
+
+</ApiMember>
+
+### indexKey
+
+<ApiMember kind="accessor" signature={['get indexKey(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L377', label: 'packages/plugin-cache/src/lib/redis.ts:377' }}>
+
+The Redis key of the sorted set indexing the stored keys.
+
+</ApiMember>
+
+## Methods
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L290', label: 'packages/plugin-cache/src/lib/redis.ts:290' }}>
+
+<ApiSignature
+	tokens={['clear(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L281', label: 'packages/plugin-cache/src/lib/redis.ts:281' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(key: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### deleteGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L312', label: 'packages/plugin-cache/src/lib/redis.ts:312' }}>
+
+<ApiSignature
+	tokens={[
+		'deleteGuild(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number | null>'
+	]}
+/>
+
+Deletes every entry of a guild, reading their keys from the guild's index rather than scanning the cache.
+
+Only indexed entries are deleted: when `guildOf` is set on a cache already holding entries, the ones written
+before are left behind until they expire or the cache is cleared.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number | null>']}>
+
+The amount of deleted entries, or `null` without [RedisEntityCacheOptions.guildOf](/documentation/api/plugin-cache/interfaces/RedisEntityCacheOptions#guildof).
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### entries()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L349', label: 'packages/plugin-cache/src/lib/redis.ts:349' }}>
+
+<ApiSignature
+	tokens={[
+		'entries(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<[key: string, value: Raw][]>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<[key: string, value: Raw][]>']}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L217', label: 'packages/plugin-cache/src/lib/redis.ts:217' }}>
+
+<ApiSignature
+	tokens={[
+		'get(key: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Raw | undefined>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Raw | undefined>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L335', label: 'packages/plugin-cache/src/lib/redis.ts:335' }}>
+
+<ApiSignature
+	tokens={['getSize(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### guildIndexKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L385', label: 'packages/plugin-cache/src/lib/redis.ts:385' }}>
+
+<ApiSignature tokens={['guildIndexKey(guildId: string): string']} />
+
+Gets the Redis key of the sorted set indexing a guild's entries.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L277', label: 'packages/plugin-cache/src/lib/redis.ts:277' }}>
+
+<ApiSignature
+	tokens={[
+		'has(key: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### keys()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L340', label: 'packages/plugin-cache/src/lib/redis.ts:340' }}>
+
+<ApiSignature
+	tokens={['keys(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string[]>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string[]>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L223', label: 'packages/plugin-cache/src/lib/redis.ts:223' }}>
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: Raw, options?: ',
+		['CacheSetOptions', '/documentation/api/plugin-cache/interfaces/CacheSetOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['Raw']} />
+
+<ApiParam name="options" type={[['CacheSetOptions', '/documentation/api/plugin-cache/interfaces/CacheSetOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### upsert()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L266', label: 'packages/plugin-cache/src/lib/redis.ts:266' }}>
+
+<ApiSignature
+	tokens={[
+		'upsert(\n  key: string,\n  data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Raw>,\n  options?: ',
+		['CacheUpsertOptions', '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['CacheUpsertResult', '/documentation/api/plugin-cache/interfaces/CacheUpsertResult'],
+		'<Raw>>'
+	]}
+/>
+
+Merges data into the cached entry, see [EntityCache.upsert](/documentation/api/plugin-cache/interfaces/EntityCache#upsert).
+
+It is a read followed by a write, not an atomic operation: a write landing in between from another process is
+overwritten.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>']} />
+
+<ApiParam name="options" type={[['CacheUpsertOptions', '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['CacheUpsertResult', '/documentation/api/plugin-cache/interfaces/CacheUpsertResult'],
+		'<Raw>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### valueKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L370', label: 'packages/plugin-cache/src/lib/redis.ts:370' }}>
+
+<ApiSignature tokens={['valueKey(key: string): string']} />
+
+Gets the Redis key a value is stored at.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The entity cache key.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### values()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L345', label: 'packages/plugin-cache/src/lib/redis.ts:345' }}>
+
+<ApiSignature
+	tokens={['values(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Raw[]>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Raw[]>']} />
+
+</ApiParams>
+
+</ApiMember>

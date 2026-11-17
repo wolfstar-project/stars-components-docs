@@ -1,0 +1,76 @@
+---
+title: 'Interface: InMemoryCacheOptions'
+description: 'API reference for InMemoryCacheOptions, an interface exported by @wolfstar/plugin-cache.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L215',
+		label: 'packages/plugin-cache/src/lib/memory.ts:215'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+<ApiSignature tokens={['interface InMemoryCacheOptions']} />
+
+## Properties
+
+### entities?
+
+<ApiMember kind="property" badges={['optional']} signature={['entities?: readonly (keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], ')[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L219', label: 'packages/plugin-cache/src/lib/memory.ts:219' }}>
+
+The entity kinds to cache, every other one is not. Every entity kind is cached when omitted.
+
+</ApiMember>
+
+### maxSize?
+
+<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number | ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], ', number>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L226', label: 'packages/plugin-cache/src/lib/memory.ts:226' }}>
+
+The maximum amount of entries kept per entity cache before evicting the least recently used ones, either for
+every entity cache or per entity cache. Entity caches left out are unbounded.
+
+**Default**
+
+```ts
+Infinity;
+```
+
+</ApiMember>
+
+### policies?
+
+<ApiMember kind="property" badges={['optional']} signature={['policies?: ', ['CachePolicies', '/documentation/api/plugin-cache/type-aliases/CachePolicies']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L242', label: 'packages/plugin-cache/src/lib/memory.ts:242' }}>
+
+The policies deciding which entries get cached and for how long, per entity cache, see `withPolicy`.
+
+</ApiMember>
+
+### sweepInterval?
+
+<ApiMember kind="property" badges={['optional']} signature={['sweepInterval?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L238', label: 'packages/plugin-cache/src/lib/memory.ts:238' }}>
+
+How often, in milliseconds, every entity cache drops its expired entries, see
+[MemoryEntityCacheOptions.sweepInterval](/documentation/api/plugin-cache/interfaces/MemoryEntityCacheOptions#sweepinterval).
+
+**Default**
+
+```ts
+null;
+```
+
+</ApiMember>
+
+### ttl?
+
+<ApiMember kind="property" badges={['optional']} signature={['ttl?: number | ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], ', number>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L231', label: 'packages/plugin-cache/src/lib/memory.ts:231' }}>
+
+The default time-to-live of the entries, in milliseconds, either for every entity cache or per entity cache.
+Entity caches left out never expire their entries.
+
+</ApiMember>

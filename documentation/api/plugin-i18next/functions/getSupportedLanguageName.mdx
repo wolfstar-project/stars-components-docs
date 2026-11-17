@@ -1,0 +1,58 @@
+---
+title: 'Function: getSupportedLanguageName()'
+description: "Resolves the loaded language that best matches the guild's locale, falling back to the user's one when the target does not belong to a guild, then to… (@wolfstar/plugin-i18next)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L249',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:249'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Resolves the loaded language that best matches the guild's locale, falling back to the user's one
+when the target does not belong to a guild, then to
+[InternationalizationOptions.defaultName](/documentation/api/plugin-i18next/interfaces/InternationalizationOptions#defaultname), and finally to `'en-US'`.
+
+<ApiSignature
+	tokens={[
+		'getSupportedLanguageName(target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		'): "id" | "en-US" | "en-GB" | "bg" | "zh-CN" | "zh-TW" | "hr" | "cs" | "da" | "nl" | "fi" | "fr" | "de" | "el" | "hi" | "hu" | "it" | "ja" | "ko" | "lt" | "no" | "pl" | "pt-BR" | "ro" | "ru" | "es-ES" | "es-419" | "sv-SE" | "th" | "tr" | "uk" | "vi"'
+	]}
+/>
+
+Resolves the loaded language that best matches the guild's locale, falling back to the user's one
+when the target does not belong to a guild, then to
+[InternationalizationOptions.defaultName](/documentation/api/plugin-i18next/interfaces/InternationalizationOptions#defaultname), and finally to `'en-US'`.
+
+The guild locale comes from `guild_locale` on an [Interaction](/documentation/api/plugin-i18next/type-aliases/Interaction) and from `preferred_locale`
+on a [GuildTarget](/documentation/api/plugin-i18next/interfaces/GuildTarget). A [ChannelTarget](/documentation/api/plugin-i18next/interfaces/ChannelTarget) and a [MessageTarget](/documentation/api/plugin-i18next/interfaces/MessageTarget) carry no locale, so
+they resolve to the fallback unless a custom
+[InternationalizationHandler.fetchLanguage](/documentation/api/plugin-i18next/classes/InternationalizationHandler#fetchlanguage) hook is used through [fetchLanguage](/documentation/api/plugin-i18next/functions/fetchLanguage).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]}>
+
+The target to read the locales from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'"id" | "en-US" | "en-GB" | "bg" | "zh-CN" | "zh-TW" | "hr" | "cs" | "da" | "nl" | "fi" | "fr" | "de" | "el" | "hi" | "hu" | "it" | "ja" | "ko" | "lt" | "no" | "pl" | "pt-BR" | "ro" | "ru" | "es-ES" | "es-419" | "sv-SE" | "th" | "tr" | "uk" | "vi"'
+	]}
+/>
+
+</ApiParams>

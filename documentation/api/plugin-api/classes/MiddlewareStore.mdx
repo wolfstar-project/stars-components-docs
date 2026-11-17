@@ -1,0 +1,135 @@
+---
+title: 'Class: MiddlewareStore'
+description: 'API reference for MiddlewareStore, a class exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/MiddlewareStore.ts#L6',
+		label: 'packages/plugin-api/src/lib/structures/MiddlewareStore.ts:6'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature
+	tokens={['class MiddlewareStore extends Store<', ['Middleware', '/documentation/api/plugin-api/classes/Middleware'], ', "middlewares">']}
+/>
+
+<ApiHierarchy extends={[['Store<', ['Middleware', '/documentation/api/plugin-api/classes/Middleware'], ', "middlewares">']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/MiddlewareStore.ts#L12', label: 'packages/plugin-api/src/lib/structures/MiddlewareStore.ts:12' }}>
+
+<ApiSignature tokens={['new MiddlewareStore(): ', ['MiddlewareStore', '/documentation/api/plugin-api/classes/MiddlewareStore']]} />
+
+</ApiMember>
+
+## Properties
+
+### sortedMiddlewares
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly sortedMiddlewares: ', ['Middleware', '/documentation/api/plugin-api/classes/Middleware'], '<', ['MiddlewareOptions', '/documentation/api/plugin-api/interfaces/MiddlewareOptions'], '>[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/MiddlewareStore.ts#L10', label: 'packages/plugin-api/src/lib/structures/MiddlewareStore.ts:10' }}>
+
+Enabled middlewares, kept sorted in ascending [Middleware.position](/documentation/api/plugin-api/classes/Middleware#position) order.
+
+</ApiMember>
+
+## Methods
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/MiddlewareStore.ts#L43', label: 'packages/plugin-api/src/lib/structures/MiddlewareStore.ts:43' }}>
+
+<ApiSignature tokens={['clear(): void']} />
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/MiddlewareStore.ts#L36', label: 'packages/plugin-api/src/lib/structures/MiddlewareStore.ts:36' }}>
+
+<ApiSignature tokens={['delete(key: string): boolean']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
+
+true if an element in the Map existed and has been removed, or false if the element does not exist.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### run()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/MiddlewareStore.ts#L19', label: 'packages/plugin-api/src/lib/structures/MiddlewareStore.ts:19' }}>
+
+<ApiSignature
+	tokens={[
+		'run(request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Runs every enabled middleware in order, stopping early once the response has ended.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest']]} />
+
+<ApiParam name="response" type={[['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/MiddlewareStore.ts#L26', label: 'packages/plugin-api/src/lib/structures/MiddlewareStore.ts:26' }}>
+
+<ApiSignature tokens={['set(key: string, value: ', ['Middleware', '/documentation/api/plugin-api/classes/Middleware'], '): this']} />
+
+Adds a new element with a specified key and value to the Map. If an element with the same key already exists, the element will be updated.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={[['Middleware', '/documentation/api/plugin-api/classes/Middleware']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

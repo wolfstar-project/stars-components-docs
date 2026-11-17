@@ -1,0 +1,56 @@
+---
+title: 'Class: Subcommand'
+description: 'Parent command marker. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/structures/command.ts#L97',
+		label: 'packages/plugin-subcommands-advanced/src/lib/structures/command.ts:97'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Parent command marker. Extend this for the chat-input command that owns modular
+subcommands. Wiring of children is performed automatically by the plugin loader
+strategy after all pieces are constructed.
+
+<ApiSignature tokens={['class Subcommand<Options extends FrameworkCommand.Options = FrameworkCommand.Options> extends Command<Options>']} />
+
+<ApiHierarchy extends={[['Command<Options>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends FrameworkCommand.Options']} defaultValue="FrameworkCommand.Options" />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { RegisterCommand } from '@wolfstar/http-framework';
+import { Subcommand } from '@wolfstar/plugin-subcommands-advanced';
+
+@RegisterCommand((builder) =>
+	builder
+		.setName('utils')
+		.setDescription('Utility commands')
+		.addSubcommandGroup((group) => group.setName('poll').setDescription('Polls'))
+)
+export class UtilsCommand extends Subcommand {}
+```
+
+## Properties
+
+### hooks
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly hooks: {\n  groups(piece: Command, context?: SlashCommandBuilder): void;\n  subcommands(piece: Command, context?: SlashCommandBuilder): void;\n}']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/structures/command.ts#L103', label: 'packages/plugin-subcommands-advanced/src/lib/structures/command.ts:103' }}>
+
+Optional hooks for imperative [registerApplicationCommands](/documentation/api/plugin-subcommands-advanced/classes/Subcommand) usage.
+
+</ApiMember>

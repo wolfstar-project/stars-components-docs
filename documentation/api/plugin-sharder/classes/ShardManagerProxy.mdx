@@ -1,0 +1,213 @@
+---
+title: 'Class: ShardManagerProxy'
+description: "Runs shards for remote ShardManagers using a NetworkStrategy: the sharder RFC's ShardManagerProxy. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L246',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:246'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Runs shards for remote [ShardManager](/documentation/api/plugin-sharder/classes/ShardManager)s using a [NetworkStrategy](/documentation/api/plugin-sharder/classes/NetworkStrategy): the sharder RFC's
+`ShardManagerProxy`. It spawns them locally with its own strategy, carries their messages to their manager, and
+carries the messages between shards of the same manager directly, locally or through peer proxies.
+
+<ApiSignature
+	tokens={[
+		'class ShardManagerProxy extends EventEmitter<',
+		['ShardManagerProxyEvents', '/documentation/api/plugin-sharder/interfaces/ShardManagerProxyEvents'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[['EventEmitter<', ['ShardManagerProxyEvents', '/documentation/api/plugin-sharder/interfaces/ShardManagerProxyEvents'], '>']]}
+/>
+
+**Example**
+
+```ts
+const proxy = new ShardManagerProxy({
+	managers: ['manager.internal:7000', 'manager-backup.internal:7000'],
+	token: process.env.SHARDER_TOKEN!,
+	tls: { ca: readFileSync('ca.pem') },
+	strategy: new ForkStrategy({ path: './bot.js' }),
+	capacity: 8,
+	peer: { port: 7001 }
+});
+await proxy.connect();
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L268', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:268' }}>
+
+<ApiSignature
+	tokens={[
+		'new ShardManagerProxy(options: ',
+		['ShardManagerProxyOptions', '/documentation/api/plugin-sharder/interfaces/ShardManagerProxyOptions'],
+		'): ',
+		['ShardManagerProxy', '/documentation/api/plugin-sharder/classes/ShardManagerProxy']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ShardManagerProxyOptions', '/documentation/api/plugin-sharder/interfaces/ShardManagerProxyOptions']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### capacity
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly capacity: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L248',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:248'
+	}}
+/>
+
+### managers
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly managers: readonly ', ['ProxyManagerAddress', '/documentation/api/plugin-sharder/interfaces/ProxyManagerAddress'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L250',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:250'
+	}}
+/>
+
+### mode
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly mode: "all" | "failover"']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L251',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:251'
+	}}
+/>
+
+### name
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L247',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:247'
+	}}
+/>
+
+### strategy
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly strategy: ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L249',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:249'
+	}}
+/>
+
+## Accessors
+
+### connectedManagers
+
+<ApiMember kind="accessor" signature={['get connectedManagers(): ', ['ProxyManagerAddress', '/documentation/api/plugin-sharder/interfaces/ProxyManagerAddress'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L290', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:290' }}>
+
+The managers the proxy is connected to.
+
+</ApiMember>
+
+### manager
+
+<ApiMember kind="accessor" signature={['get manager(): ', ['ProxyManagerAddress', '/documentation/api/plugin-sharder/interfaces/ProxyManagerAddress'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L297', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:297' }}>
+
+The manager the proxy is connected to in `"failover"` mode, `null` while it is not.
+
+</ApiMember>
+
+### peerAddress
+
+<ApiMember kind="accessor" signature={['get peerAddress(): PeerAddress | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L311', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:311' }}>
+
+Where other proxies reach this one, once connected with `peer`.
+
+</ApiMember>
+
+### peers
+
+<ApiMember kind="accessor" signature={['get peers(): string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L318', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:318' }}>
+
+The names of the proxies this one has a peer connection with.
+
+</ApiMember>
+
+### shards
+
+<ApiMember kind="accessor" signature={['get shards(): ', ['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L304', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:304' }}>
+
+The contexts of the shards the proxy runs.
+
+</ApiMember>
+
+## Methods
+
+### connect()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L326', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:326' }}>
+
+<ApiSignature
+	tokens={['connect(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Connects to the managers, and keeps reconnecting whenever a connection is lost, until
+[ShardManagerProxy.destroy](/documentation/api/plugin-sharder/classes/ShardManagerProxy#destroy). Resolves once connected to a first manager.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### destroy()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L338', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:338' }}>
+
+<ApiSignature
+	tokens={['destroy(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Stops every shard, and disconnects for good.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,247 @@
+---
+title: 'Interface: RedisTransactionLike'
+description: 'The subset of an ioredis MULTI transaction the Redis cache relies on: every queued command returns the transaction, and exec runs them atomically. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L50',
+		label: 'packages/plugin-cache/src/lib/redis.ts:50'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+The subset of an [`ioredis`](https://github.com/redis/ioredis) `MULTI` transaction the Redis cache relies on: every
+queued command returns the transaction, and `exec` runs them atomically.
+
+<ApiSignature tokens={['interface RedisTransactionLike']} />
+
+## Methods
+
+### del()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L53', label: 'packages/plugin-cache/src/lib/redis.ts:53' }}>
+
+<ApiSignature tokens={['del(...keys: string[]): ', ['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="keys" type={['string[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### exec()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L62', label: 'packages/plugin-cache/src/lib/redis.ts:62' }}>
+
+<ApiSignature
+	tokens={[
+		'exec(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<[error: ',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'],
+		' | null, result: unknown][] | null>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<[error: ',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'],
+		' | null, result: unknown][] | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### pexpire()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L61', label: 'packages/plugin-cache/src/lib/redis.ts:61' }}>
+
+<ApiSignature
+	tokens={[
+		'pexpire(key: string, milliseconds: number): ',
+		['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']
+	]}
+/>
+
+Optional: when available (`ioredis` has it), the guild indexes of a cache with a `ttl` expire once their guild
+stops being written to. Without it, they are only pruned by the next write to their guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="milliseconds" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L51', label: 'packages/plugin-cache/src/lib/redis.ts:51' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={['set(key: string, value: string): ', ['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: string, mode: "PX", milliseconds: number): ',
+		['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string']} />
+
+<ApiParam name="mode" type={['"PX"']} />
+
+<ApiParam name="milliseconds" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### zadd()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L54', label: 'packages/plugin-cache/src/lib/redis.ts:54' }}>
+
+<ApiSignature
+	tokens={[
+		'zadd(key: string, ...scoreMembers: (string | number)[]): ',
+		['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="scoreMembers" type={['(string | number)[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### zrem()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L55', label: 'packages/plugin-cache/src/lib/redis.ts:55' }}>
+
+<ApiSignature
+	tokens={[
+		'zrem(key: string, ...members: string[]): ',
+		['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="members" type={['string[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### zremrangebyscore()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L56', label: 'packages/plugin-cache/src/lib/redis.ts:56' }}>
+
+<ApiSignature
+	tokens={[
+		'zremrangebyscore(\n  key: string,\n  min: string | number,\n  max: string | number\n): ',
+		['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="min" type={['string | number']} />
+
+<ApiParam name="max" type={['string | number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RedisTransactionLike', '/documentation/api/plugin-cache/interfaces/RedisTransactionLike']]} />
+
+</ApiParams>
+
+</ApiMember>

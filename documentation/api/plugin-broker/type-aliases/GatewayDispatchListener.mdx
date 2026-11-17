@@ -1,0 +1,35 @@
+---
+title: 'Type Alias: GatewayDispatchListener'
+description: 'API reference for GatewayDispatchListener, a type alias exported by @wolfstar/plugin-broker.'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L24',
+		label: 'packages/plugin-broker/src/lib/gateway.ts:24'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+<ApiSignature
+	tokens={[
+		'type GatewayDispatchListener = (payload: ',
+		['GatewayDispatchLike', '/documentation/api/plugin-broker/interfaces/GatewayDispatchLike'],
+		', shardId: number, state?: unknown) => void'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['GatewayDispatchLike', '/documentation/api/plugin-broker/interfaces/GatewayDispatchLike']]} />
+
+<ApiParam name="shardId" type={['number']} />
+
+<ApiParam name="state" type={['unknown']} optional />
+
+</ApiParams>

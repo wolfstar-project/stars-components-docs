@@ -1,0 +1,92 @@
+---
+title: 'Interface: ScheduledTaskHandlerOptions'
+description: 'Options for a scheduled task handler. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L7',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:7'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+Options for a scheduled task handler.
+
+<ApiSignature tokens={['interface ScheduledTaskHandlerOptions']} />
+
+## Properties
+
+### bull
+
+<ApiMember kind="property" signature={['bull: QueueOptions']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L16', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:16' }}>
+
+The BullMQ queue options. The worker shares its `connection`, `prefix`, and the other options common to both.
+
+</ApiMember>
+
+### queue?
+
+<ApiMember kind="property" badges={['optional']} signature={['queue?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L12', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:12' }}>
+
+The name of the BullMQ queue.
+
+**Default**
+
+```ts
+'scheduled-tasks';
+```
+
+</ApiMember>
+
+### ready?
+
+<ApiMember kind="property" badges={['optional']} signature={['ready?: () => boolean | ', ['PromiseLike', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean | void>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L29', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:29' }}>
+
+Whether the app is ready to run the tasks that set the `waitForReady` task option: `true` or a promise
+that resolves (to anything but `false`) means it is. A job waits for it before its task runs.
+
+A function cannot be written in `stars.config`, so this is for `scheduledTasks()` and `ClientOptions.tasks`.
+
+**Example**
+
+```ts
+scheduledTasks({ ready: () => container.gatewayClient.isClientReady() });
+```
+
+</ApiMember>
+
+### readyDelay?
+
+<ApiMember kind="property" badges={['optional']} signature={['readyDelay?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L43', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:43' }}>
+
+How long (in milliseconds) a job that timed out waiting for the app is pushed back before it is picked up again.
+
+**Default**
+
+```ts
+30_000;
+```
+
+</ApiMember>
+
+### readyTimeout?
+
+<ApiMember kind="property" badges={['optional']} signature={['readyTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L38', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:38' }}>
+
+How long (in milliseconds) a job waits for [ScheduledTaskHandlerOptions.ready](/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions#ready) before it is delayed.
+
+The worker runs one job at a time, so a waiting job holds back the others for up to this long.
+
+**Default**
+
+```ts
+30_000;
+```
+
+</ApiMember>

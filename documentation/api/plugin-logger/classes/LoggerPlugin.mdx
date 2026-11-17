@@ -1,0 +1,51 @@
+---
+title: 'Class: LoggerPlugin'
+description: "Replaces the framework's built-in console logger with a Logger, which fans entries out to the transports configured through ClientOptions.logger.tran… (@wolfstar/plugin-logger)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/register.ts#L23',
+		label: 'packages/plugin-logger/src/register.ts:23'
+	}}
+	packageName="@wolfstar/plugin-logger"
+	packageHref="/documentation/api/plugin-logger"
+/>
+
+Replaces the framework's built-in console logger with a `Logger`, which fans entries
+out to the transports configured through `ClientOptions.logger.transports`.
+
+Activate by importing the side-effecting entrypoint before creating the client:
+
+```ts
+import '@wolfstar/plugin-logger/register';
+```
+
+The hook runs at `preGenericsInitialization`, which is the last point before the client
+resolves `container.logger`, and it leaves an explicitly provided `logger.instance` untouched.
+
+<ApiSignature tokens={['class LoggerPlugin extends Plugin']} />
+
+<ApiHierarchy extends={[['Plugin']]} />
+
+## Methods
+
+### \[preGenericsInitialization\]()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/register.ts#L24', label: 'packages/plugin-logger/src/register.ts:24' }}>
+
+<ApiSignature tokens={['static [preGenericsInitialization](this: Client, options: ClientOptions): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="this" type={['Client']} />
+
+<ApiParam name="options" type={['ClientOptions']} />
+
+</ApiParams>
+
+</ApiMember>

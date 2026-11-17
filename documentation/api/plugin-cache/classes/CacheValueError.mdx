@@ -1,0 +1,58 @@
+---
+title: 'Class: CacheValueError'
+description: 'Thrown when a value stored in Redis cannot be read back: invalid JSON, or compressed bytes that fail to decompress. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L72',
+		label: 'packages/plugin-cache/src/lib/redis.ts:72'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Thrown when a value stored in Redis cannot be read back: invalid JSON, or compressed bytes that fail to decompress.
+
+<ApiSignature
+	tokens={['class CacheValueError extends ', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]}
+/>
+
+<ApiHierarchy extends={[[['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]]} />
+
+A missing value is not an error, `get` resolves to `undefined` for it. Redis connection errors are not wrapped
+either, they propagate as the client throws them.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L78', label: 'packages/plugin-cache/src/lib/redis.ts:78' }}>
+
+<ApiSignature
+	tokens={['new CacheValueError(key: string, cause: unknown): ', ['CacheValueError', '/documentation/api/plugin-cache/classes/CacheValueError']]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="cause" type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### key
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly key: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L76', label: 'packages/plugin-cache/src/lib/redis.ts:76' }}>
+
+The Redis key holding the unreadable value.
+
+</ApiMember>

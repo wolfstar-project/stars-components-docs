@@ -1,0 +1,39 @@
+---
+title: 'Interface: ForwardGatewayDispatchesOptions'
+description: 'API reference for ForwardGatewayDispatchesOptions, an interface exported by @wolfstar/plugin-broker.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L50',
+		label: 'packages/plugin-broker/src/lib/gateway.ts:50'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+<ApiSignature tokens={['interface ForwardGatewayDispatchesOptions']} />
+
+## Properties
+
+### events?
+
+<ApiMember kind="property" badges={['optional']} signature={['events?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L54', label: 'packages/plugin-broker/src/lib/gateway.ts:54' }}>
+
+The dispatch types to forward, e.g. `[GatewayDispatchEvents.MessageCreate]`. Left unset, every dispatch is.
+
+</ApiMember>
+
+### onError?
+
+<ApiMember kind="property" badges={['optional']} signature={['onError?: (error: unknown, payload: ', ['GatewayDispatchLike', '/documentation/api/plugin-broker/interfaces/GatewayDispatchLike'], ') => void']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L60', label: 'packages/plugin-broker/src/lib/gateway.ts:60' }}>
+
+Called when publishing a dispatch fails, e.g. while Redis is unreachable.
+
+**Default:** Logs the error through `container.logger`.
+
+</ApiMember>

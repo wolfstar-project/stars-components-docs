@@ -1,0 +1,76 @@
+---
+title: 'Interface: I18nextNamedFormatter'
+description: 'Represents a formatter that is added to i18next with i18next.services.formatter.add. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L282',
+		label: 'packages/plugin-i18next/src/lib/types.ts:282'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Represents a formatter that is added to i18next with `i18next.services.formatter.add`.
+
+<ApiSignature tokens={['interface I18nextNamedFormatter']} />
+
+**See also**
+
+- [https://www.i18next.com/translation-function/formatting#adding-custom-format-function](https://www.i18next.com/translation-function/formatting#adding-custom-format-function)
+
+## Properties
+
+### cached?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['cached?: false']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L283',
+		label: 'packages/plugin-i18next/src/lib/types.ts:283'
+	}}
+/>
+
+### name
+
+<ApiMember
+	kind="property"
+	signature={['name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L284',
+		label: 'packages/plugin-i18next/src/lib/types.ts:284'
+	}}
+/>
+
+## Methods
+
+### format()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L285', label: 'packages/plugin-i18next/src/lib/types.ts:285' }}>
+
+<ApiSignature tokens={['format(value: any, lng: string | undefined, options: any): string']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['any']} />
+
+<ApiParam name="lng" type={['string | undefined']} />
+
+<ApiParam name="options" type={['any']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>

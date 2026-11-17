@@ -1,0 +1,462 @@
+---
+title: 'Class: InternationalizationHandler'
+description: 'A generalized class for handling i18next JSON files and their discovery. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L31',
+		label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:31'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+A generalized class for handling `i18next` JSON files and their discovery.
+
+<ApiSignature tokens={['class InternationalizationHandler']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L73', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:73' }}>
+
+<ApiSignature
+	tokens={[
+		'new InternationalizationHandler(options?: ',
+		['InternationalizationOptions', '/documentation/api/plugin-i18next/interfaces/InternationalizationOptions'],
+		'): ',
+		['InternationalizationHandler', '/documentation/api/plugin-i18next/classes/InternationalizationHandler']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['InternationalizationOptions', '/documentation/api/plugin-i18next/interfaces/InternationalizationOptions']]} optional>
+
+The options that `i18next`, `@wolfstar/i18next-backend`, and
+[InternationalizationHandler](/documentation/api/plugin-i18next/classes/InternationalizationHandler) should use.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### backendOptions
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly backendOptions: Options']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L62', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:62' }}>
+
+The backend options for `@wolfstar/i18next-backend` used by `i18next`.
+
+</ApiMember>
+
+### fetchLanguage
+
+<ApiMember kind="property" signature={['fetchLanguage: (context: ', ['InternationalizationContext', '/documentation/api/plugin-i18next/interfaces/InternationalizationContext'], ') => Awaitable<string | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L115', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:115' }}>
+
+The method to be overridden by the developer.
+
+In the event that `fetchLanguage` is not defined or returns null / undefined, the interaction's
+locales are used instead.
+
+**Example 1**
+
+```typescript
+// Always use the same language (no per-guild configuration):
+container.i18n.fetchLanguage = () => 'en-US';
+```
+
+**Example 2**
+
+```typescript
+// Retrieving the language from an ORM:
+container.i18n.fetchLanguage = async (context) => {
+	if (!context.guildId) return null;
+	const guild = await driver.getRepository(GuildEntity).findOne({ id: context.guildId });
+	return guild?.language ?? 'en-US';
+};
+```
+
+</ApiMember>
+
+### languages
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly languages: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, TFunction<"translation", undefined>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L46', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:46' }}>
+
+A `Map` of `i18next` language functions keyed by their language code.
+
+</ApiMember>
+
+### languagesDirectory
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly languagesDirectory: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L57', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:57' }}>
+
+The directory passed to `@wolfstar/i18next-backend`. Also used in
+[InternationalizationHandler.walkRootDirectory](/documentation/api/plugin-i18next/classes/InternationalizationHandler#walkrootdirectory).
+
+</ApiMember>
+
+### languagesLoaded
+
+<ApiMember kind="property" signature={['languagesLoaded: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L36', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:36' }}>
+
+Describes whether [InternationalizationHandler.init](/documentation/api/plugin-i18next/classes/InternationalizationHandler#init) has been run and languages are
+loaded in [InternationalizationHandler.languages](/documentation/api/plugin-i18next/classes/InternationalizationHandler#languages).
+
+</ApiMember>
+
+### namespaces
+
+<ApiMember kind="property" signature={['namespaces: ', ['Set', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set'], '<string>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L41', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:41' }}>
+
+A `Set` of initially loaded namespaces.
+
+</ApiMember>
+
+### options
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly options: ', ['InternationalizationOptions', '/documentation/api/plugin-i18next/interfaces/InternationalizationOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L51', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:51' }}>
+
+The options [InternationalizationHandler](/documentation/api/plugin-i18next/classes/InternationalizationHandler) was initialized with.
+
+</ApiMember>
+
+## Methods
+
+### format()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L199', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:199' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'format<const Key extends string, const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', Ret extends string | $SpecialObject = TFunctionReturn<Ns, Key, TOpt>, const ActualOptions extends TOptionsBase & $Dictionary = TOpt & InterpolationMap<Ret>>(\n  locale: string,\n  key: Key | Key[],\n  options?: ActualOptions\n): TFunctionReturnOptionalDetails<Ret, TOpt>'
+	]}
+/>
+
+Localizes a content given one or more keys and i18next options.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Key" type={['extends string']} />
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="Ret" type={['extends string | $SpecialObject']} defaultValue={'TFunctionReturn<Ns, Key, TOpt>'} />
+
+<ApiParam name="ActualOptions" type={['extends TOptionsBase & $Dictionary']} defaultValue={'TOpt & InterpolationMap<Ret>'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="locale" type={['string']}>
+
+The language to be used.
+
+</ApiParam>
+
+<ApiParam name="key" type={['Key | Key[]']}>
+
+The key or keys to retrieve the content from.
+
+</ApiParam>
+
+<ApiParam name="options" type={['ActualOptions']} optional>
+
+The interpolation options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TFunctionReturnOptionalDetails<Ret, TOpt>']}>
+
+The localized content.
+
+</ApiParam>
+
+</ApiParams>
+
+**See also**
+
+- [https://www.i18next.com/overview/api#t](https://www.i18next.com/overview/api#t)
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'format<const Key extends string, const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', Ret extends string | $SpecialObject = TFunctionReturn<Ns, Key, TOpt>>(\n  locale: string,\n  key: string | string[],\n  options: TOpt & ',
+		['$Dictionary', '/documentation/api/plugin-i18next/interfaces/$Dictionary'],
+		' & { defaultValue: string }\n): TFunctionReturnOptionalDetails<Ret, TOpt>'
+	]}
+/>
+
+Localizes a content given one or more keys and i18next options.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Key" type={['extends string']} />
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="Ret" type={['extends string | $SpecialObject']} defaultValue={'TFunctionReturn<Ns, Key, TOpt>'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="locale" type={['string']}>
+
+The language to be used.
+
+</ApiParam>
+
+<ApiParam name="key" type={['string | string[]']}>
+
+The key or keys to retrieve the content from.
+
+</ApiParam>
+
+<ApiParam name="options" type={['TOpt & ', ['$Dictionary', '/documentation/api/plugin-i18next/interfaces/$Dictionary'], ' & { defaultValue: string }']}>
+
+The interpolation options as well as a `defaultValue` for the key and any
+key/value pairs.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TFunctionReturnOptionalDetails<Ret, TOpt>']}>
+
+The localized content.
+
+</ApiParam>
+
+</ApiParams>
+
+**See also**
+
+- [https://www.i18next.com/overview/api#t](https://www.i18next.com/overview/api#t)
+
+</Tab>
+
+<Tab title="Overload 3">
+
+<ApiSignature
+	tokens={[
+		'format<const Key extends string, const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', Ret extends string | $SpecialObject = TFunctionReturn<Ns, Key, TOpt>>(\n  locale: string,\n  key: string | string[],\n  defaultValue: string | undefined,\n  options?: TOpt & ',
+		['$Dictionary', '/documentation/api/plugin-i18next/interfaces/$Dictionary'],
+		'\n): TFunctionReturnOptionalDetails<Ret, TOpt>'
+	]}
+/>
+
+Localizes a content given one or more keys and i18next options.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Key" type={['extends string']} />
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="Ret" type={['extends string | $SpecialObject']} defaultValue={'TFunctionReturn<Ns, Key, TOpt>'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="locale" type={['string']}>
+
+The language to be used.
+
+</ApiParam>
+
+<ApiParam name="key" type={['string | string[]']}>
+
+The key or keys to retrieve the content from.
+
+</ApiParam>
+
+<ApiParam name="defaultValue" type={['string | undefined']}>
+
+The default value to use if the key is not found.
+
+</ApiParam>
+
+<ApiParam name="options" type={['TOpt & ', ['$Dictionary', '/documentation/api/plugin-i18next/interfaces/$Dictionary']]} optional>
+
+The interpolation options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TFunctionReturnOptionalDetails<Ret, TOpt>']}>
+
+The localized content.
+
+</ApiParam>
+
+</ApiParams>
+
+**See also**
+
+- [https://www.i18next.com/overview/api#t](https://www.i18next.com/overview/api#t)
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### getT()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L171', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:171' }}>
+
+<ApiSignature tokens={['getT<const Ns extends Namespace = "translation">(\n  locale: string,\n  namespace?: Ns\n): TFunction<Ns>']} />
+
+Retrieve a raw `TFunction` from the passed locale.
+
+Passing a namespace returns a function bound to it, so its keys can be written without the
+`<namespace>:` prefix and are typed against the `CustomTypeOptions` augmentation generated by
+[`@wolfstar/i18next-type-generator`](https://www.npmjs.com/package/@wolfstar/i18next-type-generator).
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue={'"translation"'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="locale" type={['string']}>
+
+The language to be used.
+
+</ApiParam>
+
+<ApiParam name="namespace" type={['Ns']} optional>
+
+The namespace to bind the returned function to, defaulting to i18next's one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TFunction<Ns>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### init()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L122', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:122' }}>
+
+<ApiSignature
+	tokens={['init(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Initializes the handler by loading in the namespaces, passing the data to i18next, and filling
+in [InternationalizationHandler.languages](/documentation/api/plugin-i18next/classes/InternationalizationHandler#languages).
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### reloadResources()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L358', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:358' }}>
+
+<ApiSignature
+	tokens={[
+		'reloadResources(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Reloads the languages and namespaces registered in i18next, used by the HMR watcher registered
+in `@wolfstar/plugin-i18next/register`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### walkRootDirectory()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/InternationalizationHandler.ts#L334', label: 'packages/plugin-i18next/src/lib/InternationalizationHandler.ts:334' }}>
+
+<ApiSignature
+	tokens={[
+		'walkRootDirectory(directory: PathLike): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  languages: string[];\n  namespaces: string[];\n}>'
+	]}
+/>
+
+Walks the root languages directory, collecting every language and namespace found in it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="directory" type={['PathLike']}>
+
+The directory that should be walked.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  languages: string[];\n  namespaces: string[];\n}>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

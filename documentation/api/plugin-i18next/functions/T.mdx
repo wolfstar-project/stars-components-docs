@@ -1,0 +1,60 @@
+---
+title: '~~Function: T()~~'
+description: 'Brands a key with the type it resolves to. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	badges={['deprecated']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/compat.ts#L38',
+		label: 'packages/plugin-i18next/src/lib/compat.ts:38'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+<Warning>
+
+**Deprecated.** Use the key itself, typed by the `CustomTypeOptions` augmentation
+`@wolfstar/i18next-type-generator` emits.
+
+</Warning>
+
+Brands a key with the type it resolves to. It is returned unchanged at runtime.
+
+<ApiSignature tokens={['T<TCustom = string>(key: string): ', ['TypedT', '/documentation/api/plugin-i18next/type-aliases/TypedT'], '<TCustom>']} />
+
+<Warning>
+
+**Deprecated.** Use the key itself, typed by the `CustomTypeOptions` augmentation
+`@wolfstar/i18next-type-generator` emits.
+
+</Warning>
+
+Brands a key with the type it resolves to. It is returned unchanged at runtime.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TCustom" defaultValue="string" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The key to brand.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['TypedT', '/documentation/api/plugin-i18next/type-aliases/TypedT'], '<TCustom>']} />
+
+</ApiParams>

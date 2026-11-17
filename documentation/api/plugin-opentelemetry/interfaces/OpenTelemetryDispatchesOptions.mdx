@@ -1,0 +1,37 @@
+---
+title: 'Interface: OpenTelemetryDispatchesOptions'
+description: 'Which gateway dispatches get a span. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L91',
+		label: 'lib/attributes.ts:91'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Which gateway dispatches get a span.
+
+<ApiSignature tokens={['interface OpenTelemetryDispatchesOptions']} />
+
+## Properties
+
+### ignore?
+
+<ApiMember kind="property" badges={['optional']} signature={['ignore?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L97', label: 'lib/attributes.ts:97' }}>
+
+The dispatch types that get no span, such as `PRESENCE_UPDATE` or `TYPING_START` on a busy bot.
+
+**Default**
+
+```ts
+[];
+```
+
+</ApiMember>

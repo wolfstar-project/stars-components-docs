@@ -1,0 +1,59 @@
+---
+title: 'Function: createRedisCache()'
+description: 'Creates a Cache stored in Redis, optionally compressing its values. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/redis.ts#L622',
+		label: 'packages/plugin-cache/src/lib/redis.ts:622'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Creates a [Cache](/documentation/api/plugin-cache/interfaces/Cache) stored in Redis, optionally compressing its values.
+
+<ApiSignature
+	tokens={[
+		'createRedisCache(options: ',
+		['RedisCacheOptions', '/documentation/api/plugin-cache/interfaces/RedisCacheOptions'],
+		'): ',
+		['Cache', '/documentation/api/plugin-cache/interfaces/Cache']
+	]}
+/>
+
+Creates a [Cache](/documentation/api/plugin-cache/interfaces/Cache) stored in Redis, optionally compressing its values.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['RedisCacheOptions', '/documentation/api/plugin-cache/interfaces/RedisCacheOptions']]}>
+
+The options for the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-cache/interfaces/Cache']]} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { createRedisCache } from '@wolfstar/plugin-cache';
+import { Redis } from 'ioredis';
+
+const cache = createRedisCache({
+	redis: new Redis(process.env.REDIS_URL!),
+	compression: 'gzip',
+	ttl: { guilds: 60 * 60, users: 30 * 60 }
+});
+```

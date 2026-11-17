@@ -1,0 +1,39 @@
+---
+title: 'Interface: CreateCacheOptions'
+description: 'The options of createCache. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/policy.ts#L153',
+		label: 'packages/plugin-cache/src/lib/policy.ts:153'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+The options of [createCache](/documentation/api/plugin-cache/functions/createCache).
+
+<ApiSignature tokens={['interface CreateCacheOptions']} />
+
+## Properties
+
+### makeCache
+
+<ApiMember kind="property" signature={['makeCache: ', ['CacheFactory', '/documentation/api/plugin-cache/type-aliases/CacheFactory']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/policy.ts#L157', label: 'packages/plugin-cache/src/lib/policy.ts:157' }}>
+
+Creates the store of each entity kind, `null` or `undefined` not to cache it. Called once per entity kind.
+
+</ApiMember>
+
+### policies?
+
+<ApiMember kind="property" badges={['optional']} signature={['policies?: ', ['CachePolicies', '/documentation/api/plugin-cache/type-aliases/CachePolicies']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/policy.ts#L161', label: 'packages/plugin-cache/src/lib/policy.ts:161' }}>
+
+The policies the stores' writes follow, see [withPolicy](/documentation/api/plugin-cache/functions/withPolicy).
+
+</ApiMember>

@@ -1,0 +1,70 @@
+---
+title: '~~Function: FT()~~'
+description: 'Brands a key with its interpolation arguments and the type it resolves to. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	badges={['deprecated']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/compat.ts#L50',
+		label: 'packages/plugin-i18next/src/lib/compat.ts:50'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+<Warning>
+
+**Deprecated.** Use the key itself: its interpolation options are inferred from the locale files by
+the `CustomTypeOptions` augmentation `@wolfstar/i18next-type-generator` emits.
+
+</Warning>
+
+Brands a key with its interpolation arguments and the type it resolves to. It is returned
+unchanged at runtime.
+
+<ApiSignature
+	tokens={[
+		'FT<TArgs extends object = object, TReturn = string>(key: string): ',
+		['TypedFT', '/documentation/api/plugin-i18next/type-aliases/TypedFT'],
+		'<TArgs, TReturn>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use the key itself: its interpolation options are inferred from the locale files by
+the `CustomTypeOptions` augmentation `@wolfstar/i18next-type-generator` emits.
+
+</Warning>
+
+Brands a key with its interpolation arguments and the type it resolves to. It is returned
+unchanged at runtime.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TArgs" type={['extends object']} defaultValue="object" />
+
+<ApiParam name="TReturn" defaultValue="string" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The key to brand.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['TypedFT', '/documentation/api/plugin-i18next/type-aliases/TypedFT'], '<TArgs, TReturn>']} />
+
+</ApiParams>

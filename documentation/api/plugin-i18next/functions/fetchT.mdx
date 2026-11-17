@@ -1,0 +1,54 @@
+---
+title: 'Function: fetchT()'
+description: "Retrieves the language-assigned function from i18next designated to a target's preferred language. (@wolfstar/plugin-i18next)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L361',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:361'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Retrieves the language-assigned function from i18next designated to a target's preferred language.
+
+<ApiSignature
+	tokens={[
+		'fetchT(target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<TFunction<"translation", undefined>>'
+	]}
+/>
+
+Retrieves the language-assigned function from i18next designated to a target's preferred language.
+
+Use [fetchKey](/documentation/api/plugin-i18next/functions/fetchKey) to resolve a key in a single call.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]}>
+
+The target to fetch the language from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<TFunction<"translation", undefined>>'
+	]}
+/>
+
+</ApiParams>

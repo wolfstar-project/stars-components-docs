@@ -1,0 +1,22 @@
+---
+title: 'Type Alias: StreamEntry'
+description: 'A stream entry as returned by BrokerRedisClientLike.xreadgroup and BrokerRedisClientLike.xautoclaim: its fields are null when the entry was deleted (… (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L66',
+		label: 'packages/plugin-broker/src/lib/redis.ts:66'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+A stream entry as returned by [BrokerRedisClientLike.xreadgroup](/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike#xreadgroup) and [BrokerRedisClientLike.xautoclaim](/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike#xautoclaim):
+its fields are `null` when the entry was deleted (e.g. trimmed by `MAXLEN`) while still pending.
+
+<ApiSignature tokens={['type StreamEntry = [id: string, fields: string[] | null]']} />

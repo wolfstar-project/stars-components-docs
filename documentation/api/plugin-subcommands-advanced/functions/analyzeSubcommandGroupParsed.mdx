@@ -1,0 +1,50 @@
+---
+title: 'Function: analyzeSubcommandGroupParsed()'
+description: 'Register a command piece as a subcommand inside a group of parentCommandName. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/functions.ts#L166',
+		label: 'packages/plugin-subcommands-advanced/src/lib/utils/functions.ts:166'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Register a command piece as a subcommand inside a group of `parentCommandName`.
+
+<ApiSignature
+	tokens={[
+		'analyzeSubcommandGroupParsed(\n  piece: Command,\n  parentCommandName: string,\n  groupName: string,\n  subcommand: ',
+		['SlashSubcommandResolvable', '/documentation/api/plugin-subcommands-advanced/type-aliases/SlashSubcommandResolvable'],
+		'\n): Command'
+	]}
+/>
+
+Register a command piece as a subcommand inside a group of `parentCommandName`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="piece" type={['Command']} />
+
+<ApiParam name="parentCommandName" type={['string']} />
+
+<ApiParam name="groupName" type={['string']} />
+
+<ApiParam
+	name="subcommand"
+	type={[['SlashSubcommandResolvable', '/documentation/api/plugin-subcommands-advanced/type-aliases/SlashSubcommandResolvable']]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Command']} />
+
+</ApiParams>

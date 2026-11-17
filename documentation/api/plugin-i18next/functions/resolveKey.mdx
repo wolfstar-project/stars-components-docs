@@ -1,0 +1,221 @@
+---
+title: '~~Function: resolveKey()~~'
+description: "Resolves a key with the guild's language, as resolved by getSupportedLanguageName. (@wolfstar/plugin-i18next)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	badges={['deprecated']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/compat.ts#L64',
+		label: 'packages/plugin-i18next/src/lib/compat.ts:64'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+<Warning>
+
+**Deprecated.** Use [getSupportedLanguageT](/documentation/api/plugin-i18next/functions/getSupportedLanguageT) with the key and its options instead.
+
+</Warning>
+
+Resolves a key with the guild's language, as resolved by `getSupportedLanguageName`.
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'resolveKey<TReturn>(\n  target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		',\n  key: ',
+		['TypedT', '/documentation/api/plugin-i18next/type-aliases/TypedT'],
+		'<TReturn>,\n  options?: string | TOptionsBase\n): TReturn'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [getSupportedLanguageT](/documentation/api/plugin-i18next/functions/getSupportedLanguageT) with the key and its options instead.
+
+</Warning>
+
+Resolves a key with the guild's language, as resolved by `getSupportedLanguageName`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TReturn" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]}>
+
+The target to read the locales from.
+
+</ApiParam>
+
+<ApiParam name="key" type={[['TypedT', '/documentation/api/plugin-i18next/type-aliases/TypedT'], '<TReturn>']}>
+
+The key to resolve.
+
+</ApiParam>
+
+<ApiParam name="options" type={['string | TOptionsBase']} optional>
+
+The i18next options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TReturn']} />
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'resolveKey<TReturn>(\n  target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		',\n  key: ',
+		['TypedT', '/documentation/api/plugin-i18next/type-aliases/TypedT'],
+		'<TReturn>,\n  defaultValue: TReturn,\n  options?: string | TOptionsBase\n): TReturn'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [getSupportedLanguageT](/documentation/api/plugin-i18next/functions/getSupportedLanguageT) with the key, `defaultValue` and options instead.
+
+</Warning>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TReturn" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]} />
+
+<ApiParam name="key" type={[['TypedT', '/documentation/api/plugin-i18next/type-aliases/TypedT'], '<TReturn>']} />
+
+<ApiParam name="defaultValue" type={['TReturn']} />
+
+<ApiParam name="options" type={['string | TOptionsBase']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TReturn']} />
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 3">
+
+<ApiSignature
+	tokens={[
+		'resolveKey<TArgs extends object, TReturn>(\n  target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		',\n  key: ',
+		['TypedFT', '/documentation/api/plugin-i18next/type-aliases/TypedFT'],
+		'<TArgs, TReturn>,\n  options?: TOptions<TArgs>\n): TReturn'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [getSupportedLanguageT](/documentation/api/plugin-i18next/functions/getSupportedLanguageT) with the key and its interpolation options instead.
+
+</Warning>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TArgs" type={['extends object']} />
+
+<ApiParam name="TReturn" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]} />
+
+<ApiParam name="key" type={[['TypedFT', '/documentation/api/plugin-i18next/type-aliases/TypedFT'], '<TArgs, TReturn>']} />
+
+<ApiParam name="options" type={['TOptions<TArgs>']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TReturn']} />
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 4">
+
+<ApiSignature
+	tokens={[
+		'resolveKey<TArgs extends object, TReturn>(\n  target: ',
+		['Target', '/documentation/api/plugin-i18next/type-aliases/Target'],
+		',\n  key: ',
+		['TypedFT', '/documentation/api/plugin-i18next/type-aliases/TypedFT'],
+		'<TArgs, TReturn>,\n  defaultValue: TReturn,\n  options?: TOptions<TArgs>\n): TReturn'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [getSupportedLanguageT](/documentation/api/plugin-i18next/functions/getSupportedLanguageT) with the key, `defaultValue` and interpolation
+options instead.
+
+</Warning>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TArgs" type={['extends object']} />
+
+<ApiParam name="TReturn" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['Target', '/documentation/api/plugin-i18next/type-aliases/Target']]} />
+
+<ApiParam name="key" type={[['TypedFT', '/documentation/api/plugin-i18next/type-aliases/TypedFT'], '<TArgs, TReturn>']} />
+
+<ApiParam name="defaultValue" type={['TReturn']} />
+
+<ApiParam name="options" type={['TOptions<TArgs>']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['TReturn']} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>

@@ -1,0 +1,182 @@
+---
+title: '@wolfstar/plugin-scheduled-tasks'
+description: 'Generated API reference for @wolfstar/plugin-scheduled-tasks: one-off and repeated tasks stored in Redis and run by BullMQ.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-scheduled-tasks"
+	version="0.4.1"
+	guideHref="/documentation/packages/plugin-scheduled-tasks"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-scheduled-tasks"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-scheduled-tasks" />
+
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'ScheduledTask',
+			kind: 'namespace',
+			href: '/documentation/api/plugin-scheduled-tasks/namespaces/ScheduledTask',
+			summary: 'The namespace for ScheduledTask.'
+		},
+		{
+			name: 'ScheduledTask',
+			kind: 'class',
+			href: '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTask',
+			summary: 'Represents a scheduled task that can be run at a specified interval or pattern.'
+		},
+		{ name: 'ScheduledTaskHandler', kind: 'class', href: '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTaskHandler' },
+		{
+			name: 'ScheduledTaskStore',
+			kind: 'class',
+			href: '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTaskStore',
+			summary: 'A store for managing scheduled tasks.'
+		},
+		{
+			name: 'ScheduledTaskCreateRepeatedTask',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskCreateRepeatedTask',
+			summary: 'Represents a scheduled task that will be repeated at a specified interval.'
+		},
+		{
+			name: 'ScheduledTaskHandlerOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskHandlerOptions',
+			summary: 'Options for a scheduled task handler.'
+		},
+		{
+			name: 'ScheduledTaskListOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskListOptions',
+			summary: 'Options for listing scheduled tasks.'
+		},
+		{
+			name: 'ScheduledTaskListRepeatedOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskListRepeatedOptions',
+			summary: 'Options for listing repeated scheduled tasks.'
+		},
+		{
+			name: 'ScheduledTaskOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskOptions',
+			summary: 'Options for configuring a scheduled task.'
+		},
+		{
+			name: 'ScheduledTaskRunContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskRunContext',
+			summary: 'What a worker gives the handler about the job it is running: needed to delay the job, absent when a task is run by hand.'
+		},
+		{
+			name: 'ScheduledTasks',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasks',
+			summary: 'The registered tasks and their payload types.'
+		},
+		{
+			name: 'ScheduledTasksPluginOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksPluginOptions',
+			summary:
+				'The options the plugin factory and the module accept: ScheduledTaskHandlerOptions, all optional because ClientOptions.tasks is merged over…'
+		},
+		{
+			name: 'ScheduledTasksResolvableNoPayload',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksResolvableNoPayload',
+			summary: 'An entry in ScheduledTasks that has no payload.'
+		},
+		{
+			name: 'ScheduledTasksResolvablePayload',
+			kind: 'interface',
+			href: '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksResolvablePayload',
+			summary: 'An entry in ScheduledTasks with its associated payload.'
+		},
+		{
+			name: 'BullClient',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/BullClient',
+			summary: 'A Bull queue client that can be used to schedule and manage scheduled tasks.'
+		},
+		{
+			name: 'ScheduledTaskCustomJobOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskCustomJobOptions',
+			summary: 'Custom options for a job in a scheduled task.'
+		},
+		{
+			name: 'ScheduledTaskListRepeatedReturnType',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskListRepeatedReturnType',
+			summary: 'The job schedulers ScheduledTaskHandler#listRepeated returns.'
+		},
+		{ name: 'ScheduledTasksJob', kind: 'type-alias', href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksJob' },
+		{
+			name: 'ScheduledTasksKeys',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys',
+			summary: 'The keys of ScheduledTasks.'
+		},
+		{
+			name: 'ScheduledTasksKeysNoPayload',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeysNoPayload',
+			summary: 'The keys of ScheduledTasks with an optional or no payload.'
+		},
+		{
+			name: 'ScheduledTasksPayload',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksPayload',
+			summary: 'The payload type of a ScheduledTasks entry.'
+		},
+		{
+			name: 'ScheduledTasksResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksResolvable'
+		},
+		{
+			name: 'ScheduledTasksTaskOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksTaskOptions',
+			summary: 'Options for a scheduled task.'
+		},
+		{
+			name: 'ScheduledTaskEvents',
+			kind: 'variable',
+			href: '/documentation/api/plugin-scheduled-tasks/variables/ScheduledTaskEvents',
+			summary: 'Events emitted during the process setting up the scheduler and running a task.'
+		},
+		{
+			name: 'scheduledTasks',
+			kind: 'variable',
+			href: '/documentation/api/plugin-scheduled-tasks/variables/scheduledTasks',
+			summary:
+				'The scheduled tasks plugin: installs a ScheduledTaskHandler on container.tasks, registers the scheduled-tasks store, and starts the worker…'
+		},
+		{
+			name: 'scheduledTasksModule',
+			kind: 'variable',
+			href: '/documentation/api/plugin-scheduled-tasks/variables/scheduledTasksModule',
+			summary:
+				'The Stars module: listing the package in modules in stars.config registers the runtime plugin with the options written under its scheduledT…'
+		},
+		{
+			name: 'version',
+			kind: 'variable',
+			href: '/documentation/api/plugin-scheduled-tasks/variables/version',
+			summary:
+				'The @wolfstar/plugin-scheduled-tasks version, replaced with the package.json version at build time by @redstardev/unplugin-version-injector.'
+		},
+		{
+			name: 'loadListeners',
+			kind: 'function',
+			href: '/documentation/api/plugin-scheduled-tasks/functions/loadListeners',
+			summary: "Registers the built-in scheduled task error listeners into the framework's listener store."
+		}
+	]}
+/>

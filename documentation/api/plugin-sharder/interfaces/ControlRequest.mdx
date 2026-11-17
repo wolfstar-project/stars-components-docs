@@ -1,0 +1,42 @@
+---
+title: 'Interface: ControlRequest'
+description: 'What a shard asks its manager to start, close, or restart. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/protocol.ts#L88',
+		label: 'packages/plugin-sharder/src/messages/protocol.ts:88'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+What a shard asks its manager to start, close, or restart.
+
+<ApiSignature tokens={['interface ControlRequest']} />
+
+## Properties
+
+### action
+
+<ApiMember
+	kind="property"
+	signature={['action: "start" | "close" | "restart"']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/protocol.ts#L89',
+		label: 'packages/plugin-sharder/src/messages/protocol.ts:89'
+	}}
+/>
+
+### target
+
+<ApiMember kind="property" signature={['target: { channel: ', ['ShardTarget', '/documentation/api/plugin-sharder/type-aliases/ShardTarget'], ' } | { shard: number }']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/protocol.ts#L93', label: 'packages/plugin-sharder/src/messages/protocol.ts:93' }}>
+
+A shard (`{ channel }`, or `"all"`), or a gateway shard (`{ shard }`).
+
+</ApiMember>

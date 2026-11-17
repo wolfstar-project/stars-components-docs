@@ -1,0 +1,84 @@
+---
+title: 'Interface: HMROptions'
+description: 'Configure whether to use Hot-Module-Replacement (HMR) for your i18next resources using these options. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L134',
+		label: 'packages/plugin-i18next/src/lib/types.ts:134'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Configure whether to use Hot-Module-Replacement (HMR) for your i18next resources using these
+options. The minimum config to enable HMR is to set `enabled` to true. Any other properties are
+optional.
+
+<ApiSignature tokens={['interface HMROptions']} />
+
+## Properties
+
+### enabled
+
+<ApiMember kind="property" signature={['enabled: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L139', label: 'packages/plugin-i18next/src/lib/types.ts:139' }}>
+
+HMR status for the i18next plugin.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>
+
+### languages?
+
+<ApiMember kind="property" badges={['optional']} signature={['languages?: string | string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L149', label: 'packages/plugin-i18next/src/lib/types.ts:149' }}>
+
+Languages that will be reloaded when updating the languages directory.
+
+Pinning both this and [HMROptions.namespaces](/documentation/api/plugin-i18next/interfaces/HMROptions#namespaces) skips the directory walk, so languages and
+namespaces added while the process is running are not registered on i18next.
+
+**Default**
+
+```ts
+All languages that are automatically resolved from your folder setup
+```
+
+</ApiMember>
+
+### namespaces?
+
+<ApiMember kind="property" badges={['optional']} signature={['namespaces?: string | string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L159', label: 'packages/plugin-i18next/src/lib/types.ts:159' }}>
+
+Namespaces that will be reloaded when updating the languages directory.
+
+Pinning both this and [HMROptions.languages](/documentation/api/plugin-i18next/interfaces/HMROptions#languages) skips the directory walk, so languages and
+namespaces added while the process is running are not registered on i18next.
+
+**Default**
+
+```ts
+All namespaces that are automatically resolved from your languages folder setup
+```
+
+</ApiMember>
+
+### options?
+
+<ApiMember kind="property" badges={['optional']} signature={['options?: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<BasicOptions & {\n  awaitWriteFinish: boolean | ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<AWF>;\n  ignored: Matcher | Matcher[];\n}>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L168', label: 'packages/plugin-i18next/src/lib/types.ts:168' }}>
+
+The options passed to `chokidar`'s `watch`.
+
+`ignoreInitial` defaults to `true`, since chokidar would otherwise replay an `add` event for
+every translation file already on disk and trigger a reload for each of them on startup.
+
+</ApiMember>

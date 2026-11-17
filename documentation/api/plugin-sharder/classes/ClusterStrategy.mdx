@@ -1,0 +1,140 @@
+---
+title: 'Class: ClusterStrategy'
+description: 'Spawns every shard as a node:cluster worker. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ClusterStrategy.ts#L26',
+		label: 'packages/plugin-sharder/src/strategies/ClusterStrategy.ts:26'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Spawns every shard as a `node:cluster` worker. Unlike [ForkStrategy](/documentation/api/plugin-sharder/classes/ForkStrategy), the shards share the ports they listen
+on, and the primary balances the connections between them.
+
+<ApiSignature tokens={['class ClusterStrategy extends ', ['ProcessStrategy', '/documentation/api/plugin-sharder/classes/ProcessStrategy']]} />
+
+<ApiHierarchy extends={[[['ProcessStrategy', '/documentation/api/plugin-sharder/classes/ProcessStrategy']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ClusterStrategy.ts#L30', label: 'packages/plugin-sharder/src/strategies/ClusterStrategy.ts:30' }}>
+
+<ApiSignature
+	tokens={[
+		'new ClusterStrategy(options: ',
+		['ClusterStrategyOptions', '/documentation/api/plugin-sharder/interfaces/ClusterStrategyOptions'],
+		' = {}): ',
+		['ClusterStrategy', '/documentation/api/plugin-sharder/classes/ClusterStrategy']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[['ClusterStrategyOptions', '/documentation/api/plugin-sharder/interfaces/ClusterStrategyOptions']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: "cluster"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ClusterStrategy.ts#L27', label: 'packages/plugin-sharder/src/strategies/ClusterStrategy.ts:27' }}>
+
+The name of the strategy in the registry, see [registerStrategy](/documentation/api/plugin-sharder/functions/registerStrategy).
+
+</ApiMember>
+
+### options
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly options: ', ['ClusterStrategyOptions', '/documentation/api/plugin-sharder/interfaces/ClusterStrategyOptions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ClusterStrategy.ts#L28',
+		label: 'packages/plugin-sharder/src/strategies/ClusterStrategy.ts:28'
+	}}
+/>
+
+## Methods
+
+### createProcess()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ClusterStrategy.ts#L35', label: 'packages/plugin-sharder/src/strategies/ClusterStrategy.ts:35' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createProcess(context: ',
+		['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'],
+		', options: ',
+		['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions'],
+		'): Worker'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} />
+
+<ApiParam name="options" type={[['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Worker']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### spawn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L36', label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:36' }} inheritedFrom={[['ProcessStrategy.spawn', '/documentation/api/plugin-sharder/classes/ProcessStrategy#spawn']]}>
+
+<ApiSignature
+	tokens={[
+		'spawn(\n  context: ',
+		['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'],
+		',\n  events: ',
+		['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents'],
+		',\n  options: ',
+		['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions'],
+		'\n): ',
+		['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} />
+
+<ApiParam name="events" type={[['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents']]} />
+
+<ApiParam name="options" type={[['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']]} />
+
+</ApiParams>
+
+</ApiMember>

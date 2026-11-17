@@ -1,0 +1,69 @@
+---
+title: 'Function: applyNameLocalizedBuilder()'
+description: 'Applies the localized names on the builder, calling setName and setNameLocalizations. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/functions.ts#L531',
+		label: 'packages/plugin-i18next/src/lib/functions.ts:531'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Applies the localized names on the builder, calling `setName` and `setNameLocalizations`.
+
+<ApiSignature
+	tokens={[
+		'applyNameLocalizedBuilder<T extends ',
+		['BuilderWithName', '/documentation/api/plugin-i18next/interfaces/BuilderWithName'],
+		', const TOpt extends TOptions = TOptions, Ns extends Namespace = ',
+		['AnyNamespace', '/documentation/api/plugin-i18next/type-aliases/AnyNamespace'],
+		', KPrefix = undefined>(\n  builder: T,\n  key: string\n): T'
+	]}
+/>
+
+Applies the localized names on the builder, calling `setName` and `setNameLocalizations`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" type={['extends ', ['BuilderWithName', '/documentation/api/plugin-i18next/interfaces/BuilderWithName']]} />
+
+<ApiParam name="TOpt" type={['extends TOptions']} defaultValue="TOptions" />
+
+<ApiParam name="Ns" type={['extends Namespace']} defaultValue="AnyNamespace" />
+
+<ApiParam name="KPrefix" defaultValue="undefined" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="builder" type={['T']}>
+
+The builder to apply the localizations to.
+
+</ApiParam>
+
+<ApiParam name="key" type={['string']}>
+
+The key to get the localizations from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['T']}>
+
+The updated builder.
+
+</ApiParam>
+
+</ApiParams>

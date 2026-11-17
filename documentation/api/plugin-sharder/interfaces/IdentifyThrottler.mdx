@@ -1,0 +1,51 @@
+---
+title: 'Interface: IdentifyThrottler'
+description: "Paces identifies across every shard, the shape of @discordjs/ws's IIdentifyThrottler. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L95',
+		label: 'packages/plugin-sharder/src/ShardClient.ts:95'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Paces identifies across every shard, the shape of `@discordjs/ws`'s `IIdentifyThrottler`.
+
+<ApiSignature tokens={['interface IdentifyThrottler']} />
+
+## Methods
+
+### waitForIdentify()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L96', label: 'packages/plugin-sharder/src/ShardClient.ts:96' }}>
+
+<ApiSignature
+	tokens={[
+		'waitForIdentify(shardId: number, signal: AbortSignal): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']} />
+
+<ApiParam name="signal" type={['AbortSignal']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
