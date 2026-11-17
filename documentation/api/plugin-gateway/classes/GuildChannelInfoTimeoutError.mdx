@@ -1,0 +1,81 @@
+---
+title: 'Class: GuildChannelInfoTimeoutError'
+description: 'Thrown by ChannelManager#requestInfo when Discord does not answer with the CHANNELINFO of the guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L78',
+		label: 'packages/plugin-gateway/src/util/errors.ts:78'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Thrown by `ChannelManager#requestInfo` when Discord does not answer with the `CHANNEL_INFO` of the guild.
+
+<ApiSignature
+	tokens={[
+		'class GuildChannelInfoTimeoutError extends ',
+		['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'],
+		'<"GuildChannelInfoTimeout">'
+	]}
+/>
+
+<ApiHierarchy extends={[[['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'], '<"GuildChannelInfoTimeout">']]} />
+
+The request is dropped: a reply arriving later still updates the cache and emits `channelInfo`. When another request
+for the guild is queued, that reply also resolves it, as the reply carries no nonce to tell them apart.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L89', label: 'packages/plugin-gateway/src/util/errors.ts:89' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildChannelInfoTimeoutError(\n  guildId: string,\n  timeout: number\n): ',
+		['GuildChannelInfoTimeoutError', '/documentation/api/plugin-gateway/classes/GuildChannelInfoTimeoutError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']} />
+
+<ApiParam name="timeout" type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### code
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly code: "GuildChannelInfoTimeout"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L26', label: 'packages/plugin-gateway/src/errors/GatewayError.ts:26' }} inheritedFrom={[['GatewayError.code', '/documentation/api/plugin-gateway/classes/GatewayError#code']]}>
+
+The code of the error.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildId: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L82', label: 'packages/plugin-gateway/src/util/errors.ts:82' }}>
+
+The ID of the guild whose channel info was requested.
+
+</ApiMember>
+
+### timeout
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly timeout: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L87', label: 'packages/plugin-gateway/src/util/errors.ts:87' }}>
+
+The timeout that was exceeded, in milliseconds.
+
+</ApiMember>

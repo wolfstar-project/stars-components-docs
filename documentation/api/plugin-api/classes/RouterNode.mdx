@@ -1,0 +1,221 @@
+---
+title: 'Class: RouterNode'
+description: 'API reference for RouterNode, a class exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L13',
+		label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:13'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature tokens={['class RouterNode']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L24', label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:24' }}>
+
+<ApiSignature
+	tokens={[
+		'new RouterNode(parent: ',
+		['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'],
+		'): ',
+		['RouterNode', '/documentation/api/plugin-api/classes/RouterNode']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="parent" type={[['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### parent
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly parent: ', ['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L17', label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:17' }}>
+
+The branch containing this node.
+
+</ApiMember>
+
+## Accessors
+
+### path
+
+<ApiMember
+	kind="accessor"
+	signature={['get path(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L28',
+		label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:28'
+	}}
+/>
+
+## Methods
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L56', label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:56' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(\n  method: "GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE",\n  route: ',
+		['Route', '/documentation/api/plugin-api/classes/Route'],
+		'\n): boolean'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="method"
+	type={[
+		'"GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE"'
+	]}
+/>
+
+<ApiParam name="route" type={[['Route', '/documentation/api/plugin-api/classes/Route']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### extractParameters()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L32', label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:32' }}>
+
+<ApiSignature
+	tokens={[
+		'extractParameters(parts: readonly string[]): ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, string>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="parts" type={['readonly string[]']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L47', label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:47' }}>
+
+<ApiSignature
+	tokens={[
+		'get(method: "GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE"): ',
+		['Route', '/documentation/api/plugin-api/classes/Route'],
+		'<',
+		['RouteOptions', '/documentation/api/plugin-api/interfaces/RouteOptions'],
+		'> | null'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="method"
+	type={[
+		'"GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE"'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Route', '/documentation/api/plugin-api/classes/Route'],
+		'<',
+		['RouteOptions', '/documentation/api/plugin-api/interfaces/RouteOptions'],
+		'> | null'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### methods()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L66', label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:66' }}>
+
+<ApiSignature
+	tokens={[
+		'methods(): IterableIterator<"GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE">'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		'IterableIterator<"GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE">'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/router/RouterNode.ts#L51', label: 'packages/plugin-api/src/lib/structures/router/RouterNode.ts:51' }}>
+
+<ApiSignature
+	tokens={[
+		'set(\n  method: "GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE",\n  route: ',
+		['Route', '/documentation/api/plugin-api/classes/Route'],
+		'\n): this'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="method"
+	type={[
+		'"GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE"'
+	]}
+/>
+
+<ApiParam name="route" type={[['Route', '/documentation/api/plugin-api/classes/Route']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

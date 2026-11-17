@@ -1,0 +1,40 @@
+---
+title: 'Interface: ScheduledTaskRunContext'
+description: 'What a worker gives the handler about the job it is running: needed to delay the job, absent when a task is run by hand. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L50',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:50'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+What a worker gives the handler about the job it is running: needed to delay the job, absent when a task is run by
+hand.
+
+<ApiSignature tokens={['interface ScheduledTaskRunContext']} />
+
+## Properties
+
+### job?
+
+<ApiMember kind="property" badges={['optional']} signature={['job?: Job<any, any, string, JobProgress>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L54', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:54' }}>
+
+The BullMQ job being processed.
+
+</ApiMember>
+
+### token?
+
+<ApiMember kind="property" badges={['optional']} signature={['token?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L58', label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:58' }}>
+
+The lock token of the job.
+
+</ApiMember>

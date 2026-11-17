@@ -1,0 +1,69 @@
+---
+title: 'Function: moveElementInArray()'
+description: 'Moves an element of an array in place. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L323',
+		label: 'packages/plugin-gateway/src/util/Util.ts:323'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Moves an element of an array in place.
+
+<ApiSignature
+	tokens={['moveElementInArray<Element>(\n  array: Element[],\n  element: Element,\n  newIndex: number,\n  offset: boolean = false\n): number']}
+/>
+
+Moves an element of an array in place.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Element" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="array" type={['Element[]']}>
+
+The array.
+
+</ApiParam>
+
+<ApiParam name="element" type={['Element']}>
+
+The element to move.
+
+</ApiParam>
+
+<ApiParam name="newIndex" type={['number']}>
+
+The index to move it to, or the offset to move it by.
+
+</ApiParam>
+
+<ApiParam name="offset" type={['boolean']} defaultValue="false">
+
+Whether `newIndex` is an offset.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']}>
+
+The new index of the element.
+
+</ApiParam>
+
+</ApiParams>

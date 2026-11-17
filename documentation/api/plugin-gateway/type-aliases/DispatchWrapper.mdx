@@ -1,0 +1,55 @@
+---
+title: 'Type Alias: DispatchWrapper'
+description: 'Wraps the processing of each dispatch, for code that has to run around it rather than react to an event: a tracing span the cache and listener work b… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L348',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:348'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Wraps the processing of each dispatch, for code that has to run around it rather than react to an event: a tracing
+span the cache and listener work becomes the child of, a timer, an `AsyncLocalStorage` store.
+
+<ApiSignature
+	tokens={[
+		'type DispatchWrapper = (dispatch: ',
+		['WrappedDispatch', '/documentation/api/plugin-gateway/interfaces/WrappedDispatch'],
+		', run: () => ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>) => ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="dispatch" type={[['WrappedDispatch', '/documentation/api/plugin-gateway/interfaces/WrappedDispatch']]}>
+
+The dispatch being processed.
+
+</ApiParam>
+
+<ApiParam name="run" type={['() => ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}>
+
+Processes it: writes it into the cache and emits its events. Call it exactly once and return (or await)
+its promise. It rejects when the processing fails, which the client then reports as for any dispatch.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>

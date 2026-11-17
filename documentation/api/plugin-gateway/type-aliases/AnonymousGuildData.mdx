@@ -1,0 +1,35 @@
+---
+title: 'Type Alias: AnonymousGuildData'
+description: 'The raw fields every guild-like payload carries, from the partial guilds of invites to full guilds. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L9',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:9'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The raw fields every guild-like payload carries, from the partial guilds of invites to full guilds.
+
+<ApiSignature
+	tokens={[
+		'type AnonymousGuildData = ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		', "features" | "icon" | "id" | "name"> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		', "banner" | "description" | "nsfw_level" | "premium_subscription_count" | "splash" | "vanity_url_code" | "verification_level">>'
+	]}
+/>

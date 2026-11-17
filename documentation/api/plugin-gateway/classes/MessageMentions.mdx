@@ -1,0 +1,299 @@
+---
+title: 'Class: MessageMentions'
+description: 'The users, roles, and channels a message mentions. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L73',
+		label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:73'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The users, roles, and channels a message mentions.
+
+<ApiSignature tokens={['class MessageMentions<InGuild extends boolean = boolean>']} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="boolean" />
+
+</ApiParams>
+
+Users and members come with the message payload, and are replaced by their cached copies when the message was built
+by `client.messages`, which also resolves the mentioned roles and channels from the cache, like discord.js.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L102', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:102' }}>
+
+<ApiSignature
+	tokens={[
+		'new MessageMentions<InGuild extends boolean = boolean>(\n  data: ',
+		['MessageMentionsData', '/documentation/api/plugin-gateway/type-aliases/MessageMentionsData'],
+		',\n  relations: ',
+		['MessageMentionsRelations', '/documentation/api/plugin-gateway/interfaces/MessageMentionsRelations'],
+		' = {}\n): ',
+		['MessageMentions', '/documentation/api/plugin-gateway/classes/MessageMentions'],
+		'<InGuild>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="boolean" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['MessageMentionsData', '/documentation/api/plugin-gateway/type-aliases/MessageMentionsData']]}>
+
+The raw fields of the message.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['MessageMentionsRelations', '/documentation/api/plugin-gateway/interfaces/MessageMentionsRelations']]} defaultValue={'{}'}>
+
+The mentioned entities, as resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### ChannelsPattern
+
+<ApiMember kind="property" badges={['static', 'readonly']} signature={['static readonly ChannelsPattern: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L92', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:92' }}>
+
+Matches channel mentions, `<#id>`.
+
+</ApiMember>
+
+### EveryonePattern
+
+<ApiMember kind="property" badges={['static', 'readonly']} signature={['static readonly EveryonePattern: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L77', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:77' }}>
+
+Matches `@everyone` and `@here`.
+
+</ApiMember>
+
+### RolesPattern
+
+<ApiMember kind="property" badges={['static', 'readonly']} signature={['static readonly RolesPattern: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L87', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:87' }}>
+
+Matches role mentions, `<@&id>`.
+
+</ApiMember>
+
+### UsersPattern
+
+<ApiMember kind="property" badges={['static', 'readonly']} signature={['static readonly UsersPattern: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L82', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:82' }}>
+
+Matches user mentions, `<@id>` and the legacy `<@!id>`.
+
+</ApiMember>
+
+## Accessors
+
+### channelIds
+
+<ApiMember kind="accessor" signature={['get channelIds(): string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L177', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:177' }}>
+
+The IDs of the channels mentioned in the content, and of the crossposted channels.
+
+</ApiMember>
+
+### channels
+
+<ApiMember kind="accessor" signature={['get channels(): ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L124', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:124' }}>
+
+The cached channels the content mentions, by ID, like discord.js's `MessageMentions#channels`.
+
+</ApiMember>
+
+### crosspostedChannels
+
+<ApiMember kind="accessor" signature={['get crosspostedChannels(): ', ['CrosspostedChannel', '/documentation/api/plugin-gateway/interfaces/CrosspostedChannel'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L197', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:197' }}>
+
+The channels a crossposted message mentions, from other guilds, camel-cased like discord.js's
+`MessageMentions#crosspostedChannels`.
+
+</ApiMember>
+
+### everyone
+
+<ApiMember kind="accessor" signature={['get everyone(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L144', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:144' }}>
+
+Whether the message mentions `@everyone` or `@here`.
+
+</ApiMember>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['If', '/documentation/api/plugin-gateway/type-aliases/If'], '<InGuild, ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null, null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L110', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:110' }}>
+
+The guild of the message, from the cache, like discord.js's `MessageMentions#guild`.
+
+</ApiMember>
+
+### members
+
+<ApiMember kind="accessor" signature={['get members(): ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L159', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:159' }}>
+
+The mentioned users as members, for messages sent in a guild.
+
+</ApiMember>
+
+### parsedChannelIds
+
+<ApiMember kind="accessor" signature={['get parsedChannelIds(): string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L189', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:189' }}>
+
+The IDs of the channels mentioned in the content.
+
+</ApiMember>
+
+### parsedUserIds
+
+<ApiMember kind="accessor" signature={['get parsedUserIds(): string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L212', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:212' }}>
+
+The IDs of the users mentioned in the content, including the ones Discord did not resolve.
+
+</ApiMember>
+
+### parsedUsers
+
+<ApiMember kind="accessor" signature={['get parsedUsers(): ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, ', ['User', '/documentation/api/plugin-gateway/classes/User'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L137', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:137' }}>
+
+The users the content mentions, by ID, like discord.js's `MessageMentions#parsedUsers`, which also counts the
+users the message does not ping.
+
+Like discord.js, it reads the cache: a user the content mentions without the payload listing it is skipped when
+it is not cached. The users the payload does list are included even when uncached, as discord.js adds them to its
+cache first; here nothing is written to it.
+
+</ApiMember>
+
+### repliedUser
+
+<ApiMember kind="accessor" signature={['get repliedUser(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L204', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:204' }}>
+
+The author of the message this one replies to, if any.
+
+</ApiMember>
+
+### roleIds
+
+<ApiMember
+	kind="accessor"
+	signature={['get roleIds(): readonly string[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L170',
+		label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:170'
+	}}
+/>
+
+### roles
+
+<ApiMember kind="accessor" signature={['get roles(): ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L117', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:117' }}>
+
+The cached roles the message mentions, by ID, like discord.js's `MessageMentions#roles`.
+
+</ApiMember>
+
+### users
+
+<ApiMember kind="accessor" signature={['get users(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L151', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:151' }}>
+
+The mentioned users: their cached copies, else the payload's.
+
+</ApiMember>
+
+## Methods
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L232', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:232' }}>
+
+<ApiSignature
+	tokens={[
+		'has(\n  target: string | {\n    id: string | null;\n    roleIds?: readonly string[];\n  },\n  options: ',
+		['MentionsHasOptions', '/documentation/api/plugin-gateway/interfaces/MentionsHasOptions'],
+		' = {}\n): boolean'
+	]}
+/>
+
+Whether the message mentions a user, member, role, or channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={['string | {\n  id: string | null;\n  roleIds?: readonly string[];\n}']}>
+
+The ID, or a structure with an `id` (and `roleIds` for members).
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MentionsHasOptions', '/documentation/api/plugin-gateway/interfaces/MentionsHasOptions']]} defaultValue={'{}'}>
+
+What kinds of mentions to ignore.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### parseIds()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageMentions.ts#L222', label: 'packages/plugin-gateway/src/structures/messages/MessageMentions.ts:222' }}>
+
+<ApiSignature
+	tokens={[
+		'static parseIds(content: string, pattern: ',
+		['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp'],
+		'): string[]'
+	]}
+/>
+
+Lists the unique IDs a mention pattern matches in a content.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="content" type={['string']}>
+
+The content.
+
+</ApiParam>
+
+<ApiParam name="pattern" type={[['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]}>
+
+One of the global mention patterns, e.g. [MessageMentions.ChannelsPattern](/documentation/api/plugin-gateway/classes/MessageMentions#channelspattern).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string[]']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,198 @@
+---
+title: 'Interface: ClientApplicationEditOptions'
+description: 'The options to edit the application with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L61',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:61'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to edit the application with.
+
+<ApiSignature tokens={['interface ClientApplicationEditOptions']} />
+
+Omitted fields are left unchanged. Images are data URIs (`data:image/png;base64,...`) or anything `resolveImage`
+reads (contents, a path, a URL, a stream, a blob), `null` removes them.
+
+## Properties
+
+### coverImage?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['coverImage?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L69',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:69'
+	}}
+/>
+
+### customInstallURL?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['customInstallURL?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L62',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:62'
+	}}
+/>
+
+### description?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['description?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L63',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:63'
+	}}
+/>
+
+### eventWebhooksStatus?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'eventWebhooksStatus?: ',
+		['ApplicationWebhookEventStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationWebhookEventStatus']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L65',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:65'
+	}}
+/>
+
+### eventWebhooksTypes?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'eventWebhooksTypes?: ',
+		['ApplicationWebhookEventType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationWebhookEventType'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L66',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:66'
+	}}
+/>
+
+### eventWebhooksURL?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['eventWebhooksURL?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L64',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:64'
+	}}
+/>
+
+### flags?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['flags?: ', ['ApplicationFlagsResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationFlagsResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L67',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:67'
+	}}
+/>
+
+### icon?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['icon?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L68',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:68'
+	}}
+/>
+
+### installParams?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'installParams?: ',
+		['ApplicationInstallParamsOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationInstallParamsOptions']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L73',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:73'
+	}}
+/>
+
+### integrationTypesConfig?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'integrationTypesConfig?: {\n  0?: { oauth2InstallParams?: ',
+		['ApplicationInstallParamsOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationInstallParamsOptions'],
+		' };\n  1?: { oauth2InstallParams?: ',
+		['ApplicationInstallParamsOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationInstallParamsOptions'],
+		' };\n}'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L74',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:74'
+	}}
+/>
+
+### interactionsEndpointURL?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['interactionsEndpointURL?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L70',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:70'
+	}}
+/>
+
+### roleConnectionsVerificationURL?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['roleConnectionsVerificationURL?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L71',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:71'
+	}}
+/>
+
+### tags?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['tags?: string[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ClientApplication.ts#L72',
+		label: 'packages/plugin-gateway/src/structures/applications/ClientApplication.ts:72'
+	}}
+/>

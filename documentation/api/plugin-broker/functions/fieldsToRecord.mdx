@@ -1,0 +1,43 @@
+---
+title: 'Function: fieldsToRecord()'
+description: 'Converts the flat field value field value ... (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L80',
+		label: 'packages/plugin-broker/src/lib/redis.ts:80'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+Converts the flat `field value field value ...` array [BrokerRedisClientLike.xreadgroup](/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike#xreadgroup) returns for a
+stream entry into a record.
+
+<ApiSignature
+	tokens={[
+		'fieldsToRecord(fields: string[] | null): ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, string>'
+	]}
+/>
+
+Converts the flat `field value field value ...` array [BrokerRedisClientLike.xreadgroup](/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike#xreadgroup) returns for a
+stream entry into a record.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="fields" type={['string[] | null']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>']} />
+
+</ApiParams>

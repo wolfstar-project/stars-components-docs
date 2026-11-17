@@ -1,0 +1,38 @@
+---
+title: 'Interface: GuildSoundboardSoundsRequestOptions'
+description: 'The options to request the soundboard sounds of guilds over the gateway with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L214',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:214'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to request the soundboard sounds of guilds over the gateway with.
+
+<ApiSignature tokens={['interface GuildSoundboardSoundsRequestOptions']} />
+
+## Properties
+
+### time?
+
+<ApiMember kind="property" badges={['optional']} signature={['time?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L221', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:221' }}>
+
+How long to wait for the replies, in milliseconds, before rejecting with a `GuildSoundboardSoundsTimeoutError`. Each
+reply restarts it.
+
+**Default**
+
+```ts
+10_000;
+```
+
+</ApiMember>

@@ -1,0 +1,47 @@
+---
+title: 'Interface: RegisterSubCommandGroupOptions'
+description: 'Options to register a command class as a subcommand inside a parent subcommand group. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L34',
+		label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:34'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Options to register a command class as a subcommand inside a parent subcommand group.
+
+<ApiSignature tokens={['interface RegisterSubCommandGroupOptions']} />
+
+## Properties
+
+### groupName
+
+<ApiMember kind="property" signature={['groupName: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L42', label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:42' }}>
+
+The name of the subcommand group already registered on the parent.
+
+</ApiMember>
+
+### parentCommandName
+
+<ApiMember kind="property" signature={['parentCommandName: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L38', label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:38' }}>
+
+The chat-input name of the parent command.
+
+</ApiMember>
+
+### slashSubcommand
+
+<ApiMember kind="property" signature={['slashSubcommand: ', ['SlashSubcommandResolvable', '/documentation/api/plugin-subcommands-advanced/type-aliases/SlashSubcommandResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L46', label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:46' }}>
+
+Slash subcommand data (builder, JSON, or callback). Required for Discord registration.
+
+</ApiMember>

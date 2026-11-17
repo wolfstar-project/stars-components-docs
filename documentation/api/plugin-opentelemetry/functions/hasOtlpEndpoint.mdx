@@ -1,0 +1,41 @@
+---
+title: 'Function: hasOtlpEndpoint()'
+description: 'Whether the environment names an OTLP endpoint, which is what turns the tracing on: without one, the SDK would export to localhost. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/tracing.ts#L11',
+		label: 'lib/tracing.ts:11'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Whether the environment names an OTLP endpoint, which is what turns the tracing on: without one, the SDK would
+export to `localhost`.
+
+<ApiSignature tokens={['hasOtlpEndpoint(env: ProcessEnv = process.env): boolean']} />
+
+Whether the environment names an OTLP endpoint, which is what turns the tracing on: without one, the SDK would
+export to `localhost`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="env" type={['ProcessEnv']} defaultValue="process.env">
+
+The environment. Defaults to `process.env`.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>

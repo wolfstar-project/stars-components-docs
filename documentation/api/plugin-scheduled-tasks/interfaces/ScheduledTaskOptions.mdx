@@ -1,0 +1,78 @@
+---
+title: 'Interface: ScheduledTaskOptions'
+description: 'Options for configuring a scheduled task. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L34',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:34'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+Options for configuring a scheduled task.
+
+<ApiSignature tokens={['interface ScheduledTaskOptions extends Options']} />
+
+<ApiHierarchy extends={[['Options']]} />
+
+## Properties
+
+### customJobOptions?
+
+<ApiMember kind="property" badges={['optional']} signature={['customJobOptions?: ', ['ScheduledTaskCustomJobOptions', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskCustomJobOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L46', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:46' }}>
+
+Custom options to pass to the job scheduler.
+
+</ApiMember>
+
+### interval?
+
+<ApiMember kind="property" badges={['optional']} signature={['interval?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L38', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:38' }}>
+
+The interval (in milliseconds) at which the task should run.
+
+</ApiMember>
+
+### pattern?
+
+<ApiMember kind="property" badges={['optional']} signature={['pattern?: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L42', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:42' }}>
+
+A cron pattern specifying when the task should run.
+
+</ApiMember>
+
+### timezone?
+
+<ApiMember kind="property" badges={['optional']} signature={['timezone?: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L52', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:52' }}>
+
+The timezone to use for the task.
+
+**Default**
+
+```ts
+'UTC';
+```
+
+</ApiMember>
+
+### waitForReady?
+
+<ApiMember kind="property" badges={['optional']} signature={['waitForReady?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts#L59', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTask.ts:59' }}>
+
+Whether the task waits for the app to be ready before it runs, as defined by the plugin's `ready` option. If the
+app is not ready after `readyTimeout`, the job is delayed instead of failed. It does nothing without `ready`.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>

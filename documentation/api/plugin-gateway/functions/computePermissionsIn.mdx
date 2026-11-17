@@ -1,0 +1,59 @@
+---
+title: 'Function: computePermissionsIn()'
+description: 'Computes the permissions of a member or role in a channel, fetching the channel if needed. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L175',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:175'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Computes the permissions of a member or role in a channel, fetching the channel if needed. Threads use their parent
+channel's overwrites, like Discord does.
+
+<ApiSignature
+	tokens={[
+		'computePermissionsIn(\n  channel: string | ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		',\n  target: string | ',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		' | ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<PermissionsBitField>'
+	]}
+/>
+
+Computes the permissions of a member or role in a channel, fetching the channel if needed. Threads use their parent
+channel's overwrites, like Discord does.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={['string | ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel']]}>
+
+The channel, or its ID.
+
+</ApiParam>
+
+<ApiParam name="target" type={['string | ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">']}>
+
+A member, a role, or the ID of a member.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<PermissionsBitField>']} />
+
+</ApiParams>

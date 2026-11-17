@@ -1,0 +1,640 @@
+---
+title: 'Class: CachedManager'
+description: 'Manages the API methods of a data model with a mutable cache of instances: the CachedManager of the discord.js RFC #11426. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L122',
+		label: 'packages/plugin-gateway/src/managers/CachedManager.ts:122'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the API methods of a data model with a mutable cache of instances: the `CachedManager` of the discord.js
+RFC #11426.
+
+<ApiSignature
+	tokens={[
+		'abstract class CachedManager<Name extends ',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		', Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>, Args extends readonly string[], FetchArgs extends readonly string[] = Args> extends ',
+		['DataManager', '/documentation/api/plugin-gateway/classes/DataManager'],
+		'<Value, Args>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[[['DataManager', '/documentation/api/plugin-gateway/classes/DataManager'], '<Value, Args>']]}
+	extendedBy={[
+		[['AutoModerationRuleManager', '/documentation/api/plugin-gateway/classes/AutoModerationRuleManager']],
+		[['ChannelManager', '/documentation/api/plugin-gateway/classes/ChannelManager']],
+		[['EntitlementManager', '/documentation/api/plugin-gateway/classes/EntitlementManager']],
+		[['GuildBanManager', '/documentation/api/plugin-gateway/classes/GuildBanManager']],
+		[['GuildEmojiManager', '/documentation/api/plugin-gateway/classes/GuildEmojiManager']],
+		[['GuildIntegrationManager', '/documentation/api/plugin-gateway/classes/GuildIntegrationManager']],
+		[['GuildInviteManager', '/documentation/api/plugin-gateway/classes/GuildInviteManager']],
+		[['GuildManager', '/documentation/api/plugin-gateway/classes/GuildManager']],
+		[['GuildMemberManager', '/documentation/api/plugin-gateway/classes/GuildMemberManager']],
+		[['GuildScheduledEventManager', '/documentation/api/plugin-gateway/classes/GuildScheduledEventManager']],
+		[['GuildSoundboardSoundManager', '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundManager']],
+		[['GuildStickerManager', '/documentation/api/plugin-gateway/classes/GuildStickerManager']],
+		[['MessageManager', '/documentation/api/plugin-gateway/classes/MessageManager']],
+		[['PresenceManager', '/documentation/api/plugin-gateway/classes/PresenceManager']],
+		[['RoleManager', '/documentation/api/plugin-gateway/classes/RoleManager']],
+		[['StageInstanceManager', '/documentation/api/plugin-gateway/classes/StageInstanceManager']],
+		[['ThreadManager', '/documentation/api/plugin-gateway/classes/ThreadManager']],
+		[['ThreadMemberManager', '/documentation/api/plugin-gateway/classes/ThreadMemberManager']],
+		[['UserManager', '/documentation/api/plugin-gateway/classes/UserManager']],
+		[['VoiceStateManager', '/documentation/api/plugin-gateway/classes/VoiceStateManager']]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Name" type={['extends ', ['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName']]}>
+
+The name of the entity this manager holds.
+
+</ApiParam>
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>']}>
+
+The structure this manager builds.
+
+</ApiParam>
+
+<ApiParam name="Args" type={['extends readonly string[]']}>
+
+The arguments identifying an entity, e.g. `[id]` or `[guildId, userId]`.
+
+</ApiParam>
+
+<ApiParam name="FetchArgs" type={['extends readonly string[]']} defaultValue="Args">
+
+The arguments `fetch` and `refresh` take, which differ from `Args` on a manager built for one
+guild.
+
+</ApiParam>
+
+</ApiParams>
+
+Reads go through [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache): `client.users.cache.get(id)`. The cache is built by the client's
+`cacheConstructor` (`CollectionCache` by default) and shared by every manager of the same entity.
+
+Caches keyed by more than an ID take the key built by `resolveKey`:
+`client.members.cache.get(client.members.resolveKey(guildId, userId))`. The managers of a guild, a channel or a
+thread take the ID alone: `guild.members.cache.get(userId)`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L163', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:163' }}>
+
+<ApiSignature
+	tokens={[
+		'new CachedManager<Name extends keyof ',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		', Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object, object>, Args extends readonly string[], FetchArgs extends readonly string[] = Args>(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  name: Name,\n  guildId?: string\n): ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<Name, Value, Args, FetchArgs>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Name" type={['extends keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]}>
+
+The name of the entity this manager holds.
+
+</ApiParam>
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object, object>']}>
+
+The structure this manager builds.
+
+</ApiParam>
+
+<ApiParam name="Args" type={['extends readonly string[]']}>
+
+The arguments identifying an entity, e.g. `[id]` or `[guildId, userId]`.
+
+</ApiParam>
+
+<ApiParam name="FetchArgs" type={['extends readonly string[]']} defaultValue="Args">
+
+The arguments `fetch` and `refresh` take, which differ from `Args` on a manager built for one
+guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client.
+
+</ApiParam>
+
+<ApiParam name="name" type={['Name']}>
+
+The name of the entity this manager holds.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The guild whose entities [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) is narrowed to, for the managers the client
+holds for every guild.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['DataManager.client', '/documentation/api/plugin-gateway/classes/DataManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: Name']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }}>
+
+<ApiSignature tokens={['protected createCache(): ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['abstract', 'protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L155', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:155' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract protected createStructure(\n  data: ',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'[Name],\n  ...extras: unknown[]\n): Value'
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]']}>
+
+The raw data.
+
+</ApiParam>
+
+<ApiParam name="extras" type={['unknown[]']} rest>
+
+The extra arguments passed to `CachedManager._add`.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Value']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [...FetchArgs[]] | [...FetchArgs[], ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Value>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[...FetchArgs[]] | [...FetchArgs[], ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Value>']} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['abstract', 'protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L457', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:457' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract protected fetchRaw(...args: Args): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'[Name]>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['Args']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'[Name]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'[Name]> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L450', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:450' }}>
+
+<ApiSignature
+	tokens={['abstract keyOf(data: ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]): string']}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]']}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: FetchArgs): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Value>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['FetchArgs']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['DataManager.resolve', '/documentation/api/plugin-gateway/classes/DataManager#resolve']]}>
+
+<ApiSignature
+	tokens={['resolve(value: string | Value): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | null>']}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | Value']}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }} inheritedFrom={[['DataManager.resolveId', '/documentation/api/plugin-gateway/classes/DataManager#resolveid']]}>
+
+<ApiSignature tokens={['resolveId(value: string | Value): string | null']} />
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | Value']}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L26', label: 'packages/plugin-gateway/src/managers/DataManager.ts:26' }} inheritedFrom={[['DataManager.resolveKey', '/documentation/api/plugin-gateway/classes/DataManager#resolvekey']]}>
+
+<ApiSignature tokens={['abstract resolveKey(...args: Args): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['Args']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['DataManager.valueOf', '/documentation/api/plugin-gateway/classes/DataManager#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>

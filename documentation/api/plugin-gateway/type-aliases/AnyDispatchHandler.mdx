@@ -1,0 +1,42 @@
+---
+title: 'Type Alias: AnyDispatchHandler'
+description: 'A DispatchHandler for the dispatch of type Type, emitting any event. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatch.ts#L140',
+		label: 'packages/plugin-gateway/src/util/dispatch.ts:140'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A [DispatchHandler](/documentation/api/plugin-gateway/interfaces/DispatchHandler) for the dispatch of type `Type`, emitting any event.
+
+<ApiSignature
+	tokens={[
+		'type AnyDispatchHandler<Type extends ',
+		['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents'],
+		'> = { [Event in ',
+		['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName'],
+		']: ',
+		['DispatchHandler', '/documentation/api/plugin-gateway/interfaces/DispatchHandler'],
+		'<Type, Event> }[',
+		['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName'],
+		']'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Type"
+	type={['extends ', ['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents']]}
+/>
+
+</ApiParams>

@@ -1,0 +1,287 @@
+---
+title: 'Interface: GuildEditOptions'
+description: 'The options to edit a guild with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L98',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:98'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to edit a guild with. Images are data URIs (`data:image/png;base64,...`) or anything `resolveImage`
+reads (contents, a path, a URL, a stream, a blob), channels are IDs.
+
+<ApiSignature tokens={['interface GuildEditOptions']} />
+
+## Properties
+
+### afkChannel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['afkChannel?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L99',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:99'
+	}}
+/>
+
+### afkTimeout?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['afkTimeout?: 1800 | 3600 | 60 | 300 | 900']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L100',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:100'
+	}}
+/>
+
+### banner?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['banner?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L101',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:101'
+	}}
+/>
+
+### defaultMessageNotifications?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'defaultMessageNotifications?: ',
+		['GuildDefaultMessageNotifications', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildDefaultMessageNotifications'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L102',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:102'
+	}}
+/>
+
+### description?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['description?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L103',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:103'
+	}}
+/>
+
+### discoverySplash?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['discoverySplash?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L104',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:104'
+	}}
+/>
+
+### explicitContentFilter?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'explicitContentFilter?: ',
+		['GuildExplicitContentFilter', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildExplicitContentFilter'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L105',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:105'
+	}}
+/>
+
+### features?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['features?: ', ['GuildFeature', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildFeature'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L106',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:106'
+	}}
+/>
+
+### icon?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['icon?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L107',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:107'
+	}}
+/>
+
+### name?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['name?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L108',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:108'
+	}}
+/>
+
+### owner?
+
+<ApiMember kind="property" badges={['optional']} signature={['owner?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L112', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:112' }}>
+
+The ID of the member to transfer the ownership to.
+
+</ApiMember>
+
+### preferredLocale?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['preferredLocale?: ', ['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L113',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:113'
+	}}
+/>
+
+### premiumProgressBarEnabled?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['premiumProgressBarEnabled?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L114',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:114'
+	}}
+/>
+
+### publicUpdatesChannel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['publicUpdatesChannel?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L115',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:115'
+	}}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L116',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:116'
+	}}
+/>
+
+### rulesChannel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['rulesChannel?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L117',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:117'
+	}}
+/>
+
+### safetyAlertsChannel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['safetyAlertsChannel?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L118',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:118'
+	}}
+/>
+
+### splash?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['splash?: ', ['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L119',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:119'
+	}}
+/>
+
+### systemChannel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['systemChannel?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L120',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:120'
+	}}
+/>
+
+### systemChannelFlags?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'systemChannelFlags?: ',
+		['SystemChannelFlagsResolvable', '/documentation/api/plugin-gateway/type-aliases/SystemChannelFlagsResolvable']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L121',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:121'
+	}}
+/>
+
+### verificationLevel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'verificationLevel?: ',
+		['GuildVerificationLevel', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildVerificationLevel'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L122',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:122'
+	}}
+/>

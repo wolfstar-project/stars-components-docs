@@ -1,0 +1,83 @@
+---
+title: 'Interface: ResolvableData'
+description: 'The data transformResolved resolves: each entry is either an ID, read from the cache, or raw API data, resolved to its cached structure or built from… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L483',
+		label: 'packages/plugin-gateway/src/util/Util.ts:483'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The data [transformResolved](/documentation/api/plugin-gateway/functions/transformResolved) resolves: each entry is either an ID, read from the cache, or raw API data,
+resolved to its cached structure or built from the data when it is not cached.
+
+<ApiSignature tokens={['interface ResolvableData']} />
+
+## Properties
+
+### attachments?
+
+<ApiMember kind="property" badges={['optional']} signature={['attachments?: Iterable<', ['APIAttachment', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAttachment'], ', any, any>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L504', label: 'packages/plugin-gateway/src/util/Util.ts:504' }}>
+
+The raw attachments, e.g. an interaction's `resolved.attachments`. Nothing caches attachments, so they are always
+built.
+
+</ApiMember>
+
+### channels?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['channels?: Iterable<string | APIChannel & { guild_id?: string | undefined; }, any, any>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L493',
+		label: 'packages/plugin-gateway/src/util/Util.ts:493'
+	}}
+/>
+
+### members?
+
+<ApiMember kind="property" badges={['optional']} signature={['members?: Iterable<string | ', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMember'], ' & { guild_id: string }, "guild_id">, any, any>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L488', label: 'packages/plugin-gateway/src/util/Util.ts:488' }}>
+
+The members of [SupportingResolvedData.guildId](/documentation/api/plugin-gateway/interfaces/SupportingResolvedData#guildid): their raw data needs its `user`.
+
+</ApiMember>
+
+### messages?
+
+<ApiMember kind="property" badges={['optional']} signature={['messages?: Iterable<string | ', ['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'], ', any, any>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L499', label: 'packages/plugin-gateway/src/util/Util.ts:499' }}>
+
+The messages, e.g. an interaction's `resolved.messages`: IDs are read from the cache of
+[SupportingResolvedData.channelId](/documentation/api/plugin-gateway/interfaces/SupportingResolvedData#channelid), raw data (which carries its own `channel_id`) is resolved to the cached
+message or built from the data.
+
+</ApiMember>
+
+### roles?
+
+<ApiMember kind="property" badges={['optional']} signature={['roles?: Iterable<string | ', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], ' & { guild_id: string }, "guild_id">, any, any>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L492', label: 'packages/plugin-gateway/src/util/Util.ts:492' }}>
+
+The roles of [SupportingResolvedData.guildId](/documentation/api/plugin-gateway/interfaces/SupportingResolvedData#guildid).
+
+</ApiMember>
+
+### users?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['users?: Iterable<string | ', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'], ', any, any>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L484',
+		label: 'packages/plugin-gateway/src/util/Util.ts:484'
+	}}
+/>

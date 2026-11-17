@@ -1,0 +1,384 @@
+---
+title: 'Class: GuildChannelManager'
+description: 'Manages the channels of one guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L53',
+		label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:53'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the channels of one guild. Channels are cached by `client.channels`, which this manager writes to.
+
+<ApiSignature tokens={['class GuildChannelManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L56', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:56' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildChannelManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		', guildId: string): ',
+		['GuildChannelManager', '/documentation/api/plugin-gateway/classes/GuildChannelManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="guildId" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly guildId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L54',
+		label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:54'
+	}}
+/>
+
+## Accessors
+
+### channelCountWithoutThreads
+
+<ApiMember kind="accessor" signature={['get channelCountWithoutThreads(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L67', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:67' }}>
+
+How many channels of the guild are cached, threads excluded: discord.js's `channelCountWithoutThreads`. A promise
+with an asynchronous cache.
+
+</ApiMember>
+
+## Methods
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L86', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:86' }}>
+
+<ApiSignature
+	tokens={[
+		'create(options: ',
+		['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+Creates a channel in the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions']]}>
+
+The channel's name, type, and settings.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L113', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:113' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(channel: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		', reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a channel of the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The channel, or its ID.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L103', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:103' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(channel: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		', options: ',
+		['GuildChannelEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+Edits a channel of the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The channel, or its ID.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildChannelEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions']]}>
+
+The fields to edit, and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L74', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:74' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'[]>'
+	]}
+/>
+
+Fetches every channel of the guild, threads excluded, and caches them.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchSorted()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L172', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:172' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchSorted(channel: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'[]>'
+	]}
+/>
+
+Fetches the channels a channel is sorted with, itself included, and caches them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The channel, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], '[]>']}>
+
+The channels, in the order Discord displays them.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setPosition()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L151', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:151' }}>
+
+<ApiSignature
+	tokens={[
+		'setPosition(\n  channel: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		',\n  position: number,\n  options: ',
+		['SetPositionOptions', '/documentation/api/plugin-gateway/interfaces/SetPositionOptions'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+Moves a channel among the channels it is sorted with, like discord.js's `GuildChannelManager#setPosition`: the
+channels of its category (the categories, for a category) and of its group, text-like or voice.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The channel, or its ID.
+
+</ApiParam>
+
+<ApiParam name="position" type={['number']}>
+
+The index to move it to, in [GuildChannelManager.fetchSorted](/documentation/api/plugin-gateway/classes/GuildChannelManager#fetchsorted) order, or the offset to move it
+by with `relative`. An index out of range leaves the channels where they are.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['SetPositionOptions', '/documentation/api/plugin-gateway/interfaces/SetPositionOptions']]} defaultValue={'{}'}>
+
+Whether the position is relative, and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], '>']}>
+
+The moved channel.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setPositions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildChannelManager.ts#L123', label: 'packages/plugin-gateway/src/managers/GuildChannelManager.ts:123' }}>
+
+<ApiSignature
+	tokens={[
+		'setPositions(positions: readonly ',
+		['ChannelPosition', '/documentation/api/plugin-gateway/interfaces/ChannelPosition'],
+		'[], reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Moves several channels at once.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="positions" type={['readonly ', ['ChannelPosition', '/documentation/api/plugin-gateway/interfaces/ChannelPosition'], '[]']}>
+
+The channels and their new positions or categories.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

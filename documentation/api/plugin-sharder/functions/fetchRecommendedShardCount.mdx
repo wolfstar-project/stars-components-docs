@@ -1,0 +1,53 @@
+---
+title: 'Function: fetchRecommendedShardCount()'
+description: "Fetches how many gateway shards Discord recommends for the bot, like discord.js's fetchRecommendedShardCount. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L75',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:75'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Fetches how many gateway shards Discord recommends for the bot, like discord.js's `fetchRecommendedShardCount`.
+
+<ApiSignature
+	tokens={[
+		'fetchRecommendedShardCount(\n  token: string,\n  options?: ',
+		['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+Fetches how many gateway shards Discord recommends for the bot, like discord.js's `fetchRecommendedShardCount`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="token" type={['string']}>
+
+The bot token.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions']]} optional>
+
+How many guilds per gateway shard, and what to round the count up to.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>

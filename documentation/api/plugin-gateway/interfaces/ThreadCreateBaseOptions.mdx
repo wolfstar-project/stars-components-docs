@@ -1,0 +1,76 @@
+---
+title: 'Interface: ThreadCreateBaseOptions'
+description: 'The options both kinds of threads are created with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L39',
+		label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:39'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options both kinds of threads are created with.
+
+<ApiSignature tokens={['interface ThreadCreateBaseOptions']} />
+
+<ApiHierarchy
+	extendedBy={[
+		[['TextThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/TextThreadCreateOptions']],
+		[['ForumThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/ForumThreadCreateOptions']]
+	]}
+/>
+
+## Properties
+
+### autoArchiveDuration?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'autoArchiveDuration?: ',
+		['ThreadAutoArchiveDuration', 'https://discord-api-types.dev/api/discord-api-types-v10#ThreadAutoArchiveDuration']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L41',
+		label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:41'
+	}}
+/>
+
+### name
+
+<ApiMember
+	kind="property"
+	signature={['name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L40',
+		label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:40'
+	}}
+/>
+
+### rateLimitPerUser?
+
+<ApiMember kind="property" badges={['optional']} signature={['rateLimitPerUser?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L45', label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:45' }}>
+
+The slowmode of the thread, in seconds. Both threads and forum or media posts take it.
+
+</ApiMember>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ThreadManager.ts#L46',
+		label: 'packages/plugin-gateway/src/managers/ThreadManager.ts:46'
+	}}
+/>

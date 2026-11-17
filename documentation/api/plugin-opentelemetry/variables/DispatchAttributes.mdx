@@ -1,0 +1,59 @@
+---
+title: 'Variable: DispatchAttributes'
+description: 'The attributes of the span of a gateway dispatch. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L65',
+		label: 'lib/attributes.ts:65'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+The attributes of the span of a gateway dispatch.
+
+<ApiSignature
+	tokens={[
+		'const DispatchAttributes: {\n  readonly GuildId: "discord.guild.id";\n  readonly Outcome: "dispatch.outcome";\n  readonly Partition: "discord.dispatch.partition";\n  readonly ShardId: "discord.shard.id";\n  readonly Type: "discord.dispatch.type";\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="GuildId" type={['"discord.guild.id"']}>
+
+The guild of the dispatch, when it belongs to one.
+
+</ApiParam>
+
+<ApiParam name="Outcome" type={['"dispatch.outcome"']}>
+
+`success` or `error`, set when the processing ends.
+
+</ApiParam>
+
+<ApiParam name="Partition" type={['"discord.dispatch.partition"']}>
+
+The partition the dispatch is ordered in (`guild:<id>`, `channel:<id>`...), when it has one.
+
+</ApiParam>
+
+<ApiParam name="ShardId" type={['"discord.shard.id"']}>
+
+The gateway shard the dispatch came from.
+
+</ApiParam>
+
+<ApiParam name="Type" type={['"discord.dispatch.type"']}>
+
+The type of the dispatch (`MESSAGE_CREATE`, `GUILD_MEMBER_UPDATE`, ...).
+
+</ApiParam>
+
+</ApiParams>

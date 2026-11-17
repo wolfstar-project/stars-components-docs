@@ -1,0 +1,654 @@
+---
+title: 'Class: GuildChannelMixin'
+description: 'Adds the fields every guild channel has, threads included. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L44',
+		label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:44'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Adds the fields every guild channel has, threads included.
+
+<ApiSignature
+	tokens={[
+		'class GuildChannelMixin<Type extends ',
+		['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'],
+		' = ',
+		['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'],
+		'> extends ',
+		['Channel', '/documentation/api/plugin-gateway/classes/Channel'],
+		'<Type>'
+	]}
+/>
+
+<ApiHierarchy extends={[[['Channel', '/documentation/api/plugin-gateway/classes/Channel'], '<Type>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Type"
+	type={['extends ', ['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType']]}
+	defaultValue="ChannelType"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" inheritedFrom={[['Channel.constructor', '/documentation/api/plugin-gateway/classes/Channel#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new GuildChannelMixin<Type extends ',
+		['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'],
+		' = ',
+		['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'],
+		'>(): ',
+		['GuildChannelMixin', '/documentation/api/plugin-gateway/classes/GuildChannelMixin'],
+		'<Type>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Type"
+	type={['extends ', ['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType']]}
+	defaultValue="ChannelType"
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['ChannelDataType', '/documentation/api/plugin-gateway/type-aliases/ChannelDataType'], '<Type>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['Channel.[kData]', '/documentation/api/plugin-gateway/classes/Channel#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="property"
+	signature={['createdAt: ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts#L50',
+		label: 'packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts:50'
+	}}
+	inheritedFrom={[['Channel.createdAt', '/documentation/api/plugin-gateway/classes/BaseChannelMixin#createdat']]}
+/>
+
+### partial
+
+<ApiMember
+	kind="property"
+	signature={['partial: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts#L35',
+		label: 'packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts:35'
+	}}
+	inheritedFrom={[['Channel.partial', '/documentation/api/plugin-gateway/classes/BaseChannelMixin#partial']]}
+/>
+
+## Accessors
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['Channel.client', '/documentation/api/plugin-gateway/classes/Channel#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L61', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:61' }}>
+
+The guild, from the cache. `null` when the guild is not cached, or when the cache is asynchronous: use
+`fetchGuild()` to always get it.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="accessor" signature={['get guildId(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L53', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:53' }}>
+
+The ID of the guild, when the payload included it.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="accessor" signature={['get name(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L75', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:75' }} inheritedFrom={[['Channel.name', '/documentation/api/plugin-gateway/classes/Channel']]}>
+
+The name of the channel, null for DMs
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['Channel.[kClone]', '/documentation/api/plugin-gateway/classes/Channel#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['ChannelDataType', '/documentation/api/plugin-gateway/type-aliases/ChannelDataType'],
+		'<Type>>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['ChannelDataType', '/documentation/api/plugin-gateway/type-aliases/ChannelDataType'], '<Type>>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['Channel.[kPatch]', '/documentation/api/plugin-gateway/classes/Channel#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['ChannelDataType', '/documentation/api/plugin-gateway/type-aliases/ChannelDataType'],
+		'<Type>>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['ChannelDataType', '/documentation/api/plugin-gateway/type-aliases/ChannelDataType'], '<Type>>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### clone()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L120', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:120' }}>
+
+<ApiSignature
+	tokens={[
+		'clone(options: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions'],
+		'> = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+Creates a copy of the channel in its guild: same type, name, settings, and overwrites.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions'], '>']} defaultValue={'{}'}>
+
+The fields to change on the copy.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts#L63', label: 'packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts:63' }} inheritedFrom={[['Channel.delete', '/documentation/api/plugin-gateway/classes/Channel']]}>
+
+<ApiSignature
+	tokens={[
+		'delete(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BaseChannelMixin', '/documentation/api/plugin-gateway/classes/BaseChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+Deletes the channel, or closes it for a direct message, and drops it from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BaseChannelMixin', '/documentation/api/plugin-gateway/classes/BaseChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['Channel.dropChangedRelations', '/documentation/api/plugin-gateway/classes/Channel#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['Channel.dropRelations', '/documentation/api/plugin-gateway/classes/Channel#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("guild" | "parent" | "recipient" | "stageInstance" | "joined")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("guild" | "parent" | "recipient" | "stageInstance" | "joined")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L107', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:107' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['GuildChannelEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildChannelMixin', '/documentation/api/plugin-gateway/classes/GuildChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+Edits the channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildChannelEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions']]}>
+
+The fields to edit, and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildChannelMixin', '/documentation/api/plugin-gateway/classes/GuildChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L86', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:86' }}>
+
+<ApiSignature tokens={['equals(other: unknown): boolean']} />
+
+Whether this channel has the same data as another one, like discord.js's `GuildChannel#equals`: the same ID, type,
+name, topic, position, and permission overwrites (in any order). The category is not compared, as in discord.js.
+`false` for anything that is neither a channel nor a raw one.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="other" type={['unknown']}>
+
+The channel, or raw channel, to compare with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts#L71', label: 'packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts:71' }} inheritedFrom={[['Channel.fetch', '/documentation/api/plugin-gateway/classes/Channel']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BaseChannelMixin', '/documentation/api/plugin-gateway/classes/BaseChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+Fetches the channel from the API and patches this structure with the result.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BaseChannelMixin', '/documentation/api/plugin-gateway/classes/BaseChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L70', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:70' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuild(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Fetches the guild, cache first. `null` when the payload did not include the guild's ID.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['Channel.lazyRelation', '/documentation/api/plugin-gateway/classes/Channel#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['Channel.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/Channel#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['Channel.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/Channel#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setName()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts#L111', label: 'packages/plugin-gateway/src/structures/channels/mixins/GuildChannelMixin.ts:111' }}>
+
+<ApiSignature
+	tokens={[
+		'setName(name: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildChannelMixin', '/documentation/api/plugin-gateway/classes/GuildChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildChannelMixin', '/documentation/api/plugin-gateway/classes/GuildChannelMixin'],
+		'<Type>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### toString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts#L54', label: 'packages/plugin-gateway/src/structures/channels/mixins/BaseChannelMixin.ts:54' }} inheritedFrom={[['Channel.toString', '/documentation/api/plugin-gateway/classes/Channel']]}>
+
+<ApiSignature tokens={['toString(): `<#${string}>`']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['`<#${string}>`']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['Channel.valueOf', '/documentation/api/plugin-gateway/classes/Channel#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['GuildChannelMixin', '/documentation/api/plugin-gateway/classes/GuildChannelMixin'], '<Type>']} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['GuildChannelMixin', '/documentation/api/plugin-gateway/classes/GuildChannelMixin'], '<Type>']} />
+
+</ApiParams>
+
+</ApiMember>

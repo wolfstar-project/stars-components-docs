@@ -1,0 +1,54 @@
+---
+title: 'Function: createInvite()'
+description: 'Builds the invite structure matching the type of a raw invite. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/GroupDMInvite.ts#L16',
+		label: 'packages/plugin-gateway/src/structures/invites/GroupDMInvite.ts:16'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Builds the invite structure matching the type of a raw invite.
+
+<ApiSignature
+	tokens={[
+		'createInvite(data: ',
+		['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData'],
+		', relations: ',
+		['InviteRelations', '/documentation/api/plugin-gateway/interfaces/InviteRelations'],
+		' = {}): ',
+		['BaseInvite', '/documentation/api/plugin-gateway/classes/BaseInvite']
+	]}
+/>
+
+Builds the invite structure matching the type of a raw invite.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData']]}>
+
+The raw invite.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['InviteRelations', '/documentation/api/plugin-gateway/interfaces/InviteRelations']]} defaultValue={'{}'}>
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['BaseInvite', '/documentation/api/plugin-gateway/classes/BaseInvite']]} />
+
+</ApiParams>

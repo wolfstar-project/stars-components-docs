@@ -1,0 +1,93 @@
+---
+title: 'Interface: ShardTransport'
+description: "The manager's end of the channel to one spawned shard. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L68',
+		label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:68'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The manager's end of the channel to one spawned shard.
+
+<ApiSignature tokens={['interface ShardTransport']} />
+
+## Properties
+
+### host?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly host?: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L85', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:85' }}>
+
+The host running the shard, for strategies spawning shards elsewhere.
+
+</ApiMember>
+
+### pid?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly pid?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L77', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:77' }}>
+
+The ID of the shard's process, for observability.
+
+</ApiMember>
+
+### threadId?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly threadId?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L81', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:81' }}>
+
+The ID of the shard's worker thread.
+
+</ApiMember>
+
+## Methods
+
+### kill()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L73', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:73' }}>
+
+<ApiSignature
+	tokens={['kill(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Stops the shard, resolving once it stopped.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L69', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:69' }}>
+
+<ApiSignature
+	tokens={[
+		'send(data: unknown): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

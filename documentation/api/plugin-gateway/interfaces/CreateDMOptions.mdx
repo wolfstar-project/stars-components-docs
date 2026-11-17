@@ -1,0 +1,51 @@
+---
+title: 'Interface: CreateDMOptions'
+description: 'The options to open a direct message channel with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/UserManager.ts#L15',
+		label: 'packages/plugin-gateway/src/managers/UserManager.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to open a direct message channel with.
+
+<ApiSignature tokens={['interface CreateDMOptions']} />
+
+## Properties
+
+### cache?
+
+<ApiMember kind="property" badges={['optional']} signature={['cache?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/UserManager.ts#L27', label: 'packages/plugin-gateway/src/managers/UserManager.ts:27' }}>
+
+Whether to store the channel fetched from the API in the cache.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### force?
+
+<ApiMember kind="property" badges={['optional']} signature={['force?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/UserManager.ts#L21', label: 'packages/plugin-gateway/src/managers/UserManager.ts:21' }}>
+
+Whether to skip the cache lookup and always call the API.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>

@@ -1,0 +1,102 @@
+---
+title: 'Function: RegisterAsDispatchListener()'
+description: 'Like RegisterAsGatewayListener, for an event that comes from a dispatch, but the listener only runs on one process: the workers replaying the dispatc… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/decorators.ts#L79',
+		label: 'packages/plugin-gateway/src/util/decorators.ts:79'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Like [RegisterAsGatewayListener](/documentation/api/plugin-gateway/functions/RegisterAsGatewayListener), for an event that comes from a dispatch, but the listener only runs on one
+process: the workers replaying the dispatches while the gateway client forwards them (see `forwardGatewayDispatches`
+from `@wolfstar/plugin-broker`), the gateway client itself otherwise. A bot loading the same pieces on both
+processes therefore handles each dispatch once, without reading its environment to tell which process it is on.
+
+<ApiSignature
+	tokens={[
+		'RegisterAsDispatchListener<Event extends ',
+		['DispatchEventName', '/documentation/api/plugin-gateway/type-aliases/DispatchEventName'],
+		'>(\n  event: Event,\n  options: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['EventGatewayListener.Options', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/Options'],
+		'<Event>, "event"> = {}\n): <T extends ListenerConstructor>(target: T) => T'
+	]}
+/>
+
+Like [RegisterAsGatewayListener](/documentation/api/plugin-gateway/functions/RegisterAsGatewayListener), for an event that comes from a dispatch, but the listener only runs on one
+process: the workers replaying the dispatches while the gateway client forwards them (see `forwardGatewayDispatches`
+from `@wolfstar/plugin-broker`), the gateway client itself otherwise. A bot loading the same pieces on both
+processes therefore handles each dispatch once, without reading its environment to tell which process it is on.
+
+The decision is made on every emit, so it does not matter whether the forwarding starts before or after the
+listener is loaded, and stopping it brings the listener back. A `once` listener is not spent while it idles.
+
+The events only the gateway client emits (`clientReady`, `shardReady`, `shardResume`, `shardClose`, `shardError`,
+`dispatch`, `cacheError`, `cacheSweep`) are never replayed on a worker: they are rejected by the types, and the
+decorator throws for them. Use [RegisterAsGatewayListener](/documentation/api/plugin-gateway/functions/RegisterAsGatewayListener) for those.
+
+Only the dispatches that are forwarded reach the workers: with `forwardGatewayDispatches`'s `events` set, a listener
+of an event built from another dispatch runs nowhere. A `guildDelete` that `READY` emits for the guilds it no longer
+lists is not forwarded either (wolfstar-project/plugins#243), so a listener on the workers misses it. Delivery to the
+workers is at-least-once, so the listener should be idempotent.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Event" type={['extends ', ['DispatchEventName', '/documentation/api/plugin-gateway/type-aliases/DispatchEventName']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['Event']}>
+
+The dispatch event to listen to.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['EventGatewayListener.Options', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/Options'], '<Event>, "event">']} defaultValue={'{}'}>
+
+The additional listener options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['<T extends ListenerConstructor>(target: T) => T']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the event is one only the gateway client emits.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { EventGatewayListener, RegisterAsDispatchListener, type Message } from '@wolfstar/plugin-gateway';
+
+@RegisterAsDispatchListener('messageCreate')
+export class LogMessagesListener extends EventGatewayListener<'messageCreate'> {
+	public override run(message: Message) {
+		console.log(`${message.author.username}: ${message.content}`);
+	}
+}
+```

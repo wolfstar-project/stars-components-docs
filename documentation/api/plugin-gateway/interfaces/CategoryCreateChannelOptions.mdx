@@ -1,0 +1,279 @@
+---
+title: 'Interface: CategoryCreateChannelOptions'
+description: "The options to create a channel inside a category with: the guild channel's, minus its category and with no category type, as Discord does not nest c… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CategoryChannelChildManager.ts#L16',
+		label: 'packages/plugin-gateway/src/managers/CategoryChannelChildManager.ts:16'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to create a channel inside a category with: the guild channel's, minus its category and with no
+category type, as Discord does not nest categories.
+
+<ApiSignature
+	tokens={[
+		'interface CategoryCreateChannelOptions extends ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions'],
+		', "parent" | "type">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+			'<',
+			['GuildChannelCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions'],
+			', "parent" | "type">'
+		]
+	]}
+/>
+
+## Properties
+
+### availableTags?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['availableTags?: readonly ', ['GuildForumTagData', '/documentation/api/plugin-gateway/type-aliases/GuildForumTagData'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L138',
+		label: 'packages/plugin-gateway/src/util/channels.ts:138'
+	}}
+	inheritedFrom={[['Omit.availableTags', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#availabletags']]}
+/>
+
+### bitrate?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['bitrate?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L123',
+		label: 'packages/plugin-gateway/src/util/channels.ts:123'
+	}}
+	inheritedFrom={[['Omit.bitrate', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#bitrate']]}
+/>
+
+### defaultAutoArchiveDuration?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'defaultAutoArchiveDuration?: ',
+		['ThreadAutoArchiveDuration', 'https://discord-api-types.dev/api/discord-api-types-v10#ThreadAutoArchiveDuration']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L137',
+		label: 'packages/plugin-gateway/src/util/channels.ts:137'
+	}}
+	inheritedFrom={[
+		['Omit.defaultAutoArchiveDuration', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#defaultautoarchiveduration']
+	]}
+/>
+
+### defaultForumLayout?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['defaultForumLayout?: ', ['ForumLayoutType', 'https://discord-api-types.dev/api/discord-api-types-v10#ForumLayoutType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L145',
+		label: 'packages/plugin-gateway/src/util/channels.ts:145'
+	}}
+	inheritedFrom={[['Omit.defaultForumLayout', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#defaultforumlayout']]}
+/>
+
+### defaultReactionEmoji?
+
+<ApiMember kind="property" badges={['optional']} signature={['defaultReactionEmoji?: ', ['APIGuildForumDefaultReactionEmoji', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildForumDefaultReactionEmoji'], ' | ', ['GuildForumTagEmoji', '/documentation/api/plugin-gateway/interfaces/GuildForumTagEmoji'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L142', label: 'packages/plugin-gateway/src/util/channels.ts:142' }} inheritedFrom={[['Omit.defaultReactionEmoji', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#defaultreactionemoji']]}>
+
+The default reaction, camel-cased (`{ id, name }`) or raw.
+
+</ApiMember>
+
+### defaultSortOrder?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['defaultSortOrder?: ', ['SortOrderType', 'https://discord-api-types.dev/api/discord-api-types-v10#SortOrderType'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L144',
+		label: 'packages/plugin-gateway/src/util/channels.ts:144'
+	}}
+	inheritedFrom={[['Omit.defaultSortOrder', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#defaultsortorder']]}
+/>
+
+### defaultThreadRateLimitPerUser?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['defaultThreadRateLimitPerUser?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L143',
+		label: 'packages/plugin-gateway/src/util/channels.ts:143'
+	}}
+	inheritedFrom={[
+		['Omit.defaultThreadRateLimitPerUser', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#defaultthreadratelimitperuser']
+	]}
+/>
+
+### name
+
+<ApiMember
+	kind="property"
+	signature={['name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L227',
+		label: 'packages/plugin-gateway/src/util/channels.ts:227'
+	}}
+	inheritedFrom={[['Omit.name', '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions#name']]}
+/>
+
+### nsfw?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['nsfw?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L121',
+		label: 'packages/plugin-gateway/src/util/channels.ts:121'
+	}}
+	inheritedFrom={[['Omit.nsfw', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#nsfw']]}
+/>
+
+### permissionOverwrites?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['permissionOverwrites?: readonly ', ['OverwriteData', '/documentation/api/plugin-gateway/interfaces/OverwriteData'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L125',
+		label: 'packages/plugin-gateway/src/util/channels.ts:125'
+	}}
+	inheritedFrom={[['Omit.permissionOverwrites', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#permissionoverwrites']]}
+/>
+
+### position?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['position?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L119',
+		label: 'packages/plugin-gateway/src/util/channels.ts:119'
+	}}
+	inheritedFrom={[['Omit.position', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#position']]}
+/>
+
+### rateLimitPerUser?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['rateLimitPerUser?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L122',
+		label: 'packages/plugin-gateway/src/util/channels.ts:122'
+	}}
+	inheritedFrom={[['Omit.rateLimitPerUser', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#ratelimitperuser']]}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L167',
+		label: 'packages/plugin-gateway/src/util/channels.ts:167'
+	}}
+	inheritedFrom={[['Omit.reason', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#reason']]}
+/>
+
+### rtcRegion?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['rtcRegion?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L135',
+		label: 'packages/plugin-gateway/src/util/channels.ts:135'
+	}}
+	inheritedFrom={[['Omit.rtcRegion', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#rtcregion']]}
+/>
+
+### topic?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['topic?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L120',
+		label: 'packages/plugin-gateway/src/util/channels.ts:120'
+	}}
+	inheritedFrom={[['Omit.topic', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#topic']]}
+/>
+
+### type?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'type?: GuildText | DM | GuildVoice | GroupDM | GuildAnnouncement | AnnouncementThread | PublicThread | PrivateThread | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CategoryChannelChildManager.ts#L20',
+		label: 'packages/plugin-gateway/src/managers/CategoryChannelChildManager.ts:20'
+	}}
+/>
+
+### userLimit?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['userLimit?: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L124',
+		label: 'packages/plugin-gateway/src/util/channels.ts:124'
+	}}
+	inheritedFrom={[['Omit.userLimit', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#userlimit']]}
+/>
+
+### videoQualityMode?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['videoQualityMode?: ', ['VideoQualityMode', 'https://discord-api-types.dev/api/discord-api-types-v10#VideoQualityMode']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L136',
+		label: 'packages/plugin-gateway/src/util/channels.ts:136'
+	}}
+	inheritedFrom={[['Omit.videoQualityMode', '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions#videoqualitymode']]}
+/>

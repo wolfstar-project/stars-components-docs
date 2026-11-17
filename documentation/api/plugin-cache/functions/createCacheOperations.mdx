@@ -1,0 +1,60 @@
+---
+title: 'Function: createCacheOperations()'
+description: 'Translates a gateway dispatch into the list of CacheOperations it implies, including the cascades (e.g. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L167',
+		label: 'packages/plugin-cache/src/lib/operations.ts:167'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Translates a gateway dispatch into the list of [CacheOperation](/documentation/api/plugin-cache/type-aliases/CacheOperation)s it implies, including the cascades (e.g.
+`CHANNEL_DELETE` also drops that channel's messages).
+
+<ApiSignature
+	tokens={[
+		'createCacheOperations(\n  payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		',\n  context: ',
+		['CacheOperationContext', '/documentation/api/plugin-cache/interfaces/CacheOperationContext'],
+		' = {}\n): ',
+		['CacheOperation', '/documentation/api/plugin-cache/type-aliases/CacheOperation'],
+		'[]'
+	]}
+/>
+
+Translates a gateway dispatch into the list of [CacheOperation](/documentation/api/plugin-cache/type-aliases/CacheOperation)s it implies, including the cascades (e.g.
+`CHANNEL_DELETE` also drops that channel's messages).
+
+This is a pure function, it does not touch any cache. Use [applyGatewayDispatch](/documentation/api/plugin-cache/functions/applyGatewayDispatch) to apply them.
+`INTERACTION_CREATE` is intentionally ignored: interactions are short-lived and never cached.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload']]}>
+
+The gateway dispatch payload.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['CacheOperationContext', '/documentation/api/plugin-cache/interfaces/CacheOperationContext']]} defaultValue={'{}'}>
+
+The bot's user ID, for the `me` flags of reactions and poll votes.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['CacheOperation', '/documentation/api/plugin-cache/type-aliases/CacheOperation'], '[]']} />
+
+</ApiParams>

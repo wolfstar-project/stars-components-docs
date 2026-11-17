@@ -1,0 +1,34 @@
+---
+title: 'Function: flushTraces()'
+description: 'Exports the spans that are waiting in the batch, for a shutdown path to call before the process exits. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/flush.ts#L10',
+		label: 'lib/flush.ts:10'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Exports the spans that are waiting in the batch, for a shutdown path to call before the process exits.
+
+<ApiSignature
+	tokens={['flushTraces(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Exports the spans that are waiting in the batch, for a shutdown path to call before the process exits.
+
+It never rejects, and does nothing when no SDK is running (the preload did not start one, as without an OTLP
+endpoint), so a shutdown path can call it unconditionally.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>

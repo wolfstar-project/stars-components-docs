@@ -1,0 +1,47 @@
+---
+title: 'Interface: ActivityEmoji'
+description: 'The emoji of a custom status activity. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/presences/Activity.ts#L39',
+		label: 'packages/plugin-gateway/src/structures/presences/Activity.ts:39'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The emoji of a custom status activity.
+
+<ApiSignature tokens={['interface ActivityEmoji']} />
+
+## Properties
+
+### animated
+
+<ApiMember kind="property" signature={['animated: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/presences/Activity.ts#L51', label: 'packages/plugin-gateway/src/structures/presences/Activity.ts:51' }}>
+
+Whether the emoji is animated.
+
+</ApiMember>
+
+### id
+
+<ApiMember kind="property" signature={['id: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/presences/Activity.ts#L43', label: 'packages/plugin-gateway/src/structures/presences/Activity.ts:43' }}>
+
+The ID of the emoji, or `null` for a unicode emoji.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" signature={['name: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/presences/Activity.ts#L47', label: 'packages/plugin-gateway/src/structures/presences/Activity.ts:47' }}>
+
+The name of the emoji, or the unicode character.
+
+</ApiMember>

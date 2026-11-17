@@ -1,0 +1,39 @@
+---
+title: 'Interface: RegisterSubCommandOptions'
+description: 'Options to register a command class as a subcommand of a parent command. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L20',
+		label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:20'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Options to register a command class as a subcommand of a parent command.
+
+<ApiSignature tokens={['interface RegisterSubCommandOptions']} />
+
+## Properties
+
+### parentCommandName
+
+<ApiMember kind="property" signature={['parentCommandName: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L24', label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:24' }}>
+
+The chat-input name of the parent command (the name passed to `RegisterCommand`).
+
+</ApiMember>
+
+### slashSubcommand
+
+<ApiMember kind="property" signature={['slashSubcommand: ', ['SlashSubcommandResolvable', '/documentation/api/plugin-subcommands-advanced/type-aliases/SlashSubcommandResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/lib/utils/types.ts#L28', label: 'packages/plugin-subcommands-advanced/src/lib/utils/types.ts:28' }}>
+
+Slash subcommand data (builder, JSON, or callback). Required for Discord registration.
+
+</ApiMember>

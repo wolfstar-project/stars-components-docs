@@ -1,0 +1,2866 @@
+---
+title: 'Class: Guild'
+description: 'A Discord guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L133',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:133'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A Discord guild.
+
+<ApiSignature
+	tokens={[
+		'class Guild extends ',
+		['AnonymousGuild', '/documentation/api/plugin-gateway/classes/AnonymousGuild'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["guilds"]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['AnonymousGuild', '/documentation/api/plugin-gateway/classes/AnonymousGuild'],
+			'<',
+			['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+			'["guilds"]>'
+		]
+	]}
+/>
+
+The collections sent in `GUILD_CREATE` (channels, members, roles, ...) are not kept on the guild: they are stored in
+their own entity caches and exposed by the client's managers, e.g. `client.members.fetch(guild.id, userId)`. The
+guild-scoped ones discord.js exposes on the guild itself (`emojis`, `stickers`, `invites`) are here too.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L140', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:140' }}>
+
+<ApiSignature
+	tokens={[
+		'new Guild(\n  data: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		', "emojis" | "roles" | "stickers"> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		', keyof ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>>,\n  relations: ',
+		['GuildRelations', '/documentation/api/plugin-gateway/interfaces/GuildRelations'],
+		' = {}\n): ',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], ', "emojis" | "roles" | "stickers"> & ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'], ', keyof ', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], '>>']}>
+
+The raw guild.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['GuildRelations', '/documentation/api/plugin-gateway/interfaces/GuildRelations']]} defaultValue={'{}'}>
+
+The channels of the guild, as resolved from the cache by `client.guilds`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['AnonymousGuild.[kData]', '/documentation/api/plugin-gateway/classes/AnonymousGuild#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### \[kRelations\]
+
+<ApiMember
+	kind="property"
+	signature={['[kRelations]: ', ['GuildRelations', '/documentation/api/plugin-gateway/interfaces/GuildRelations']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L134',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:134'
+	}}
+/>
+
+## Accessors
+
+### afkChannel
+
+<ApiMember kind="accessor" signature={['get afkChannel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L226', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:226' }}>
+
+The channel members are moved to when idle, from the cache, like discord.js's `Guild#afkChannel`. `null` when
+the guild has none, when it is not cached, or when the guild was not built by a manager.
+
+</ApiMember>
+
+### afkChannelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get afkChannelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L157',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:157'
+	}}
+/>
+
+### afkTimeout
+
+<ApiMember kind="accessor" signature={['get afkTimeout(): 60 | 300 | 900 | 1800 | 3600']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L164', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:164' }}>
+
+The time, in seconds, before a member is moved to the AFK channel.
+
+</ApiMember>
+
+### applicationId
+
+<ApiMember kind="accessor" signature={['get applicationId(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L195', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:195' }}>
+
+The ID of the application that created the guild, for bot-created guilds.
+
+</ApiMember>
+
+### approximateMemberCount
+
+<ApiMember kind="accessor" signature={['get approximateMemberCount(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L365', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:365' }}>
+
+The approximate member count, only present when fetched with counts.
+
+</ApiMember>
+
+### approximatePresenceCount
+
+<ApiMember kind="accessor" signature={['get approximatePresenceCount(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L372', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:372' }}>
+
+The approximate number of online members, only present when fetched with counts.
+
+</ApiMember>
+
+### autoModerationRules
+
+<ApiMember kind="accessor" signature={['get autoModerationRules(): ', ['AutoModerationRuleManager', '/documentation/api/plugin-gateway/classes/AutoModerationRuleManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L577', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:577' }}>
+
+The auto moderation rules of the guild.
+
+</ApiMember>
+
+### available
+
+<ApiMember kind="accessor" signature={['get available(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L391', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:391' }}>
+
+Whether the guild is available, `false` during a Discord outage.
+
+</ApiMember>
+
+### banner
+
+<ApiMember
+	kind="accessor"
+	signature={['get banner(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L55',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:55'
+	}}
+	inheritedFrom={[['AnonymousGuild.banner', '/documentation/api/plugin-gateway/classes/AnonymousGuild#banner']]}
+/>
+
+### bans
+
+<ApiMember kind="accessor" signature={['get bans(): ', ['GuildBanManager', '/documentation/api/plugin-gateway/classes/GuildBanManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L570', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:570' }}>
+
+The bans of the guild.
+
+</ApiMember>
+
+### channels
+
+<ApiMember kind="accessor" signature={['get channels(): ', ['GuildChannelManager', '/documentation/api/plugin-gateway/classes/GuildChannelManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L602', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:602' }}>
+
+The channels of the guild.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['AnonymousGuild.client', '/documentation/api/plugin-gateway/classes/AnonymousGuild#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### commands
+
+<ApiMember kind="accessor" signature={['get commands(): ', ['GuildApplicationCommandManager', '/documentation/api/plugin-gateway/classes/GuildApplicationCommandManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L429', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:429' }}>
+
+The application commands of the guild. Fetch-only: see `ApplicationCommandManager`.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L89',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:89'
+	}}
+	inheritedFrom={[['AnonymousGuild.createdAt', '/documentation/api/plugin-gateway/classes/AnonymousGuild#createdat']]}
+/>
+
+### createdTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdTimestamp(): number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L85',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:85'
+	}}
+	inheritedFrom={[['AnonymousGuild.createdTimestamp', '/documentation/api/plugin-gateway/classes/AnonymousGuild#createdtimestamp']]}
+/>
+
+### defaultMessageNotifications
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get defaultMessageNotifications(): ',
+		['GuildDefaultMessageNotifications', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildDefaultMessageNotifications']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L180',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:180'
+	}}
+/>
+
+### description
+
+<ApiMember
+	kind="accessor"
+	signature={['get description(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L59',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:59'
+	}}
+	inheritedFrom={[['AnonymousGuild.description', '/documentation/api/plugin-gateway/classes/AnonymousGuild#description']]}
+/>
+
+### discoverySplash
+
+<ApiMember
+	kind="accessor"
+	signature={['get discoverySplash(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L153',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:153'
+	}}
+/>
+
+### emojis
+
+<ApiMember kind="accessor" signature={['get emojis(): ', ['GuildEmojiManager', '/documentation/api/plugin-gateway/classes/GuildEmojiManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L422', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:422' }}>
+
+The custom emojis of the guild.
+
+</ApiMember>
+
+### explicitContentFilter
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get explicitContentFilter(): ',
+		['GuildExplicitContentFilter', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildExplicitContentFilter']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L184',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:184'
+	}}
+/>
+
+### features
+
+<ApiMember
+	kind="accessor"
+	signature={['get features(): Data["features"]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L47',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:47'
+	}}
+	inheritedFrom={[['AnonymousGuild.features', '/documentation/api/plugin-gateway/classes/AnonymousGuild#features']]}
+/>
+
+### icon
+
+<ApiMember
+	kind="accessor"
+	signature={['get icon(): Data["icon"]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L43',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:43'
+	}}
+	inheritedFrom={[['AnonymousGuild.icon', '/documentation/api/plugin-gateway/classes/AnonymousGuild#icon']]}
+/>
+
+### id
+
+<ApiMember
+	kind="accessor"
+	signature={['get id(): Data["id"]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L35',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:35'
+	}}
+	inheritedFrom={[['AnonymousGuild.id', '/documentation/api/plugin-gateway/classes/AnonymousGuild#id']]}
+/>
+
+### incidentsData
+
+<ApiMember kind="accessor" signature={['get incidentsData(): ', ['IncidentActions', '/documentation/api/plugin-gateway/interfaces/IncidentActions'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L343', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:343' }}>
+
+Until when invites or direct messages are paused because of raid activity, as set with `setIncidentActions`.
+
+</ApiMember>
+
+### integrations
+
+<ApiMember kind="accessor" signature={['get integrations(): ', ['GuildIntegrationManager', '/documentation/api/plugin-gateway/classes/GuildIntegrationManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L478', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:478' }}>
+
+The integrations of the guild.
+
+</ApiMember>
+
+### invites
+
+<ApiMember kind="accessor" signature={['get invites(): ', ['GuildInviteManager', '/documentation/api/plugin-gateway/classes/GuildInviteManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L609', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:609' }}>
+
+The invites of the guild.
+
+</ApiMember>
+
+### joinedAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get joinedAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L383',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:383'
+	}}
+/>
+
+### joinedTimestamp
+
+<ApiMember kind="accessor" signature={['get joinedTimestamp(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L379', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:379' }}>
+
+The timestamp the client user joined the guild at, as sent in `GUILD_CREATE`, or `null` if unknown.
+
+</ApiMember>
+
+### large
+
+<ApiMember kind="accessor" signature={['get large(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L351', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:351' }}>
+
+Whether the guild is considered large by the gateway, `false` if unknown.
+
+</ApiMember>
+
+### maximumBitrate
+
+<ApiMember kind="accessor" signature={['get maximumBitrate(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L398', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:398' }}>
+
+The maximum bitrate, in bits per second, voice channels of the guild can use.
+
+</ApiMember>
+
+### maximumMembers
+
+<ApiMember
+	kind="accessor"
+	signature={['get maximumMembers(): number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L306',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:306'
+	}}
+/>
+
+### maximumPresences
+
+<ApiMember kind="accessor" signature={['get maximumPresences(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L302', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:302' }}>
+
+The maximum number of presences of the guild, `null` for the default limit.
+
+</ApiMember>
+
+### maximumStageBitrate
+
+<ApiMember kind="accessor" signature={['get maximumStageBitrate(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L406', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:406' }}>
+
+The maximum bitrate, in bits per second, stage channels of the guild can use.
+
+</ApiMember>
+
+### maxStageVideoChannelUsers
+
+<ApiMember kind="accessor" signature={['get maxStageVideoChannelUsers(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L320', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:320' }}>
+
+The maximum number of users in a stage video channel.
+
+</ApiMember>
+
+### maxVideoChannelUsers
+
+<ApiMember kind="accessor" signature={['get maxVideoChannelUsers(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L313', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:313' }}>
+
+The maximum number of users in a video channel.
+
+</ApiMember>
+
+### memberCount
+
+<ApiMember kind="accessor" signature={['get memberCount(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L358', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:358' }}>
+
+The member count, as sent in `GUILD_CREATE` or by the API, or `null` if unknown.
+
+</ApiMember>
+
+### members
+
+<ApiMember kind="accessor" signature={['get members(): ', ['GuildMemberManager', '/documentation/api/plugin-gateway/classes/GuildMemberManager'], '<true>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L623', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:623' }}>
+
+The members of the guild: `guild.members.cache.get(userId)`.
+
+</ApiMember>
+
+### mfaLevel
+
+<ApiMember
+	kind="accessor"
+	signature={['get mfaLevel(): ', ['GuildMFALevel', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildMFALevel']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L188',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:188'
+	}}
+/>
+
+### name
+
+<ApiMember
+	kind="accessor"
+	signature={['get name(): Data["name"]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L39',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:39'
+	}}
+	inheritedFrom={[['AnonymousGuild.name', '/documentation/api/plugin-gateway/classes/AnonymousGuild#name']]}
+/>
+
+### nameAcronym
+
+<ApiMember kind="accessor" signature={['get nameAcronym(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L96', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:96' }} inheritedFrom={[['AnonymousGuild.nameAcronym', '/documentation/api/plugin-gateway/classes/AnonymousGuild#nameacronym']]}>
+
+The acronym shown in place of the guild's icon when it has none.
+
+</ApiMember>
+
+### nsfwLevel
+
+<ApiMember
+	kind="accessor"
+	signature={['get nsfwLevel(): ', ['GuildNSFWLevel', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildNSFWLevel']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L324',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:324'
+	}}
+/>
+
+### ownerId
+
+<ApiMember
+	kind="accessor"
+	signature={['get ownerId(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L149',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:149'
+	}}
+/>
+
+### partnered
+
+<ApiMember kind="accessor" signature={['get partnered(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L106', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:106' }} inheritedFrom={[['AnonymousGuild.partnered', '/documentation/api/plugin-gateway/classes/AnonymousGuild#partnered']]}>
+
+Whether the guild is partnered.
+
+</ApiMember>
+
+### preferredLocale
+
+<ApiMember
+	kind="accessor"
+	signature={['get preferredLocale(): ', ['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L336',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:336'
+	}}
+/>
+
+### premiumProgressBarEnabled
+
+<ApiMember
+	kind="accessor"
+	signature={['get premiumProgressBarEnabled(): boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L332',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:332'
+	}}
+/>
+
+### premiumSubscriptionCount
+
+<ApiMember kind="accessor" signature={['get premiumSubscriptionCount(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L81', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:81' }} inheritedFrom={[['AnonymousGuild.premiumSubscriptionCount', '/documentation/api/plugin-gateway/classes/AnonymousGuild#premiumsubscriptioncount']]}>
+
+The total number of boosts of the guild, or `null` if unknown.
+
+</ApiMember>
+
+### premiumTier
+
+<ApiMember
+	kind="accessor"
+	signature={['get premiumTier(): ', ['GuildPremiumTier', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildPremiumTier']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L328',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:328'
+	}}
+/>
+
+### presences
+
+<ApiMember kind="accessor" signature={['get presences(): ', ['PresenceManager', '/documentation/api/plugin-gateway/classes/PresenceManager'], '<true>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L616', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:616' }}>
+
+The presences of the guild: `guild.presences.cache.get(userId)`.
+
+</ApiMember>
+
+### publicUpdatesChannel
+
+<ApiMember kind="accessor" signature={['get publicUpdatesChannel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L254', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:254' }}>
+
+The channel Discord sends community updates to, from the cache.
+
+</ApiMember>
+
+### publicUpdatesChannelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get publicUpdatesChannelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L214',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:214'
+	}}
+/>
+
+### roles
+
+<ApiMember kind="accessor" signature={['get roles(): ', ['RoleManager', '/documentation/api/plugin-gateway/classes/RoleManager'], '<true>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L630', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:630' }}>
+
+The roles of the guild: `guild.roles.cache.get(roleId)`.
+
+</ApiMember>
+
+### rulesChannel
+
+<ApiMember kind="accessor" signature={['get rulesChannel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L247', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:247' }}>
+
+The rules channel of a community guild, from the cache.
+
+</ApiMember>
+
+### rulesChannelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get rulesChannelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L210',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:210'
+	}}
+/>
+
+### safetyAlertsChannel
+
+<ApiMember kind="accessor" signature={['get safetyAlertsChannel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L261', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:261' }}>
+
+The channel Discord sends safety alerts to, from the cache.
+
+</ApiMember>
+
+### safetyAlertsChannelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get safetyAlertsChannelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L218',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:218'
+	}}
+/>
+
+### scheduledEvents
+
+<ApiMember kind="accessor" signature={['get scheduledEvents(): ', ['GuildScheduledEventManager', '/documentation/api/plugin-gateway/classes/GuildScheduledEventManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L457', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:457' }}>
+
+The scheduled events of the guild.
+
+</ApiMember>
+
+### soundboardSounds
+
+<ApiMember kind="accessor" signature={['get soundboardSounds(): ', ['GuildSoundboardSoundManager', '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L471', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:471' }}>
+
+The soundboard sounds of the guild.
+
+</ApiMember>
+
+### splash
+
+<ApiMember
+	kind="accessor"
+	signature={['get splash(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L51',
+		label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:51'
+	}}
+	inheritedFrom={[['AnonymousGuild.splash', '/documentation/api/plugin-gateway/classes/AnonymousGuild#splash']]}
+/>
+
+### stageInstances
+
+<ApiMember kind="accessor" signature={['get stageInstances(): ', ['StageInstanceManager', '/documentation/api/plugin-gateway/classes/StageInstanceManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L464', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:464' }}>
+
+The live stages of the guild.
+
+</ApiMember>
+
+### stickers
+
+<ApiMember kind="accessor" signature={['get stickers(): ', ['GuildStickerManager', '/documentation/api/plugin-gateway/classes/GuildStickerManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L436', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:436' }}>
+
+The custom stickers of the guild.
+
+</ApiMember>
+
+### systemChannel
+
+<ApiMember kind="accessor" signature={['get systemChannel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L233', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:233' }}>
+
+The channel system messages are sent to, from the cache.
+
+</ApiMember>
+
+### systemChannelFlags
+
+<ApiMember kind="accessor" signature={['get systemChannelFlags(): ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['SystemChannelFlagsBitField', '/documentation/api/plugin-gateway/classes/SystemChannelFlagsBitField'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L206', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:206' }}>
+
+The flags deciding which system messages are suppressed in the system channel.
+
+</ApiMember>
+
+### systemChannelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get systemChannelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L199',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:199'
+	}}
+/>
+
+### vanityURLCode
+
+<ApiMember kind="accessor" signature={['get vanityURLCode(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L70', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:70' }} inheritedFrom={[['AnonymousGuild.vanityURLCode', '/documentation/api/plugin-gateway/classes/AnonymousGuild#vanityurlcode']]}>
+
+The vanity invite code of the guild, if any.
+
+</ApiMember>
+
+### verificationLevel
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get verificationLevel(): ',
+		['GuildVerificationLevel', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildVerificationLevel']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L176',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:176'
+	}}
+/>
+
+### verified
+
+<ApiMember kind="accessor" signature={['get verified(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L113', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:113' }} inheritedFrom={[['AnonymousGuild.verified', '/documentation/api/plugin-gateway/classes/AnonymousGuild#verified']]}>
+
+Whether the guild is verified.
+
+</ApiMember>
+
+### voiceStates
+
+<ApiMember kind="accessor" signature={['get voiceStates(): ', ['VoiceStateManager', '/documentation/api/plugin-gateway/classes/VoiceStateManager'], '<true>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L637', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:637' }}>
+
+The voice states of the guild: `guild.voiceStates.cache.get(userId)`.
+
+</ApiMember>
+
+### widgetChannel
+
+<ApiMember kind="accessor" signature={['get widgetChannel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L240', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:240' }}>
+
+The channel the widget's invite leads to, from the cache.
+
+</ApiMember>
+
+### widgetChannelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get widgetChannelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L172',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:172'
+	}}
+/>
+
+### widgetEnabled
+
+<ApiMember
+	kind="accessor"
+	signature={['get widgetEnabled(): boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L168',
+		label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:168'
+	}}
+/>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['AnonymousGuild.[kClone]', '/documentation/api/plugin-gateway/classes/AnonymousGuild#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		', "emojis" | "roles" | "stickers"> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		', keyof ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>>>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], ', "emojis" | "roles" | "stickers"> & ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'], ', keyof ', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], '>>>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['AnonymousGuild.[kPatch]', '/documentation/api/plugin-gateway/classes/AnonymousGuild#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### bannerURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L130', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:130' }} inheritedFrom={[['AnonymousGuild.bannerURL', '/documentation/api/plugin-gateway/classes/AnonymousGuild#bannerurl']]}>
+
+<ApiSignature tokens={['bannerURL(options?: ImageURLOptions): string | null']} />
+
+Gets the URL of the guild's banner, or `null` if it has none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### createTemplate()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L502', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:502' }}>
+
+<ApiSignature
+	tokens={[
+		'createTemplate(name: string, description?: string | null): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+Creates a template of the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the template.
+
+</ApiParam>
+
+<ApiParam name="description" type={['string | null']} optional>
+
+The description of the template.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L883', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:883' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Deletes this guild. The client user must own it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### disableInvites()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L846', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:846' }}>
+
+<ApiSignature
+	tokens={[
+		'disableInvites(disabled: boolean = true): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Pauses or resumes invites to this guild, through the `INVITES_DISABLED` feature.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="disabled" type={['boolean']} defaultValue="true">
+
+Whether to pause invites.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### discoverySplashURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L645', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:645' }}>
+
+<ApiSignature tokens={['discoverySplashURL(options?: BaseImageURLOptions): string | null']} />
+
+Gets the URL of the guild's discovery splash image, or `null` if it has none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['BaseImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['AnonymousGuild.dropChangedRelations', '/documentation/api/plugin-gateway/classes/AnonymousGuild#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['AnonymousGuild.dropRelations', '/documentation/api/plugin-gateway/classes/AnonymousGuild#droprelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropRelations(...names: ("afkChannel" | "systemChannel" | "widgetChannel" | "rulesChannel" | "publicUpdatesChannel" | "safetyAlertsChannel")[]): void'
+	]}
+/>
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("afkChannel" | "systemChannel" | "widgetChannel" | "rulesChannel" | "publicUpdatesChannel" | "safetyAlertsChannel")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L720', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:720' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['GuildEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Edits this guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildEditOptions']]}>
+
+The changes to apply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### editOnboarding()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L563', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:563' }}>
+
+<ApiSignature
+	tokens={[
+		'editOnboarding(options: ',
+		['GuildOnboardingEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildOnboardingEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+Edits the onboarding of the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildOnboardingEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildOnboardingEditOptions']]}>
+
+The changes to apply. The prompts replace every existing one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### editWelcomeScreen()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L519', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:519' }}>
+
+<ApiSignature
+	tokens={[
+		'editWelcomeScreen(options: ',
+		['GuildWelcomeScreenEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWelcomeScreenEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+Edits the welcome screen of the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildWelcomeScreenEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWelcomeScreenEditOptions']]}>
+
+The changes to apply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L895', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:895' }}>
+
+<ApiSignature tokens={['equals(guild: unknown): boolean']} />
+
+Whether this guild has the same data as another one, like discord.js's `Guild#equals`: the same ID, availability,
+name, icon, splashes, owner, member count, `large`, verification level, and features, in the same order. `false`
+for anything that is not a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guild" type={['unknown']}>
+
+The guild to compare with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L653', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:653' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Fetches this guild from the API, with its approximate counts, and patches it in place.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchActiveThreads()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L443', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:443' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchActiveThreads(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchedThreads', '/documentation/api/plugin-gateway/interfaces/FetchedThreads'],
+		'>'
+	]}
+/>
+
+Fetches the active threads of the guild, and caches them.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchedThreads', '/documentation/api/plugin-gateway/interfaces/FetchedThreads'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchAuditLogs()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L586', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:586' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchAuditLogs(options?: ',
+		['GuildAuditLogsFetchOptions', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogsFetchOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildAuditLogs', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogs'],
+		'>'
+	]}
+/>
+
+Fetches a page of the guild's audit log.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildAuditLogsFetchOptions', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogsFetchOptions']]} optional>
+
+Which user and action to filter by, and the page.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildAuditLogs', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogs'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchIntegrations()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L485', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:485' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchIntegrations(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Integration', '/documentation/api/plugin-gateway/classes/Integration'],
+		'[]>'
+	]}
+/>
+
+Fetches every integration of the guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Integration', '/documentation/api/plugin-gateway/classes/Integration'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchInvites()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L688', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:688' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchInvites(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildInvite', '/documentation/api/plugin-gateway/classes/GuildInvite'],
+		'[]>'
+	]}
+/>
+
+Fetches every invite of this guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildInvite', '/documentation/api/plugin-gateway/classes/GuildInvite'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchOnboarding()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L554', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:554' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchOnboarding(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+Fetches the onboarding of the guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchOwner()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L661', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:661' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchOwner(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Fetches the member owning this guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPreview()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L695', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:695' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPreview(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildPreview', '/documentation/api/plugin-gateway/classes/GuildPreview'],
+		'>'
+	]}
+/>
+
+Fetches the public preview of this guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildPreview', '/documentation/api/plugin-gateway/classes/GuildPreview'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchTemplates()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L492', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:492' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchTemplates(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'[]>'
+	]}
+/>
+
+Fetches the templates of the guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchVanityData()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L709', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:709' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchVanityData(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['RESTGetAPIGuildVanityUrlResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTGetAPIGuildVanityUrlResult'],
+		'>'
+	]}
+/>
+
+Fetches the vanity URL of this guild, patching [AnonymousGuild.vanityURLCode](/documentation/api/plugin-gateway/classes/AnonymousGuild#vanityurlcode) in place.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['RESTGetAPIGuildVanityUrlResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTGetAPIGuildVanityUrlResult'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchVoiceRegions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L702', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:702' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchVoiceRegions(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIVoiceRegion', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceRegion'],
+		'[]>'
+	]}
+/>
+
+Fetches the voice regions available to this guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIVoiceRegion', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceRegion'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWebhooks()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L450', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:450' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWebhooks(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'[]>'
+	]}
+/>
+
+Fetches the webhooks of the guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWelcomeScreen()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L510', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:510' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWelcomeScreen(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+Fetches the welcome screen of the guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWidget()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L526', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:526' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWidget(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Widget', '/documentation/api/plugin-gateway/classes/Widget'],
+		'>'
+	]}
+/>
+
+Fetches the public widget of the guild, which must be enabled.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Widget', '/documentation/api/plugin-gateway/classes/Widget'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWidgetSettings()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L533', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:533' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWidgetSettings(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildWidgetSettings', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettings'],
+		'>'
+	]}
+/>
+
+Fetches whether the widget of the guild is enabled, and its channel.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildWidgetSettings', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettings'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### iconURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L121', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:121' }} inheritedFrom={[['AnonymousGuild.iconURL', '/documentation/api/plugin-gateway/classes/AnonymousGuild#iconurl']]}>
+
+<ApiSignature tokens={['iconURL(options?: ImageURLOptions): string | null']} />
+
+Gets the URL of the guild's icon, or `null` if it has none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['AnonymousGuild.lazyRelation', '/documentation/api/plugin-gateway/classes/AnonymousGuild#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### leave()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L875', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:875' }}>
+
+<ApiSignature
+	tokens={[
+		'leave(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Makes the client user leave this guild.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['AnonymousGuild.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/AnonymousGuild#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['AnonymousGuild.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/AnonymousGuild#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### requestChannelInfo()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L681', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:681' }}>
+
+<ApiSignature
+	tokens={[
+		'requestChannelInfo(options: ',
+		['ChannelInfoRequestOptions', '/documentation/api/plugin-gateway/interfaces/ChannelInfoRequestOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'],
+		'[]>'
+	]}
+/>
+
+Requests the ephemeral info (status, start time of the voice session) of the voice channels of this guild over the
+gateway, and caches it. discord.js: `guild.fetchChannelInfo()`. See `client.channels.requestInfo`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ChannelInfoRequestOptions', '/documentation/api/plugin-gateway/interfaces/ChannelInfoRequestOptions']]}>
+
+The fields to request.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### requestMembers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L671', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:671' }}>
+
+<ApiSignature
+	tokens={[
+		'requestMembers(options?: ',
+		['GuildMembersRequestOptions', '/documentation/api/plugin-gateway/interfaces/GuildMembersRequestOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'[]>'
+	]}
+/>
+
+Requests the members of this guild over the gateway, every one of them by default, and caches them. discord.js:
+`guild.members.fetch()`. See `client.members.request`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildMembersRequestOptions', '/documentation/api/plugin-gateway/interfaces/GuildMembersRequestOptions']]} optional>
+
+Which members to request.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### searchMessages()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L595', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:595' }}>
+
+<ApiSignature
+	tokens={[
+		'searchMessages(options?: ',
+		['GuildSearchMessagesOptions', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildSearchMessagesResult', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesResult'],
+		'>'
+	]}
+/>
+
+Searches the messages of the guild, see `GuildManager#searchMessages`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildSearchMessagesOptions', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesOptions']]} optional>
+
+What to search for, and how.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildSearchMessagesResult', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesResult'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setAFKChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L771', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:771' }}>
+
+<ApiSignature
+	tokens={[
+		'setAFKChannel(afkChannel: string | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="afkChannel" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setAFKTimeout()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L778', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:778' }}>
+
+<ApiSignature
+	tokens={[
+		'setAFKTimeout(\n  afkTimeout: 1800 | 3600 | 60 | 300 | 900 | undefined,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Sets the AFK timeout of this guild, in seconds.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="afkTimeout" type={['1800 | 3600 | 60 | 300 | 900 | undefined']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setBanner()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L739', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:739' }}>
+
+<ApiSignature
+	tokens={[
+		'setBanner(banner: ',
+		['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'],
+		' | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Sets the banner of this guild, `null` to remove it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="banner" type={[['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setDefaultMessageNotifications()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L817', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:817' }}>
+
+<ApiSignature
+	tokens={[
+		'setDefaultMessageNotifications(\n  defaultMessageNotifications: ',
+		['GuildDefaultMessageNotifications', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildDefaultMessageNotifications'],
+		' | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="defaultMessageNotifications"
+	type={[
+		['GuildDefaultMessageNotifications', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildDefaultMessageNotifications'],
+		' | null'
+	]}
+/>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setDiscoverySplash()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L753', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:753' }}>
+
+<ApiSignature
+	tokens={[
+		'setDiscoverySplash(\n  discoverySplash: ',
+		['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'],
+		' | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Sets the discovery splash image of this guild, `null` to remove it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="discoverySplash" type={[['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setExplicitContentFilter()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L810', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:810' }}>
+
+<ApiSignature
+	tokens={[
+		'setExplicitContentFilter(\n  explicitContentFilter: ',
+		['GuildExplicitContentFilter', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildExplicitContentFilter'],
+		' | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="explicitContentFilter"
+	type={[['GuildExplicitContentFilter', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildExplicitContentFilter'], ' | null']}
+/>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setIcon()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L732', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:732' }}>
+
+<ApiSignature
+	tokens={[
+		'setIcon(icon: ',
+		['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'],
+		' | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Sets the icon of this guild, `null` to remove it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="icon" type={[['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setIncidentActions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L859', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:859' }}>
+
+<ApiSignature
+	tokens={[
+		'setIncidentActions(options: ',
+		['GuildIncidentActionsOptions', '/documentation/api/plugin-gateway/interfaces/GuildIncidentActionsOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['IncidentActions', '/documentation/api/plugin-gateway/interfaces/IncidentActions'],
+		'>'
+	]}
+/>
+
+Pauses invites or direct messages for up to a day, e.g. during a raid.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildIncidentActionsOptions', '/documentation/api/plugin-gateway/interfaces/GuildIncidentActionsOptions']]}>
+
+Until when to pause each, `null` to resume.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['IncidentActions', '/documentation/api/plugin-gateway/interfaces/IncidentActions'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setName()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L725', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:725' }}>
+
+<ApiSignature
+	tokens={[
+		'setName(name: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setOwner()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L837', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:837' }}>
+
+<ApiSignature
+	tokens={[
+		'setOwner(owner: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Transfers the ownership of this guild to another member. The client user must own the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="owner" type={['string']}>
+
+The ID of the new owner.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setPreferredLocale()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L824', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:824' }}>
+
+<ApiSignature
+	tokens={[
+		'setPreferredLocale(preferredLocale: ',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		' | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="preferredLocale" type={[['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'], ' | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setPremiumProgressBarEnabled()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L828', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:828' }}>
+
+<ApiSignature
+	tokens={[
+		'setPremiumProgressBarEnabled(enabled: boolean = true, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="enabled" type={['boolean']} defaultValue="true" />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setPublicUpdatesChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L789', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:789' }}>
+
+<ApiSignature
+	tokens={[
+		'setPublicUpdatesChannel(\n  publicUpdatesChannel: string | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="publicUpdatesChannel" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setRulesChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L785', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:785' }}>
+
+<ApiSignature
+	tokens={[
+		'setRulesChannel(rulesChannel: string | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="rulesChannel" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setSafetyAlertsChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L796', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:796' }}>
+
+<ApiSignature
+	tokens={[
+		'setSafetyAlertsChannel(\n  safetyAlertsChannel: string | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="safetyAlertsChannel" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setSplash()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L746', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:746' }}>
+
+<ApiSignature
+	tokens={[
+		'setSplash(splash: ',
+		['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'],
+		' | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Sets the invite splash image of this guild, `null` to remove it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="splash" type={[['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setSystemChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L760', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:760' }}>
+
+<ApiSignature
+	tokens={[
+		'setSystemChannel(systemChannel: string | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="systemChannel" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setSystemChannelFlags()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L764', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:764' }}>
+
+<ApiSignature
+	tokens={[
+		'setSystemChannelFlags(\n  systemChannelFlags: ',
+		['SystemChannelFlagsResolvable', '/documentation/api/plugin-gateway/type-aliases/SystemChannelFlagsResolvable'],
+		',\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="systemChannelFlags"
+	type={[['SystemChannelFlagsResolvable', '/documentation/api/plugin-gateway/type-aliases/SystemChannelFlagsResolvable']]}
+/>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setVerificationLevel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L803', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:803' }}>
+
+<ApiSignature
+	tokens={[
+		'setVerificationLevel(\n  verificationLevel: ',
+		['GuildVerificationLevel', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildVerificationLevel'],
+		' | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="verificationLevel"
+	type={[['GuildVerificationLevel', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildVerificationLevel'], ' | null']}
+/>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setWidgetSettings()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/Guild.ts#L543', label: 'packages/plugin-gateway/src/structures/guilds/Guild.ts:543' }}>
+
+<ApiSignature
+	tokens={[
+		'setWidgetSettings(options: ',
+		['GuildWidgetSettingsEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettingsEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Edits the widget settings of the guild, and patches [Guild.widgetEnabled](/documentation/api/plugin-gateway/classes/Guild#widgetenabled) and
+[Guild.widgetChannelId](/documentation/api/plugin-gateway/classes/Guild#widgetchannelid) in place.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildWidgetSettingsEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettingsEditOptions']]}>
+
+Whether to enable the widget, and its channel.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### splashURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L139', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:139' }} inheritedFrom={[['AnonymousGuild.splashURL', '/documentation/api/plugin-gateway/classes/AnonymousGuild#splashurl']]}>
+
+<ApiSignature tokens={['splashURL(options?: BaseImageURLOptions): string | null']} />
+
+Gets the URL of the guild's invite splash image, or `null` if it has none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['BaseImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts#L144', label: 'packages/plugin-gateway/src/structures/guilds/AnonymousGuild.ts:144' }} inheritedFrom={[['AnonymousGuild.toString', '/documentation/api/plugin-gateway/classes/AnonymousGuild#tostring']]}>
+
+<ApiSignature tokens={['toString(): string']} />
+
+Returns a string representation of an object.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['AnonymousGuild.valueOf', '/documentation/api/plugin-gateway/classes/AnonymousGuild#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild']]} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,378 @@
+---
+title: 'Class: GuildTemplateManager'
+description: 'Manages guild templates. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L49',
+		label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:49'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages guild templates. Discord does not send them over the gateway, so they are never cached.
+
+<ApiSignature tokens={['class GuildTemplateManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L50', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:50' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildTemplateManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['GuildTemplateManager', '/documentation/api/plugin-gateway/classes/GuildTemplateManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+## Methods
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L79', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:79' }}>
+
+<ApiSignature
+	tokens={[
+		'create(guildId: string, options: ',
+		['GuildTemplateCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildTemplateCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+Creates a template of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildTemplateCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildTemplateCreateOptions']]}>
+
+The name and description of the template.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L138', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:138' }}>
+
+<ApiSignature
+	tokens={[
+		'createGuild(code: string, options: ',
+		['GuildTemplateCreateGuildOptions', '/documentation/api/plugin-gateway/interfaces/GuildTemplateCreateGuildOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Creates a guild from a template, which Discord only allows to bots in fewer than 10 guilds.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['string']}>
+
+The code of the template.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildTemplateCreateGuildOptions', '/documentation/api/plugin-gateway/interfaces/GuildTemplateCreateGuildOptions']]}>
+
+The name and icon of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L128', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:128' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(guildId: string, code: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a template.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the template's guild.
+
+</ApiParam>
+
+<ApiParam name="code" type={['string']}>
+
+The code of the template.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L98', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:98' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(\n  guildId: string,\n  code: string,\n  options: ',
+		['GuildTemplateEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildTemplateEditOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+Edits a template.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the template's guild.
+
+</ApiParam>
+
+<ApiParam name="code" type={['string']}>
+
+The code of the template.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildTemplateEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildTemplateEditOptions']]}>
+
+The name and description.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L59', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:59' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(code: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+Fetches a template by its code.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['string']}>
+
+The code of the template, or its URL.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### list()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L68', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:68' }}>
+
+<ApiSignature
+	tokens={[
+		'list(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'[]>'
+	]}
+/>
+
+Fetches the templates of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### sync()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildTemplateManager.ts#L117', label: 'packages/plugin-gateway/src/managers/GuildTemplateManager.ts:117' }}>
+
+<ApiSignature
+	tokens={[
+		'sync(guildId: string, code: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+Syncs a template with the current state of its guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the template's guild.
+
+</ApiParam>
+
+<ApiParam name="code" type={['string']}>
+
+The code of the template.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

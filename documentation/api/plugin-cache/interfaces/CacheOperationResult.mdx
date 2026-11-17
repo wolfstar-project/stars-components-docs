@@ -1,0 +1,63 @@
+---
+title: 'Interface: CacheOperationResult'
+description: 'The outcome of one write applyCacheOperations made. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L800',
+		label: 'packages/plugin-cache/src/lib/operations.ts:800'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+The outcome of one write [applyCacheOperations](/documentation/api/plugin-cache/functions/applyCacheOperations) made.
+
+<ApiSignature tokens={['interface CacheOperationResult']} />
+
+## Properties
+
+### added?
+
+<ApiMember kind="property" badges={['optional']} signature={['added?: unknown']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L820', label: 'packages/plugin-cache/src/lib/operations.ts:820' }}>
+
+The entry after an upsert or an update.
+
+</ApiMember>
+
+### entity
+
+<ApiMember kind="property" signature={['entity: keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L804', label: 'packages/plugin-cache/src/lib/operations.ts:804' }}>
+
+The entity cache written to.
+
+</ApiMember>
+
+### existing?
+
+<ApiMember kind="property" badges={['optional']} signature={['existing?: unknown']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L816', label: 'packages/plugin-cache/src/lib/operations.ts:816' }}>
+
+The entry before the write, `undefined` when it was not cached.
+
+</ApiMember>
+
+### key
+
+<ApiMember kind="property" signature={['key: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L808', label: 'packages/plugin-cache/src/lib/operations.ts:808' }}>
+
+The key of the entry.
+
+</ApiMember>
+
+### type
+
+<ApiMember kind="property" signature={['type: "upsert" | "delete" | "update"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L812', label: 'packages/plugin-cache/src/lib/operations.ts:812' }}>
+
+What happened to the entry.
+
+</ApiMember>

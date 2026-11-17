@@ -1,0 +1,47 @@
+---
+title: 'Interface: GatewayClientMessageDefaults'
+description: "The message defaults read from the client's options. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L643',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:643'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The message defaults read from the client's options.
+
+<ApiSignature tokens={['interface GatewayClientMessageDefaults']} />
+
+<ApiHierarchy extendedBy={[[['GatewayClientOptions', '/documentation/api/plugin-gateway/interfaces/GatewayClientOptions']]]} />
+
+## Properties
+
+### allowedMentions?
+
+<ApiMember kind="property" badges={['optional']} signature={['allowedMentions?: ', ['MessageMentionOptions', '/documentation/api/plugin-gateway/type-aliases/MessageMentionOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L647', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:647' }}>
+
+The mentions every message may ping, unless it sets its own.
+
+</ApiMember>
+
+### failIfNotExists?
+
+<ApiMember kind="property" badges={['optional']} signature={['failIfNotExists?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L653', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:653' }}>
+
+Whether replies fail when the message they reply to no longer exists, unless they set it themselves.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>

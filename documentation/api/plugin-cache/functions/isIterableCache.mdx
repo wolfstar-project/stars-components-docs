@@ -1,0 +1,53 @@
+---
+title: 'Function: isIterableCache()'
+description: 'Whether an EntityCache can enumerate its entries. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L182',
+		label: 'packages/plugin-cache/src/lib/types.ts:182'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Whether an [EntityCache](/documentation/api/plugin-cache/interfaces/EntityCache) can enumerate its entries.
+
+<ApiSignature
+	tokens={[
+		'isIterableCache<Raw>(cache: ',
+		['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'],
+		'<Raw>): cache is ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<Raw>'
+	]}
+/>
+
+Whether an [EntityCache](/documentation/api/plugin-cache/interfaces/EntityCache) can enumerate its entries.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="cache" type={[['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<Raw>']}>
+
+The cache.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['cache is ', ['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<Raw>']} />
+
+</ApiParams>

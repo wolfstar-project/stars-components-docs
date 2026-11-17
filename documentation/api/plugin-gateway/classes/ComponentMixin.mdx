@@ -1,0 +1,93 @@
+---
+title: 'Class: ComponentMixin'
+description: 'The members every component of this package shares, mixed into each of them. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/Component.ts#L15',
+		label: 'packages/plugin-gateway/src/structures/components/Component.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The members every component of this package shares, mixed into each of them.
+
+<ApiSignature tokens={['class ComponentMixin']} />
+
+<ApiHierarchy
+	extendedBy={[
+		[['ActionRow', '/documentation/api/plugin-gateway/classes/ActionRow']],
+		[['ChannelSelectMenuComponent', '/documentation/api/plugin-gateway/classes/ChannelSelectMenuComponent']],
+		[['Component', '/documentation/api/plugin-gateway/classes/Component']],
+		[['ContainerComponent', '/documentation/api/plugin-gateway/classes/ContainerComponent']],
+		[['FileComponent', '/documentation/api/plugin-gateway/classes/FileComponent']],
+		[['FileUploadComponent', '/documentation/api/plugin-gateway/classes/FileUploadComponent']],
+		[['InteractiveButtonComponent', '/documentation/api/plugin-gateway/classes/InteractiveButtonComponent']],
+		[['LinkButtonComponent', '/documentation/api/plugin-gateway/classes/LinkButtonComponent']],
+		[['MediaGalleryComponent', '/documentation/api/plugin-gateway/classes/MediaGalleryComponent']],
+		[['MentionableSelectMenuComponent', '/documentation/api/plugin-gateway/classes/MentionableSelectMenuComponent']],
+		[['PremiumButtonComponent', '/documentation/api/plugin-gateway/classes/PremiumButtonComponent']],
+		[['RoleSelectMenuComponent', '/documentation/api/plugin-gateway/classes/RoleSelectMenuComponent']],
+		[['SectionComponent', '/documentation/api/plugin-gateway/classes/SectionComponent']],
+		[['SeparatorComponent', '/documentation/api/plugin-gateway/classes/SeparatorComponent']],
+		[['StringSelectMenuComponent', '/documentation/api/plugin-gateway/classes/StringSelectMenuComponent']],
+		[['TextDisplayComponent', '/documentation/api/plugin-gateway/classes/TextDisplayComponent']],
+		[['TextInputComponent', '/documentation/api/plugin-gateway/classes/TextInputComponent']],
+		[['ThumbnailComponent', '/documentation/api/plugin-gateway/classes/ThumbnailComponent']],
+		[['UserSelectMenuComponent', '/documentation/api/plugin-gateway/classes/UserSelectMenuComponent']]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new ComponentMixin(): ', ['ComponentMixin', '/documentation/api/plugin-gateway/classes/ComponentMixin']]} />
+
+</ApiMember>
+
+## Methods
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/Component.ts#L21', label: 'packages/plugin-gateway/src/structures/components/Component.ts:21' }}>
+
+<ApiSignature
+	tokens={[
+		'equals(other: ',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		' | ',
+		['Component', '/documentation/api/plugin-gateway/classes/Component'],
+		'<',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		'>): boolean'
+	]}
+/>
+
+Whether this component has the same data as another one, nested components included.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="other" type={[['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'], ' | ', ['Component', '/documentation/api/plugin-gateway/classes/Component'], '<', ['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'], '>']}>
+
+The component, or raw component data, to compare with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>

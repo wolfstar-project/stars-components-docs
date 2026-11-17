@@ -1,0 +1,45 @@
+---
+title: 'Interface: ChannelInfoRequestOptions'
+description: 'The options to request the ephemeral info of the voice channels of a guild over the gateway with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelManager.ts#L183',
+		label: 'packages/plugin-gateway/src/managers/ChannelManager.ts:183'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to request the ephemeral info of the voice channels of a guild over the gateway with.
+
+<ApiSignature tokens={['interface ChannelInfoRequestOptions']} />
+
+## Properties
+
+### fields
+
+<ApiMember kind="property" signature={['fields: readonly ("status" | "voice_start_time" | string & {})[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelManager.ts#L187', label: 'packages/plugin-gateway/src/managers/ChannelManager.ts:187' }}>
+
+The fields to request: `"status"` and `"voice_start_time"` for now. A field Discord does not know is ignored by it.
+
+</ApiMember>
+
+### time?
+
+<ApiMember kind="property" badges={['optional']} signature={['time?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelManager.ts#L193', label: 'packages/plugin-gateway/src/managers/ChannelManager.ts:193' }}>
+
+How long to wait for the reply, in milliseconds, before rejecting with a `GuildChannelInfoTimeoutError`.
+
+**Default**
+
+```ts
+10_000;
+```
+
+</ApiMember>

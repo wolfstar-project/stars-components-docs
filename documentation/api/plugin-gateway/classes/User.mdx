@@ -1,0 +1,748 @@
+---
+title: 'Class: User'
+description: "A Discord user: @discordjs/structures' User, with CDN URLs and actions through the client. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L24',
+		label: 'packages/plugin-gateway/src/structures/users/User.ts:24'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A Discord user: `@discordjs/structures`' `User`, with CDN URLs and actions through the client.
+
+<ApiSignature
+	tokens={[
+		'class User extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["users"]>, User'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+			'<',
+			['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+			'["users"]>'
+		],
+		['User']
+	]}
+	extendedBy={[[['ClientUser', '/documentation/api/plugin-gateway/classes/ClientUser']]]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L34', label: 'packages/plugin-gateway/src/structures/users/User.ts:34' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new User(data: ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		', relations: object = {}): ',
+		['User', '/documentation/api/plugin-gateway/classes/User']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser']]}>
+
+The raw user.
+
+</ApiParam>
+
+<ApiParam name="relations" type={['object']} defaultValue={'{}'}>
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### avatarDecorationData
+
+<ApiMember kind="accessor" signature={['get avatarDecorationData(): ', ['AvatarDecorationData', '/documentation/api/plugin-gateway/interfaces/AvatarDecorationData'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L58', label: 'packages/plugin-gateway/src/structures/users/User.ts:58' }}>
+
+The user's avatar decoration, camel-cased like discord.js's `User#avatarDecorationData`.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### collectibles
+
+<ApiMember kind="accessor" signature={['get collectibles(): ', ['Collectibles', '/documentation/api/plugin-gateway/interfaces/Collectibles'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L66', label: 'packages/plugin-gateway/src/structures/users/User.ts:66' }}>
+
+The user's collectibles, camel-cased like discord.js's `User#collectibles`.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L90',
+		label: 'packages/plugin-gateway/src/structures/users/User.ts:90'
+	}}
+/>
+
+### createdTimestamp
+
+<ApiMember kind="accessor" signature={['get createdTimestamp(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L86', label: 'packages/plugin-gateway/src/structures/users/User.ts:86' }}>
+
+The timestamp the user was created at
+
+</ApiMember>
+
+### defaultAvatarIndex
+
+<ApiMember kind="accessor" signature={['get defaultAvatarIndex(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L122', label: 'packages/plugin-gateway/src/structures/users/User.ts:122' }}>
+
+The index of the user's default avatar: migrated users (discriminator `"0"`) derive it from their ID, legacy ones
+from their discriminator.
+
+</ApiMember>
+
+### defaultAvatarURL
+
+<ApiMember kind="accessor" signature={['get defaultAvatarURL(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L106', label: 'packages/plugin-gateway/src/structures/users/User.ts:106' }}>
+
+The URL of the user's default avatar.
+
+</ApiMember>
+
+### dmChannel
+
+<ApiMember kind="accessor" signature={['get dmChannel(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'], ' | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L160', label: 'packages/plugin-gateway/src/structures/users/User.ts:160' }}>
+
+The cached direct message channel with the user, see `UserManager#dmChannel`: `null` when there is none, or when
+the channel cache cannot be searched. Synchronous when the channel cache is.
+
+</ApiMember>
+
+### flags
+
+<ApiMember kind="accessor" signature={['get flags(): ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['UserFlagsBitField', '/documentation/api/plugin-gateway/classes/UserFlagsBitField'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L82', label: 'packages/plugin-gateway/src/structures/users/User.ts:82' }}>
+
+The user's public flags (badges).
+
+</ApiMember>
+
+### hexAccentColor
+
+<ApiMember kind="accessor" signature={['get hexAccentColor(): `#${string}` | null | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L49', label: 'packages/plugin-gateway/src/structures/users/User.ts:49' }}>
+
+The user's accent color as a `#rrggbb` string, with the same `undefined`/`null` semantics.
+
+</ApiMember>
+
+### partial
+
+<ApiMember kind="accessor" signature={['get partial(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L193', label: 'packages/plugin-gateway/src/structures/users/User.ts:193' }}>
+
+Whether the user is partial: built from its ID alone for an event about an uncached user, see `Partials.User`.
+Only its ID is reliable then, and [User.fetch](/documentation/api/plugin-gateway/classes/User#fetch) completes it.
+
+</ApiMember>
+
+### primaryGuild
+
+<ApiMember kind="accessor" signature={['get primaryGuild(): ', ['UserPrimaryGuild', '/documentation/api/plugin-gateway/interfaces/UserPrimaryGuild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L74', label: 'packages/plugin-gateway/src/structures/users/User.ts:74' }}>
+
+The guild whose tag the user displays, if any, camel-cased like discord.js's `User#primaryGuild`.
+
+</ApiMember>
+
+### tag
+
+<ApiMember kind="accessor" signature={['get tag(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L42', label: 'packages/plugin-gateway/src/structures/users/User.ts:42' }}>
+
+The user's tag: their username for migrated users, `username#discriminator` for legacy ones.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### avatarDecorationURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L131', label: 'packages/plugin-gateway/src/structures/users/User.ts:131' }}>
+
+<ApiSignature tokens={['avatarDecorationURL(): string | null']} />
+
+Gets the URL of the user's avatar decoration, or `null` if they have none.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### avatarURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L98', label: 'packages/plugin-gateway/src/structures/users/User.ts:98' }}>
+
+<ApiSignature tokens={['avatarURL(options?: ImageURLOptions): string | null']} />
+
+Gets the URL of the user's avatar, or `null` if they have none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### bannerURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L140', label: 'packages/plugin-gateway/src/structures/users/User.ts:140' }}>
+
+<ApiSignature tokens={['bannerURL(options?: ImageURLOptions): string | null | undefined']} />
+
+Gets the URL of the user's banner: `undefined` when unknown (not fetched), `null` when they have none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### createDM()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L169', label: 'packages/plugin-gateway/src/structures/users/User.ts:169' }}>
+
+<ApiSignature
+	tokens={[
+		'createDM(force: boolean = false): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+Opens a direct message channel with the user, reusing the cached one.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="force" type={['boolean']} defaultValue="false">
+
+Whether to skip the cache lookup and always call the API.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### deleteDM()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L176', label: 'packages/plugin-gateway/src/structures/users/User.ts:176' }}>
+
+<ApiSignature
+	tokens={[
+		'deleteDM(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+Closes the direct message channel with the user.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### displayAvatarURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L114', label: 'packages/plugin-gateway/src/structures/users/User.ts:114' }}>
+
+<ApiSignature tokens={['displayAvatarURL(options?: ImageURLOptions): string']} />
+
+Gets the URL of the user's avatar, falling back to their default avatar.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: never[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['never[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L211', label: 'packages/plugin-gateway/src/structures/users/User.ts:211' }}>
+
+<ApiSignature tokens={['equals(user: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null | undefined): boolean']} />
+
+Whether this user has the same data as another one, like discord.js's `User#equals`: the same ID, username,
+discriminator, global name, avatar, flags, banner, accent color, avatar decoration, nameplate, and primary guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="user" type={[['User', '/documentation/api/plugin-gateway/classes/User'], ' | null | undefined']}>
+
+The user to compare with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L200', label: 'packages/plugin-gateway/src/structures/users/User.ts:200' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+Fetches the user from the API and patches this structure with the result.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guildTagBadgeURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L149', label: 'packages/plugin-gateway/src/structures/users/User.ts:149' }}>
+
+<ApiSignature tokens={['guildTagBadgeURL(options?: BaseImageURLOptions): string | null']} />
+
+Gets the URL of the badge of the guild tag the user displays, or `null` if they display none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['BaseImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L185', label: 'packages/plugin-gateway/src/structures/users/User.ts:185' }}>
+
+<ApiSignature
+	tokens={[
+		'send(options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Sends a direct message to the user.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'], '>']}>
+
+The message, or its content.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### toString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/User.ts#L239', label: 'packages/plugin-gateway/src/structures/users/User.ts:239' }}>
+
+<ApiSignature tokens={['toString(): `<@${string}>`']} />
+
+Returns a string representation of an object.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['`<@${string}>`']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['User', '/documentation/api/plugin-gateway/classes/User']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['User', '/documentation/api/plugin-gateway/classes/User']]} />
+
+</ApiParams>
+
+</ApiMember>

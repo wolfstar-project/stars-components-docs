@@ -1,0 +1,57 @@
+---
+title: 'Function: isSentryEnvelopeRequest()'
+description: 'Whether a request of http or https is one the transport of Sentry sends an event with: to the host of the DSN, on the path of an envelope of its proj… (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/instrumentation.ts#L89',
+		label: 'lib/instrumentation.ts:89'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Whether a request of `http` or `https` is one the transport of Sentry sends an event with: to the host of the DSN,
+on the path of an envelope of its project (`[/<path>]/api/<project>/envelope/`, the path of a Sentry hosted under
+one).
+
+<ApiSignature
+	tokens={[
+		'isSentryEnvelopeRequest(\n  request: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['OutgoingRequestOptions', '/documentation/api/plugin-opentelemetry/interfaces/OutgoingRequestOptions'],
+		', "host" | "hostname" | "path">,\n  dsn: string | undefined\n): boolean'
+	]}
+/>
+
+Whether a request of `http` or `https` is one the transport of Sentry sends an event with: to the host of the DSN,
+on the path of an envelope of its project (`[/<path>]/api/<project>/envelope/`, the path of a Sentry hosted under
+one).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'], '<', ['OutgoingRequestOptions', '/documentation/api/plugin-opentelemetry/interfaces/OutgoingRequestOptions'], ', "host" | "hostname" | "path">']}>
+
+The options of the request, as `http.request` is given them.
+
+</ApiParam>
+
+<ApiParam name="dsn" type={['string | undefined']}>
+
+The DSN of Sentry.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>

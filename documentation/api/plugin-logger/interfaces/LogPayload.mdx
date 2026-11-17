@@ -1,0 +1,76 @@
+---
+title: 'Interface: LogPayload'
+description: 'A single log entry, as handed over to every Transport registered on a Logger. (@wolfstar/plugin-logger)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L7',
+		label: 'packages/plugin-logger/src/lib/types.ts:7'
+	}}
+	packageName="@wolfstar/plugin-logger"
+	packageHref="/documentation/api/plugin-logger"
+/>
+
+A single log entry, as handed over to every [Transport](/documentation/api/plugin-logger/interfaces/Transport) registered on a
+[Logger](/documentation/api/plugin-logger/classes/Logger).
+
+<ApiSignature tokens={['interface LogPayload']} />
+
+## Properties
+
+### context
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly context: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L40', label: 'packages/plugin-logger/src/lib/types.ts:40' }}>
+
+The plain objects among the values, shallow-merged in order (the last one wins), if any.
+
+</ApiMember>
+
+### error
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly error: ', ['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'], ' | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L35', label: 'packages/plugin-logger/src/lib/types.ts:35' }}>
+
+The first `Error` among the values, if any.
+
+</ApiMember>
+
+### level
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly level: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L11', label: 'packages/plugin-logger/src/lib/types.ts:11' }}>
+
+The level the entry was written at.
+
+</ApiMember>
+
+### message
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly message: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L30', label: 'packages/plugin-logger/src/lib/types.ts:30' }}>
+
+The human-readable message: every value that is neither an `Error` nor a plain object, joined
+by spaces. Falls back to the error's own message when nothing else was passed.
+
+Derived from [LogPayload.values](/documentation/api/plugin-logger/interfaces/LogPayload#values) on first read, so transports share one interpretation of
+what the caller meant instead of each guessing on their own.
+
+</ApiMember>
+
+### timestamp
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly timestamp: ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L21', label: 'packages/plugin-logger/src/lib/types.ts:21' }}>
+
+The moment the entry was created, captured before any transport runs.
+
+</ApiMember>
+
+### values
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly values: readonly unknown[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/types.ts#L16', label: 'packages/plugin-logger/src/lib/types.ts:16' }}>
+
+The values passed to the logger method, forwarded as-is.
+
+</ApiMember>

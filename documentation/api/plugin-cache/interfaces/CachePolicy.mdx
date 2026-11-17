@@ -1,0 +1,94 @@
+---
+title: 'Interface: CachePolicy'
+description: 'Decides what gets cached, and for how long, entry by entry, see withPolicy. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L214',
+		label: 'packages/plugin-cache/src/lib/types.ts:214'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Decides what gets cached, and for how long, entry by entry, see [withPolicy](/documentation/api/plugin-cache/functions/withPolicy).
+
+<ApiSignature tokens={['interface CachePolicy<Raw>']} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+## Methods
+
+### filter()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L222', label: 'packages/plugin-cache/src/lib/types.ts:222' }}>
+
+<ApiSignature tokens={['filter(value: Raw, key: string): boolean']} />
+
+Whether to cache an entry. When it returns `false`, the entry is not written, and an entry already cached under
+the same key is deleted, so the cache never serves outdated data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['Raw']}>
+
+The entry, merged with the cached one for upserts.
+
+</ApiParam>
+
+<ApiParam name="key" type={['string']}>
+
+The key of the entry.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### ttl()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L229', label: 'packages/plugin-cache/src/lib/types.ts:229' }}>
+
+<ApiSignature tokens={['ttl(value: Raw, key: string): number | null']} />
+
+How long an entry lives, in milliseconds, or `null` for it to never expire.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['Raw']}>
+
+The entry, merged with the cached one for upserts.
+
+</ApiParam>
+
+<ApiParam name="key" type={['string']}>
+
+The key of the entry.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>

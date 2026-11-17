@@ -1,0 +1,1737 @@
+---
+title: 'Class: GuildMember'
+description: 'A member of a Discord guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L74',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:74'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A member of a Discord guild.
+
+<ApiSignature
+	tokens={[
+		'class GuildMember extends ',
+		['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["members"]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+			'<',
+			['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+			'["members"]>'
+		]
+	]}
+/>
+
+discord.js's `permissions`, `manageable`, `kickable`, ... are read from the cache like there: the plain value
+with a synchronous cache, a promise of it with an asynchronous one, typed as a promise once `GatewayCacheConfig`
+declares the cache asynchronous. They never call the API; their `fetch*` twins do, for what is not cached.
+`member.roles` reads roles through the (possibly asynchronous) cache, so its getters are `Awaitable`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L87', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:87' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildMember(\n  data: ',
+		['APIGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMember'],
+		' & { guild_id: string },\n  relations: ',
+		['GuildMemberRelations', '/documentation/api/plugin-gateway/interfaces/GuildMemberRelations'],
+		' = {}\n): ',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMember'], ' & { guild_id: string }']}>
+
+The raw member.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['GuildMemberRelations', '/documentation/api/plugin-gateway/interfaces/GuildMemberRelations']]} defaultValue={'{}'}>
+
+The member's user and guild as resolved from the cache, by `client.members`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['Structure.[kData]', '/documentation/api/plugin-gateway/classes/Structure#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### \[kRelations\]
+
+<ApiMember
+	kind="property"
+	signature={['[kRelations]: ', ['GuildMemberRelations', '/documentation/api/plugin-gateway/interfaces/GuildMemberRelations']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L75',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:75'
+	}}
+/>
+
+## Accessors
+
+### avatar
+
+<ApiMember kind="accessor" signature={['get avatar(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L214', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:214' }}>
+
+The member's guild avatar hash, if any.
+
+</ApiMember>
+
+### avatarDecorationData
+
+<ApiMember kind="accessor" signature={['get avatarDecorationData(): ', ['AvatarDecorationData', '/documentation/api/plugin-gateway/interfaces/AvatarDecorationData'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L228', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:228' }}>
+
+The member's guild avatar decoration, if any.
+
+</ApiMember>
+
+### bannable
+
+<ApiMember kind="accessor" signature={['get bannable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L521', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:521' }}>
+
+Whether the bot can ban the member, like discord.js's `GuildMember#bannable`: it outranks them and has
+`BanMembers`. It throws, and skips uncached roles, like [GuildMember.manageable](/documentation/api/plugin-gateway/classes/GuildMember#manageable).
+
+</ApiMember>
+
+### banner
+
+<ApiMember kind="accessor" signature={['get banner(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L221', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:221' }}>
+
+The member's guild banner hash, if any.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['Structure.client', '/documentation/api/plugin-gateway/classes/Structure#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### collectibles
+
+<ApiMember kind="accessor" signature={['get collectibles(): ', ['Collectibles', '/documentation/api/plugin-gateway/interfaces/Collectibles'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L236', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:236' }}>
+
+The member's guild collectibles, camel-cased like discord.js's `GuildMember#collectibles`.
+
+</ApiMember>
+
+### communicationDisabledUntil
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get communicationDisabledUntil(): ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L182',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:182'
+	}}
+/>
+
+### communicationDisabledUntilTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get communicationDisabledUntilTimestamp(): number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L178',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:178'
+	}}
+/>
+
+### deaf
+
+<ApiMember kind="accessor" signature={['get deaf(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L196', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:196' }}>
+
+Whether the member is deafened in voice channels, by a moderator.
+
+</ApiMember>
+
+### displayColor
+
+<ApiMember kind="accessor" signature={['get displayColor(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L425', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:425' }}>
+
+The color the member's name is displayed in, like discord.js's `GuildMember#displayColor`: the one of their
+highest cached role that has a color, `0` when none has.
+
+</ApiMember>
+
+### displayHexColor
+
+<ApiMember kind="accessor" signature={['get displayHexColor(): `#${string}`']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L433', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:433' }}>
+
+The color the member's name is displayed in, as a `#rrggbb` string, like discord.js's
+`GuildMember#displayHexColor`. It throws like [GuildMember.displayColor](/documentation/api/plugin-gateway/classes/GuildMember#displaycolor).
+
+</ApiMember>
+
+### displayName
+
+<ApiMember kind="accessor" signature={['get displayName(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L139', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:139' }}>
+
+The name to show for this member: their nickname, falling back to their user's display name.
+
+</ApiMember>
+
+### flags
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get flags(): ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['GuildMemberFlagsBitField', '/documentation/api/plugin-gateway/classes/GuildMemberFlagsBitField'],
+		'>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L207',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:207'
+	}}
+/>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L106', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:106' }}>
+
+The guild, from the cache. `null` when the guild is not cached, or when the cache is asynchronous: use
+`fetchGuild()` to always get it.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="accessor"
+	signature={['get guildId(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L98',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:98'
+	}}
+/>
+
+### id
+
+<ApiMember kind="accessor" signature={['get id(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L94', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:94' }}>
+
+The ID of the member's user, or `null` if the payload did not include it.
+
+</ApiMember>
+
+### joinedAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get joinedAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L161',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:161'
+	}}
+/>
+
+### joinedTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get joinedTimestamp(): number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L157',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:157'
+	}}
+/>
+
+### kickable
+
+<ApiMember kind="accessor" signature={['get kickable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L513', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:513' }}>
+
+Whether the bot can kick the member, like discord.js's `GuildMember#kickable`: it outranks them and has
+`KickMembers`. It throws, and skips uncached roles, like [GuildMember.manageable](/documentation/api/plugin-gateway/classes/GuildMember#manageable).
+
+</ApiMember>
+
+### manageable
+
+<ApiMember kind="accessor" signature={['get manageable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L474', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:474' }}>
+
+Whether the bot ranks above the member, like discord.js's `GuildMember#manageable`: it is not the guild owner, not
+the bot itself, and the bot's highest role is higher than theirs (or the bot owns the guild).
+
+It reads [GuildMemberRoleManager.highest](/documentation/api/plugin-gateway/classes/GuildMemberRoleManager#highest), which skips the roles missing from the cache: a higher role that
+is not cached makes the member look lower. Call `await member.roles.fetch()` and `await me.roles.fetch()` before
+reading this, or compare [GuildMemberRoleManager.fetchHighest](/documentation/api/plugin-gateway/classes/GuildMemberRoleManager#fetchhighest) of both.
+
+</ApiMember>
+
+### moderatable
+
+<ApiMember kind="accessor" signature={['get moderatable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L530', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:530' }}>
+
+Whether the bot can time the member out, like discord.js's `GuildMember#moderatable`: it outranks them, has
+`ModerateMembers`, and they are no administrator. It throws, and skips uncached roles, like
+[GuildMember.manageable](/documentation/api/plugin-gateway/classes/GuildMember#manageable).
+
+</ApiMember>
+
+### mute
+
+<ApiMember kind="accessor" signature={['get mute(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L203', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:203' }}>
+
+Whether the member is muted in voice channels, by a moderator.
+
+</ApiMember>
+
+### nickname
+
+<ApiMember
+	kind="accessor"
+	signature={['get nickname(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L132',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:132'
+	}}
+/>
+
+### partial
+
+<ApiMember kind="accessor" signature={['get partial(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L637', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:637' }}>
+
+Whether the member is partial: built from its IDs alone for an event about an uncached member, see
+`Partials.GuildMember`. Only its IDs (and the user a removal carries) are reliable then, and
+[GuildMember.fetch](/documentation/api/plugin-gateway/classes/GuildMember#fetch) completes it.
+
+</ApiMember>
+
+### pending
+
+<ApiMember
+	kind="accessor"
+	signature={['get pending(): boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L189',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:189'
+	}}
+/>
+
+### permissions
+
+<ApiMember kind="accessor" signature={['get permissions(): ', ['CacheRead', '/documentation/api/plugin-gateway/type-aliases/CacheRead'], '<', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<PermissionsBitField>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L309', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:309' }}>
+
+The member's guild-wide permissions, before channel overwrites, like discord.js's `GuildMember#permissions`:
+computed from the cached guild and roles, skipping the roles that are not cached.
+
+A role missing from the cache is skipped, not an error, so the answer can hold fewer permissions than the member
+has. Use [GuildMember.fetchPermissions](/documentation/api/plugin-gateway/classes/GuildMember#fetchpermissions) for an answer that is right on a cache miss, or
+`await member.roles.fetch()` before reading this.
+
+</ApiMember>
+
+### premiumSince
+
+<ApiMember
+	kind="accessor"
+	signature={['get premiumSince(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L173',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:173'
+	}}
+/>
+
+### premiumSinceTimestamp
+
+<ApiMember kind="accessor" signature={['get premiumSinceTimestamp(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L169', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:169' }}>
+
+When the member started boosting the guild, `null` if they are not boosting it.
+
+</ApiMember>
+
+### presence
+
+<ApiMember kind="accessor" signature={['get presence(): ', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L386', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:386' }}>
+
+The member's presence, from the cache, like discord.js's `GuildMember#presence`: `null` when it is not cached
+(it needs the `GuildPresences` intent), or when the cache is asynchronous.
+
+</ApiMember>
+
+### roleIds
+
+<ApiMember kind="accessor" signature={['get roleIds(): readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L146', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:146' }}>
+
+The IDs of the member's roles, excluding the implicit `@everyone` role.
+
+</ApiMember>
+
+### roles
+
+<ApiMember kind="accessor" signature={['get roles(): ', ['GuildMemberRoleManager', '/documentation/api/plugin-gateway/classes/GuildMemberRoleManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L153', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:153' }}>
+
+The member's roles. Changing them needs the member's user ID, which every payload but some partial ones carries.
+
+</ApiMember>
+
+### user
+
+<ApiMember kind="accessor" signature={['get user(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L127', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:127' }}>
+
+The member's user, or `null` if the payload did not include it. Resolved from `client.users` when the member
+comes from a manager.
+
+</ApiMember>
+
+### voice
+
+<ApiMember kind="accessor" signature={['get voice(): ', ['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L378', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:378' }}>
+
+The member's voice state, from the cache, like discord.js's `GuildMember#voice`: `null` when they are not
+connected, when the voice state is not cached (it needs the `GuildVoiceStates` intent), or when the cache is
+asynchronous. Use [GuildMember.fetchVoiceState](/documentation/api/plugin-gateway/classes/GuildMember#fetchvoicestate) to ask the API.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['Structure.[kClone]', '/documentation/api/plugin-gateway/classes/Structure#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMember'],
+		' & { guild_id: string }>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMember'], ' & { guild_id: string }>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L117', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:117' }}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["members"]>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '["members"]>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### avatarDecorationURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L286', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:286' }}>
+
+<ApiSignature tokens={['avatarDecorationURL(): string | null']} />
+
+Gets the URL of the member's guild avatar decoration, or `null` if they have none.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### avatarURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L253', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:253' }}>
+
+<ApiSignature tokens={['avatarURL(options?: ImageURLOptions): string | null']} />
+
+Gets the URL of the member's guild avatar, or `null` if they have none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### ban()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L610', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:610' }}>
+
+<ApiSignature
+	tokens={[
+		'ban(options?: ',
+		['BanOptions', '/documentation/api/plugin-gateway/interfaces/BanOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['BanOptions', '/documentation/api/plugin-gateway/interfaces/BanOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### bannerURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L270', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:270' }}>
+
+<ApiSignature tokens={['bannerURL(options?: ImageURLOptions): string | null']} />
+
+Gets the URL of the member's guild banner, or `null` if they have none.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### createDM()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L620', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:620' }}>
+
+<ApiSignature
+	tokens={[
+		'createDM(force: boolean = false): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+Opens a direct message channel with the member, reusing the cached one.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="force" type={['boolean']} defaultValue="false">
+
+Whether to skip the cache lookup and always call the API.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### deleteDM()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L624', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:624' }}>
+
+<ApiSignature
+	tokens={[
+		'deleteDM(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### disableCommunicationUntil()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L591', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:591' }}>
+
+<ApiSignature
+	tokens={[
+		'disableCommunicationUntil(\n  communicationDisabledUntil: number | ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		' | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Times the member out until a given time, or lifts the timeout with `null`.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="communicationDisabledUntil"
+	type={['number | ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+/>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### displayAvatarDecorationURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L294', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:294' }}>
+
+<ApiSignature tokens={['displayAvatarDecorationURL(): string | null']} />
+
+Gets the URL of the member's guild avatar decoration, falling back to their user's.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### displayAvatarURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L262', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:262' }}>
+
+<ApiSignature tokens={['displayAvatarURL(options?: ImageURLOptions): string | null']} />
+
+Gets the URL of the member's guild avatar, falling back to their user's avatar.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### displayBannerURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L279', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:279' }}>
+
+<ApiSignature tokens={['displayBannerURL(options?: ImageURLOptions): string | null']} />
+
+Gets the URL of the member's guild banner, falling back to their user's banner when known.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ImageURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['Structure.dropChangedRelations', '/documentation/api/plugin-gateway/classes/Structure#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['Structure.dropRelations', '/documentation/api/plugin-gateway/classes/Structure#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("user" | "guild" | "voice" | "presence")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("user" | "guild" | "voice" | "presence")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L575', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:575' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['GuildMemberEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildMemberEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Edits the member.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildMemberEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildMemberEditOptions']]}>
+
+The fields to edit.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], '>']}>
+
+This member, patched.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L676', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:676' }}>
+
+<ApiSignature tokens={['equals(member: unknown): boolean']} />
+
+Whether this member has the same data as another one, like discord.js's `GuildMember#equals`: the same user,
+guild, `partial`, nickname, avatar, banner, `pending`, timestamps, flags, roles (in the same order), avatar
+decoration, and nameplate. `false` for anything that is not a member.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="member" type={['unknown']}>
+
+The member to compare with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L655', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:655' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Fetches the member from the API and patches this structure with the result.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchBannable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L554', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:554' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchBannable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [GuildMember.bannable](/documentation/api/plugin-gateway/classes/GuildMember#bannable). See [GuildMember.fetchManageable](/documentation/api/plugin-gateway/classes/GuildMember#fetchmanageable) for the cache-miss fallback.
+
+</Warning>
+
+Whether the bot can ban the member: it outranks them and has `BanMembers`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchDisplayColor()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L448', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:448' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchDisplayColor(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<number>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [GuildMember.displayColor](/documentation/api/plugin-gateway/classes/GuildMember#displaycolor). When some roles may be missing from the cache, fetch them first
+(`member.roles.fetch()`), then read the getter.
+
+</Warning>
+
+Fetches the color the member's name is displayed in, `0` when none of their roles has one.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchDisplayHexColor()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L458', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:458' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchDisplayHexColor(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<`#${string}`>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [GuildMember.displayHexColor](/documentation/api/plugin-gateway/classes/GuildMember#displayhexcolor). See [GuildMember.fetchDisplayColor](/documentation/api/plugin-gateway/classes/GuildMember#fetchdisplaycolor) for the cache-miss
+fallback.
+
+</Warning>
+
+Fetches the color the member's name is displayed in, as a `#rrggbb` string.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<`#${string}`>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L113', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:113' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuild(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Fetches the guild, cache first.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchKickable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L545', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:545' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchKickable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [GuildMember.kickable](/documentation/api/plugin-gateway/classes/GuildMember#kickable). See [GuildMember.fetchManageable](/documentation/api/plugin-gateway/classes/GuildMember#fetchmanageable) for the cache-miss fallback.
+
+</Warning>
+
+Whether the bot can kick the member: it outranks them and has `KickMembers`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchManageable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L498', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:498' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchManageable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [GuildMember.manageable](/documentation/api/plugin-gateway/classes/GuildMember#manageable). When the guild, the bot's member or some roles may be missing from
+the cache (a filtered cache, a `plugin-broker` worker), fetch them first (`client.guilds.fetch(guildId)`,
+`client.members.fetchMe(guildId)`, `member.roles.fetch()`), then read the getter.
+
+</Warning>
+
+Fetches whether the bot ranks above the member: [GuildMember.manageable](/documentation/api/plugin-gateway/classes/GuildMember#manageable) with the guild, the bot's member,
+and the roles fetched from the API when they are not cached, whatever the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchModeratable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L564', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:564' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchModeratable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [GuildMember.moderatable](/documentation/api/plugin-gateway/classes/GuildMember#moderatable). See [GuildMember.fetchManageable](/documentation/api/plugin-gateway/classes/GuildMember#fetchmanageable) for the cache-miss
+fallback.
+
+</Warning>
+
+Whether the bot can time the member out: it outranks them, has `ModerateMembers`, and they are no administrator.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPermissions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L331', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:331' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPermissions(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<PermissionsBitField>>'
+	]}
+/>
+
+Fetches the member's guild-wide permissions, before channel overwrites: [GuildMember.permissions](/documentation/api/plugin-gateway/classes/GuildMember#permissions) with the
+guild and the roles fetched from the API when they are not cached, whatever the cache.
+
+The call for a permission check that must be right on a cache miss: the getter skips the roles the cache lacks
+and can answer fewer permissions than the member has.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<PermissionsBitField>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPermissionsIn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L354', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:354' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPermissionsIn(channel: string | ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<PermissionsBitField>>'
+	]}
+/>
+
+Fetches the member's permissions in a channel: their guild permissions with the channel's overwrites applied.
+discord.js: `member.permissionsIn(channel)`.
+
+Like [GuildMember.fetchPermissions](/documentation/api/plugin-gateway/classes/GuildMember#fetchpermissions), the call for a check that must be right on a cache miss: it also
+fetches the channel and the roles when they are not cached.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={['string | ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel']]}>
+
+The channel, or its ID. Threads use their parent's overwrites.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<PermissionsBitField>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPresence()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L413', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:413' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPresence(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		' | null>'
+	]}
+/>
+
+Gets the member's presence from the cache. discord.js: `member.presence`.
+
+Not deprecated, unlike the other `fetch*` twins of getters: it is not a duplicate of [GuildMember.presence](/documentation/api/plugin-gateway/classes/GuildMember#presence),
+which is `null` with an asynchronous cache, so this is how to read the presence there.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], ' | null>']}>
+
+The presence, or `null` when it is not cached (the bot needs the `GuildPresences` intent).
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchUser()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L665', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:665' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchUser(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+Fetches the member's user, cache first.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchVoiceState()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L395', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:395' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchVoiceState(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		' | null>'
+	]}
+/>
+
+Fetches the member's voice state, cache first. discord.js: `member.voice`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'], ' | null>']}>
+
+The voice state, or `null` when the member is not connected to voice.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### isCommunicationDisabled()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L244', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:244' }}>
+
+<ApiSignature tokens={['isCommunicationDisabled(): boolean']} />
+
+Whether the member is timed out right now.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### isPartial()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L648', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:648' }}>
+
+<ApiSignature tokens={['isPartial(): this is ', ['PartialGuildMember', '/documentation/api/plugin-gateway/type-aliases/PartialGuildMember']]} />
+
+Whether the member is partial, see [GuildMember.partial](/documentation/api/plugin-gateway/classes/GuildMember#partial), as a type guard: narrows to [PartialGuildMember](/documentation/api/plugin-gateway/type-aliases/PartialGuildMember).
+
+`joinedAt` stays `Date | null` on a member that is not partial: Discord types `joined_at` as nullable on the
+gateway's member payloads, so `partial` alone can not tell that it is a date.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this is ', ['PartialGuildMember', '/documentation/api/plugin-gateway/type-aliases/PartialGuildMember']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### kick()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L605', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:605' }}>
+
+<ApiSignature
+	tokens={[
+		'kick(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['Structure.lazyRelation', '/documentation/api/plugin-gateway/classes/Structure#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['Structure.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['Structure.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### permissionsIn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L369', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:369' }}>
+
+<ApiSignature
+	tokens={[
+		'permissionsIn(channel: string | ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'): ',
+		['CacheRead', '/documentation/api/plugin-gateway/type-aliases/CacheRead'],
+		'<',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<PermissionsBitField>>'
+	]}
+/>
+
+The member's permissions in a channel, like discord.js's `GuildMember#permissionsIn`: their guild permissions
+with the channel's overwrites applied, read from the cache.
+
+A role missing from the cache is skipped, as in [GuildMember.permissions](/documentation/api/plugin-gateway/classes/GuildMember#permissions): use
+[GuildMember.fetchPermissionsIn](/documentation/api/plugin-gateway/classes/GuildMember#fetchpermissionsin) for an answer that is right on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={['string | ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel']]}>
+
+The channel, or the ID of a cached one. Threads use their parent's overwrites.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['CacheRead', '/documentation/api/plugin-gateway/type-aliases/CacheRead'],
+		'<',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<PermissionsBitField>>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+A `GatewayError`: `ChannelUncached` or `GuildUncached` when they are not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L628', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:628' }}>
+
+<ApiSignature
+	tokens={[
+		'send(options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setFlags()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L584', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:584' }}>
+
+<ApiSignature
+	tokens={[
+		'setFlags(flags: ',
+		['GuildMemberFlagsResolvable', '/documentation/api/plugin-gateway/type-aliases/GuildMemberFlagsResolvable'],
+		', reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="flags" type={[['GuildMemberFlagsResolvable', '/documentation/api/plugin-gateway/type-aliases/GuildMemberFlagsResolvable']]} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setNickname()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L580', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:580' }}>
+
+<ApiSignature
+	tokens={[
+		'setNickname(nick: string | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="nick" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### timeout()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L601', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:601' }}>
+
+<ApiSignature
+	tokens={[
+		'timeout(duration: number | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Times the member out for a duration in milliseconds, or lifts the timeout with `null`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="duration" type={['number | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### toString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildMember.ts#L703', label: 'packages/plugin-gateway/src/structures/guilds/GuildMember.ts:703' }}>
+
+<ApiSignature tokens={['toString(): string']} />
+
+Returns a string representation of an object.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['Structure.valueOf', '/documentation/api/plugin-gateway/classes/Structure#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember']]} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,149 @@
+---
+title: 'Interface: ApplicationCommandData'
+description: "The data to create or edit an application command with, like discord.js's ApplicationCommandData. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L106',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:106'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The data to create or edit an application command with, like discord.js's `ApplicationCommandData`.
+
+<ApiSignature tokens={['interface ApplicationCommandData']} />
+
+## Properties
+
+### contexts?
+
+<ApiMember kind="property" badges={['optional']} signature={['contexts?: ', ['InteractionContextType', 'https://discord-api-types.dev/api/discord-api-types-v10#InteractionContextType'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L139', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:139' }}>
+
+The interaction contexts where the command can be used, for global commands.
+
+</ApiMember>
+
+### defaultMemberPermissions?
+
+<ApiMember kind="property" badges={['optional']} signature={['defaultMemberPermissions?: ', ['PermissionResolvable', '/documentation/api/plugin-gateway/type-aliases/PermissionResolvable'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L131', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:131' }}>
+
+The permissions a member needs by default to run the command, `null` for everyone.
+
+</ApiMember>
+
+### description?
+
+<ApiMember kind="property" badges={['optional']} signature={['description?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L115', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:115' }}>
+
+The description of the command, for chat input and primary entry point commands.
+
+</ApiMember>
+
+### descriptionLocalizations?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'descriptionLocalizations?: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L116',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:116'
+	}}
+/>
+
+### handler?
+
+<ApiMember kind="property" badges={['optional']} signature={['handler?: ', ['EntryPointCommandHandlerType', 'https://discord-api-types.dev/api/discord-api-types-v10#EntryPointCommandHandlerType']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L143', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:143' }}>
+
+Whether the app or Discord handles the interaction, for primary entry point commands.
+
+</ApiMember>
+
+### integrationTypes?
+
+<ApiMember kind="property" badges={['optional']} signature={['integrationTypes?: ', ['ApplicationIntegrationType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationIntegrationType'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L135', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:135' }}>
+
+The installation contexts where the command is available, for global commands.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" signature={['name: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L110', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:110' }}>
+
+The name of the command, in lowercase for chat input commands.
+
+</ApiMember>
+
+### nameLocalizations?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'nameLocalizations?: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L111',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:111'
+	}}
+/>
+
+### nsfw?
+
+<ApiMember kind="property" badges={['optional']} signature={['nsfw?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L120', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:120' }}>
+
+Whether the command is age-restricted.
+
+</ApiMember>
+
+### options?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'options?: readonly ',
+		['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L127',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:127'
+	}}
+/>
+
+### type?
+
+<ApiMember kind="property" badges={['optional']} signature={['type?: ', ['ApplicationCommandType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationCommandType']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L126', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:126' }}>
+
+The type of the command.
+
+**Default**
+
+```ts
+ApplicationCommandType.ChatInput;
+```
+
+</ApiMember>

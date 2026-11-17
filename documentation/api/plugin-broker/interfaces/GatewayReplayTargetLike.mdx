@@ -1,0 +1,93 @@
+---
+title: 'Interface: GatewayReplayTargetLike'
+description: "The subset of @wolfstar/plugin-gateway's GatewayClient replayGatewayDispatches relies on. (@wolfstar/plugin-broker)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L145',
+		label: 'packages/plugin-broker/src/lib/gateway.ts:145'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+The subset of `@wolfstar/plugin-gateway`'s `GatewayClient` [replayGatewayDispatches](/documentation/api/plugin-broker/functions/replayGatewayDispatches) relies on.
+
+<ApiSignature tokens={['interface GatewayReplayTargetLike']} />
+
+## Properties
+
+### replayDispatchTypes
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly replayDispatchTypes: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L149', label: 'packages/plugin-broker/src/lib/gateway.ts:149' }}>
+
+The dispatch types the client turns into events.
+
+</ApiMember>
+
+## Methods
+
+### replayDispatch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L150', label: 'packages/plugin-broker/src/lib/gateway.ts:150' }}>
+
+<ApiSignature
+	tokens={[
+		'replayDispatch(\n  payload: {\n    d: unknown;\n    s?: number;\n    t: string;\n  },\n  shardId: number,\n  state?: unknown\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={['{\n  d: unknown;\n  s?: number;\n  t: string;\n}']} />
+
+<ApiParam name="shardId" type={['number']} />
+
+<ApiParam name="state" type={['unknown']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### reviveDispatchState()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L155', label: 'packages/plugin-broker/src/lib/gateway.ts:155' }}>
+
+<ApiSignature
+	tokens={[
+		'reviveDispatchState(type: string, state: unknown, data: unknown): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="type" type={['string']} />
+
+<ApiParam name="state" type={['unknown']} />
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>

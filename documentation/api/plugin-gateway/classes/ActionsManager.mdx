@@ -1,0 +1,92 @@
+---
+title: 'Class: ActionsManager'
+description: "Holds one action per handled dispatch, like discord.js's ActionsManager. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L92',
+		label: 'packages/plugin-gateway/src/actions/Action.ts:92'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Holds one action per handled dispatch, like discord.js's ActionsManager.
+
+<ApiSignature tokens={['class ActionsManager']} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L95', label: 'packages/plugin-gateway/src/actions/Action.ts:95' }}>
+
+<ApiSignature
+	tokens={[
+		'new ActionsManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['ActionsManager', '/documentation/api/plugin-gateway/classes/ActionsManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L118', label: 'packages/plugin-gateway/src/actions/Action.ts:118' }}>
+
+<ApiSignature
+	tokens={[
+		'get(event: ',
+		['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents'],
+		'): ',
+		['Action', '/documentation/api/plugin-gateway/classes/Action'],
+		' | undefined'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={[['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Action', '/documentation/api/plugin-gateway/classes/Action'], ' | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### types()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L123', label: 'packages/plugin-gateway/src/actions/Action.ts:123' }}>
+
+<ApiSignature
+	tokens={['types(): ', ['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents'], '[]']}
+/>
+
+The dispatch types that have an action.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents'], '[]']} />
+
+</ApiParams>
+
+</ApiMember>

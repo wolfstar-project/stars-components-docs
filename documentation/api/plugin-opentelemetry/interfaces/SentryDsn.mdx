@@ -1,0 +1,63 @@
+---
+title: 'Interface: SentryDsn'
+description: 'The parts of a Sentry DSN the tracing needs. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L4',
+		label: 'lib/dsn.ts:4'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+The parts of a Sentry DSN the tracing needs.
+
+<ApiSignature tokens={['interface SentryDsn']} />
+
+## Properties
+
+### hostname
+
+<ApiMember kind="property" signature={['hostname: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L28', label: 'lib/dsn.ts:28' }}>
+
+The host name, without a port.
+
+</ApiMember>
+
+### origin
+
+<ApiMember kind="property" signature={['origin: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L13', label: 'lib/dsn.ts:13' }}>
+
+The scheme and host (with its port) of the Sentry the DSN points at.
+
+</ApiMember>
+
+### prefix
+
+<ApiMember kind="property" signature={['prefix: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L18', label: 'lib/dsn.ts:18' }}>
+
+What a Sentry hosted under a path keeps in front of `/api/<project>`, empty otherwise.
+
+</ApiMember>
+
+### project
+
+<ApiMember kind="property" signature={['project: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L23', label: 'lib/dsn.ts:23' }}>
+
+The project, the last segment of the path of the DSN.
+
+</ApiMember>
+
+### publicKey
+
+<ApiMember kind="property" signature={['publicKey: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/dsn.ts#L8', label: 'lib/dsn.ts:8' }}>
+
+The public key, the user of the DSN.
+
+</ApiMember>

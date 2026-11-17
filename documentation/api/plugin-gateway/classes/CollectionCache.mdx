@@ -1,0 +1,244 @@
+---
+title: 'Class: CollectionCache'
+description: "The default Cache: an in-memory Collection of structure instances, like discord.js's caches. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L44',
+		label: 'packages/plugin-gateway/src/util/CollectionCache.ts:44'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The default [Cache](/documentation/api/plugin-gateway/interfaces/Cache): an in-memory `Collection` of structure instances, like discord.js's caches.
+
+<ApiSignature
+	tokens={[
+		'class CollectionCache<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>, Raw extends ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value> = ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value>> extends ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, Value> implements ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<Value, Raw>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[[['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, Value>']]}
+	implements={[[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value, Raw>']]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>']} />
+
+<ApiParam
+	name="Raw"
+	type={['extends ', ['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'], '<Value>']}
+	defaultValue={'RawAPIType<Value>'}
+/>
+
+</ApiParams>
+
+`add` patches the cached instance in place, so a reference kept by the application sees later updates.
+
+Every method is synchronous. Being a `Collection`, it also has `find`, `filter`, `map`, ... which return plain
+collections. Instances reached by iterating carry the relations of their last `get`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L72', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:72' }}>
+
+<ApiSignature
+	tokens={[
+		'new CollectionCache<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object, object>, Raw extends object = ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value>>(\n  creator: ',
+		['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'],
+		'<Value, Raw>,\n  name: keyof ',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		',\n  options: ',
+		['CollectionCacheOptions', '/documentation/api/plugin-gateway/interfaces/CollectionCacheOptions'],
+		'<Value, Raw> = {}\n): ',
+		['CollectionCache', '/documentation/api/plugin-gateway/classes/CollectionCache'],
+		'<Value, Raw>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object, object>']} />
+
+<ApiParam name="Raw" type={['extends object']} defaultValue={'RawAPIType<Value>'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="creator" type={[['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value, Raw>']} />
+
+<ApiParam name="name" type={['keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]} />
+
+<ApiParam
+	name="options"
+	type={[['CollectionCacheOptions', '/documentation/api/plugin-gateway/interfaces/CollectionCacheOptions'], '<Value, Raw>']}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### construct
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly construct: ', ['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value, Raw>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L57', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:57' }}>
+
+The function used to construct instances of the structure this cache holds.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L62', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:62' }}>
+
+The name of the entity this cache holds.
+
+</ApiMember>
+
+### synchronous
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly synchronous: true']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L55', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:55' }}>
+
+Whether every method answers synchronously, never with a promise.
+
+</ApiMember>
+
+## Accessors
+
+### \[species\]
+
+<ApiMember
+	kind="accessor"
+	badges={['static']}
+	signature={['static get [species](): typeof ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L51',
+		label: 'packages/plugin-gateway/src/util/CollectionCache.ts:51'
+	}}
+/>
+
+## Methods
+
+### add()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L86', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:86' }}>
+
+<ApiSignature
+	tokens={[
+		'add(data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Raw>, overwrite: boolean = false): Value'
+	]}
+/>
+
+Adds or updates data in the cache, returning the instantiated structure. If the item exists, it patches it with
+the new data unless `overwrite` is true. If it does not exist, it constructs a new instance and stores it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>']} />
+
+<ApiParam name="overwrite" type={['boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Value']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L99', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:99' }}>
+
+<ApiSignature tokens={['get(key: string): Value | undefined']} />
+
+Returns a specified element from the Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Value | undefined']}>
+
+Returns the element associated with the specified key. If no element is associated with the specified key, undefined is returned.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### getSize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L118', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:118' }}>
+
+<ApiSignature tokens={['getSize(): number']} />
+
+Gets the number of items in the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/CollectionCache.ts#L104', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:104' }}>
+
+<ApiSignature tokens={['set(key: string, value: Value): this']} />
+
+Adds a new element with a specified key and value to the Map. If an element with the same key already exists, the element will be updated.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['Value']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,121 @@
+---
+title: 'Class: ScheduledTaskStore'
+description: 'A store for managing scheduled tasks. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L7',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts:7'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+A store for managing scheduled tasks.
+
+<ApiSignature
+	tokens={[
+		'class ScheduledTaskStore extends Store<',
+		['ScheduledTask', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTask'],
+		', "scheduled-tasks">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Store<', ['ScheduledTask', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTask'], ', "scheduled-tasks">']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L10', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts:10' }}>
+
+<ApiSignature
+	tokens={['new ScheduledTaskStore(): ', ['ScheduledTaskStore', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTaskStore']]}
+/>
+
+</ApiMember>
+
+## Properties
+
+### repeatedTasks
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={[
+		'readonly repeatedTasks: ',
+		['ScheduledTask', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTask'],
+		'<never, ',
+		['ScheduledTaskOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTaskOptions'],
+		'>[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L8',
+		label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts:8'
+	}}
+/>
+
+## Methods
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L31', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts:31' }}>
+
+<ApiSignature tokens={['clear(): void']} />
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L22', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts:22' }}>
+
+<ApiSignature tokens={['delete(key: string): boolean']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
+
+true if an element in the Map existed and has been removed, or false if the element does not exist.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts#L14', label: 'packages/plugin-scheduled-tasks/src/lib/structures/ScheduledTaskStore.ts:14' }}>
+
+<ApiSignature
+	tokens={['set(key: string, value: ', ['ScheduledTask', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTask'], '): this']}
+/>
+
+Adds a new element with a specified key and value to the Map. If an element with the same key already exists, the element will be updated.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={[['ScheduledTask', '/documentation/api/plugin-scheduled-tasks/classes/ScheduledTask']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

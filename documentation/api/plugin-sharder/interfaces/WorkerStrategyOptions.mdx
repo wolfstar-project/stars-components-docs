@@ -1,0 +1,39 @@
+---
+title: 'Interface: WorkerStrategyOptions'
+description: 'The options of WorkerStrategy. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L15',
+		label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:15'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of [WorkerStrategy](/documentation/api/plugin-sharder/classes/WorkerStrategy).
+
+<ApiSignature tokens={['interface WorkerStrategyOptions']} />
+
+## Properties
+
+### path
+
+<ApiMember kind="property" signature={['path: string | URL']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L19', label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:19' }}>
+
+The script every shard runs.
+
+</ApiMember>
+
+### worker?
+
+<ApiMember kind="property" badges={['optional']} signature={['worker?: ', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<WorkerOptions, "workerData">']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/WorkerStrategy.ts#L23', label: 'packages/plugin-sharder/src/strategies/WorkerStrategy.ts:23' }}>
+
+Extra options of the `Worker`, e.g. its `resourceLimits`. `workerData` is reserved for the shard's context.
+
+</ApiMember>

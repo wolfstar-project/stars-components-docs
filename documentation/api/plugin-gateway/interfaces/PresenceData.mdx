@@ -1,0 +1,71 @@
+---
+title: 'Interface: PresenceData'
+description: 'The presence to set for the bot user. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/ClientUser.ts#L16',
+		label: 'packages/plugin-gateway/src/structures/users/ClientUser.ts:16'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The presence to set for the bot user. Omitted fields keep their current value.
+
+<ApiSignature tokens={['interface PresenceData']} />
+
+## Properties
+
+### activities?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'activities?: ',
+		['GatewayActivityUpdateData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayActivityUpdateData'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/ClientUser.ts#L19',
+		label: 'packages/plugin-gateway/src/structures/users/ClientUser.ts:19'
+	}}
+/>
+
+### afk?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['afk?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/ClientUser.ts#L18',
+		label: 'packages/plugin-gateway/src/structures/users/ClientUser.ts:18'
+	}}
+/>
+
+### shardId?
+
+<ApiMember kind="property" badges={['optional']} signature={['shardId?: number | readonly number[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/ClientUser.ts#L23', label: 'packages/plugin-gateway/src/structures/users/ClientUser.ts:23' }}>
+
+The shards to update, every shard by default.
+
+</ApiMember>
+
+### status?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['status?: ', ['PresenceUpdateStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#PresenceUpdateStatus']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/users/ClientUser.ts#L17',
+		label: 'packages/plugin-gateway/src/structures/users/ClientUser.ts:17'
+	}}
+/>

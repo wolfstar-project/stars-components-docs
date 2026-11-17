@@ -1,0 +1,144 @@
+---
+title: '@wolfstar/plugin-broker'
+description: 'Generated API reference for @wolfstar/plugin-broker: distribute gateway events across processes over Redis Streams.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-broker"
+	version="0.8.1"
+	guideHref="/documentation/packages/plugin-broker"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-broker"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-broker" />
+
+<ApiSymbolList
+	symbols={[
+		{ name: 'BrokerListener', kind: 'namespace', href: '/documentation/api/plugin-broker/namespaces/BrokerListener' },
+		{
+			name: 'BrokerConsumer',
+			kind: 'class',
+			href: '/documentation/api/plugin-broker/classes/BrokerConsumer',
+			summary:
+				'Reads a Redis stream through a consumer group, dispatching each entry to the BrokerListener pieces registered for its event, and only ackno…'
+		},
+		{
+			name: 'BrokerListener',
+			kind: 'class',
+			href: '/documentation/api/plugin-broker/classes/BrokerListener',
+			summary: 'A Listener bound to one of the BrokerEvents events of a BrokerConsumer, with strongly typed payloads.'
+		},
+		{ name: 'Broker', kind: 'interface', href: '/documentation/api/plugin-broker/interfaces/Broker' },
+		{ name: 'BrokerConsumerOptions', kind: 'interface', href: '/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions' },
+		{
+			name: 'BrokerEvents',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/BrokerEvents',
+			summary: 'The payload type of every event a BrokerListener can be registered for, keyed by event name.'
+		},
+		{
+			name: 'BrokerMessage',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/BrokerMessage',
+			summary: 'A dispatched broker entry, handed to every BrokerListener alongside its decoded payload.'
+		},
+		{ name: 'BrokerPublishOptions', kind: 'interface', href: '/documentation/api/plugin-broker/interfaces/BrokerPublishOptions' },
+		{
+			name: 'BrokerRedisClientLike',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike',
+			summary: 'The subset of the ioredis client API the broker relies on for Redis Streams.'
+		},
+		{ name: 'CreateBrokerOptions', kind: 'interface', href: '/documentation/api/plugin-broker/interfaces/CreateBrokerOptions' },
+		{
+			name: 'ForwardGatewayDispatchesOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/ForwardGatewayDispatchesOptions'
+		},
+		{
+			name: 'GatewayDispatchEmitterLike',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/GatewayDispatchEmitterLike',
+			summary:
+				"The subset of @wolfstar/plugin-gateway's GatewayClient forwardGatewayDispatches relies on, so this package does not depend on it."
+		},
+		{
+			name: 'GatewayDispatchLike',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/GatewayDispatchLike',
+			summary: "A raw gateway dispatch payload, as emitted by @wolfstar/plugin-gateway's GatewayClient."
+		},
+		{
+			name: 'GatewayReplayTargetLike',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/GatewayReplayTargetLike',
+			summary: "The subset of @wolfstar/plugin-gateway's GatewayClient replayGatewayDispatches relies on."
+		},
+		{
+			name: 'ReplayGatewayDispatchesOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-broker/interfaces/ReplayGatewayDispatchesOptions'
+		},
+		{
+			name: 'BrokerEventName',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-broker/type-aliases/BrokerEventName',
+			summary: 'The name of any of the events listed in BrokerEvents.'
+		},
+		{ name: 'GatewayDispatchListener', kind: 'type-alias', href: '/documentation/api/plugin-broker/type-aliases/GatewayDispatchListener' },
+		{
+			name: 'StreamEntry',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-broker/type-aliases/StreamEntry',
+			summary:
+				'A stream entry as returned by BrokerRedisClientLike.xreadgroup and BrokerRedisClientLike.xautoclaim: its fields are null when the entry was…'
+		},
+		{
+			name: 'createBroker',
+			kind: 'function',
+			href: '/documentation/api/plugin-broker/functions/createBroker',
+			summary: 'Creates a Broker, publishing events to a Redis stream for BrokerConsumers to read.'
+		},
+		{
+			name: 'fieldsToRecord',
+			kind: 'function',
+			href: '/documentation/api/plugin-broker/functions/fieldsToRecord',
+			summary: 'Converts the flat field value field value ...'
+		},
+		{
+			name: 'forwardGatewayDispatches',
+			kind: 'function',
+			href: '/documentation/api/plugin-broker/functions/forwardGatewayDispatches',
+			summary: 'Publishes every dispatch a GatewayClient from @wolfstar/plugin-gateway receives onto a Broker, under its dispatch type (e.g.'
+		},
+		{
+			name: 'isBusyGroupError',
+			kind: 'function',
+			href: '/documentation/api/plugin-broker/functions/isBusyGroupError',
+			summary:
+				'Thrown by BrokerRedisClientLike.xgroup when the group already exists (BUSYGROUP), which BrokerConsumer.start treats as success rather than…'
+		},
+		{
+			name: 'RegisterAsBrokerListener',
+			kind: 'function',
+			href: '/documentation/api/plugin-broker/functions/RegisterAsBrokerListener',
+			summary: 'Class decorator that binds the decorated BrokerListener to a broker event, so it does not need to declare a constructor.'
+		},
+		{
+			name: 'replayGatewayDispatches',
+			kind: 'function',
+			href: '/documentation/api/plugin-broker/functions/replayGatewayDispatches',
+			summary:
+				'Replays the dispatches forwardGatewayDispatches publishes on a GatewayClient that never connects to Discord: its listeners receive the same…'
+		},
+		{
+			name: 'BrokerPlugin',
+			kind: 'class',
+			href: '/documentation/api/plugin-broker/classes/BrokerPlugin',
+			summary: 'Installs the BrokerConsumer configured through ClientOptions.broker, if any.'
+		}
+	]}
+/>

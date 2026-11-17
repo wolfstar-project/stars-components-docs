@@ -1,0 +1,61 @@
+---
+title: 'Function: createComponent()'
+description: "Builds the component class matching some raw component data, like discord.js' createComponent: an ActionRow for an action row, a LinkButtonComponent… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/components.ts#L176',
+		label: 'packages/plugin-gateway/src/util/components.ts:176'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Builds the component class matching some raw component data, like discord.js' `createComponent`: an `ActionRow` for
+an action row, a `LinkButtonComponent` for a link button, and so on. Nested components are built too, when accessed.
+
+<ApiSignature
+	tokens={[
+		'createComponent<Data extends ',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		'>(data: Data | ',
+		['ComponentOf', '/documentation/api/plugin-gateway/type-aliases/ComponentOf'],
+		'<Data>): ',
+		['ComponentOf', '/documentation/api/plugin-gateway/type-aliases/ComponentOf'],
+		'<Data>'
+	]}
+/>
+
+Builds the component class matching some raw component data, like discord.js' `createComponent`: an `ActionRow` for
+an action row, a `LinkButtonComponent` for a link button, and so on. Nested components are built too, when accessed.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends ', ['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['Data | ', ['ComponentOf', '/documentation/api/plugin-gateway/type-aliases/ComponentOf'], '<Data>']}>
+
+The raw component data, or a component, which is returned as is.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ComponentOf', '/documentation/api/plugin-gateway/type-aliases/ComponentOf'], '<Data>']}>
+
+The component.
+
+</ApiParam>
+
+</ApiParams>

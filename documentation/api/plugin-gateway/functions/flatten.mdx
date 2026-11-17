@@ -1,0 +1,57 @@
+---
+title: 'Function: flatten()'
+description: "Flattens an object for serialization, like discord.js's flatten: maps become the array of their keys, arrays are flattened element by element, object… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L126',
+		label: 'packages/plugin-gateway/src/util/Util.ts:126'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Flattens an object for serialization, like discord.js's `flatten`: maps become the array of their keys, arrays are
+flattened element by element, objects with a `toJSON` are replaced by its result, and keys starting with `_` are
+dropped.
+
+<ApiSignature
+	tokens={[
+		'flatten(\n  object: unknown,\n  ...props: ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, string | boolean>[]\n): ',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<string, unknown>'
+	]}
+/>
+
+Flattens an object for serialization, like discord.js's `flatten`: maps become the array of their keys, arrays are
+flattened element by element, objects with a `toJSON` are replaced by its result, and keys starting with `_` are
+dropped.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="object" type={['unknown']}>
+
+The object to flatten.
+
+</ApiParam>
+
+<ApiParam name="props" type={[['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string | boolean>[]']} rest>
+
+Specific properties to include (`true`), exclude (`false`), or rename (a string).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, unknown>']} />
+
+</ApiParams>

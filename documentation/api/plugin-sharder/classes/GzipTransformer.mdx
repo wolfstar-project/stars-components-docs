@@ -1,0 +1,133 @@
+---
+title: 'Class: GzipTransformer'
+description: 'Compresses messages with gzip. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L43',
+		label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:43'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Compresses messages with gzip.
+
+<ApiSignature
+	tokens={['class GzipTransformer implements ', ['MessageTransformer', '/documentation/api/plugin-sharder/interfaces/MessageTransformer']]}
+/>
+
+<ApiHierarchy implements={[[['MessageTransformer', '/documentation/api/plugin-sharder/interfaces/MessageTransformer']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L50', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:50' }}>
+
+<ApiSignature
+	tokens={['new GzipTransformer(options: ZlibOptions = {}): ', ['GzipTransformer', '/documentation/api/plugin-sharder/classes/GzipTransformer']]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['ZlibOptions']} defaultValue={'{}'}>
+
+The compression options, e.g. its `level`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: "gzip"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L44', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:44' }}>
+
+The name of the transformer in the registry.
+
+</ApiMember>
+
+## Methods
+
+### read()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L58', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:58' }}>
+
+<ApiSignature
+	tokens={[
+		'read(data: ',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array'],
+		'<ArrayBufferLike>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array'],
+		'<ArrayBufferLike>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### write()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L54', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:54' }}>
+
+<ApiSignature
+	tokens={[
+		'write(data: ',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array'],
+		'<ArrayBufferLike>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array'],
+		'<ArrayBufferLike>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

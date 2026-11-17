@@ -1,0 +1,30 @@
+---
+title: 'Interface: Cache'
+description: 'A storage-agnostic Discord cache: one EntityCache per cached entity kind, and nothing else. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L209',
+		label: 'packages/plugin-cache/src/lib/types.ts:209'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+A storage-agnostic Discord cache: one [EntityCache](/documentation/api/plugin-cache/interfaces/EntityCache) per cached entity kind, and nothing else.
+
+<ApiSignature tokens={['interface Cache extends ', ['CacheEntities', '/documentation/api/plugin-cache/type-aliases/CacheEntities']]} />
+
+<ApiHierarchy extends={[[['CacheEntities', '/documentation/api/plugin-cache/type-aliases/CacheEntities']]]} />
+
+The cache is intentionally dumb: it has no knowledge of the gateway nor of the relations between entities. Cascading
+a gateway dispatch into every relevant entity cache (e.g. dropping a guild's channels on `GUILD_DELETE`) is done by
+[applyGatewayDispatch](/documentation/api/plugin-cache/functions/applyGatewayDispatch), which only relies on this interface, so any custom implementation gets it for free.
+
+Every entity cache is optional: leaving one out disables caching that entity kind, and an empty cache (or none at
+all) is a fully supported configuration.

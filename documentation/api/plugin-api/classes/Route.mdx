@@ -1,0 +1,155 @@
+---
+title: 'Class: Route'
+description: 'The base class for every route. (@wolfstar/plugin-api)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Route.ts#L12',
+		label: 'packages/plugin-api/src/lib/structures/Route.ts:12'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+The base class for every route. A route answers the `methods` it declares on `path`; a route that
+declares no methods (through `options.methods` or a `name.method` piece name) matches nothing.
+
+<ApiSignature
+	tokens={[
+		'abstract class Route<Options extends ',
+		['Route.Options', '/documentation/api/plugin-api/namespaces/Route/type-aliases/Options'],
+		' = ',
+		['Route.Options', '/documentation/api/plugin-api/namespaces/Route/type-aliases/Options'],
+		'> extends Piece<Options, "routes">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Piece<Options, "routes">']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['Route.Options', '/documentation/api/plugin-api/namespaces/Route/type-aliases/Options']]}
+	defaultValue="Route.Options"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Route.ts#L31', label: 'packages/plugin-api/src/lib/structures/Route.ts:31' }}>
+
+<ApiSignature
+	tokens={[
+		'new Route<Options extends ',
+		['RouteOptions', '/documentation/api/plugin-api/interfaces/RouteOptions'],
+		' = ',
+		['RouteOptions', '/documentation/api/plugin-api/interfaces/RouteOptions'],
+		'>(\n  context: ',
+		['LoaderContext', '/documentation/api/plugin-api/namespaces/Route/type-aliases/LoaderContext'],
+		',\n  options: Options = ...\n): ',
+		['Route', '/documentation/api/plugin-api/classes/Route'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Options" type={['extends ', ['RouteOptions', '/documentation/api/plugin-api/interfaces/RouteOptions']]} defaultValue="RouteOptions" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['LoaderContext', '/documentation/api/plugin-api/namespaces/Route/type-aliases/LoaderContext']]} />
+
+<ApiParam name="options" type={['Options']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### maximumBodyLength
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly maximumBodyLength: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Route.ts#L29', label: 'packages/plugin-api/src/lib/structures/Route.ts:29' }}>
+
+The maximum request body size in bytes for this route.
+
+</ApiMember>
+
+### methods
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly methods: ReadonlySet<"GET" | "ACL" | "BIND" | "CHECKOUT" | "CONNECT" | "COPY" | "DELETE" | "HEAD" | "LINK" | "LOCK" | "M-SEARCH" | "MERGE" | "MKACTIVITY" | "MKCALENDAR" | "MKCOL" | "MOVE" | "NOTIFY" | "OPTIONS" | "PATCH" | "POST" | "PROPFIND" | "PROPPATCH" | "PURGE" | "PUT" | "QUERY" | "REBIND" | "REPORT" | "SEARCH" | "SOURCE" | "SUBSCRIBE" | "TRACE" | "UNBIND" | "UNLINK" | "UNLOCK" | "UNSUBSCRIBE">']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Route.ts#L24', label: 'packages/plugin-api/src/lib/structures/Route.ts:24' }}>
+
+The methods this route answers.
+
+</ApiMember>
+
+### path
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly path: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Route.ts#L19', label: 'packages/plugin-api/src/lib/structures/Route.ts:19' }}>
+
+The path segments of the route, prefix included.
+
+</ApiMember>
+
+## Methods
+
+### run()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Route.ts#L61', label: 'packages/plugin-api/src/lib/structures/Route.ts:61' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract run(request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['Response', '/documentation/api/plugin-api/namespaces/Route/type-aliases/Response'],
+		'): unknown'
+	]}
+/>
+
+Runs when a request matches this route. Errors thrown here are emitted as `ServerEvent.RouteError`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest']]} />
+
+<ApiParam name="response" type={[['Response', '/documentation/api/plugin-api/namespaces/Route/type-aliases/Response']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Route.ts#L63', label: 'packages/plugin-api/src/lib/structures/Route.ts:63' }}>
+
+<ApiSignature tokens={['toJSON(): PieceJSON']} />
+
+Defines the `JSON.stringify` behavior of this piece.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['PieceJSON']} />
+
+</ApiParams>
+
+</ApiMember>

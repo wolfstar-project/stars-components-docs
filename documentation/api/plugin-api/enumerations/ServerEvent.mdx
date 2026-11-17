@@ -1,0 +1,31 @@
+---
+title: 'Enumeration: ServerEvent'
+description: 'API reference for ServerEvent, an enumeration exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiEnumMembers, ApiHeader } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="enum"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L15',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:15'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiEnumMembers
+	members={[
+		{ name: 'Error', value: '"error"', id: 'member-error', description: '' },
+		{ name: 'MiddlewareError', value: '"middlewareError"', id: 'member-middlewareerror', description: '' },
+		{ name: 'MiddlewareFailure', value: '"middlewareFailure"', id: 'member-middlewarefailure', description: '' },
+		{ name: 'MiddlewareSuccess', value: '"middlewareSuccess"', id: 'member-middlewaresuccess', description: '' },
+		{ name: 'Request', value: '"request"', id: 'member-request', description: '' },
+		{ name: 'RouteError', value: '"routeError"', id: 'member-routeerror', description: '' },
+		{ name: 'RouterBranchMethodNotAllowed', value: '"routerBranchMethodNotAllowed"', id: 'member-routerbranchmethodnotallowed', description: '' },
+		{ name: 'RouterBranchNotFound', value: '"routerBranchNotFound"', id: 'member-routerbranchnotfound', description: '' },
+		{ name: 'RouterFound', value: '"routerFound"', id: 'member-routerfound', description: '' }
+	]}
+/>

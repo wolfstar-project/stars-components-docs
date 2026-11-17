@@ -1,0 +1,57 @@
+---
+title: 'Function: createCache()'
+description: 'Creates a Cache out of a factory, holding only the stores it returns. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/policy.ts#L179',
+		label: 'packages/plugin-cache/src/lib/policy.ts:179'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Creates a [Cache](/documentation/api/plugin-cache/interfaces/Cache) out of a factory, holding only the stores it returns.
+
+<ApiSignature
+	tokens={[
+		'createCache(options: ',
+		['CreateCacheOptions', '/documentation/api/plugin-cache/interfaces/CreateCacheOptions'],
+		'): ',
+		['Cache', '/documentation/api/plugin-cache/interfaces/Cache']
+	]}
+/>
+
+Creates a [Cache](/documentation/api/plugin-cache/interfaces/Cache) out of a factory, holding only the stores it returns.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['CreateCacheOptions', '/documentation/api/plugin-cache/interfaces/CreateCacheOptions']]}>
+
+The factory, and the policies of the stores.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-cache/interfaces/Cache']]} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { createCache, MemoryEntityCache } from '@wolfstar/plugin-cache';
+
+// Cache guilds, channels, and roles only, nothing else.
+const cache = createCache({
+	makeCache: (entity) => (['guilds', 'channels', 'roles'].includes(entity) ? new MemoryEntityCache() : null)
+});
+```

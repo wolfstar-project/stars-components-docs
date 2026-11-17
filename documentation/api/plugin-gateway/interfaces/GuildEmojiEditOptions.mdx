@@ -1,0 +1,56 @@
+---
+title: 'Interface: GuildEmojiEditOptions'
+description: 'The options to edit an emoji with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiManager.ts#L41',
+		label: 'packages/plugin-gateway/src/managers/GuildEmojiManager.ts:41'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to edit an emoji with.
+
+<ApiSignature tokens={['interface GuildEmojiEditOptions']} />
+
+## Properties
+
+### name?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['name?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiManager.ts#L42',
+		label: 'packages/plugin-gateway/src/managers/GuildEmojiManager.ts:42'
+	}}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiManager.ts#L48',
+		label: 'packages/plugin-gateway/src/managers/GuildEmojiManager.ts:48'
+	}}
+/>
+
+### roles?
+
+<ApiMember kind="property" badges={['optional']} signature={['roles?: ', ['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiManager.ts#L47', label: 'packages/plugin-gateway/src/managers/GuildEmojiManager.ts:47' }}>
+
+The roles allowed to use the emoji, `null` or empty for everyone: an array of roles or IDs, or a `Collection`
+of roles.
+
+</ApiMember>

@@ -1,0 +1,509 @@
+---
+title: 'Class: GuildApplicationCommandManager'
+description: "Manages the application commands of one guild, like discord.js's GuildApplicationCommandManager: an ApplicationCommandManager bound to the guild, who… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildApplicationCommandManager.ts#L11',
+		label: 'packages/plugin-gateway/src/managers/GuildApplicationCommandManager.ts:11'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the application commands of one guild, like discord.js's `GuildApplicationCommandManager`: an
+[ApplicationCommandManager](/documentation/api/plugin-gateway/classes/ApplicationCommandManager) bound to the guild, whose `guildId` options are ignored.
+
+<ApiSignature
+	tokens={[
+		'class GuildApplicationCommandManager extends ',
+		['ApplicationCommandManager', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager']
+	]}
+/>
+
+<ApiHierarchy extends={[[['ApplicationCommandManager', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager']]]} />
+
+Reachable from `guild.commands` and `client.guilds.commands(guildId)`, a new instance on every access.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildApplicationCommandManager.ts#L18', label: 'packages/plugin-gateway/src/managers/GuildApplicationCommandManager.ts:18' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildApplicationCommandManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  guildId: string\n): ',
+		['GuildApplicationCommandManager', '/documentation/api/plugin-gateway/classes/GuildApplicationCommandManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['ApplicationCommandManager.client', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildId: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildApplicationCommandManager.ts#L12', label: 'packages/plugin-gateway/src/managers/GuildApplicationCommandManager.ts:12' }}>
+
+The ID of the guild this manager acts on, `null` for global commands (and for the guilds of its methods' `guildId`
+option).
+
+</ApiMember>
+
+### permissions
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly permissions: ', ['ApplicationCommandPermissionsManager', '/documentation/api/plugin-gateway/classes/ApplicationCommandPermissionsManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L64', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:64' }} inheritedFrom={[['ApplicationCommandManager.permissions', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#permissions']]}>
+
+The manager of the permissions of any command, in any guild (the one of this manager's guild).
+
+</ApiMember>
+
+## Methods
+
+### commandPath()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L82', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:82' }} inheritedFrom={[['ApplicationCommandManager.commandPath', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#commandpath']]}>
+
+<ApiSignature tokens={['commandPath(options: {\n    guildId?: string;\n    id?: string;\n  } = {}): `/${string}`']} />
+
+The path of the commands, or of one command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['{\n  guildId?: string;\n  id?: string;\n}']} defaultValue={'{}'}>
+
+The ID of the command, and the ID of the guild (ignored by the manager of a guild).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['`/${string}`']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L175', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:175' }} inheritedFrom={[['ApplicationCommandManager.create', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#create']]}>
+
+<ApiSignature
+	tokens={[
+		'create(\n  command: ',
+		['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable'],
+		',\n  guildId?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Creates an application command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="command" type={[['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable']]}>
+
+The command: camel-cased data, a raw command, or a builder.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The ID of the guild to create it in, global when omitted. Ignored by the manager of a guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L259', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:259' }} inheritedFrom={[['ApplicationCommandManager.delete', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#delete']]}>
+
+<ApiSignature
+	tokens={[
+		'delete(command: ',
+		['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable'],
+		', guildId?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes an application command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="command" type={[['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable']]}>
+
+The command, or its ID.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The ID of the guild it is registered in, global when omitted. Ignored by the manager of a guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`InvalidType` when `command` holds no ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L228', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:228' }} inheritedFrom={[['ApplicationCommandManager.edit', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#edit']]}>
+
+<ApiSignature
+	tokens={[
+		'edit(\n  command: ',
+		['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable'],
+		',\n  data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable'],
+		'>,\n  guildId?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits an application command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="command" type={[['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable']]}>
+
+The command, or its ID.
+
+</ApiParam>
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable'], '>']}>
+
+The fields to edit.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The ID of the guild it is registered in, global when omitted. Ignored by the manager of a guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`InvalidType` when `command` holds no ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L113', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:113' }} inheritedFrom={[['ApplicationCommandManager.fetch', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#fetch']]}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'fetch(id: string | ',
+		['FetchApplicationCommandOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandOptions'],
+		' & { id: string }): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Fetches one command, from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string | ', ['FetchApplicationCommandOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandOptions'], ' & { id: string }']}>
+
+The ID of the command, or the options with it.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'fetch(options?: ',
+		['FetchApplicationCommandOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandOptions'],
+		' & { id?: undefined }): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>>'
+	]}
+/>
+
+Fetches every command, from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['FetchApplicationCommandOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandOptions'], ' & { id?: undefined }']} optional>
+
+The guild (ignored by the manager of a guild), the locale to localize for, and whether to include
+the localizations.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L102', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:102' }} inheritedFrom={[['ApplicationCommandManager.resolveId', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#resolveid']]}>
+
+<ApiSignature
+	tokens={[
+		'resolveId(command: ',
+		['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable'],
+		'): string | null'
+	]}
+/>
+
+Resolves a command, or its ID, to its ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="command" type={[['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable']]}>
+
+The command, a raw one, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, `null` if the value holds none.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L203', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:203' }} inheritedFrom={[['ApplicationCommandManager.set', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#set']]}>
+
+<ApiSignature
+	tokens={[
+		'set(\n  commands: readonly ',
+		['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable'],
+		'[],\n  guildId?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>>'
+	]}
+/>
+
+Replaces every command of the application, or of a guild, with the given ones: the bulk overwrite.
+
+It deletes the commands that are not among the given ones, including the ones `@wolfstar/http-framework`
+registered for its pieces. Use it to manage the commands yourself, not alongside the framework.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="commands" type={['readonly ', ['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable'], '[]']}>
+
+The commands: camel-cased data, raw commands, or builders.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The ID of the guild to set them in, global when omitted. Ignored by the manager of a guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'], '>>']}>
+
+The commands as stored, by ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### transformCommand()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandManager.ts#L276', label: 'packages/plugin-gateway/src/managers/ApplicationCommandManager.ts:276' }} inheritedFrom={[['ApplicationCommandManager.transformCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager#transformcommand']]}>
+
+<ApiSignature
+	tokens={[
+		'static transformCommand(command: ',
+		['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable'],
+		'): ',
+		['RESTPostAPIApplicationCommandsJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPostAPIApplicationCommandsJSONBody']
+	]}
+/>
+
+Transforms command data into the payload to send to the API, like discord.js's
+`ApplicationCommandManager.transformCommand`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="command" type={[['ApplicationCommandDataResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable']]}>
+
+The command: camel-cased data, a raw command, or a builder (anything with a `toJSON()`).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['RESTPostAPIApplicationCommandsJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPostAPIApplicationCommandsJSONBody']
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,57 @@
+---
+title: 'Interface: GatewayInformation'
+description: "The GET /gateway/bot payload, the same shape as discord-api-types' APIGatewayBotInfo, which @discordjs/ws's WebSocketManager#fetchGatewayInformation… (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L5',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:5'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The `GET /gateway/bot` payload, the same shape as discord-api-types' `APIGatewayBotInfo`, which `@discordjs/ws`'s
+`WebSocketManager#fetchGatewayInformation` returns.
+
+<ApiSignature tokens={['interface GatewayInformation']} />
+
+## Properties
+
+### session_start_limit
+
+<ApiMember
+	kind="property"
+	signature={['session_start_limit: {\n  max_concurrency: number;\n  remaining: number;\n  reset_after: number;\n  total: number;\n}']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L8',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:8'
+	}}
+/>
+
+### shards
+
+<ApiMember
+	kind="property"
+	signature={['shards: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L7',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:7'
+	}}
+/>
+
+### url
+
+<ApiMember
+	kind="property"
+	signature={['url: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L6',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:6'
+	}}
+/>

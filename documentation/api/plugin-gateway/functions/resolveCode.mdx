@@ -1,0 +1,51 @@
+---
+title: 'Function: resolveCode()'
+description: 'Extracts a code from a string with a pattern capturing it, or returns the string itself when it does not match. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DataResolver.ts#L49',
+		label: 'packages/plugin-gateway/src/util/DataResolver.ts:49'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Extracts a code from a string with a pattern capturing it, or returns the string itself when it does not match.
+
+<ApiSignature
+	tokens={[
+		'resolveCode(data: string, pattern: ',
+		['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp'],
+		'): string'
+	]}
+/>
+
+Extracts a code from a string with a pattern capturing it, or returns the string itself when it does not match.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['string']}>
+
+The string to resolve.
+
+</ApiParam>
+
+<ApiParam name="pattern" type={[['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]}>
+
+The pattern capturing the code as its first group.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>

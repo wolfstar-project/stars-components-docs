@@ -1,0 +1,86 @@
+---
+title: 'Function: cacheWithLimits()'
+description: "Builds the GatewayClientOptions.cacheOptions bounding the caches of some entities, like discord.js's Options.cacheWithLimits. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/limits.ts#L24',
+		label: 'packages/plugin-gateway/src/util/limits.ts:24'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Builds the [GatewayClientOptions.cacheOptions](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cacheoptions) bounding the caches of some entities, like discord.js's
+`Options.cacheWithLimits`. A number is the `maxSize` of the entity, an object is its whole options.
+
+<ApiSignature
+	tokens={[
+		'cacheWithLimits(limits: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		', number | ',
+		['CacheEntityOptions', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions'],
+		'>>): ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		', ',
+		['CacheEntityOptions', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions'],
+		'>>'
+	]}
+/>
+
+Builds the [GatewayClientOptions.cacheOptions](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cacheoptions) bounding the caches of some entities, like discord.js's
+`Options.cacheWithLimits`. A number is the `maxSize` of the entity, an object is its whole options.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="limits" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<', ['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'], ', number | ', ['CacheEntityOptions', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions'], '>>']}>
+
+The `maxSize` or the options of each entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		', ',
+		['CacheEntityOptions', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+const client = new GatewayClient({
+	intents,
+	// Keep the 200 most recent messages, no presences, and up to 1000 members, plus any member in a voice channel.
+	cacheOptions: cacheWithLimits({
+		messages: 200,
+		presences: 0,
+		members: { maxSize: 1_000, keepOverLimit: (member) => member.voice?.channelId != null }
+	})
+});
+```

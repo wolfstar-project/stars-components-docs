@@ -1,0 +1,44 @@
+---
+title: 'Variable: scheduledTasksModule'
+description: 'The Stars module: listing the package in modules in stars.config registers the runtime plugin with the options written under its scheduledTasks key. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/module.ts#L24',
+		label: 'packages/plugin-scheduled-tasks/src/module.ts:24'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+The Stars module: listing the package in `modules` in `stars.config` registers the runtime plugin with the options
+written under its `scheduledTasks` key.
+
+<ApiSignature
+	tokens={[
+		'const scheduledTasksModule: StarsModule<',
+		['ScheduledTasksPluginOptions', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasksPluginOptions'],
+		'>'
+	]}
+/>
+
+The `[specifier, options]` tuple of `modules` still works: its options are merged over the `scheduledTasks` key, so
+they win.
+
+The options are written into the built entry, so they have to be JSON-serialisable: `bull.connection` is a plain
+connection object here. To pass an `ioredis` instance or the `ready` function, use `ClientOptions.tasks` or `scheduledTasks()`.
+
+**Example**
+
+```ts
+// stars.config.ts
+export default defineConfig({
+	modules: ['@wolfstar/plugin-scheduled-tasks'],
+	scheduledTasks: { bull: { connection: { host: 'localhost', port: 6379 } } }
+});
+```

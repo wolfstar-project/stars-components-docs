@@ -1,0 +1,545 @@
+---
+title: 'Class: MessageReaction'
+description: "A reaction on a message, an emoji, how many users reacted with it, and whether the bot did: @discordjs/structures' Reaction, with the message it belo… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L33',
+		label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:33'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A reaction on a message, an emoji, how many users reacted with it, and whether the bot did: `@discordjs/structures`'
+`Reaction`, with the message it belongs to, its users, and actions through the client.
+
+<ApiSignature
+	tokens={[
+		'class MessageReaction extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<',
+		['MessageReactionData', '/documentation/api/plugin-gateway/type-aliases/MessageReactionData'],
+		', ',
+		['MessageReactionRelations', '/documentation/api/plugin-gateway/interfaces/MessageReactionRelations'],
+		'>, Reaction<"count" | "count_details">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+			'<',
+			['MessageReactionData', '/documentation/api/plugin-gateway/type-aliases/MessageReactionData'],
+			', ',
+			['MessageReactionRelations', '/documentation/api/plugin-gateway/interfaces/MessageReactionRelations'],
+			'>'
+		],
+		['Reaction<"count" | "count_details">']
+	]}
+/>
+
+The counts are omitted from `@discordjs/structures`' data type, since a reaction built from a gateway event on an
+uncached message has none.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L57', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:57' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new MessageReaction(\n  data: ',
+		['MessageReactionData', '/documentation/api/plugin-gateway/type-aliases/MessageReactionData'],
+		',\n  relations: ',
+		['MessageReactionRelations', '/documentation/api/plugin-gateway/interfaces/MessageReactionRelations'],
+		' = {}\n): ',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['MessageReactionData', '/documentation/api/plugin-gateway/type-aliases/MessageReactionData']]}>
+
+The raw reaction, with the message it belongs to.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['MessageReactionRelations', '/documentation/api/plugin-gateway/interfaces/MessageReactionRelations']]} defaultValue={'{}'}>
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### DataTemplate
+
+<ApiMember kind="property" badges={['static']} signature={['static DataTemplate: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIReaction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIReaction'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L51', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:51' }}>
+
+Keeps the raw `burst_colors`, which `@discordjs/structures` strips and re-serializes, so that
+[MessageReaction.toJSON](/documentation/api/plugin-gateway/classes/MessageReaction#tojson) returns the reaction as received.
+
+</ApiMember>
+
+## Accessors
+
+### burstColors
+
+<ApiMember kind="accessor" signature={['get burstColors(): number[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L120', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:120' }}>
+
+The colors of the super reaction animation, as numbers.
+
+</ApiMember>
+
+### channelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get channelId(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L62',
+		label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:62'
+	}}
+/>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### count
+
+<ApiMember kind="accessor" signature={['get count(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L106', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:106' }}>
+
+The amount how often this emoji has been used to react (including super reacts)
+
+</ApiMember>
+
+### countDetails
+
+<ApiMember kind="accessor" signature={['get countDetails(): {\n  burst: number;\n  normal: number;\n} | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L113', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:113' }}>
+
+How many normal and super (burst) reactions there are; `null` when unknown.
+
+</ApiMember>
+
+### emoji
+
+<ApiMember kind="accessor" signature={['get emoji(): ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], ' | ', ['ReactionEmoji', '/documentation/api/plugin-gateway/classes/ReactionEmoji']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L84', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:84' }}>
+
+The emoji, like discord.js's `MessageReaction#emoji`: the cached custom emoji of the message's guild, else the
+emoji of the payload.
+
+</ApiMember>
+
+### message
+
+<ApiMember kind="accessor" signature={['get message(): ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean> | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L74', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:74' }}>
+
+The message the reaction is on, like discord.js's `MessageReaction#message`: the message it was read from, else
+the cached one. `null` when the message is not cached.
+
+</ApiMember>
+
+### messageId
+
+<ApiMember
+	kind="accessor"
+	signature={['get messageId(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L66',
+		label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:66'
+	}}
+/>
+
+### partial
+
+<ApiMember kind="accessor" signature={['get partial(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L102', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:102' }}>
+
+Whether the reaction is partial: its message is not cached, so its counts are unknown. Only its emoji and IDs are
+reliable then, and [MessageReaction.fetch](/documentation/api/plugin-gateway/classes/MessageReaction#fetch) completes it.
+
+</ApiMember>
+
+### users
+
+<ApiMember kind="accessor" signature={['get users(): ', ['ReactionUserManager', '/documentation/api/plugin-gateway/classes/ReactionUserManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L128', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:128' }}>
+
+The users who reacted.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['MessageReactionData', '/documentation/api/plugin-gateway/type-aliases/MessageReactionData'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['MessageReactionData', '/documentation/api/plugin-gateway/type-aliases/MessageReactionData'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("emoji" | "message")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("emoji" | "message")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L166', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:166' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		'>'
+	]}
+/>
+
+Fetches the message and patches this reaction with its current counts.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### react()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L140', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:140' }}>
+
+<ApiSignature
+	tokens={[
+		'react(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		'>'
+	]}
+/>
+
+Reacts with this emoji as the bot, and counts the bot in this reaction.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### remove()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L154', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:154' }}>
+
+<ApiSignature
+	tokens={[
+		'remove(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		'>'
+	]}
+/>
+
+Removes every reaction with this emoji.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L194', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:194' }}>
+
+<ApiSignature tokens={['toJSON(): ', ['APIReaction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIReaction']]} />
+
+Transforms this reaction into its raw data, as received.
+
+Typed as `@discordjs/structures`' `APIReaction`, but the counts are absent when they are unknown, and the data
+carries the IDs of the channel and the message.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIReaction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIReaction']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessageReaction.ts#L182', label: 'packages/plugin-gateway/src/structures/messages/MessageReaction.ts:182' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string']} />
+
+Returns the primitive value of the specified object.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>

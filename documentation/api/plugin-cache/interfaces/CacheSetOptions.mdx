@@ -1,0 +1,34 @@
+---
+title: 'Interface: CacheSetOptions'
+description: 'The options of EntityCache.set. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L82',
+		label: 'packages/plugin-cache/src/lib/types.ts:82'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+The options of [EntityCache.set](/documentation/api/plugin-cache/interfaces/EntityCache#set).
+
+<ApiSignature tokens={['interface CacheSetOptions']} />
+
+<ApiHierarchy extendedBy={[[['CacheUpsertOptions', '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions']]]} />
+
+## Properties
+
+### ttl?
+
+<ApiMember kind="property" badges={['optional']} signature={['ttl?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L87', label: 'packages/plugin-cache/src/lib/types.ts:87' }}>
+
+How long the entry lives, in milliseconds, overriding the store's default time-to-live. `null` keeps the entry
+until it is deleted or evicted, and `undefined` uses the store's default.
+
+</ApiMember>

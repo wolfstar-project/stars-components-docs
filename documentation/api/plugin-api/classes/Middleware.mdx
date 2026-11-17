@@ -1,0 +1,143 @@
+---
+title: 'Class: Middleware'
+description: 'The base class for every middleware. (@wolfstar/plugin-api)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Middleware.ts#L10',
+		label: 'packages/plugin-api/src/lib/structures/Middleware.ts:10'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+The base class for every middleware. Middlewares run in ascending `position` order before the
+route is resolved. The built-in ones sit at `headers` 10, `body` 20 and `cookies` 30.
+
+<ApiSignature
+	tokens={[
+		'abstract class Middleware<Options extends ',
+		['Middleware.Options', '/documentation/api/plugin-api/namespaces/Middleware/type-aliases/Options'],
+		' = ',
+		['Middleware.Options', '/documentation/api/plugin-api/namespaces/Middleware/type-aliases/Options'],
+		'> extends Piece<Options, "middlewares">'
+	]}
+/>
+
+<ApiHierarchy extends={[['Piece<Options, "middlewares">']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['Middleware.Options', '/documentation/api/plugin-api/namespaces/Middleware/type-aliases/Options']]}
+	defaultValue="Middleware.Options"
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Middleware.ts#L18', label: 'packages/plugin-api/src/lib/structures/Middleware.ts:18' }}>
+
+<ApiSignature
+	tokens={[
+		'new Middleware<Options extends ',
+		['MiddlewareOptions', '/documentation/api/plugin-api/interfaces/MiddlewareOptions'],
+		' = ',
+		['MiddlewareOptions', '/documentation/api/plugin-api/interfaces/MiddlewareOptions'],
+		'>(\n  context: ',
+		['LoaderContext', '/documentation/api/plugin-api/namespaces/Middleware/type-aliases/LoaderContext'],
+		',\n  options: Options = ...\n): ',
+		['Middleware', '/documentation/api/plugin-api/classes/Middleware'],
+		'<Options>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Options"
+	type={['extends ', ['MiddlewareOptions', '/documentation/api/plugin-api/interfaces/MiddlewareOptions']]}
+	defaultValue="MiddlewareOptions"
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['LoaderContext', '/documentation/api/plugin-api/namespaces/Middleware/type-aliases/LoaderContext']]} />
+
+<ApiParam name="options" type={['Options']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### position
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly position: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Middleware.ts#L16', label: 'packages/plugin-api/src/lib/structures/Middleware.ts:16' }}>
+
+The position of the middleware; lower runs first.
+
+</ApiMember>
+
+## Methods
+
+### run()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Middleware.ts#L26', label: 'packages/plugin-api/src/lib/structures/Middleware.ts:26' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract run(request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['Response', '/documentation/api/plugin-api/namespaces/Middleware/type-aliases/Response'],
+		'): unknown'
+	]}
+/>
+
+Runs for every request. Ending the response stops the remaining middlewares and the route.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest']]} />
+
+<ApiParam name="response" type={[['Response', '/documentation/api/plugin-api/namespaces/Middleware/type-aliases/Response']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/Middleware.ts#L31', label: 'packages/plugin-api/src/lib/structures/Middleware.ts:31' }}>
+
+<ApiSignature tokens={['toJSON(): PieceJSON']} />
+
+Defines the `JSON.stringify` behavior of this piece.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['PieceJSON']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,205 @@
+---
+title: 'Variable: GatewayErrorMessages'
+description: "The message of every GatewayErrorCode: a string, or a function formatting the arguments passed to the error's constructor. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/Messages.ts#L11',
+		label: 'packages/plugin-gateway/src/errors/Messages.ts:11'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The message of every [GatewayErrorCode](/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode): a string, or a function formatting the arguments passed to the
+error's constructor.
+
+<ApiSignature
+	tokens={[
+		'const GatewayErrorMessages: {\n  readonly ApplicationCommandPermissionsTokenMissing: "Editing the permissions of an application command needs a bearer token (with the applications.commands.permissions.update scope), but none was provided";\n  readonly AttachmentDownloadFailed: (url: string, status: number) => string;\n  readonly CacheAsynchronous: (entity: string) => string;\n  readonly CacheConstructorAsynchronous: (entity: string) => string;\n  readonly CacheKeyUnresolvable: (entity: string, reason: string) => string;\n  readonly CacheNotIterable: (entity: string) => string;\n  readonly CategoryChildCategory: "A category cannot be created inside a category";\n  readonly ChannelGuildUnknown: (channelId: string) => string;\n  readonly ChannelInfoFieldsEmpty: "Cannot request the info of the channels without any field";\n  readonly ChannelLockPermissionsConflict: "Pass either lockPermissions or permissionOverwrites, not both";\n  readonly ChannelMessagesGuildOnly: (channelId: string, action: string) => string;\n  readonly ChannelTypeChanged: (channelId: string, from: number, to: number) => string;\n  readonly ChannelUncached: (channelId: string) => string;\n  readonly ClientCacheConflict: "cacheConstructor and cacheOptions cannot be combined with cache or makeCache, pass one or the other";\n  readonly ClientNotConstructed: "No GatewayClient has been constructed yet";\n  readonly ClientSessionStoreConflict: "sessionStore replaces gateway.retrieveSessionInfo and gateway.updateSessionInfo, pass one or the other";\n  readonly ClientSweepersConflict: "sweepers cannot be combined with cache or makeCache, whose stores hold raw data a sweep cannot filter: use their policies\' ttl instead";\n  readonly DispatchHandlerConflict: (event: string) => string;\n  readonly DispatchTimeout: (type: string, shardId: number, partition: string | null, timeout: number) => string;\n  readonly EmojiEmpty: "Cannot resolve an empty string to an emoji";\n  readonly EmojiType: "Cannot resolve an emoji without an ID nor a name";\n  readonly EntitlementCreateInvalidOwner: "You must provide either a guild or a user to create an entitlement, but not both";\n  readonly FileNotFound: (file: string) => string;\n  readonly GlobalCommandPermissions: "The permissions of an application command belong to a guild: provide a guild, or use the permissions manager of a guild";\n  readonly GuildChannelInfoTimeout: (guildId: string, timeout: number) => string;\n  readonly GuildChannelOrphan: (channelId: string) => string;\n  readonly GuildChannelUnknown: (guildId: string, channelId: string) => string;\n  readonly GuildIntegrationNotFound: (guildId: string, integrationId: string) => string;\n  readonly GuildMembersNoncePending: (nonce: string) => string;\n  readonly GuildMembersQueryConflict: "Cannot request members by both query and userIds";\n  readonly GuildMembersRateLimited: (guildId: string, nonce: string, retryAfter: number) => string;\n  readonly GuildMembersTimeout: (guildId: string, nonce: string, timeout: number) => string;\n  readonly GuildMembersUserIdsLimit: "Cannot request more than 100 members by their IDs";\n  readonly GuildMemberUncached: (guildId: string, userId: string) => string;\n  readonly GuildMemberUserUnknown: "This member has no user data: its ID is unknown";\n  readonly GuildResolve: "Cannot resolve the value to a guild ID";\n  readonly GuildRoleUnknown: (guildId: string, roleId: string) => string;\n  readonly GuildSoundboardSoundsTimeout: (guildIds: readonly string[], timeout: number) => string;\n  readonly GuildUncached: (guildId: string) => string;\n  readonly GuildUncachedMe: (guildId: string) => string;\n  readonly IdUnresolvable: "Cannot resolve an ID from a structure without one";\n  readonly InvalidElement: (type: string, name: string, element: unknown) => string;\n  readonly InvalidType: (name: string, expected: string, an: boolean = false) => string;\n  readonly InviteGuildUnknown: (code: string) => string;\n  readonly MemberFetchNonceLength: "The nonce of a members request cannot exceed 32 bytes";\n  readonly MessageBulkDeleteType: "The messages must be an Array, Collection, or number.";\n  readonly MessageContentType: "The content of a message must be a string";\n  readonly MessageForwardChannelMissing: "Forwarding a message by ID needs its channel";\n  readonly MessageNonceLength: "A message nonce must be at most 25 characters long";\n  readonly MessageNonceType: "A message nonce must be an integer";\n  readonly MessagePollMissing: (messageId: string) => string;\n  readonly MessageReferenceMissing: (messageId: string) => string;\n  readonly MessageSearchChannelIdsLimit: "A message search cannot filter by more than 500 channels";\n  readonly MessageSearchContentLength: "The content of a message search cannot exceed 1024 characters";\n  readonly MessageSearchLimit: "The limit of a message search must be an integer from 1 to 25";\n  readonly MessageSearchOffset: "The offset of a message search must be an integer from 0 to 9975";\n  readonly MessageSearchSlop: "The slop of a message search must be an integer from 0 to 100";\n  readonly NotGuildSoundboardSound: "Default soundboard sounds cannot be changed";\n  readonly NotGuildSticker: "Only guild stickers can be edited or deleted";\n  readonly PresenceNotFetchable: (guildId: string, userId: string) => string;\n  readonly ReqResourceType: "The resource must be a string, a Uint8Array, an ArrayBuffer, a Blob, or a stream";\n  readonly SearchIndexNotYetAvailable: (guildId: string, retryAfter: number, documentsIndexed: number) => string;\n  readonly SessionStoreFailed: (operation: "get" | "set", shardId: number) => string;\n  readonly SessionStoreTimeout: (timeout: number) => string;\n  readonly SoundboardSoundContentType: "Could not infer the content type of the sound, pass contentType";\n  readonly SweeperIntervalTooLong: (entity: string, interval: number) => string;\n  readonly ThreadMemberIdsMissing: (action: string) => string;\n  readonly ThreadOptionsPostOnly: (options: string) => string;\n  readonly ThreadOptionsThreadOnly: (options: string) => string;\n  readonly ThreadOwnerUnknown: (threadId: string) => string;\n  readonly ThreadParentUnknown: (threadId: string) => string;\n  readonly ThreadPostMessageRequired: "A forum or media post needs a first message: pass message";\n  readonly UserNoDMChannel: "No DM Channel exists!";\n  readonly VoiceStateGuildUnknown: "This voice state does not belong to a guild";\n  readonly VoiceStateNotOwn: "Only the bot\'s own voice state can request to speak";\n  readonly WebhookApplication: "This message webhook belongs to an application and cannot be fetched.";\n  readonly WebhookMessage: "The message was not sent by a webhook.";\n  readonly WebhookTokenUnavailable: (webhookId: string) => string;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam
+	name="ApplicationCommandPermissionsTokenMissing"
+	type={[
+		'"Editing the permissions of an application command needs a bearer token (with the applications.commands.permissions.update scope), but none was provided"'
+	]}
+/>
+
+<ApiParam name="AttachmentDownloadFailed" type={['(url: string, status: number) => string']} />
+
+<ApiParam name="CacheAsynchronous" type={['(entity: string) => string']} />
+
+<ApiParam name="CacheConstructorAsynchronous" type={['(entity: string) => string']} />
+
+<ApiParam name="CacheKeyUnresolvable" type={['(entity: string, reason: string) => string']} />
+
+<ApiParam name="CacheNotIterable" type={['(entity: string) => string']} />
+
+<ApiParam name="CategoryChildCategory" type={['"A category cannot be created inside a category"']} />
+
+<ApiParam name="ChannelGuildUnknown" type={['(channelId: string) => string']} />
+
+<ApiParam name="ChannelInfoFieldsEmpty" type={['"Cannot request the info of the channels without any field"']} />
+
+<ApiParam name="ChannelLockPermissionsConflict" type={['"Pass either lockPermissions or permissionOverwrites, not both"']} />
+
+<ApiParam name="ChannelMessagesGuildOnly" type={['(channelId: string, action: string) => string']} />
+
+<ApiParam name="ChannelTypeChanged" type={['(channelId: string, from: number, to: number) => string']} />
+
+<ApiParam name="ChannelUncached" type={['(channelId: string) => string']} />
+
+<ApiParam
+	name="ClientCacheConflict"
+	type={['"cacheConstructor and cacheOptions cannot be combined with cache or makeCache, pass one or the other"']}
+/>
+
+<ApiParam name="ClientNotConstructed" type={['"No GatewayClient has been constructed yet"']} />
+
+<ApiParam
+	name="ClientSessionStoreConflict"
+	type={['"sessionStore replaces gateway.retrieveSessionInfo and gateway.updateSessionInfo, pass one or the other"']}
+/>
+
+<ApiParam
+	name="ClientSweepersConflict"
+	type={[
+		'"sweepers cannot be combined with cache or makeCache, whose stores hold raw data a sweep cannot filter: use their policies\' ttl instead"'
+	]}
+/>
+
+<ApiParam name="DispatchHandlerConflict" type={['(event: string) => string']} />
+
+<ApiParam name="DispatchTimeout" type={['(type: string, shardId: number, partition: string | null, timeout: number) => string']} />
+
+<ApiParam name="EmojiEmpty" type={['"Cannot resolve an empty string to an emoji"']} />
+
+<ApiParam name="EmojiType" type={['"Cannot resolve an emoji without an ID nor a name"']} />
+
+<ApiParam name="EntitlementCreateInvalidOwner" type={['"You must provide either a guild or a user to create an entitlement, but not both"']} />
+
+<ApiParam name="FileNotFound" type={['(file: string) => string']} />
+
+<ApiParam
+	name="GlobalCommandPermissions"
+	type={['"The permissions of an application command belong to a guild: provide a guild, or use the permissions manager of a guild"']}
+/>
+
+<ApiParam name="GuildChannelInfoTimeout" type={['(guildId: string, timeout: number) => string']} />
+
+<ApiParam name="GuildChannelOrphan" type={['(channelId: string) => string']} />
+
+<ApiParam name="GuildChannelUnknown" type={['(guildId: string, channelId: string) => string']} />
+
+<ApiParam name="GuildIntegrationNotFound" type={['(guildId: string, integrationId: string) => string']} />
+
+<ApiParam name="GuildMembersNoncePending" type={['(nonce: string) => string']} />
+
+<ApiParam name="GuildMembersQueryConflict" type={['"Cannot request members by both query and userIds"']} />
+
+<ApiParam name="GuildMembersRateLimited" type={['(guildId: string, nonce: string, retryAfter: number) => string']} />
+
+<ApiParam name="GuildMembersTimeout" type={['(guildId: string, nonce: string, timeout: number) => string']} />
+
+<ApiParam name="GuildMembersUserIdsLimit" type={['"Cannot request more than 100 members by their IDs"']} />
+
+<ApiParam name="GuildMemberUncached" type={['(guildId: string, userId: string) => string']} />
+
+<ApiParam name="GuildMemberUserUnknown" type={['"This member has no user data: its ID is unknown"']} />
+
+<ApiParam name="GuildResolve" type={['"Cannot resolve the value to a guild ID"']} />
+
+<ApiParam name="GuildRoleUnknown" type={['(guildId: string, roleId: string) => string']} />
+
+<ApiParam name="GuildSoundboardSoundsTimeout" type={['(guildIds: readonly string[], timeout: number) => string']} />
+
+<ApiParam name="GuildUncached" type={['(guildId: string) => string']} />
+
+<ApiParam name="GuildUncachedMe" type={['(guildId: string) => string']} />
+
+<ApiParam name="IdUnresolvable" type={['"Cannot resolve an ID from a structure without one"']} />
+
+<ApiParam name="InvalidElement" type={['(type: string, name: string, element: unknown) => string']} />
+
+<ApiParam name="InvalidType" type={['(name: string, expected: string, an: boolean = false) => string']} />
+
+<ApiParam name="InviteGuildUnknown" type={['(code: string) => string']} />
+
+<ApiParam name="MemberFetchNonceLength" type={['"The nonce of a members request cannot exceed 32 bytes"']} />
+
+<ApiParam name="MessageBulkDeleteType" type={['"The messages must be an Array, Collection, or number."']} />
+
+<ApiParam name="MessageContentType" type={['"The content of a message must be a string"']} />
+
+<ApiParam name="MessageForwardChannelMissing" type={['"Forwarding a message by ID needs its channel"']} />
+
+<ApiParam name="MessageNonceLength" type={['"A message nonce must be at most 25 characters long"']} />
+
+<ApiParam name="MessageNonceType" type={['"A message nonce must be an integer"']} />
+
+<ApiParam name="MessagePollMissing" type={['(messageId: string) => string']} />
+
+<ApiParam name="MessageReferenceMissing" type={['(messageId: string) => string']} />
+
+<ApiParam name="MessageSearchChannelIdsLimit" type={['"A message search cannot filter by more than 500 channels"']} />
+
+<ApiParam name="MessageSearchContentLength" type={['"The content of a message search cannot exceed 1024 characters"']} />
+
+<ApiParam name="MessageSearchLimit" type={['"The limit of a message search must be an integer from 1 to 25"']} />
+
+<ApiParam name="MessageSearchOffset" type={['"The offset of a message search must be an integer from 0 to 9975"']} />
+
+<ApiParam name="MessageSearchSlop" type={['"The slop of a message search must be an integer from 0 to 100"']} />
+
+<ApiParam name="NotGuildSoundboardSound" type={['"Default soundboard sounds cannot be changed"']} />
+
+<ApiParam name="NotGuildSticker" type={['"Only guild stickers can be edited or deleted"']} />
+
+<ApiParam name="PresenceNotFetchable" type={['(guildId: string, userId: string) => string']} />
+
+<ApiParam name="ReqResourceType" type={['"The resource must be a string, a Uint8Array, an ArrayBuffer, a Blob, or a stream"']} />
+
+<ApiParam name="SearchIndexNotYetAvailable" type={['(guildId: string, retryAfter: number, documentsIndexed: number) => string']} />
+
+<ApiParam name="SessionStoreFailed" type={['(operation: "get" | "set", shardId: number) => string']} />
+
+<ApiParam name="SessionStoreTimeout" type={['(timeout: number) => string']} />
+
+<ApiParam name="SoundboardSoundContentType" type={['"Could not infer the content type of the sound, pass contentType"']} />
+
+<ApiParam name="SweeperIntervalTooLong" type={['(entity: string, interval: number) => string']} />
+
+<ApiParam name="ThreadMemberIdsMissing" type={['(action: string) => string']} />
+
+<ApiParam name="ThreadOptionsPostOnly" type={['(options: string) => string']} />
+
+<ApiParam name="ThreadOptionsThreadOnly" type={['(options: string) => string']} />
+
+<ApiParam name="ThreadOwnerUnknown" type={['(threadId: string) => string']} />
+
+<ApiParam name="ThreadParentUnknown" type={['(threadId: string) => string']} />
+
+<ApiParam name="ThreadPostMessageRequired" type={['"A forum or media post needs a first message: pass message"']} />
+
+<ApiParam name="UserNoDMChannel" type={['"No DM Channel exists!"']} />
+
+<ApiParam name="VoiceStateGuildUnknown" type={['"This voice state does not belong to a guild"']} />
+
+<ApiParam name="VoiceStateNotOwn" type={['"Only the bot\'s own voice state can request to speak"']} />
+
+<ApiParam name="WebhookApplication" type={['"This message webhook belongs to an application and cannot be fetched."']} />
+
+<ApiParam name="WebhookMessage" type={['"The message was not sent by a webhook."']} />
+
+<ApiParam name="WebhookTokenUnavailable" type={['(webhookId: string) => string']} />
+
+</ApiParams>

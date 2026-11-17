@@ -1,0 +1,101 @@
+---
+title: 'Interface: MessageInteractionMetadata'
+description: "The metadata of the interaction a message answers, like discord.js's MessageInteractionMetadata. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L819',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:819'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The metadata of the interaction a message answers, like discord.js's `MessageInteractionMetadata`.
+
+<ApiSignature tokens={['interface MessageInteractionMetadata']} />
+
+## Properties
+
+### authorizingIntegrationOwners
+
+<ApiMember kind="property" signature={['authorizingIntegrationOwners: ', ['APIAuthorizingIntegrationOwnersMap', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAuthorizingIntegrationOwnersMap']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L829', label: 'packages/plugin-gateway/src/util/Transformers.ts:829' }}>
+
+The IDs of the installation contexts the interaction was authorized for, keyed by their type.
+
+</ApiMember>
+
+### id
+
+<ApiMember
+	kind="property"
+	signature={['id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L820',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:820'
+	}}
+/>
+
+### interactedMessageId
+
+<ApiMember kind="property" signature={['interactedMessageId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L837', label: 'packages/plugin-gateway/src/util/Transformers.ts:837' }}>
+
+The ID of the message holding the component that was interacted with.
+
+</ApiMember>
+
+### originalResponseMessageId
+
+<ApiMember kind="property" signature={['originalResponseMessageId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L833', label: 'packages/plugin-gateway/src/util/Transformers.ts:833' }}>
+
+The ID of the original response, for a follow-up message.
+
+</ApiMember>
+
+### targetMessageId
+
+<ApiMember kind="property" signature={['targetMessageId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L845', label: 'packages/plugin-gateway/src/util/Transformers.ts:845' }}>
+
+The ID of the message a message command targeted.
+
+</ApiMember>
+
+### targetUser
+
+<ApiMember kind="property" signature={['targetUser: ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L841', label: 'packages/plugin-gateway/src/util/Transformers.ts:841' }}>
+
+The user a user command targeted.
+
+</ApiMember>
+
+### triggeringInteractionMetadata
+
+<ApiMember kind="property" signature={['triggeringInteractionMetadata: ', ['MessageInteractionMetadata', '/documentation/api/plugin-gateway/interfaces/MessageInteractionMetadata'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L849', label: 'packages/plugin-gateway/src/util/Transformers.ts:849' }}>
+
+The metadata of the interaction that opened the modal, for a modal submission.
+
+</ApiMember>
+
+### type
+
+<ApiMember
+	kind="property"
+	signature={['type: ', ['InteractionType', 'https://discord-api-types.dev/api/discord-api-types-v10#InteractionType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L821',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:821'
+	}}
+/>
+
+### user
+
+<ApiMember kind="property" signature={['user: ', ['User', '/documentation/api/plugin-gateway/classes/User']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L825', label: 'packages/plugin-gateway/src/util/Transformers.ts:825' }}>
+
+The user who triggered the interaction.
+
+</ApiMember>

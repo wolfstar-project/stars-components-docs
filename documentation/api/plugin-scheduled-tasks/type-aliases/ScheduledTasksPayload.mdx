@@ -1,0 +1,45 @@
+---
+title: 'Type Alias: ScheduledTasksPayload'
+description: 'The payload type of a ScheduledTasks entry. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L184',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:184'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+The payload type of a [ScheduledTasks](/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasks) entry.
+
+<ApiSignature
+	tokens={[
+		'type ScheduledTasksPayload<K extends ',
+		['ScheduledTasksKeys', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys'],
+		' = ',
+		['ScheduledTasksKeys', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys'],
+		'> = ',
+		['ScheduledTasksKeys', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys'],
+		' extends never ? undefined : ',
+		['ScheduledTasks', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasks'],
+		'[K] extends never ? undefined : ',
+		['ScheduledTasks', '/documentation/api/plugin-scheduled-tasks/interfaces/ScheduledTasks'],
+		'[K]'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="K"
+	type={['extends ', ['ScheduledTasksKeys', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTasksKeys']]}
+	defaultValue="ScheduledTasksKeys"
+/>
+
+</ApiParams>

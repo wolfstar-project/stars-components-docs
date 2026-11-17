@@ -1,0 +1,74 @@
+---
+title: 'Function: command()'
+description: 'Builds a CommandRequest. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/commands.ts#L64',
+		label: 'packages/plugin-sharder/src/util/commands.ts:64'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Builds a [CommandRequest](/documentation/api/plugin-sharder/interfaces/CommandRequest).
+
+<ApiSignature
+	tokens={[
+		'command<C extends ',
+		['Commands', '/documentation/api/plugin-sharder/type-aliases/Commands'],
+		'<any>, Name extends string = keyof C & string>(\n  name: Name,\n  ...data: ',
+		['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'],
+		'<C[Name]>[0] extends undefined ? [] : [data: ',
+		['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'],
+		'<C[Name]>[0]]\n): ',
+		['CommandRequest', '/documentation/api/plugin-sharder/interfaces/CommandRequest'],
+		'<Name, ',
+		['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'],
+		'<C[Name]>[0]>'
+	]}
+/>
+
+Builds a [CommandRequest](/documentation/api/plugin-sharder/interfaces/CommandRequest).
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="C" type={['extends ', ['Commands', '/documentation/api/plugin-sharder/type-aliases/Commands'], '<any>']} />
+
+<ApiParam name="Name" type={['extends string']} defaultValue={'keyof C & string'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['Name']}>
+
+The name of the command.
+
+</ApiParam>
+
+<ApiParam name="data" type={[['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'], '<C[Name]>[0] extends undefined ? [] : [data: ', ['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'], '<C[Name]>[0]]']} rest>
+
+Its argument.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['CommandRequest', '/documentation/api/plugin-sharder/interfaces/CommandRequest'],
+		'<Name, ',
+		['Parameters', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype'],
+		'<C[Name]>[0]>'
+	]}
+/>
+
+</ApiParams>

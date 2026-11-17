@@ -1,0 +1,67 @@
+---
+title: 'Function: createCommandHandler()'
+description: 'Builds a request handler answering CommandRequests: the sharder stays raw data (as the RFC settled), and this is the optional, typed layer on top. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/commands.ts#L44',
+		label: 'packages/plugin-sharder/src/util/commands.ts:44'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Builds a request handler answering [CommandRequest](/documentation/api/plugin-sharder/interfaces/CommandRequest)s: the sharder stays raw data (as the RFC settled), and
+this is the optional, typed layer on top.
+
+<ApiSignature
+	tokens={[
+		'createCommandHandler<Context>(commands: ',
+		['Commands', '/documentation/api/plugin-sharder/type-aliases/Commands'],
+		'<Context>): ',
+		['RequestHandler', '/documentation/api/plugin-sharder/type-aliases/RequestHandler'],
+		'<Context>'
+	]}
+/>
+
+Builds a request handler answering [CommandRequest](/documentation/api/plugin-sharder/interfaces/CommandRequest)s: the sharder stays raw data (as the RFC settled), and
+this is the optional, typed layer on top.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Context" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="commands" type={[['Commands', '/documentation/api/plugin-sharder/type-aliases/Commands'], '<Context>']}>
+
+The commands, by name.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RequestHandler', '/documentation/api/plugin-sharder/type-aliases/RequestHandler'], '<Context>']} />
+
+</ApiParams>
+
+**Example**
+
+```ts
+const commands = {
+	guildCount: () => guilds.size,
+	guild: (id: string) => guilds.get(id) ?? null
+} satisfies Commands;
+
+shard.setRequestHandler(createCommandHandler(commands));
+const counts = await manager.broadcastRequest<CommandReply<typeof commands, 'guildCount'>>(command<typeof commands>('guildCount'));
+```

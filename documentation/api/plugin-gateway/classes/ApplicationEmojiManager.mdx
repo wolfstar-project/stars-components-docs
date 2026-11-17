@@ -1,0 +1,357 @@
+---
+title: 'Class: ApplicationEmojiManager'
+description: 'Manages the emojis of the application, client.application.emojis. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L42',
+		label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:42'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the emojis of the application, `client.application.emojis`. Discord does not send them over the gateway, so
+they are never cached: every method calls the API.
+
+<ApiSignature tokens={['class ApplicationEmojiManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L43', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:43' }}>
+
+<ApiSignature
+	tokens={[
+		'new ApplicationEmojiManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['ApplicationEmojiManager', '/documentation/api/plugin-gateway/classes/ApplicationEmojiManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+## Accessors
+
+### applicationId
+
+<ApiMember kind="accessor" signature={['get applicationId(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L50', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:50' }}>
+
+The ID of the application the emojis belong to.
+
+</ApiMember>
+
+## Methods
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L79', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:79' }}>
+
+<ApiSignature
+	tokens={[
+		'create(options: ',
+		['ApplicationEmojiCreateOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationEmojiCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>'
+	]}
+/>
+
+Uploads an emoji.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ApplicationEmojiCreateOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationEmojiCreateOptions']]}>
+
+The image and name.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L111', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:111' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(emoji: ',
+		['ApplicationEmojiResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationEmojiResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes an emoji.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="emoji" type={[['ApplicationEmojiResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationEmojiResolvable']]}>
+
+The emoji, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L93', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:93' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(\n  emoji: ',
+		['ApplicationEmojiResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationEmojiResolvable'],
+		',\n  options: ',
+		['ApplicationEmojiEditOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationEmojiEditOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>'
+	]}
+/>
+
+Edits an emoji.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="emoji" type={[['ApplicationEmojiResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationEmojiResolvable']]}>
+
+The emoji, or its ID.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['ApplicationEmojiEditOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationEmojiEditOptions']]}>
+
+The changes to apply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L60', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:60' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>>'
+	]}
+/>
+
+Fetches an emoji of the application, or every one of them.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'], '>>']}>
+
+The emoji, or a `Collection` of every emoji by ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'fetch(emojiId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>'
+	]}
+/>
+
+Fetches an emoji of the application, or every one of them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="emojiId" type={['string']}>
+
+The ID of the emoji, omit it to fetch them all.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'], '>']}>
+
+The emoji, or a `Collection` of every emoji by ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### fetchAuthor()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L120', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:120' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchAuthor(emoji: ',
+		['ApplicationEmojiResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationEmojiResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+Fetches the user who uploaded an emoji.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="emoji" type={[['ApplicationEmojiResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationEmojiResolvable']]}>
+
+The emoji, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### hydrate()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts#L130', label: 'packages/plugin-gateway/src/managers/ApplicationEmojiManager.ts:130' }}>
+
+<ApiSignature
+	tokens={[
+		'hydrate(data: ',
+		['APIApplicationEmoji', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationEmoji'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>'
+	]}
+/>
+
+Builds the structure of a raw emoji, resolving its uploader from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIApplicationEmoji', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationEmoji']]}>
+
+The raw emoji.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

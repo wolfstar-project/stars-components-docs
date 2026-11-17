@@ -1,0 +1,196 @@
+---
+title: 'Interface: ServerEvents'
+description: 'API reference for ServerEvents, an interface exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L27',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:27'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature tokens={['interface ServerEvents']} />
+
+## Properties
+
+### error
+
+<ApiMember
+	kind="property"
+	signature={[
+		'error: [error: ',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error'],
+		', request?: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response?: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L28',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:28'
+	}}
+/>
+
+### middlewareError
+
+<ApiMember
+	kind="property"
+	signature={[
+		'middlewareError: [error: unknown, request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L31',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:31'
+	}}
+/>
+
+### middlewareFailure
+
+<ApiMember
+	kind="property"
+	signature={[
+		'middlewareFailure: [request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L30',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:30'
+	}}
+/>
+
+### middlewareSuccess
+
+<ApiMember
+	kind="property"
+	signature={[
+		'middlewareSuccess: [request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L32',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:32'
+	}}
+/>
+
+### request
+
+<ApiMember
+	kind="property"
+	signature={[
+		'request: [request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L29',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:29'
+	}}
+/>
+
+### routeError
+
+<ApiMember
+	kind="property"
+	signature={[
+		'routeError: [error: unknown, request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L40',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:40'
+	}}
+/>
+
+### routerBranchMethodNotAllowed
+
+<ApiMember
+	kind="property"
+	signature={[
+		'routerBranchMethodNotAllowed: [request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>, branch: ',
+		['RouterBranch', '/documentation/api/plugin-api/classes/RouterBranch'],
+		']'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L34',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:34'
+	}}
+/>
+
+### routerBranchNotFound
+
+<ApiMember
+	kind="property"
+	signature={[
+		'routerBranchNotFound: [request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L33',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:33'
+	}}
+/>
+
+### routerFound
+
+<ApiMember
+	kind="property"
+	signature={[
+		'routerFound: [request: ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', response: ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'<',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'>]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L39',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:39'
+	}}
+/>

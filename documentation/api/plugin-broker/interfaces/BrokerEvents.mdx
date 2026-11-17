@@ -1,0 +1,33 @@
+---
+title: 'Interface: BrokerEvents'
+description: 'The payload type of every event a BrokerListener can be registered for, keyed by event name. (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/events.ts#L16',
+		label: 'packages/plugin-broker/src/lib/events.ts:16'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+The payload type of every event a [BrokerListener](/documentation/api/plugin-broker/namespaces/BrokerListener) can be registered for, keyed by event name.
+
+<ApiSignature tokens={['interface BrokerEvents']} />
+
+Empty by design: augment it in your application to type the events your bot publishes and consumes.
+
+**Example**
+
+```typescript
+declare module '@wolfstar/plugin-broker' {
+	interface BrokerEvents {
+		messageCreate: GatewayMessageCreateDispatchData;
+	}
+}
+```

@@ -1,0 +1,28 @@
+---
+title: '~~Type Alias: InMemoryCache~~'
+description: 'A Cache created by createInMemoryCache. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['deprecated']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L213',
+		label: 'packages/plugin-cache/src/lib/memory.ts:213'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+<Warning>
+
+**Deprecated.** Use [Cache](/documentation/api/plugin-cache/interfaces/Cache): the stores may be left out (`entities`) or wrapped by a policy (`policies`).
+
+</Warning>
+
+A [Cache](/documentation/api/plugin-cache/interfaces/Cache) created by [createInMemoryCache](/documentation/api/plugin-cache/functions/createInMemoryCache).
+
+<ApiSignature tokens={['type InMemoryCache = ', ['Cache', '/documentation/api/plugin-cache/interfaces/Cache']]} />

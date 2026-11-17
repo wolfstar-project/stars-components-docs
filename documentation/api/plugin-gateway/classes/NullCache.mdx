@@ -1,0 +1,246 @@
+---
+title: 'Class: NullCache'
+description: 'The Cache of an entity that is not cached: always empty, writes are dropped. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L26',
+		label: 'packages/plugin-gateway/src/util/NullCache.ts:26'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The [Cache](/documentation/api/plugin-gateway/interfaces/Cache) of an entity that is not cached: always empty, writes are dropped.
+
+<ApiSignature
+	tokens={[
+		'class NullCache<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>, Raw extends ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value> = ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value>> implements ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<Value, Raw>'
+	]}
+/>
+
+<ApiHierarchy implements={[[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value, Raw>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>']} />
+
+<ApiParam
+	name="Raw"
+	type={['extends ', ['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'], '<Value>']}
+	defaultValue={'RawAPIType<Value>'}
+/>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L41', label: 'packages/plugin-gateway/src/util/NullCache.ts:41' }}>
+
+<ApiSignature
+	tokens={[
+		'new NullCache<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object, object>, Raw extends object = ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value>>(\n  creator: ',
+		['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'],
+		'<Value, Raw>,\n  name: keyof ',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		',\n  options: ',
+		['NullCacheOptions', '/documentation/api/plugin-gateway/interfaces/NullCacheOptions'],
+		'<Value, Raw> = {}\n): ',
+		['NullCache', '/documentation/api/plugin-gateway/classes/NullCache'],
+		'<Value, Raw>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object, object>']} />
+
+<ApiParam name="Raw" type={['extends object']} defaultValue={'RawAPIType<Value>'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="creator" type={[['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value, Raw>']} />
+
+<ApiParam name="name" type={['keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]} />
+
+<ApiParam
+	name="options"
+	type={[['NullCacheOptions', '/documentation/api/plugin-gateway/interfaces/NullCacheOptions'], '<Value, Raw>']}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### construct
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly construct: ', ['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value, Raw>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L30', label: 'packages/plugin-gateway/src/util/NullCache.ts:30' }}>
+
+The function used to construct instances of the structure this cache holds.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L35', label: 'packages/plugin-gateway/src/util/NullCache.ts:35' }}>
+
+The name of the entity this cache stands for.
+
+</ApiMember>
+
+## Accessors
+
+### synchronous
+
+<ApiMember kind="accessor" signature={['get synchronous(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L52', label: 'packages/plugin-gateway/src/util/NullCache.ts:52' }}>
+
+Whether every method answers synchronously, never with a promise.
+
+</ApiMember>
+
+## Methods
+
+### add()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L56', label: 'packages/plugin-gateway/src/util/NullCache.ts:56' }}>
+
+<ApiSignature
+	tokens={[
+		'add(data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Raw>): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<Value>'
+	]}
+/>
+
+Adds or updates data in the cache, returning the instantiated structure. If the item exists, it patches it with
+the new data unless `overwrite` is true. If it does not exist, it constructs a new instance and stores it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L60', label: 'packages/plugin-gateway/src/util/NullCache.ts:60' }}>
+
+<ApiSignature tokens={['clear(): void']} />
+
+Clears all items from the cache.
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L62', label: 'packages/plugin-gateway/src/util/NullCache.ts:62' }}>
+
+<ApiSignature tokens={['delete(): boolean']} />
+
+Deletes an item from the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L66', label: 'packages/plugin-gateway/src/util/NullCache.ts:66' }}>
+
+<ApiSignature tokens={['get(): undefined']} />
+
+Retrieves an item from the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L70', label: 'packages/plugin-gateway/src/util/NullCache.ts:70' }}>
+
+<ApiSignature tokens={['getSize(): number']} />
+
+Gets the number of items in the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L74', label: 'packages/plugin-gateway/src/util/NullCache.ts:74' }}>
+
+<ApiSignature tokens={['has(): boolean']} />
+
+Checks if an item exists in the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/NullCache.ts#L78', label: 'packages/plugin-gateway/src/util/NullCache.ts:78' }}>
+
+<ApiSignature tokens={['set(): this']} />
+
+Sets an item in the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

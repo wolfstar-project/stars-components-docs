@@ -1,0 +1,41 @@
+---
+title: 'Function: redactDiscordTokens()'
+description: 'Replaces the token in the path of a request to a webhook or an interaction of Discord (/webhooks/<id>/<token>, /interactions/<id>/<token>) with REDAC… (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/instrumentation.ts#L109',
+		label: 'lib/instrumentation.ts:109'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Replaces the token in the path of a request to a webhook or an interaction of Discord (`/webhooks/<id>/<token>`,
+`/interactions/<id>/<token>`) with `REDACTED`.
+
+<ApiSignature tokens={['redactDiscordTokens(path: string): string']} />
+
+Replaces the token in the path of a request to a webhook or an interaction of Discord (`/webhooks/<id>/<token>`,
+`/interactions/<id>/<token>`) with `REDACTED`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="path" type={['string']}>
+
+The path of the request.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>

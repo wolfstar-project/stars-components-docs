@@ -1,0 +1,58 @@
+---
+title: 'Variable: Partials'
+description: "The structures a GatewayClient builds partially when an event concerns one it has not cached, like discord.js's Partials. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Partials.ts#L14',
+		label: 'packages/plugin-gateway/src/util/Partials.ts:14'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The structures a `GatewayClient` builds partially when an event concerns one it has not cached, like discord.js's
+`Partials`. Pass them to `GatewayClientOptions.partials`.
+
+<ApiSignature
+	tokens={[
+		'const Partials: {\n  readonly Channel: 1;\n  readonly GuildMember: 2;\n  readonly GuildScheduledEvent: 5;\n  readonly Message: 3;\n  readonly Poll: 7;\n  readonly PollAnswer: 8;\n  readonly Reaction: 4;\n  readonly SoundboardSound: 9;\n  readonly ThreadMember: 6;\n  readonly User: 0;\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="Channel" type={['1']} />
+
+<ApiParam name="GuildMember" type={['2']} />
+
+<ApiParam name="GuildScheduledEvent" type={['5']} />
+
+<ApiParam name="Message" type={['3']} />
+
+<ApiParam name="Poll" type={['7']} />
+
+<ApiParam name="PollAnswer" type={['8']} />
+
+<ApiParam name="Reaction" type={['4']} />
+
+<ApiParam name="SoundboardSound" type={['9']} />
+
+<ApiParam name="ThreadMember" type={['6']} />
+
+<ApiParam name="User" type={['0']} />
+
+</ApiParams>
+
+Unlike discord.js, events are always emitted, even without the matching partial: an uncached entity is `null` then,
+as it always was. With the partial enabled, it is a structure built from the IDs the dispatch carries instead, whose
+`partial` is `true`: only its IDs are reliable, and `fetch()` completes it. Partial structures are never written to
+the cache.
+
+`Reaction` and `PollAnswer` are accepted for parity only: the reaction and the poll answer of an uncached message
+have always been emitted, and are partial whether or not they are enabled.

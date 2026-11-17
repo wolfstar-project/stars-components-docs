@@ -1,0 +1,206 @@
+---
+title: 'Class: NetworkStrategy'
+description: "Spawns shards on other machines, through ShardManagerProxys connecting to the manager: the sharder RFC's network strategy. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L129',
+		label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:129'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Spawns shards on other machines, through [ShardManagerProxy](/documentation/api/plugin-sharder/classes/ShardManagerProxy)s connecting to the manager: the sharder RFC's
+network strategy.
+
+<ApiSignature tokens={['class NetworkStrategy implements ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]} />
+
+<ApiHierarchy implements={[[['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]]} />
+
+Each spawn goes to the connected proxy with the most room, as the proxies report it across all the managers they
+serve; without room, it waits for a proxy, or for the spawn timeout. A proxy losing its connection has
+`reconnectGrace` to come back with its shards, after which they are spawned elsewhere; its stale shards are killed
+when it comes back later. Proxies coming back are not rebalanced: they take the next spawns.
+
+The strategy keeps the proxies accepting peers informed of which proxy runs which ready shard, so they carry the
+messages between their shards directly.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L145', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:145' }}>
+
+<ApiSignature
+	tokens={[
+		'new NetworkStrategy(options: ',
+		['NetworkStrategyOptions', '/documentation/api/plugin-sharder/interfaces/NetworkStrategyOptions'],
+		'): ',
+		['NetworkStrategy', '/documentation/api/plugin-sharder/classes/NetworkStrategy']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['NetworkStrategyOptions', '/documentation/api/plugin-sharder/interfaces/NetworkStrategyOptions']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### id
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly id: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L136', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:136' }}>
+
+The ID of the manager, see [NetworkStrategyOptions.id](/documentation/api/plugin-sharder/interfaces/NetworkStrategyOptions#id).
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: "network"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L130', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:130' }}>
+
+The name of the strategy in the registry, see [registerStrategy](/documentation/api/plugin-sharder/functions/registerStrategy).
+
+</ApiMember>
+
+### options
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly options: ', ['NetworkStrategyOptions', '/documentation/api/plugin-sharder/interfaces/NetworkStrategyOptions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L131',
+		label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:131'
+	}}
+/>
+
+## Accessors
+
+### port
+
+<ApiMember kind="accessor" signature={['get port(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L167', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:167' }}>
+
+The port the strategy listens on, once initialized.
+
+</ApiMember>
+
+### proxies
+
+<ApiMember kind="accessor" signature={['get proxies(): ', ['ProxyInfo', '/documentation/api/plugin-sharder/interfaces/ProxyInfo'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L153', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:153' }}>
+
+The proxies, connected or within their reconnect grace.
+
+</ApiMember>
+
+## Methods
+
+### destroy()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L201', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:201' }}>
+
+<ApiSignature
+	tokens={['destroy(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Releases what the strategy holds, once every shard is closed.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### disconnectProxy()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L178', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:178' }}>
+
+<ApiSignature tokens={['disconnectProxy(name: string): boolean']} />
+
+Drops the connection of a proxy, which reconnects: its shards are kept if it comes back within the grace.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the proxy.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']}>
+
+Whether a proxy of that name was connected.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### init()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L184', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:184' }}>
+
+<ApiSignature
+	tokens={['init(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Prepares the strategy before the first spawn, e.g. starts listening for proxies.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### spawn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/NetworkStrategy.ts#L209', label: 'packages/plugin-sharder/src/strategies/NetworkStrategy.ts:209' }}>
+
+<ApiSignature
+	tokens={[
+		'spawn(\n  context: ',
+		['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'],
+		',\n  events: ',
+		['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents'],
+		',\n  options: ',
+		['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions'],
+		'\n): ',
+		['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} />
+
+<ApiParam name="events" type={[['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents']]} />
+
+<ApiParam name="options" type={[['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']]} />
+
+</ApiParams>
+
+</ApiMember>

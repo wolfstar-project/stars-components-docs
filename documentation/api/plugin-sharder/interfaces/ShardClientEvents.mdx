@@ -1,0 +1,63 @@
+---
+title: 'Interface: ShardClientEvents'
+description: 'The events of a ShardClient. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L102',
+		label: 'packages/plugin-sharder/src/ShardClient.ts:102'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The events of a [ShardClient](/documentation/api/plugin-sharder/classes/ShardClient).
+
+<ApiSignature tokens={['interface ShardClientEvents']} />
+
+## Properties
+
+### disconnect
+
+<ApiMember kind="property" signature={['disconnect: []']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L110', label: 'packages/plugin-sharder/src/ShardClient.ts:110' }}>
+
+The channel to the manager closed. Without listeners, the shard exits.
+
+</ApiMember>
+
+### error
+
+<ApiMember kind="property" signature={['error: [error: unknown]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L122', label: 'packages/plugin-sharder/src/ShardClient.ts:122' }}>
+
+Without listeners, errors are logged with `console.error`.
+
+</ApiMember>
+
+### invalidMessage
+
+<ApiMember kind="property" signature={['invalidMessage: [error: unknown]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L118', label: 'packages/plugin-sharder/src/ShardClient.ts:118' }}>
+
+The manager sent data that could not be read. Without listeners, it is logged with `console.error`.
+
+</ApiMember>
+
+### managerUnresponsive
+
+<ApiMember kind="property" signature={['managerUnresponsive: []']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L114', label: 'packages/plugin-sharder/src/ShardClient.ts:114' }}>
+
+The manager stopped pinging, e.g. a proxy lost it. The shard keeps running.
+
+</ApiMember>
+
+### message
+
+<ApiMember kind="property" signature={['message: [body: any, from: number | null]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardClient.ts#L106', label: 'packages/plugin-sharder/src/ShardClient.ts:106' }}>
+
+A message from the manager (`from` is `null`) or from another shard.
+
+</ApiMember>

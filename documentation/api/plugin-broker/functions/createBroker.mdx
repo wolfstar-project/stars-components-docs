@@ -1,0 +1,46 @@
+---
+title: 'Function: createBroker()'
+description: 'Creates a Broker, publishing events to a Redis stream for BrokerConsumers to read. (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/broker.ts#L66',
+		label: 'packages/plugin-broker/src/lib/broker.ts:66'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+Creates a [Broker](/documentation/api/plugin-broker/interfaces/Broker), publishing events to a Redis stream for [BrokerConsumer](/documentation/api/plugin-broker/classes/BrokerConsumer)s to read.
+
+<ApiSignature
+	tokens={[
+		'createBroker(options: ',
+		['CreateBrokerOptions', '/documentation/api/plugin-broker/interfaces/CreateBrokerOptions'],
+		'): ',
+		['Broker', '/documentation/api/plugin-broker/interfaces/Broker']
+	]}
+/>
+
+Creates a [Broker](/documentation/api/plugin-broker/interfaces/Broker), publishing events to a Redis stream for [BrokerConsumer](/documentation/api/plugin-broker/classes/BrokerConsumer)s to read.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['CreateBrokerOptions', '/documentation/api/plugin-broker/interfaces/CreateBrokerOptions']]}>
+
+The options for the broker.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Broker', '/documentation/api/plugin-broker/interfaces/Broker']]} />
+
+</ApiParams>

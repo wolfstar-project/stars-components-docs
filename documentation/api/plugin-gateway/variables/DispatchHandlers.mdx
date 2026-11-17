@@ -1,0 +1,32 @@
+---
+title: 'Variable: DispatchHandlers'
+description: 'The table mapping every supported dispatch to its event. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatch.ts#L151',
+		label: 'packages/plugin-gateway/src/util/dispatch.ts:151'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The table mapping every supported dispatch to its event.
+
+<ApiSignature
+	tokens={[
+		'const DispatchHandlers: { [Type in ',
+		['GatewayDispatchEvents', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchEvents'],
+		']+?: ',
+		['AnyDispatchHandler', '/documentation/api/plugin-gateway/type-aliases/AnyDispatchHandler'],
+		'<Type> }'
+	]}
+/>
+
+`INTERACTION_CREATE` is deliberately absent: interactions are served by the HTTP endpoint, and the gateway may
+deliver some of them as well. Dispatches without an entry are still written to the cache and emitted as `raw`.

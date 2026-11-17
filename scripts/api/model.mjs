@@ -81,16 +81,21 @@ export function buildModel({ json, config, versions = {} }) {
 			model.missing.push(slug);
 			continue;
 		}
+		// A package with several entry points (e.g. `index` and `register`) is a module of modules;
+		// document every entry point's exports together, at the package's top level.
+		const children = mod.children ?? [];
+		const entryPoints = children.length > 0 && children.every((child) => child.kind === KIND.Module) ? children : [mod];
 		const pkg = {
 			name: mod.name,
 			slug,
 			mod,
+			entryPoints: new Set(entryPoints),
 			version: versions[slug],
 			url: `${API_ROOT}/${slug}`,
 			dir: slug,
 			symbols: []
 		};
-		collectSymbols(model, pkg, mod, pkg.dir, pkg.url, []);
+		for (const entryPoint of entryPoints) collectSymbols(model, pkg, entryPoint, pkg.dir, pkg.url, []);
 		model.packages.push(pkg);
 	}
 
@@ -116,7 +121,7 @@ function collectSymbols(model, pkg, parent, dir, url, nsPath) {
 			qualified: [...nsPath, refl.name].join('.'),
 			file: isNamespace ? `${dir}/namespaces/${refl.name}/index.mdx` : `${dir}/${info.dir}/${refl.name}.mdx`,
 			url: isNamespace ? `${url}/namespaces/${refl.name}` : `${url}/${info.dir}/${refl.name}`,
-			parent: parent === pkg.mod ? null : parent
+			parent: pkg.entryPoints.has(parent) ? null : parent
 		};
 		pkg.symbols.push(symbol);
 		model.byQualified.set(`${pkg.name}::${symbol.qualified}`, symbol);

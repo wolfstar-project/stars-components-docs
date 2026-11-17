@@ -1,0 +1,80 @@
+---
+title: 'Interface: CacheCodec'
+description: 'Encodes and decodes cached values to and from their stored representation. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/codec.ts#L8',
+		label: 'packages/plugin-cache/src/lib/codec.ts:8'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Encodes and decodes cached values to and from their stored representation.
+
+<ApiSignature tokens={['interface CacheCodec']} />
+
+`name` is stored alongside every encoded value (see [RedisEntityCache](/documentation/api/plugin-cache/classes/RedisEntityCache)), so switching a cache's codec never
+breaks reading entries written under a previous one.
+
+## Properties
+
+### name
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly name: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/codec.ts#L9',
+		label: 'packages/plugin-cache/src/lib/codec.ts:9'
+	}}
+/>
+
+## Methods
+
+### decode()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/codec.ts#L11', label: 'packages/plugin-cache/src/lib/codec.ts:11' }}>
+
+<ApiSignature tokens={['decode(data: string | Buffer<ArrayBufferLike>): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['string | Buffer<ArrayBufferLike>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### encode()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/codec.ts#L10', label: 'packages/plugin-cache/src/lib/codec.ts:10' }}>
+
+<ApiSignature tokens={['encode(value: unknown): string | Buffer<ArrayBufferLike>']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | Buffer<ArrayBufferLike>']} />
+
+</ApiParams>
+
+</ApiMember>

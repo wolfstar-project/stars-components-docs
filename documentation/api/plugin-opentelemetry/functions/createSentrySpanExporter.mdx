@@ -1,0 +1,55 @@
+---
+title: 'Function: createSentrySpanExporter()'
+description: 'Creates the exporter that sends the spans to the OTLP endpoint of the Sentry project of a DSN, as JSON (the encoding the documentation of Sentry show… (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/exporters.ts#L54',
+		label: 'lib/exporters.ts:54'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Creates the exporter that sends the spans to the OTLP endpoint of the Sentry project of a DSN, as JSON (the encoding
+the documentation of Sentry shows).
+
+<ApiSignature
+	tokens={[
+		'createSentrySpanExporter(dsn: string | undefined): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<SpanExporter | undefined>'
+	]}
+/>
+
+Creates the exporter that sends the spans to the OTLP endpoint of the Sentry project of a DSN, as JSON (the encoding
+the documentation of Sentry shows).
+
+An OTLP exporter reads the `OTEL_EXPORTER_OTLP_*` variables when it is created, and adds their headers to the ones
+it is given. Those are the headers of the first destination, with its token, so the variables are hidden while the
+exporter is created: it only has the URL and the header of Sentry.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="dsn" type={['string | undefined']}>
+
+The DSN of the Sentry project.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<SpanExporter | undefined>']}>
+
+The exporter, `undefined` without a DSN or with one that cannot be read.
+
+</ApiParam>
+
+</ApiParams>

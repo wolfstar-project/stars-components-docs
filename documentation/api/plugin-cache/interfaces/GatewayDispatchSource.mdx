@@ -1,0 +1,93 @@
+---
+title: 'Interface: GatewayDispatchSource'
+description: 'A gateway that emits the dispatch event used by @discordjs/ws and @discordjs/core. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/gateway.ts#L6',
+		label: 'packages/plugin-cache/src/lib/gateway.ts:6'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+A gateway that emits the dispatch event used by @discordjs/ws and @discordjs/core.
+
+<ApiSignature tokens={['interface GatewayDispatchSource']} />
+
+## Methods
+
+### off()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/gateway.ts#L11', label: 'packages/plugin-cache/src/lib/gateway.ts:11' }}>
+
+<ApiSignature
+	tokens={[
+		'off(\n  event: "dispatch",\n  listener: (payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		', shardId: number) => void\n): unknown'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['"dispatch"']} />
+
+<ApiParam
+	name="listener"
+	type={[
+		'(payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		', shardId: number) => void'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### on()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/gateway.ts#L7', label: 'packages/plugin-cache/src/lib/gateway.ts:7' }}>
+
+<ApiSignature
+	tokens={[
+		'on(\n  event: "dispatch",\n  listener: (payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		', shardId: number) => void\n): unknown'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="event" type={['"dispatch"']} />
+
+<ApiParam
+	name="listener"
+	type={[
+		'(payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		', shardId: number) => void'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

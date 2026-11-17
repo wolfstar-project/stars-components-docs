@@ -1,0 +1,116 @@
+---
+title: 'Interface: AutoModerationRuleEditOptions'
+description: 'The fields of an auto moderation rule that can be edited. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L29',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:29'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The fields of an auto moderation rule that can be edited.
+
+<ApiSignature tokens={['interface AutoModerationRuleEditOptions']} />
+
+<ApiHierarchy extendedBy={[[['AutoModerationRuleCreateOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleCreateOptions']]]} />
+
+## Properties
+
+### actions?
+
+<ApiMember kind="property" badges={['optional']} signature={['actions?: readonly (', ['AutoModerationActionOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationActionOptions'], ' | ', ['APIAutoModerationAction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationAction'], ')[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L39', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:39' }}>
+
+The actions, camel-cased or raw.
+
+</ApiMember>
+
+### enabled?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['enabled?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L40',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:40'
+	}}
+/>
+
+### eventType?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'eventType?: ',
+		['AutoModerationRuleEventType', 'https://discord-api-types.dev/api/discord-api-types-v10#AutoModerationRuleEventType']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L31',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:31'
+	}}
+/>
+
+### exemptChannels?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['exemptChannels?: readonly ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L42',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:42'
+	}}
+/>
+
+### exemptRoles?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['exemptRoles?: readonly ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L41',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:41'
+	}}
+/>
+
+### name?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['name?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L30',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:30'
+	}}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L43',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:43'
+	}}
+/>
+
+### triggerMetadata?
+
+<ApiMember kind="property" badges={['optional']} signature={['triggerMetadata?: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['AutoModerationTriggerMetadata', '/documentation/api/plugin-gateway/interfaces/AutoModerationTriggerMetadata'], '> | ', ['APIAutoModerationRuleTriggerMetadata', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRuleTriggerMetadata']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L35', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:35' }}>
+
+The trigger's settings, camel-cased or raw. Discord replaces them as a whole.
+
+</ApiMember>

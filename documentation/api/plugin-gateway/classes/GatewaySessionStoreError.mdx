@@ -1,0 +1,83 @@
+---
+title: 'Class: GatewaySessionStoreError'
+description: 'Emitted as an error when GatewayClientOptions.sessionStore fails to read or write the session of a shard. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L154',
+		label: 'packages/plugin-gateway/src/util/errors.ts:154'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Emitted as an `error` when `GatewayClientOptions.sessionStore` fails to read or write the session of a shard.
+
+<ApiSignature
+	tokens={[
+		'class GatewaySessionStoreError extends ',
+		['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'],
+		'<"SessionStoreFailed">'
+	]}
+/>
+
+<ApiHierarchy extends={[[['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'], '<"SessionStoreFailed">']]} />
+
+Neither failure stops the shard: a failed (or timed out) read identifies instead of resuming, and a failed write
+only means the session may not be resumed after a restart. The store's error is the `cause`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L165', label: 'packages/plugin-gateway/src/util/errors.ts:165' }}>
+
+<ApiSignature
+	tokens={[
+		'new GatewaySessionStoreError(\n  operation: "get" | "set",\n  shardId: number,\n  cause: unknown\n): ',
+		['GatewaySessionStoreError', '/documentation/api/plugin-gateway/classes/GatewaySessionStoreError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set"']} />
+
+<ApiParam name="shardId" type={['number']} />
+
+<ApiParam name="cause" type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### code
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly code: "SessionStoreFailed"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L26', label: 'packages/plugin-gateway/src/errors/GatewayError.ts:26' }} inheritedFrom={[['GatewayError.code', '/documentation/api/plugin-gateway/classes/GatewayError#code']]}>
+
+The code of the error.
+
+</ApiMember>
+
+### operation
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly operation: "get" | "set"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L158', label: 'packages/plugin-gateway/src/util/errors.ts:158' }}>
+
+Whether the store failed to read (`"get"`) or write (`"set"`) the session.
+
+</ApiMember>
+
+### shardId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly shardId: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L163', label: 'packages/plugin-gateway/src/util/errors.ts:163' }}>
+
+The shard whose session was read or written.
+
+</ApiMember>

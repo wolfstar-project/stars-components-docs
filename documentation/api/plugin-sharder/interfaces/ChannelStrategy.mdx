@@ -1,0 +1,113 @@
+---
+title: 'Interface: ChannelStrategy'
+description: 'Spawns shards: as child processes, cluster workers, worker threads, on other machines, or anything else. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L92',
+		label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:92'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Spawns shards: as child processes, cluster workers, worker threads, on other machines, or anything else. The
+sharder RFC's channel strategy.
+
+<ApiSignature tokens={['interface ChannelStrategy']} />
+
+<ApiHierarchy
+	implementedBy={[
+		[['NetworkStrategy', '/documentation/api/plugin-sharder/classes/NetworkStrategy']],
+		[['ProcessStrategy', '/documentation/api/plugin-sharder/classes/ProcessStrategy']],
+		[['WorkerStrategy', '/documentation/api/plugin-sharder/classes/WorkerStrategy']]
+	]}
+/>
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L96', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:96' }}>
+
+The name of the strategy in the registry, see [registerStrategy](/documentation/api/plugin-sharder/functions/registerStrategy).
+
+</ApiMember>
+
+## Methods
+
+### destroy()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L104', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:104' }}>
+
+<ApiSignature
+	tokens={['destroy(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Releases what the strategy holds, once every shard is closed.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### init()
+
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L100', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:100' }}>
+
+<ApiSignature
+	tokens={['init(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Prepares the strategy before the first spawn, e.g. starts listening for proxies.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### spawn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L105', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:105' }}>
+
+<ApiSignature
+	tokens={[
+		'spawn(\n  context: ',
+		['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'],
+		',\n  events: ',
+		['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents'],
+		',\n  options: ',
+		['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions'],
+		'\n): ',
+		['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} />
+
+<ApiParam name="events" type={[['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents']]} />
+
+<ApiParam name="options" type={[['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']]} />
+
+</ApiParams>
+
+</ApiMember>

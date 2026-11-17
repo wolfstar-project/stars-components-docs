@@ -1,0 +1,72 @@
+---
+title: 'Function: resolveGuildEmoji()'
+description: "Finds a custom emoji by its ID in the cache of every guild, like discord.js's resolveGuildEmoji. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L438',
+		label: 'packages/plugin-gateway/src/util/Util.ts:438'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Finds a custom emoji by its ID in the cache of every guild, like discord.js's `resolveGuildEmoji`.
+
+<ApiSignature
+	tokens={[
+		'resolveGuildEmoji(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		', emojiId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		' | null>'
+	]}
+/>
+
+Finds a custom emoji by its ID in the cache of every guild, like discord.js's `resolveGuildEmoji`.
+
+Emojis are cached per guild, so it enumerates the whole emoji cache: it needs a store able to list its entries, and
+never calls the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client whose cache to search.
+
+</ApiParam>
+
+<ApiParam name="emojiId" type={['string']}>
+
+The ID of the emoji.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], ' | null>']}>
+
+The emoji, `null` when no cached guild has it.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the emoji cache cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>

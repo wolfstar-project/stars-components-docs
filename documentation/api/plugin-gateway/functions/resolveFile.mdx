@@ -1,0 +1,68 @@
+---
+title: 'Function: resolveFile()'
+description: 'Resolves a BufferResolvable to its contents: reads paths from disk, downloads URLs, and drains streams. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DataResolver.ts#L79',
+		label: 'packages/plugin-gateway/src/util/DataResolver.ts:79'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Resolves a [BufferResolvable](/documentation/api/plugin-gateway/type-aliases/BufferResolvable) to its contents: reads paths from disk, downloads URLs, and drains streams.
+
+<ApiSignature
+	tokens={[
+		'resolveFile(resource: ',
+		['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ResolvedFile', '/documentation/api/plugin-gateway/interfaces/ResolvedFile'],
+		'>'
+	]}
+/>
+
+Resolves a [BufferResolvable](/documentation/api/plugin-gateway/type-aliases/BufferResolvable) to its contents: reads paths from disk, downloads URLs, and drains streams.
+
+A URL is fetched as is. Sanitize URLs that come from users: fetching them may reach internal services.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="resource" type={[['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable']]}>
+
+The resource to resolve.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ResolvedFile', '/documentation/api/plugin-gateway/interfaces/ResolvedFile'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+A `GatewayError` when a path is not a file, or a download fails.
+
+</ApiParam>
+
+</ApiParams>

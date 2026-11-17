@@ -1,0 +1,116 @@
+---
+title: 'Interface: GuildAuditLogs'
+description: "A page of a guild's audit log, with the entities its entries refer to. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L122',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:122'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A page of a guild's audit log, with the entities its entries refer to.
+
+<ApiSignature tokens={['interface GuildAuditLogs']} />
+
+## Properties
+
+### applicationCommands
+
+<ApiMember
+	kind="property"
+	signature={[
+		'applicationCommands: ',
+		['APIApplicationCommand', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommand'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L132',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:132'
+	}}
+/>
+
+### autoModerationRules
+
+<ApiMember
+	kind="property"
+	signature={['autoModerationRules: ', ['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L126',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:126'
+	}}
+/>
+
+### entries
+
+<ApiMember
+	kind="property"
+	signature={['entries: ', ['GuildAuditLogsEntry', '/documentation/api/plugin-gateway/classes/GuildAuditLogsEntry'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L123',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:123'
+	}}
+/>
+
+### guildScheduledEvents
+
+<ApiMember
+	kind="property"
+	signature={[
+		'guildScheduledEvents: ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L133',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:133'
+	}}
+/>
+
+### integrations
+
+<ApiMember kind="property" signature={['integrations: ', ['Integration', '/documentation/api/plugin-gateway/classes/Integration'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L131', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:131' }}>
+
+The integrations the entries refer to, partial: an ID, a name, a type, and an account.
+
+</ApiMember>
+
+### threads
+
+<ApiMember
+	kind="property"
+	signature={['threads: ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L127',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:127'
+	}}
+/>
+
+### users
+
+<ApiMember
+	kind="property"
+	signature={['users: ', ['User', '/documentation/api/plugin-gateway/classes/User'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L124',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:124'
+	}}
+/>
+
+### webhooks
+
+<ApiMember
+	kind="property"
+	signature={['webhooks: ', ['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L125',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:125'
+	}}
+/>

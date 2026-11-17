@@ -1,0 +1,216 @@
+---
+title: 'Class: DataManager'
+description: "Manages the API methods of a data model along with a collection of instances, like discord.js's DataManager. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L12',
+		label: 'packages/plugin-gateway/src/managers/DataManager.ts:12'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the API methods of a data model along with a collection of instances, like discord.js's `DataManager`.
+
+<ApiSignature
+	tokens={[
+		'abstract class DataManager<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>, Args extends readonly string[]> extends ',
+		['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']
+	]}
+/>
+
+<ApiHierarchy
+	extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]}
+	extendedBy={[[['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager']]]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>']}>
+
+The structure this manager holds.
+
+</ApiParam>
+
+<ApiParam name="Args" type={['extends readonly string[]']}>
+
+The arguments identifying an entity, e.g. `[id]` or `[guildId, userId]`.
+
+</ApiParam>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L12', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:12' }} inheritedFrom={[['BaseManager.constructor', '/documentation/api/plugin-gateway/classes/BaseManager#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new DataManager<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object, object>, Args extends readonly string[]>(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['DataManager', '/documentation/api/plugin-gateway/classes/DataManager'],
+		'<Value, Args>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object, object>']}>
+
+The structure this manager holds.
+
+</ApiParam>
+
+<ApiParam name="Args" type={['extends readonly string[]']}>
+
+The arguments identifying an entity, e.g. `[id]` or `[guildId, userId]`.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['abstract', 'readonly']} signature={['abstract readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L19', label: 'packages/plugin-gateway/src/managers/DataManager.ts:19' }}>
+
+The cache of the items this manager holds.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+## Methods
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }}>
+
+<ApiSignature
+	tokens={['resolve(value: string | Value): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | null>']}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | Value']}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }}>
+
+<ApiSignature tokens={['resolveId(value: string | Value): string | null']} />
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | Value']}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L26', label: 'packages/plugin-gateway/src/managers/DataManager.ts:26' }}>
+
+<ApiSignature tokens={['abstract resolveKey(...args: Args): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['Args']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }}>
+
+<ApiSignature tokens={['valueOf(): ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>

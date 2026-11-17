@@ -1,0 +1,83 @@
+---
+title: 'Interface: WebhookRelations'
+description: 'The relations of a Webhook, resolved from the cache by client.webhooks. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L24',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:24'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of a [Webhook](/documentation/api/plugin-gateway/classes/Webhook), resolved from the cache by `client.webhooks`.
+
+<ApiSignature tokens={['interface WebhookRelations']} />
+
+## Properties
+
+### channel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['channel?: ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L26',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:26'
+	}}
+/>
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L25',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:25'
+	}}
+/>
+
+### owner?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['owner?: ', ['User', '/documentation/api/plugin-gateway/classes/User']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L29',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:29'
+	}}
+/>
+
+### sourceChannel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['sourceChannel?: ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L28',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:28'
+	}}
+/>
+
+### sourceGuild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['sourceGuild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L27',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:27'
+	}}
+/>

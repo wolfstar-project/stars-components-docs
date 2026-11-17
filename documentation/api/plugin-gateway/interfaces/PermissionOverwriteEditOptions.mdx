@@ -1,0 +1,44 @@
+---
+title: 'Interface: PermissionOverwriteEditOptions'
+description: 'The options of PermissionOverwriteManager.create and PermissionOverwriteManager.edit. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L18',
+		label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:18'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options of [PermissionOverwriteManager.create](/documentation/api/plugin-gateway/classes/PermissionOverwriteManager#create) and [PermissionOverwriteManager.edit](/documentation/api/plugin-gateway/classes/PermissionOverwriteManager#edit).
+
+<ApiSignature tokens={['interface PermissionOverwriteEditOptions']} />
+
+## Properties
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L24',
+		label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:24'
+	}}
+/>
+
+### type?
+
+<ApiMember kind="property" badges={['optional']} signature={['type?: ', ['OverwriteType', 'https://discord-api-types.dev/api/discord-api-types-v10#OverwriteType']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L23', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:23' }}>
+
+Whether the target is a role or a member. Guessed from the cache when absent: a cached role of the guild with
+that ID makes it a role, anything else a member.
+
+</ApiMember>

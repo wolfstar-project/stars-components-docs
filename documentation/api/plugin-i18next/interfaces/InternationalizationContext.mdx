@@ -1,0 +1,76 @@
+---
+title: 'Interface: InternationalizationContext'
+description: 'Context for InternationalizationHandler.fetchLanguage functions. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L243',
+		label: 'packages/plugin-i18next/src/lib/types.ts:243'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+Context for [InternationalizationHandler.fetchLanguage](/documentation/api/plugin-i18next/classes/InternationalizationHandler#fetchlanguage) functions. This context enables
+implementation of per-guild, per-channel, and per-user localization.
+
+<ApiSignature tokens={['interface InternationalizationContext']} />
+
+## Properties
+
+### channelId
+
+<ApiMember kind="property" signature={['channelId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L247', label: 'packages/plugin-i18next/src/lib/types.ts:247' }}>
+
+The ID of the channel the interaction was sent from, or `null` when it was not provided.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" signature={['guildId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L245', label: 'packages/plugin-i18next/src/lib/types.ts:245' }}>
+
+The ID of the guild the interaction was sent from, or `null` when sent from a DM.
+
+</ApiMember>
+
+### interactionGuildLocale?
+
+<ApiMember kind="property" badges={['optional']} signature={['interactionGuildLocale?: "id" | "en-US" | "en-GB" | "bg" | "zh-CN" | "zh-TW" | "hr" | "cs" | "da" | "nl" | "fi" | "fr" | "de" | "el" | "hi" | "hu" | "it" | "ja" | "ko" | "lt" | "no" | "pl" | "pt-BR" | "ro" | "ru" | "es-ES" | "es-419" | "sv-SE" | "th" | "tr" | "uk" | "vi"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L251', label: 'packages/plugin-i18next/src/lib/types.ts:251' }}>
+
+The locale the guild the interaction was sent from is configured with.
+
+</ApiMember>
+
+### interactionLocale?
+
+<ApiMember kind="property" badges={['optional']} signature={['interactionLocale?: "id" | "en-US" | "en-GB" | "bg" | "zh-CN" | "zh-TW" | "hr" | "cs" | "da" | "nl" | "fi" | "fr" | "de" | "el" | "hi" | "hu" | "it" | "ja" | "ko" | "lt" | "no" | "pl" | "pt-BR" | "ro" | "ru" | "es-ES" | "es-419" | "sv-SE" | "th" | "tr" | "uk" | "vi"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L253', label: 'packages/plugin-i18next/src/lib/types.ts:253' }}>
+
+The locale the user that sent the interaction is configured with.
+
+</ApiMember>
+
+### preferredLocale?
+
+<ApiMember kind="property" badges={['optional']} signature={['preferredLocale?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L262', label: 'packages/plugin-i18next/src/lib/types.ts:262' }}>
+
+The preferred locale of the guild the target belongs to.
+
+Filled in from `guild_locale` for an [Interaction](/documentation/api/plugin-i18next/type-aliases/Interaction) and from `preferred_locale` for a
+[GuildTarget](/documentation/api/plugin-i18next/interfaces/GuildTarget); a [ChannelTarget](/documentation/api/plugin-i18next/interfaces/ChannelTarget) and a [MessageTarget](/documentation/api/plugin-i18next/interfaces/MessageTarget) carry no locale, so it
+is left undefined for them.
+
+</ApiMember>
+
+### userId
+
+<ApiMember kind="property" signature={['userId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L249', label: 'packages/plugin-i18next/src/lib/types.ts:249' }}>
+
+The ID of the user that sent the interaction, or `null` when it was not provided.
+
+</ApiMember>

@@ -1,0 +1,87 @@
+---
+title: 'Interface: ProxyPeerOptions'
+description: 'How a proxy accepts connections from other proxies, to carry the messages between their shards directly. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L59',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:59'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+How a proxy accepts connections from other proxies, to carry the messages between their shards directly.
+
+<ApiSignature tokens={['interface ProxyPeerOptions']} />
+
+## Properties
+
+### advertise?
+
+<ApiMember kind="property" badges={['optional']} signature={['advertise?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L70', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:70' }}>
+
+The host other proxies reach this one at.
+
+**Default**
+
+```ts
+host ?? os.hostname();
+```
+
+</ApiMember>
+
+### connectTls?
+
+<ApiMember kind="property" badges={['optional']} signature={['connectTls?: boolean | ConnectionOptions']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L84', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:84' }}>
+
+The TLS options to connect to other peers with, `true` for the defaults.
+
+</ApiMember>
+
+### host?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['host?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L64',
+		label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:64'
+	}}
+/>
+
+### port
+
+<ApiMember kind="property" signature={['port: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L63', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:63' }}>
+
+The port to listen on, `0` for any.
+
+</ApiMember>
+
+### tls?
+
+<ApiMember kind="property" badges={['optional']} signature={['tls?: TlsOptions']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L80', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:80' }}>
+
+The TLS options of the peer server (`key`, `cert`, ...). Left out, peers talk plain TCP.
+
+</ApiMember>
+
+### token?
+
+<ApiMember kind="property" badges={['optional']} signature={['token?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManagerProxy.ts#L76', label: 'packages/plugin-sharder/src/ShardManagerProxy.ts:76' }}>
+
+The shared secret of the peers.
+
+**Default**
+
+```ts
+the proxy's token
+```
+
+</ApiMember>

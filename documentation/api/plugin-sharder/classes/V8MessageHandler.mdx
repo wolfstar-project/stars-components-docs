@@ -1,0 +1,91 @@
+---
+title: 'Class: V8MessageHandler'
+description: 'Serializes packets with node:v8, which keeps Maps, Sets, Dates, BigInts, typed arrays, and circular references. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L45',
+		label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:45'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Serializes packets with `node:v8`, which keeps `Map`s, `Set`s, `Date`s, `BigInt`s, typed arrays, and circular
+references.
+
+<ApiSignature tokens={['class V8MessageHandler implements ', ['MessageHandler', '/documentation/api/plugin-sharder/interfaces/MessageHandler']]} />
+
+<ApiHierarchy implements={[[['MessageHandler', '/documentation/api/plugin-sharder/interfaces/MessageHandler']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new V8MessageHandler(): ', ['V8MessageHandler', '/documentation/api/plugin-sharder/classes/V8MessageHandler']]} />
+
+</ApiMember>
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: "v8"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L46', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:46' }}>
+
+The name of the handler in the registry.
+
+</ApiMember>
+
+## Methods
+
+### deserialize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L52', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:52' }}>
+
+<ApiSignature tokens={['deserialize(data: unknown): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### serialize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L48', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:48' }}>
+
+<ApiSignature
+	tokens={[
+		'serialize(packet: unknown): ',
+		['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="packet" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array']]} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,55 @@
+---
+title: 'Interface: ApplicationCommandOptionData'
+description: "An option to give an application command or subcommand, like discord.js's ApplicationCommandOptionData. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L92',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:92'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+An option to give an application command or subcommand, like discord.js's `ApplicationCommandOptionData`.
+
+<ApiSignature
+	tokens={[
+		'interface ApplicationCommandOptionData extends ApplicationCommandOptionBase<',
+		['ApplicationCommandOptionChoiceData', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOptionChoiceData'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			'ApplicationCommandOptionBase<',
+			['ApplicationCommandOptionChoiceData', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOptionChoiceData'],
+			'>'
+		]
+	]}
+/>
+
+## Properties
+
+### options?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'options?: readonly ',
+		['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L93',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:93'
+	}}
+/>

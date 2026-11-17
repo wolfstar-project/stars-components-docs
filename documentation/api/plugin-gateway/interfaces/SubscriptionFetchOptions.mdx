@@ -1,0 +1,57 @@
+---
+title: 'Interface: SubscriptionFetchOptions'
+description: 'The options to list the subscriptions to a SKU with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/SubscriptionManager.ts#L16',
+		label: 'packages/plugin-gateway/src/managers/SubscriptionManager.ts:16'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to list the subscriptions to a SKU with.
+
+<ApiSignature tokens={['interface SubscriptionFetchOptions']} />
+
+With both `before` and `after`, Discord only respects `before`.
+
+## Properties
+
+### after?
+
+<ApiMember kind="property" badges={['optional']} signature={['after?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/SubscriptionManager.ts#L32', label: 'packages/plugin-gateway/src/managers/SubscriptionManager.ts:32' }}>
+
+Only the subscriptions after this subscription ID.
+
+</ApiMember>
+
+### before?
+
+<ApiMember kind="property" badges={['optional']} signature={['before?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/SubscriptionManager.ts#L28', label: 'packages/plugin-gateway/src/managers/SubscriptionManager.ts:28' }}>
+
+Only the subscriptions before this subscription ID.
+
+</ApiMember>
+
+### limit?
+
+<ApiMember kind="property" badges={['optional']} signature={['limit?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/SubscriptionManager.ts#L20', label: 'packages/plugin-gateway/src/managers/SubscriptionManager.ts:20' }}>
+
+How many subscriptions to fetch, up to 100.
+
+</ApiMember>
+
+### user?
+
+<ApiMember kind="property" badges={['optional']} signature={['user?: ', ['UserResolvable', '/documentation/api/plugin-gateway/type-aliases/UserResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/SubscriptionManager.ts#L24', label: 'packages/plugin-gateway/src/managers/SubscriptionManager.ts:24' }}>
+
+Only the subscriptions of this user.
+
+</ApiMember>

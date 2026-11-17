@@ -1,0 +1,331 @@
+---
+title: 'Class: WebhookMixin'
+description: "The members shared by everything posting through a webhook's token, like discord.js's Webhook.applyToClass. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L16',
+		label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:16'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The members shared by everything posting through a webhook's token, like discord.js's `Webhook.applyToClass`.
+
+<ApiSignature tokens={['class WebhookMixin']} />
+
+Every method calls the API with the webhook's token rather than with the bot's authorization, so they work for
+webhooks of other applications too.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new WebhookMixin(): ', ['WebhookMixin', '/documentation/api/plugin-gateway/classes/WebhookMixin']]} />
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L19',
+		label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:19'
+	}}
+/>
+
+### id
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly id: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L17',
+		label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:17'
+	}}
+/>
+
+### token
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly token: string | null | undefined']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L18',
+		label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:18'
+	}}
+/>
+
+## Accessors
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L42',
+		label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:42'
+	}}
+/>
+
+### createdTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdTimestamp(): number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L38',
+		label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:38'
+	}}
+/>
+
+### url
+
+<ApiMember kind="accessor" signature={['get url(): string | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L33', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:33' }}>
+
+The URL to post to, built from the webhook's ID and token.
+
+</ApiMember>
+
+## Methods
+
+### deleteMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L105', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:105' }}>
+
+<ApiSignature
+	tokens={[
+		'deleteMessage(messageId: string, options?: ',
+		['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a message sent by the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']]} optional>
+
+The thread the message is in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### editMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L87', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:87' }}>
+
+<ApiSignature
+	tokens={[
+		'editMessage(\n  messageId: string,\n  options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['WebhookMessageEditOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageEditOptions'],
+		'>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Edits a message sent by the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['WebhookMessageEditOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageEditOptions'], '>']}>
+
+The changes, the new content, or a [MessagePayload](/documentation/api/plugin-gateway/classes/MessagePayload), and the thread the message is in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L77', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:77' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchMessage(messageId: string, options?: ',
+		['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Fetches a message sent by the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']]} optional>
+
+The thread the message is in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L51', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:51' }}>
+
+<ApiSignature
+	tokens={[
+		'send(options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['WebhookMessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageCreateOptions'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Sends a message through the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['WebhookMessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageCreateOptions'], '>']}>
+
+The message, its content, or a [MessagePayload](/documentation/api/plugin-gateway/classes/MessagePayload), and the thread to send it in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### sendSlackMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L65', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:65' }}>
+
+<ApiSignature
+	tokens={[
+		'sendSlackMessage(body: unknown, options: ',
+		['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Sends a Slack-compatible message through the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="body" type={['unknown']}>
+
+The Slack message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']]} defaultValue={'{}'}>
+
+The thread to send it in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

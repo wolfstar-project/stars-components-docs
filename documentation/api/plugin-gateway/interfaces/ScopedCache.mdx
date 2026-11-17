@@ -1,0 +1,112 @@
+---
+title: 'Interface: ScopedCache'
+description: 'The cache of the manager of one channel or thread: the keyed methods of the Cache it reads, taking the ID of the entity alone instead of the key buil… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L175',
+		label: 'packages/plugin-gateway/src/util/cache.ts:175'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The cache of the manager of one channel or thread: the keyed methods of the [Cache](/documentation/api/plugin-gateway/interfaces/Cache) it reads, taking the ID
+of the entity alone instead of the key built by `resolveKey`, like the caches of discord.js's channel managers.
+
+<ApiSignature
+	tokens={['interface ScopedCache<Value extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>>']}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>']}>
+
+The structure the cache hands out.
+
+</ApiParam>
+
+</ApiParams>
+
+## Properties
+
+### synchronous
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly synchronous: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L179', label: 'packages/plugin-gateway/src/util/cache.ts:179' }}>
+
+Whether every method answers synchronously, never with a promise.
+
+</ApiMember>
+
+## Methods
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L184', label: 'packages/plugin-gateway/src/util/cache.ts:184' }}>
+
+<ApiSignature tokens={['delete(id: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+Deletes an item from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L189', label: 'packages/plugin-gateway/src/util/cache.ts:189' }}>
+
+<ApiSignature tokens={['get(id: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | undefined>']} />
+
+Retrieves an item from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | undefined>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L194', label: 'packages/plugin-gateway/src/util/cache.ts:194' }}>
+
+<ApiSignature tokens={['has(id: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+Checks if an item exists in the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="id" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>

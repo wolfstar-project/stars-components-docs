@@ -1,0 +1,57 @@
+---
+title: 'Function: discordSort()'
+description: "Sorts roles or guild channels the way Discord displays them, like discord.js's discordSort: by position, then by ID, ascending for channels and desce… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L300',
+		label: 'packages/plugin-gateway/src/util/Util.ts:300'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Sorts roles or guild channels the way Discord displays them, like discord.js's `discordSort`: by position, then by
+ID, ascending for channels and descending for roles (told apart by channels having a `type`).
+
+<ApiSignature
+	tokens={[
+		'discordSort<Item extends ',
+		['Positioned', '/documentation/api/plugin-gateway/interfaces/Positioned'],
+		'>(items: Iterable<Item, any, any> | ReadonlyMap<string, Item>): Item[]'
+	]}
+/>
+
+Sorts roles or guild channels the way Discord displays them, like discord.js's `discordSort`: by position, then by
+ID, ascending for channels and descending for roles (told apart by channels having a `type`).
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Item" type={['extends ', ['Positioned', '/documentation/api/plugin-gateway/interfaces/Positioned']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="items" type={['Iterable<Item, any, any> | ReadonlyMap<string, Item>']}>
+
+The roles or channels to sort, or a map of them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Item[]']}>
+
+A new sorted array.
+
+</ApiParam>
+
+</ApiParams>

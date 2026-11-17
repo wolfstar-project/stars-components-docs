@@ -1,0 +1,327 @@
+---
+title: 'Class: MemoryEntityCache'
+description: 'An IterableEntityCache backed by a Map, optionally bounded as a least-recently-used cache, with optional per-entry time-to-live. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L47',
+		label: 'packages/plugin-cache/src/lib/memory.ts:47'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+An [IterableEntityCache](/documentation/api/plugin-cache/interfaces/IterableEntityCache) backed by a `Map`, optionally bounded as a least-recently-used cache, with optional
+per-entry time-to-live.
+
+<ApiSignature
+	tokens={[
+		'class MemoryEntityCache<Raw> implements ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<Raw>'
+	]}
+/>
+
+<ApiHierarchy implements={[[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<Raw>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L66', label: 'packages/plugin-cache/src/lib/memory.ts:66' }}>
+
+<ApiSignature
+	tokens={[
+		'new MemoryEntityCache<Raw>(\n  maxSize: number = Infinity,\n  options: ',
+		['MemoryEntityCacheOptions', '/documentation/api/plugin-cache/interfaces/MemoryEntityCacheOptions'],
+		' = {}\n): ',
+		['MemoryEntityCache', '/documentation/api/plugin-cache/classes/MemoryEntityCache'],
+		'<Raw>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="maxSize" type={['number']} defaultValue="Infinity" />
+
+<ApiParam
+	name="options"
+	type={[['MemoryEntityCacheOptions', '/documentation/api/plugin-cache/interfaces/MemoryEntityCacheOptions']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### maxSize
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly maxSize: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L56', label: 'packages/plugin-cache/src/lib/memory.ts:56' }}>
+
+The maximum amount of entries, `Infinity` for an unbounded cache.
+
+</ApiMember>
+
+### synchronous
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly synchronous: true']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L51', label: 'packages/plugin-cache/src/lib/memory.ts:51' }}>
+
+Always `true`: every method returns synchronously.
+
+</ApiMember>
+
+### ttl
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly ttl: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L61', label: 'packages/plugin-cache/src/lib/memory.ts:61' }}>
+
+The default time-to-live of every entry, in milliseconds, `null` for entries to never expire.
+
+</ApiMember>
+
+## Methods
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L137', label: 'packages/plugin-cache/src/lib/memory.ts:137' }}>
+
+<ApiSignature tokens={['clear(): void']} />
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L133', label: 'packages/plugin-cache/src/lib/memory.ts:133' }}>
+
+<ApiSignature tokens={['delete(key: string): boolean']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### dispose()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L183', label: 'packages/plugin-cache/src/lib/memory.ts:183' }}>
+
+<ApiSignature tokens={['dispose(): void']} />
+
+Stops the timer of [MemoryEntityCacheOptions.sweepInterval](/documentation/api/plugin-cache/interfaces/MemoryEntityCacheOptions#sweepinterval), if any. The cache keeps working, expired
+entries are then only dropped when read.
+
+</ApiMember>
+
+### entries()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L156', label: 'packages/plugin-cache/src/lib/memory.ts:156' }}>
+
+<ApiSignature tokens={['entries(): [key: string, value: Raw][]']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['[key: string, value: Raw][]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L89', label: 'packages/plugin-cache/src/lib/memory.ts:89' }}>
+
+<ApiSignature tokens={['get(key: string): Raw | undefined']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Raw | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L141', label: 'packages/plugin-cache/src/lib/memory.ts:141' }}>
+
+<ApiSignature tokens={['getSize(): number']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L129', label: 'packages/plugin-cache/src/lib/memory.ts:129' }}>
+
+<ApiSignature tokens={['has(key: string): boolean']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### keys()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L146', label: 'packages/plugin-cache/src/lib/memory.ts:146' }}>
+
+<ApiSignature tokens={['keys(): string[]']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string[]']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L100', label: 'packages/plugin-cache/src/lib/memory.ts:100' }}>
+
+<ApiSignature
+	tokens={['set(key: string, value: Raw, options?: ', ['CacheSetOptions', '/documentation/api/plugin-cache/interfaces/CacheSetOptions'], '): void']}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['Raw']} />
+
+<ApiParam name="options" type={[['CacheSetOptions', '/documentation/api/plugin-cache/interfaces/CacheSetOptions']]} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweep()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L166', label: 'packages/plugin-cache/src/lib/memory.ts:166' }}>
+
+<ApiSignature tokens={['sweep(): number']} />
+
+Drops every expired entry.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']}>
+
+The amount of dropped entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### upsert()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L104', label: 'packages/plugin-cache/src/lib/memory.ts:104' }}>
+
+<ApiSignature
+	tokens={[
+		'upsert(\n  key: string,\n  data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Raw>,\n  options?: ',
+		['CacheUpsertOptions', '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions'],
+		'\n): ',
+		['CacheUpsertResult', '/documentation/api/plugin-cache/interfaces/CacheUpsertResult'],
+		'<Raw>'
+	]}
+/>
+
+Adds data to the cache, shallowly merging it into the cached entry unless `overwrite` is set: the RFC's `add`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']}>
+
+The key of the entry.
+
+</ApiParam>
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>']}>
+
+The data, stored as is when the key is not cached.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['CacheUpsertOptions', '/documentation/api/plugin-cache/interfaces/CacheUpsertOptions']]} optional>
+
+Whether to overwrite the cached entry, and its time-to-live.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['CacheUpsertResult', '/documentation/api/plugin-cache/interfaces/CacheUpsertResult'], '<Raw>']}>
+
+The entry before and after the upsert.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### values()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L151', label: 'packages/plugin-cache/src/lib/memory.ts:151' }}>
+
+<ApiSignature tokens={['values(): Raw[]']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Raw[]']} />
+
+</ApiParams>
+
+</ApiMember>

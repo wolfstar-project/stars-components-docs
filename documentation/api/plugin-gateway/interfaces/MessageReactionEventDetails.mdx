@@ -1,0 +1,50 @@
+---
+title: 'Interface: MessageReactionEventDetails'
+description: 'What a reaction event says besides the reaction and the user. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L86',
+		label: 'packages/plugin-gateway/src/util/events.ts:86'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+What a reaction event says besides the reaction and the user.
+
+<ApiSignature tokens={['interface MessageReactionEventDetails']} />
+
+## Properties
+
+### burst
+
+<ApiMember kind="property" signature={['burst: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L95', label: 'packages/plugin-gateway/src/util/events.ts:95' }}>
+
+Whether the reaction is a super reaction.
+
+</ApiMember>
+
+### type
+
+<ApiMember
+	kind="property"
+	signature={['type: ', ['ReactionType', 'https://discord-api-types.dev/api/discord-api-types-v10#ReactionType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L91',
+		label: 'packages/plugin-gateway/src/util/events.ts:91'
+	}}
+/>
+
+### userId
+
+<ApiMember kind="property" signature={['userId: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/events.ts#L90', label: 'packages/plugin-gateway/src/util/events.ts:90' }}>
+
+The ID of the user who reacted, known even when the user is not.
+
+</ApiMember>

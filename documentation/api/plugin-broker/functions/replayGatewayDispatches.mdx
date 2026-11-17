@@ -1,0 +1,98 @@
+---
+title: 'Function: replayGatewayDispatches()'
+description: 'Replays the dispatches forwardGatewayDispatches publishes on a GatewayClient that never connects to Discord: its listeners receive the same events, w… (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L204',
+		label: 'packages/plugin-broker/src/lib/gateway.ts:204'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+Replays the dispatches [forwardGatewayDispatches](/documentation/api/plugin-broker/functions/forwardGatewayDispatches) publishes on a `GatewayClient` that never connects to Discord:
+its listeners receive the same events, with the same Structures and previous state, as those of the gateway
+process's client.
+
+<ApiSignature
+	tokens={[
+		'replayGatewayDispatches(\n  consumer: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['BrokerConsumer', '/documentation/api/plugin-broker/classes/BrokerConsumer'],
+		', "on" | "off">,\n  client: ',
+		['GatewayReplayTargetLike', '/documentation/api/plugin-broker/interfaces/GatewayReplayTargetLike'],
+		',\n  options: ',
+		['ReplayGatewayDispatchesOptions', '/documentation/api/plugin-broker/interfaces/ReplayGatewayDispatchesOptions'],
+		' = {}\n): () => void'
+	]}
+/>
+
+Replays the dispatches [forwardGatewayDispatches](/documentation/api/plugin-broker/functions/forwardGatewayDispatches) publishes on a `GatewayClient` that never connects to Discord:
+its listeners receive the same events, with the same Structures and previous state, as those of the gateway
+process's client.
+
+The worker's client must share the gateway process's cache (a `@wolfstar/plugin-cache` Redis cache). An entry is
+acknowledged once the replay resolved: a listener that throws leaves it pending, to be redelivered like any
+failing [BrokerListener](/documentation/api/plugin-broker/namespaces/BrokerListener) entry. Relations of the previous state (author, guild, …) resolve from the cache as
+it is when the worker handles the entry, so they can be newer than the dispatch.
+
+Delivery is at-least-once, and a failure is per entry rather than per listener: when one of several listeners of
+an event throws, the redelivery runs the ones that already succeeded again (a connected `GatewayClient` would only
+report the failure through `error`). Listeners must therefore be idempotent. The consumer also awaits the
+listeners of an entry before it reads the next one, and an entry pending for longer than
+`claimIdle` can be claimed by another worker while it still runs, so slow work belongs
+off the replay path (enqueue it instead of awaiting it).
+
+Entries of one guild are replayed in order by a single consumer, but workers of a consumer group take different
+entries and run them concurrently: across the group, the order listeners observe can differ from the gateway
+process's, and so can the cached relations they resolve. The previous state shipped with each entry is a snapshot,
+so `old` stays right.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="consumer" type={[['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'], '<', ['BrokerConsumer', '/documentation/api/plugin-broker/classes/BrokerConsumer'], ', "on" | "off">']}>
+
+The consumer reading the stream the dispatches are forwarded to.
+
+</ApiParam>
+
+<ApiParam name="client" type={[['GatewayReplayTargetLike', '/documentation/api/plugin-broker/interfaces/GatewayReplayTargetLike']]}>
+
+The client to replay them on.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['ReplayGatewayDispatchesOptions', '/documentation/api/plugin-broker/interfaces/ReplayGatewayDispatchesOptions']]} defaultValue={'{}'}>
+
+The options for replaying.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']}>
+
+A function to stop replaying.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+// On a gateway process
+forwardGatewayDispatches(gatewayClient, broker);
+
+// On a worker, with a `GatewayClient` that is never connected
+replayGatewayDispatches(consumer, workerClient);
+```

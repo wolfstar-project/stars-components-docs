@@ -1,0 +1,185 @@
+---
+title: 'Class: ReactionManager'
+description: "Manages the reactions of one message, as they were in the message's payload. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ReactionManager.ts#L15',
+		label: 'packages/plugin-gateway/src/managers/ReactionManager.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the reactions of one message, as they were in the message's payload.
+
+<ApiSignature tokens={['class ReactionManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ReactionManager.ts#L33', label: 'packages/plugin-gateway/src/managers/ReactionManager.ts:33' }}>
+
+<ApiSignature
+	tokens={[
+		'new ReactionManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  channelId: string,\n  messageId: string,\n  reactions: readonly ',
+		['APIReaction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIReaction'],
+		'[],\n  message: ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | null = null,\n  emojis?: ReadonlyMap<string, ',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		'>\n): ',
+		['ReactionManager', '/documentation/api/plugin-gateway/classes/ReactionManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client.
+
+</ApiParam>
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel of the message.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="reactions" type={['readonly ', ['APIReaction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIReaction'], '[]']}>
+
+The raw reactions of the message.
+
+</ApiParam>
+
+<ApiParam name="message" type={[['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean> | null']} defaultValue="null">
+
+The message, which its reactions refer to.
+
+</ApiParam>
+
+<ApiParam name="emojis" type={['ReadonlyMap<string, ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], '>']} optional>
+
+The cached custom emojis of the reactions, by ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### channelId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly channelId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ReactionManager.ts#L16',
+		label: 'packages/plugin-gateway/src/managers/ReactionManager.ts:16'
+	}}
+/>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### messageId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly messageId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ReactionManager.ts#L17',
+		label: 'packages/plugin-gateway/src/managers/ReactionManager.ts:17'
+	}}
+/>
+
+## Accessors
+
+### cache
+
+<ApiMember kind="accessor" signature={['get cache(): ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ReactionManager.ts#L53', label: 'packages/plugin-gateway/src/managers/ReactionManager.ts:53' }}>
+
+The reactions of the message, by emoji like discord.js's `ReactionManager#cache`: the ID of a custom emoji, the
+name of a Unicode one.
+
+</ApiMember>
+
+## Methods
+
+### removeAll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ReactionManager.ts#L84', label: 'packages/plugin-gateway/src/managers/ReactionManager.ts:84' }}>
+
+<ApiSignature
+	tokens={['removeAll(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Removes every reaction of the message.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ReactionManager.ts#L76', label: 'packages/plugin-gateway/src/managers/ReactionManager.ts:76' }}>
+
+<ApiSignature
+	tokens={[
+		'resolve(emoji: ',
+		['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable'],
+		'): ',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		' | null'
+	]}
+/>
+
+Finds the reaction with an emoji, if the message has it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="emoji" type={[['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable']]}>
+
+The emoji.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'], ' | null']} />
+
+</ApiParams>
+
+</ApiMember>

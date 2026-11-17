@@ -1,0 +1,104 @@
+---
+title: 'Class: GatewayError'
+description: "An Error carrying a GatewayErrorCode, like discord.js's DiscordjsError. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L22',
+		label: 'packages/plugin-gateway/src/errors/GatewayError.ts:22'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+An [Error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) carrying a [GatewayErrorCode](/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode), like discord.js's `DiscordjsError`.
+
+<ApiSignature
+	tokens={[
+		'class GatewayError<Code extends ',
+		['GatewayErrorCode', '/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode'],
+		' = ',
+		['GatewayErrorCode', '/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode'],
+		'> extends ',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']
+	]}
+/>
+
+<ApiHierarchy
+	extends={[[['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]]}
+	extendedBy={[
+		[['DispatchTimeoutError', '/documentation/api/plugin-gateway/classes/DispatchTimeoutError']],
+		[['GuildMembersTimeoutError', '/documentation/api/plugin-gateway/classes/GuildMembersTimeoutError']],
+		[['GuildChannelInfoTimeoutError', '/documentation/api/plugin-gateway/classes/GuildChannelInfoTimeoutError']],
+		[['GuildSoundboardSoundsTimeoutError', '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundsTimeoutError']],
+		[['GuildMembersRateLimitError', '/documentation/api/plugin-gateway/classes/GuildMembersRateLimitError']],
+		[['GatewaySessionStoreError', '/documentation/api/plugin-gateway/classes/GatewaySessionStoreError']]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Code"
+	type={['extends ', ['GatewayErrorCode', '/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode']]}
+	defaultValue="GatewayErrorCode"
+/>
+
+</ApiParams>
+
+Its `name` is `GatewayError [<code>]`, and its message is the code's entry in [GatewayErrorMessages](/documentation/api/plugin-gateway/variables/GatewayErrorMessages).
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L28', label: 'packages/plugin-gateway/src/errors/GatewayError.ts:28' }}>
+
+<ApiSignature
+	tokens={[
+		'new GatewayError<Code extends "ClientSessionStoreConflict" | "ClientCacheConflict" | "ClientSweepersConflict" | "ClientNotConstructed" | "SweeperIntervalTooLong" | "DispatchHandlerConflict" | "DispatchTimeout" | "SessionStoreFailed" | "SessionStoreTimeout" | "CacheAsynchronous" | "CacheConstructorAsynchronous" | "CacheNotIterable" | "CacheKeyUnresolvable" | "IdUnresolvable" | "MessageBulkDeleteType" | "InvalidType" | "InvalidElement" | "GuildUncached" | "GuildUncachedMe" | "GuildMemberUncached" | "ChannelUncached" | "ChannelGuildUnknown" | "ChannelTypeChanged" | "ChannelLockPermissionsConflict" | "GuildChannelOrphan" | "GuildChannelUnknown" | "CategoryChildCategory" | "GuildResolve" | "GuildRoleUnknown" | "ThreadPostMessageRequired" | "ThreadOptionsPostOnly" | "ThreadOptionsThreadOnly" | "ChannelMessagesGuildOnly" | "ThreadParentUnknown" | "ThreadOwnerUnknown" | "ThreadMemberIdsMissing" | "GuildIntegrationNotFound" | "GuildMemberUserUnknown" | "GuildMembersQueryConflict" | "GuildMembersUserIdsLimit" | "MemberFetchNonceLength" | "GuildMembersNoncePending" | "GuildMembersTimeout" | "GuildMembersRateLimited" | "ChannelInfoFieldsEmpty" | "GuildChannelInfoTimeout" | "GuildSoundboardSoundsTimeout" | "PresenceNotFetchable" | "InviteGuildUnknown" | "UserNoDMChannel" | "EmojiEmpty" | "EmojiType" | "NotGuildSticker" | "NotGuildSoundboardSound" | "SoundboardSoundContentType" | "ApplicationCommandPermissionsTokenMissing" | "GlobalCommandPermissions" | "MessageContentType" | "MessageNonceLength" | "MessageNonceType" | "MessageSearchContentLength" | "MessageSearchSlop" | "MessageSearchChannelIdsLimit" | "MessageSearchLimit" | "MessageSearchOffset" | "SearchIndexNotYetAvailable" | "MessageForwardChannelMissing" | "MessageReferenceMissing" | "WebhookMessage" | "WebhookApplication" | "MessagePollMissing" | "AttachmentDownloadFailed" | "FileNotFound" | "ReqResourceType" | "VoiceStateNotOwn" | "VoiceStateGuildUnknown" | "EntitlementCreateInvalidOwner" | "WebhookTokenUnavailable" = "ClientSessionStoreConflict" | "ClientCacheConflict" | "ClientSweepersConflict" | "ClientNotConstructed" | "SweeperIntervalTooLong" | "DispatchHandlerConflict" | "DispatchTimeout" | "SessionStoreFailed" | "SessionStoreTimeout" | "CacheAsynchronous" | "CacheConstructorAsynchronous" | "CacheNotIterable" | "CacheKeyUnresolvable" | "IdUnresolvable" | "MessageBulkDeleteType" | "InvalidType" | "InvalidElement" | "GuildUncached" | "GuildUncachedMe" | "GuildMemberUncached" | "ChannelUncached" | "ChannelGuildUnknown" | "ChannelTypeChanged" | "ChannelLockPermissionsConflict" | "GuildChannelOrphan" | "GuildChannelUnknown" | "CategoryChildCategory" | "GuildResolve" | "GuildRoleUnknown" | "ThreadPostMessageRequired" | "ThreadOptionsPostOnly" | "ThreadOptionsThreadOnly" | "ChannelMessagesGuildOnly" | "ThreadParentUnknown" | "ThreadOwnerUnknown" | "ThreadMemberIdsMissing" | "GuildIntegrationNotFound" | "GuildMemberUserUnknown" | "GuildMembersQueryConflict" | "GuildMembersUserIdsLimit" | "MemberFetchNonceLength" | "GuildMembersNoncePending" | "GuildMembersTimeout" | "GuildMembersRateLimited" | "ChannelInfoFieldsEmpty" | "GuildChannelInfoTimeout" | "GuildSoundboardSoundsTimeout" | "PresenceNotFetchable" | "InviteGuildUnknown" | "UserNoDMChannel" | "EmojiEmpty" | "EmojiType" | "NotGuildSticker" | "NotGuildSoundboardSound" | "SoundboardSoundContentType" | "ApplicationCommandPermissionsTokenMissing" | "GlobalCommandPermissions" | "MessageContentType" | "MessageNonceLength" | "MessageNonceType" | "MessageSearchContentLength" | "MessageSearchSlop" | "MessageSearchChannelIdsLimit" | "MessageSearchLimit" | "MessageSearchOffset" | "SearchIndexNotYetAvailable" | "MessageForwardChannelMissing" | "MessageReferenceMissing" | "WebhookMessage" | "WebhookApplication" | "MessagePollMissing" | "AttachmentDownloadFailed" | "FileNotFound" | "ReqResourceType" | "VoiceStateNotOwn" | "VoiceStateGuildUnknown" | "EntitlementCreateInvalidOwner" | "WebhookTokenUnavailable">(\n  code: Code,\n  ...args: ',
+		['GatewayErrorArgs', '/documentation/api/plugin-gateway/type-aliases/GatewayErrorArgs'],
+		'<Code>\n): ',
+		['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'],
+		'<Code>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Code"
+	type={[
+		'extends "ClientSessionStoreConflict" | "ClientCacheConflict" | "ClientSweepersConflict" | "ClientNotConstructed" | "SweeperIntervalTooLong" | "DispatchHandlerConflict" | "DispatchTimeout" | "SessionStoreFailed" | "SessionStoreTimeout" | "CacheAsynchronous" | "CacheConstructorAsynchronous" | "CacheNotIterable" | "CacheKeyUnresolvable" | "IdUnresolvable" | "MessageBulkDeleteType" | "InvalidType" | "InvalidElement" | "GuildUncached" | "GuildUncachedMe" | "GuildMemberUncached" | "ChannelUncached" | "ChannelGuildUnknown" | "ChannelTypeChanged" | "ChannelLockPermissionsConflict" | "GuildChannelOrphan" | "GuildChannelUnknown" | "CategoryChildCategory" | "GuildResolve" | "GuildRoleUnknown" | "ThreadPostMessageRequired" | "ThreadOptionsPostOnly" | "ThreadOptionsThreadOnly" | "ChannelMessagesGuildOnly" | "ThreadParentUnknown" | "ThreadOwnerUnknown" | "ThreadMemberIdsMissing" | "GuildIntegrationNotFound" | "GuildMemberUserUnknown" | "GuildMembersQueryConflict" | "GuildMembersUserIdsLimit" | "MemberFetchNonceLength" | "GuildMembersNoncePending" | "GuildMembersTimeout" | "GuildMembersRateLimited" | "ChannelInfoFieldsEmpty" | "GuildChannelInfoTimeout" | "GuildSoundboardSoundsTimeout" | "PresenceNotFetchable" | "InviteGuildUnknown" | "UserNoDMChannel" | "EmojiEmpty" | "EmojiType" | "NotGuildSticker" | "NotGuildSoundboardSound" | "SoundboardSoundContentType" | "ApplicationCommandPermissionsTokenMissing" | "GlobalCommandPermissions" | "MessageContentType" | "MessageNonceLength" | "MessageNonceType" | "MessageSearchContentLength" | "MessageSearchSlop" | "MessageSearchChannelIdsLimit" | "MessageSearchLimit" | "MessageSearchOffset" | "SearchIndexNotYetAvailable" | "MessageForwardChannelMissing" | "MessageReferenceMissing" | "WebhookMessage" | "WebhookApplication" | "MessagePollMissing" | "AttachmentDownloadFailed" | "FileNotFound" | "ReqResourceType" | "VoiceStateNotOwn" | "VoiceStateGuildUnknown" | "EntitlementCreateInvalidOwner" | "WebhookTokenUnavailable"'
+	]}
+	defaultValue={
+		'"ClientSessionStoreConflict" | "ClientCacheConflict" | "ClientSweepersConflict" | "ClientNotConstructed" | "SweeperIntervalTooLong" | "DispatchHandlerConflict" | "DispatchTimeout" | "SessionStoreFailed" | "SessionStoreTimeout" | "CacheAsynchronous" | "CacheConstructorAsynchronous" | "CacheNotIterable" | "CacheKeyUnresolvable" | "IdUnresolvable" | "MessageBulkDeleteType" | "InvalidType" | "InvalidElement" | "GuildUncached" | "GuildUncachedMe" | "GuildMemberUncached" | "ChannelUncached" | "ChannelGuildUnknown" | "ChannelTypeChanged" | "ChannelLockPermissionsConflict" | "GuildChannelOrphan" | "GuildChannelUnknown" | "CategoryChildCategory" | "GuildResolve" | "GuildRoleUnknown" | "ThreadPostMessageRequired" | "ThreadOptionsPostOnly" | "ThreadOptionsThreadOnly" | "ChannelMessagesGuildOnly" | "ThreadParentUnknown" | "ThreadOwnerUnknown" | "ThreadMemberIdsMissing" | "GuildIntegrationNotFound" | "GuildMemberUserUnknown" | "GuildMembersQueryConflict" | "GuildMembersUserIdsLimit" | "MemberFetchNonceLength" | "GuildMembersNoncePending" | "GuildMembersTimeout" | "GuildMembersRateLimited" | "ChannelInfoFieldsEmpty" | "GuildChannelInfoTimeout" | "GuildSoundboardSoundsTimeout" | "PresenceNotFetchable" | "InviteGuildUnknown" | "UserNoDMChannel" | "EmojiEmpty" | "EmojiType" | "NotGuildSticker" | "NotGuildSoundboardSound" | "SoundboardSoundContentType" | "ApplicationCommandPermissionsTokenMissing" | "GlobalCommandPermissions" | "MessageContentType" | "MessageNonceLength" | "MessageNonceType" | "MessageSearchContentLength" | "MessageSearchSlop" | "MessageSearchChannelIdsLimit" | "MessageSearchLimit" | "MessageSearchOffset" | "SearchIndexNotYetAvailable" | "MessageForwardChannelMissing" | "MessageReferenceMissing" | "WebhookMessage" | "WebhookApplication" | "MessagePollMissing" | "AttachmentDownloadFailed" | "FileNotFound" | "ReqResourceType" | "VoiceStateNotOwn" | "VoiceStateGuildUnknown" | "EntitlementCreateInvalidOwner" | "WebhookTokenUnavailable"'
+	}
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['Code']} />
+
+<ApiParam name="args" type={[['GatewayErrorArgs', '/documentation/api/plugin-gateway/type-aliases/GatewayErrorArgs'], '<Code>']} rest />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### code
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly code: Code']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L26', label: 'packages/plugin-gateway/src/errors/GatewayError.ts:26' }}>
+
+The code of the error.
+
+</ApiMember>

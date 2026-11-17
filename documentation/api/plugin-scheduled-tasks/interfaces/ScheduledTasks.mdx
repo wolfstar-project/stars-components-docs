@@ -1,0 +1,45 @@
+---
+title: 'Interface: ScheduledTasks'
+description: 'The registered tasks and their payload types. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L163',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:163'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+The registered tasks and their payload types. When registering new ones, it is recommended to use
+[module augmentation](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation) so
+custom ones are registered.
+
+<ApiSignature tokens={['interface ScheduledTasks']} />
+
+- If the type is `never` or `undefined`, that means that there is no payload associated with that task.
+- If the type is a union that contains `undefined`, then the payload will be optional.
+
+**Example**
+
+```typescript
+declare module '@wolfstar/plugin-scheduled-tasks' {
+	interface ScheduledTasks {
+		// A task named `Mute` which requires no payload:
+		Mute: never;
+
+		// A task named `Unmute` which requires a payload with a `userId` property:
+		Unmute: {
+			userId: string;
+		};
+
+		// A task named `LogAction` which has an optional payload:
+		LogAction: { moderatorId: string } | undefined;
+	}
+}
+```

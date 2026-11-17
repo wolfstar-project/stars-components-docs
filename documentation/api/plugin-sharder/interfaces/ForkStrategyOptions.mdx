@@ -1,0 +1,63 @@
+---
+title: 'Interface: ForkStrategyOptions'
+description: 'The options of ForkStrategy. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ForkStrategy.ts#L14',
+		label: 'packages/plugin-sharder/src/strategies/ForkStrategy.ts:14'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of [ForkStrategy](/documentation/api/plugin-sharder/classes/ForkStrategy).
+
+<ApiSignature
+	tokens={[
+		'interface ForkStrategyOptions extends ',
+		['ProcessStrategyOptions', '/documentation/api/plugin-sharder/interfaces/ProcessStrategyOptions']
+	]}
+/>
+
+<ApiHierarchy extends={[[['ProcessStrategyOptions', '/documentation/api/plugin-sharder/interfaces/ProcessStrategyOptions']]]} />
+
+## Properties
+
+### args?
+
+<ApiMember kind="property" badges={['optional']} signature={['args?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L18', label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:18' }} inheritedFrom={[['ProcessStrategyOptions.args', '/documentation/api/plugin-sharder/interfaces/ProcessStrategyOptions#args']]}>
+
+The arguments passed to the shard's script.
+
+</ApiMember>
+
+### env?
+
+<ApiMember kind="property" badges={['optional']} signature={['env?: ProcessEnv']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L26', label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:26' }} inheritedFrom={[['ProcessStrategyOptions.env', '/documentation/api/plugin-sharder/interfaces/ProcessStrategyOptions#env']]}>
+
+Extra environment variables, on top of the manager's own.
+
+</ApiMember>
+
+### execArgv?
+
+<ApiMember kind="property" badges={['optional']} signature={['execArgv?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L22', label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:22' }} inheritedFrom={[['ProcessStrategyOptions.execArgv', '/documentation/api/plugin-sharder/interfaces/ProcessStrategyOptions#execargv']]}>
+
+The arguments passed to Node.js, e.g. `["--enable-source-maps"]`.
+
+</ApiMember>
+
+### path?
+
+<ApiMember kind="property" badges={['optional']} signature={['path?: string | URL']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ForkStrategy.ts#L19', label: 'packages/plugin-sharder/src/strategies/ForkStrategy.ts:19' }}>
+
+The script every shard runs. Defaults to the manager's own script: check [ShardClient.context](/documentation/api/plugin-sharder/classes/ShardClient#context) to tell the
+manager and the shards apart.
+
+</ApiMember>

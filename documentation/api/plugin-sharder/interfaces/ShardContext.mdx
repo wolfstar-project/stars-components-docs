@@ -1,0 +1,88 @@
+---
+title: 'Interface: ShardContext'
+description: 'What a shard is told about itself when spawned, read back by ShardClient. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L4',
+		label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:4'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+What a shard is told about itself when spawned, read back by [ShardClient](/documentation/api/plugin-sharder/classes/ShardClient).
+
+<ApiSignature tokens={['interface ShardContext']} />
+
+## Properties
+
+### id
+
+<ApiMember kind="property" signature={['id: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L8', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:8' }}>
+
+The ID of the shard: the index of its channel in the manager.
+
+</ApiMember>
+
+### messageHandler
+
+<ApiMember kind="property" signature={['messageHandler: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L29', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:29' }}>
+
+The name of the manager's message handler.
+
+</ApiMember>
+
+### pingTimeout
+
+<ApiMember kind="property" signature={['pingTimeout: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L21', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:21' }}>
+
+How long the ready shard may go without a ping from its manager, in milliseconds, before
+`managerUnresponsive`; `null` when the manager does not ping.
+
+</ApiMember>
+
+### requestTimeout
+
+<ApiMember kind="property" signature={['requestTimeout: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L25', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:25' }}>
+
+How long the shard waits for the replies of its requests by default, in milliseconds.
+
+</ApiMember>
+
+### shardCount
+
+<ApiMember kind="property" signature={['shardCount: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L16', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:16' }}>
+
+The total number of gateway shards, across every shard (and every manager).
+
+</ApiMember>
+
+### shards
+
+<ApiMember kind="property" signature={['shards: readonly number[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L12', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:12' }}>
+
+The IDs of the gateway shards the shard connects.
+
+</ApiMember>
+
+### transformers
+
+<ApiMember kind="property" signature={['transformers: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L33', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:33' }}>
+
+The names of the manager's message transformers, in order.
+
+</ApiMember>
+
+### transport?
+
+<ApiMember kind="property" badges={['optional']} signature={['transport?: "process" | "worker"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ChannelStrategy.ts#L37', label: 'packages/plugin-sharder/src/strategies/ChannelStrategy.ts:37' }}>
+
+How the shard talks to its parent: the process IPC channel, or its worker thread port. Set by the strategy.
+
+</ApiMember>

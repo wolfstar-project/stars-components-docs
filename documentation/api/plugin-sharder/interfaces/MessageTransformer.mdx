@@ -1,0 +1,137 @@
+---
+title: 'Interface: MessageTransformer'
+description: 'Transforms serialized data on its way to the channel, and back: compression, encryption, signing, ... (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L26',
+		label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:26'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Transforms serialized data on its way to the channel, and back: compression, encryption, signing, ...
+
+<ApiSignature tokens={['interface MessageTransformer']} />
+
+<ApiHierarchy
+	implementedBy={[
+		[['BrotliTransformer', '/documentation/api/plugin-sharder/classes/BrotliTransformer']],
+		[['GzipTransformer', '/documentation/api/plugin-sharder/classes/GzipTransformer']]
+	]}
+/>
+
+Transformers compose: they write in the order they are given, and read in the reverse order. `[gzip, aes]` gzips
+then encrypts when writing, and decrypts then gunzips when reading. A transformer throwing while reading rejects the
+data, which is reported as an invalid message.
+
+Like [MessageHandler](/documentation/api/plugin-sharder/interfaces/MessageHandler)s, the manager tells its shards the names of its transformers: custom ones must be
+registered in the shards too, see [registerMessageTransformer](/documentation/api/plugin-sharder/functions/registerMessageTransformer).
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L30', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:30' }}>
+
+The name of the transformer in the registry.
+
+</ApiMember>
+
+## Methods
+
+### read()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L32', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:32' }}>
+
+<ApiSignature
+	tokens={[
+		'read(data: ',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		', context: ',
+		['TransformerContext', '/documentation/api/plugin-sharder/interfaces/TransformerContext'],
+		'): ',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		' | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData']]} />
+
+<ApiParam name="context" type={[['TransformerContext', '/documentation/api/plugin-sharder/interfaces/TransformerContext']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		' | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### write()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageTransformer.ts#L31', label: 'packages/plugin-sharder/src/messages/MessageTransformer.ts:31' }}>
+
+<ApiSignature
+	tokens={[
+		'write(data: ',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		', context: ',
+		['TransformerContext', '/documentation/api/plugin-sharder/interfaces/TransformerContext'],
+		'): ',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		' | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData']]} />
+
+<ApiParam name="context" type={[['TransformerContext', '/documentation/api/plugin-sharder/interfaces/TransformerContext']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		' | ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ChannelData', '/documentation/api/plugin-sharder/type-aliases/ChannelData'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

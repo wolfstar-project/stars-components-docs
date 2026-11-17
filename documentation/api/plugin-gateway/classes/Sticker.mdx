@@ -1,0 +1,666 @@
+---
+title: 'Class: Sticker'
+description: "A sticker, a standard one from a sticker pack or a custom one of a guild: @discordjs/structures' Sticker, with its guild, uploader, and URL, and acti… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L29',
+		label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:29'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A sticker, a standard one from a sticker pack or a custom one of a guild: `@discordjs/structures`' `Sticker`, with
+its guild, uploader, and URL, and actions through the client.
+
+<ApiSignature
+	tokens={[
+		'class Sticker extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<',
+		['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+		', ',
+		['StickerRelations', '/documentation/api/plugin-gateway/interfaces/StickerRelations'],
+		'>, Sticker'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+			'<',
+			['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+			', ',
+			['StickerRelations', '/documentation/api/plugin-gateway/interfaces/StickerRelations'],
+			'>'
+		],
+		['Sticker']
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L40', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:40' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new Sticker(data: ',
+		['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+		', relations: ',
+		['StickerRelations', '/documentation/api/plugin-gateway/interfaces/StickerRelations'],
+		' = {}): ',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker']]}>
+
+The raw sticker.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['StickerRelations', '/documentation/api/plugin-gateway/interfaces/StickerRelations']]} defaultValue={'{}'}>
+
+The uploader and guild as resolved from the cache, by the guild's sticker manager.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### available
+
+<ApiMember kind="accessor" signature={['get available(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L60', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:60' }}>
+
+Whether the sticker can be used, `false` when its guild lost the boosts it needs.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L110',
+		label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:110'
+	}}
+/>
+
+### createdTimestamp
+
+<ApiMember kind="accessor" signature={['get createdTimestamp(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L106', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:106' }}>
+
+The timestamp the sticker was created at
+
+</ApiMember>
+
+### format
+
+<ApiMember kind="accessor" signature={['get format(): ', ['StickerFormatType', 'https://discord-api-types.dev/api/discord-api-types-v10#StickerFormatType']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L53', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:53' }}>
+
+The format of the sticker's image, an alias of `formatType`.
+
+</ApiMember>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L72', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:72' }}>
+
+The guild, from the cache. `null` outside of guilds, when the guild is not cached, or when the cache is
+asynchronous: use `fetchGuild()` to always get it.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="accessor"
+	signature={['get guildId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L64',
+		label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:64'
+	}}
+/>
+
+### packId
+
+<ApiMember kind="accessor" signature={['get packId(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L87', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:87' }}>
+
+The ID of the pack of a standard sticker.
+
+</ApiMember>
+
+### sortValue
+
+<ApiMember kind="accessor" signature={['get sortValue(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L94', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:94' }}>
+
+The position of a standard sticker in its pack.
+
+</ApiMember>
+
+### url
+
+<ApiMember kind="accessor" signature={['get url(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L117', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:117' }}>
+
+The URL of the sticker's image: a GIF for GIF stickers, a JSON file for Lottie ones, a PNG otherwise.
+
+</ApiMember>
+
+### user
+
+<ApiMember kind="accessor" signature={['get user(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L101', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:101' }}>
+
+The user who uploaded a guild sticker, when the payload includes it (it needs `ManageGuildExpressions`).
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L45', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:45' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+		'>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'], '>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L169', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:169' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Deletes a guild sticker.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("user" | "guild")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("user" | "guild")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L159', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:159' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['GuildStickerEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildStickerEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Edits a guild sticker.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildStickerEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildStickerEditOptions']]}>
+
+The changes to apply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L181', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:181' }}>
+
+<ApiSignature tokens={['equals(other: unknown): boolean']} />
+
+Whether this sticker has the same data as another one, like discord.js's `Sticker#equals`. Against a sticker, it
+compares the ID, description, type, format, name, pack, tags, availability, guild, and sort value; against a raw
+sticker, only the ID, description, name, and tags. `false` for anything else.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="other" type={['unknown']}>
+
+The sticker, or raw sticker, to compare with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L130', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:130' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Fetches the sticker from the API and patches this structure with the result.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L79', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:79' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuild(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Fetches the guild, cache first. `null` outside of guilds.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPack()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L138', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:138' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPack(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StickerPack', '/documentation/api/plugin-gateway/classes/StickerPack'],
+		' | null>'
+	]}
+/>
+
+Fetches the pack of a standard sticker, `null` for a guild sticker.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StickerPack', '/documentation/api/plugin-gateway/classes/StickerPack'],
+		' | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchUser()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/stickers/Sticker.ts#L148', label: 'packages/plugin-gateway/src/structures/stickers/Sticker.ts:148' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchUser(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		' | null>'
+	]}
+/>
+
+Fetches the user who uploaded a guild sticker, `null` for a standard one or without `ManageGuildExpressions`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		' | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker']]} />
+
+</ApiParams>
+
+</ApiMember>

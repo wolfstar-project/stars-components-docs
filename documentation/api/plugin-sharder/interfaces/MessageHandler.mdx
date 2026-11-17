@@ -1,0 +1,84 @@
+---
+title: 'Interface: MessageHandler'
+description: 'Turns the packets exchanged by the manager and its shards into data a channel carries, and back. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L15',
+		label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:15'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Turns the packets exchanged by the manager and its shards into data a channel carries, and back.
+
+<ApiSignature tokens={['interface MessageHandler']} />
+
+<ApiHierarchy
+	implementedBy={[
+		[['JsonMessageHandler', '/documentation/api/plugin-sharder/classes/JsonMessageHandler']],
+		[['RawMessageHandler', '/documentation/api/plugin-sharder/classes/RawMessageHandler']],
+		[['V8MessageHandler', '/documentation/api/plugin-sharder/classes/V8MessageHandler']]
+	]}
+/>
+
+The manager tells its shards the name of its handler, and [ShardClient](/documentation/api/plugin-sharder/classes/ShardClient) builds the same one from the registry
+(see [registerMessageHandler](/documentation/api/plugin-sharder/functions/registerMessageHandler)): a custom handler must be registered in the shards too.
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L19', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:19' }}>
+
+The name of the handler in the registry.
+
+</ApiMember>
+
+## Methods
+
+### deserialize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L21', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:21' }}>
+
+<ApiSignature tokens={['deserialize(data: unknown): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### serialize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/messages/MessageHandler.ts#L20', label: 'packages/plugin-sharder/src/messages/MessageHandler.ts:20' }}>
+
+<ApiSignature tokens={['serialize(packet: unknown): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="packet" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

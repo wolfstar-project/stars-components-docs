@@ -1,0 +1,95 @@
+---
+title: 'Class: ConsoleTransport'
+description: 'The default Transport, writing every entry to the matching console method. (@wolfstar/plugin-logger)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/ConsoleTransport.ts#L23',
+		label: 'packages/plugin-logger/src/lib/transports/ConsoleTransport.ts:23'
+	}}
+	packageName="@wolfstar/plugin-logger"
+	packageHref="/documentation/api/plugin-logger"
+/>
+
+The default [Transport](/documentation/api/plugin-logger/interfaces/Transport), writing every entry to the matching `console` method.
+
+It carries no dependencies, and is what a [Logger](/documentation/api/plugin-logger/classes/Logger) falls back to when no transport
+is configured.
+
+<ApiSignature tokens={['class ConsoleTransport implements ', ['Transport', '/documentation/api/plugin-logger/interfaces/Transport']]} />
+
+<ApiHierarchy implements={[[['Transport', '/documentation/api/plugin-logger/interfaces/Transport']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/ConsoleTransport.ts#L29', label: 'packages/plugin-logger/src/lib/transports/ConsoleTransport.ts:29' }}>
+
+<ApiSignature
+	tokens={[
+		'new ConsoleTransport(options: ',
+		['ConsoleTransportOptions', '/documentation/api/plugin-logger/interfaces/ConsoleTransportOptions'],
+		' = {}): ',
+		['ConsoleTransport', '/documentation/api/plugin-logger/classes/ConsoleTransport']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ConsoleTransportOptions', '/documentation/api/plugin-logger/interfaces/ConsoleTransportOptions']]} defaultValue={'{}'}>
+
+The transport options.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### level?
+
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly level?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/ConsoleTransport.ts#L24', label: 'packages/plugin-logger/src/lib/transports/ConsoleTransport.ts:24' }}>
+
+The lowest `LogLevel` this transport accepts. Entries below it are dropped before
+[Transport.log](/documentation/api/plugin-logger/interfaces/Transport#log) is called, independently from the logger's own level.
+
+**Default**
+
+```ts
+undefined; // the logger's level applies
+```
+
+</ApiMember>
+
+## Methods
+
+### log()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-logger/src/lib/transports/ConsoleTransport.ts#L33', label: 'packages/plugin-logger/src/lib/transports/ConsoleTransport.ts:33' }}>
+
+<ApiSignature tokens={['log(payload: ', ['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload'], '): void']} />
+
+Writes an entry to the underlying sink.
+
+A rejected promise or a thrown error is caught by the logger and reported to `console.error`,
+so a broken sink never interrupts the caller.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['LogPayload', '/documentation/api/plugin-logger/interfaces/LogPayload']]}>
+
+The entry to write.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

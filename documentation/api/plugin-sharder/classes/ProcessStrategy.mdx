@@ -1,0 +1,120 @@
+---
+title: 'Class: ProcessStrategy'
+description: 'The base of ForkStrategy and ClusterStrategy: a shard is a process with an IPC channel, using the advanced serialization so binary data (and RawMessa… (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L33',
+		label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:33'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The base of [ForkStrategy](/documentation/api/plugin-sharder/classes/ForkStrategy) and [ClusterStrategy](/documentation/api/plugin-sharder/classes/ClusterStrategy): a shard is a process with an IPC channel, using the
+`advanced` serialization so binary data (and [RawMessageHandler](/documentation/api/plugin-sharder/classes/RawMessageHandler)'s values) survive it.
+
+<ApiSignature
+	tokens={['abstract class ProcessStrategy implements ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]}
+/>
+
+<ApiHierarchy
+	implements={[[['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]]}
+	extendedBy={[
+		[['ClusterStrategy', '/documentation/api/plugin-sharder/classes/ClusterStrategy']],
+		[['ForkStrategy', '/documentation/api/plugin-sharder/classes/ForkStrategy']]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new ProcessStrategy(): ', ['ProcessStrategy', '/documentation/api/plugin-sharder/classes/ProcessStrategy']]} />
+
+</ApiMember>
+
+## Properties
+
+### name
+
+<ApiMember kind="property" badges={['abstract', 'readonly']} signature={['abstract readonly name: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L34', label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:34' }}>
+
+The name of the strategy in the registry, see [registerStrategy](/documentation/api/plugin-sharder/functions/registerStrategy).
+
+</ApiMember>
+
+## Methods
+
+### createProcess()
+
+<ApiMember kind="method" badges={['abstract', 'protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L76', label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:76' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract protected createProcess(\n  context: ',
+		['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'],
+		',\n  options: ',
+		['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions'],
+		'\n): ChildProcess | Worker'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} />
+
+<ApiParam name="options" type={[['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['ChildProcess | Worker']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### spawn()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/strategies/ProcessStrategy.ts#L36', label: 'packages/plugin-sharder/src/strategies/ProcessStrategy.ts:36' }}>
+
+<ApiSignature
+	tokens={[
+		'spawn(\n  context: ',
+		['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext'],
+		',\n  events: ',
+		['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents'],
+		',\n  options: ',
+		['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions'],
+		'\n): ',
+		['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={[['ShardContext', '/documentation/api/plugin-sharder/interfaces/ShardContext']]} />
+
+<ApiParam name="events" type={[['ShardTransportEvents', '/documentation/api/plugin-sharder/interfaces/ShardTransportEvents']]} />
+
+<ApiParam name="options" type={[['SpawnOptions', '/documentation/api/plugin-sharder/interfaces/SpawnOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ShardTransport', '/documentation/api/plugin-sharder/interfaces/ShardTransport']]} />
+
+</ApiParams>
+
+</ApiMember>

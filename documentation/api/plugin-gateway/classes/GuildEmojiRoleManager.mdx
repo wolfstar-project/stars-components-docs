@@ -1,0 +1,294 @@
+---
+title: 'Class: GuildEmojiRoleManager'
+description: "Manages the roles allowed to use one custom emoji, like discord.js's GuildEmojiRoleManager. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L24',
+		label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:24'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the roles allowed to use one custom emoji, like discord.js's `GuildEmojiRoleManager`. When it has none,
+everyone can use it.
+
+<ApiSignature tokens={['class GuildEmojiRoleManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+[GuildEmojiRoleManager.cache](/documentation/api/plugin-gateway/classes/GuildEmojiRoleManager#cache) is `Awaitable`, unlike discord.js's: synchronous with the default in-memory
+cache, a promise with a remote store.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L33', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:33' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildEmojiRoleManager(emoji: ',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		'): ',
+		['GuildEmojiRoleManager', '/documentation/api/plugin-gateway/classes/GuildEmojiRoleManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="emoji" type={[['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji']]}>
+
+The emoji.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### emoji
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly emoji: ', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L28', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:28' }}>
+
+The emoji these roles belong to.
+
+</ApiMember>
+
+## Accessors
+
+### cache
+
+<ApiMember kind="accessor" signature={['get cache(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L64', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:64' }}>
+
+The allowed roles held in the cache, by ID. Roles that are not cached are skipped: use
+[GuildEmojiRoleManager.fetch](/documentation/api/plugin-gateway/classes/GuildEmojiRoleManager#fetch) to get them all.
+
+</ApiMember>
+
+### emojiId
+
+<ApiMember
+	kind="accessor"
+	signature={['get emojiId(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L49',
+		label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:49'
+	}}
+/>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L41', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:41' }}>
+
+The emoji's guild, from the cache: `null` when it is not cached.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="accessor"
+	signature={['get guildId(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L45',
+		label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:45'
+	}}
+/>
+
+### ids
+
+<ApiMember kind="accessor" signature={['get ids(): readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L56', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:56' }}>
+
+The IDs of the allowed roles.
+
+</ApiMember>
+
+## Methods
+
+### add()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L81', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:81' }}>
+
+<ApiSignature
+	tokens={[
+		'add(roleOrRoles: ',
+		['RoleResolvable', '/documentation/api/plugin-gateway/type-aliases/RoleResolvable'],
+		' | ',
+		['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		'>'
+	]}
+/>
+
+Allows more roles to use the emoji.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="roleOrRoles" type={[['RoleResolvable', '/documentation/api/plugin-gateway/type-aliases/RoleResolvable'], ' | ', ['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables']]}>
+
+The role or its ID, or an array or `Collection` of them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], '>']}>
+
+The emoji, patched.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### clone()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L109', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:109' }}>
+
+<ApiSignature tokens={['clone(): ', ['GuildEmojiRoleManager', '/documentation/api/plugin-gateway/classes/GuildEmojiRoleManager']]} />
+
+Creates another manager of the same emoji's roles.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildEmojiRoleManager', '/documentation/api/plugin-gateway/classes/GuildEmojiRoleManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L71', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:71' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">[]>'
+	]}
+/>
+
+Fetches the allowed roles, cache first.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### remove()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L91', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:91' }}>
+
+<ApiSignature
+	tokens={[
+		'remove(roleOrRoles: ',
+		['RoleResolvable', '/documentation/api/plugin-gateway/type-aliases/RoleResolvable'],
+		' | ',
+		['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		'>'
+	]}
+/>
+
+Stops allowing roles to use the emoji.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="roleOrRoles" type={[['RoleResolvable', '/documentation/api/plugin-gateway/type-aliases/RoleResolvable'], ' | ', ['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables']]}>
+
+The role or its ID, or an array or `Collection` of them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], '>']}>
+
+The emoji, patched.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts#L102', label: 'packages/plugin-gateway/src/managers/GuildEmojiRoleManager.ts:102' }}>
+
+<ApiSignature
+	tokens={[
+		'set(roles: ',
+		['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		'>'
+	]}
+/>
+
+Replaces the allowed roles, everyone when empty.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="roles" type={[['RoleResolvables', '/documentation/api/plugin-gateway/type-aliases/RoleResolvables']]}>
+
+The roles: an array of roles or IDs, or a `Collection` of roles.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'], '>']}>
+
+The emoji, patched.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

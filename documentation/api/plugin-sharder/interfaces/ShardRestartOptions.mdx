@@ -1,0 +1,46 @@
+---
+title: 'Interface: ShardRestartOptions'
+description: 'The options of a restart. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L72',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:72'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of a restart.
+
+<ApiSignature tokens={['interface ShardRestartOptions']} />
+
+## Properties
+
+### rolling?
+
+<ApiMember kind="property" badges={['optional']} signature={['rolling?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L79', label: 'packages/plugin-sharder/src/ShardChannel.ts:79' }}>
+
+Whether to spawn the new shard before closing the old one, which only closes once the new one is ready: close to
+no downtime, at the cost of both running for a moment.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>
+
+### timeout?
+
+<ApiMember kind="property" badges={['optional']} signature={['timeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L83', label: 'packages/plugin-sharder/src/ShardChannel.ts:83' }}>
+
+How long to wait for the old shard to exit, and for the new one to be ready, in milliseconds.
+
+</ApiMember>

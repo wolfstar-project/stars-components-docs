@@ -1,0 +1,48 @@
+---
+title: 'Class: SubcommandsAdvancedPlugin'
+description: 'Installs the advanced subcommands loader strategy so modular child command classes are wired onto their parent chat-input commands after load. (@wolfstar/plugin-subcommands-advanced)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/register.ts#L15',
+		label: 'packages/plugin-subcommands-advanced/src/register.ts:15'
+	}}
+	packageName="@wolfstar/plugin-subcommands-advanced"
+	packageHref="/documentation/api/plugin-subcommands-advanced"
+/>
+
+Installs the advanced subcommands loader strategy so modular child command
+classes are wired onto their parent chat-input commands after load.
+
+Activate by importing the side-effecting entrypoint before creating the client:
+
+```ts
+import '@wolfstar/plugin-subcommands-advanced/register';
+```
+
+<ApiSignature tokens={['class SubcommandsAdvancedPlugin extends Plugin']} />
+
+<ApiHierarchy extends={[['Plugin']]} />
+
+## Methods
+
+### \[postInitialization\]()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-subcommands-advanced/src/register.ts#L16', label: 'packages/plugin-subcommands-advanced/src/register.ts:16' }}>
+
+<ApiSignature tokens={['static [postInitialization](this: Client, _options: ClientOptions): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="this" type={['Client']} />
+
+<ApiParam name="_options" type={['ClientOptions']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,47 @@
+---
+title: 'Function: isWebSocketHandshake()'
+description: 'Whether a request of http or https opens a WebSocket: its Upgrade header asks for one, whatever its case. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/instrumentation.ts#L63',
+		label: 'lib/instrumentation.ts:63'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Whether a request of `http` or `https` opens a WebSocket: its `Upgrade` header asks for one, whatever its case.
+
+<ApiSignature
+	tokens={[
+		'isWebSocketHandshake(request: ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['OutgoingRequestOptions', '/documentation/api/plugin-opentelemetry/interfaces/OutgoingRequestOptions'],
+		', "headers">): boolean'
+	]}
+/>
+
+Whether a request of `http` or `https` opens a WebSocket: its `Upgrade` header asks for one, whatever its case.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'], '<', ['OutgoingRequestOptions', '/documentation/api/plugin-opentelemetry/interfaces/OutgoingRequestOptions'], ', "headers">']}>
+
+The options of the request, as `http.request` is given them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>

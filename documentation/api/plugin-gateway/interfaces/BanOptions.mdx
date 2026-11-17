@@ -1,0 +1,43 @@
+---
+title: 'Interface: BanOptions'
+description: 'The options to ban users with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L98',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:98'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to ban users with.
+
+<ApiSignature tokens={['interface BanOptions']} />
+
+## Properties
+
+### deleteMessageSeconds?
+
+<ApiMember kind="property" badges={['optional']} signature={['deleteMessageSeconds?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L102', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:102' }}>
+
+How many seconds of the users' messages to delete, up to 7 days.
+
+</ApiMember>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L103',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:103'
+	}}
+/>

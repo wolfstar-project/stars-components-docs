@@ -1,0 +1,66 @@
+---
+title: 'Interface: ShardPingOptions'
+description: "The options of the manager's pings. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L4',
+		label: 'packages/plugin-sharder/src/ShardPing.ts:4'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of the manager's pings.
+
+<ApiSignature tokens={['interface ShardPingOptions']} />
+
+## Properties
+
+### delaySinceReceived?
+
+<ApiMember kind="property" badges={['optional']} signature={['delaySinceReceived?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L23', label: 'packages/plugin-sharder/src/ShardPing.ts:23' }}>
+
+Whether the next ping is sent `interval` after the last answer, rather than after the last ping.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>
+
+### interval?
+
+<ApiMember kind="property" badges={['optional']} signature={['interval?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L10', label: 'packages/plugin-sharder/src/ShardPing.ts:10' }}>
+
+How often the manager pings each ready shard, in milliseconds; `-1` or `Infinity` disables the pings.
+
+**Default**
+
+```ts
+45_000;
+```
+
+</ApiMember>
+
+### timeout?
+
+<ApiMember kind="property" badges={['optional']} signature={['timeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardPing.ts#L17', label: 'packages/plugin-sharder/src/ShardPing.ts:17' }}>
+
+How long a ready shard may go without answering a ping, in milliseconds, before it is deemed unresponsive:
+emitted as `shardUnresponsive`, or restarted when nothing listens to it.
+
+**Default**
+
+```ts
+60_000;
+```
+
+</ApiMember>

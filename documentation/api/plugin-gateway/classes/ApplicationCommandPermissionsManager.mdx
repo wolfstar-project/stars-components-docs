@@ -1,0 +1,449 @@
+---
+title: 'Class: ApplicationCommandPermissionsManager'
+description: "Manages the permissions of application commands, like discord.js's ApplicationCommandPermissionsManager. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L161',
+		label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:161'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the permissions of application commands, like discord.js's `ApplicationCommandPermissionsManager`.
+
+<ApiSignature
+	tokens={['class ApplicationCommandPermissionsManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]}
+/>
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+Reachable from `client.application.commands.permissions` (any guild and command), `guild.commands.permissions` (one
+guild) and `command.permissions` (one command): the scope it is bound to decides which of the options' `guild` and
+`command` are needed, and are ignored.
+
+Reads use the bot's authorization, and the `applicationCommandPermissions` cache (kept up to date by
+`APPLICATION_COMMAND_PERMISSIONS_UPDATE`) when the client has one. Writes (`set`, `add`, `remove`) cannot use it:
+Discord only accepts an OAuth2 bearer token of a user there, passed as the `token` option. Obtaining one is up to
+the caller, there is no OAuth2 flow here.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L172', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:172' }}>
+
+<ApiSignature
+	tokens={[
+		'new ApplicationCommandPermissionsManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  scope: ',
+		['ApplicationCommandPermissionsScope', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsScope'],
+		' = {}\n): ',
+		['ApplicationCommandPermissionsManager', '/documentation/api/plugin-gateway/classes/ApplicationCommandPermissionsManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam
+	name="scope"
+	type={[['ApplicationCommandPermissionsScope', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsScope']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### commandId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly commandId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L170', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:170' }}>
+
+The ID of the command this manager acts on, `null` for any.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L165', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:165' }}>
+
+The ID of the guild this manager acts on, `null` for any.
+
+</ApiMember>
+
+## Methods
+
+### add()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L289', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:289' }}>
+
+<ApiSignature
+	tokens={[
+		'add(options: ',
+		['ApplicationCommandPermissionsEditOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'],
+		'[]>'
+	]}
+/>
+
+Adds permissions to the existing ones of the guild or a command. A permission for an ID that has one already
+replaces it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ApplicationCommandPermissionsEditOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsEditOptions']]}>
+
+The permissions to add, the bearer token, and the guild and command as far as this manager is not
+bound to them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'], '[]>']}>
+
+The permissions as stored.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`ApplicationCommandPermissionsTokenMissing` without a token, and `GlobalCommandPermissions`
+when no guild is known.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L203', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:203' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'fetch(options: ',
+		['FetchApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandPermissionsOptions'],
+		' & { command: ',
+		['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable'],
+		' }): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'],
+		'[]>'
+	]}
+/>
+
+Fetches the permissions of one command, or of every command of a guild. The ID of the application as the command
+stands for the permissions of the guild as a whole.
+
+The permissions of one command come from the cache when it has them, unless `force` is set. The API's answer is
+written to the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['FetchApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandPermissionsOptions'], ' & { command: ', ['ApplicationCommandResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable'], ' }']}>
+
+The guild and command, as far as this manager is not bound to them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'], '[]>']}>
+
+The permissions of the command, or of each command of the guild, by command ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`GlobalCommandPermissions` when no guild is known.
+
+</ApiParam>
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'fetch(options?: ',
+		['FetchApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandPermissionsOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'],
+		'[] | ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'],
+		'[]>>'
+	]}
+/>
+
+Fetches the permissions of one command, or of every command of a guild. The ID of the application as the command
+stands for the permissions of the guild as a whole.
+
+The permissions of one command come from the cache when it has them, unless `force` is set. The API's answer is
+written to the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['FetchApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandPermissionsOptions']]} optional>
+
+The guild and command, as far as this manager is not bound to them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'], '[] | ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'], '[]>>']}>
+
+The permissions of the command, or of each command of the guild, by command ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`GlobalCommandPermissions` when no guild is known.
+
+</ApiParam>
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L370', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:370' }}>
+
+<ApiSignature
+	tokens={[
+		'has(options: ',
+		['HasApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/HasApplicationCommandPermissionsOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+Checks whether a command has a permission for a user, role, channel, or constant.
+
+It reads the permissions like [ApplicationCommandPermissionsManager.fetch](/documentation/api/plugin-gateway/classes/ApplicationCommandPermissionsManager#fetch) does, from the cache when it has
+them. Pass `force: true` to [ApplicationCommandPermissionsManager.fetch](/documentation/api/plugin-gateway/classes/ApplicationCommandPermissionsManager#fetch) first for fresher ones.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['HasApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/HasApplicationCommandPermissionsOptions']]}>
+
+The ID to look for, and the guild and command as far as this manager is not bound to them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`GlobalCommandPermissions` when no guild is known.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### permissionsPath()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L184', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:184' }}>
+
+<ApiSignature tokens={['permissionsPath(guildId: string, commandId?: string): string']} />
+
+The path of the permissions of a guild's commands, or of one command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="commandId" type={['string']} optional>
+
+The ID of the command.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### remove()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L323', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:323' }}>
+
+<ApiSignature
+	tokens={[
+		'remove(options: ',
+		['RemoveApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/RemoveApplicationCommandPermissionsOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'],
+		'[]>'
+	]}
+/>
+
+Removes users, roles, and channels from the permissions of the guild or a command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['RemoveApplicationCommandPermissionsOptions', '/documentation/api/plugin-gateway/interfaces/RemoveApplicationCommandPermissionsOptions']]}>
+
+Who to remove, the bearer token, and the guild and command as far as this manager is not bound to
+them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'], '[]>']}>
+
+The permissions as stored.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`ApplicationCommandPermissionsTokenMissing` without a token, and `GlobalCommandPermissions`
+when no guild is known.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L252', label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:252' }}>
+
+<ApiSignature
+	tokens={[
+		'set(options: ',
+		['ApplicationCommandPermissionsEditOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'],
+		'[]>'
+	]}
+/>
+
+Sets the permissions of the guild, or of a command, replacing the existing ones.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ApplicationCommandPermissionsEditOptions', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsEditOptions']]}>
+
+The permissions, the bearer token, and the guild and command as far as this manager is not bound to
+them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['APIApplicationCommandPermission', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandPermission'], '[]>']}>
+
+The permissions as stored.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`ApplicationCommandPermissionsTokenMissing` without a token, and `GlobalCommandPermissions`
+when no guild is known.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

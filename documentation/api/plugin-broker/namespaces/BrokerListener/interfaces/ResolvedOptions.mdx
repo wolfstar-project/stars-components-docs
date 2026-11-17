@@ -1,0 +1,64 @@
+---
+title: 'Interface: ResolvedOptions'
+description: 'API reference for ResolvedOptions, an interface exported by @wolfstar/plugin-broker.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerListener.ts#L85',
+		label: 'packages/plugin-broker/src/BrokerListener.ts:85'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+<ApiSignature
+	tokens={[
+		'interface ResolvedOptions<Event extends ',
+		['BrokerEventName', '/documentation/api/plugin-broker/type-aliases/BrokerEventName'],
+		' = ',
+		['BrokerEventName', '/documentation/api/plugin-broker/type-aliases/BrokerEventName'],
+		'> extends Options'
+	]}
+/>
+
+<ApiHierarchy extends={[['Options']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Event"
+	type={['extends ', ['BrokerEventName', '/documentation/api/plugin-broker/type-aliases/BrokerEventName']]}
+	defaultValue="BrokerEventName"
+/>
+
+</ApiParams>
+
+## Properties
+
+### event
+
+<ApiMember
+	kind="property"
+	signature={['event: Event']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerListener.ts#L87',
+		label: 'packages/plugin-broker/src/BrokerListener.ts:87'
+	}}
+/>
+
+### once?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['once?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerListener.ts#L88',
+		label: 'packages/plugin-broker/src/BrokerListener.ts:88'
+	}}
+/>

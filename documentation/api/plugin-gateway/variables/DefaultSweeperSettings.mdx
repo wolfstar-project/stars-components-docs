@@ -1,0 +1,25 @@
+---
+title: 'Variable: DefaultSweeperSettings'
+description: 'Ready-made GatewayClientOptions.sweepers, for a bot that only needs recent messages and threads: every hour, messages untouched for 30 minutes are ev… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/limits.ts#L43',
+		label: 'packages/plugin-gateway/src/util/limits.ts:43'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Ready-made [GatewayClientOptions.sweepers](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#sweepers), for a bot that only needs recent messages and threads: every hour,
+messages untouched for 30 minutes are evicted, and so are threads archived for more than four hours.
+
+<ApiSignature tokens={['const DefaultSweeperSettings: ', ['SweeperOptions', '/documentation/api/plugin-gateway/type-aliases/SweeperOptions']]} />
+
+Unlike discord.js's `Options.DefaultSweeperSettings`, which is empty, it sweeps. Spread it to override an entity:
+`sweepers: { ...DefaultSweeperSettings, users: { interval: 3_600, filter: () => (user) => user.bot } }`.

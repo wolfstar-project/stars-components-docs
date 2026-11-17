@@ -1,0 +1,305 @@
+---
+title: 'Class: EntityStoreCache'
+description: 'A Cache over a raw @wolfstar/plugin-cache store (in memory or Redis): the store holds raw API data, and a structure is built on every read. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L58',
+		label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:58'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A [Cache](/documentation/api/plugin-gateway/interfaces/Cache) over a raw `@wolfstar/plugin-cache` store (in memory or Redis): the store holds raw API data, and a
+structure is built on every read.
+
+<ApiSignature
+	tokens={[
+		'class EntityStoreCache<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>, Raw extends ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value> = ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value>> implements ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<Value, Raw>'
+	]}
+/>
+
+<ApiHierarchy implements={[[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value, Raw>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object>']} />
+
+<ApiParam
+	name="Raw"
+	type={['extends ', ['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'], '<Value>']}
+	defaultValue={'RawAPIType<Value>'}
+/>
+
+</ApiParams>
+
+Unlike `CollectionCache`, two reads of the same key return two structures: do not rely on object identity.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L82', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:82' }}>
+
+<ApiSignature
+	tokens={[
+		'new EntityStoreCache<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object, object>, Raw extends object = ',
+		['RawAPIType', '/documentation/api/plugin-gateway/type-aliases/RawAPIType'],
+		'<Value>>(\n  creator: ',
+		['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'],
+		'<Value, Raw>,\n  name: keyof ',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		',\n  options: ',
+		['EntityStoreCacheOptions', '/documentation/api/plugin-gateway/interfaces/EntityStoreCacheOptions'],
+		'<Value, Raw>\n): ',
+		['EntityStoreCache', '/documentation/api/plugin-gateway/classes/EntityStoreCache'],
+		'<Value, Raw>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object, object>']} />
+
+<ApiParam name="Raw" type={['extends object']} defaultValue={'RawAPIType<Value>'} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="creator" type={[['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value, Raw>']} />
+
+<ApiParam name="name" type={['keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]} />
+
+<ApiParam
+	name="options"
+	type={[['EntityStoreCacheOptions', '/documentation/api/plugin-gateway/interfaces/EntityStoreCacheOptions'], '<Value, Raw>']}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### construct
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly construct: ', ['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value, Raw>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L62', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:62' }}>
+
+The function used to construct instances of the structure this cache holds.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly name: keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L67', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:67' }}>
+
+The name of the entity this cache holds.
+
+</ApiMember>
+
+### store
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly store: ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<Raw>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L72', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:72' }}>
+
+The raw store.
+
+</ApiMember>
+
+## Accessors
+
+### synchronous
+
+<ApiMember kind="accessor" signature={['get synchronous(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L96', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:96' }}>
+
+Whether every method answers synchronously, never with a promise.
+
+</ApiMember>
+
+## Methods
+
+### add()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L100', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:100' }}>
+
+<ApiSignature
+	tokens={[
+		'add(data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Raw>, overwrite: boolean = false): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<Value>'
+	]}
+/>
+
+Adds or updates data in the cache, returning the instantiated structure. If the item exists, it patches it with
+the new data unless `overwrite` is true. If it does not exist, it constructs a new instance and stores it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>']} />
+
+<ApiParam name="overwrite" type={['boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### clear()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L113', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:113' }}>
+
+<ApiSignature tokens={['clear(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+Clears all items from the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L117', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:117' }}>
+
+<ApiSignature tokens={['delete(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+Deletes an item from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L121', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:121' }}>
+
+<ApiSignature tokens={['get(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | undefined>']} />
+
+Retrieves an item from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Value | undefined>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getSize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L127', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:127' }}>
+
+<ApiSignature tokens={['getSize(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
+
+Gets the number of items in the cache.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### has()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L131', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:131' }}>
+
+<ApiSignature tokens={['has(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+Checks if an item exists in the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L135', label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:135' }}>
+
+<ApiSignature
+	tokens={[
+		'set(key: string, value: Value): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['EntityStoreCache', '/documentation/api/plugin-gateway/classes/EntityStoreCache'],
+		'<Value, Raw>>'
+	]}
+/>
+
+Sets an item in the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['Value']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['EntityStoreCache', '/documentation/api/plugin-gateway/classes/EntityStoreCache'],
+		'<Value, Raw>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

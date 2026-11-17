@@ -1,0 +1,48 @@
+---
+title: 'Interface: ApplicationCommandPermissionsScope'
+description: 'Where an ApplicationCommandPermissionsManager acts: a guild and a command it is bound to, none of them for the manager of the application, whose opti… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L42',
+		label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:42'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Where an [ApplicationCommandPermissionsManager](/documentation/api/plugin-gateway/classes/ApplicationCommandPermissionsManager) acts: a guild and a command it is bound to, none of them for
+the manager of the application, whose options then have to carry them.
+
+<ApiSignature tokens={['interface ApplicationCommandPermissionsScope']} />
+
+## Properties
+
+### commandId?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['commandId?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L44',
+		label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:44'
+	}}
+/>
+
+### guildId?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guildId?: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts#L43',
+		label: 'packages/plugin-gateway/src/managers/ApplicationCommandPermissionsManager.ts:43'
+	}}
+/>

@@ -1,0 +1,144 @@
+---
+title: 'Class: Server'
+description: 'A standalone HTTP server for auxiliary REST routes (health checks, dashboards, webhooks from other services, etc). (@wolfstar/plugin-api)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L122',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:122'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+A standalone HTTP server for auxiliary REST routes (health checks, dashboards, webhooks from
+other services, etc). It is deliberately independent from `Client.server`, which is
+reserved for the Discord interactions webhook.
+
+<ApiSignature tokens={['class Server extends AsyncEventEmitter<', ['ServerEvents', '/documentation/api/plugin-api/interfaces/ServerEvents'], '>']} />
+
+<ApiHierarchy extends={[['AsyncEventEmitter<', ['ServerEvents', '/documentation/api/plugin-api/interfaces/ServerEvents'], '>']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L128', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:128' }}>
+
+<ApiSignature
+	tokens={[
+		'new Server(options: ',
+		['ServerOptions', '/documentation/api/plugin-api/interfaces/ServerOptions'],
+		' = {}): ',
+		['Server', '/documentation/api/plugin-api/classes/Server']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ServerOptions', '/documentation/api/plugin-api/interfaces/ServerOptions']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### middlewares
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly middlewares: ', ['MiddlewareStore', '/documentation/api/plugin-api/classes/MiddlewareStore']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L124',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:124'
+	}}
+/>
+
+### options
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly options: ', ['ServerOptions', '/documentation/api/plugin-api/interfaces/ServerOptions']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L126',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:126'
+	}}
+/>
+
+### routes
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly routes: ', ['RouteStore', '/documentation/api/plugin-api/classes/RouteStore']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L123',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:123'
+	}}
+/>
+
+### server
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={[
+		'readonly server: ',
+		['Server', 'https://nodejs.org/api/http.html#class-httpserver'],
+		'<typeof ',
+		['ApiRequest', '/documentation/api/plugin-api/classes/ApiRequest'],
+		', typeof ',
+		['ApiResponse', '/documentation/api/plugin-api/classes/ApiResponse'],
+		'>'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L125',
+		label: 'packages/plugin-api/src/lib/structures/http/Server.ts:125'
+	}}
+/>
+
+## Methods
+
+### connect()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L158', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:158' }}>
+
+<ApiSignature
+	tokens={['connect(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Starts listening for requests. Rejects if the server fails to bind or closes before it is listening.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### disconnect()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/http/Server.ts#L188', label: 'packages/plugin-api/src/lib/structures/http/Server.ts:188' }}>
+
+<ApiSignature
+	tokens={['disconnect(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Stops the server from accepting new connections.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

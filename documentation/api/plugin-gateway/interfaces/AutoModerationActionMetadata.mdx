@@ -1,0 +1,47 @@
+---
+title: 'Interface: AutoModerationActionMetadata'
+description: "The metadata of an auto moderation action, like discord.js's AutoModerationActionMetadata. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L143',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:143'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The metadata of an auto moderation action, like discord.js's `AutoModerationActionMetadata`.
+
+<ApiSignature tokens={['interface AutoModerationActionMetadata']} />
+
+## Properties
+
+### channelId
+
+<ApiMember kind="property" signature={['channelId: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L147', label: 'packages/plugin-gateway/src/util/Transformers.ts:147' }}>
+
+The ID of the channel content is logged to, for `SendAlertMessage` actions.
+
+</ApiMember>
+
+### customMessage
+
+<ApiMember kind="property" signature={['customMessage: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L155', label: 'packages/plugin-gateway/src/util/Transformers.ts:155' }}>
+
+The message shown to the member when their message is blocked, for `BlockMessage` actions.
+
+</ApiMember>
+
+### durationSeconds
+
+<ApiMember kind="property" signature={['durationSeconds: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L151', label: 'packages/plugin-gateway/src/util/Transformers.ts:151' }}>
+
+How long the member is timed out for, in seconds, for `Timeout` actions.
+
+</ApiMember>

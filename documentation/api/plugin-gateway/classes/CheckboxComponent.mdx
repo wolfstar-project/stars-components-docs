@@ -1,0 +1,413 @@
+---
+title: 'Class: CheckboxComponent'
+description: 'A modal component for a binary choice. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/CheckboxComponent.ts#L8',
+		label: 'packages/plugin-gateway/src/structures/components/CheckboxComponent.ts:8'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A modal component for a binary choice.
+
+<ApiSignature
+	tokens={[
+		'class CheckboxComponent extends ',
+		['Component', '/documentation/api/plugin-gateway/classes/Component'],
+		'<',
+		['APICheckboxComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APICheckboxComponent'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Component', '/documentation/api/plugin-gateway/classes/Component'],
+			'<',
+			['APICheckboxComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APICheckboxComponent'],
+			'>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/Component.ts#L62', label: 'packages/plugin-gateway/src/structures/components/Component.ts:62' }} inheritedFrom={[['Component.constructor', '/documentation/api/plugin-gateway/classes/Component#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new CheckboxComponent(\n  data: ',
+		['APICheckboxComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APICheckboxComponent'],
+		',\n  relations: object = {}\n): ',
+		['CheckboxComponent', '/documentation/api/plugin-gateway/classes/CheckboxComponent']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APICheckboxComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APICheckboxComponent']]}>
+
+The raw component.
+
+</ApiParam>
+
+<ApiParam name="relations" type={['object']} defaultValue={'{}'}>
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['Component.[kData]', '/documentation/api/plugin-gateway/classes/Component#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['Component.client', '/documentation/api/plugin-gateway/classes/Component#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### customId
+
+<ApiMember kind="accessor" signature={['get customId(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/CheckboxComponent.ts#L12', label: 'packages/plugin-gateway/src/structures/components/CheckboxComponent.ts:12' }}>
+
+The custom ID of the checkbox.
+
+</ApiMember>
+
+### default
+
+<ApiMember kind="accessor" signature={['get default(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/CheckboxComponent.ts#L19', label: 'packages/plugin-gateway/src/structures/components/CheckboxComponent.ts:19' }}>
+
+Whether the checkbox is checked by default.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['Component.[kClone]', '/documentation/api/plugin-gateway/classes/Component#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APICheckboxComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APICheckboxComponent'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APICheckboxComponent', 'https://discord-api-types.dev/api/discord-api-types-v10#APICheckboxComponent'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['Component.[kPatch]', '/documentation/api/plugin-gateway/classes/Component#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['Component.dropChangedRelations', '/documentation/api/plugin-gateway/classes/Component#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['Component.dropRelations', '/documentation/api/plugin-gateway/classes/Component#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: never[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['never[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/Component.ts#L21', label: 'packages/plugin-gateway/src/structures/components/Component.ts:21' }} inheritedFrom={[['Component.equals', '/documentation/api/plugin-gateway/classes/Component#equals']]}>
+
+<ApiSignature
+	tokens={[
+		'equals(other: ',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		' | ',
+		['Component', '/documentation/api/plugin-gateway/classes/Component'],
+		'<',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		'>): boolean'
+	]}
+/>
+
+Whether this component has the same data as another one, nested components included.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="other" type={[['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'], ' | ', ['Component', '/documentation/api/plugin-gateway/classes/Component'], '<', ['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'], '>']}>
+
+The component, or raw component data, to compare with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['Component.lazyRelation', '/documentation/api/plugin-gateway/classes/Component#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['Component.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/Component#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['Component.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/Component#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['Component.valueOf', '/documentation/api/plugin-gateway/classes/Component#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['CheckboxComponent', '/documentation/api/plugin-gateway/classes/CheckboxComponent']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['CheckboxComponent', '/documentation/api/plugin-gateway/classes/CheckboxComponent']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### \[hasInstance\]()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/components/Component.ts#L53', label: 'packages/plugin-gateway/src/structures/components/Component.ts:53' }} inheritedFrom={[['Component.[hasInstance]', '/documentation/api/plugin-gateway/classes/Component#hasinstance']]}>
+
+<ApiSignature tokens={['static [hasInstance](value: unknown): boolean']} />
+
+Whether a value is a component of this package. Most components extend `@discordjs/structures`' own rather than
+this class, so `instanceof Component` matches any `@discordjs/structures` component carrying
+[StructureMixin](/documentation/api/plugin-gateway/classes/StructureMixin). Subclasses keep the default `instanceof` behavior.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['unknown']}>
+
+The value to check.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>

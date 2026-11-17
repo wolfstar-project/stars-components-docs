@@ -1,0 +1,51 @@
+---
+title: 'Interface: FetchOptions'
+description: 'The options to fetch an entity with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L20',
+		label: 'packages/plugin-gateway/src/managers/CachedManager.ts:20'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to fetch an entity with.
+
+<ApiSignature tokens={['interface FetchOptions']} />
+
+## Properties
+
+### cache?
+
+<ApiMember kind="property" badges={['optional']} signature={['cache?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L32', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:32' }}>
+
+Whether to store the entity fetched from the API in the cache.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### force?
+
+<ApiMember kind="property" badges={['optional']} signature={['force?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L26', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:26' }}>
+
+Whether to skip the cache lookup and always hit the API.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>

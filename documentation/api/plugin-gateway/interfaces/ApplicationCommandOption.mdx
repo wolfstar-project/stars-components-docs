@@ -1,0 +1,68 @@
+---
+title: 'Interface: ApplicationCommandOption'
+description: "An option of an application command or subcommand, as the API returns it with camel-cased keys, like discord.js's ApplicationCommandOption. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L77',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:77'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+An option of an application command or subcommand, as the API returns it with camel-cased keys, like discord.js's
+`ApplicationCommandOption`.
+
+<ApiSignature
+	tokens={[
+		'interface ApplicationCommandOption extends ApplicationCommandOptionBase<',
+		['ApplicationCommandOptionChoice', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOptionChoice'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			'ApplicationCommandOptionBase<',
+			['ApplicationCommandOptionChoice', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOptionChoice'],
+			'>'
+		]
+	]}
+/>
+
+## Properties
+
+### descriptionLocalized?
+
+<ApiMember kind="property" badges={['optional']} signature={['descriptionLocalized?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L85', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:85' }}>
+
+The description in the locale the command was fetched with.
+
+</ApiMember>
+
+### nameLocalized?
+
+<ApiMember kind="property" badges={['optional']} signature={['nameLocalized?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L81', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:81' }}>
+
+The name in the locale the command was fetched with.
+
+</ApiMember>
+
+### options?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['options?: ', ['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L86',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:86'
+	}}
+/>

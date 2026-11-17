@@ -1,0 +1,86 @@
+---
+title: 'Function: forwardGatewayDispatches()'
+description: 'Publishes every dispatch a GatewayClient from @wolfstar/plugin-gateway receives onto a Broker, under its dispatch type (e.g. (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/gateway.ts#L91',
+		label: 'packages/plugin-broker/src/lib/gateway.ts:91'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+Publishes every dispatch a `GatewayClient` from `@wolfstar/plugin-gateway` receives onto a [Broker](/documentation/api/plugin-broker/interfaces/Broker), under its
+dispatch type (e.g. `MESSAGE_CREATE`) with its data as payload.
+
+<ApiSignature
+	tokens={[
+		'forwardGatewayDispatches(\n  client: ',
+		['GatewayDispatchEmitterLike', '/documentation/api/plugin-broker/interfaces/GatewayDispatchEmitterLike'],
+		',\n  broker: ',
+		['Broker', '/documentation/api/plugin-broker/interfaces/Broker'],
+		',\n  options: ',
+		['ForwardGatewayDispatchesOptions', '/documentation/api/plugin-broker/interfaces/ForwardGatewayDispatchesOptions'],
+		' = {}\n): () => void'
+	]}
+/>
+
+Publishes every dispatch a `GatewayClient` from `@wolfstar/plugin-gateway` receives onto a [Broker](/documentation/api/plugin-broker/interfaces/Broker), under its
+dispatch type (e.g. `MESSAGE_CREATE`) with its data as payload.
+
+Dispatches are forwarded on the client's `dispatch` event, once they are written to the client's cache: workers
+sharing that cache (a `@wolfstar/plugin-cache` Redis cache) see the state the dispatch left when they receive it.
+Publishing does not hold up the gateway, and the entries are added in the order the dispatches were processed.
+For a `GatewayClient` the entry also carries the dispatch's previous state and shard, which
+`replayGatewayDispatches` uses on workers, and the client is marked as forwarding until forwarding stops, so the
+listeners registered with `RegisterAsDispatchListener` leave the dispatches to the workers.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayDispatchEmitterLike', '/documentation/api/plugin-broker/interfaces/GatewayDispatchEmitterLike']]}>
+
+The gateway client to forward the dispatches of.
+
+</ApiParam>
+
+<ApiParam name="broker" type={[['Broker', '/documentation/api/plugin-broker/interfaces/Broker']]}>
+
+The broker to publish them onto.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['ForwardGatewayDispatchesOptions', '/documentation/api/plugin-broker/interfaces/ForwardGatewayDispatchesOptions']]} defaultValue={'{}'}>
+
+The options for forwarding.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']}>
+
+A function to stop forwarding.
+
+</ApiParam>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+declare module '@wolfstar/plugin-broker' {
+	interface BrokerEvents {
+		MESSAGE_CREATE: GatewayMessageCreateDispatchData;
+	}
+}
+
+const stop = forwardGatewayDispatches(gatewayClient, broker, { events: [GatewayDispatchEvents.MessageCreate] });
+```

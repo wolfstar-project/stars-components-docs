@@ -1,0 +1,41 @@
+---
+title: '~~Type Alias: TypedFT~~'
+description: 'A key branded with its interpolation arguments and the type it resolves to. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	badges={['deprecated']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/compat.ts#L26',
+		label: 'packages/plugin-i18next/src/lib/compat.ts:26'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+<Warning>
+
+**Deprecated.** Use the key itself: its interpolation options are inferred from the locale files by
+the `CustomTypeOptions` augmentation `@wolfstar/i18next-type-generator` emits.
+
+</Warning>
+
+A key branded with its interpolation arguments and the type it resolves to.
+
+<ApiSignature
+	tokens={[
+		'type TypedFT<TArgs extends NonNullObject = NonNullObject, TReturn = string> = string & {\n  __args__: TArgs;\n  __return__: TReturn;\n}'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="TArgs" type={['extends NonNullObject']} defaultValue="NonNullObject" />
+
+<ApiParam name="TReturn" defaultValue="string" />
+
+</ApiParams>

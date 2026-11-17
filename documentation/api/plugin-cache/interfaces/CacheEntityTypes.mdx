@@ -1,0 +1,307 @@
+---
+title: 'Interface: CacheEntityTypes'
+description: 'The raw, JSON-serializable shape stored for every entity kind. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L43',
+		label: 'packages/plugin-cache/src/lib/types.ts:43'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+The raw, JSON-serializable shape stored for every entity kind.
+
+<ApiSignature tokens={['interface CacheEntityTypes']} />
+
+The cache never stores `Structure` instances, only the raw API payloads (merged in place for partial updates).
+Building structures on top of them is the job of the consumer, e.g. `@wolfstar/plugin-gateway`'s managers.
+
+## Properties
+
+### applicationCommandPermissions
+
+<ApiMember
+	kind="property"
+	signature={[
+		'applicationCommandPermissions: ',
+		[
+			'GatewayApplicationCommandPermissionsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayApplicationCommandPermissionsUpdateDispatchData'
+		]
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L44',
+		label: 'packages/plugin-cache/src/lib/types.ts:44'
+	}}
+/>
+
+### auditLogEntries
+
+<ApiMember
+	kind="property"
+	signature={[
+		'auditLogEntries: ',
+		['APIAuditLogEntry', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAuditLogEntry'],
+		' & { guild_id: string }'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L45',
+		label: 'packages/plugin-cache/src/lib/types.ts:45'
+	}}
+/>
+
+### autoModerationRules
+
+<ApiMember
+	kind="property"
+	signature={['autoModerationRules: ', ['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L46',
+		label: 'packages/plugin-cache/src/lib/types.ts:46'
+	}}
+/>
+
+### bans
+
+<ApiMember
+	kind="property"
+	signature={[
+		'bans: ',
+		['GatewayGuildBanModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildBanModifyDispatchData']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L47',
+		label: 'packages/plugin-cache/src/lib/types.ts:47'
+	}}
+/>
+
+### channels
+
+<ApiMember
+	kind="property"
+	signature={['channels: ', ['APIChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIChannel'], ' & { guild_id?: string }']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L48',
+		label: 'packages/plugin-cache/src/lib/types.ts:48'
+	}}
+/>
+
+### emojis
+
+<ApiMember
+	kind="property"
+	signature={['emojis: ', ['APIEmoji', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEmoji'], ' & { guild_id: string }']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L49',
+		label: 'packages/plugin-cache/src/lib/types.ts:49'
+	}}
+/>
+
+### entitlements
+
+<ApiMember
+	kind="property"
+	signature={['entitlements: ', ['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L50',
+		label: 'packages/plugin-cache/src/lib/types.ts:50'
+	}}
+/>
+
+### guilds
+
+<ApiMember kind="property" signature={['guilds: ', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], ', "emojis" | "roles" | "stickers"> & ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'], ', keyof ', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], '>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L55', label: 'packages/plugin-cache/src/lib/types.ts:55' }}>
+
+A guild without its collections (`roles`, `emojis`, `stickers`, `channels`, `members`, ...): they are stored in
+their own entity caches, which stay up to date as the guild changes.
+
+</ApiMember>
+
+### integrations
+
+<ApiMember
+	kind="property"
+	signature={[
+		'integrations: ',
+		['GatewayIntegrationCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationUpdateDispatchData']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L57',
+		label: 'packages/plugin-cache/src/lib/types.ts:57'
+	}}
+/>
+
+### invites
+
+<ApiMember
+	kind="property"
+	signature={[
+		'invites: ',
+		['GatewayInviteCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteCreateDispatchData']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L58',
+		label: 'packages/plugin-cache/src/lib/types.ts:58'
+	}}
+/>
+
+### members
+
+<ApiMember
+	kind="property"
+	signature={['members: ', ['APIGuildMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMember'], ' & { guild_id: string }']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L59',
+		label: 'packages/plugin-cache/src/lib/types.ts:59'
+	}}
+/>
+
+### messages
+
+<ApiMember
+	kind="property"
+	signature={[
+		'messages: ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L60',
+		label: 'packages/plugin-cache/src/lib/types.ts:60'
+	}}
+/>
+
+### presences
+
+<ApiMember
+	kind="property"
+	signature={['presences: ', ['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L61',
+		label: 'packages/plugin-cache/src/lib/types.ts:61'
+	}}
+/>
+
+### roles
+
+<ApiMember
+	kind="property"
+	signature={['roles: ', ['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], ' & { guild_id: string }']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L62',
+		label: 'packages/plugin-cache/src/lib/types.ts:62'
+	}}
+/>
+
+### scheduledEvents
+
+<ApiMember
+	kind="property"
+	signature={['scheduledEvents: ', ['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L63',
+		label: 'packages/plugin-cache/src/lib/types.ts:63'
+	}}
+/>
+
+### soundboardSounds
+
+<ApiMember
+	kind="property"
+	signature={['soundboardSounds: ', ['APISoundboardSound', 'https://discord-api-types.dev/api/discord-api-types-v10#APISoundboardSound']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L64',
+		label: 'packages/plugin-cache/src/lib/types.ts:64'
+	}}
+/>
+
+### stageInstances
+
+<ApiMember
+	kind="property"
+	signature={['stageInstances: ', ['APIStageInstance', 'https://discord-api-types.dev/api/discord-api-types-v10#APIStageInstance']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L65',
+		label: 'packages/plugin-cache/src/lib/types.ts:65'
+	}}
+/>
+
+### stickers
+
+<ApiMember
+	kind="property"
+	signature={['stickers: ', ['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'], ' & { guild_id: string }']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L66',
+		label: 'packages/plugin-cache/src/lib/types.ts:66'
+	}}
+/>
+
+### subscriptions
+
+<ApiMember
+	kind="property"
+	signature={['subscriptions: ', ['APISubscription', 'https://discord-api-types.dev/api/discord-api-types-v10#APISubscription']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L67',
+		label: 'packages/plugin-cache/src/lib/types.ts:67'
+	}}
+/>
+
+### threadMembers
+
+<ApiMember
+	kind="property"
+	signature={[
+		'threadMembers: ',
+		['APIThreadMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIThreadMember'],
+		' & { guild_id?: string }'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L68',
+		label: 'packages/plugin-cache/src/lib/types.ts:68'
+	}}
+/>
+
+### threads
+
+<ApiMember
+	kind="property"
+	signature={['threads: ', ['APIThreadChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIThreadChannel']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L69',
+		label: 'packages/plugin-cache/src/lib/types.ts:69'
+	}}
+/>
+
+### users
+
+<ApiMember
+	kind="property"
+	signature={['users: ', ['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L70',
+		label: 'packages/plugin-cache/src/lib/types.ts:70'
+	}}
+/>
+
+### voiceStates
+
+<ApiMember
+	kind="property"
+	signature={['voiceStates: ', ['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/types.ts#L71',
+		label: 'packages/plugin-cache/src/lib/types.ts:71'
+	}}
+/>

@@ -1,0 +1,144 @@
+---
+title: 'Class: EventGatewayListener'
+description: 'A Listener bound to one of the GatewayEventMap events of the GatewayClient, with strongly typed arguments. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/EventGatewayListener.ts#L25',
+		label: 'packages/plugin-gateway/src/EventGatewayListener.ts:25'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A `Listener` bound to one of the [GatewayEventMap](/documentation/api/plugin-gateway/interfaces/GatewayEventMap) events of the [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient), with strongly
+typed arguments. It is loaded from the `listeners` directory by `client.load()` like any other listener.
+
+<ApiSignature
+	tokens={[
+		'abstract class EventGatewayListener<Event extends ',
+		['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName'],
+		' = ',
+		['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName'],
+		'> extends Listener<',
+		['EventGatewayListener.ResolvedOptions', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/ResolvedOptions'],
+		'<Event>>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			'Listener<',
+			['EventGatewayListener.ResolvedOptions', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/ResolvedOptions'],
+			'<Event>>'
+		]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Event"
+	type={['extends ', ['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName']]}
+	defaultValue="GatewayEventName"
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+// listeners/log-messages.ts
+import { EventGatewayListener, type Message } from '@wolfstar/plugin-gateway';
+
+export class LogMessagesListener extends EventGatewayListener<'messageCreate'> {
+	public constructor(context: EventGatewayListener.LoaderContext) {
+		super(context, { event: 'messageCreate' });
+	}
+
+	public override run(message: Message) {
+		console.log(`${message.author.username}: ${message.content}`);
+	}
+}
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/EventGatewayListener.ts#L33', label: 'packages/plugin-gateway/src/EventGatewayListener.ts:33' }}>
+
+<ApiSignature
+	tokens={[
+		'new EventGatewayListener<Event extends keyof ',
+		['GatewayEventMap', '/documentation/api/plugin-gateway/interfaces/GatewayEventMap'],
+		' = keyof ',
+		['GatewayEventMap', '/documentation/api/plugin-gateway/interfaces/GatewayEventMap'],
+		'>(\n  context: LoaderContext,\n  options: ',
+		['Options', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/Options'],
+		'<Event>\n): ',
+		['EventGatewayListener', '/documentation/api/plugin-gateway/classes/EventGatewayListener'],
+		'<Event>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Event"
+	type={['extends keyof ', ['GatewayEventMap', '/documentation/api/plugin-gateway/interfaces/GatewayEventMap']]}
+	defaultValue="keyof GatewayEventMap"
+/>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="context" type={['LoaderContext']} />
+
+<ApiParam name="options" type={[['Options', '/documentation/api/plugin-gateway/namespaces/EventGatewayListener/interfaces/Options'], '<Event>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### once
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly once: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/EventGatewayListener.ts#L31', label: 'packages/plugin-gateway/src/EventGatewayListener.ts:31' }}>
+
+Whether this listener unloads itself after its first run.
+
+</ApiMember>
+
+## Methods
+
+### run()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/EventGatewayListener.ts#L53', label: 'packages/plugin-gateway/src/EventGatewayListener.ts:53' }}>
+
+<ApiSignature
+	tokens={['abstract run(...args: ', ['GatewayEventMap', '/documentation/api/plugin-gateway/interfaces/GatewayEventMap'], '[Event]): unknown']}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GatewayEventMap', '/documentation/api/plugin-gateway/interfaces/GatewayEventMap'], '[Event]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

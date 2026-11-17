@@ -1,0 +1,49 @@
+---
+title: 'Type Alias: CacheGuard'
+description: 'Runs a store operation, reporting its failure and resolving it to a fallback or rethrowing it. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/EntityStoreCache.ts#L9',
+		label: 'packages/plugin-gateway/src/util/EntityStoreCache.ts:9'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Runs a store operation, reporting its failure and resolving it to a fallback or rethrowing it.
+
+<ApiSignature
+	tokens={[
+		'type CacheGuard = <T>(\n  operation: ',
+		['CacheErrorContext', '/documentation/api/plugin-gateway/interfaces/CacheErrorContext'],
+		'["operation"],\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n) => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={[['CacheErrorContext', '/documentation/api/plugin-gateway/interfaces/CacheErrorContext'], '["operation"]']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>

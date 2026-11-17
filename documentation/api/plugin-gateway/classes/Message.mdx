@@ -1,0 +1,1674 @@
+---
+title: 'Class: Message'
+description: "The members every structure of this package has on top of @discordjs/structures' own: relations resolved from the cache, public patch/clone methods,… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L124',
+		label: 'packages/plugin-gateway/src/structures/messages/Message.ts:124'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The members every structure of this package has on top of `@discordjs/structures`' own: relations resolved from the
+cache, public patch/clone methods, and parsed timestamps.
+
+<ApiSignature
+	tokens={[
+		'class Message<InGuild extends boolean = boolean> extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["messages"], ',
+		['MessageRelations', '/documentation/api/plugin-gateway/interfaces/MessageRelations'],
+		'>, Message<NullableMessageKeys>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+			'<',
+			['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+			'["messages"], ',
+			['MessageRelations', '/documentation/api/plugin-gateway/interfaces/MessageRelations'],
+			'>'
+		],
+		['Message<NullableMessageKeys>']
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="boolean">
+
+The raw API data the structure wraps.
+
+</ApiParam>
+
+</ApiParams>
+
+It is mixed into [Structure](/documentation/api/plugin-gateway/classes/Structure) and into every class extending one of `@discordjs/structures`' structures, which
+also have to call [initStructure](/documentation/api/plugin-gateway/functions/initStructure) from their constructor:
+
+```typescript
+export interface User extends StructureMixin<APIUser> {}
+export class User extends BaseUser {
+	public constructor(data: Partial<APIUser>, relations: object = {}) {
+		super(data);
+		initStructure(this, data, relations);
+	}
+}
+Mixin(User, [StructureMixin]);
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L201', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:201' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new Message<InGuild extends boolean = boolean>(\n  data: ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		',\n  relations: ',
+		['MessageRelations', '/documentation/api/plugin-gateway/interfaces/MessageRelations'],
+		' = {}\n): ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="boolean" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData']]}>
+
+The raw message.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['MessageRelations', '/documentation/api/plugin-gateway/interfaces/MessageRelations']]} defaultValue={'{}'}>
+
+The author, member, guild, and channel as resolved from the cache, by `client.messages`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### DataTemplate
+
+<ApiMember kind="property" badges={['static']} signature={['static DataTemplate: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L190', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:190' }}>
+
+Keeps the raw `timestamp` and `edited_timestamp`, which `@discordjs/structures` strips and re-serializes in its own
+format, so that [Message.toJSON](/documentation/api/plugin-gateway/classes/Message#tojson) returns the message as received.
+
+</ApiMember>
+
+## Accessors
+
+### activity
+
+<ApiMember kind="accessor" signature={['get activity(): ', ['MessageActivity', '/documentation/api/plugin-gateway/interfaces/MessageActivity'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L394', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:394' }}>
+
+The rich presence activity the message was sent with, e.g. a game invite, camel-cased like discord.js's
+`Message#activity`.
+
+</ApiMember>
+
+### applicationId
+
+<ApiMember kind="accessor" signature={['get applicationId(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L507', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:507' }}>
+
+The ID of the application of an interaction or of a Rich Presence-related chat embed, `null` without one.
+
+</ApiMember>
+
+### attachments
+
+<ApiMember kind="accessor" signature={['get attachments(): ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Attachment', '/documentation/api/plugin-gateway/classes/Attachment'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L280', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:280' }}>
+
+The attachments of the message, by ID, like discord.js's `Message#attachments`.
+
+</ApiMember>
+
+### author
+
+<ApiMember kind="accessor" signature={['get author(): ', ['User', '/documentation/api/plugin-gateway/classes/User']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L234', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:234' }}>
+
+The author. Resolved from `client.users` when the message comes from a manager, so it has the latest known data of
+the user, not only the copy embedded in the message.
+
+</ApiMember>
+
+### bulkDeletable
+
+<ApiMember kind="accessor" signature={['get bulkDeletable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L593', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:593' }}>
+
+Whether the bot can bulk delete the message, like discord.js's `Message#bulkDeletable`: it is newer than 14 days,
+and the bot has `ManageMessages`. It throws like [Message.deletable](/documentation/api/plugin-gateway/classes/Message#deletable).
+
+</ApiMember>
+
+### call
+
+<ApiMember kind="accessor" signature={['get call(): ', ['MessageCall', '/documentation/api/plugin-gateway/interfaces/MessageCall'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L411', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:411' }}>
+
+The call a call message is about, camel-cased like discord.js's `Message#call`.
+
+</ApiMember>
+
+### channel
+
+<ApiMember kind="accessor" signature={['get channel(): ', ['If', '/documentation/api/plugin-gateway/type-aliases/If'], '<InGuild, ', ['GuildTextBasedChannel', '/documentation/api/plugin-gateway/type-aliases/GuildTextBasedChannel'], ', ', ['TextBasedChannel', '/documentation/api/plugin-gateway/type-aliases/TextBasedChannel'], '> | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L267', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:267' }}>
+
+The channel the message was sent in, from the cache. `null` when the channel is not cached, or when the cache is
+asynchronous: use [Message.fetchChannel](/documentation/api/plugin-gateway/classes/Message#fetchchannel) to always get it.
+
+</ApiMember>
+
+### cleanContent
+
+<ApiMember kind="accessor" signature={['get cleanContent(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L455', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:455' }}>
+
+The content with user, role, and channel mentions replaced by names, and `@everyone`/`@here` defused, like
+discord.js's `Message#cleanContent`. Mentions of entities that are not cached are kept.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### components
+
+<ApiMember kind="accessor" signature={['get components(): ', ['MessageTopLevelComponent', '/documentation/api/plugin-gateway/type-aliases/MessageTopLevelComponent'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L297', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:297' }}>
+
+The top-level components of the message, like discord.js'. Their `toJSON` returns the raw components; build new
+ones with `@discordjs/builders`.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L486',
+		label: 'packages/plugin-gateway/src/structures/messages/Message.ts:486'
+	}}
+/>
+
+### createdTimestamp
+
+<ApiMember kind="accessor" signature={['get createdTimestamp(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L482', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:482' }}>
+
+The timestamp this message was created at
+
+</ApiMember>
+
+### crosspostable
+
+<ApiMember kind="accessor" signature={['get crosspostable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L614', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:614' }}>
+
+Whether the bot can publish the message, like discord.js's `Message#crosspostable`: it is in an announcement
+channel, not crossposted yet, and the bot authored it or has `ManageMessages`. It throws like
+[Message.deletable](/documentation/api/plugin-gateway/classes/Message#deletable).
+
+</ApiMember>
+
+### deletable
+
+<ApiMember kind="accessor" signature={['get deletable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L585', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:585' }}>
+
+Whether the bot can delete the message, like discord.js's `Message#deletable`: it is the author, or it has
+`ManageMessages` in the channel.
+
+</ApiMember>
+
+### editable
+
+<ApiMember kind="accessor" signature={['get editable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L574', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:574' }}>
+
+Whether the bot can edit the message, like discord.js's `Message#editable`: it is the author.
+
+</ApiMember>
+
+### editedAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get editedAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L525',
+		label: 'packages/plugin-gateway/src/structures/messages/Message.ts:525'
+	}}
+/>
+
+### editedTimestamp
+
+<ApiMember kind="accessor" signature={['get editedTimestamp(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L493', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:493' }}>
+
+When the message was last edited, `null` if it never was.
+
+</ApiMember>
+
+### embeds
+
+<ApiMember
+	kind="accessor"
+	signature={['get embeds(): ', ['Embed', '/documentation/api/plugin-gateway/classes/Embed'], '[]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L289',
+		label: 'packages/plugin-gateway/src/structures/messages/Message.ts:289'
+	}}
+/>
+
+### flags
+
+<ApiMember kind="accessor" signature={['get flags(): ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['MessageFlagsBitField', '/documentation/api/plugin-gateway/classes/MessageFlagsBitField'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L273', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:273' }}>
+
+The flags of this message as a bit field
+
+</ApiMember>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['If', '/documentation/api/plugin-gateway/type-aliases/If'], '<InGuild, ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null, null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L255', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:255' }}>
+
+The guild the message was sent in, from the cache. `null` outside of guilds, when the guild is not cached, or when
+the cache is asynchronous: use [Message.fetchGuild](/documentation/api/plugin-gateway/classes/Message#fetchguild) to always get it.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="accessor"
+	signature={['get guildId(): ', ['If', '/documentation/api/plugin-gateway/type-aliases/If'], '<InGuild, string>']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L219',
+		label: 'packages/plugin-gateway/src/structures/messages/Message.ts:219'
+	}}
+/>
+
+### hasThread
+
+<ApiMember kind="accessor" signature={['get hasThread(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L436', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:436' }}>
+
+Whether a thread was started from the message.
+
+</ApiMember>
+
+### interactionMetadata
+
+<ApiMember kind="accessor" signature={['get interactionMetadata(): ', ['MessageInteractionMetadata', '/documentation/api/plugin-gateway/interfaces/MessageInteractionMetadata'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L403', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:403' }}>
+
+The metadata of the interaction the message answers, if any, camel-cased like discord.js's
+`Message#interactionMetadata`.
+
+</ApiMember>
+
+### member
+
+<ApiMember kind="accessor" signature={['get member(): ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L242', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:242' }}>
+
+The author as a guild member, or `null` for messages sent outside of a guild or by a webhook.
+
+</ApiMember>
+
+### mentions
+
+<ApiMember kind="accessor" signature={['get mentions(): ', ['MessageMentions', '/documentation/api/plugin-gateway/classes/MessageMentions'], '<InGuild>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L319', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:319' }}>
+
+The users, members, roles, and channels the message mentions: their cached copies when the message was built by
+`client.messages`, like discord.js.
+
+</ApiMember>
+
+### messageSnapshots
+
+<ApiMember kind="accessor" signature={['get messageSnapshots(): ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['MessageSnapshot', '/documentation/api/plugin-gateway/type-aliases/MessageSnapshot'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L368', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:368' }}>
+
+The snapshots of the messages this one forwards, as a collection of messages carrying the IDs of the forwarded
+message, by that ID, like discord.js's `Message#messageSnapshots`.
+
+</ApiMember>
+
+### nonce
+
+<ApiMember kind="accessor" signature={['get nonce(): string | number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L514', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:514' }}>
+
+The nonce the message was sent with, to check that it was sent, `null` without one.
+
+</ApiMember>
+
+### partial
+
+<ApiMember kind="accessor" signature={['get partial(): false']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L714', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:714' }}>
+
+Whether the message is partial, like discord.js's `Message#partial`: it lacks its content or its author. That is
+a message built from its IDs alone for an event about an uncached message (see `Partials.Message`), or from an
+update that carried neither. Only `id`, `channelId`, and `guildId` are reliable then, and [Message.fetch](/documentation/api/plugin-gateway/classes/Message#fetch)
+completes it.
+
+Typed `false`, like discord.js: a partial message is a [PartialMessage](/documentation/api/plugin-gateway/interfaces/PartialMessage), whose `partial` is `true`.
+
+</ApiMember>
+
+### pinnable
+
+<ApiMember kind="accessor" signature={['get pinnable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L604', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:604' }}>
+
+Whether the bot can pin the message, like discord.js's `Message#pinnable`: it is not a system message, and the
+bot has `PinMessages`. It throws like [Message.deletable](/documentation/api/plugin-gateway/classes/Message#deletable).
+
+</ApiMember>
+
+### poll
+
+<ApiMember kind="accessor" signature={['get poll(): ', ['Poll', '/documentation/api/plugin-gateway/classes/Poll'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L343', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:343' }}>
+
+The poll of the message, whose `message` is this one.
+
+</ApiMember>
+
+### position
+
+<ApiMember kind="accessor" signature={['get position(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L521', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:521' }}>
+
+The approximate position of the message in a thread, `null` outside of one.
+
+</ApiMember>
+
+### reactions
+
+<ApiMember kind="accessor" signature={['get reactions(): ', ['ReactionManager', '/documentation/api/plugin-gateway/classes/ReactionManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L329', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:329' }}>
+
+The reactions of the message, whose `message` is this one, and whose custom emojis are the cached ones.
+
+</ApiMember>
+
+### reference
+
+<ApiMember kind="accessor" signature={['get reference(): ', ['MessageReference', '/documentation/api/plugin-gateway/interfaces/MessageReference'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L359', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:359' }}>
+
+The reference of a reply, crosspost, forward, or pin notice, if any, camel-cased like discord.js's
+`Message#reference`.
+
+</ApiMember>
+
+### roleSubscriptionData
+
+<ApiMember kind="accessor" signature={['get roleSubscriptionData(): ', ['RoleSubscriptionData', '/documentation/api/plugin-gateway/interfaces/RoleSubscriptionData'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L420', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:420' }}>
+
+The subscription a role subscription purchase message is about, camel-cased like discord.js's
+`Message#roleSubscriptionData`.
+
+</ApiMember>
+
+### sharedClientTheme
+
+<ApiMember kind="accessor" signature={['get sharedClientTheme(): ', ['SharedClientTheme', '/documentation/api/plugin-gateway/interfaces/SharedClientTheme'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L428', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:428' }}>
+
+The custom client theme the message was shared with, camel-cased like discord.js's `Message#sharedClientTheme`.
+
+</ApiMember>
+
+### stickers
+
+<ApiMember kind="accessor" signature={['get stickers(): ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L305', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:305' }}>
+
+The stickers of the message, by ID, like discord.js's `Message#stickers`: partial stickers carrying the ID, name,
+and format of the payload's sticker items. Fetch a full one with `client.fetchSticker(id)`.
+
+</ApiMember>
+
+### system
+
+<ApiMember kind="accessor" signature={['get system(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L226', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:226' }}>
+
+Whether the message was sent by Discord, e.g. a member join or a pin notice.
+
+</ApiMember>
+
+### thread
+
+<ApiMember kind="accessor" signature={['get thread(): ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L444', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:444' }}>
+
+The thread started from the message, like discord.js's `Message#thread`: the cached thread (its ID is the
+message's), else the one of the payload.
+
+</ApiMember>
+
+### threadable
+
+<ApiMember kind="accessor" signature={['get threadable(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L640', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:640' }}>
+
+Whether the bot can start a thread from the message, like discord.js's `Message#threadable`: it is in a text or
+announcement channel, has no thread yet, and the bot has `ViewChannel` and `CreatePublicThreads` there. It throws
+like [Message.deletable](/documentation/api/plugin-gateway/classes/Message#deletable).
+
+Unlike discord.js, which ignores the `Administrator` permission (`checkAdmin = false`), an administrator can
+start a thread, as the API allows it. This only checks the permissions and the channel type: a locked or archived
+parent, the limit of active threads, and an announcement message that has to be published first are not checked.
+
+</ApiMember>
+
+### url
+
+<ApiMember kind="accessor" signature={['get url(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L533', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:533' }}>
+
+The URL to jump to this message.
+
+</ApiMember>
+
+### webhookId
+
+<ApiMember kind="accessor" signature={['get webhookId(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L500', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:500' }}>
+
+The ID of the webhook that sent the message, `null` when no webhook did, like discord.js's `Message#webhookId`.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L206', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:206' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		'>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'], '>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### crosspost()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L834', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:834' }}>
+
+<ApiSignature
+	tokens={[
+		'crosspost(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Publishes the message of an announcement channel to the channels following it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L798', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:798' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature
+	tokens={['protected dropRelations(...names: ("emojis" | "guild" | "author" | "member" | "channel" | "thread" | "mentions")[]): void']}
+/>
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("emojis" | "guild" | "author" | "member" | "channel" | "thread" | "mentions")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L755', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:755' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Edits the message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'], '>']}>
+
+The changes, or the new content.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L877', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:877' }}>
+
+<ApiSignature
+	tokens={[
+		'equals(\n  message: ',
+		['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage'],
+		' | ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | null | undefined,\n  rawData?: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage'],
+		'>\n): boolean'
+	]}
+/>
+
+Whether this message has the same data as another one, like discord.js's `Message#equals`: the same ID, author,
+content, `nonce`, `tts`, attachments (by ID), and embeds (through `Embed#equals`, in order). A change of `pinned`,
+flags, or reactions does not make messages differ; compare `toJSON()` for that.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="message" type={[['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage'], ' | ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean> | null | undefined']}>
+
+The message, or raw message, to compare with. A raw embed update, which carries neither an author nor
+attachments, only compares the ID and the number of embeds.
+
+</ApiParam>
+
+<ApiParam name="rawData" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage'], '>']} optional>
+
+The raw message `message` comes from. When given, `mention_everyone` and the timestamps are compared
+too.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L745', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:745' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(force: boolean = true): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Fetches the message and patches this structure with the result.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="force" type={['boolean']} defaultValue="true">
+
+Whether to ask the API even when the message is cached. Defaults to `true`, like discord.js.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchBulkDeletable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L676', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:676' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchBulkDeletable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [Message.bulkDeletable](/documentation/api/plugin-gateway/classes/Message#bulkdeletable). See [Message.fetchDeletable](/documentation/api/plugin-gateway/classes/Message#fetchdeletable) for the cache-miss fallback.
+
+</Warning>
+
+Whether the bot can bulk delete the message: it can delete it, and it is newer than 14 days.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L547', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:547' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchChannel(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+Fetches the channel the message was sent in.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchCrosspostable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L699', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:699' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchCrosspostable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [Message.crosspostable](/documentation/api/plugin-gateway/classes/Message#crosspostable). See [Message.fetchDeletable](/documentation/api/plugin-gateway/classes/Message#fetchdeletable) for the cache-miss fallback.
+
+</Warning>
+
+Whether the bot can publish the message: it is in an announcement channel, not crossposted yet, and the bot
+authored it or has `ManageMessages`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchDeletable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L667', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:667' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchDeletable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [Message.deletable](/documentation/api/plugin-gateway/classes/Message#deletable). When the guild, the channel or the bot's member may be missing from the
+cache (a filtered cache, a `plugin-broker` worker), fetch them first (`client.members.fetchMe(guildId)`), then read
+the getter.
+
+</Warning>
+
+Whether the bot can delete the message: it is the author, or it has `ManageMessages` in the guild.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L554', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:554' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuild(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Fetches the guild the message was sent in, `null` outside of guilds.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPinnable()
+
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L688', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:688' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPinnable(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<boolean>'
+	]}
+/>
+
+<Warning>
+
+**Deprecated.** Use [Message.pinnable](/documentation/api/plugin-gateway/classes/Message#pinnable). See [Message.fetchDeletable](/documentation/api/plugin-gateway/classes/Message#fetchdeletable) for the cache-miss fallback.
+
+</Warning>
+
+Whether the bot can pin the message: it is not a system message, and the bot has `PinMessages`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<boolean>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchReference()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L562', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:562' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchReference(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Fetches the message this one replies to, crossposts, or forwards.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWebhook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L733', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:733' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWebhook(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+Fetches the webhook that sent the message, like discord.js's `Message#fetchWebhook`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+A `GatewayError`: `WebhookMessage` when a webhook did not send the message, `WebhookApplication` when the
+webhook belongs to an application.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### forward()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L789', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:789' }}>
+
+<ApiSignature
+	tokens={[
+		'forward(channel: string | ',
+		['AnnouncementChannel', '/documentation/api/plugin-gateway/classes/AnnouncementChannel'],
+		' | ',
+		['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'],
+		' | ',
+		['StageChannel', '/documentation/api/plugin-gateway/classes/StageChannel'],
+		' | ',
+		['TextChannel', '/documentation/api/plugin-gateway/classes/TextChannel'],
+		' | ',
+		['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'],
+		' | ',
+		['ThreadChannel', '/documentation/api/plugin-gateway/type-aliases/ThreadChannel'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Forwards the message to another channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={['string | ', ['AnnouncementChannel', '/documentation/api/plugin-gateway/classes/AnnouncementChannel'], ' | ', ['DMChannel', '/documentation/api/plugin-gateway/classes/DMChannel'], ' | ', ['StageChannel', '/documentation/api/plugin-gateway/classes/StageChannel'], ' | ', ['TextChannel', '/documentation/api/plugin-gateway/classes/TextChannel'], ' | ', ['VoiceChannel', '/documentation/api/plugin-gateway/classes/VoiceChannel'], ' | ', ['ThreadChannel', '/documentation/api/plugin-gateway/type-aliases/ThreadChannel']]}>
+
+The channel to forward it to, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### inGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L540', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:540' }}>
+
+<ApiSignature tokens={['inGuild(): this is ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<true>']} />
+
+Whether the message was sent in a guild.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this is ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<true>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### pin()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L803', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:803' }}>
+
+<ApiSignature
+	tokens={[
+		'pin(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### react()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L819', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:819' }}>
+
+<ApiSignature
+	tokens={[
+		'react(emoji: ',
+		['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'],
+		'>'
+	]}
+/>
+
+Reacts to the message as the bot.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="emoji" type={[['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable']]}>
+
+The emoji.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['MessageReaction', '/documentation/api/plugin-gateway/classes/MessageReaction'], '>']}>
+
+The reaction, counting the bot, like discord.js's `Message#react`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### removeAttachments()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L863', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:863' }}>
+
+<ApiSignature
+	tokens={[
+		'removeAttachments(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Removes every attachment of the message.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### reply()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L771', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:771' }}>
+
+<ApiSignature
+	tokens={[
+		'reply(options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Replies to the message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'], '>']}>
+
+The reply, or its content.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveComponent()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L723', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:723' }}>
+
+<ApiSignature
+	tokens={[
+		'resolveComponent(customId: string): ',
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		' | ',
+		['AnyComponent', '/documentation/api/plugin-gateway/type-aliases/AnyComponent'],
+		' | null'
+	]}
+/>
+
+Finds a component of the message by its custom ID, like discord.js's `Message#resolveComponent`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="customId" type={['string']}>
+
+The custom ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['APIAnyComponent', '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent'],
+		' | ',
+		['AnyComponent', '/documentation/api/plugin-gateway/type-aliases/AnyComponent'],
+		' | null'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### startThread()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L844', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:844' }}>
+
+<ApiSignature
+	tokens={[
+		'startThread(options: ',
+		['MessageThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageThreadCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+Starts a thread from the message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['MessageThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageThreadCreateOptions']]}>
+
+The thread's name and settings.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### suppressEmbeds()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L853', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:853' }}>
+
+<ApiSignature
+	tokens={[
+		'suppressEmbeds(suppress: boolean = true): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+Hides or shows the embeds of the message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="suppress" type={['boolean']} defaultValue="true">
+
+Whether to hide them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L912', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:912' }}>
+
+<ApiSignature
+	tokens={[
+		'toJSON(): ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData']
+	]}
+/>
+
+Transforms this object to its JSON format with raw API data (or close to it),
+automatically called by `JSON.stringify()` when this structure is stringified
+
+The type of this data is determined by omissions at runtime and is only guaranteed for default omissions
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData']
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### toString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L916', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:916' }}>
+
+<ApiSignature tokens={['toString(): string']} />
+
+Returns a string representation of an object.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### unpin()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L808', label: 'packages/plugin-gateway/src/structures/messages/Message.ts:808' }}>
+
+<ApiSignature
+	tokens={[
+		'unpin(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['OmitPartialGroupDMChannel', '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<InGuild>>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<InGuild>']} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<InGuild>']} />
+
+</ApiParams>
+
+</ApiMember>

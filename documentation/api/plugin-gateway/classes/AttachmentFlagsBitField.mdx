@@ -1,0 +1,66 @@
+---
+title: 'Class: AttachmentFlagsBitField'
+description: 'The flags of a message attachment. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/flags.ts#L62',
+		label: 'packages/plugin-gateway/src/util/flags.ts:62'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The flags of a message attachment.
+
+<ApiSignature
+	tokens={[
+		'class AttachmentFlagsBitField extends ',
+		['AttachmentFlagsBitField', '/documentation/api/plugin-gateway/classes/AttachmentFlagsBitField']
+	]}
+/>
+
+<ApiHierarchy extends={[[['AttachmentFlagsBitField', '/documentation/api/plugin-gateway/classes/AttachmentFlagsBitField']]]} />
+
+## Methods
+
+### resolve()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/flags.ts#L63', label: 'packages/plugin-gateway/src/util/flags.ts:63' }}>
+
+<ApiSignature tokens={['static resolve<Flags extends string = string>(bit: BitFieldResolvable<Flags>): bigint']} />
+
+Resolves bit fields to their numeric form.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Flags" type={['extends string']} defaultValue="string" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="bit" type={['BitFieldResolvable<Flags>']}>
+
+bit(s) to resolve
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['bigint']}>
+
+the numeric value of the bit fields
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>

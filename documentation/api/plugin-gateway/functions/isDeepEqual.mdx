@@ -1,0 +1,47 @@
+---
+title: 'Function: isDeepEqual()'
+description: 'Compares two JSON-like values structurally, regardless of key order. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/equal.ts#L8',
+		label: 'packages/plugin-gateway/src/util/equal.ts:8'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Compares two JSON-like values structurally, regardless of key order. `undefined` properties count as missing, like
+they do once serialized.
+
+<ApiSignature tokens={['isDeepEqual(a: unknown, b: unknown): boolean']} />
+
+Compares two JSON-like values structurally, regardless of key order. `undefined` properties count as missing, like
+they do once serialized.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="a" type={['unknown']}>
+
+The first value.
+
+</ApiParam>
+
+<ApiParam name="b" type={['unknown']}>
+
+The second value.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>

@@ -1,0 +1,1096 @@
+---
+title: 'Class: GuildScheduledEvent'
+description: 'An event scheduled in a guild: in a stage or voice channel, or somewhere else. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L33',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:33'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+An event scheduled in a guild: in a stage or voice channel, or somewhere else.
+
+<ApiSignature
+	tokens={[
+		'class GuildScheduledEvent extends ',
+		['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+		'<',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+			'<',
+			['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+			'>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L45', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:45' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildScheduledEvent(\n  data: ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		',\n  relations: ',
+		['GuildScheduledEventRelations', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRelations'],
+		' = {}\n): ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent']]}>
+
+The raw event.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['GuildScheduledEventRelations', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRelations']]} defaultValue={'{}'}>
+
+The creator, guild, and channel as resolved from the cache, by the guild's event manager.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['Structure.[kData]', '/documentation/api/plugin-gateway/classes/Structure#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### \[kRelations\]
+
+<ApiMember
+	kind="property"
+	signature={['[kRelations]: ', ['GuildScheduledEventRelations', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRelations']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L34',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:34'
+	}}
+/>
+
+## Accessors
+
+### channel
+
+<ApiMember
+	kind="accessor"
+	signature={['get channel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L177',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:177'
+	}}
+/>
+
+### channelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get channelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L63',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:63'
+	}}
+/>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['Structure.client', '/documentation/api/plugin-gateway/classes/Structure#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L192',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:192'
+	}}
+/>
+
+### createdTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdTimestamp(): number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L188',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:188'
+	}}
+/>
+
+### creator
+
+<ApiMember kind="accessor" signature={['get creator(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L168', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:168' }}>
+
+The creator, from the payload or the cache.
+
+</ApiMember>
+
+### creatorId
+
+<ApiMember
+	kind="accessor"
+	signature={['get creatorId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L67',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:67'
+	}}
+/>
+
+### description
+
+<ApiMember
+	kind="accessor"
+	signature={['get description(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L94',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:94'
+	}}
+/>
+
+### entityId
+
+<ApiMember
+	kind="accessor"
+	signature={['get entityId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L127',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:127'
+	}}
+/>
+
+### entityMetadata
+
+<ApiMember kind="accessor" signature={['get entityMetadata(): ', ['GuildScheduledEventEntityMetadata', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventEntityMetadata'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L141', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:141' }}>
+
+The metadata of the event, camel-cased like discord.js's `GuildScheduledEvent#entityMetadata`.
+
+</ApiMember>
+
+### entityType
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get entityType(): ',
+		['GuildScheduledEventEntityType', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventEntityType']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L123',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:123'
+	}}
+/>
+
+### guild
+
+<ApiMember
+	kind="accessor"
+	signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L173',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:173'
+	}}
+/>
+
+### guildId
+
+<ApiMember
+	kind="accessor"
+	signature={['get guildId(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L59',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:59'
+	}}
+/>
+
+### id
+
+<ApiMember
+	kind="accessor"
+	signature={['get id(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L55',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:55'
+	}}
+/>
+
+### image
+
+<ApiMember
+	kind="accessor"
+	signature={['get image(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L153',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:153'
+	}}
+/>
+
+### location
+
+<ApiMember kind="accessor" signature={['get location(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L134', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:134' }}>
+
+Where an external event takes place.
+
+</ApiMember>
+
+### name
+
+<ApiMember
+	kind="accessor"
+	signature={['get name(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L71',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:71'
+	}}
+/>
+
+### partial
+
+<ApiMember kind="accessor" signature={['get partial(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L80', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:80' }}>
+
+Whether the event is partial: built from its IDs alone for an event about an uncached scheduled event, see
+`Partials.GuildScheduledEvent`. Only `id` and `guildId` are reliable then, and [GuildScheduledEvent.fetch](/documentation/api/plugin-gateway/classes/GuildScheduledEvent#fetch)
+completes it.
+
+</ApiMember>
+
+### privacyLevel
+
+<ApiMember
+	kind="accessor"
+	signature={['get privacyLevel(): GuildScheduledEventPrivacyLevel']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L115',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:115'
+	}}
+/>
+
+### recurrenceRule
+
+<ApiMember kind="accessor" signature={['get recurrenceRule(): ', ['GuildScheduledEventRecurrenceRule', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRecurrenceRule'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L160', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:160' }}>
+
+How the event repeats, camel-cased like discord.js's `GuildScheduledEvent#recurrenceRule`.
+
+</ApiMember>
+
+### scheduledEndAt
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get scheduledEndAt(): ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		' | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L110',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:110'
+	}}
+/>
+
+### scheduledEndTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get scheduledEndTimestamp(): number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L106',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:106'
+	}}
+/>
+
+### scheduledStartAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get scheduledStartAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L102',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:102'
+	}}
+/>
+
+### scheduledStartTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get scheduledStartTimestamp(): number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L98',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:98'
+	}}
+/>
+
+### status
+
+<ApiMember
+	kind="accessor"
+	signature={['get status(): ', ['GuildScheduledEventStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventStatus']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L119',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:119'
+	}}
+/>
+
+### url
+
+<ApiMember kind="accessor" signature={['get url(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L184', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:184' }}>
+
+The URL of the event.
+
+</ApiMember>
+
+### userCount
+
+<ApiMember kind="accessor" signature={['get userCount(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L149', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:149' }}>
+
+How many users subscribed, when the payload includes it.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['Structure.[kClone]', '/documentation/api/plugin-gateway/classes/Structure#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L49', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:49' }}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'], '>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### coverImageURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L196', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:196' }}>
+
+<ApiSignature
+	tokens={[
+		'coverImageURL(options?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<ImageURLOptions>): string | null'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<ImageURLOptions>']}
+	optional
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L268', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:268' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['Structure.dropChangedRelations', '/documentation/api/plugin-gateway/classes/Structure#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['Structure.dropRelations', '/documentation/api/plugin-gateway/classes/Structure#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("guild" | "channel" | "creator")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("guild" | "channel" | "creator")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L222', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:222' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['GuildScheduledEventEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Edits the event.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildScheduledEventEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventEditOptions']]}>
+
+The fields to edit, and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L87', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:87' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Fetches the event from the API and patches this structure with the result.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchSubscribers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L262', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:262' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchSubscribers(options?: ',
+		['GuildScheduledEventSubscribersOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscribersOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEventSubscriber', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscriber'],
+		'[]>'
+	]}
+/>
+
+Fetches the users who subscribed to the event, paginated by user ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildScheduledEventSubscribersOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscribersOptions']]} optional>
+
+How many users, around which user ID, and whether to include their members.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEventSubscriber', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscriber'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### isActive()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L205', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:205' }}>
+
+<ApiSignature tokens={['isActive(): boolean']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### isCanceled()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L213', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:213' }}>
+
+<ApiSignature tokens={['isCanceled(): boolean']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### isCompleted()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L209', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:209' }}>
+
+<ApiSignature tokens={['isCompleted(): boolean']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### isScheduled()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L201', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:201' }}>
+
+<ApiSignature tokens={['isScheduled(): boolean']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['Structure.lazyRelation', '/documentation/api/plugin-gateway/classes/Structure#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['Structure.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['Structure.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setDescription()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L231', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:231' }}>
+
+<ApiSignature
+	tokens={[
+		'setDescription(description: string | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="description" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setLocation()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L253', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:253' }}>
+
+<ApiSignature
+	tokens={[
+		'setLocation(location: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Sets where an external event takes place.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="location" type={['string']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setName()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L227', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:227' }}>
+
+<ApiSignature
+	tokens={[
+		'setName(name: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setScheduledEndTime()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L239', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:239' }}>
+
+<ApiSignature
+	tokens={[
+		'setScheduledEndTime(\n  scheduledEndTime: number | ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		' | null,\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="scheduledEndTime"
+	type={['number | ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+/>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setScheduledStartTime()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L235', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:235' }}>
+
+<ApiSignature
+	tokens={[
+		'setScheduledStartTime(\n  scheduledStartTime: number | ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		',\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="scheduledStartTime"
+	type={['number | ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+/>
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setStatus()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts#L246', label: 'packages/plugin-gateway/src/structures/guilds/GuildScheduledEvent.ts:246' }}>
+
+<ApiSignature
+	tokens={[
+		'setStatus(\n  status: ',
+		['GuildScheduledEventStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventStatus'],
+		',\n  reason?: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="status" type={[['GuildScheduledEventStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildScheduledEventStatus']]} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['Structure.valueOf', '/documentation/api/plugin-gateway/classes/Structure#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']]} />
+
+</ApiParams>
+
+</ApiMember>

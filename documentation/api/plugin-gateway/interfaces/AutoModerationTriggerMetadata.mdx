@@ -1,0 +1,71 @@
+---
+title: 'Interface: AutoModerationTriggerMetadata'
+description: "The settings of an auto moderation rule's trigger, like discord.js's AutoModerationTriggerMetadata. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L108',
+		label: 'packages/plugin-gateway/src/util/Transformers.ts:108'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The settings of an auto moderation rule's trigger, like discord.js's `AutoModerationTriggerMetadata`.
+
+<ApiSignature tokens={['interface AutoModerationTriggerMetadata']} />
+
+## Properties
+
+### allowList
+
+<ApiMember kind="property" signature={['allowList: string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L124', label: 'packages/plugin-gateway/src/util/Transformers.ts:124' }}>
+
+The substrings exempt from triggering the rule.
+
+</ApiMember>
+
+### keywordFilter
+
+<ApiMember kind="property" signature={['keywordFilter: string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L112', label: 'packages/plugin-gateway/src/util/Transformers.ts:112' }}>
+
+The substrings searched for in the content.
+
+</ApiMember>
+
+### mentionRaidProtectionEnabled
+
+<ApiMember kind="property" signature={['mentionRaidProtectionEnabled: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L132', label: 'packages/plugin-gateway/src/util/Transformers.ts:132' }}>
+
+Whether mention raids are detected.
+
+</ApiMember>
+
+### mentionTotalLimit
+
+<ApiMember kind="property" signature={['mentionTotalLimit: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L128', label: 'packages/plugin-gateway/src/util/Transformers.ts:128' }}>
+
+The total number of role and user mentions a message may have.
+
+</ApiMember>
+
+### presets
+
+<ApiMember kind="property" signature={['presets: ', ['AutoModerationRuleKeywordPresetType', 'https://discord-api-types.dev/api/discord-api-types-v10#AutoModerationRuleKeywordPresetType'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L120', label: 'packages/plugin-gateway/src/util/Transformers.ts:120' }}>
+
+The internally pre-defined word sets searched for in the content.
+
+</ApiMember>
+
+### regexPatterns
+
+<ApiMember kind="property" signature={['regexPatterns: string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Transformers.ts#L116', label: 'packages/plugin-gateway/src/util/Transformers.ts:116' }}>
+
+The regular expressions matched against the content. Only Rust-flavored ones are supported.
+
+</ApiMember>

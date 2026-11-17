@@ -1,0 +1,93 @@
+---
+title: '@wolfstar/plugin-logger'
+description: 'Generated API reference for @wolfstar/plugin-logger: the logger and its Console, Sentry, consola, evlog, and winston transports.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-logger"
+	version="0.6.1"
+	guideHref="/documentation/packages/plugin-logger"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-logger"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-logger" />
+
+<ApiSymbolList
+	symbols={[
+		{
+			name: 'ConsoleTransport',
+			kind: 'class',
+			href: '/documentation/api/plugin-logger/classes/ConsoleTransport',
+			summary: 'The default Transport, writing every entry to the matching console method.'
+		},
+		{
+			name: 'Logger',
+			kind: 'class',
+			href: '/documentation/api/plugin-logger/classes/Logger',
+			summary: 'The ILogger implementation this plugin installs as container.logger.'
+		},
+		{
+			name: 'SentryTransport',
+			kind: 'class',
+			href: '/documentation/api/plugin-logger/classes/SentryTransport',
+			summary: 'A Transport forwarding entries to Sentry.'
+		},
+		{ name: 'ConsoleTransportOptions', kind: 'interface', href: '/documentation/api/plugin-logger/interfaces/ConsoleTransportOptions' },
+		{
+			name: 'LogPayload',
+			kind: 'interface',
+			href: '/documentation/api/plugin-logger/interfaces/LogPayload',
+			summary: 'A single log entry, as handed over to every Transport registered on a Logger.'
+		},
+		{ name: 'SentryBreadcrumb', kind: 'interface', href: '/documentation/api/plugin-logger/interfaces/SentryBreadcrumb' },
+		{ name: 'SentryCaptureHint', kind: 'interface', href: '/documentation/api/plugin-logger/interfaces/SentryCaptureHint' },
+		{
+			name: 'SentryClientLike',
+			kind: 'interface',
+			href: '/documentation/api/plugin-logger/interfaces/SentryClientLike',
+			summary: "The subset of Sentry's API SentryTransport relies on."
+		},
+		{ name: 'SentryTransportOptions', kind: 'interface', href: '/documentation/api/plugin-logger/interfaces/SentryTransportOptions' },
+		{
+			name: 'Transport',
+			kind: 'interface',
+			href: '/documentation/api/plugin-logger/interfaces/Transport',
+			summary: 'A sink a Logger writes entries to.'
+		},
+		{
+			name: 'ConsoleTransportMethod',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-logger/type-aliases/ConsoleTransportMethod',
+			summary: 'The console methods ConsoleTransport can write to.'
+		},
+		{ name: 'SentryLoggerLike', kind: 'type-alias', href: '/documentation/api/plugin-logger/type-aliases/SentryLoggerLike' },
+		{
+			name: 'SentryLogMethod',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-logger/type-aliases/SentryLogMethod',
+			summary: 'The Sentry.logger methods SentryTransport writes to.'
+		},
+		{
+			name: 'SentrySeverity',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-logger/type-aliases/SentrySeverity',
+			summary: 'The severity levels Sentry accepts.'
+		},
+		{
+			name: 'createLogPayload',
+			kind: 'function',
+			href: '/documentation/api/plugin-logger/functions/createLogPayload',
+			summary: 'Builds the LogPayload handed to every transport.'
+		},
+		{
+			name: 'LoggerPlugin',
+			kind: 'class',
+			href: '/documentation/api/plugin-logger/classes/LoggerPlugin',
+			summary:
+				"Replaces the framework's built-in console logger with a Logger, which fans entries out to the transports configured through ClientOptions.l…"
+		}
+	]}
+/>

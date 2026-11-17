@@ -1,0 +1,808 @@
+---
+title: 'Class: VoiceState'
+description: "The voice state of a guild member: @discordjs/structures' VoiceState, with its member and guild, and actions through the client. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L35',
+		label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:35'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The voice state of a guild member: `@discordjs/structures`' `VoiceState`, with its member and guild, and actions
+through the client.
+
+<ApiSignature
+	tokens={[
+		'class VoiceState extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["voiceStates"], ',
+		['VoiceStateRelations', '/documentation/api/plugin-gateway/interfaces/VoiceStateRelations'],
+		'>, VoiceState'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+			'<',
+			['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+			'["voiceStates"], ',
+			['VoiceStateRelations', '/documentation/api/plugin-gateway/interfaces/VoiceStateRelations'],
+			'>'
+		],
+		['VoiceState']
+	]}
+/>
+
+Unlike `@discordjs/structures`', `deaf` and `mute` also account for the member's own deafen and mute; `serverDeaf`
+and `serverMute` are the server-wide ones.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L57', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:57' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new VoiceState(data: ',
+		['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState'],
+		', relations: ',
+		['VoiceStateRelations', '/documentation/api/plugin-gateway/interfaces/VoiceStateRelations'],
+		' = {}): ',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState']]}>
+
+The raw voice state.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['VoiceStateRelations', '/documentation/api/plugin-gateway/interfaces/VoiceStateRelations']]} defaultValue={'{}'}>
+
+The member and guild as resolved from the cache, by `client.voiceStates`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### channel
+
+<ApiMember kind="accessor" signature={['get channel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L131', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:131' }}>
+
+The channel the member is connected to, from the cache, like discord.js's `VoiceState#channel`. `null` when they
+are disconnected, when the channel is not cached, or when the cache is asynchronous.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### deaf
+
+<ApiMember kind="accessor" signature={['get deaf(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L100', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:100' }}>
+
+Whether the member is deafened, either by themselves or server-wide.
+
+</ApiMember>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L123', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:123' }}>
+
+The guild, from the cache.
+
+</ApiMember>
+
+### member
+
+<ApiMember kind="accessor" signature={['get member(): ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L114', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:114' }}>
+
+The member, from the payload or the cache. `null` when neither has it, or when the cache is asynchronous.
+
+</ApiMember>
+
+### mute
+
+<ApiMember kind="accessor" signature={['get mute(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L107', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:107' }}>
+
+Whether the member is muted, either by themselves or server-wide.
+
+</ApiMember>
+
+### requestToSpeakAt
+
+<ApiMember kind="accessor" signature={['get requestToSpeakAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L92', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:92' }}>
+
+The time at which the member requested to speak, or `null` if they did not. Only meaningful in stage channels.
+
+</ApiMember>
+
+### serverDeaf
+
+<ApiMember kind="accessor" signature={['get serverDeaf(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L71', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:71' }}>
+
+Whether the member is deafened server-wide.
+
+</ApiMember>
+
+### serverMute
+
+<ApiMember kind="accessor" signature={['get serverMute(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L78', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:78' }}>
+
+Whether the member is muted server-wide.
+
+</ApiMember>
+
+### streaming
+
+<ApiMember kind="accessor" signature={['get streaming(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L85', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:85' }}>
+
+Whether the member is streaming using "Screen Share", `false` when the payload did not include it.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L62', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:62' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["voiceStates"]>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '["voiceStates"]>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### disconnect()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L185', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:185' }}>
+
+<ApiSignature
+	tokens={[
+		'disconnect(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("guild" | "member" | "channel")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("guild" | "member" | "channel")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L194', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:194' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['VoiceStateEditOptions', '/documentation/api/plugin-gateway/interfaces/VoiceStateEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+Edits the voice state in a stage channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['VoiceStateEditOptions', '/documentation/api/plugin-gateway/interfaces/VoiceStateEditOptions']]}>
+
+Whether to request to speak (the bot only), and whether the member is suppressed.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L154', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:154' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+Fetches the voice state from the API, and patches this structure with the result.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L146', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:146' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchChannel(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		' | null>'
+	]}
+/>
+
+Fetches the channel the member is connected to, `null` when they are disconnected.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		' | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchMember()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L135', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:135' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchMember(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchUser()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L139', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:139' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchUser(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setChannel()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L178', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:178' }}>
+
+<ApiSignature
+	tokens={[
+		'setChannel(channel: string | null, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Moves the member to another voice channel, or disconnects them with `null`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={['string | null']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setDeaf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L171', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:171' }}>
+
+<ApiSignature
+	tokens={[
+		'setDeaf(deaf: boolean = true, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Deafens or undeafens the member server-wide.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="deaf" type={['boolean']} defaultValue="true" />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setMute()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L164', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:164' }}>
+
+<ApiSignature
+	tokens={[
+		'setMute(mute: boolean = true, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+Mutes or unmutes the member server-wide.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="mute" type={['boolean']} defaultValue="true" />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setRequestToSpeak()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L227', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:227' }}>
+
+<ApiSignature
+	tokens={[
+		'setRequestToSpeak(requestToSpeak: boolean = true): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+Requests to speak in a stage channel, or withdraws the request. The bot's own voice state only.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="requestToSpeak" type={['boolean']} defaultValue="true" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setSuppressed()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L234', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:234' }}>
+
+<ApiSignature
+	tokens={[
+		'setSuppressed(suppressed: boolean = true): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+Moves the member to the audience of a stage channel, or invites them to speak.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="suppressed" type={['boolean']} defaultValue="true" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState']]} />
+
+</ApiParams>
+
+</ApiMember>

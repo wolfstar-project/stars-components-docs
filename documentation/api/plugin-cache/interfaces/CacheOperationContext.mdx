@@ -1,0 +1,34 @@
+---
+title: 'Interface: CacheOperationContext'
+description: 'What createCacheOperations needs to know besides the dispatch. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L148',
+		label: 'packages/plugin-cache/src/lib/operations.ts:148'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+What [createCacheOperations](/documentation/api/plugin-cache/functions/createCacheOperations) needs to know besides the dispatch.
+
+<ApiSignature tokens={['interface CacheOperationContext']} />
+
+<ApiHierarchy extendedBy={[[['CacheGatewayOptions', '/documentation/api/plugin-cache/interfaces/CacheGatewayOptions']]]} />
+
+## Properties
+
+### clientUserId?
+
+<ApiMember kind="property" badges={['optional']} signature={['clientUserId?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L153', label: 'packages/plugin-cache/src/lib/operations.ts:153' }}>
+
+The bot's user ID. Reactions and poll votes only carry the voter's ID, so without it the cached `me` and
+`me_voted` flags are never set.
+
+</ApiMember>

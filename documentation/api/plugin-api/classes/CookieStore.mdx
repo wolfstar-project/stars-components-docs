@@ -1,0 +1,118 @@
+---
+title: 'Class: CookieStore'
+description: 'API reference for CookieStore, a class exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/CookieStore.ts#L37',
+		label: 'packages/plugin-api/src/lib/structures/api/CookieStore.ts:37'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature
+	tokens={[
+		'class CookieStore extends ',
+		['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'],
+		'<string, string>'
+	]}
+/>
+
+<ApiHierarchy extends={[[['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, string>']]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/CookieStore.ts#L42', label: 'packages/plugin-api/src/lib/structures/api/CookieStore.ts:42' }}>
+
+<ApiSignature
+	tokens={[
+		'new CookieStore(\n  request: ',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		',\n  response: ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		',\n  secure: boolean = false,\n  domainOverwrite: string | null = null\n): ',
+		['CookieStore', '/documentation/api/plugin-api/classes/CookieStore']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="request" type={[['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage']]} />
+
+<ApiParam name="response" type={[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse']]} />
+
+<ApiParam name="secure" type={['boolean']} defaultValue="false" />
+
+<ApiParam name="domainOverwrite" type={['string | null']} defaultValue="null" />
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### add()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/CookieStore.ts#L73', label: 'packages/plugin-api/src/lib/structures/api/CookieStore.ts:73' }}>
+
+<ApiSignature
+	tokens={[
+		'add(name: string, value: string, options: ',
+		['SecureCookieStoreSetOptions', '/documentation/api/plugin-api/interfaces/SecureCookieStoreSetOptions'],
+		' = {}): this'
+	]}
+/>
+
+Adds a cookie and queues the matching `Set-Cookie` header. Nothing is stored if the cookie is invalid.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']} />
+
+<ApiParam name="value" type={['string']} />
+
+<ApiParam
+	name="options"
+	type={[['SecureCookieStoreSetOptions', '/documentation/api/plugin-api/interfaces/SecureCookieStoreSetOptions']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### remove()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/CookieStore.ts#L83', label: 'packages/plugin-api/src/lib/structures/api/CookieStore.ts:83' }}>
+
+<ApiSignature tokens={['remove(name: string): this']} />
+
+Removes a cookie and queues an already-expired `Set-Cookie` header for it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>

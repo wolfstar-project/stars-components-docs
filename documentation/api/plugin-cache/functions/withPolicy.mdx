@@ -1,0 +1,75 @@
+---
+title: 'Function: withPolicy()'
+description: "Wraps an EntityCache so its writes follow a CachePolicy: entries the policy's filter rejects are not cached (and deleted when they were), and each en… (@wolfstar/plugin-cache)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/policy.ts#L141',
+		label: 'packages/plugin-cache/src/lib/policy.ts:141'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Wraps an [EntityCache](/documentation/api/plugin-cache/interfaces/EntityCache) so its writes follow a [CachePolicy](/documentation/api/plugin-cache/interfaces/CachePolicy): entries the policy's `filter` rejects are
+not cached (and deleted when they were), and each entry lives as long as its `ttl` says.
+
+<ApiSignature
+	tokens={[
+		'withPolicy<Raw>(cache: ',
+		['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'],
+		'<Raw>, policy: ',
+		['CachePolicy', '/documentation/api/plugin-cache/interfaces/CachePolicy'],
+		'<Raw>): ',
+		['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'],
+		'<Raw>'
+	]}
+/>
+
+Wraps an [EntityCache](/documentation/api/plugin-cache/interfaces/EntityCache) so its writes follow a [CachePolicy](/documentation/api/plugin-cache/interfaces/CachePolicy): entries the policy's `filter` rejects are
+not cached (and deleted when they were), and each entry lives as long as its `ttl` says.
+
+It works with any store, synchronous ones stay synchronous. The wrapper can enumerate its entries, and exposes
+`deleteGuild`, only when the wrapped store does.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Raw" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="cache" type={[['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<Raw>']}>
+
+The store to wrap.
+
+</ApiParam>
+
+<ApiParam name="policy" type={[['CachePolicy', '/documentation/api/plugin-cache/interfaces/CachePolicy'], '<Raw>']}>
+
+The policy its writes follow.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<Raw>']} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { MemoryEntityCache, withPolicy } from '@wolfstar/plugin-cache';
+
+// Only cache human users, for ten minutes.
+const users = withPolicy(new MemoryEntityCache(), { filter: (user) => !user.bot, ttl: () => 600_000 });
+```

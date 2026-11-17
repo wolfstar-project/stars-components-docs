@@ -1,0 +1,53 @@
+---
+title: 'Interface: CommandRequest'
+description: 'A request naming a command, the optional command layer on top of raw requests. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/commands.ts#L6',
+		label: 'packages/plugin-sharder/src/util/commands.ts:6'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+A request naming a command, the optional command layer on top of raw requests.
+
+<ApiSignature tokens={['interface CommandRequest<Name extends string = string, Data = unknown>']} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Name" type={['extends string']} defaultValue="string" />
+
+<ApiParam name="Data" defaultValue="unknown" />
+
+</ApiParams>
+
+## Properties
+
+### command
+
+<ApiMember
+	kind="property"
+	signature={['command: Name']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/commands.ts#L7',
+		label: 'packages/plugin-sharder/src/util/commands.ts:7'
+	}}
+/>
+
+### data
+
+<ApiMember
+	kind="property"
+	signature={['data: Data']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/commands.ts#L8',
+		label: 'packages/plugin-sharder/src/util/commands.ts:8'
+	}}
+/>

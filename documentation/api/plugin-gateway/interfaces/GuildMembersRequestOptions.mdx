@@ -1,0 +1,104 @@
+---
+title: 'Interface: GuildMembersRequestOptions'
+description: 'The options to request the members of a guild over the gateway with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L139',
+		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:139'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to request the members of a guild over the gateway with. Without `query` nor `userIds`, every member is
+requested.
+
+<ApiSignature tokens={['interface GuildMembersRequestOptions']} />
+
+## Properties
+
+### limit?
+
+<ApiMember kind="property" badges={['optional']} signature={['limit?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L151', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:151' }}>
+
+How many members to match with `query`, `0` for no limit (only with an empty `query`).
+
+**Default**
+
+```ts
+0;
+```
+
+</ApiMember>
+
+### nonce?
+
+<ApiMember kind="property" badges={['optional']} signature={['nonce?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L169', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:169' }}>
+
+The nonce identifying the request's chunks, up to 32 bytes.
+
+**Default**
+
+```ts
+A random one.
+```
+
+</ApiMember>
+
+### presences?
+
+<ApiMember kind="property" badges={['optional']} signature={['presences?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L163', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:163' }}>
+
+Whether to also receive (and cache) the members' presences. Needs the `GuildPresences` intent.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>
+
+### query?
+
+<ApiMember kind="property" badges={['optional']} signature={['query?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L145', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:145' }}>
+
+The prefix of the usernames and nicknames to match, `""` for every member. Exclusive with `userIds`.
+
+**Default**
+
+```ts
+'';
+```
+
+</ApiMember>
+
+### time?
+
+<ApiMember kind="property" badges={['optional']} signature={['time?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L175', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:175' }}>
+
+How long to wait for each chunk, in milliseconds, before rejecting with a `GuildMembersTimeoutError`.
+
+**Default**
+
+```ts
+120_000;
+```
+
+</ApiMember>
+
+### userIds?
+
+<ApiMember kind="property" badges={['optional']} signature={['userIds?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L157', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:157' }}>
+
+The IDs of the users to request, up to 100. Exclusive with `query`. The ones that are not members are left out of
+the result, and listed in the `not_found` of the `guildMembersChunk` data. An empty array is ignored, like omitting
+it.
+
+</ApiMember>

@@ -1,0 +1,87 @@
+---
+title: 'Interface: DispatchStateCodec'
+description: 'Carries the previous state a dispatch handler reads before the cache write (DispatchHandler#before) across processes: DispatchStateCodec.serialize tu… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatchState.ts#L13',
+		label: 'packages/plugin-gateway/src/util/dispatchState.ts:13'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Carries the previous state a dispatch handler reads before the cache write (`DispatchHandler#before`) across
+processes: [DispatchStateCodec.serialize](/documentation/api/plugin-gateway/interfaces/DispatchStateCodec#serialize) turns it into plain, codec-safe data on the gateway process, and
+[DispatchStateCodec.revive](/documentation/api/plugin-gateway/interfaces/DispatchStateCodec#revive) builds the structures again on a worker.
+
+<ApiSignature tokens={['interface DispatchStateCodec']} />
+
+## Methods
+
+### revive()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatchState.ts#L20', label: 'packages/plugin-gateway/src/util/dispatchState.ts:20' }}>
+
+<ApiSignature
+	tokens={[
+		'revive(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		', state: unknown, data: any): unknown'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client of the worker.
+
+</ApiParam>
+
+<ApiParam name="state" type={['unknown']}>
+
+What `serialize` returned, after a trip through the wire.
+
+</ApiParam>
+
+<ApiParam name="data" type={['any']}>
+
+The dispatch data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### serialize()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/dispatchState.ts#L14', label: 'packages/plugin-gateway/src/util/dispatchState.ts:14' }}>
+
+<ApiSignature tokens={['serialize(state: unknown): unknown']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="state" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>

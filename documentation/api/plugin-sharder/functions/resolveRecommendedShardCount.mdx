@@ -1,0 +1,51 @@
+---
+title: 'Function: resolveRecommendedShardCount()'
+description: "Turns Discord's recommended shard count into the one to spawn. (@wolfstar/plugin-sharder)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L61',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:61'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Turns Discord's recommended shard count into the one to spawn.
+
+<ApiSignature
+	tokens={[
+		'resolveRecommendedShardCount(\n  recommended: number,\n  options: ',
+		['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions'],
+		' = {}\n): number'
+	]}
+/>
+
+Turns Discord's recommended shard count into the one to spawn.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="recommended" type={['number']}>
+
+The `shards` of `GET /gateway/bot`.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions']]} defaultValue={'{}'}>
+
+How many guilds per gateway shard, and what to round the count up to.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>

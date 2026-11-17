@@ -1,0 +1,55 @@
+---
+title: 'Function: computeChannelPermissions()'
+description: "Applies a channel's permission overwrites to guild-wide permissions, the way Discord does: administrators keep every permission, then the @everyone o… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L97',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:97'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Applies a channel's permission overwrites to guild-wide permissions, the way Discord does: administrators keep
+every permission, then the `@everyone` overwrite applies, then the roles' overwrites (combined), then the member's.
+
+<ApiSignature
+	tokens={[
+		'computeChannelPermissions(\n  base: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<PermissionsBitField>,\n  context: ',
+		['ChannelPermissionsContext', '/documentation/api/plugin-gateway/interfaces/ChannelPermissionsContext'],
+		'\n): PermissionsBitField'
+	]}
+/>
+
+Applies a channel's permission overwrites to guild-wide permissions, the way Discord does: administrators keep
+every permission, then the `@everyone` overwrite applies, then the roles' overwrites (combined), then the member's.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="base" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<PermissionsBitField>']}>
+
+The guild-wide permissions, from [computeGuildPermissions](/documentation/api/plugin-gateway/functions/computeGuildPermissions).
+
+</ApiParam>
+
+<ApiParam name="context" type={[['ChannelPermissionsContext', '/documentation/api/plugin-gateway/interfaces/ChannelPermissionsContext']]}>
+
+The channel's overwrites, and the member or role.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['PermissionsBitField']} />
+
+</ApiParams>

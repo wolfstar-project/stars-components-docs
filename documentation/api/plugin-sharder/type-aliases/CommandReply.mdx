@@ -1,0 +1,39 @@
+---
+title: 'Type Alias: CommandReply'
+description: 'The reply of a command. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/commands.ts#L22',
+		label: 'packages/plugin-sharder/src/util/commands.ts:22'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The reply of a command.
+
+<ApiSignature
+	tokens={[
+		'type CommandReply<C extends ',
+		['Commands', '/documentation/api/plugin-sharder/type-aliases/Commands'],
+		'<any>, Name extends keyof C> = ',
+		['Awaited', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#awaitedtype'],
+		'<',
+		['ReturnType', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#returntypetype'],
+		'<C[Name]>>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="C" type={['extends ', ['Commands', '/documentation/api/plugin-sharder/type-aliases/Commands'], '<any>']} />
+
+<ApiParam name="Name" type={['extends keyof C']} />
+
+</ApiParams>

@@ -1,0 +1,85 @@
+---
+title: 'Variable: ScheduledTaskEvents'
+description: 'Events emitted during the process setting up the scheduler and running a task. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskEvents.ts#L7',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskEvents.ts:7'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+Events emitted during the process setting up the scheduler and running a task.
+You can use these events to trace the progress for debugging purposes.
+
+<ApiSignature
+	tokens={[
+		'const ScheduledTaskEvents: {\n  ScheduledTaskError: "scheduledTaskError";\n  ScheduledTaskFinished: "scheduledTaskFinished";\n  ScheduledTaskNotFound: "scheduledTaskNotFound";\n  ScheduledTaskNotReady: "scheduledTaskNotReady";\n  ScheduledTaskRun: "scheduledTaskRun";\n  ScheduledTaskStrategyClientError: "scheduledTaskStrategyClientError";\n  ScheduledTaskStrategyConnectError: "scheduledTaskStrategyConnectError";\n  ScheduledTaskStrategyWorkerError: "scheduledTaskStrategyWorkerError";\n  ScheduledTaskSuccess: "scheduledTaskSuccess";\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="ScheduledTaskError" type={['"scheduledTaskError"']}>
+
+Event that is emitted when a task's "run" method throws an error
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskFinished" type={['"scheduledTaskFinished"']}>
+
+Event that is emitted after [ScheduledTaskEvents.ScheduledTaskSuccess](/documentation/api/plugin-scheduled-tasks/variables/ScheduledTaskEvents), when a task's "run" method finished
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskNotFound" type={['"scheduledTaskNotFound"']}>
+
+Event that is emitted if a task piece is not found in the store
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskNotReady" type={['"scheduledTaskNotReady"']}>
+
+Event that is emitted when a task that waits for the app to be ready was not run because the app was still not
+ready after the timeout. The job is delayed, which costs it no attempt.
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskRun" type={['"scheduledTaskRun"']}>
+
+Event that is emitted before a task's "run" method is called
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskStrategyClientError" type={['"scheduledTaskStrategyClientError"']}>
+
+Event that is emitted when the scheduled task client encounters an error.
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskStrategyConnectError" type={['"scheduledTaskStrategyConnectError"']}>
+
+Event that is emitted when the scheduler fails to connect to the server (i.e. redis)
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskStrategyWorkerError" type={['"scheduledTaskStrategyWorkerError"']}>
+
+Event that is emitted when the scheduled task worker encounters an error.
+
+</ApiParam>
+
+<ApiParam name="ScheduledTaskSuccess" type={['"scheduledTaskSuccess"']}>
+
+Event that is emitted when a task's "run" method is successful
+
+</ApiParam>
+
+</ApiParams>

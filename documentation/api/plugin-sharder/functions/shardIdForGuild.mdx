@@ -1,0 +1,45 @@
+---
+title: 'Function: shardIdForGuild()'
+description: 'Gets the gateway shard receiving the events of a guild. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/gateway.ts#L89',
+		label: 'packages/plugin-sharder/src/util/gateway.ts:89'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Gets the gateway shard receiving the events of a guild.
+
+<ApiSignature tokens={['shardIdForGuild(guildId: string, shardCount: number): number']} />
+
+Gets the gateway shard receiving the events of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="shardCount" type={['number']}>
+
+The total number of gateway shards.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>

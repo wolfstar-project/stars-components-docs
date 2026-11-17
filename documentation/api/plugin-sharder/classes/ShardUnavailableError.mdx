@@ -1,0 +1,65 @@
+---
+title: 'Class: ShardUnavailableError'
+description: 'A shard stopped, is not ready in time, or does not exist. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/errors.ts#L43',
+		label: 'packages/plugin-sharder/src/util/errors.ts:43'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+A shard stopped, is not ready in time, or does not exist.
+
+<ApiSignature
+	tokens={[
+		'class ShardUnavailableError extends ',
+		['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']
+	]}
+/>
+
+<ApiHierarchy extends={[[['Error', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/errors.ts#L46', label: 'packages/plugin-sharder/src/util/errors.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'new ShardUnavailableError(channelId: number, reason: string): ',
+		['ShardUnavailableError', '/documentation/api/plugin-sharder/classes/ShardUnavailableError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['number']} />
+
+<ApiParam name="reason" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### channelId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly channelId: number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/errors.ts#L44',
+		label: 'packages/plugin-sharder/src/util/errors.ts:44'
+	}}
+/>

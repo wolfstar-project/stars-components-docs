@@ -1,0 +1,333 @@
+---
+title: 'Class: ApiResponse'
+description: 'API reference for ApiResponse, a class exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L7',
+		label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:7'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature
+	tokens={[
+		'class ApiResponse<Request extends ',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		' = ',
+		['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage'],
+		'> extends ',
+		['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'],
+		'<Request>'
+	]}
+/>
+
+<ApiHierarchy extends={[[['ServerResponse', 'https://nodejs.org/api/http.html#class-httpserverresponse'], '<Request>']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Request"
+	type={['extends ', ['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage']]}
+	defaultValue="IncomingMessage"
+/>
+
+</ApiParams>
+
+## Properties
+
+### cookies
+
+<ApiMember kind="property" signature={['cookies: ', ['CookieStore', '/documentation/api/plugin-api/classes/CookieStore']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L13', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:13' }}>
+
+The cookies of the request, created by the `cookies` middleware.
+
+</ApiMember>
+
+## Methods
+
+### badRequest()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L27', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:27' }}>
+
+<ApiSignature tokens={['badRequest(data?: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+### conflict()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L47', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:47' }}>
+
+<ApiSignature tokens={['conflict(data?: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+### created()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L19', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:19' }}>
+
+<ApiSignature tokens={['created(data: unknown = ...): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+### error()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L54', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:54' }}>
+
+<ApiSignature tokens={['error(error: string | number, data?: unknown): void']} />
+
+Sends an error. A string is the message of a 500; a number is the status code, with `data` (or the status text) as message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="error" type={['string | number']} />
+
+<ApiParam name="data" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+### forbidden()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L35', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:35' }}>
+
+<ApiSignature tokens={['forbidden(data?: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+### html()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L92', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:92' }}>
+
+<ApiSignature tokens={['html(code: number, data: string): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['number']} />
+
+<ApiParam name="data" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### image()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L80', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:80' }}>
+
+<ApiSignature
+	tokens={[
+		'image(\n  type: "image/aces" | "image/apng" | "image/avci" | "image/avcs" | "image/avif" | "image/bmp" | "image/cgm" | "image/dicom-rle" | "image/dpx" | "image/emf" | "image/example" | "image/fits" | "image/g3fax" | "image/gif" | "image/heic" | "image/heic-sequence" | "image/heif" | "image/heif-sequence" | "image/hej2k" | "image/hsj2" | "image/ief" | "image/j2c" | "image/jaii" | "image/jais" | "image/jls" | "image/jp2" | "image/jpeg" | "image/jph" | "image/jphc" | "image/jpm" | "image/jpx" | "image/jxl" | "image/jxr" | "image/jxrA" | "image/jxrS" | "image/jxs" | "image/jxsc" | "image/jxsi" | "image/jxss" | "image/ktx" | "image/ktx2" | "image/naplps" | "image/png" | "image/prs.btif" | "image/prs.pti" | "image/pwg-raster" | "image/svg+xml" | "image/t38" | "image/tiff" | "image/tiff-fx" | "image/vnd.adobe.photoshop" | "image/vnd.airzip.accelerator.azv" | "image/vnd.blockfact.facti" | "image/vnd.clip" | "image/vnd.cns.inf2" | "image/vnd.dece.graphic" | "image/vnd.djvu" | "image/vnd.dwg" | "image/vnd.dxf" | "image/vnd.dvb.subtitle" | "image/vnd.fastbidsheet" | "image/vnd.fpx" | "image/vnd.fst" | "image/vnd.fujixerox.edmics-mmr" | "image/vnd.fujixerox.edmics-rlc" | "image/vnd.globalgraphics.pgb" | "image/vnd.microsoft.icon" | "image/vnd.mix" | "image/vnd.ms-modi" | "image/vnd.mozilla.apng" | "image/vnd.net-fpx" | "image/vnd.pco.b16" | "image/vnd.radiance" | "image/vnd.sealed.png" | "image/vnd.sealedmedia.softseal.gif" | "image/vnd.sealedmedia.softseal.jpg" | "image/vnd.svf" | "image/vnd.tencent.tap" | "image/vnd.valve.source.texture" | "image/vnd.wap.wbmp" | "image/vnd.xiff" | "image/vnd.zbrush.pcx" | "image/webp" | "image/wmf",\n  data: string | ',
+		['Readable', 'https://nodejs.org/api/stream.html#class-streamreadable'],
+		' | ',
+		['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array'],
+		'<ArrayBufferLike> | Buffer<ArrayBufferLike>\n): void'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="type"
+	type={[
+		'"image/aces" | "image/apng" | "image/avci" | "image/avcs" | "image/avif" | "image/bmp" | "image/cgm" | "image/dicom-rle" | "image/dpx" | "image/emf" | "image/example" | "image/fits" | "image/g3fax" | "image/gif" | "image/heic" | "image/heic-sequence" | "image/heif" | "image/heif-sequence" | "image/hej2k" | "image/hsj2" | "image/ief" | "image/j2c" | "image/jaii" | "image/jais" | "image/jls" | "image/jp2" | "image/jpeg" | "image/jph" | "image/jphc" | "image/jpm" | "image/jpx" | "image/jxl" | "image/jxr" | "image/jxrA" | "image/jxrS" | "image/jxs" | "image/jxsc" | "image/jxsi" | "image/jxss" | "image/ktx" | "image/ktx2" | "image/naplps" | "image/png" | "image/prs.btif" | "image/prs.pti" | "image/pwg-raster" | "image/svg+xml" | "image/t38" | "image/tiff" | "image/tiff-fx" | "image/vnd.adobe.photoshop" | "image/vnd.airzip.accelerator.azv" | "image/vnd.blockfact.facti" | "image/vnd.clip" | "image/vnd.cns.inf2" | "image/vnd.dece.graphic" | "image/vnd.djvu" | "image/vnd.dwg" | "image/vnd.dxf" | "image/vnd.dvb.subtitle" | "image/vnd.fastbidsheet" | "image/vnd.fpx" | "image/vnd.fst" | "image/vnd.fujixerox.edmics-mmr" | "image/vnd.fujixerox.edmics-rlc" | "image/vnd.globalgraphics.pgb" | "image/vnd.microsoft.icon" | "image/vnd.mix" | "image/vnd.ms-modi" | "image/vnd.mozilla.apng" | "image/vnd.net-fpx" | "image/vnd.pco.b16" | "image/vnd.radiance" | "image/vnd.sealed.png" | "image/vnd.sealedmedia.softseal.gif" | "image/vnd.sealedmedia.softseal.jpg" | "image/vnd.svf" | "image/vnd.tencent.tap" | "image/vnd.valve.source.texture" | "image/vnd.wap.wbmp" | "image/vnd.xiff" | "image/vnd.zbrush.pcx" | "image/webp" | "image/wmf"'
+	]}
+/>
+
+<ApiParam
+	name="data"
+	type={[
+		'string | ',
+		['Readable', 'https://nodejs.org/api/stream.html#class-streamreadable'],
+		' | ',
+		['Uint8Array', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array'],
+		'<ArrayBufferLike> | Buffer<ArrayBufferLike>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### json()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L72', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:72' }}>
+
+<ApiSignature tokens={['json(data: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### methodNotAllowed()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L43', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:43' }}>
+
+<ApiSignature tokens={['methodNotAllowed(data?: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+### noContent()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L23', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:23' }}>
+
+<ApiSignature tokens={['noContent(data: unknown = ...): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+### notFound()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L39', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:39' }}>
+
+<ApiSignature tokens={['notFound(data?: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>
+
+### ok()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L15', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:15' }}>
+
+<ApiSignature tokens={['ok(data: unknown = ...): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} defaultValue="..." />
+
+</ApiParams>
+
+</ApiMember>
+
+### respond()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L62', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:62' }}>
+
+<ApiSignature tokens={['respond(data: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setContentType()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L96', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:96' }}>
+
+<ApiSignature tokens={['setContentType(type: MimeType): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="type" type={['MimeType']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### status()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L67', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:67' }}>
+
+<ApiSignature tokens={['status(code: number): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### text()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L76', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:76' }}>
+
+<ApiSignature tokens={['text(data: string): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### unauthorized()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiResponse.ts#L31', label: 'packages/plugin-api/src/lib/structures/api/ApiResponse.ts:31' }}>
+
+<ApiSignature tokens={['unauthorized(data?: unknown): void']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['unknown']} optional />
+
+</ApiParams>
+
+</ApiMember>

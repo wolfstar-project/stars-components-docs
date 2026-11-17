@@ -1,0 +1,66 @@
+---
+title: 'Interface: RoleColorsResolvable'
+description: 'The colors of a role: primaryColor alone for a solid color, with secondaryColor for a gradient, and with tertiaryColor for the holographic style. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/types.ts#L439',
+		label: 'packages/plugin-gateway/src/types.ts:439'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The colors of a role: `primaryColor` alone for a solid color, with `secondaryColor` for a gradient, and with
+`tertiaryColor` for the holographic style.
+
+<ApiSignature
+	tokens={[
+		'interface RoleColorsResolvable extends ',
+		['RoleColorsEditResolvable', '/documentation/api/plugin-gateway/interfaces/RoleColorsEditResolvable']
+	]}
+/>
+
+<ApiHierarchy extends={[[['RoleColorsEditResolvable', '/documentation/api/plugin-gateway/interfaces/RoleColorsEditResolvable']]]} />
+
+## Properties
+
+### primaryColor
+
+<ApiMember
+	kind="property"
+	signature={['primaryColor: ', ['ColorResolvable', '/documentation/api/plugin-gateway/type-aliases/ColorResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/types.ts#L440',
+		label: 'packages/plugin-gateway/src/types.ts:440'
+	}}
+/>
+
+### secondaryColor?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['secondaryColor?: ', ['ColorResolvable', '/documentation/api/plugin-gateway/type-aliases/ColorResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/types.ts#L441',
+		label: 'packages/plugin-gateway/src/types.ts:441'
+	}}
+/>
+
+### tertiaryColor?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['tertiaryColor?: ', ['ColorResolvable', '/documentation/api/plugin-gateway/type-aliases/ColorResolvable']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/types.ts#L442',
+		label: 'packages/plugin-gateway/src/types.ts:442'
+	}}
+/>

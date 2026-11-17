@@ -1,0 +1,1127 @@
+---
+title: 'Class: RoleManager'
+description: 'Manages the Roles known to the client. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L57',
+		label: 'packages/plugin-gateway/src/managers/RoleManager.ts:57'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the [Role](/documentation/api/plugin-gateway/classes/Role)s known to the client.
+
+`guild.roles` (or `client.guilds.roles(guildId)`) is this manager built for one guild, like discord.js's:
+`cache` takes the role's ID alone, and the methods lose their `guildId` argument.
+
+<ApiSignature
+	tokens={[
+		'class RoleManager<InGuild extends boolean = false> extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"roles", ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		', [guildId: string, roleId: string], ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string]>>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"roles", ',
+			['Role', '/documentation/api/plugin-gateway/classes/Role'],
+			', [guildId: string, roleId: string], ',
+			['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+			'<InGuild, [roleId: string]>>'
+		]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="false">
+
+Whether the manager was built for one guild.
+
+</ApiParam>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L72', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:72' }}>
+
+<ApiSignature
+	tokens={[
+		'new RoleManager<InGuild extends boolean = false>(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  guildId?: string\n): ',
+		['RoleManager', '/documentation/api/plugin-gateway/classes/RoleManager'],
+		'<InGuild>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="false">
+
+Whether the manager was built for one guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The guild to build the manager for.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildId: InGuild extends true ? string : undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L66', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:66' }}>
+
+The ID of the guild this manager was built for, `undefined` on `client.roles`.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "roles"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### botRoleFor()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L268', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:268' }}>
+
+<ApiSignature
+	tokens={[
+		'botRoleFor(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [botId: string]>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null>'
+	]}
+/>
+
+Fetches the role Discord manages for a bot in a guild, if any.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, [botId: string]>']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### comparePositions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L227', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:227' }}>
+
+<ApiSignature
+	tokens={[
+		'comparePositions(a: ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		', b: ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'): number'
+	]}
+/>
+
+Compares the positions of two roles.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="a" type={[['Role', '/documentation/api/plugin-gateway/classes/Role']]} />
+
+<ApiParam name="b" type={[['Role', '/documentation/api/plugin-gateway/classes/Role']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']}>
+
+A negative number when `a` is lower, a positive one when it is higher, `0` when they are the same.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L125', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:125' }}>
+
+<ApiSignature
+	tokens={[
+		'create(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [options?: ',
+		['RoleEditOptions', '/documentation/api/plugin-gateway/interfaces/RoleEditOptions'],
+		']>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+Creates a role.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="args"
+	type={[
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [options?: ',
+		['RoleEditOptions', '/documentation/api/plugin-gateway/interfaces/RoleEditOptions'],
+		']>'
+	]}
+	rest
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>']}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L77', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:77' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		' & { guild_id: string }): ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], ' & { guild_id: string }']}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Role', '/documentation/api/plugin-gateway/classes/Role']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L158', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:158' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string, reason?: string]>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a role.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="args"
+	type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, [roleId: string, reason?: string]>']}
+	rest
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L140', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:140' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string, options: ',
+		['RoleEditOptions', '/documentation/api/plugin-gateway/interfaces/RoleEditOptions'],
+		']>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+Edits a role.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="args"
+	type={[
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string, options: ',
+		['RoleEditOptions', '/documentation/api/plugin-gateway/interfaces/RoleEditOptions'],
+		']>'
+	]}
+	rest
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### everyone()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L236', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:236' }}>
+
+<ApiSignature
+	tokens={[
+		'everyone(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, []>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+Fetches the `@everyone` role of a guild, whose ID is the guild's.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, []>']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }} inheritedFrom={[['CachedManager.fetch', '/documentation/api/plugin-gateway/classes/CachedManager#fetch']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [...',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string]>[]] | [...',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string]>[], ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[...', ['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, [roleId: string]>[]] | [...', ['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, [roleId: string]>[], ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchAll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L99', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:99' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchAll(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, []>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">[]>'
+	]}
+/>
+
+Fetches every role of a guild from the API, and caches them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, []>']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">[]>']}>
+
+The roles, highest first.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchMemberCounts()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L113', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:113' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchMemberCounts(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, []>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'],
+		'<string, number>>'
+	]}
+/>
+
+Fetches how many members each role of a guild has, `@everyone` excluded.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, []>']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, number>>']}>
+
+The member count of every role, by role ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L274', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:274' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(\n  guildId: string,\n  roleId: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  color: number;\n  colors: ',
+		['APIRoleColors', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRoleColors'],
+		';\n  flags: RoleFlags;\n  guild_id: string;\n  hoist: boolean;\n  icon?: string | null;\n  id: string;\n  managed: boolean;\n  mentionable: boolean;\n  name: string;\n  permissions: string;\n  position: number;\n  tags?: ',
+		['APIRoleTags', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRoleTags'],
+		';\n  unicode_emoji?: string | null;\n}>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+<ApiParam name="roleId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  color: number;\n  colors: ',
+		['APIRoleColors', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRoleColors'],
+		';\n  flags: RoleFlags;\n  guild_id: string;\n  hoist: boolean;\n  icon?: string | null;\n  id: string;\n  managed: boolean;\n  mentionable: boolean;\n  name: string;\n  permissions: string;\n  position: number;\n  tags?: ',
+		['APIRoleTags', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRoleTags'],
+		';\n  unicode_emoji?: string | null;\n}>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### highest()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L246', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:246' }}>
+
+<ApiSignature
+	tokens={[
+		'highest(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, []>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null>'
+	]}
+/>
+
+Fetches the highest role of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, []>']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'],
+		' & { guild_id: string }> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], ' & { guild_id: string }> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L81', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:81' }}>
+
+<ApiSignature
+	tokens={['keyOf(data: ', ['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], ' & { guild_id: string }): string']}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIRole', 'https://discord-api-types.dev/api/discord-api-types-v10#APIRole'], ' & { guild_id: string }']}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### premiumSubscriberRole()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L256', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:256' }}>
+
+<ApiSignature
+	tokens={[
+		'premiumSubscriberRole(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, []>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null>'
+	]}
+/>
+
+Fetches the role Discord gives to the server boosters of a guild, if any.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, []>']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs']]} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['CachedManager.resolve', '/documentation/api/plugin-gateway/classes/CachedManager#resolve']]}>
+
+<ApiSignature
+	tokens={[
+		'resolve(value: string | ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<""> | null>'
+	]}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">']}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }} inheritedFrom={[['CachedManager.resolveId', '/documentation/api/plugin-gateway/classes/CachedManager#resolveid']]}>
+
+<ApiSignature tokens={['resolveId(value: string | ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">): string | null']} />
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">']}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L89', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:89' }}>
+
+<ApiSignature tokens={['resolveKey(guildId: string, roleId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+<ApiParam name="roleId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setPosition()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L176', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:176' }}>
+
+<ApiSignature
+	tokens={[
+		'setPosition(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string, position: number, options?: string | ',
+		['SetPositionOptions', '/documentation/api/plugin-gateway/interfaces/SetPositionOptions'],
+		']>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">[]>'
+	]}
+/>
+
+Moves a role among the roles of its guild, like discord.js's `RoleManager#setPosition`.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="args"
+	type={[
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [roleId: string, position: number, options?: string | ',
+		['SetPositionOptions', '/documentation/api/plugin-gateway/interfaces/SetPositionOptions'],
+		']>'
+	]}
+	rest
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">[]>']}>
+
+Every role of the guild, highest first.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setPositions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/RoleManager.ts#L208', label: 'packages/plugin-gateway/src/managers/RoleManager.ts:208' }}>
+
+<ApiSignature
+	tokens={[
+		'setPositions(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [positions: readonly ',
+		['RolePosition', '/documentation/api/plugin-gateway/interfaces/RolePosition'],
+		'[], reason?: string]>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">[]>'
+	]}
+/>
+
+Moves several roles at once.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="args"
+	type={[
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [positions: readonly ',
+		['RolePosition', '/documentation/api/plugin-gateway/interfaces/RolePosition'],
+		'[], reason?: string]>'
+	]}
+	rest
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">[]>']}>
+
+Every role of the guild, highest first.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>']}
+/>
+
+</ApiParams>
+
+</ApiMember>

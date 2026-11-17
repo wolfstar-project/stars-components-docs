@@ -1,0 +1,86 @@
+---
+title: 'Interface: StageInstanceCreateOptions'
+description: 'The options to start a stage with. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/StageInstanceManager.ts#L30',
+		label: 'packages/plugin-gateway/src/managers/StageInstanceManager.ts:30'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to start a stage with.
+
+<ApiSignature
+	tokens={[
+		'interface StageInstanceCreateOptions extends ',
+		['StageInstanceEditOptions', '/documentation/api/plugin-gateway/interfaces/StageInstanceEditOptions']
+	]}
+/>
+
+<ApiHierarchy extends={[[['StageInstanceEditOptions', '/documentation/api/plugin-gateway/interfaces/StageInstanceEditOptions']]]} />
+
+## Properties
+
+### guildScheduledEvent?
+
+<ApiMember kind="property" badges={['optional']} signature={['guildScheduledEvent?: ', ['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/StageInstanceManager.ts#L39', label: 'packages/plugin-gateway/src/managers/StageInstanceManager.ts:39' }}>
+
+The scheduled event the stage belongs to.
+
+</ApiMember>
+
+### privacyLevel?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={[
+		'privacyLevel?: ',
+		['StageInstancePrivacyLevel', 'https://discord-api-types.dev/api/discord-api-types-v10#StageInstancePrivacyLevel']
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/StageInstanceManager.ts#L23',
+		label: 'packages/plugin-gateway/src/managers/StageInstanceManager.ts:23'
+	}}
+	inheritedFrom={[['StageInstanceEditOptions.privacyLevel', '/documentation/api/plugin-gateway/interfaces/StageInstanceEditOptions#privacylevel']]}
+/>
+
+### reason?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['reason?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/StageInstanceManager.ts#L24',
+		label: 'packages/plugin-gateway/src/managers/StageInstanceManager.ts:24'
+	}}
+	inheritedFrom={[['StageInstanceEditOptions.reason', '/documentation/api/plugin-gateway/interfaces/StageInstanceEditOptions#reason']]}
+/>
+
+### sendStartNotification?
+
+<ApiMember kind="property" badges={['optional']} signature={['sendStartNotification?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/StageInstanceManager.ts#L35', label: 'packages/plugin-gateway/src/managers/StageInstanceManager.ts:35' }}>
+
+Whether to notify the members of the guild that the stage started.
+
+</ApiMember>
+
+### topic
+
+<ApiMember
+	kind="property"
+	signature={['topic: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/StageInstanceManager.ts#L31',
+		label: 'packages/plugin-gateway/src/managers/StageInstanceManager.ts:31'
+	}}
+/>

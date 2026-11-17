@@ -1,0 +1,53 @@
+---
+title: 'Function: resolveImage()'
+description: 'Resolves an image to the base64 data URI Discord expects for avatars, icons, banners, and the like. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DataResolver.ts#L137',
+		label: 'packages/plugin-gateway/src/util/DataResolver.ts:137'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Resolves an image to the base64 data URI Discord expects for avatars, icons, banners, and the like. Data URIs are
+kept; anything else is read with [resolveFile](/documentation/api/plugin-gateway/functions/resolveFile).
+
+<ApiSignature
+	tokens={[
+		'resolveImage(image: ',
+		['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'],
+		' | null | undefined): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<string | null>'
+	]}
+/>
+
+Resolves an image to the base64 data URI Discord expects for avatars, icons, banners, and the like. Data URIs are
+kept; anything else is read with [resolveFile](/documentation/api/plugin-gateway/functions/resolveFile).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="image" type={[['ImageResolvable', '/documentation/api/plugin-gateway/type-aliases/ImageResolvable'], ' | null | undefined']}>
+
+The image, `null` or `undefined` to remove it.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string | null>']}>
+
+The data URI, `null` when there is no image.
+
+</ApiParam>
+
+</ApiParams>

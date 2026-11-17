@@ -1,0 +1,31 @@
+---
+title: 'Type Alias: ScheduledTasksTaskOptions'
+description: 'Options for a scheduled task. (@wolfstar/plugin-scheduled-tasks)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts#L102',
+		label: 'packages/plugin-scheduled-tasks/src/lib/types/ScheduledTaskTypes.ts:102'
+	}}
+	packageName="@wolfstar/plugin-scheduled-tasks"
+	packageHref="/documentation/api/plugin-scheduled-tasks"
+/>
+
+Options for a scheduled task.
+
+<ApiSignature
+	tokens={[
+		'type ScheduledTasksTaskOptions = { repeated: boolean } & ({\n  customJobOptions?: ',
+		['ScheduledTaskCustomJobOptions', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskCustomJobOptions'],
+		';\n  delay: number;\n  interval?: never;\n  pattern?: never;\n  timezone?: never;\n} | {\n  customJobOptions?: ',
+		['ScheduledTaskCustomJobOptions', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskCustomJobOptions'],
+		';\n  delay?: never;\n  interval: number;\n  pattern?: never;\n  timezone?: never;\n} | {\n  customJobOptions?: ',
+		['ScheduledTaskCustomJobOptions', '/documentation/api/plugin-scheduled-tasks/type-aliases/ScheduledTaskCustomJobOptions'],
+		';\n  delay?: never;\n  interval?: never;\n  pattern: string;\n  timezone: string;\n})'
+	]}
+/>

@@ -1,0 +1,146 @@
+---
+title: 'Interface: ShardChannelEvents'
+description: 'The events of a ShardChannel. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L18',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:18'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The events of a [ShardChannel](/documentation/api/plugin-sharder/classes/ShardChannel). The manager emits them too, prefixed with `shard` and with the channel first.
+
+<ApiSignature tokens={['interface ShardChannelEvents']} />
+
+## Properties
+
+### destroy
+
+<ApiMember
+	kind="property"
+	signature={['destroy: []']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L37',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:37'
+	}}
+/>
+
+### disconnect
+
+<ApiMember
+	kind="property"
+	signature={['disconnect: []']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L25',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:25'
+	}}
+/>
+
+### error
+
+<ApiMember
+	kind="property"
+	signature={['error: [error: unknown]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L38',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:38'
+	}}
+/>
+
+### exit
+
+<ApiMember
+	kind="property"
+	signature={['exit: [code: number | null]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L36',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:36'
+	}}
+/>
+
+### message
+
+<ApiMember
+	kind="property"
+	signature={['message: [body: any]']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L39',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:39'
+	}}
+/>
+
+### ping
+
+<ApiMember kind="property" signature={['ping: [latency: number]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L30', label: 'packages/plugin-sharder/src/ShardChannel.ts:30' }}>
+
+The shard answered a ping; `latency` is the round trip, in milliseconds.
+
+</ApiMember>
+
+### ready
+
+<ApiMember
+	kind="property"
+	signature={['ready: []']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L24',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:24'
+	}}
+/>
+
+### reconnecting
+
+<ApiMember
+	kind="property"
+	signature={['reconnecting: []']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L26',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:26'
+	}}
+/>
+
+### slowStart
+
+<ApiMember kind="property" signature={['slowStart: [elapsed: number, estimate: number]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L35', label: 'packages/plugin-sharder/src/ShardChannel.ts:35' }}>
+
+The shard takes longer than expected to be ready, see `spawn.readyHint`.
+
+</ApiMember>
+
+### spawn
+
+<ApiMember kind="property" signature={['spawn: []']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L22', label: 'packages/plugin-sharder/src/ShardChannel.ts:22' }}>
+
+The shard was spawned (`shardCreate` on the manager).
+
+</ApiMember>
+
+### status
+
+<ApiMember
+	kind="property"
+	signature={['status: [status: ', ['ShardStatus', '/documentation/api/plugin-sharder/type-aliases/ShardStatus'], ']']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L23',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:23'
+	}}
+/>
+
+### unresponsive
+
+<ApiMember
+	kind="property"
+	signature={['unresponsive: []']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardChannel.ts#L31',
+		label: 'packages/plugin-sharder/src/ShardChannel.ts:31'
+	}}
+/>

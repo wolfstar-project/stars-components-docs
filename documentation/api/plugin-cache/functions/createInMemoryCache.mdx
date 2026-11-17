@@ -1,0 +1,60 @@
+---
+title: 'Function: createInMemoryCache()'
+description: "Creates a Cache that keeps everything in the process' memory. (@wolfstar/plugin-cache)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L273',
+		label: 'packages/plugin-cache/src/lib/memory.ts:273'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+Creates a [Cache](/documentation/api/plugin-cache/interfaces/Cache) that keeps everything in the process' memory.
+
+<ApiSignature
+	tokens={[
+		'createInMemoryCache(options: ',
+		['InMemoryCacheOptions', '/documentation/api/plugin-cache/interfaces/InMemoryCacheOptions'],
+		' = {}): ',
+		['Cache', '/documentation/api/plugin-cache/interfaces/Cache']
+	]}
+/>
+
+Creates a [Cache](/documentation/api/plugin-cache/interfaces/Cache) that keeps everything in the process' memory.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['InMemoryCacheOptions', '/documentation/api/plugin-cache/interfaces/InMemoryCacheOptions']]} defaultValue={'{}'}>
+
+The options for the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-cache/interfaces/Cache']]} />
+
+</ApiParams>
+
+**Example**
+
+```typescript
+import { createInMemoryCache } from '@wolfstar/plugin-cache';
+
+// Keep at most 1000 messages around for an hour, and cache nothing but guilds, channels, messages, and users.
+const cache = createInMemoryCache({
+	entities: ['guilds', 'channels', 'messages', 'users'],
+	maxSize: { messages: 1_000 },
+	ttl: { messages: 3_600_000 },
+	sweepInterval: 60_000
+});
+```

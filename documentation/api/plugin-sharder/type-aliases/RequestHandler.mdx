@@ -1,0 +1,43 @@
+---
+title: 'Type Alias: RequestHandler'
+description: 'Answers the requests of the other side. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/requests.ts#L41',
+		label: 'packages/plugin-sharder/src/util/requests.ts:41'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+Answers the requests of the other side. Its return value (or the value it resolves to) is the reply, and a throw is
+rejected on the other side as a [ShardRequestError](/documentation/api/plugin-sharder/classes/ShardRequestError). It may also return a `Result`: `Ok` is the reply, `Err`
+the error.
+
+<ApiSignature tokens={['type RequestHandler<Context> = (body: any, context: Context & { signal: AbortSignal }) => unknown']} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Context" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="body" type={['any']} />
+
+<ApiParam name="context" type={['Context & { signal: AbortSignal }']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']} />
+
+</ApiParams>

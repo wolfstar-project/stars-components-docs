@@ -1,0 +1,180 @@
+---
+title: 'Class: RedisSessionStore'
+description: 'A GatewaySessionStore backed by Redis, storing every session as JSON at <prefix>:<shardId>. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L83',
+		label: 'packages/plugin-cache/src/lib/sessions.ts:83'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+A [GatewaySessionStore](/documentation/api/plugin-cache/interfaces/GatewaySessionStore) backed by Redis, storing every session as JSON at `<prefix>:<shardId>`.
+
+<ApiSignature
+	tokens={['class RedisSessionStore implements ', ['GatewaySessionStore', '/documentation/api/plugin-cache/interfaces/GatewaySessionStore']]}
+/>
+
+<ApiHierarchy implements={[[['GatewaySessionStore', '/documentation/api/plugin-cache/interfaces/GatewaySessionStore']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L89', label: 'packages/plugin-cache/src/lib/sessions.ts:89' }}>
+
+<ApiSignature
+	tokens={[
+		'new RedisSessionStore(options: ',
+		['RedisSessionStoreOptions', '/documentation/api/plugin-cache/interfaces/RedisSessionStoreOptions'],
+		'): ',
+		['RedisSessionStore', '/documentation/api/plugin-cache/classes/RedisSessionStore']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['RedisSessionStoreOptions', '/documentation/api/plugin-cache/interfaces/RedisSessionStoreOptions']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### prefix
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly prefix: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L84',
+		label: 'packages/plugin-cache/src/lib/sessions.ts:84'
+	}}
+/>
+
+### ttl
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly ttl: number | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L85',
+		label: 'packages/plugin-cache/src/lib/sessions.ts:85'
+	}}
+/>
+
+## Methods
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L100', label: 'packages/plugin-cache/src/lib/sessions.ts:100' }}>
+
+<ApiSignature
+	tokens={[
+		'get(shardId: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'],
+		' | null>'
+	]}
+/>
+
+Reads the session of a shard.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'], ' | null>']}>
+
+The session, or `null` when there is none to resume.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### key()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L123', label: 'packages/plugin-cache/src/lib/sessions.ts:123' }}>
+
+<ApiSignature tokens={['key(shardId: number): string']} />
+
+Gets the Redis key the session of a shard is stored at.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/sessions.ts#L112', label: 'packages/plugin-cache/src/lib/sessions.ts:112' }}>
+
+<ApiSignature
+	tokens={[
+		'set(shardId: number, info: ',
+		['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'],
+		' | null): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Writes the session of a shard.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the shard.
+
+</ApiParam>
+
+<ApiParam name="info" type={[['GatewaySessionInfo', '/documentation/api/plugin-cache/interfaces/GatewaySessionInfo'], ' | null']}>
+
+The session, or `null` once it can no longer be resumed.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

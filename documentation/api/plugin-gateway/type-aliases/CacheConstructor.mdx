@@ -1,0 +1,80 @@
+---
+title: 'Type Alias: CacheConstructor'
+description: "A class building the Cache of an entity, as in the discord.js RFC #11426: what the client's cacheConstructor option takes. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L293',
+		label: 'packages/plugin-gateway/src/util/cache.ts:293'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A class building the [Cache](/documentation/api/plugin-gateway/interfaces/Cache) of an entity, as in the discord.js RFC #11426: what the client's
+`cacheConstructor` option takes. It is instantiated once per entity.
+
+<ApiSignature
+	tokens={[
+		'type CacheConstructor = <Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object>>(\n  creator: ',
+		['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'],
+		'<Value>,\n  name: ',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		',\n  options: ',
+		['CacheConstructorOptions', '/documentation/api/plugin-gateway/interfaces/CacheConstructorOptions'],
+		'<Value>\n) => ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<Value>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="creator" type={[['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value>']} />
+
+<ApiParam name="name" type={[['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName']]} />
+
+<ApiParam name="options" type={[['CacheConstructorOptions', '/documentation/api/plugin-gateway/interfaces/CacheConstructorOptions'], '<Value>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+</ApiParams>
+
+The constructor receives `(creator, name, options)`:
+
+- `creator` builds a structure out of raw data, it is the cache's [Cache.construct](/documentation/api/plugin-gateway/interfaces/Cache#construct);
+- `name` is the name of the entity, e.g. `"users"`;
+- `options` are the [CacheConstructorOptions](/documentation/api/plugin-gateway/interfaces/CacheConstructorOptions): `keyOf`, which `add` must key its entries with, `refresh`,
+  to call on what `get` and `add` hand out, and the entity's `cacheOptions` (`maxSize`).
+
+Extending `CollectionCache` and forwarding the three arguments to `super` is the recommended way: it does all of
+the above. The cache must be synchronous.
+
+A cache that is not a `Map` cannot be enumerated, so what needs to list its entries does not work with it: the
+dispatch cascades (`GUILD_DELETE` and `CHANNEL_DELETE` leave the entries of the guild or channel behind), the
+reconciliation of the guilds left while offline on `READY`, the granular emoji and sticker diff events, and
+`listCached`.
+
+**Example**
+
+```typescript
+class LoggingCache<Value extends StructureMixin<object>, Raw extends RawAPIType<Value> = RawAPIType<Value>> extends CollectionCache<Value, Raw> {
+	public override delete(key: string): boolean {
+		console.log(`${this.name}: ${key} removed`);
+		return super.delete(key);
+	}
+}
+
+const client = new GatewayClient({ intents, cacheConstructor: LoggingCache });
+```

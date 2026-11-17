@@ -1,0 +1,37 @@
+---
+title: 'Function: isBusyGroupError()'
+description: 'Thrown by BrokerRedisClientLike.xgroup when the group already exists (BUSYGROUP), which BrokerConsumer.start treats as success rather than an error. (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/lib/redis.ts#L72',
+		label: 'packages/plugin-broker/src/lib/redis.ts:72'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+Thrown by [BrokerRedisClientLike.xgroup](/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike#xgroup) when the group already exists (`BUSYGROUP`), which
+[BrokerConsumer.start](/documentation/api/plugin-broker/classes/BrokerConsumer#start) treats as success rather than an error.
+
+<ApiSignature tokens={['isBusyGroupError(error: unknown): boolean']} />
+
+Thrown by [BrokerRedisClientLike.xgroup](/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike#xgroup) when the group already exists (`BUSYGROUP`), which
+[BrokerConsumer.start](/documentation/api/plugin-broker/classes/BrokerConsumer#start) treats as success rather than an error.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="error" type={['unknown']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>

@@ -1,0 +1,55 @@
+---
+title: 'Interface: CleanContentNames'
+description: 'The names to replace mentions with in cleanContent, by ID. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L172',
+		label: 'packages/plugin-gateway/src/util/Util.ts:172'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The names to replace mentions with in [cleanContent](/documentation/api/plugin-gateway/functions/cleanContent), by ID. A mention whose ID has no name is kept.
+
+<ApiSignature tokens={['interface CleanContentNames']} />
+
+## Properties
+
+### channels?
+
+<ApiMember kind="property" badges={['optional']} signature={['channels?: ', ['NamesById', '/documentation/api/plugin-gateway/type-aliases/NamesById']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L188', label: 'packages/plugin-gateway/src/util/Util.ts:188' }}>
+
+The names of channels, used for `<#id>`.
+
+</ApiMember>
+
+### members?
+
+<ApiMember kind="property" badges={['optional']} signature={['members?: ', ['NamesById', '/documentation/api/plugin-gateway/type-aliases/NamesById']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L180', label: 'packages/plugin-gateway/src/util/Util.ts:180' }}>
+
+The display names of guild members, preferred over `users`.
+
+</ApiMember>
+
+### roles?
+
+<ApiMember kind="property" badges={['optional']} signature={['roles?: ', ['NamesById', '/documentation/api/plugin-gateway/type-aliases/NamesById']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L184', label: 'packages/plugin-gateway/src/util/Util.ts:184' }}>
+
+The names of roles, used for `<@&id>`.
+
+</ApiMember>
+
+### users?
+
+<ApiMember kind="property" badges={['optional']} signature={['users?: ', ['NamesById', '/documentation/api/plugin-gateway/type-aliases/NamesById']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Util.ts#L176', label: 'packages/plugin-gateway/src/util/Util.ts:176' }}>
+
+The display names of users, used for `<@id>` and `<@!id>` when `members` has none.
+
+</ApiMember>

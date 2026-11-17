@@ -1,0 +1,65 @@
+---
+title: 'Variable: InteractionAttributes'
+description: 'The attributes of the span of an interaction. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="variable"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L9',
+		label: 'lib/attributes.ts:9'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+The attributes of the span of an interaction.
+
+<ApiSignature
+	tokens={[
+		'const InteractionAttributes: {\n  readonly ChannelId: "discord.channel.id";\n  readonly GuildId: "discord.guild.id";\n  readonly Id: "discord.interaction.id";\n  readonly Kind: "interaction.kind";\n  readonly Name: "interaction.name";\n  readonly Outcome: "interaction.outcome";\n}'
+	]}
+/>
+
+<ApiParams title="Properties">
+
+<ApiParam name="ChannelId" type={['"discord.channel.id"']}>
+
+The channel the interaction came from.
+
+</ApiParam>
+
+<ApiParam name="GuildId" type={['"discord.guild.id"']}>
+
+The guild the interaction came from, when it came from one.
+
+</ApiParam>
+
+<ApiParam name="Id" type={['"discord.interaction.id"']}>
+
+The id of the interaction.
+
+</ApiParam>
+
+<ApiParam name="Kind" type={['"interaction.kind"']}>
+
+What ran: `command`, `autocomplete`, `component` or `modal`.
+
+</ApiParam>
+
+<ApiParam name="Name" type={['"interaction.name"']}>
+
+The name of the command or of the handler.
+
+</ApiParam>
+
+<ApiParam name="Outcome" type={['"interaction.outcome"']}>
+
+`success` or `error`, set when the run ends.
+
+</ApiParam>
+
+</ApiParams>

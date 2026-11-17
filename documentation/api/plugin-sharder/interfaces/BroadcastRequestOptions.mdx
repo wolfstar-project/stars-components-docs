@@ -1,0 +1,53 @@
+---
+title: 'Interface: BroadcastRequestOptions'
+description: 'The options of a broadcast request. (@wolfstar/plugin-sharder)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/requests.ts#L28',
+		label: 'packages/plugin-sharder/src/util/requests.ts:28'
+	}}
+	packageName="@wolfstar/plugin-sharder"
+	packageHref="/documentation/api/plugin-sharder"
+/>
+
+The options of a broadcast request.
+
+<ApiSignature
+	tokens={['interface BroadcastRequestOptions extends ', ['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]}
+/>
+
+<ApiHierarchy extends={[[['RequestOptions', '/documentation/api/plugin-sharder/interfaces/RequestOptions']]]} />
+
+## Properties
+
+### partial?
+
+<ApiMember kind="property" badges={['optional']} signature={['partial?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/requests.ts#L33', label: 'packages/plugin-sharder/src/util/requests.ts:33' }}>
+
+Whether to resolve with the outcome of every shard, like `Promise.allSettled`, rather than rejecting on the first
+failure: the replies that came before a timeout or an abort are kept.
+
+</ApiMember>
+
+### signal?
+
+<ApiMember kind="property" badges={['optional']} signature={['signal?: AbortSignal']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/requests.ts#L22', label: 'packages/plugin-sharder/src/util/requests.ts:22' }} inheritedFrom={[['RequestOptions.signal', '/documentation/api/plugin-sharder/interfaces/RequestOptions#signal']]}>
+
+Aborts the request: dropped from the queue if it waits for a shard to be ready, and aborted on the other side
+otherwise, whose handler gets an aborted `signal`.
+
+</ApiMember>
+
+### timeout?
+
+<ApiMember kind="property" badges={['optional']} signature={['timeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/util/requests.ts#L17', label: 'packages/plugin-sharder/src/util/requests.ts:17' }} inheritedFrom={[['RequestOptions.timeout', '/documentation/api/plugin-sharder/interfaces/RequestOptions#timeout']]}>
+
+How long to wait for the reply, in milliseconds. Defaults to the manager's `requestTimeout`.
+
+</ApiMember>

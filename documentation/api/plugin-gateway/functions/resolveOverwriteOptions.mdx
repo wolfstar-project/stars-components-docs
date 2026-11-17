@@ -1,0 +1,51 @@
+---
+title: 'Function: resolveOverwriteOptions()'
+description: "Applies PermissionOverwriteOptions to an overwrite's allowed and denied permissions. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/channels.ts#L83',
+		label: 'packages/plugin-gateway/src/util/channels.ts:83'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Applies [PermissionOverwriteOptions](/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions) to an overwrite's allowed and denied permissions.
+
+<ApiSignature
+	tokens={[
+		'resolveOverwriteOptions(\n  options: ',
+		['PermissionOverwriteOptions', '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions'],
+		',\n  initial: {\n    allow?: bigint;\n    deny?: bigint;\n  } = {}\n): {\n  allow: bigint;\n  deny: bigint;\n}'
+	]}
+/>
+
+Applies [PermissionOverwriteOptions](/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions) to an overwrite's allowed and denied permissions.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['PermissionOverwriteOptions', '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions']]}>
+
+The permissions to change.
+
+</ApiParam>
+
+<ApiParam name="initial" type={['{\n  allow?: bigint;\n  deny?: bigint;\n}']} defaultValue={'{}'}>
+
+The overwrite's current permissions, none by default.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['{\n  allow: bigint;\n  deny: bigint;\n}']} />
+
+</ApiParams>

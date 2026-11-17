@@ -1,0 +1,65 @@
+---
+title: 'Interface: OpenTelemetryInteractionsOptions'
+description: 'Which interactions get a span. (@wolfstar/plugin-opentelemetry)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L39',
+		label: 'lib/attributes.ts:39'
+	}}
+	packageName="@wolfstar/plugin-opentelemetry"
+	packageHref="/documentation/api/plugin-opentelemetry"
+/>
+
+Which interactions get a span.
+
+<ApiSignature tokens={['interface OpenTelemetryInteractionsOptions']} />
+
+## Properties
+
+### autocomplete?
+
+<ApiMember kind="property" badges={['optional']} signature={['autocomplete?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L52', label: 'lib/attributes.ts:52' }}>
+
+Autocomplete requests. Off by default: Discord sends one for every keystroke.
+
+**Default**
+
+```ts
+false;
+```
+
+</ApiMember>
+
+### commands?
+
+<ApiMember kind="property" badges={['optional']} signature={['commands?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L45', label: 'lib/attributes.ts:45' }}>
+
+Slash, user and message commands.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>
+
+### handlers?
+
+<ApiMember kind="property" badges={['optional']} signature={['handlers?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-opentelemetry/src/lib/attributes.ts#L59', label: 'lib/attributes.ts:59' }}>
+
+Message components (buttons, select menus) and modals.
+
+**Default**
+
+```ts
+true;
+```
+
+</ApiMember>

@@ -1,0 +1,109 @@
+---
+title: 'Interface: GuildOnboardingPromptData'
+description: 'A question of an onboarding. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L190',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:190'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A question of an onboarding. Without an ID, it is a new one.
+
+<ApiSignature tokens={['interface GuildOnboardingPromptData']} />
+
+## Properties
+
+### id?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['id?: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L191',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:191'
+	}}
+/>
+
+### inOnboarding?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['inOnboarding?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L197',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:197'
+	}}
+/>
+
+### options
+
+<ApiMember
+	kind="property"
+	signature={[
+		'options: readonly ',
+		['GuildOnboardingPromptOptionData', '/documentation/api/plugin-gateway/interfaces/GuildOnboardingPromptOptionData'],
+		'[]'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L193',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:193'
+	}}
+/>
+
+### required?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['required?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L196',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:196'
+	}}
+/>
+
+### singleSelect?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['singleSelect?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L195',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:195'
+	}}
+/>
+
+### title
+
+<ApiMember
+	kind="property"
+	signature={['title: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L192',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:192'
+	}}
+/>
+
+### type?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['type?: ', ['GuildOnboardingPromptType', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildOnboardingPromptType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L194',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:194'
+	}}
+/>

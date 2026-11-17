@@ -1,0 +1,39 @@
+---
+title: 'Interface: VoiceStateEditOptions'
+description: 'The options to edit a voice state with, only applicable in stage channels. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L15',
+		label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The options to edit a voice state with, only applicable in stage channels.
+
+<ApiSignature tokens={['interface VoiceStateEditOptions']} />
+
+## Properties
+
+### requestToSpeak?
+
+<ApiMember kind="property" badges={['optional']} signature={['requestToSpeak?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L19', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:19' }}>
+
+Whether the bot requests to become a speaker. Only available on the bot's own voice state.
+
+</ApiMember>
+
+### suppressed?
+
+<ApiMember kind="property" badges={['optional']} signature={['suppressed?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/voice/VoiceState.ts#L23', label: 'packages/plugin-gateway/src/structures/voice/VoiceState.ts:23' }}>
+
+Whether the user is suppressed, i.e. moved to the audience.
+
+</ApiMember>

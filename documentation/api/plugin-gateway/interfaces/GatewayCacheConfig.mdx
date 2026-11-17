@@ -1,0 +1,39 @@
+---
+title: 'Interface: GatewayCacheConfig'
+description: 'How the cache of the application answers, for the types of the getters reading it. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/cache.ts#L441',
+		label: 'packages/plugin-gateway/src/util/cache.ts:441'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+How the cache of the application answers, for the types of the getters reading it. Empty by default: the cache is
+synchronous (the default `CollectionCache`, or synchronous `@wolfstar/plugin-cache` stores), and the getters are
+typed as their plain value, like discord.js's.
+
+<ApiSignature tokens={['interface GatewayCacheConfig']} />
+
+An application whose cache is asynchronous (a Redis store) declares it once, which types every such getter as a
+promise, the way it answers at runtime with that cache:
+
+```typescript
+declare module '@wolfstar/plugin-gateway' {
+	interface GatewayCacheConfig {
+		asynchronous: true;
+	}
+}
+
+if (await member.kickable) await member.kick();
+```
+
+Without the declaration the types still say `boolean` while the getter answers a promise, which is always truthy:
+declare it whenever a store is asynchronous.

@@ -1,0 +1,219 @@
+---
+title: 'Class: BrokerConsumer'
+description: 'Reads a Redis stream through a consumer group, dispatching each entry to the BrokerListener pieces registered for its event, and only acknowledging i… (@wolfstar/plugin-broker)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L106',
+		label: 'packages/plugin-broker/src/BrokerConsumer.ts:106'
+	}}
+	packageName="@wolfstar/plugin-broker"
+	packageHref="/documentation/api/plugin-broker"
+/>
+
+Reads a Redis stream through a consumer group, dispatching each entry to the [BrokerListener](/documentation/api/plugin-broker/namespaces/BrokerListener) pieces
+registered for its event, and only acknowledging it once every one of them has resolved.
+
+<ApiSignature tokens={['class BrokerConsumer implements Emitter']} />
+
+<ApiHierarchy implements={[['Emitter']]} />
+
+Implements the framework's `Listener.Emitter` contract itself, so `BrokerListener` pieces can bind to a
+`BrokerConsumer` instance the same way `EventGatewayListener` pieces bind to a `GatewayClient`.
+
+A listener that throws leaves its entry pending: it is redelivered the next time a consumer of the same
+[name](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#consumer) starts, or claimed once idle for [BrokerConsumerOptions.claimIdle](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#claimidle),
+until it exceeds [BrokerConsumerOptions.maxDeliveries](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#maxdeliveries) and is moved to the dead-letter stream. Entries are
+handled one at a time, so `stop()` only has to await the current one before returning.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L125', label: 'packages/plugin-broker/src/BrokerConsumer.ts:125' }}>
+
+<ApiSignature
+	tokens={[
+		'new BrokerConsumer(options: ',
+		['BrokerConsumerOptions', '/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions'],
+		'): ',
+		['BrokerConsumer', '/documentation/api/plugin-broker/classes/BrokerConsumer']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['BrokerConsumerOptions', '/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Methods
+
+### emit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L176', label: 'packages/plugin-broker/src/BrokerConsumer.ts:176' }}>
+
+<ApiSignature tokens={['emit(eventName: string, ...args: readonly unknown[]): boolean']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="args" type={['readonly unknown[]']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### getMaxListeners()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L172', label: 'packages/plugin-broker/src/BrokerConsumer.ts:172' }}>
+
+<ApiSignature tokens={['getMaxListeners(): number']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### off()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L163', label: 'packages/plugin-broker/src/BrokerConsumer.ts:163' }}>
+
+<ApiSignature tokens={['off(eventName: string, listener: EmitterListener): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="listener" type={['EmitterListener']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### on()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L148', label: 'packages/plugin-broker/src/BrokerConsumer.ts:148' }}>
+
+<ApiSignature tokens={['on(eventName: string, listener: EmitterListener): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="listener" type={['EmitterListener']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### once()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L155', label: 'packages/plugin-broker/src/BrokerConsumer.ts:155' }}>
+
+<ApiSignature tokens={['once(eventName: string, listener: EmitterListener): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventName" type={['string']} />
+
+<ApiParam name="listener" type={['EmitterListener']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setMaxListeners()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L168', label: 'packages/plugin-broker/src/BrokerConsumer.ts:168' }}>
+
+<ApiSignature tokens={['setMaxListeners(_n: number): this']} />
+
+<ApiParams title="Parameters">
+
+<ApiParam name="_n" type={['number']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### start()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L198', label: 'packages/plugin-broker/src/BrokerConsumer.ts:198' }}>
+
+<ApiSignature
+	tokens={['start(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Ensures the consumer group exists, then starts reading: first this consumer's own pending entries (redelivery
+after a crash under the same name), then new ones, claiming idle entries along the way if
+[BrokerConsumerOptions.claimIdle](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#claimidle) is set, until [BrokerConsumer.stop](/documentation/api/plugin-broker/classes/BrokerConsumer#stop).
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### stop()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-broker/src/BrokerConsumer.ts#L230', label: 'packages/plugin-broker/src/BrokerConsumer.ts:230' }}>
+
+<ApiSignature
+	tokens={['stop(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Stops reading and awaits the in-flight entry, so it does not return until the current entry's listeners have
+settled. Any entry left pending is redelivered the next time a consumer of the same name starts, or claimed by
+another one once idle for [BrokerConsumerOptions.claimIdle](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#claimidle).
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

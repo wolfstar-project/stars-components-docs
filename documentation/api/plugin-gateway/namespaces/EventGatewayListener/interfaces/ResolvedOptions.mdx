@@ -1,0 +1,64 @@
+---
+title: 'Interface: ResolvedOptions'
+description: 'API reference for ResolvedOptions, an interface exported by @wolfstar/plugin-gateway.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/EventGatewayListener.ts#L75',
+		label: 'packages/plugin-gateway/src/EventGatewayListener.ts:75'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+<ApiSignature
+	tokens={[
+		'interface ResolvedOptions<Event extends ',
+		['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName'],
+		' = ',
+		['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName'],
+		'> extends Options'
+	]}
+/>
+
+<ApiHierarchy extends={[['Options']]} />
+
+<ApiParams title="Type Parameters">
+
+<ApiParam
+	name="Event"
+	type={['extends ', ['GatewayEventName', '/documentation/api/plugin-gateway/type-aliases/GatewayEventName']]}
+	defaultValue="GatewayEventName"
+/>
+
+</ApiParams>
+
+## Properties
+
+### event
+
+<ApiMember
+	kind="property"
+	signature={['event: Event']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/EventGatewayListener.ts#L77',
+		label: 'packages/plugin-gateway/src/EventGatewayListener.ts:77'
+	}}
+/>
+
+### once?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['once?: boolean']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/EventGatewayListener.ts#L78',
+		label: 'packages/plugin-gateway/src/EventGatewayListener.ts:78'
+	}}
+/>

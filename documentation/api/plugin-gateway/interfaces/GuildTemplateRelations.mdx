@@ -1,0 +1,47 @@
+---
+title: 'Interface: GuildTemplateRelations'
+description: 'The relations of a GuildTemplate: its source guild, when cached, and its creator. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="interface"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildTemplate.ts#L15',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildTemplate.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The relations of a [GuildTemplate](/documentation/api/plugin-gateway/classes/GuildTemplate): its source guild, when cached, and its creator.
+
+<ApiSignature tokens={['interface GuildTemplateRelations']} />
+
+## Properties
+
+### creator?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['creator?: ', ['User', '/documentation/api/plugin-gateway/classes/User']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildTemplate.ts#L17',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildTemplate.ts:17'
+	}}
+/>
+
+### guild?
+
+<ApiMember
+	kind="property"
+	badges={['optional']}
+	signature={['guild?: ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/guilds/GuildTemplate.ts#L16',
+		label: 'packages/plugin-gateway/src/structures/guilds/GuildTemplate.ts:16'
+	}}
+/>

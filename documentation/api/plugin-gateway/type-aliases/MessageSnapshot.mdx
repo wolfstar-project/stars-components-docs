@@ -1,0 +1,34 @@
+---
+title: 'Type Alias: MessageSnapshot'
+description: "A snapshot of a forwarded message, like discord.js's MessageSnapshot: only the data Discord keeps, the rest may be null. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/Message.ts#L151',
+		label: 'packages/plugin-gateway/src/structures/messages/Message.ts:151'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A snapshot of a forwarded message, like discord.js's `MessageSnapshot`: only the data Discord keeps, the rest may be
+`null`.
+
+<ApiSignature
+	tokens={[
+		'type MessageSnapshot = ',
+		['Partialize', '/documentation/api/plugin-gateway/type-aliases/Partialize'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		', null, ',
+		['Exclude', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#excludetype'],
+		'<keyof ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		', "attachments" | "client" | "components" | "content" | "createdTimestamp" | "editedTimestamp" | "embeds" | "flags" | "mentions" | "stickers" | "type">>'
+	]}
+/>

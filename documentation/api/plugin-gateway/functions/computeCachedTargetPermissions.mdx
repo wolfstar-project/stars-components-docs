@@ -1,0 +1,82 @@
+---
+title: 'Function: computeCachedTargetPermissions()'
+description: 'computeTargetPermissions from the cache alone, never the API. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L232',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:232'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+[computeTargetPermissions](/documentation/api/plugin-gateway/functions/computeTargetPermissions) from the cache alone, never the API. Synchronous when the cache is.
+
+<ApiSignature
+	tokens={[
+		'computeCachedTargetPermissions(\n  guildId: string,\n  overwrites: readonly ',
+		['APIOverwrite', 'https://discord-api-types.dev/api/discord-api-types-v10#APIOverwrite'],
+		'[],\n  target: string | ',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		' | ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">,\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		' = ...\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<PermissionsBitField>'
+	]}
+/>
+
+[computeTargetPermissions](/documentation/api/plugin-gateway/functions/computeTargetPermissions) from the cache alone, never the API. Synchronous when the cache is.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the channel's guild.
+
+</ApiParam>
+
+<ApiParam name="overwrites" type={['readonly ', ['APIOverwrite', 'https://discord-api-types.dev/api/discord-api-types-v10#APIOverwrite'], '[]']}>
+
+The channel's permission overwrites.
+
+</ApiParam>
+
+<ApiParam name="target" type={['string | ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">']}>
+
+A member, a role, or the ID of a cached member.
+
+</ApiParam>
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} defaultValue="...">
+
+The client whose cache is read: the target's own by default, or the most recently constructed one
+for an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<PermissionsBitField>']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+A `GatewayError` (`GuildMemberUncached`, `GuildUncached`) when a needed entity is not cached.
+
+</ApiParam>
+
+</ApiParams>

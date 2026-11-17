@@ -1,0 +1,90 @@
+---
+title: 'Class: GuildMembersTimeoutError'
+description: 'Thrown by GuildMemberManager#request when Discord stops sending the chunks of the requested members. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L47',
+		label: 'packages/plugin-gateway/src/util/errors.ts:47'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Thrown by `GuildMemberManager#request` when Discord stops sending the chunks of the requested members.
+
+<ApiSignature
+	tokens={[
+		'class GuildMembersTimeoutError extends ',
+		['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'],
+		'<"GuildMembersTimeout">'
+	]}
+/>
+
+<ApiHierarchy extends={[[['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'], '<"GuildMembersTimeout">']]} />
+
+The request is dropped: chunks arriving later still update the cache and emit `guildMembersChunk`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L63', label: 'packages/plugin-gateway/src/util/errors.ts:63' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildMembersTimeoutError(\n  guildId: string,\n  nonce: string,\n  timeout: number\n): ',
+		['GuildMembersTimeoutError', '/documentation/api/plugin-gateway/classes/GuildMembersTimeoutError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']} />
+
+<ApiParam name="nonce" type={['string']} />
+
+<ApiParam name="timeout" type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### code
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly code: "GuildMembersTimeout"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L26', label: 'packages/plugin-gateway/src/errors/GatewayError.ts:26' }} inheritedFrom={[['GatewayError.code', '/documentation/api/plugin-gateway/classes/GatewayError#code']]}>
+
+The code of the error.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildId: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L51', label: 'packages/plugin-gateway/src/util/errors.ts:51' }}>
+
+The ID of the guild whose members were requested.
+
+</ApiMember>
+
+### nonce
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly nonce: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L56', label: 'packages/plugin-gateway/src/util/errors.ts:56' }}>
+
+The nonce of the request.
+
+</ApiMember>
+
+### timeout
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly timeout: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L61', label: 'packages/plugin-gateway/src/util/errors.ts:61' }}>
+
+The timeout that was exceeded, in milliseconds.
+
+</ApiMember>

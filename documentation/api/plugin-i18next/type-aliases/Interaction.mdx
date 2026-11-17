@@ -1,0 +1,46 @@
+---
+title: 'Type Alias: Interaction'
+description: 'The subset of an interaction payload the localization helpers need in order to resolve a language. (@wolfstar/plugin-i18next)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-i18next/src/lib/types.ts#L68',
+		label: 'packages/plugin-i18next/src/lib/types.ts:68'
+	}}
+	packageName="@wolfstar/plugin-i18next"
+	packageHref="/documentation/api/plugin-i18next"
+/>
+
+The subset of an interaction payload the localization helpers need in order to resolve a language.
+
+<ApiSignature
+	tokens={[
+		'type Interaction = ',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['Exclude', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#excludetype'],
+		'<',
+		['APIInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteraction'],
+		', ',
+		['APIPingInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIPingInteraction'],
+		'>, "locale" | "guild_locale" | "guild_id"> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'],
+		'<',
+		['Exclude', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#excludetype'],
+		'<',
+		['APIInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteraction'],
+		', ',
+		['APIPingInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIPingInteraction'],
+		'>, "channel_id" | "user" | "member">>'
+	]}
+/>
+
+`@wolfstar/http-framework` receives raw Discord interaction payloads over HTTP, so the helpers
+operate on `discord-api-types` structures rather than on `discord.js` class instances.

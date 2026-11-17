@@ -1,0 +1,328 @@
+---
+title: 'Class: ApiRequest'
+description: 'API reference for ApiRequest, a class exported by @wolfstar/plugin-api.'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L9',
+		label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:9'
+	}}
+	packageName="@wolfstar/plugin-api"
+	packageHref="/documentation/api/plugin-api"
+/>
+
+<ApiSignature tokens={['class ApiRequest extends ', ['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage']]} />
+
+<ApiHierarchy extends={[[['IncomingMessage', 'https://nodejs.org/api/http.html#class-httpincomingmessage']]]} />
+
+## Properties
+
+### params
+
+<ApiMember kind="property" signature={['params: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L18', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:18' }}>
+
+The values of the dynamic (`[param]`) path segments.
+
+</ApiMember>
+
+### query
+
+<ApiMember kind="property" signature={['query: ', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<string, string | string[]>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L13', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:13' }}>
+
+The query parameters, parsed from the request URL.
+
+</ApiMember>
+
+### route?
+
+<ApiMember kind="property" badges={['optional']} signature={['route?: ', ['Route', '/documentation/api/plugin-api/classes/Route'], '<', ['RouteOptions', '/documentation/api/plugin-api/interfaces/RouteOptions'], '> | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L28', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:28' }}>
+
+The route that matched the request's pathname and method, if any.
+
+</ApiMember>
+
+### routerNode?
+
+<ApiMember kind="property" badges={['optional']} signature={['routerNode?: ', ['RouterNode', '/documentation/api/plugin-api/classes/RouterNode'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L23', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:23' }}>
+
+The router node that matched the request's pathname, if any.
+
+</ApiMember>
+
+## Methods
+
+### asWeb()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L35', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:35' }}>
+
+<ApiSignature tokens={['asWeb(): Request']} />
+
+Returns a WHATWG `Request` view of this request.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Request']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readBody()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L43', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:43' }}>
+
+<ApiSignature
+	tokens={['readBody(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']}
+/>
+
+Reads the body as `FormData` for form content types, and as JSON otherwise.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readBodyArrayBuffer()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L47', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:47' }}>
+
+<ApiSignature
+	tokens={[
+		'readBodyArrayBuffer(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ArrayBuffer', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer'],
+		'>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ArrayBuffer', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### readBodyBlob()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L51', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:51' }}>
+
+<ApiSignature
+	tokens={['readBodyBlob(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Blob>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Blob>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readBodyFormData()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L55', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:55' }}>
+
+<ApiSignature
+	tokens={[
+		'readBodyFormData(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<FormData>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<FormData>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readBodyJson()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L59', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:59' }}>
+
+<ApiSignature
+	tokens={[
+		'readBodyJson(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readBodyText()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L63', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:63' }}>
+
+<ApiSignature
+	tokens={['readBodyText(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string>']}
+/>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<string>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readValidatedBody()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L67', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:67' }}>
+
+<ApiSignature
+	tokens={[
+		'readValidatedBody<Type>(validator: ',
+		['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'],
+		'<unknown, Type>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Type>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Type" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="validator" type={[['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'], '<unknown, Type>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Type>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readValidatedBodyFormData()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L71', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:71' }}>
+
+<ApiSignature
+	tokens={[
+		'readValidatedBodyFormData<Type>(validator: ',
+		['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'],
+		'<FormData, Type>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Type>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Type" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="validator" type={[['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'], '<FormData, Type>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Type>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readValidatedBodyJson()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L77', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:77' }}>
+
+<ApiSignature
+	tokens={[
+		'readValidatedBodyJson<Type>(validator: ',
+		['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'],
+		'<unknown, Type>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Type>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Type" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="validator" type={[['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'], '<unknown, Type>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Type>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### readValidatedBodyText()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-api/src/lib/structures/api/ApiRequest.ts#L81', label: 'packages/plugin-api/src/lib/structures/api/ApiRequest.ts:81' }}>
+
+<ApiSignature
+	tokens={[
+		'readValidatedBodyText<Type>(validator: ',
+		['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'],
+		'<string, Type>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<Type>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Type" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="validator" type={[['ValidatorFunction', '/documentation/api/plugin-api/type-aliases/ValidatorFunction'], '<string, Type>']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<Type>']} />
+
+</ApiParams>
+
+</ApiMember>

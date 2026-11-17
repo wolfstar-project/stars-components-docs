@@ -1,0 +1,70 @@
+---
+title: 'Function: computeCachedPermissionsIn()'
+description: 'computePermissionsIn from the cache alone, never the API: the channel, and the parent of a thread, are read from it. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="function"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/permissions.ts#L283',
+		label: 'packages/plugin-gateway/src/util/permissions.ts:283'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+[computePermissionsIn](/documentation/api/plugin-gateway/functions/computePermissionsIn) from the cache alone, never the API: the channel, and the parent of a thread, are
+read from it. Synchronous when the cache is.
+
+<ApiSignature
+	tokens={[
+		'computeCachedPermissionsIn(\n  channel: string | ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		',\n  target: string | ',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		' | ',
+		['Role', '/documentation/api/plugin-gateway/classes/Role'],
+		'<"">\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<PermissionsBitField>'
+	]}
+/>
+
+[computePermissionsIn](/documentation/api/plugin-gateway/functions/computePermissionsIn) from the cache alone, never the API: the channel, and the parent of a thread, are
+read from it. Synchronous when the cache is.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channel" type={['string | ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel']]}>
+
+The channel, or the ID of a cached one.
+
+</ApiParam>
+
+<ApiParam name="target" type={['string | ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">']}>
+
+A member, a role, or the ID of a cached member.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<PermissionsBitField>']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+A `GatewayError` (`ChannelUncached`, `GuildMemberUncached`, `GuildUncached`) when a needed entity is not
+cached.
+
+</ApiParam>
+
+</ApiParams>

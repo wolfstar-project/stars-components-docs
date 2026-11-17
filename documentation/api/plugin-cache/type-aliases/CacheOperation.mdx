@@ -1,0 +1,39 @@
+---
+title: 'Type Alias: CacheOperation'
+description: 'A single mutation a gateway dispatch produces on a Cache. (@wolfstar/plugin-cache)'
+hidden: true
+---
+
+import { ApiHeader, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="type-alias"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/operations.ts#L113',
+		label: 'packages/plugin-cache/src/lib/operations.ts:113'
+	}}
+	packageName="@wolfstar/plugin-cache"
+	packageHref="/documentation/api/plugin-cache"
+/>
+
+A single mutation a gateway dispatch produces on a [Cache](/documentation/api/plugin-cache/interfaces/Cache).
+
+<ApiSignature
+	tokens={[
+		'type CacheOperation = {\n  key: string;\n  merge?: boolean;\n  raw: unknown;\n  store: ',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		';\n  type: "upsert";\n} | {\n  key: string;\n  store: ',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		';\n  type: "update";\n  update: (value: unknown) => unknown;\n} | {\n  key: string;\n  store: ',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		';\n  type: "delete";\n} | {\n  guildId?: ',
+		['Snowflake', 'https://discord-api-types.dev/api/discord-api-types-v10#Snowflake'],
+		';\n  prefix: string;\n  store: ',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		';\n  type: "deletePrefix";\n} | {\n  guildId?: ',
+		['Snowflake', 'https://discord-api-types.dev/api/discord-api-types-v10#Snowflake'],
+		';\n  predicate: (value: unknown) => boolean;\n  store: ',
+		['CacheEntityName', '/documentation/api/plugin-cache/type-aliases/CacheEntityName'],
+		';\n  type: "deleteWhere";\n}'
+	]}
+/>

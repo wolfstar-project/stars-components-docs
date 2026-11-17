@@ -1,0 +1,1090 @@
+---
+title: 'Class: ApplicationCommand'
+description: "A command of the application, registered globally or in one guild, like discord.js's ApplicationCommand. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L243',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:243'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A command of the application, registered globally or in one guild, like discord.js's `ApplicationCommand`.
+
+<ApiSignature
+	tokens={[
+		'class ApplicationCommand extends ',
+		['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+		'<',
+		['APIApplicationCommand', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommand'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+			'<',
+			['APIApplicationCommand', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommand'],
+			'>'
+		]
+	]}
+/>
+
+Application commands are only fetched and edited through the API, never cached: nothing keeps a copy in sync, as
+Discord sends no event when they change. `edit()` patches this very structure with the API's answer.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L272', label: 'packages/plugin-gateway/src/structures/Structure.ts:272' }} inheritedFrom={[['Structure.constructor', '/documentation/api/plugin-gateway/classes/Structure#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new ApplicationCommand(\n  data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>,\n  relations: object = {}\n): ',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The raw API data.
+
+</ApiParam>
+
+<ApiParam name="relations" type={['object']} defaultValue={'{}'}>
+
+The related structures, resolved from the cache by the structure's manager.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['Structure.[kData]', '/documentation/api/plugin-gateway/classes/Structure#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### applicationId
+
+<ApiMember kind="accessor" signature={['get applicationId(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L256', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:256' }}>
+
+The ID of the application owning the command.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['Structure.client', '/documentation/api/plugin-gateway/classes/Structure#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### contexts
+
+<ApiMember kind="accessor" signature={['get contexts(): ', ['InteractionContextType', 'https://discord-api-types.dev/api/discord-api-types-v10#InteractionContextType'], '[] | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L381', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:381' }}>
+
+The interaction contexts where the command can be used, only for global commands.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L403',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:403'
+	}}
+/>
+
+### createdTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdTimestamp(): number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L399',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:399'
+	}}
+/>
+
+### defaultMemberPermissions
+
+<ApiMember kind="accessor" signature={['get defaultMemberPermissions(): ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<PermissionsBitField> | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L366', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:366' }}>
+
+The permissions a member needs by default to run the command, `null` for everyone.
+
+</ApiMember>
+
+### description
+
+<ApiMember
+	kind="accessor"
+	signature={['get description(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L322',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:322'
+	}}
+/>
+
+### descriptionLocalizations
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get descriptionLocalizations(): ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L326',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:326'
+	}}
+/>
+
+### descriptionLocalized
+
+<ApiMember kind="accessor" signature={['get descriptionLocalized(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L333', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:333' }}>
+
+The description in the locale the command was fetched with, `null` if it was not fetched with one.
+
+</ApiMember>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L271', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:271' }}>
+
+The guild the command is registered in, from the cache. `null` for a global command, or when the guild is not
+cached: use [ApplicationCommand.fetchGuild](/documentation/api/plugin-gateway/classes/ApplicationCommand#fetchguild) to always get it.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="accessor" signature={['get guildId(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L263', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:263' }}>
+
+The ID of the guild the command is registered in, `null` for a global command.
+
+</ApiMember>
+
+### handler
+
+<ApiMember kind="accessor" signature={['get handler(): ', ['EntryPointCommandHandlerType', 'https://discord-api-types.dev/api/discord-api-types-v10#EntryPointCommandHandlerType'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L388', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:388' }}>
+
+Whether the app or Discord handles the interaction, only for primary entry point commands.
+
+</ApiMember>
+
+### id
+
+<ApiMember
+	kind="accessor"
+	signature={['get id(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L249',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:249'
+	}}
+/>
+
+### integrationTypes
+
+<ApiMember kind="accessor" signature={['get integrationTypes(): ', ['ApplicationIntegrationType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationIntegrationType'], '[] | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L374', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:374' }}>
+
+The installation contexts where the command is available, only for global commands.
+
+</ApiMember>
+
+### manager
+
+<ApiMember kind="accessor" signature={['get manager(): ', ['ApplicationCommandManager', '/documentation/api/plugin-gateway/classes/ApplicationCommandManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L298', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:298' }}>
+
+The manager this command belongs to: the one of its guild, else the application's.
+
+</ApiMember>
+
+### name
+
+<ApiMember
+	kind="accessor"
+	signature={['get name(): string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L307',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:307'
+	}}
+/>
+
+### nameLocalizations
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get nameLocalizations(): ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L311',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:311'
+	}}
+/>
+
+### nameLocalized
+
+<ApiMember kind="accessor" signature={['get nameLocalized(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L318', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:318' }}>
+
+The name in the locale the command was fetched with, `null` if it was not fetched with one.
+
+</ApiMember>
+
+### nsfw
+
+<ApiMember kind="accessor" signature={['get nsfw(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L340', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:340' }}>
+
+Whether the command is age-restricted.
+
+</ApiMember>
+
+### options
+
+<ApiMember kind="accessor" signature={['get options(): ', ['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'], '[] | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L347', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:347' }}>
+
+The options of the command, `null` if it has none.
+
+</ApiMember>
+
+### permissions
+
+<ApiMember kind="accessor" signature={['get permissions(): ', ['ApplicationCommandPermissionsManager', '/documentation/api/plugin-gateway/classes/ApplicationCommandPermissionsManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L288', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:288' }}>
+
+The manager of this command's permissions: on its guild, or on any guild when the command is global.
+
+</ApiMember>
+
+### type
+
+<ApiMember
+	kind="accessor"
+	signature={['get type(): ', ['ApplicationCommandType', 'https://discord-api-types.dev/api/discord-api-types-v10#ApplicationCommandType']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L303',
+		label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:303'
+	}}
+/>
+
+### version
+
+<ApiMember kind="accessor" signature={['get version(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L395', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:395' }}>
+
+The autoincrementing version of the command, updated on substantial changes.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['Structure.[kClone]', '/documentation/api/plugin-gateway/classes/Structure#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIApplicationCommand', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommand'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIApplicationCommand', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommand'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['Structure.[kPatch]', '/documentation/api/plugin-gateway/classes/Structure#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L492', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:492' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Deletes the command.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'], '>']}>
+
+This command.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['Structure.dropChangedRelations', '/documentation/api/plugin-gateway/classes/Structure#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['Structure.dropRelations', '/documentation/api/plugin-gateway/classes/Structure#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: never[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['never[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L413', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:413' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(data: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['ApplicationCommandData', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandData'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits the command, and patches this structure with the result.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['ApplicationCommandData', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandData'], '>']}>
+
+The fields to edit.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'], '>']}>
+
+This command.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### equals()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L506', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:506' }}>
+
+<ApiSignature tokens={['equals(command: unknown, enforceOptionOrder: boolean = false): boolean']} />
+
+Whether this command equals another one, like discord.js's `ApplicationCommand#equals`. It compares every field
+the other command has, so for most uses comparing IDs is faster and enough. `false` for anything that is not a
+command, data, or raw command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="command" type={['unknown']}>
+
+The command, its data, or its raw form, to compare with.
+
+</ApiParam>
+
+<ApiParam name="enforceOptionOrder" type={['boolean']} defaultValue="false">
+
+Whether options and choices must come in the same order. Discord may not keep the
+order they were sent in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L280', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:280' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuild(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Fetches the guild the command is registered in, cache first.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, `null` for a global command.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['Structure.lazyRelation', '/documentation/api/plugin-gateway/classes/Structure#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['Structure.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['Structure.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setDefaultMemberPermissions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L472', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:472' }}>
+
+<ApiSignature
+	tokens={[
+		'setDefaultMemberPermissions(defaultMemberPermissions: ',
+		['PermissionResolvable', '/documentation/api/plugin-gateway/type-aliases/PermissionResolvable'],
+		' | null): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits the permissions a member needs by default to run the command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="defaultMemberPermissions" type={[['PermissionResolvable', '/documentation/api/plugin-gateway/type-aliases/PermissionResolvable'], ' | null']}>
+
+The new permissions, `null` for everyone.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setDescription()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L452', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:452' }}>
+
+<ApiSignature
+	tokens={[
+		'setDescription(description: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits the description of the command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="description" type={['string']}>
+
+The new description.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setDescriptionLocalizations()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L461', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:461' }}>
+
+<ApiSignature
+	tokens={[
+		'setDescriptionLocalizations(descriptionLocalizations: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits the localized descriptions of the command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="descriptionLocalizations" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<', ['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'], ', string | null>> | null']}>
+
+The new localized descriptions, `null` removes them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setName()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L434', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:434' }}>
+
+<ApiSignature
+	tokens={[
+		'setName(name: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits the name of the command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The new name.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setNameLocalizations()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L443', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:443' }}>
+
+<ApiSignature
+	tokens={[
+		'setNameLocalizations(nameLocalizations: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<',
+		['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'],
+		', string | null>> | null): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits the localized names of the command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="nameLocalizations" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<', ['Locale', 'https://discord-api-types.dev/api/discord-api-types-v10#Locale'], ', string | null>> | null']}>
+
+The new localized names, `null` removes them.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### setOptions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L483', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:483' }}>
+
+<ApiSignature
+	tokens={[
+		'setOptions(options: readonly ',
+		['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'],
+		'[]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+Edits the options of the command.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['readonly ', ['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'], '[]']}>
+
+The new options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['Structure.valueOf', '/documentation/api/plugin-gateway/classes/Structure#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optionsEqual()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L572', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:572' }}>
+
+<ApiSignature
+	tokens={[
+		'static optionsEqual(\n  existing: readonly ',
+		['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'],
+		'[],\n  options: readonly ',
+		['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'],
+		'[],\n  enforceOptionOrder: boolean = false\n): boolean'
+	]}
+/>
+
+Recursively checks that the options of an application command equal the given ones, like discord.js's
+`ApplicationCommand.optionsEqual`. For most uses, [ApplicationCommand.equals](/documentation/api/plugin-gateway/classes/ApplicationCommand#equals) is better. `false` for
+anything that is not a list of options.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="existing" type={['readonly ', ['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'], '[]']}>
+
+The options of the existing command, [ApplicationCommand.options](/documentation/api/plugin-gateway/classes/ApplicationCommand#options).
+
+</ApiParam>
+
+<ApiParam name="options" type={['readonly ', ['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'], '[]']}>
+
+The options to compare with: camel-cased data or raw options.
+
+</ApiParam>
+
+<ApiParam name="enforceOptionOrder" type={['boolean']} defaultValue="false">
+
+Whether options and choices must come in the same order.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### transformOption()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts#L606', label: 'packages/plugin-gateway/src/structures/applications/ApplicationCommand.ts:606' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'static transformOption(\n  option: ',
+		['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'],
+		' | ',
+		['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'],
+		',\n  received: true\n): ',
+		['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption']
+	]}
+/>
+
+Transforms an option into the camel-cased form [ApplicationCommand.options](/documentation/api/plugin-gateway/classes/ApplicationCommand#options) has, or into the API's, like
+discord.js's `ApplicationCommand.transformOption`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="option" type={[['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'], ' | ', ['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable']]}>
+
+The option, camel-cased or raw.
+
+</ApiParam>
+
+<ApiParam name="received" type={['true']}>
+
+Whether to build the camel-cased form of an option received from Discord, rather than the raw one
+to send.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption']]} />
+
+</ApiParams>
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'static transformOption(\n  option: ',
+		['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'],
+		' | ',
+		['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable'],
+		',\n  received?: false\n): ',
+		['APIApplicationCommandOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandOption']
+	]}
+/>
+
+Transforms an option into the camel-cased form [ApplicationCommand.options](/documentation/api/plugin-gateway/classes/ApplicationCommand#options) has, or into the API's, like
+discord.js's `ApplicationCommand.transformOption`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="option" type={[['ApplicationCommandOption', '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption'], ' | ', ['ApplicationCommandOptionResolvable', '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable']]}>
+
+The option, camel-cased or raw.
+
+</ApiParam>
+
+<ApiParam name="received" type={['false']} optional>
+
+Whether to build the camel-cased form of an option received from Discord, rather than the raw one
+to send.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['APIApplicationCommandOption', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplicationCommandOption']]} />
+
+</ApiParams>
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
