@@ -9,7 +9,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L23',
+		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/memory.ts#L23',
 		label: 'packages/plugin-cache/src/lib/memory.ts:23'
 	}}
 	packageName="@wolfstar/plugin-cache"
@@ -24,7 +24,7 @@ The options of a [MemoryEntityCache](/documentation/api/plugin-cache/classes/Mem
 
 ### sweepInterval?
 
-<ApiMember kind="property" badges={['optional']} signature={['sweepInterval?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L40', label: 'packages/plugin-cache/src/lib/memory.ts:40' }}>
+<ApiMember kind="property" badges={['optional']} signature={['sweepInterval?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/memory.ts#L40', label: 'packages/plugin-cache/src/lib/memory.ts:40' }}>
 
 How often, in milliseconds, to drop the expired entries, `null` to only drop them when they are read. Without
 it, expired entries nothing reads anymore stay in memory until they are evicted or the cache is cleared.
@@ -41,7 +41,7 @@ null;
 
 ### ttl?
 
-<ApiMember kind="property" badges={['optional']} signature={['ttl?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-cache/src/lib/memory.ts#L30', label: 'packages/plugin-cache/src/lib/memory.ts:30' }}>
+<ApiMember kind="property" badges={['optional']} signature={['ttl?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/memory.ts#L30', label: 'packages/plugin-cache/src/lib/memory.ts:30' }}>
 
 The default time-to-live of every entry, in milliseconds, `null` for entries to never expire. Each write can
 override it, see [CacheSetOptions.ttl](/documentation/api/plugin-cache/interfaces/CacheSetOptions#ttl).
