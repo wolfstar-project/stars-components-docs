@@ -1,0 +1,356 @@
+---
+title: 'Class: PermissionOverwriteManager'
+description: "Manages the permission overwrites of one channel, as they were in the channel's payload. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L30',
+		label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:30'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the permission overwrites of one channel, as they were in the channel's payload.
+
+<ApiSignature tokens={['class PermissionOverwriteManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L45', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:45' }}>
+
+<ApiSignature
+	tokens={[
+		'new PermissionOverwriteManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  channelId: string,\n  guildId: string | null,\n  overwrites: readonly ',
+		['APIOverwrite', 'https://discord-api-types.dev/api/discord-api-types-v10#APIOverwrite'],
+		'[],\n  channel: ',
+		['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'],
+		' | null = null\n): ',
+		['PermissionOverwriteManager', '/documentation/api/plugin-gateway/classes/PermissionOverwriteManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client.
+
+</ApiParam>
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string | null']}>
+
+The ID of the channel's guild, if known.
+
+</ApiParam>
+
+<ApiParam name="overwrites" type={['readonly ', ['APIOverwrite', 'https://discord-api-types.dev/api/discord-api-types-v10#APIOverwrite'], '[]']}>
+
+The raw overwrites of the channel.
+
+</ApiParam>
+
+<ApiParam name="channel" type={[['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} defaultValue="null">
+
+The channel, which the overwrites refer to.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### channelId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly channelId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L31',
+		label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:31'
+	}}
+/>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly guildId: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L32',
+		label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:32'
+	}}
+/>
+
+## Accessors
+
+### cache
+
+<ApiMember kind="accessor" signature={['get cache(): ', ['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L62', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:62' }}>
+
+The overwrites of the channel.
+
+</ApiMember>
+
+## Methods
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L101', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:101' }}>
+
+<ApiSignature
+	tokens={[
+		'create(\n  target: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		',\n  options: ',
+		['PermissionOverwriteOptions', '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions'],
+		',\n  editOptions: ',
+		['PermissionOverwriteEditOptions', '/documentation/api/plugin-gateway/interfaces/PermissionOverwriteEditOptions'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites'],
+		'>'
+	]}
+/>
+
+Creates the overwrite of a role or member, replacing any existing one.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The role or member, or its ID.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['PermissionOverwriteOptions', '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions']]}>
+
+The permissions to allow (`true`) or deny (`false`).
+
+</ApiParam>
+
+<ApiParam name="editOptions" type={[['PermissionOverwriteEditOptions', '/documentation/api/plugin-gateway/interfaces/PermissionOverwriteEditOptions']]} defaultValue={'{}'}>
+
+The target's type and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L130', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:130' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(target: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		', reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes the overwrite of a role or member.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The role or member, or its ID.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L116', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:116' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(\n  target: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		',\n  options: ',
+		['PermissionOverwriteOptions', '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions'],
+		',\n  editOptions: ',
+		['PermissionOverwriteEditOptions', '/documentation/api/plugin-gateway/interfaces/PermissionOverwriteEditOptions'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites'],
+		'>'
+	]}
+/>
+
+Changes some permissions of the overwrite of a role or member, creating it if needed.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The role or member, or its ID.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['PermissionOverwriteOptions', '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions']]}>
+
+The permissions to allow (`true`), deny (`false`), or reset (`null`).
+
+</ApiParam>
+
+<ApiParam name="editOptions" type={[['PermissionOverwriteEditOptions', '/documentation/api/plugin-gateway/interfaces/PermissionOverwriteEditOptions']]} defaultValue={'{}'}>
+
+The target's type and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L79', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:79' }}>
+
+<ApiSignature
+	tokens={[
+		'resolve(target: ',
+		['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable'],
+		'): ',
+		['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites'],
+		' | null'
+	]}
+/>
+
+Finds the overwrite of a role or member, if the channel has one.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['IdResolvable', '/documentation/api/plugin-gateway/type-aliases/IdResolvable']]}>
+
+The role or member, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites'], ' | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### set()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts#L90', label: 'packages/plugin-gateway/src/managers/PermissionOverwriteManager.ts:90' }}>
+
+<ApiSignature
+	tokens={[
+		'set(overwrites: readonly ',
+		['OverwriteData', '/documentation/api/plugin-gateway/interfaces/OverwriteData'],
+		'[], reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Replaces every overwrite of the channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="overwrites" type={['readonly ', ['OverwriteData', '/documentation/api/plugin-gateway/interfaces/OverwriteData'], '[]']}>
+
+The new overwrites.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

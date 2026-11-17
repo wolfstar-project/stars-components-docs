@@ -1,0 +1,829 @@
+---
+title: 'Class: GuildScheduledEventManager'
+description: 'Manages the scheduled events of one guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L100',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:100'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the scheduled events of one guild.
+
+<ApiSignature
+	tokens={[
+		'class GuildScheduledEventManager extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"scheduledEvents", ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		', [eventId: string]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"scheduledEvents", ',
+			['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+			', [eventId: string]>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L107', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:107' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildScheduledEventManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  guildId: string\n): ',
+		['GuildScheduledEventManager', '/documentation/api/plugin-gateway/classes/GuildScheduledEventManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="guildId" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly guildId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L105',
+		label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:105'
+	}}
+/>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "scheduledEvents"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L177', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:177' }}>
+
+<ApiSignature
+	tokens={[
+		'create(options: ',
+		['GuildScheduledEventCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Creates a scheduled event.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildScheduledEventCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventCreateOptions']]}>
+
+The event's name, time, place, and privacy.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L112', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:112' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'): ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L215', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:215' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(eventId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a scheduled event.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventId" type={['string']}>
+
+The ID of the event.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L194', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:194' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(\n  eventId: string,\n  options: ',
+		['GuildScheduledEventEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventEditOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Edits a scheduled event.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventId" type={['string']}>
+
+The ID of the event.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildScheduledEventEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventEditOptions']]}>
+
+The fields to edit, and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }} inheritedFrom={[['CachedManager.fetch', '/documentation/api/plugin-gateway/classes/CachedManager#fetch']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [eventId: string] | [eventId: string, ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[eventId: string] | [eventId: string, ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchAll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L165', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:165' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchAll(options: { withUserCount?: boolean } = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'[]>'
+	]}
+/>
+
+Fetches every scheduled event of the guild, and caches them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['{ withUserCount?: boolean }']} defaultValue={'{}'}>
+
+Whether to include how many users subscribed to each.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L250', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:250' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(eventId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchSubscribers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L226', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:226' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchSubscribers(\n  eventId: string,\n  options: ',
+		['GuildScheduledEventSubscribersOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscribersOptions'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEventSubscriber', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscriber'],
+		'[]>'
+	]}
+/>
+
+Fetches the users who subscribed to an event, and caches them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventId" type={['string']}>
+
+The ID of the event.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildScheduledEventSubscribersOptions', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscribersOptions']]} defaultValue={'{}'}>
+
+How many users, around which user ID, and whether to include their members.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEventSubscriber', '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscriber'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'], '> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L116', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:116' }}>
+
+<ApiSignature
+	tokens={[
+		'keyOf(data: ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		'): string'
+	]}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: [eventId: string]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[eventId: string]']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['CachedManager.resolve', '/documentation/api/plugin-gateway/classes/CachedManager#resolve']]}>
+
+<ApiSignature
+	tokens={[
+		'resolve(value: string | ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		' | null>'
+	]}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']]}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'], ' | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }} inheritedFrom={[['CachedManager.resolveId', '/documentation/api/plugin-gateway/classes/CachedManager#resolveid']]}>
+
+<ApiSignature
+	tokens={[
+		'resolveId(value: string | ',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'): string | null'
+	]}
+/>
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']]}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts#L120', label: 'packages/plugin-gateway/src/managers/GuildScheduledEventManager.ts:120' }}>
+
+<ApiSignature tokens={['resolveKey(eventId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="eventId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,102 @@
+---
+title: 'Class: DispatchTimeoutError'
+description: 'Emitted as an error when a dispatch takes longer than GatewayClientOptions.dispatchTimeout to process. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L11',
+		label: 'packages/plugin-gateway/src/util/errors.ts:11'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Emitted as an `error` when a dispatch takes longer than `GatewayClientOptions.dispatchTimeout` to process.
+
+<ApiSignature
+	tokens={[
+		'class DispatchTimeoutError extends ',
+		['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'],
+		'<"DispatchTimeout">'
+	]}
+/>
+
+<ApiHierarchy extends={[[['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'], '<"DispatchTimeout">']]} />
+
+The dispatch is not cancelled: it keeps running, and later dispatches of its partition keep waiting for it, so the
+event order is preserved. The error only reports that the partition is stuck, usually on a slow or unreachable
+cache.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L32', label: 'packages/plugin-gateway/src/util/errors.ts:32' }}>
+
+<ApiSignature
+	tokens={[
+		'new DispatchTimeoutError(\n  type: string,\n  shardId: number,\n  partition: string | null,\n  timeout: number\n): ',
+		['DispatchTimeoutError', '/documentation/api/plugin-gateway/classes/DispatchTimeoutError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="type" type={['string']} />
+
+<ApiParam name="shardId" type={['number']} />
+
+<ApiParam name="partition" type={['string | null']} />
+
+<ApiParam name="timeout" type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### code
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly code: "DispatchTimeout"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L26', label: 'packages/plugin-gateway/src/errors/GatewayError.ts:26' }} inheritedFrom={[['GatewayError.code', '/documentation/api/plugin-gateway/classes/GatewayError#code']]}>
+
+The code of the error.
+
+</ApiMember>
+
+### partition
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly partition: string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L25', label: 'packages/plugin-gateway/src/util/errors.ts:25' }}>
+
+The partition the dispatch runs in, `null` for a barrier.
+
+</ApiMember>
+
+### shardId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly shardId: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L20', label: 'packages/plugin-gateway/src/util/errors.ts:20' }}>
+
+The shard the dispatch was received on.
+
+</ApiMember>
+
+### timeout
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly timeout: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L30', label: 'packages/plugin-gateway/src/util/errors.ts:30' }}>
+
+The timeout that was exceeded, in milliseconds.
+
+</ApiMember>
+
+### type
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly type: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L15', label: 'packages/plugin-gateway/src/util/errors.ts:15' }}>
+
+The type of the slow dispatch, e.g. `MESSAGE_CREATE`.
+
+</ApiMember>

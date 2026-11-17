@@ -1,0 +1,873 @@
+---
+title: 'Class: Action'
+description: 'Processes one kind of gateway dispatch around the cache write. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L15',
+		label: 'packages/plugin-gateway/src/actions/Action.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Processes one kind of gateway dispatch around the cache write.
+
+<ApiSignature tokens={['abstract class Action']} />
+
+<ApiHierarchy
+	extendedBy={[
+		[['DispatchAction', '/documentation/api/plugin-gateway/classes/DispatchAction']],
+		[['MultiDispatchAction', '/documentation/api/plugin-gateway/classes/MultiDispatchAction']]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L16', label: 'packages/plugin-gateway/src/actions/Action.ts:16' }}>
+
+<ApiSignature
+	tokens={[
+		'new Action(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['Action', '/documentation/api/plugin-gateway/classes/Action']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### client
+
+<ApiMember
+	kind="property"
+	badges={['protected', 'readonly']}
+	signature={['protected readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L16',
+		label: 'packages/plugin-gateway/src/actions/Action.ts:16'
+	}}
+/>
+
+## Methods
+
+### before()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L19', label: 'packages/plugin-gateway/src/actions/Action.ts:19' }}>
+
+<ApiSignature
+	tokens={[
+		'before(_data: ',
+		['APISoundboardSound', 'https://discord-api-types.dev/api/discord-api-types-v10#APISoundboardSound'],
+		' | ',
+		[
+			'GatewayApplicationCommandPermissionsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayApplicationCommandPermissionsUpdateDispatchData'
+		],
+		' | ',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		' | ',
+		['GatewayGuildBanModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildBanModifyDispatchData'],
+		' | ',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		' | ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		' | ',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationUpdateDispatchData'],
+		' | ',
+		['GatewayInviteCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteCreateDispatchData'],
+		' | ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		' | ',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		' | ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		' | ',
+		['APIStageInstance', 'https://discord-api-types.dev/api/discord-api-types-v10#APIStageInstance'],
+		' | ',
+		['APISubscription', 'https://discord-api-types.dev/api/discord-api-types-v10#APISubscription'],
+		' | ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState'],
+		' | ',
+		['GatewayGuildMembersChunkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMembersChunkDispatchData'],
+		' | ',
+		['GatewayRateLimitedDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayRateLimitedDispatchData'],
+		'<RequestGuildMembers> | ',
+		[
+			'GatewayAutoModerationActionExecutionDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayAutoModerationActionExecutionDispatchData'
+		],
+		' | never | never | never | ',
+		['APIGuildCategoryChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildCategoryChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildForumChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildForumChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildMediaChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMediaChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildStageVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildStageVoiceChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildVoiceChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APINewsChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APINewsChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | never | never | ',
+		['APITextChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APITextChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['GatewayChannelInfoDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelInfoDispatchData'],
+		' | ',
+		['GatewayChannelPinsUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelPinsUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildAuditLogEntryCreateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildAuditLogEntryCreateDispatchData'
+		],
+		' | ',
+		['GatewayGuildDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildDeleteDispatchData'],
+		' | ',
+		['GatewayGuildEmojisUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildEmojisUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildIntegrationsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildIntegrationsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildMemberAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberAddDispatchData'],
+		' | ',
+		['GatewayGuildMemberRemoveDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberRemoveDispatchData'],
+		' | ',
+		['GatewayGuildMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberUpdateDispatchData'],
+		' | ',
+		['GatewayGuildRoleModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleModifyDispatchData'],
+		' | ',
+		['GatewayGuildRoleDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleDeleteDispatchData'],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserAddDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserAddDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserRemoveDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundDeleteDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundDeleteDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildStickersUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildStickersUpdateDispatchData'],
+		' | ',
+		['GatewayIntegrationDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationDeleteDispatchData'],
+		' | ',
+		['APIInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteraction'],
+		' | ',
+		['GatewayInviteDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteDeleteDispatchData'],
+		' | ',
+		['GatewayMessageDeleteBulkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteBulkDispatchData'],
+		' | ',
+		['GatewayMessageDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteDispatchData'],
+		' | ',
+		['GatewayMessagePollVoteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessagePollVoteDispatchData'],
+		' | ',
+		['GatewayMessageReactionAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionAddDispatchData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveDispatchData'
+		],
+		' | ',
+		['GatewayMessageReactionRemoveData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveEmojiDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveEmojiDispatchData'
+		],
+		' | ',
+		['GatewayReadyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayReadyDispatchData'],
+		' | ',
+		['GatewaySoundboardSoundsDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewaySoundboardSoundsDispatchData'],
+		' | ',
+		['GatewayThreadCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadCreateDispatchData'],
+		' | ',
+		['GatewayThreadDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadDeleteDispatchData'],
+		' | ',
+		['GatewayThreadListSync', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadListSync'],
+		' | ',
+		['GatewayThreadMembersUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMembersUpdate'],
+		' | ',
+		['GatewayThreadMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMemberUpdateDispatchData'],
+		' | ',
+		['GatewayThreadUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadUpdateDispatchData'],
+		' | ',
+		['GatewayTypingStartDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayTypingStartDispatchData'],
+		' | ',
+		[
+			'GatewayVoiceChannelEffectSendDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelEffectSendDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStartTimeUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStartTimeUpdateDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStatusUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStatusUpdateDispatchData'
+		],
+		' | ',
+		['GatewayVoiceServerUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceServerUpdateDispatchData'],
+		' | ',
+		['GatewayWebhooksUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayWebhooksUpdateDispatchData'],
+		' | undefined): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+Captures the state required to build the event before the cache changes.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="_data"
+	type={[
+		['APISoundboardSound', 'https://discord-api-types.dev/api/discord-api-types-v10#APISoundboardSound'],
+		' | ',
+		[
+			'GatewayApplicationCommandPermissionsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayApplicationCommandPermissionsUpdateDispatchData'
+		],
+		' | ',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		' | ',
+		['GatewayGuildBanModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildBanModifyDispatchData'],
+		' | ',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		' | ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		' | ',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationUpdateDispatchData'],
+		' | ',
+		['GatewayInviteCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteCreateDispatchData'],
+		' | ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		' | ',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		' | ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		' | ',
+		['APIStageInstance', 'https://discord-api-types.dev/api/discord-api-types-v10#APIStageInstance'],
+		' | ',
+		['APISubscription', 'https://discord-api-types.dev/api/discord-api-types-v10#APISubscription'],
+		' | ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState'],
+		' | ',
+		['GatewayGuildMembersChunkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMembersChunkDispatchData'],
+		' | ',
+		['GatewayRateLimitedDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayRateLimitedDispatchData'],
+		'<RequestGuildMembers> | ',
+		[
+			'GatewayAutoModerationActionExecutionDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayAutoModerationActionExecutionDispatchData'
+		],
+		' | never | never | never | ',
+		['APIGuildCategoryChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildCategoryChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildForumChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildForumChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildMediaChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMediaChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildStageVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildStageVoiceChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildVoiceChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APINewsChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APINewsChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | never | never | ',
+		['APITextChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APITextChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['GatewayChannelInfoDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelInfoDispatchData'],
+		' | ',
+		['GatewayChannelPinsUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelPinsUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildAuditLogEntryCreateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildAuditLogEntryCreateDispatchData'
+		],
+		' | ',
+		['GatewayGuildDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildDeleteDispatchData'],
+		' | ',
+		['GatewayGuildEmojisUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildEmojisUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildIntegrationsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildIntegrationsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildMemberAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberAddDispatchData'],
+		' | ',
+		['GatewayGuildMemberRemoveDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberRemoveDispatchData'],
+		' | ',
+		['GatewayGuildMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberUpdateDispatchData'],
+		' | ',
+		['GatewayGuildRoleModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleModifyDispatchData'],
+		' | ',
+		['GatewayGuildRoleDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleDeleteDispatchData'],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserAddDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserAddDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserRemoveDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundDeleteDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundDeleteDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildStickersUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildStickersUpdateDispatchData'],
+		' | ',
+		['GatewayIntegrationDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationDeleteDispatchData'],
+		' | ',
+		['APIInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteraction'],
+		' | ',
+		['GatewayInviteDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteDeleteDispatchData'],
+		' | ',
+		['GatewayMessageDeleteBulkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteBulkDispatchData'],
+		' | ',
+		['GatewayMessageDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteDispatchData'],
+		' | ',
+		['GatewayMessagePollVoteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessagePollVoteDispatchData'],
+		' | ',
+		['GatewayMessageReactionAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionAddDispatchData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveDispatchData'
+		],
+		' | ',
+		['GatewayMessageReactionRemoveData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveEmojiDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveEmojiDispatchData'
+		],
+		' | ',
+		['GatewayReadyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayReadyDispatchData'],
+		' | ',
+		['GatewaySoundboardSoundsDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewaySoundboardSoundsDispatchData'],
+		' | ',
+		['GatewayThreadCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadCreateDispatchData'],
+		' | ',
+		['GatewayThreadDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadDeleteDispatchData'],
+		' | ',
+		['GatewayThreadListSync', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadListSync'],
+		' | ',
+		['GatewayThreadMembersUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMembersUpdate'],
+		' | ',
+		['GatewayThreadMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMemberUpdateDispatchData'],
+		' | ',
+		['GatewayThreadUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadUpdateDispatchData'],
+		' | ',
+		['GatewayTypingStartDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayTypingStartDispatchData'],
+		' | ',
+		[
+			'GatewayVoiceChannelEffectSendDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelEffectSendDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStartTimeUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStartTimeUpdateDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStatusUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStatusUpdateDispatchData'
+		],
+		' | ',
+		['GatewayVoiceServerUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceServerUpdateDispatchData'],
+		' | ',
+		['GatewayWebhooksUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayWebhooksUpdateDispatchData'],
+		' | undefined'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### emit()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L36', label: 'packages/plugin-gateway/src/actions/Action.ts:36' }}>
+
+<ApiSignature
+	tokens={[
+		'protected emit(\n  __namedParameters: ',
+		['GatewayEventTuple', '/documentation/api/plugin-gateway/type-aliases/GatewayEventTuple'],
+		',\n  awaitListeners: boolean = false\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="__namedParameters" type={[['GatewayEventTuple', '/documentation/api/plugin-gateway/type-aliases/GatewayEventTuple']]} />
+
+<ApiParam name="awaitListeners" type={['boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### handle()
+
+<ApiMember kind="method" badges={['abstract']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/actions/Action.ts#L29', label: 'packages/plugin-gateway/src/actions/Action.ts:29' }}>
+
+<ApiSignature
+	tokens={[
+		'abstract handle(\n  data: ',
+		['APISoundboardSound', 'https://discord-api-types.dev/api/discord-api-types-v10#APISoundboardSound'],
+		' | ',
+		[
+			'GatewayApplicationCommandPermissionsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayApplicationCommandPermissionsUpdateDispatchData'
+		],
+		' | ',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		' | ',
+		['GatewayGuildBanModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildBanModifyDispatchData'],
+		' | ',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		' | ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		' | ',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationUpdateDispatchData'],
+		' | ',
+		['GatewayInviteCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteCreateDispatchData'],
+		' | ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		' | ',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		' | ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		' | ',
+		['APIStageInstance', 'https://discord-api-types.dev/api/discord-api-types-v10#APIStageInstance'],
+		' | ',
+		['APISubscription', 'https://discord-api-types.dev/api/discord-api-types-v10#APISubscription'],
+		' | ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState'],
+		' | ',
+		['GatewayGuildMembersChunkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMembersChunkDispatchData'],
+		' | ',
+		['GatewayRateLimitedDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayRateLimitedDispatchData'],
+		'<RequestGuildMembers> | ',
+		[
+			'GatewayAutoModerationActionExecutionDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayAutoModerationActionExecutionDispatchData'
+		],
+		' | never | never | never | ',
+		['APIGuildCategoryChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildCategoryChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildForumChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildForumChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildMediaChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMediaChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildStageVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildStageVoiceChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APIGuildVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildVoiceChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['APINewsChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APINewsChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | never | never | ',
+		['APITextChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APITextChannel'],
+		' & {\n    guild_id: string;\n    type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n  } | ',
+		['GatewayChannelInfoDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelInfoDispatchData'],
+		' | ',
+		['GatewayChannelPinsUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelPinsUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildAuditLogEntryCreateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildAuditLogEntryCreateDispatchData'
+		],
+		' | ',
+		['GatewayGuildDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildDeleteDispatchData'],
+		' | ',
+		['GatewayGuildEmojisUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildEmojisUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildIntegrationsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildIntegrationsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildMemberAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberAddDispatchData'],
+		' | ',
+		['GatewayGuildMemberRemoveDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberRemoveDispatchData'],
+		' | ',
+		['GatewayGuildMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberUpdateDispatchData'],
+		' | ',
+		['GatewayGuildRoleModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleModifyDispatchData'],
+		' | ',
+		['GatewayGuildRoleDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleDeleteDispatchData'],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserAddDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserAddDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserRemoveDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundDeleteDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundDeleteDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildStickersUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildStickersUpdateDispatchData'],
+		' | ',
+		['GatewayIntegrationDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationDeleteDispatchData'],
+		' | ',
+		['APIInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteraction'],
+		' | ',
+		['GatewayInviteDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteDeleteDispatchData'],
+		' | ',
+		['GatewayMessageDeleteBulkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteBulkDispatchData'],
+		' | ',
+		['GatewayMessageDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteDispatchData'],
+		' | ',
+		['GatewayMessagePollVoteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessagePollVoteDispatchData'],
+		' | ',
+		['GatewayMessageReactionAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionAddDispatchData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveDispatchData'
+		],
+		' | ',
+		['GatewayMessageReactionRemoveData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveEmojiDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveEmojiDispatchData'
+		],
+		' | ',
+		['GatewayReadyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayReadyDispatchData'],
+		' | ',
+		['GatewaySoundboardSoundsDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewaySoundboardSoundsDispatchData'],
+		' | ',
+		['GatewayThreadCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadCreateDispatchData'],
+		' | ',
+		['GatewayThreadDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadDeleteDispatchData'],
+		' | ',
+		['GatewayThreadListSync', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadListSync'],
+		' | ',
+		['GatewayThreadMembersUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMembersUpdate'],
+		' | ',
+		['GatewayThreadMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMemberUpdateDispatchData'],
+		' | ',
+		['GatewayThreadUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadUpdateDispatchData'],
+		' | ',
+		['GatewayTypingStartDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayTypingStartDispatchData'],
+		' | ',
+		[
+			'GatewayVoiceChannelEffectSendDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelEffectSendDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStartTimeUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStartTimeUpdateDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStatusUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStatusUpdateDispatchData'
+		],
+		' | ',
+		['GatewayVoiceServerUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceServerUpdateDispatchData'],
+		' | ',
+		['GatewayWebhooksUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayWebhooksUpdateDispatchData'],
+		' | undefined,\n  state: unknown,\n  shardId: number,\n  awaitListeners?: boolean\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Builds and emits events after the cache has been updated.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="data"
+	type={[
+		['APISoundboardSound', 'https://discord-api-types.dev/api/discord-api-types-v10#APISoundboardSound'],
+		' | ',
+		[
+			'GatewayApplicationCommandPermissionsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayApplicationCommandPermissionsUpdateDispatchData'
+		],
+		' | ',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		' | ',
+		['GatewayGuildBanModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildBanModifyDispatchData'],
+		' | ',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		' | ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		' | ',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationCreateDispatchData'],
+		' | ',
+		['GatewayIntegrationUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationUpdateDispatchData'],
+		' | ',
+		['GatewayInviteCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteCreateDispatchData'],
+		' | ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		' | ',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		' | ',
+		['APIGuildScheduledEvent', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildScheduledEvent'],
+		' | ',
+		['APIStageInstance', 'https://discord-api-types.dev/api/discord-api-types-v10#APIStageInstance'],
+		' | ',
+		['APISubscription', 'https://discord-api-types.dev/api/discord-api-types-v10#APISubscription'],
+		' | ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		' | ',
+		['APIVoiceState', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceState'],
+		' | ',
+		['GatewayGuildMembersChunkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMembersChunkDispatchData'],
+		' | ',
+		['GatewayRateLimitedDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayRateLimitedDispatchData'],
+		'<RequestGuildMembers> | ',
+		[
+			'GatewayAutoModerationActionExecutionDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayAutoModerationActionExecutionDispatchData'
+		],
+		' | never | never | never | ',
+		['APIGuildCategoryChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildCategoryChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildForumChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildForumChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildMediaChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildMediaChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildStageVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildStageVoiceChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APIGuildVoiceChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuildVoiceChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['APINewsChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APINewsChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | never | never | ',
+		['APITextChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APITextChannel'],
+		' & {\n  guild_id: string;\n  type: GuildText | GuildVoice | GuildCategory | GuildAnnouncement | GuildStageVoice | GuildDirectory | GuildForum | GuildMedia;\n} | ',
+		['GatewayChannelInfoDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelInfoDispatchData'],
+		' | ',
+		['GatewayChannelPinsUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayChannelPinsUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildAuditLogEntryCreateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildAuditLogEntryCreateDispatchData'
+		],
+		' | ',
+		['GatewayGuildDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildDeleteDispatchData'],
+		' | ',
+		['GatewayGuildEmojisUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildEmojisUpdateDispatchData'],
+		' | ',
+		[
+			'GatewayGuildIntegrationsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildIntegrationsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildMemberAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberAddDispatchData'],
+		' | ',
+		['GatewayGuildMemberRemoveDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberRemoveDispatchData'],
+		' | ',
+		['GatewayGuildMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildMemberUpdateDispatchData'],
+		' | ',
+		['GatewayGuildRoleModifyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleModifyDispatchData'],
+		' | ',
+		['GatewayGuildRoleDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildRoleDeleteDispatchData'],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserAddDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserAddDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildScheduledEventUserRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildScheduledEventUserRemoveDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundDeleteDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundDeleteDispatchData'
+		],
+		' | ',
+		[
+			'GatewayGuildSoundboardSoundsUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildSoundboardSoundsUpdateDispatchData'
+		],
+		' | ',
+		['GatewayGuildStickersUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildStickersUpdateDispatchData'],
+		' | ',
+		['GatewayIntegrationDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayIntegrationDeleteDispatchData'],
+		' | ',
+		['APIInteraction', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInteraction'],
+		' | ',
+		['GatewayInviteDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayInviteDeleteDispatchData'],
+		' | ',
+		['GatewayMessageDeleteBulkDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteBulkDispatchData'],
+		' | ',
+		['GatewayMessageDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageDeleteDispatchData'],
+		' | ',
+		['GatewayMessagePollVoteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessagePollVoteDispatchData'],
+		' | ',
+		['GatewayMessageReactionAddDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionAddDispatchData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveDispatchData'
+		],
+		' | ',
+		['GatewayMessageReactionRemoveData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveData'],
+		' | ',
+		[
+			'GatewayMessageReactionRemoveEmojiDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageReactionRemoveEmojiDispatchData'
+		],
+		' | ',
+		['GatewayReadyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayReadyDispatchData'],
+		' | ',
+		['GatewaySoundboardSoundsDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewaySoundboardSoundsDispatchData'],
+		' | ',
+		['GatewayThreadCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadCreateDispatchData'],
+		' | ',
+		['GatewayThreadDeleteDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadDeleteDispatchData'],
+		' | ',
+		['GatewayThreadListSync', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadListSync'],
+		' | ',
+		['GatewayThreadMembersUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMembersUpdate'],
+		' | ',
+		['GatewayThreadMemberUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadMemberUpdateDispatchData'],
+		' | ',
+		['GatewayThreadUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayThreadUpdateDispatchData'],
+		' | ',
+		['GatewayTypingStartDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayTypingStartDispatchData'],
+		' | ',
+		[
+			'GatewayVoiceChannelEffectSendDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelEffectSendDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStartTimeUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStartTimeUpdateDispatchData'
+		],
+		' | ',
+		[
+			'GatewayVoiceChannelStatusUpdateDispatchData',
+			'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceChannelStatusUpdateDispatchData'
+		],
+		' | ',
+		['GatewayVoiceServerUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayVoiceServerUpdateDispatchData'],
+		' | ',
+		['GatewayWebhooksUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayWebhooksUpdateDispatchData'],
+		' | undefined'
+	]}
+/>
+
+<ApiParam name="state" type={['unknown']} />
+
+<ApiParam name="shardId" type={['number']} />
+
+<ApiParam name="awaitListeners" type={['boolean']} optional>
+
+Waits for the listeners of the events, rejecting when one fails, instead of leaving their
+promises to the client's `error` event. Replays use it, as their caller acknowledges the dispatch afterwards.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

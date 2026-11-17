@@ -1,0 +1,387 @@
+---
+title: 'Class: AttachmentBuilder'
+description: "Builds a file to send with a message, like discord.js's AttachmentBuilder. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L49',
+		label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:49'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Builds a file to send with a message, like discord.js's `AttachmentBuilder`. Pass it in the `files` of a message.
+
+<ApiSignature
+	tokens={[
+		'class AttachmentBuilder implements ',
+		['JSONEncodable', '/documentation/api/plugin-gateway/interfaces/JSONEncodable'],
+		'<',
+		['AttachmentPayload', '/documentation/api/plugin-gateway/interfaces/AttachmentPayload'],
+		'>'
+	]}
+/>
+
+<ApiHierarchy
+	implements={[
+		[
+			['JSONEncodable', '/documentation/api/plugin-gateway/interfaces/JSONEncodable'],
+			'<',
+			['AttachmentPayload', '/documentation/api/plugin-gateway/interfaces/AttachmentPayload'],
+			'>'
+		]
+	]}
+/>
+
+**Example**
+
+```ts
+const file = new AttachmentBuilder('./howl.ogg').setDescription('A howl').setSpoiler();
+await channel.send({ content: 'Awoo', files: [file] });
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L89', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:89' }}>
+
+<ApiSignature
+	tokens={[
+		'new AttachmentBuilder(\n  attachment: ',
+		['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable'],
+		',\n  data: ',
+		['AttachmentBuilderData', '/documentation/api/plugin-gateway/interfaces/AttachmentBuilderData'],
+		' = {}\n): ',
+		['AttachmentBuilder', '/documentation/api/plugin-gateway/classes/AttachmentBuilder']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="attachment" type={[['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable']]}>
+
+The contents of the file.
+
+</ApiParam>
+
+<ApiParam name="data" type={[['AttachmentBuilderData', '/documentation/api/plugin-gateway/interfaces/AttachmentBuilderData']]} defaultValue={'{}'}>
+
+The name and description of the file.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### attachment
+
+<ApiMember kind="property" signature={['attachment: ', ['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L53', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:53' }}>
+
+The contents of the file: its data, a path on disk, a URL, a stream, or a blob.
+
+</ApiMember>
+
+### description?
+
+<ApiMember kind="property" badges={['optional']} signature={['description?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L63', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:63' }}>
+
+The description (alt text) of the file.
+
+</ApiMember>
+
+### duration?
+
+<ApiMember kind="property" badges={['optional']} signature={['duration?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L73', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:73' }}>
+
+The duration of a voice message, in seconds.
+
+</ApiMember>
+
+### name?
+
+<ApiMember kind="property" badges={['optional']} signature={['name?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L58', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:58' }}>
+
+The name of the file, `undefined` to infer it from a path or URL.
+
+</ApiMember>
+
+### title?
+
+<ApiMember kind="property" badges={['optional']} signature={['title?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L68', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:68' }}>
+
+The title of the file.
+
+</ApiMember>
+
+### waveform?
+
+<ApiMember kind="property" badges={['optional']} signature={['waveform?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L78', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:78' }}>
+
+The waveform of a voice message, base64-encoded.
+
+</ApiMember>
+
+## Accessors
+
+### spoiler
+
+<ApiMember kind="accessor" signature={['get spoiler(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L98', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:98' }}>
+
+Whether the file is a spoiler: its name starts with `SPOILER_`.
+
+</ApiMember>
+
+## Methods
+
+### setDescription()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L109', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:109' }}>
+
+<ApiSignature tokens={['setDescription(description: string): this']} />
+
+Sets the description (alt text) of the file.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="description" type={['string']}>
+
+The description.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setDuration()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L171', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:171' }}>
+
+<ApiSignature tokens={['setDuration(duration: number): this']} />
+
+Sets the duration of a voice message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="duration" type={['number']}>
+
+The duration, in seconds.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setFile()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L120', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:120' }}>
+
+<ApiSignature
+	tokens={[
+		'setFile(attachment: ',
+		['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable'],
+		', name?: string): this'
+	]}
+/>
+
+Sets the contents of the file, and its name when given.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="attachment" type={[['BufferResolvable', '/documentation/api/plugin-gateway/type-aliases/BufferResolvable']]}>
+
+The contents of the file.
+
+</ApiParam>
+
+<ApiParam name="name" type={['string']} optional>
+
+The name of the file, kept as is when omitted.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setName()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L131', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:131' }}>
+
+<ApiSignature tokens={['setName(name: string): this']} />
+
+Sets the name of the file.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the file.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setSpoiler()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L145', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:145' }}>
+
+<ApiSignature tokens={['setSpoiler(spoiler: boolean = true): this']} />
+
+Marks the file as a spoiler, or not, by adding or removing the `SPOILER_` prefix of its name.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="spoiler" type={['boolean']} defaultValue="true">
+
+Whether the file is a spoiler.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setTitle()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L161', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:161' }}>
+
+<ApiSignature tokens={['setTitle(title: string): this']} />
+
+Sets the title of the file.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="title" type={['string']}>
+
+The title.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### setWaveform()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L181', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:181' }}>
+
+<ApiSignature tokens={['setWaveform(waveform: string): this']} />
+
+Sets the waveform of a voice message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="waveform" type={['string']}>
+
+The waveform, base64-encoded.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L189', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:189' }}>
+
+<ApiSignature tokens={['toJSON(): ', ['AttachmentPayload', '/documentation/api/plugin-gateway/interfaces/AttachmentPayload']]} />
+
+The file as an [AttachmentPayload](/documentation/api/plugin-gateway/interfaces/AttachmentPayload).
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['AttachmentPayload', '/documentation/api/plugin-gateway/interfaces/AttachmentPayload']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### from()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts#L205', label: 'packages/plugin-gateway/src/structures/messages/AttachmentBuilder.ts:205' }}>
+
+<ApiSignature
+	tokens={[
+		'static from(other: ',
+		['AttachmentBuilderSource', '/documentation/api/plugin-gateway/interfaces/AttachmentBuilderSource'],
+		'): ',
+		['AttachmentBuilder', '/documentation/api/plugin-gateway/classes/AttachmentBuilder']
+	]}
+/>
+
+Copies a file.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="other" type={[['AttachmentBuilderSource', '/documentation/api/plugin-gateway/interfaces/AttachmentBuilderSource']]}>
+
+The builder, payload, or received attachment to copy.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['AttachmentBuilder', '/documentation/api/plugin-gateway/classes/AttachmentBuilder']]} />
+
+</ApiParams>
+
+</ApiMember>

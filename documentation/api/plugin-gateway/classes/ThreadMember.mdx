@@ -1,0 +1,494 @@
+---
+title: 'Class: ThreadMember'
+description: 'A member of a thread: a user who joined it, or was added to it. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L24',
+		label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:24'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A member of a thread: a user who joined it, or was added to it.
+
+<ApiSignature
+	tokens={[
+		'class ThreadMember extends ',
+		['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["threadMembers"]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+			'<',
+			['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+			'["threadMembers"]>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L35', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:35' }}>
+
+<ApiSignature
+	tokens={[
+		'new ThreadMember(\n  data: ',
+		['APIThreadMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIThreadMember'],
+		' & { guild_id?: string },\n  relations: ',
+		['ThreadMemberRelations', '/documentation/api/plugin-gateway/interfaces/ThreadMemberRelations'],
+		' = {}\n): ',
+		['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIThreadMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIThreadMember'], ' & { guild_id?: string }']}>
+
+The raw thread member.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['ThreadMemberRelations', '/documentation/api/plugin-gateway/interfaces/ThreadMemberRelations']]} defaultValue={'{}'}>
+
+The guild member, thread, and user as resolved from the cache, by `client.threadMembers`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['Structure.[kData]', '/documentation/api/plugin-gateway/classes/Structure#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### \[kRelations\]
+
+<ApiMember
+	kind="property"
+	signature={['[kRelations]: ', ['ThreadMemberRelations', '/documentation/api/plugin-gateway/interfaces/ThreadMemberRelations']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L25',
+		label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:25'
+	}}
+/>
+
+## Accessors
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['Structure.client', '/documentation/api/plugin-gateway/classes/Structure#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### flags
+
+<ApiMember kind="accessor" signature={['get flags(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L88', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:88' }}>
+
+The thread member's notification flags.
+
+</ApiMember>
+
+### guildMember
+
+<ApiMember kind="accessor" signature={['get guildMember(): ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L95', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:95' }}>
+
+The member of the thread's guild, when known.
+
+</ApiMember>
+
+### id
+
+<ApiMember kind="accessor" signature={['get id(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L50', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:50' }}>
+
+The ID of the user. Absent only from the thread member the gateway attaches to a thread payload for the bot.
+
+</ApiMember>
+
+### joinedAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get joinedAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L81',
+		label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:81'
+	}}
+/>
+
+### joinedTimestamp
+
+<ApiMember
+	kind="accessor"
+	signature={['get joinedTimestamp(): number']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L77',
+		label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:77'
+	}}
+/>
+
+### partial
+
+<ApiMember kind="accessor" signature={['get partial(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L63', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:63' }}>
+
+Whether the thread member is partial: built from its IDs alone for an event about an uncached thread member, see
+`Partials.ThreadMember`. Only `id`, `threadId`, and `guildId` are reliable then, and [ThreadMember.fetch](/documentation/api/plugin-gateway/classes/ThreadMember#fetch)
+completes it.
+
+</ApiMember>
+
+### thread
+
+<ApiMember kind="accessor" signature={['get thread(): ', ['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L103', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:103' }}>
+
+The thread, from the cache, like discord.js's `ThreadMember#thread`. `null` when it is not cached, or when the
+cache is asynchronous.
+
+</ApiMember>
+
+### threadId
+
+<ApiMember
+	kind="accessor"
+	signature={['get threadId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L54',
+		label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:54'
+	}}
+/>
+
+### user
+
+<ApiMember kind="accessor" signature={['get user(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L113', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:113' }}>
+
+The user, from the cache, like discord.js's `ThreadMember#user`, else the user of the guild member.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['Structure.[kClone]', '/documentation/api/plugin-gateway/classes/Structure#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIThreadMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIThreadMember'],
+		' & { guild_id?: string }>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIThreadMember', 'https://discord-api-types.dev/api/discord-api-types-v10#APIThreadMember'], ' & { guild_id?: string }>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L42', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:42' }}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'["threadMembers"]>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '["threadMembers"]>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['Structure.dropChangedRelations', '/documentation/api/plugin-gateway/classes/Structure#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['Structure.dropRelations', '/documentation/api/plugin-gateway/classes/Structure#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("user" | "thread" | "guildMember")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("user" | "thread" | "guildMember")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L70', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:70' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'],
+		'>'
+	]}
+/>
+
+Fetches the thread member from the API and patches this structure with the result.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['Structure.lazyRelation', '/documentation/api/plugin-gateway/classes/Structure#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['Structure.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['Structure.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/Structure#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### remove()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/channels/ThreadMember.ts#L120', label: 'packages/plugin-gateway/src/structures/channels/ThreadMember.ts:120' }}>
+
+<ApiSignature
+	tokens={[
+		'remove(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'],
+		'>'
+	]}
+/>
+
+Removes the member from the thread.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['Structure.valueOf', '/documentation/api/plugin-gateway/classes/Structure#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember']]} />
+
+</ApiParams>
+
+</ApiMember>

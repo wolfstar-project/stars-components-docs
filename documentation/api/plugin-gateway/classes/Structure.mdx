@@ -1,0 +1,389 @@
+---
+title: 'Class: Structure'
+description: 'The base class of the structures @discordjs/structures has no counterpart for: its Structure, with StructureMixin mixed in. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	badges={['abstract']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L247',
+		label: 'packages/plugin-gateway/src/structures/Structure.ts:247'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The base class of the structures `@discordjs/structures` has no counterpart for: its `Structure`, with
+[StructureMixin](/documentation/api/plugin-gateway/classes/StructureMixin) mixed in.
+
+<ApiSignature
+	tokens={[
+		'abstract class Structure<Data extends object, Omitted extends keyof Data | "" = ""> extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<Data>, Structure<Data, Omitted>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[[['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<Data>'], ['Structure<Data, Omitted>']]}
+	extendedBy={[
+		[['Application', '/documentation/api/plugin-gateway/classes/Application']],
+		[['ApplicationCommand', '/documentation/api/plugin-gateway/classes/ApplicationCommand']],
+		[['Team', '/documentation/api/plugin-gateway/classes/Team']],
+		[['TeamMember', '/documentation/api/plugin-gateway/classes/TeamMember']],
+		[['AutoModerationActionExecution', '/documentation/api/plugin-gateway/classes/AutoModerationActionExecution']],
+		[['PermissionOverwrites', '/documentation/api/plugin-gateway/classes/PermissionOverwrites']],
+		[['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember']],
+		[['Typing', '/documentation/api/plugin-gateway/classes/Typing']],
+		[['AnonymousGuild', '/documentation/api/plugin-gateway/classes/AnonymousGuild']],
+		[['GuildAuditLogsEntry', '/documentation/api/plugin-gateway/classes/GuildAuditLogsEntry']],
+		[['GuildBan', '/documentation/api/plugin-gateway/classes/GuildBan']],
+		[['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember']],
+		[['GuildOnboardingPromptOption', '/documentation/api/plugin-gateway/classes/GuildOnboardingPromptOption']],
+		[['GuildOnboardingPrompt', '/documentation/api/plugin-gateway/classes/GuildOnboardingPrompt']],
+		[['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding']],
+		[['GuildPreview', '/documentation/api/plugin-gateway/classes/GuildPreview']],
+		[['GuildScheduledEvent', '/documentation/api/plugin-gateway/classes/GuildScheduledEvent']],
+		[['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate']],
+		[['Integration', '/documentation/api/plugin-gateway/classes/Integration']],
+		[['Role', '/documentation/api/plugin-gateway/classes/Role']],
+		[['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen']],
+		[['WidgetMember', '/documentation/api/plugin-gateway/classes/WidgetMember']],
+		[['Widget', '/documentation/api/plugin-gateway/classes/Widget']],
+		[['RichPresenceAssets', '/documentation/api/plugin-gateway/classes/RichPresenceAssets']]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends object']}>
+
+The raw API data this structure wraps.
+
+</ApiParam>
+
+<ApiParam name="Omitted" type={['extends keyof Data | ""']} defaultValue={'""'}>
+
+The keys the structure's `DataTemplate` strips from the stored data.
+
+</ApiParam>
+
+</ApiParams>
+
+Structures can be built from any raw payload, be it a gateway dispatch, a cache hit, or a REST response. Their
+[client](/documentation/api/plugin-gateway/classes/StructureMixin#client) is the one whose manager built them, the most recently constructed one
+otherwise.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L272', label: 'packages/plugin-gateway/src/structures/Structure.ts:272' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new Structure<Data extends object, Omitted extends string | number | symbol = "">(\n  data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>,\n  relations: object = {}\n): ',
+		['Structure', '/documentation/api/plugin-gateway/classes/Structure'],
+		'<Data, Omitted>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends object']}>
+
+The raw API data this structure wraps.
+
+</ApiParam>
+
+<ApiParam name="Omitted" type={['extends string | number | symbol']} defaultValue={'""'}>
+
+The keys the structure's `DataTemplate` strips from the stored data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The raw API data.
+
+</ApiParam>
+
+<ApiParam name="relations" type={['object']} defaultValue={'{}'}>
+
+The related structures, resolved from the cache by the structure's manager.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: never[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['never[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['Structure', '/documentation/api/plugin-gateway/classes/Structure'], '<Data, Omitted>']} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['Structure', '/documentation/api/plugin-gateway/classes/Structure'], '<Data, Omitted>']} />
+
+</ApiParams>
+
+</ApiMember>

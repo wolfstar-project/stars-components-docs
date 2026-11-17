@@ -1,0 +1,80 @@
+---
+title: 'Class: GuildSoundboardSoundsTimeoutError'
+description: 'Thrown by GuildManager#fetchSoundboardSounds when Discord does not answer with the sounds of every requested guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L102',
+		label: 'packages/plugin-gateway/src/util/errors.ts:102'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Thrown by `GuildManager#fetchSoundboardSounds` when Discord does not answer with the sounds of every requested guild.
+
+<ApiSignature
+	tokens={[
+		'class GuildSoundboardSoundsTimeoutError extends ',
+		['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'],
+		'<"GuildSoundboardSoundsTimeout">'
+	]}
+/>
+
+<ApiHierarchy extends={[[['GatewayError', '/documentation/api/plugin-gateway/classes/GatewayError'], '<"GuildSoundboardSoundsTimeout">']]} />
+
+The request is dropped: replies arriving later still update the cache and emit `soundboardSounds`.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L113', label: 'packages/plugin-gateway/src/util/errors.ts:113' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildSoundboardSoundsTimeoutError(\n  guildIds: readonly string[],\n  timeout: number\n): ',
+		['GuildSoundboardSoundsTimeoutError', '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundsTimeoutError']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildIds" type={['readonly string[]']} />
+
+<ApiParam name="timeout" type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### code
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly code: "GuildSoundboardSoundsTimeout"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/errors/GatewayError.ts#L26', label: 'packages/plugin-gateway/src/errors/GatewayError.ts:26' }} inheritedFrom={[['GatewayError.code', '/documentation/api/plugin-gateway/classes/GatewayError#code']]}>
+
+The code of the error.
+
+</ApiMember>
+
+### guildIds
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildIds: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L106', label: 'packages/plugin-gateway/src/util/errors.ts:106' }}>
+
+The IDs of the guilds whose sounds did not arrive.
+
+</ApiMember>
+
+### timeout
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly timeout: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/errors.ts#L111', label: 'packages/plugin-gateway/src/util/errors.ts:111' }}>
+
+The timeout that was exceeded, in milliseconds.
+
+</ApiMember>

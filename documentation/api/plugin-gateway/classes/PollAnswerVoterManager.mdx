@@ -1,0 +1,114 @@
+---
+title: 'Class: PollAnswerVoterManager'
+description: "Manages the voters of one PollAnswer, like discord.js's PollAnswerVoterManager. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts#L12',
+		label: 'packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts:12'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the voters of one [PollAnswer](/documentation/api/plugin-gateway/classes/PollAnswer), like discord.js's `PollAnswerVoterManager`.
+
+<ApiSignature tokens={['class PollAnswerVoterManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+Unlike discord.js's, it has no `cache`: the voters of an answer are not tracked, so [PollAnswerVoterManager.fetch](/documentation/api/plugin-gateway/classes/PollAnswerVoterManager#fetch)
+reads them from the API each time (and caches the users).
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts#L21', label: 'packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts:21' }}>
+
+<ApiSignature
+	tokens={[
+		'new PollAnswerVoterManager(answer: ',
+		['PollAnswer', '/documentation/api/plugin-gateway/classes/PollAnswer'],
+		'): ',
+		['PollAnswerVoterManager', '/documentation/api/plugin-gateway/classes/PollAnswerVoterManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="answer" type={[['PollAnswer', '/documentation/api/plugin-gateway/classes/PollAnswer']]}>
+
+The answer.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### answer
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly answer: ', ['PollAnswer', '/documentation/api/plugin-gateway/classes/PollAnswer']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts#L16', label: 'packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts:16' }}>
+
+The answer these voters voted for.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+## Methods
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts#L31', label: 'packages/plugin-gateway/src/managers/PollAnswerVoterManager.ts:31' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(options: {\n    after?: string;\n    limit?: number;\n  } = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'[]>'
+	]}
+/>
+
+Fetches the users that voted for the answer.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['{\n  after?: string;\n  limit?: number;\n}']} defaultValue={'{}'}>
+
+How many voters to fetch (up to 100), and after which user ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,1400 @@
+---
+title: 'Class: MessageManager'
+description: 'Manages the Messages known to the client. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L81',
+		label: 'packages/plugin-gateway/src/managers/MessageManager.ts:81'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the [Message](/documentation/api/plugin-gateway/classes/Message)s known to the client.
+
+<ApiSignature
+	tokens={[
+		'class MessageManager extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"messages", ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		', [channelId: string, messageId: string]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"messages", ',
+			['Message', '/documentation/api/plugin-gateway/classes/Message'],
+			', [channelId: string, messageId: string]>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L86', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:86' }}>
+
+<ApiSignature
+	tokens={[
+		'new MessageManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['MessageManager', '/documentation/api/plugin-gateway/classes/MessageManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "messages"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### bulkDelete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L280', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:280' }}>
+
+<ApiSignature
+	tokens={[
+		'bulkDelete(\n  channelId: string,\n  messages: number | ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>> | readonly ',
+		['MessageResolvable', '/documentation/api/plugin-gateway/type-aliases/MessageResolvable'],
+		'[],\n  filterOld: boolean = false\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | ',
+		['PartialMessage', '/documentation/api/plugin-gateway/interfaces/PartialMessage'],
+		'<boolean> | undefined>>'
+	]}
+/>
+
+Deletes up to 100 messages at once, like discord.js's `TextBasedChannel#bulkDelete`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messages" type={['number | ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>> | readonly ', ['MessageResolvable', '/documentation/api/plugin-gateway/type-aliases/MessageResolvable'], '[]']}>
+
+The messages, their IDs, or how many of the latest ones to delete.
+
+</ApiParam>
+
+<ApiParam name="filterOld" type={['boolean']} defaultValue="false">
+
+Whether to drop the messages older than 14 days instead of letting the request fail.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean> | ', ['PartialMessage', '/documentation/api/plugin-gateway/interfaces/PartialMessage'], '<boolean> | undefined>>']}>
+
+The deleted messages by ID: the cached one, else a partial one with `Partials.Message`, else `undefined`.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+[GatewayTypeError](/documentation/api/plugin-gateway/classes/GatewayTypeError) When `messages` is neither a `Collection`, an array, nor a number.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L90', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:90' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		'): ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Message', '/documentation/api/plugin-gateway/classes/Message']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### crosspost()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L407', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:407' }}>
+
+<ApiSignature
+	tokens={[
+		'crosspost(channelId: string, messageId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Publishes a message of an announcement channel to the channels following it.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L266', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:266' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(channelId: string, messageId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log, when deleting someone else's message.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L244', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:244' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(\n  channelId: string,\n  messageId: string,\n  options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'],
+		'>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Edits a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'], '>']}>
+
+The changes, or the new content.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### endPoll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L495', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:495' }}>
+
+<ApiSignature
+	tokens={[
+		'endPoll(channelId: string, messageId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Ends a poll now. Only the bot's own polls can be ended.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message holding the poll.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }} inheritedFrom={[['CachedManager.fetch', '/documentation/api/plugin-gateway/classes/CachedManager#fetch']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [channelId: string, messageId: string] | [channelId: string, messageId: string, ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[channelId: string, messageId: string] | [channelId: string, messageId: string, ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchPins()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L357', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:357' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPins(\n  channelId: string,\n  options: {\n    before?: number | ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		';\n    limit?: number;\n  } = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  hasMore: boolean;\n  items: ',
+		['PinnedMessage', '/documentation/api/plugin-gateway/interfaces/PinnedMessage'],
+		'[];\n}>'
+	]}
+/>
+
+Fetches the pinned messages of a channel, most recently pinned first, and caches them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="options" type={['{\n  before?: number | ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ';\n  limit?: number;\n}']} defaultValue={'{}'}>
+
+How many pins to fetch (up to 50), and before which pin time.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  hasMore: boolean;\n  items: ',
+		['PinnedMessage', '/documentation/api/plugin-gateway/interfaces/PinnedMessage'],
+		'[];\n}>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPollAnswerVoters()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L508', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:508' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPollAnswerVoters(\n  channelId: string,\n  messageId: string,\n  answerId: number,\n  options: {\n    after?: string;\n    limit?: number;\n  } = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'[]>'
+	]}
+/>
+
+Fetches the users who voted for an answer of a poll, paginated by user ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message holding the poll.
+
+</ApiParam>
+
+<ApiParam name="answerId" type={['number']}>
+
+The ID of the answer.
+
+</ApiParam>
+
+<ApiParam name="options" type={['{\n  after?: string;\n  limit?: number;\n}']} defaultValue={'{}'}>
+
+How many voters to fetch (up to 100), and after which user ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L523', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:523' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(channelId: string, messageId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage'],
+		'>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIMessage', 'https://discord-api-types.dev/api/discord-api-types-v10#APIMessage'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### forward()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L231', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:231' }}>
+
+<ApiSignature
+	tokens={[
+		'forward(\n  channelId: string,\n  messageId: string,\n  targetChannelId: string\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Forwards a message to another channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel of the message.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="targetChannelId" type={['string']}>
+
+The ID of the channel to forward it to.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		'> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'], '> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L94', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:94' }}>
+
+<ApiSignature
+	tokens={[
+		'keyOf(data: ',
+		['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'],
+		' | ',
+		['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData'],
+		'): string'
+	]}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['GatewayMessageCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageCreateDispatchData'], ' | ', ['GatewayMessageUpdateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayMessageUpdateDispatchData']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### list()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L196', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:196' }}>
+
+<ApiSignature
+	tokens={[
+		'list(channelId: string, options: ',
+		['MessageListOptions', '/documentation/api/plugin-gateway/interfaces/MessageListOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>[]>'
+	]}
+/>
+
+Lists the messages of a channel, newest first, and caches them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MessageListOptions', '/documentation/api/plugin-gateway/interfaces/MessageListOptions']]} defaultValue={'{}'}>
+
+How many messages, and around which one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### pin()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L384', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:384' }}>
+
+<ApiSignature
+	tokens={[
+		'pin(channelId: string, messageId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Pins a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### react()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L419', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:419' }}>
+
+<ApiSignature
+	tokens={[
+		'react(\n  channelId: string,\n  messageId: string,\n  emoji: ',
+		['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Reacts to a message as the bot, and counts the reaction on the cached message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="emoji" type={[['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable']]}>
+
+The emoji.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: [channelId: string, messageId: string]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[channelId: string, messageId: string]']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### removeAllReactions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L461', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:461' }}>
+
+<ApiSignature
+	tokens={[
+		'removeAllReactions(channelId: string, messageId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Removes every reaction from a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### removeReactionEmoji()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L443', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:443' }}>
+
+<ApiSignature
+	tokens={[
+		'removeReactionEmoji(\n  channelId: string,\n  messageId: string,\n  emoji: ',
+		['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Removes every reaction with one emoji from a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="emoji" type={[['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable']]}>
+
+The emoji.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['CachedManager.resolve', '/documentation/api/plugin-gateway/classes/CachedManager#resolve']]}>
+
+<ApiSignature
+	tokens={[
+		'resolve(value: string | ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | null>'
+	]}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>']}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean> | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }} inheritedFrom={[['CachedManager.resolveId', '/documentation/api/plugin-gateway/classes/CachedManager#resolveid']]}>
+
+<ApiSignature
+	tokens={['resolveId(value: string | ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>): string | null']}
+/>
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>']}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L186', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:186' }}>
+
+<ApiSignature tokens={['resolveKey(channelId: string, messageId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L212', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:212' }}>
+
+<ApiSignature
+	tokens={[
+		'send(\n  channelId: string,\n  options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'],
+		'>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Sends a message to a channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'], '>']}>
+
+The message, or its content.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### startThread()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L473', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:473' }}>
+
+<ApiSignature
+	tokens={[
+		'startThread(\n  channelId: string,\n  messageId: string,\n  options: ',
+		['MessageThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageThreadCreateOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+Starts a thread from a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MessageThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageThreadCreateOptions']]}>
+
+The thread's name and settings.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### unpin()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/MessageManager.ts#L396', label: 'packages/plugin-gateway/src/managers/MessageManager.ts:396' }}>
+
+<ApiSignature
+	tokens={[
+		'unpin(channelId: string, messageId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Unpins a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="channelId" type={['string']}>
+
+The ID of the channel.
+
+</ApiParam>
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

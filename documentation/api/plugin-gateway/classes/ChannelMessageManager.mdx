@@ -1,0 +1,832 @@
+---
+title: 'Class: ChannelMessageManager'
+description: "Manages the messages of one channel: client.messages, with the channel's ID filled in. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L35',
+		label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:35'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the messages of one channel: `client.messages`, with the channel's ID filled in.
+
+<ApiSignature tokens={['class ChannelMessageManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+One class serves every channel, where discord.js has a `MessageManager` subclass per kind (`GuildMessageManager`,
+`DMMessageManager`, `PartialGroupDMMessageManager`). The methods only a guild has (`crosspost`, `bulkDelete`,
+`startThread`) throw `ChannelMessagesGuildOnly` before any request when the manager belongs to a direct message or a
+group direct message, which the channel's own `messages` tells. A manager built by hand without the channel's type
+sends the request, and Discord refuses it.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L53', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:53' }}>
+
+<ApiSignature
+	tokens={[
+		'new ChannelMessageManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  channelId: string,\n  channelType: ',
+		['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'],
+		' | null = null\n): ',
+		['ChannelMessageManager', '/documentation/api/plugin-gateway/classes/ChannelMessageManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="channelId" type={['string']} />
+
+<ApiParam
+	name="channelType"
+	type={[['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'], ' | null']}
+	defaultValue="null"
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['ScopedCache', '/documentation/api/plugin-gateway/interfaces/ScopedCache'], '<', ['Message', '/documentation/api/plugin-gateway/classes/Message'], '<boolean>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L51', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:51' }}>
+
+The cached messages of the channel, by message ID.
+
+**Example**
+
+```typescript
+const message = await channel.messages.cache.get(messageId);
+```
+
+</ApiMember>
+
+### channelId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly channelId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L36',
+		label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:36'
+	}}
+/>
+
+### channelType
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly channelType: ', ['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L41', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:41' }}>
+
+The type of the channel, when known.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+## Methods
+
+### bulkDelete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L137', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:137' }}>
+
+<ApiSignature
+	tokens={[
+		'bulkDelete(\n  messages: number | ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>> | readonly ',
+		['MessageResolvable', '/documentation/api/plugin-gateway/type-aliases/MessageResolvable'],
+		'[],\n  filterOld: boolean = false\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | ',
+		['PartialMessage', '/documentation/api/plugin-gateway/interfaces/PartialMessage'],
+		'<boolean> | undefined>>'
+	]}
+/>
+
+Deletes up to 100 messages at once.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="messages"
+	type={[
+		'number | ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>> | readonly ',
+		['MessageResolvable', '/documentation/api/plugin-gateway/type-aliases/MessageResolvable'],
+		'[]'
+	]}
+/>
+
+<ApiParam name="filterOld" type={['boolean']} defaultValue="false" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | ',
+		['PartialMessage', '/documentation/api/plugin-gateway/interfaces/PartialMessage'],
+		'<boolean> | undefined>>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+[GatewayError](/documentation/api/plugin-gateway/classes/GatewayError) `ChannelMessagesGuildOnly` in a direct message, as the channel has no `bulkDelete`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### crosspost()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L127', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:127' }}>
+
+<ApiSignature
+	tokens={[
+		'crosspost(message: ',
+		['MessageResolvable', '/documentation/api/plugin-gateway/type-aliases/MessageResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Publishes a message of an announcement channel to the channels following it, like discord.js's
+`GuildMessageManager#crosspost`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="message" type={[['MessageResolvable', '/documentation/api/plugin-gateway/type-aliases/MessageResolvable']]}>
+
+The message, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+[GatewayError](/documentation/api/plugin-gateway/classes/GatewayError) `ChannelMessagesGuildOnly` in a direct message.
+
+</ApiParam>
+
+<ApiParam>
+
+[GatewayTypeError](/documentation/api/plugin-gateway/classes/GatewayTypeError) `IdUnresolvable` when `message` holds no ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L100', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:100' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(messageId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L93', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:93' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(\n  messageId: string,\n  options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'],
+		'>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam
+	name="options"
+	type={[
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### endPoll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L174', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:174' }}>
+
+<ApiSignature
+	tokens={[
+		'endPoll(messageId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L76', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:76' }}>
+
+<ApiSignature
+	tokens={[
+		'fetch(messageId: string, options?: ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Gets a message of the channel from the cache, falling back to the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="options" type={[['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPins()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L104', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:104' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPins(options?: {\n    before?: number | ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		';\n    limit?: number;\n  }): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  hasMore: boolean;\n  items: ',
+		['PinnedMessage', '/documentation/api/plugin-gateway/interfaces/PinnedMessage'],
+		'[];\n}>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[
+		'{\n  before?: number | ',
+		['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'],
+		';\n  limit?: number;\n}'
+	]}
+	optional
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  hasMore: boolean;\n  items: ',
+		['PinnedMessage', '/documentation/api/plugin-gateway/interfaces/PinnedMessage'],
+		'[];\n}>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPollAnswerVoters()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L178', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:178' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPollAnswerVoters(\n  messageId: string,\n  answerId: number,\n  options?: {\n    after?: string;\n    limit?: number;\n  }\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'[]>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="answerId" type={['number']} />
+
+<ApiParam name="options" type={['{\n  after?: string;\n  limit?: number;\n}']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### forward()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L145', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:145' }}>
+
+<ApiSignature
+	tokens={[
+		'forward(messageId: string, targetChannelId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="targetChannelId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### get()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L69', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:69' }}>
+
+<ApiSignature
+	tokens={[
+		'get(messageId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | undefined>'
+	]}
+/>
+
+Gets a message of the channel from the cache. Same as `cache.get`, always answering a promise.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean> | undefined>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### list()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L85', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:85' }}>
+
+<ApiSignature
+	tokens={[
+		'list(options?: ',
+		['MessageListOptions', '/documentation/api/plugin-gateway/interfaces/MessageListOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>[]>'
+	]}
+/>
+
+Lists the messages of the channel, newest first.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['MessageListOptions', '/documentation/api/plugin-gateway/interfaces/MessageListOptions']]} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### pin()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L111', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:111' }}>
+
+<ApiSignature
+	tokens={[
+		'pin(messageId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### react()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L149', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:149' }}>
+
+<ApiSignature
+	tokens={[
+		'react(messageId: string, emoji: ',
+		['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="emoji" type={[['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### removeAllReactions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L157', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:157' }}>
+
+<ApiSignature
+	tokens={[
+		'removeAllReactions(messageId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### removeReactionEmoji()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L153', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:153' }}>
+
+<ApiSignature
+	tokens={[
+		'removeReactionEmoji(messageId: string, emoji: ',
+		['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="emoji" type={[['EmojiIdentifierResolvable', '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L89', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:89' }}>
+
+<ApiSignature
+	tokens={[
+		'send(options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### startThread()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L166', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:166' }}>
+
+<ApiSignature
+	tokens={[
+		'startThread(\n  messageId: string,\n  options: ',
+		['MessageThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageThreadCreateOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+Starts a thread from a message.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="options" type={[['MessageThreadCreateOptions', '/documentation/api/plugin-gateway/interfaces/MessageThreadCreateOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+[GatewayError](/documentation/api/plugin-gateway/classes/GatewayError) `ChannelMessagesGuildOnly` in a direct message.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### unpin()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelMessageManager.ts#L115', label: 'packages/plugin-gateway/src/managers/ChannelMessageManager.ts:115' }}>
+
+<ApiSignature
+	tokens={[
+		'unpin(messageId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']} />
+
+<ApiParam name="reason" type={['string']} optional />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

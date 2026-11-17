@@ -1,0 +1,802 @@
+---
+title: 'Class: EntitlementManager'
+description: 'Manages the entitlements of the application, reached through client.application.entitlements: the access users and guilds were granted to its SKUs. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L89',
+		label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:89'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the entitlements of the application, reached through `client.application.entitlements`: the access users
+and guilds were granted to its SKUs.
+
+<ApiSignature
+	tokens={[
+		'class EntitlementManager extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"entitlements", ',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		', [entitlementId: string]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"entitlements", ',
+			['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+			', [entitlementId: string]>'
+		]
+	]}
+/>
+
+Entitlements are cached as `ENTITLEMENT_CREATE`, `ENTITLEMENT_UPDATE` and `ENTITLEMENT_DELETE` come in, and as they
+are fetched.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L94', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:94' }}>
+
+<ApiSignature
+	tokens={[
+		'new EntitlementManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['EntitlementManager', '/documentation/api/plugin-gateway/classes/EntitlementManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "entitlements"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### consume()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L219', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:219' }}>
+
+<ApiSignature
+	tokens={[
+		'consume(entitlement: ',
+		['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Marks an entitlement as consumed. Only available for one-time purchase consumable SKUs.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="entitlement" type={[['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable']]}>
+
+The entitlement, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`InvalidType` when the value does not resolve.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L98', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:98' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		'): ',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### createTest()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L171', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:171' }}>
+
+<ApiSignature
+	tokens={[
+		'createTest(options: ',
+		['EntitlementCreateOptions', '/documentation/api/plugin-gateway/interfaces/EntitlementCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+Creates a test entitlement, which grants a user or a guild a SKU without a purchase.
+
+The entitlement is not cached by this call: Discord sends its `ENTITLEMENT_CREATE` too, which does.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['EntitlementCreateOptions', '/documentation/api/plugin-gateway/interfaces/EntitlementCreateOptions']]}>
+
+The SKU, and the guild or user to grant it to.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`InvalidType` for a SKU, guild or user that does not resolve, and
+`EntitlementCreateInvalidOwner` unless exactly one of the guild and user is given.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### deleteTest()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L207', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:207' }}>
+
+<ApiSignature
+	tokens={[
+		'deleteTest(entitlement: ',
+		['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a test entitlement, and drops it from the cache.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="entitlement" type={[['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable']]}>
+
+The entitlement, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+`InvalidType` when the value does not resolve.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L131', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:131' }}>
+
+<Tabs>
+
+<Tab title="Overload 1">
+
+<ApiSignature
+	tokens={[
+		'fetch(entitlement: ',
+		['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable'],
+		', options?: ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+Gets an entitlement from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="entitlement" type={[['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable']]}>
+
+The entitlement, or its ID.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions']]} optional>
+
+Whether to skip the cache, and whether to store the result.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+const entitlement = await client.application.entitlements.fetch(entitlementId);
+```
+
+</Tab>
+
+<Tab title="Overload 2">
+
+<ApiSignature
+	tokens={[
+		'fetch(options?: ',
+		['EntitlementFetchOptions', '/documentation/api/plugin-gateway/interfaces/EntitlementFetchOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>>'
+	]}
+/>
+
+Lists the entitlements of the application from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['EntitlementFetchOptions', '/documentation/api/plugin-gateway/interfaces/EntitlementFetchOptions']]} optional>
+
+What to list.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+const active = await client.application.entitlements.fetch({ user, excludeEnded: true });
+```
+
+</Tab>
+
+</Tabs>
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L225', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:225' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(entitlementId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		'>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="entitlementId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'],
+		'> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'], '> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L102', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:102' }}>
+
+<ApiSignature tokens={['keyOf(data: ', ['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement'], '): string']} />
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIEntitlement', 'https://discord-api-types.dev/api/discord-api-types-v10#APIEntitlement']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: [entitlementId: string]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[entitlementId: string]']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['CachedManager.resolve', '/documentation/api/plugin-gateway/classes/CachedManager#resolve']]}>
+
+<ApiSignature
+	tokens={[
+		'resolve(value: string | ',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		' | null>'
+	]}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement']]}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'], ' | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L116', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:116' }}>
+
+<ApiSignature
+	tokens={[
+		'resolveId(entitlement: ',
+		['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable'],
+		'): string | null'
+	]}
+/>
+
+Resolves an [EntitlementResolvable](/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable) to an entitlement ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="entitlement" type={[['EntitlementResolvable', '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable']]}>
+
+The entitlement, or its ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value holds none.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/EntitlementManager.ts#L106', label: 'packages/plugin-gateway/src/managers/EntitlementManager.ts:106' }}>
+
+<ApiSignature tokens={['resolveKey(entitlementId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="entitlementId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Entitlement', '/documentation/api/plugin-gateway/classes/Entitlement'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

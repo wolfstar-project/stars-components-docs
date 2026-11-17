@@ -1,0 +1,522 @@
+---
+title: 'Class: BaseInvite'
+description: "The base of every invite, to a guild, to a group direct message, or a friend invite: @discordjs/structures' Invite, with its channel, inviter, target… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L33',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:33'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+The base of every invite, to a guild, to a group direct message, or a friend invite: `@discordjs/structures`'
+`Invite`, with its channel, inviter, target user, and discord.js' helpers.
+
+<ApiSignature
+	tokens={[
+		'class BaseInvite<Data extends ',
+		['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData'],
+		' = ',
+		['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData'],
+		'> extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<Data, ',
+		['InviteRelations', '/documentation/api/plugin-gateway/interfaces/InviteRelations'],
+		'>, Invite<"">'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+			'<Data, ',
+			['InviteRelations', '/documentation/api/plugin-gateway/interfaces/InviteRelations'],
+			'>'
+		],
+		['Invite<"">']
+	]}
+	extendedBy={[
+		[['GroupDMInvite', '/documentation/api/plugin-gateway/classes/GroupDMInvite']],
+		[['GuildInvite', '/documentation/api/plugin-gateway/classes/GuildInvite']]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends ', ['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData']]} defaultValue="InviteData">
+
+The raw invite data this structure wraps.
+
+</ApiParam>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L66', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:66' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new BaseInvite<Data extends ',
+		['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData'],
+		' = ',
+		['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData'],
+		'>(\n  data: Data,\n  relations: ',
+		['InviteRelations', '/documentation/api/plugin-gateway/interfaces/InviteRelations'],
+		' = {}\n): ',
+		['BaseInvite', '/documentation/api/plugin-gateway/classes/BaseInvite'],
+		'<Data>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends ', ['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData']]} defaultValue="InviteData">
+
+The raw invite data this structure wraps.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['Data']}>
+
+The raw invite.
+
+</ApiParam>
+
+<ApiParam name="relations" type={[['InviteRelations', '/documentation/api/plugin-gateway/interfaces/InviteRelations']]} defaultValue={'{}'}>
+
+The inviter, target user, and guild as resolved from the cache, by `client.guilds.invites()`.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+### DataTemplate
+
+<ApiMember kind="property" badges={['static', 'readonly']} signature={['static readonly DataTemplate: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<APIActualInvite>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L49', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:49' }}>
+
+Keeps the raw `created_at` and `expires_at`, which `@discordjs/structures` strips and re-serializes in its own
+format, so that [BaseInvite.toJSON](/documentation/api/plugin-gateway/classes/BaseInvite#tojson) returns the invite as received.
+
+</ApiMember>
+
+### InvitesPattern
+
+<ApiMember kind="property" badges={['static', 'readonly']} signature={['static readonly InvitesPattern: ', ['RegExp', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L54', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:54' }}>
+
+Matches the invite URLs Discord hands out, capturing their `code`, like discord.js's `BaseInvite.InvitesPattern`.
+
+</ApiMember>
+
+## Accessors
+
+### channel
+
+<ApiMember kind="accessor" signature={['get channel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | ', ['APIInviteChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIInviteChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L97', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:97' }}>
+
+The channel the invite leads to, like discord.js's `BaseInvite#channel`: the cached channel, else the partial
+channel the API returns with the invite, if any.
+
+</ApiMember>
+
+### channelId
+
+<ApiMember
+	kind="accessor"
+	signature={['get channelId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L89',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:89'
+	}}
+/>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L126',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:126'
+	}}
+/>
+
+### createdTimestamp
+
+<ApiMember kind="accessor" signature={['get createdTimestamp(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L122', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:122' }}>
+
+The timestamp this invite was created at
+
+</ApiMember>
+
+### expiresAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get expiresAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L142',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:142'
+	}}
+/>
+
+### expiresTimestamp
+
+<ApiMember kind="accessor" signature={['get expiresTimestamp(): number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L134', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:134' }}>
+
+When the invite expires, `null` when it never does or it is unknown.
+
+</ApiMember>
+
+### inviter
+
+<ApiMember kind="accessor" signature={['get inviter(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L104', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:104' }}>
+
+The user who created the invite, if known.
+
+</ApiMember>
+
+### inviterId
+
+<ApiMember
+	kind="accessor"
+	signature={['get inviterId(): string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L109',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:109'
+	}}
+/>
+
+### targetApplication
+
+<ApiMember
+	kind="accessor"
+	signature={[
+		'get targetApplication(): ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIApplication', 'https://discord-api-types.dev/api/discord-api-types-v10#APIApplication'],
+		'> | null'
+	]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L118',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:118'
+	}}
+/>
+
+### targetUser
+
+<ApiMember
+	kind="accessor"
+	signature={['get targetUser(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L113',
+		label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:113'
+	}}
+/>
+
+### type
+
+<ApiMember kind="accessor" signature={['get type(): ', ['InviteType', 'https://discord-api-types.dev/api/discord-api-types-v10#InviteType']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L85', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:85' }}>
+
+The type of this invite
+
+</ApiMember>
+
+### url
+
+<ApiMember kind="accessor" signature={['get url(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L81', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:81' }}>
+
+The URL of the invite.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L72', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:72' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("guild" | "channel" | "inviter" | "targetUser")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("guild" | "channel" | "inviter" | "targetUser")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toJSON()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L154', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:154' }}>
+
+<ApiSignature tokens={['toJSON(): APIActualInvite']} />
+
+Transforms this invite into its raw data, as received.
+
+Typed as `@discordjs/structures`' `APIActualInvite`, but an invite built from an `INVITE_CREATE` dispatch has the
+dispatch's fields instead.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['APIActualInvite']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/invites/BaseInvite.ts#L158', label: 'packages/plugin-gateway/src/structures/invites/BaseInvite.ts:158' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string']} />
+
+Returns the primitive value of the specified object.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>

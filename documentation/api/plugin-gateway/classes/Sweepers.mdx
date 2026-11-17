@@ -1,0 +1,687 @@
+---
+title: 'Class: Sweepers'
+description: "Evicts entries from the caches of instances, on a schedule or on demand, like discord.js's Sweepers. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L204',
+		label: 'packages/plugin-gateway/src/util/Sweepers.ts:204'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Evicts entries from the caches of instances, on a schedule or on demand, like discord.js's `Sweepers`.
+
+<ApiSignature tokens={['class Sweepers']} />
+
+It works with the caches the client builds from [GatewayClientOptions.cacheConstructor](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cacheconstructor), the default
+`CollectionCache` included: they are `Map`s. The stores of `@wolfstar/plugin-cache` hold raw data, and expire it
+with the `ttl` of their policies instead, so sweeping them throws.
+
+A sweep only evicts entries from the cache: it emits no event but `cacheSweep`, and the structures the application
+keeps stay valid.
+
+**Example**
+
+```typescript
+const client = new GatewayClient({
+	intents,
+	sweepers: {
+		// Every hour, forget the messages not touched for half an hour.
+		messages: { interval: 3_600, lifetime: 1_800 },
+		// Every hour, forget the bots.
+		users: { interval: 3_600, filter: () => (user) => user.bot }
+	}
+});
+
+// On demand.
+client.sweepers.sweepMessages(600);
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L214', label: 'packages/plugin-gateway/src/util/Sweepers.ts:214' }}>
+
+<ApiSignature
+	tokens={[
+		'new Sweepers(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		', options: ',
+		['SweeperOptions', '/documentation/api/plugin-gateway/type-aliases/SweeperOptions'],
+		' = {}): ',
+		['Sweepers', '/documentation/api/plugin-gateway/classes/Sweepers']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="options" type={[['SweeperOptions', '/documentation/api/plugin-gateway/type-aliases/SweeperOptions']]} defaultValue={'{}'} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### options
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly options: ', ['SweeperOptions', '/documentation/api/plugin-gateway/type-aliases/SweeperOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L208', label: 'packages/plugin-gateway/src/util/Sweepers.ts:208' }}>
+
+The options the sweepers were scheduled from.
+
+</ApiMember>
+
+## Methods
+
+### destroy()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L355', label: 'packages/plugin-gateway/src/util/Sweepers.ts:355' }}>
+
+<ApiSignature tokens={['destroy(): void']} />
+
+Stops the scheduled sweeps. On-demand sweeps keep working.
+
+</ApiMember>
+
+### sweep()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L232', label: 'packages/plugin-gateway/src/util/Sweepers.ts:232' }}>
+
+<ApiSignature
+	tokens={[
+		'sweep<Name extends keyof ',
+		['SweepableEntities', '/documentation/api/plugin-gateway/interfaces/SweepableEntities'],
+		'>(\n  entity: Name,\n  filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['SweepableEntities', '/documentation/api/plugin-gateway/interfaces/SweepableEntities'],
+		'[Name]>\n): number'
+	]}
+/>
+
+Evicts the entries of an entity's cache the filter answers `true` for.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Name" type={['extends keyof ', ['SweepableEntities', '/documentation/api/plugin-gateway/interfaces/SweepableEntities']]} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="entity" type={['Name']}>
+
+The name of the entity.
+
+</ApiParam>
+
+<ApiParam name="filter" type={[['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'], '<', ['SweepableEntities', '/documentation/api/plugin-gateway/interfaces/SweepableEntities'], '[Name]>']}>
+
+Builds the filter of the sweep.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']}>
+
+The amount of entries evicted, `0` when the filter skips the sweep or the entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepAutoModerationRules()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L258', label: 'packages/plugin-gateway/src/util/Sweepers.ts:258' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepAutoModerationRules(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>): number'
+	]}
+/>
+
+Evicts the auto moderation rules the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepBans()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L265', label: 'packages/plugin-gateway/src/util/Sweepers.ts:265' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepBans(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['GuildBan', '/documentation/api/plugin-gateway/classes/GuildBan'],
+		'>): number'
+	]}
+/>
+
+Evicts the bans the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['GuildBan', '/documentation/api/plugin-gateway/classes/GuildBan'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepEmojis()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L272', label: 'packages/plugin-gateway/src/util/Sweepers.ts:272' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepEmojis(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		'>): number'
+	]}
+/>
+
+Evicts the emojis the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepInvites()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L281', label: 'packages/plugin-gateway/src/util/Sweepers.ts:281' }}>
+
+<ApiSignature tokens={['sweepInvites(lifetime: number = 14_400): number']} />
+
+Evicts the invites that expired more than `lifetime` seconds ago.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="lifetime" type={['number']} defaultValue="14_400">
+
+The seconds an invite lives past its expiration.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepMembers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L288', label: 'packages/plugin-gateway/src/util/Sweepers.ts:288' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepMembers(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>): number'
+	]}
+/>
+
+Evicts the members the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepMessages()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L297', label: 'packages/plugin-gateway/src/util/Sweepers.ts:297' }}>
+
+<ApiSignature tokens={['sweepMessages(lifetime: number = 3_600): number']} />
+
+Evicts the messages created or last edited more than `lifetime` seconds ago.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="lifetime" type={['number']} defaultValue="3_600">
+
+The seconds a message lives.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepPresences()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L304', label: 'packages/plugin-gateway/src/util/Sweepers.ts:304' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepPresences(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>): number'
+	]}
+/>
+
+Evicts the presences the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepStageInstances()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L311', label: 'packages/plugin-gateway/src/util/Sweepers.ts:311' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepStageInstances(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['StageInstance', '/documentation/api/plugin-gateway/classes/StageInstance'],
+		'>): number'
+	]}
+/>
+
+Evicts the stage instances the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['StageInstance', '/documentation/api/plugin-gateway/classes/StageInstance'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepStickers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L318', label: 'packages/plugin-gateway/src/util/Sweepers.ts:318' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepStickers(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>): number'
+	]}
+/>
+
+Evicts the stickers the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepThreadMembers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L325', label: 'packages/plugin-gateway/src/util/Sweepers.ts:325' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepThreadMembers(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'],
+		'>): number'
+	]}
+/>
+
+Evicts the thread members the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['ThreadMember', '/documentation/api/plugin-gateway/classes/ThreadMember'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepThreads()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L334', label: 'packages/plugin-gateway/src/util/Sweepers.ts:334' }}>
+
+<ApiSignature tokens={['sweepThreads(lifetime: number = 14_400): number']} />
+
+Evicts the threads archived more than `lifetime` seconds ago, see [Sweepers.outdatedThreadSweepFilter](/documentation/api/plugin-gateway/classes/Sweepers#outdatedthreadsweepfilter).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="lifetime" type={['number']} defaultValue="14_400">
+
+The seconds a thread lives past its archival.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepUsers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L341', label: 'packages/plugin-gateway/src/util/Sweepers.ts:341' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepUsers(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>): number'
+	]}
+/>
+
+Evicts the users the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### sweepVoiceStates()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L348', label: 'packages/plugin-gateway/src/util/Sweepers.ts:348' }}>
+
+<ApiSignature
+	tokens={[
+		'sweepVoiceStates(filter: ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>): number'
+	]}
+/>
+
+Evicts the voice states the filter answers `true` for.
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="filter"
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['VoiceState', '/documentation/api/plugin-gateway/classes/VoiceState'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### filterByLifetime()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L366', label: 'packages/plugin-gateway/src/util/Sweepers.ts:366' }}>
+
+<ApiSignature
+	tokens={[
+		'static filterByLifetime<Value>(options: ',
+		['FilterByLifetimeOptions', '/documentation/api/plugin-gateway/interfaces/FilterByLifetimeOptions'],
+		'<Value> = {}): ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<Value>'
+	]}
+/>
+
+Builds a filter factory evicting the entries older than a lifetime, for [Sweepers.sweep](/documentation/api/plugin-gateway/classes/Sweepers#sweep) and the `filter`
+of a sweeper.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['FilterByLifetimeOptions', '/documentation/api/plugin-gateway/interfaces/FilterByLifetimeOptions'], '<Value>']} defaultValue={'{}'}>
+
+The lifetime, and what it is counted from.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### outdatedThreadSweepFilter()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/Sweepers.ts#L399', label: 'packages/plugin-gateway/src/util/Sweepers.ts:399' }}>
+
+<ApiSignature
+	tokens={[
+		'static outdatedThreadSweepFilter(lifetime: number = 14_400): ',
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+Builds a filter factory evicting the archived threads that have been so for longer than a lifetime. Active
+threads are never evicted.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="lifetime" type={['number']} defaultValue="14_400">
+
+The seconds a thread lives past its archival.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['SweepFilterFactory', '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

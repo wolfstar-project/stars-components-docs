@@ -1,0 +1,328 @@
+---
+title: 'Class: MessagePayload'
+description: "Normalizes the options of a message into the REST body and files Discord expects, like discord.js's MessagePayload: camel case options, builders, rep… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L326',
+		label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:326'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Normalizes the options of a message into the REST body and files Discord expects, like discord.js's
+`MessagePayload`: camel case options, builders, reply and forward shortcuts, stickers, polls, and files from paths,
+URLs, streams, or buffers.
+
+<ApiSignature tokens={['class MessagePayload']} />
+
+**Example**
+
+```typescript
+const payload = MessagePayload.create(channel, {
+	content: 'Awoo',
+	reply: { messageReference: message },
+	files: ['./wolf.png', { attachment: buffer, name: 'howl.ogg', description: 'A howl' }]
+});
+await channel.send(payload);
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L352', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:352' }}>
+
+<ApiSignature
+	tokens={[
+		'new MessagePayload(\n  target: ',
+		['MessageTarget', '/documentation/api/plugin-gateway/type-aliases/MessageTarget'],
+		',\n  options: ',
+		['MessagePayloadOptions', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadOptions'],
+		',\n  context: ',
+		['MessagePayloadContext', '/documentation/api/plugin-gateway/interfaces/MessagePayloadContext'],
+		' = {}\n): ',
+		['MessagePayload', '/documentation/api/plugin-gateway/classes/MessagePayload']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['MessageTarget', '/documentation/api/plugin-gateway/type-aliases/MessageTarget']]} />
+
+<ApiParam name="options" type={[['MessagePayloadOptions', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadOptions']]} />
+
+<ApiParam
+	name="context"
+	type={[['MessagePayloadContext', '/documentation/api/plugin-gateway/interfaces/MessagePayloadContext']]}
+	defaultValue={'{}'}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### body
+
+<ApiMember kind="property" signature={['body: ', ['RESTPostAPIChannelMessageJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPostAPIChannelMessageJSONBody'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L345', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:345' }}>
+
+The resolved REST body, set by [MessagePayload.resolveBody](/documentation/api/plugin-gateway/classes/MessagePayload#resolvebody).
+
+</ApiMember>
+
+### context
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly context: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['MessagePayloadContext', '/documentation/api/plugin-gateway/interfaces/MessagePayloadContext'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L340', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:340' }}>
+
+What the target accepts.
+
+</ApiMember>
+
+### files
+
+<ApiMember kind="property" signature={['files: RawFile[] | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L350', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:350' }}>
+
+The resolved files, set by [MessagePayload.resolveFiles](/documentation/api/plugin-gateway/classes/MessagePayload#resolvefiles).
+
+</ApiMember>
+
+### options
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly options: ', ['MessagePayloadOptions', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L335', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:335' }}>
+
+The options the payload was created with.
+
+</ApiMember>
+
+### target
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly target: ', ['MessageTarget', '/documentation/api/plugin-gateway/type-aliases/MessageTarget']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L330', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:330' }}>
+
+What the message is sent to: the structure it is sent through, or the client.
+
+</ApiMember>
+
+## Accessors
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L365', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:365' }}>
+
+The client the target belongs to.
+
+</ApiMember>
+
+### isEdit
+
+<ApiMember kind="accessor" signature={['get isEdit(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L379', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:379' }}>
+
+Whether the message is edited rather than created.
+
+</ApiMember>
+
+### isWebhook
+
+<ApiMember kind="accessor" signature={['get isWebhook(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L372', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:372' }}>
+
+Whether the message is sent through a webhook.
+
+</ApiMember>
+
+## Methods
+
+### makeContent()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L386', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:386' }}>
+
+<ApiSignature tokens={['makeContent(): string | null | undefined']} />
+
+Resolves the content of the message: `null` clears it when editing, and is left out otherwise.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L456', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:456' }}>
+
+<ApiSignature
+	tokens={[
+		'resolve<Body = ',
+		['RESTPostAPIChannelMessageJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPostAPIChannelMessageJSONBody'],
+		'>(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ResolvedMessagePayload', '/documentation/api/plugin-gateway/interfaces/ResolvedMessagePayload'],
+		'<Body>>'
+	]}
+/>
+
+Resolves both the body and the files, for `@discordjs/core`.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Body" defaultValue="RESTPostAPIChannelMessageJSONBody" />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['ResolvedMessagePayload', '/documentation/api/plugin-gateway/interfaces/ResolvedMessagePayload'],
+		'<Body>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveBody()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L397', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:397' }}>
+
+<ApiSignature tokens={['resolveBody(): this']} />
+
+Resolves the REST body of the message.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveFiles()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L445', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:445' }}>
+
+<ApiSignature
+	tokens={[
+		'resolveFiles(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessagePayload', '/documentation/api/plugin-gateway/classes/MessagePayload'],
+		'>'
+	]}
+/>
+
+Resolves the files of the message, reading them from disk, the network, or streams.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['MessagePayload', '/documentation/api/plugin-gateway/classes/MessagePayload'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L592', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:592' }}>
+
+<ApiSignature
+	tokens={[
+		'static create(\n  target: ',
+		['MessageTarget', '/documentation/api/plugin-gateway/type-aliases/MessageTarget'],
+		',\n  options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'],
+		' | ',
+		['MessagePayloadOptions', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadOptions'],
+		'>,\n  context?: ',
+		['MessagePayloadContext', '/documentation/api/plugin-gateway/interfaces/MessagePayloadContext'],
+		'\n): ',
+		['MessagePayload', '/documentation/api/plugin-gateway/classes/MessagePayload']
+	]}
+/>
+
+Creates a payload, or returns it when it already is one.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="target" type={[['MessageTarget', '/documentation/api/plugin-gateway/type-aliases/MessageTarget']]}>
+
+What the message is sent to.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['MessageEditOptions', '/documentation/api/plugin-gateway/interfaces/MessageEditOptions'], ' | ', ['MessagePayloadOptions', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadOptions'], '>']}>
+
+The message, its content, or a payload.
+
+</ApiParam>
+
+<ApiParam name="context" type={[['MessagePayloadContext', '/documentation/api/plugin-gateway/interfaces/MessagePayloadContext']]} optional>
+
+What the target accepts.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['MessagePayload', '/documentation/api/plugin-gateway/classes/MessagePayload']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveFile()
+
+<ApiMember kind="method" badges={['static']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L610', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:610' }}>
+
+<ApiSignature
+	tokens={[
+		'static resolveFile(file: ',
+		['AttachmentResolvable', '/documentation/api/plugin-gateway/type-aliases/AttachmentResolvable'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<RawFile>'
+	]}
+/>
+
+Resolves a file to upload, reading paths from disk and downloading URLs.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="file" type={[['AttachmentResolvable', '/documentation/api/plugin-gateway/type-aliases/AttachmentResolvable']]}>
+
+The file.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<RawFile>']} />
+
+</ApiParams>
+
+</ApiMember>

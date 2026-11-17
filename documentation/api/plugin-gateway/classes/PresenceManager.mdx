@@ -1,0 +1,712 @@
+---
+title: 'Class: PresenceManager'
+description: 'Manages the presences of guild members. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L27',
+		label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:27'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the presences of guild members.
+
+<ApiSignature
+	tokens={[
+		'class PresenceManager<InGuild extends boolean = false> extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"presences", ',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		', [guildId: string, userId: string], ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [userId: string]>>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"presences", ',
+			['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+			', [guildId: string, userId: string], ',
+			['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+			'<InGuild, [userId: string]>>'
+		]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="false">
+
+Whether the manager was built for one guild.
+
+</ApiParam>
+
+</ApiParams>
+
+Presences only come from the gateway, with the `GuildPresences` intent: there is no API to fetch them, so `fetch`
+rejects on a cache miss. Use `cache.get`, which answers `undefined` instead.
+
+The cache is keyed by guild and user. `guild.presences` (or `client.guilds.presences(guildId)`) reads it by user
+ID alone, like discord.js: `guild.presences.cache.get(userId)`.
+
+`guild.presences` (or `client.guilds.presences(guildId)`) is this manager built for one guild, like discord.js's:
+`cache` takes the user's ID alone, and the methods lose their `guildId` argument.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L42', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:42' }}>
+
+<ApiSignature
+	tokens={[
+		'new PresenceManager<InGuild extends boolean = false>(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  guildId?: string\n): ',
+		['PresenceManager', '/documentation/api/plugin-gateway/classes/PresenceManager'],
+		'<InGuild>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="InGuild" type={['extends boolean']} defaultValue="false">
+
+Whether the manager was built for one guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]}>
+
+The client.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The guild to build the manager for.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildId: InGuild extends true ? string : undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L36', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:36' }}>
+
+The ID of the guild this manager was built for, `undefined` on `client.presences`.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "presences"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L47', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:47' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		'): ',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Presence', '/documentation/api/plugin-gateway/classes/Presence']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }} inheritedFrom={[['CachedManager.fetch', '/documentation/api/plugin-gateway/classes/CachedManager#fetch']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [...',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [userId: string]>[]] | [...',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, [userId: string]>[], ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[...', ['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, [userId: string]>[]] | [...', ['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, [userId: string]>[], ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L147', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:147' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(guildId: string, userId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		'>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+<ApiParam name="userId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'],
+		'> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'], '> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L51', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:51' }}>
+
+<ApiSignature
+	tokens={['keyOf(data: ', ['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate'], '): string']}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['GatewayPresenceUpdate', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceUpdate']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### listCached()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L137', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:137' }}>
+
+<ApiSignature
+	tokens={[
+		'listCached(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'<InGuild, []>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'[]>'
+	]}
+/>
+
+Lists the cached presences of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'], '<InGuild, []>']} rest />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], '[]>']}>
+
+The cached entries, `[]` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: ',
+		['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={[['GuildArgs', '/documentation/api/plugin-gateway/type-aliases/GuildArgs']]} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L87', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:87' }}>
+
+<ApiSignature
+	tokens={[
+		'resolve(presence: ',
+		['PresenceResolvable', '/documentation/api/plugin-gateway/type-aliases/PresenceResolvable'],
+		', guildId?: string): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		' | null>'
+	]}
+/>
+
+Resolves a [PresenceResolvable](/documentation/api/plugin-gateway/type-aliases/PresenceResolvable) to the cached presence of its user in a guild.
+
+A string is a **user ID**, not a cache key: read `guild.presences.cache.get(userId)`, or build the key with
+[PresenceManager.resolveKey](/documentation/api/plugin-gateway/classes/PresenceManager#resolvekey) to read `cache.get` directly. It is a pure cache read, no request is made and
+a miss is `null`; presences only come from the gateway.
+
+The guild comes from a member or a message, else from a thread member's member or thread, and otherwise from
+`guildId`. A message sent in a direct message belongs to no guild, so it resolves to `null` unless `guildId` is
+given.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="presence" type={[['PresenceResolvable', '/documentation/api/plugin-gateway/type-aliases/PresenceResolvable']]}>
+
+The presence, something holding a user, or a user ID.
+
+</ApiParam>
+
+<ApiParam name="guildId" type={['string']} optional>
+
+The guild to look the presence up in, when the value carries none.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], ' | null>']}>
+
+The presence, or `null` if it is not cached or its guild is unknown.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L115', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:115' }}>
+
+<ApiSignature
+	tokens={['resolveId(presence: ', ['PresenceResolvable', '/documentation/api/plugin-gateway/type-aliases/PresenceResolvable'], '): string | null']}
+/>
+
+Resolves a [PresenceResolvable](/documentation/api/plugin-gateway/type-aliases/PresenceResolvable) to a user ID.
+
+This is the ID of the presence's user, like discord.js, and not the cache key [PresenceManager.resolveKey](/documentation/api/plugin-gateway/classes/PresenceManager#resolvekey)
+builds from a guild and a user.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="presence" type={[['PresenceResolvable', '/documentation/api/plugin-gateway/type-aliases/PresenceResolvable']]}>
+
+The presence, something holding a user, or a user ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The user ID, or `null` if the value holds none.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/PresenceManager.ts#L55', label: 'packages/plugin-gateway/src/managers/PresenceManager.ts:55' }}>
+
+<ApiSignature tokens={['resolveKey(guildId: string, userId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+<ApiParam name="userId" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Presence', '/documentation/api/plugin-gateway/classes/Presence'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

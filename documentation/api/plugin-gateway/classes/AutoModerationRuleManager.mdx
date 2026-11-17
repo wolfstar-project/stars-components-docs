@@ -1,0 +1,766 @@
+---
+title: 'Class: AutoModerationRuleManager'
+description: 'Manages the auto moderation rules of one guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L59',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:59'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the auto moderation rules of one guild.
+
+<ApiSignature
+	tokens={[
+		'class AutoModerationRuleManager extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"autoModerationRules", ',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		', [ruleId: string]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"autoModerationRules", ',
+			['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+			', [ruleId: string]>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L66', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:66' }}>
+
+<ApiSignature
+	tokens={[
+		'new AutoModerationRuleManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  guildId: string\n): ',
+		['AutoModerationRuleManager', '/documentation/api/plugin-gateway/classes/AutoModerationRuleManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="guildId" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly guildId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L64',
+		label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:64'
+	}}
+/>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "autoModerationRules"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L105', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:105' }}>
+
+<ApiSignature
+	tokens={[
+		'create(options: ',
+		['AutoModerationRuleCreateOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+Creates a rule.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['AutoModerationRuleCreateOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleCreateOptions']]}>
+
+The rule's name, trigger, actions, and exemptions.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L71', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:71' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		'): ',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L146', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:146' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(ruleId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a rule.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ruleId" type={['string']}>
+
+The ID of the rule.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L125', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:125' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(ruleId: string, options: ',
+		['AutoModerationRuleEditOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+Edits a rule.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ruleId" type={['string']}>
+
+The ID of the rule.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['AutoModerationRuleEditOptions', '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleEditOptions']]}>
+
+The fields to edit, and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }} inheritedFrom={[['CachedManager.fetch', '/documentation/api/plugin-gateway/classes/CachedManager#fetch']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [ruleId: string] | [ruleId: string, ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[ruleId: string] | [ruleId: string, ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchAll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L95', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:95' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchAll(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'[]>'
+	]}
+/>
+
+Fetches every rule of the guild, and caches them.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L151', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:151' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(ruleId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		'>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ruleId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'],
+		'> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'], '> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L75', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:75' }}>
+
+<ApiSignature
+	tokens={['keyOf(data: ', ['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule'], '): string']}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIAutoModerationRule', 'https://discord-api-types.dev/api/discord-api-types-v10#APIAutoModerationRule']]}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: [ruleId: string]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[ruleId: string]']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['CachedManager.resolve', '/documentation/api/plugin-gateway/classes/CachedManager#resolve']]}>
+
+<ApiSignature
+	tokens={[
+		'resolve(value: string | ',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		' | null>'
+	]}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule']]}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'], ' | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }} inheritedFrom={[['CachedManager.resolveId', '/documentation/api/plugin-gateway/classes/CachedManager#resolveid']]}>
+
+<ApiSignature
+	tokens={[
+		'resolveId(value: string | ',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'): string | null'
+	]}
+/>
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule']]}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts#L79', label: 'packages/plugin-gateway/src/managers/AutoModerationRuleManager.ts:79' }}>
+
+<ApiSignature tokens={['resolveKey(ruleId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="ruleId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['AutoModerationRule', '/documentation/api/plugin-gateway/classes/AutoModerationRule'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

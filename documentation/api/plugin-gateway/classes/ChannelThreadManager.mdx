@@ -1,0 +1,234 @@
+---
+title: 'Class: ChannelThreadManager'
+description: "Manages the threads of one channel: client.threads, with the channel's ID filled in. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L15',
+		label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:15'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the threads of one channel: `client.threads`, with the channel's ID filled in.
+
+<ApiSignature tokens={['class ChannelThreadManager extends ', ['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]} />
+
+<ApiHierarchy extends={[[['BaseManager', '/documentation/api/plugin-gateway/classes/BaseManager']]]} />
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L25', label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:25' }}>
+
+<ApiSignature
+	tokens={[
+		'new ChannelThreadManager(\n  client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		',\n  channelId: string,\n  guildId: string | null,\n  channelType: ',
+		['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'],
+		' | null = null\n): ',
+		['ChannelThreadManager', '/documentation/api/plugin-gateway/classes/ChannelThreadManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="channelId" type={['string']} />
+
+<ApiParam name="guildId" type={['string | null']} />
+
+<ApiParam
+	name="channelType"
+	type={[['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'], ' | null']}
+	defaultValue="null"
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### channelId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly channelId: string']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L16',
+		label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:16'
+	}}
+/>
+
+### channelType
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly channelType: ', ['ChannelType', 'https://discord-api-types.dev/api/discord-api-types-v10#ChannelType'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L23', label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:23' }}>
+
+The type of the channel, when known: it tells a forum or media channel, whose threads are posts created with a
+`message`, from a text or announcement channel.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly guildId: string | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L17',
+		label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:17'
+	}}
+/>
+
+## Methods
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L47', label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:47' }}>
+
+<ApiSignature
+	tokens={[
+		'create(options: ',
+		['ThreadCreateOptions', '/documentation/api/plugin-gateway/type-aliases/ThreadCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+Creates a thread in the channel, or a post in a forum or media channel (with `message`). discord.js splits this in
+`GuildTextThreadManager` and `GuildForumThreadManager`; here the manager is shared and the options are checked
+against the type of the channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['ThreadCreateOptions', '/documentation/api/plugin-gateway/type-aliases/ThreadCreateOptions']]}>
+
+The thread's name and settings.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnyThreadChannel', '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+[GatewayTypeError](/documentation/api/plugin-gateway/classes/GatewayTypeError) `ThreadPostMessageRequired` in a forum or media channel without `message`,
+`ThreadOptionsThreadOnly` there with `type` or `invitable`, and `ThreadOptionsPostOnly` with `message` or
+`appliedTags` in any other channel.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchActive()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L63', label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:63' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchActive(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchedThreads', '/documentation/api/plugin-gateway/interfaces/FetchedThreads'],
+		'>'
+	]}
+/>
+
+Fetches the active threads of the channel, and caches them.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchedThreads', '/documentation/api/plugin-gateway/interfaces/FetchedThreads'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchArchived()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/ChannelThreadManager.ts#L82', label: 'packages/plugin-gateway/src/managers/ChannelThreadManager.ts:82' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchArchived(options?: ',
+		['FetchArchivedThreadsOptions', '/documentation/api/plugin-gateway/interfaces/FetchArchivedThreadsOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchedThreads', '/documentation/api/plugin-gateway/interfaces/FetchedThreads'],
+		'>'
+	]}
+/>
+
+Fetches the archived threads of the channel, and caches them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['FetchArchivedThreadsOptions', '/documentation/api/plugin-gateway/interfaces/FetchArchivedThreadsOptions']]} optional>
+
+Public or private threads, and the page.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['FetchedThreads', '/documentation/api/plugin-gateway/interfaces/FetchedThreads'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

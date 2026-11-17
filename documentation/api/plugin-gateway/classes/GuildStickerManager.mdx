@@ -1,0 +1,850 @@
+---
+title: 'Class: GuildStickerManager'
+description: 'Manages the custom stickers of one guild. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L40',
+		label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:40'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the custom stickers of one guild.
+
+<ApiSignature
+	tokens={[
+		'class GuildStickerManager extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"stickers", ',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		', [stickerId: string]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"stickers", ',
+			['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+			', [stickerId: string]>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L46', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:46' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildStickerManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		', guildId: string): ',
+		['GuildStickerManager', '/documentation/api/plugin-gateway/classes/GuildStickerManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+<ApiParam name="guildId" type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly guildId: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L44', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:44' }}>
+
+The ID of the guild.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "stickers"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L100', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:100' }}>
+
+<ApiSignature
+	tokens={[
+		'create(options: ',
+		['GuildStickerCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildStickerCreateOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Uploads a sticker.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GuildStickerCreateOptions', '/documentation/api/plugin-gateway/interfaces/GuildStickerCreateOptions']]}>
+
+The file, name, and tags.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L51', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:51' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+		' & { guild_id: string }): ',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'], ' & { guild_id: string }']}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Sticker', '/documentation/api/plugin-gateway/classes/Sticker']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L138', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:138' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(stickerId: string, reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a sticker.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="stickerId" type={['string']}>
+
+The ID of the sticker.
+
+</ApiParam>
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L120', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:120' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(stickerId: string, options: ',
+		['GuildStickerEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildStickerEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Edits a sticker.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="stickerId" type={['string']}>
+
+The ID of the sticker.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildStickerEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildStickerEditOptions']]}>
+
+The changes to apply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }} inheritedFrom={[['CachedManager.fetch', '/documentation/api/plugin-gateway/classes/CachedManager#fetch']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [stickerId: string] | [stickerId: string, ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[stickerId: string] | [stickerId: string, ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchAll()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L90', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:90' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchAll(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'[]>'
+	]}
+/>
+
+Fetches every sticker of the guild, and caches them.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L179', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:179' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(stickerId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  asset?: "";\n  available?: boolean;\n  description: string | null;\n  format_type: ',
+		['StickerFormatType', 'https://discord-api-types.dev/api/discord-api-types-v10#StickerFormatType'],
+		';\n  guild_id: string;\n  id: string;\n  name: string;\n  pack_id?: string;\n  sort_value?: number;\n  tags: string;\n  type: ',
+		['StickerType', 'https://discord-api-types.dev/api/discord-api-types-v10#StickerType'],
+		';\n  user?: ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		';\n}>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="stickerId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<{\n  asset?: "";\n  available?: boolean;\n  description: string | null;\n  format_type: ',
+		['StickerFormatType', 'https://discord-api-types.dev/api/discord-api-types-v10#StickerFormatType'],
+		';\n  guild_id: string;\n  id: string;\n  name: string;\n  pack_id?: string;\n  sort_value?: number;\n  tags: string;\n  type: ',
+		['StickerType', 'https://discord-api-types.dev/api/discord-api-types-v10#StickerType'],
+		';\n  user?: ',
+		['APIUser', 'https://discord-api-types.dev/api/discord-api-types-v10#APIUser'],
+		';\n}>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchUser()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L148', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:148' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchUser(stickerId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		' | null>'
+	]}
+/>
+
+Fetches the user who uploaded a sticker, which the API only returns with `ManageGuildExpressions`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="stickerId" type={['string']}>
+
+The ID of the sticker.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['User', '/documentation/api/plugin-gateway/classes/User'],
+		' | null>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+		' & { guild_id: string }> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'], ' & { guild_id: string }> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L55', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:55' }}>
+
+<ApiSignature
+	tokens={[
+		'keyOf(data: ',
+		['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'],
+		' & { guild_id: string }): string'
+	]}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APISticker', 'https://discord-api-types.dev/api/discord-api-types-v10#APISticker'], ' & { guild_id: string }']}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### listCached()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L163', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:163' }}>
+
+<ApiSignature
+	tokens={[
+		'listCached(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'[]>'
+	]}
+/>
+
+Lists the stickers of the guild held in the cache, without calling the API.
+
+It enumerates the whole entity cache, which a Redis store answers from its index: prefer `fetchAll` when the
+cache may be incomplete.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], '[]>']}>
+
+The cached entries, `[]` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: [stickerId: string]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[stickerId: string]']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['CachedManager.resolve', '/documentation/api/plugin-gateway/classes/CachedManager#resolve']]}>
+
+<ApiSignature
+	tokens={[
+		'resolve(value: string | ',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		' | null>'
+	]}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker']]}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], ' | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }} inheritedFrom={[['CachedManager.resolveId', '/documentation/api/plugin-gateway/classes/CachedManager#resolveid']]}>
+
+<ApiSignature tokens={['resolveId(value: string | ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'], '): string | null']} />
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Sticker', '/documentation/api/plugin-gateway/classes/Sticker']]}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildStickerManager.ts#L83', label: 'packages/plugin-gateway/src/managers/GuildStickerManager.ts:83' }}>
+
+<ApiSignature tokens={['resolveKey(stickerId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="stickerId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,1204 @@
+---
+title: 'Class: GatewayClient'
+description: 'A Client that, on top of serving HTTP interactions, connects to the Discord gateway, writes every dispatch into its cache, and emits GatewayEventMap… (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L384',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:384'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A `Client` that, on top of serving HTTP interactions, connects to the Discord gateway, writes every dispatch
+into its cache, and emits [GatewayEventMap](/documentation/api/plugin-gateway/interfaces/GatewayEventMap) events carrying structures.
+
+<ApiSignature tokens={['class GatewayClient extends Client']} />
+
+<ApiHierarchy extends={[['Client']]} />
+
+**Example**
+
+```typescript
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { createInMemoryCache } from '@wolfstar/plugin-cache';
+import { GatewayIntentBits } from 'discord-api-types/v10';
+
+const client = new GatewayClient({
+	intents: GatewayIntentBits.Guilds | GatewayIntentBits.GuildMessages,
+	cache: createInMemoryCache()
+});
+
+client.on('messageCreate', (message) => console.log(`${message.author.username}: ${message.content}`));
+
+await client.start({ listen: { port: 8080 } });
+```
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L547', label: 'packages/plugin-gateway/src/GatewayClient.ts:547' }}>
+
+<ApiSignature
+	tokens={[
+		'new GatewayClient(options: ',
+		['GatewayClientOptions', '/documentation/api/plugin-gateway/interfaces/GatewayClientOptions'],
+		'): ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GatewayClientOptions', '/documentation/api/plugin-gateway/interfaces/GatewayClientOptions']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### actions
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly actions: ', ['ActionsManager', '/documentation/api/plugin-gateway/classes/ActionsManager']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L419', label: 'packages/plugin-gateway/src/GatewayClient.ts:419' }}>
+
+The actions that turn gateway dispatches into public client events.
+
+</ApiMember>
+
+### api
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly api: API']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L405', label: 'packages/plugin-gateway/src/GatewayClient.ts:405' }}>
+
+The typed REST API every manager's calls go through, `@discordjs/core`'s `API` built from [GatewayClient.rest](/documentation/api/plugin-gateway/classes/GatewayClient#rest).
+
+</ApiMember>
+
+### application
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly application: ', ['ClientApplication', '/documentation/api/plugin-gateway/classes/ClientApplication']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L441', label: 'packages/plugin-gateway/src/GatewayClient.ts:441' }}>
+
+The application of the bot, like discord.js's `Client#application`.
+
+Unlike discord.js, it is never `null`: it is built from [GatewayClientOptions.clientId](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions) when the client is,
+so it exists before `READY` and without any gateway connection. It is then partial, see
+[ClientApplication.partial](/documentation/api/plugin-gateway/classes/ClientApplication#partial): `READY` patches the same instance with the application's flags, and
+[ClientApplication.fetch](/documentation/api/plugin-gateway/classes/ClientApplication#fetch) with the rest. It is kept on the client, not in the cache: it is a single small
+object, and every process gets the same `READY`.
+
+</ApiMember>
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-cache/interfaces/Cache'], ' | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L389', label: 'packages/plugin-gateway/src/GatewayClient.ts:389' }}>
+
+The raw cache every dispatch is written into, if any: the `@wolfstar/plugin-cache` cache passed as
+[GatewayClientOptions.cache](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cache), or a raw view of the managers' caches of instances.
+
+</ApiMember>
+
+### cacheErrors
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cacheErrors: "miss" | "throw"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L470', label: 'packages/plugin-gateway/src/GatewayClient.ts:470' }}>
+
+What the managers do when a cache read or write fails, see [GatewayClientOptions.cacheErrors](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cacheerrors).
+
+</ApiMember>
+
+### cacheFailure
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cacheFailure: "skip" | "emitUncached"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L465', label: 'packages/plugin-gateway/src/GatewayClient.ts:465' }}>
+
+What happens to a dispatch whose cache read or write fails, see [GatewayClientOptions.cacheFailure](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cachefailure).
+
+</ApiMember>
+
+### channels
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly channels: ', ['ChannelManager', '/documentation/api/plugin-gateway/classes/ChannelManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L445',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:445'
+	}}
+/>
+
+### clientReadyTimestamp
+
+<ApiMember kind="property" signature={['clientReadyTimestamp: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L491', label: 'packages/plugin-gateway/src/GatewayClient.ts:491' }}>
+
+The timestamp the client last became ready, like discord.js's `Client#readyTimestamp`. `null` until
+`clientReady` is first emitted, see [GatewayClient.clientReadyAt](/documentation/api/plugin-gateway/classes/GatewayClient#clientreadyat).
+
+</ApiMember>
+
+### core
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly core: Client']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L416', label: 'packages/plugin-gateway/src/GatewayClient.ts:416' }}>
+
+The discord.js core client, sharing this client's REST and gateway transports, like the RFC `next` `Client`'s
+own `core`.
+
+Kept protected: managers and structures reach its typed REST calls through [GatewayClient.api](/documentation/api/plugin-gateway/classes/GatewayClient#api) instead, and
+its gateway and REST manager are already [GatewayClient.gateway](/documentation/api/plugin-gateway/classes/GatewayClient#gateway) and [GatewayClient.rest](/documentation/api/plugin-gateway/classes/GatewayClient#rest). It is only
+needed to build the discord.js core client's own event listeners, if this class ever wraps them.
+
+</ApiMember>
+
+### dispatchTimeout
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly dispatchTimeout: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L475', label: 'packages/plugin-gateway/src/GatewayClient.ts:475' }}>
+
+See [GatewayClientOptions.dispatchTimeout](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#dispatchtimeout).
+
+</ApiMember>
+
+### gateway
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly gateway: WebSocketManager']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L400', label: 'packages/plugin-gateway/src/GatewayClient.ts:400' }}>
+
+The underlying `@discordjs/ws` manager, handling the shards' connections, resumes, and identify rate limits.
+
+</ApiMember>
+
+### guilds
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly guilds: ', ['GuildManager', '/documentation/api/plugin-gateway/classes/GuildManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L444',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:444'
+	}}
+/>
+
+### members
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly members: ', ['GuildMemberManager', '/documentation/api/plugin-gateway/classes/GuildMemberManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L449',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:449'
+	}}
+/>
+
+### messages
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly messages: ', ['MessageManager', '/documentation/api/plugin-gateway/classes/MessageManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L448',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:448'
+	}}
+/>
+
+### partials
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly partials: readonly ', ['Partials', '/documentation/api/plugin-gateway/type-aliases/Partials'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L480', label: 'packages/plugin-gateway/src/GatewayClient.ts:480' }}>
+
+The structures built partially for uncached entities, see [GatewayClientOptions.partials](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#partials).
+
+</ApiMember>
+
+### presences
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly presences: ', ['PresenceManager', '/documentation/api/plugin-gateway/classes/PresenceManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L454',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:454'
+	}}
+/>
+
+### rest
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly rest: ', ['REST', 'https://discord.js.org/docs/packages/rest/stable/REST:Class']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L395', label: 'packages/plugin-gateway/src/GatewayClient.ts:395' }}>
+
+The REST manager the gateway (for its gateway bot info) and every manager's API calls go through, like
+discord.js's `Client#rest`.
+
+</ApiMember>
+
+### roles
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly roles: ', ['RoleManager', '/documentation/api/plugin-gateway/classes/RoleManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L450',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:450'
+	}}
+/>
+
+### sweepers
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly sweepers: ', ['Sweepers', '/documentation/api/plugin-gateway/classes/Sweepers']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L460', label: 'packages/plugin-gateway/src/GatewayClient.ts:460' }}>
+
+Evicts entries from the caches of instances, on the schedule of [GatewayClientOptions.sweepers](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#sweepers) and on
+demand, like discord.js's `Client#sweepers`.
+
+</ApiMember>
+
+### templates
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly templates: ', ['GuildTemplateManager', '/documentation/api/plugin-gateway/classes/GuildTemplateManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L452',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:452'
+	}}
+/>
+
+### threadMembers
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly threadMembers: ', ['ThreadMemberManager', '/documentation/api/plugin-gateway/classes/ThreadMemberManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L447',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:447'
+	}}
+/>
+
+### threads
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly threads: ', ['ThreadManager', '/documentation/api/plugin-gateway/classes/ThreadManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L446',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:446'
+	}}
+/>
+
+### user
+
+<ApiMember kind="property" signature={['user: ', ['ClientUser', '/documentation/api/plugin-gateway/classes/ClientUser'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L429', label: 'packages/plugin-gateway/src/GatewayClient.ts:429' }}>
+
+The bot user, set once the first shard receives `READY`.
+
+A shard that resumes a stored session gets `RESUMED` instead of `READY`: the user is then restored from the cache,
+or fetched from the API when the cache does not hold it. It can be stale until the next `USER_UPDATE`, and stays
+`null` if neither source answers (the failure is reported through `error`).
+
+</ApiMember>
+
+### users
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly users: ', ['UserManager', '/documentation/api/plugin-gateway/classes/UserManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L443',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:443'
+	}}
+/>
+
+### voiceStates
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly voiceStates: ', ['VoiceStateManager', '/documentation/api/plugin-gateway/classes/VoiceStateManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L453',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:453'
+	}}
+/>
+
+### waitGuildTimeout
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly waitGuildTimeout: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L485', label: 'packages/plugin-gateway/src/GatewayClient.ts:485' }}>
+
+See [GatewayClientOptions.waitGuildTimeout](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#waitguildtimeout).
+
+</ApiMember>
+
+### webhooks
+
+<ApiMember
+	kind="property"
+	badges={['readonly']}
+	signature={['readonly webhooks: ', ['WebhookManager', '/documentation/api/plugin-gateway/classes/WebhookManager']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L451',
+		label: 'packages/plugin-gateway/src/GatewayClient.ts:451'
+	}}
+/>
+
+## Accessors
+
+### clientReadyAt
+
+<ApiMember kind="accessor" signature={['get clientReadyAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L994', label: 'packages/plugin-gateway/src/GatewayClient.ts:994' }}>
+
+The time the client last became ready, like discord.js's `Client#readyAt`. `null` until `clientReady` is first
+emitted.
+
+</ApiMember>
+
+### forwardsDispatches
+
+<ApiMember kind="accessor" signature={['get forwardsDispatches(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1046', label: 'packages/plugin-gateway/src/GatewayClient.ts:1046' }}>
+
+Whether the dispatches of this client are forwarded to workers, which replay them on their own listeners, see
+`forwardGatewayDispatches` from `@wolfstar/plugin-broker`. Listeners registered with
+[RegisterAsDispatchListener](/documentation/api/plugin-gateway/functions/RegisterAsDispatchListener) stay idle on a client that does.
+
+</ApiMember>
+
+### queueStats
+
+<ApiMember kind="accessor" signature={['get queueStats(): ', ['DispatchQueueStats', '/documentation/api/plugin-gateway/interfaces/DispatchQueueStats']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L986', label: 'packages/plugin-gateway/src/GatewayClient.ts:986' }}>
+
+The dispatches received but not processed yet, and the partitions (guilds, direct message channels) they are
+queued in. A growing `pending` count usually means a slow or unreachable cache.
+
+</ApiMember>
+
+### replayDispatchTypes
+
+<ApiMember kind="accessor" signature={['get replayDispatchTypes(): readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1069', label: 'packages/plugin-gateway/src/GatewayClient.ts:1069' }}>
+
+The dispatch types [GatewayClient.replayDispatch](/documentation/api/plugin-gateway/classes/GatewayClient#replaydispatch) turns into events.
+
+</ApiMember>
+
+## Methods
+
+### addDestroyHook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L717', label: 'packages/plugin-gateway/src/GatewayClient.ts:717' }}>
+
+<ApiSignature
+	tokens={[
+		'addDestroyHook(hook: ',
+		['GatewayClientDestroyHook', '/documentation/api/plugin-gateway/type-aliases/GatewayClientDestroyHook'],
+		'): () => void'
+	]}
+/>
+
+Runs a hook at the end of every [GatewayClient.destroy](/documentation/api/plugin-gateway/classes/GatewayClient#destroy), see [GatewayClientDestroyHook](/documentation/api/plugin-gateway/type-aliases/GatewayClientDestroyHook).
+
+The hooks run one after the other, in the order they were added, even when disconnecting the shards failed. A hook
+that throws is reported through the `error` event (or logged when nothing listens) and does not stop the others.
+Adding the same function twice adds it once.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="hook" type={[['GatewayClientDestroyHook', '/documentation/api/plugin-gateway/type-aliases/GatewayClientDestroyHook']]}>
+
+The hook.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']}>
+
+A function that removes the hook.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### addDispatchWrapper()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L695', label: 'packages/plugin-gateway/src/GatewayClient.ts:695' }}>
+
+<ApiSignature
+	tokens={['addDispatchWrapper(wrapper: ', ['DispatchWrapper', '/documentation/api/plugin-gateway/type-aliases/DispatchWrapper'], '): () => void']}
+/>
+
+Wraps the processing of every dispatch received from now on, see [DispatchWrapper](/documentation/api/plugin-gateway/type-aliases/DispatchWrapper).
+
+Wrappers nest in the order they were added: the first one added is the outermost. The dispatch timeout and the
+error reporting of the client are outside of every wrapper.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="wrapper" type={[['DispatchWrapper', '/documentation/api/plugin-gateway/type-aliases/DispatchWrapper']]}>
+
+The wrapper.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']}>
+
+A function that removes the wrapper, for the dispatches received after it is called.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### CacheConstructor()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L767', label: 'packages/plugin-gateway/src/GatewayClient.ts:767' }}>
+
+<ApiSignature
+	tokens={[
+		'CacheConstructor<Value extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<object, object>>(\n  creator: ',
+		['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'],
+		'<Value>,\n  name: keyof ',
+		['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'],
+		'\n): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<Value>'
+	]}
+/>
+
+Gets the cache of an entity, building it on first use: the `CacheConstructor` of the discord.js RFC #11426.
+Every manager of the same entity shares the same cache.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Value" type={['extends ', ['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<object, object>']} />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="creator" type={[['StructureCreator', '/documentation/api/plugin-gateway/type-aliases/StructureCreator'], '<Value>']}>
+
+Builds a structure from raw data, for entities the client does not know how to build.
+
+</ApiParam>
+
+<ApiParam name="name" type={['keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes']]}>
+
+The name of the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<Value>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### connect()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L634', label: 'packages/plugin-gateway/src/GatewayClient.ts:634' }}>
+
+<ApiSignature
+	tokens={['connect(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Connects every configured shard to the gateway.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### destroy()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L657', label: 'packages/plugin-gateway/src/GatewayClient.ts:657' }}>
+
+<ApiSignature
+	tokens={[
+		'destroy(options: ',
+		['GatewayClientDestroyOptions', '/documentation/api/plugin-gateway/interfaces/GatewayClientDestroyOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Disconnects every shard from the gateway. The HTTP server, if listening, is left untouched.
+
+By default, the shards close their sessions, which Discord invalidates. Pass `resumable: true` to keep them
+resumable instead, e.g. on a graceful shutdown before a deploy. Either way, it waits for the sessions to be
+written to [GatewayClientOptions.sessionStore](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#sessionstore).
+
+A call made while another one is still disconnecting the shards joins it, keeping the first call's `resumable`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['GatewayClientDestroyOptions', '/documentation/api/plugin-gateway/interfaces/GatewayClientDestroyOptions']]} defaultValue={'{}'}>
+
+Whether to keep the sessions resumable.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchDefaultSoundboardSounds()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L899', label: 'packages/plugin-gateway/src/GatewayClient.ts:899' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchDefaultSoundboardSounds(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'],
+		'[]>'
+	]}
+/>
+
+Fetches Discord's default soundboard sounds, which every guild can play.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGuildTemplate()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L919', label: 'packages/plugin-gateway/src/GatewayClient.ts:919' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuildTemplate(code: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+Fetches a guild template by its code. discord.js: `client.fetchGuildTemplate(code)`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['string']}>
+
+The code of the template, or its URL.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildTemplate', '/documentation/api/plugin-gateway/classes/GuildTemplate'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchGuildWidget()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L928', label: 'packages/plugin-gateway/src/GatewayClient.ts:928' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchGuildWidget(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Widget', '/documentation/api/plugin-gateway/classes/Widget'],
+		'>'
+	]}
+/>
+
+Fetches the public widget of a guild, which must be enabled. Needs no membership of the guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Widget', '/documentation/api/plugin-gateway/classes/Widget'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchInvite()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L938', label: 'packages/plugin-gateway/src/GatewayClient.ts:938' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchInvite(\n  code: string,\n  options: {\n    guildScheduledEventId?: string;\n    withCounts?: boolean;\n  } = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BaseInvite', '/documentation/api/plugin-gateway/classes/BaseInvite'],
+		'<',
+		['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData'],
+		'>>'
+	]}
+/>
+
+Fetches an invite by its code.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="code" type={['string']}>
+
+The code of the invite, or its URL.
+
+</ApiParam>
+
+<ApiParam name="options" type={['{\n  guildScheduledEventId?: string;\n  withCounts?: boolean;\n}']} defaultValue={'{}'}>
+
+Whether to include the approximate counts (default), and a scheduled event to attach.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['BaseInvite', '/documentation/api/plugin-gateway/classes/BaseInvite'],
+		'<',
+		['InviteData', '/documentation/api/plugin-gateway/type-aliases/InviteData'],
+		'>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchSticker()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L963', label: 'packages/plugin-gateway/src/GatewayClient.ts:963' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchSticker(stickerId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+Fetches a sticker, standard or from a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="stickerId" type={['string']}>
+
+The ID of the sticker.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Sticker', '/documentation/api/plugin-gateway/classes/Sticker'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchStickerPacks()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L970', label: 'packages/plugin-gateway/src/GatewayClient.ts:970' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchStickerPacks(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StickerPack', '/documentation/api/plugin-gateway/classes/StickerPack'],
+		'[]>'
+	]}
+/>
+
+Fetches the packs of standard stickers.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['StickerPack', '/documentation/api/plugin-gateway/classes/StickerPack'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchVoiceRegions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L978', label: 'packages/plugin-gateway/src/GatewayClient.ts:978' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchVoiceRegions(): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIVoiceRegion', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceRegion'],
+		'[]>'
+	]}
+/>
+
+Fetches the voice regions available to the bot.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIVoiceRegion', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceRegion'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWebhook()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L910', label: 'packages/plugin-gateway/src/GatewayClient.ts:910' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWebhook(webhookId: string, token?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+Fetches a webhook. discord.js: `client.fetchWebhook(id, token)`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="webhookId" type={['string']}>
+
+The ID of the webhook.
+
+</ApiParam>
+
+<ApiParam name="token" type={['string']} optional>
+
+The webhook's token, to fetch it without the bot's authorization.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### handleDispatch()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1130', label: 'packages/plugin-gateway/src/GatewayClient.ts:1130' }}>
+
+<ApiSignature
+	tokens={[
+		'protected handleDispatch(payload: ',
+		['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload'],
+		', shardId: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Processes a gateway dispatch: emits it as `raw`, writes it into the cache, emits it as `dispatch`, and emits the
+matching [GatewayEventMap](/documentation/api/plugin-gateway/interfaces/GatewayEventMap) event, if any.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={[['GatewayDispatchPayload', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayDispatchPayload']]}>
+
+The dispatch payload.
+
+</ApiParam>
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the shard that received it.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### idle()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L892', label: 'packages/plugin-gateway/src/GatewayClient.ts:892' }}>
+
+<ApiSignature
+	tokens={['idle(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Resolves once every dispatch received so far has been processed.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### isClientReady()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1001', label: 'packages/plugin-gateway/src/GatewayClient.ts:1001' }}>
+
+<ApiSignature tokens={['isClientReady(): boolean']} />
+
+Whether the client already emitted `clientReady`, like discord.js's `Client#isReady()`.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### markDispatchesForwarded()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1056', label: 'packages/plugin-gateway/src/GatewayClient.ts:1056' }}>
+
+<ApiSignature tokens={['markDispatchesForwarded(): () => void']} />
+
+Marks this client as forwarding its dispatches, until the returned function is called. Called by
+`forwardGatewayDispatches`, it counts, so the client keeps forwarding while any forwarder is left.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['() => void']}>
+
+A function to undo the mark, which does nothing when called again.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### reconcileGuilds()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1299', label: 'packages/plugin-gateway/src/GatewayClient.ts:1299' }}>
+
+<ApiSignature
+	tokens={[
+		'protected reconcileGuilds(data: ',
+		['GatewayReadyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayReadyDispatchData'],
+		', shardId: number): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Drops the cached guilds of a shard its `READY` no longer lists, and emits `dispatch` and `guildDelete` for each of
+them.
+
+They are the guilds the bot left while it was disconnected, or while the process was down with a persistent
+cache. Discord does not replay those removals on a new session, so the cache would otherwise keep them forever.
+
+Each drop is handled as a `GUILD_DELETE` (with `s: 0`) Discord would have sent, `raw` aside: `dispatch` fires once
+the guild is gone from the cache, with the cached guild as its state, so forwarding `dispatch` to other processes
+(`@wolfstar/plugin-broker`'s `forwardGatewayDispatches`) carries these deletions too.
+
+It needs a guilds cache able to enumerate its entries, and is skipped without one.
+
+It is best effort: any failure (cache unreachable, unknown shard count) is reported through `error` and stops the
+reconciliation, keeping the remaining guilds, but never fails `READY` itself.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['GatewayReadyDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayReadyDispatchData']]}>
+
+The `READY` data.
+
+</ApiParam>
+
+<ApiParam name="shardId" type={['number']}>
+
+The shard that received it.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### replayDispatch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1089', label: 'packages/plugin-gateway/src/GatewayClient.ts:1089' }}>
+
+<ApiSignature
+	tokens={[
+		'replayDispatch(\n  payload: {\n    d: unknown;\n    s?: number;\n    t: string;\n  },\n  shardId: number,\n  state?: unknown\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Handles a dispatch another process received and wrote to the shared cache: emits `raw`, then the matching
+[GatewayEventMap](/documentation/api/plugin-gateway/interfaces/GatewayEventMap) event, exactly as [GatewayClient.handleDispatch](/documentation/api/plugin-gateway/classes/GatewayClient#handledispatch) would for a dispatch of this
+client, but without reading or writing the cache and without emitting `dispatch`, so a worker that never
+connects to Discord sees the events of the gateway process's client.
+
+Dispatches of a guild are handled in the order they were replayed, like the ones of a connected client.
+`READY` and `INTERACTION_CREATE` are ignored.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="payload" type={['{\n  d: unknown;\n  s?: number;\n  t: string;\n}']}>
+
+The dispatch type and data, and its sequence number on the shard that received it, `0` when
+unknown. `raw` listeners get it as a full gateway payload, with its `op`.
+
+</ApiParam>
+
+<ApiParam name="shardId" type={['number']}>
+
+The ID of the shard that received it, on the process that did.
+
+</ApiParam>
+
+<ApiParam name="state" type={['unknown']} optional>
+
+The previous state, revived with [GatewayClient.reviveDispatchState](/documentation/api/plugin-gateway/classes/GatewayClient#revivedispatchstate).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}>
+
+A promise rejecting when a listener or the handler throws, so the caller can retry the dispatch.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### reviveDispatchState()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1027', label: 'packages/plugin-gateway/src/GatewayClient.ts:1027' }}>
+
+<ApiSignature
+	tokens={[
+		'reviveDispatchState(type: string, state: unknown, data: unknown): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<unknown>'
+	]}
+/>
+
+Builds the structures of a state [serialized](/documentation/api/plugin-gateway/classes/GatewayClient#serializedispatchstate) on another process, to
+hand to [GatewayClient.replayDispatch](/documentation/api/plugin-gateway/classes/GatewayClient#replaydispatch). Relations resolve from this client's cache as it is now, so they can
+be newer than the dispatch.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="type" type={['string']}>
+
+The dispatch type.
+
+</ApiParam>
+
+<ApiParam name="state" type={['unknown']}>
+
+The serialized state, `undefined` when there was none.
+
+</ApiParam>
+
+<ApiParam name="data" type={['unknown']}>
+
+The dispatch data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<unknown>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### serializeDispatchState()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L1013', label: 'packages/plugin-gateway/src/GatewayClient.ts:1013' }}>
+
+<ApiSignature tokens={['serializeDispatchState(type: string, state: unknown): unknown']} />
+
+Serializes the previous state a dispatch's handler read (the `state` of the `dispatch` event) to plain data other
+processes can [revive](/documentation/api/plugin-gateway/classes/GatewayClient#revivedispatchstate).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="type" type={['string']}>
+
+The dispatch type, e.g. `MESSAGE_UPDATE`.
+
+</ApiParam>
+
+<ApiParam name="state" type={['unknown']}>
+
+The state, as passed to the `dispatch` event.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['unknown']}>
+
+The plain data, `undefined` when there is no state or the type keeps none.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### start()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/GatewayClient.ts#L639', label: 'packages/plugin-gateway/src/GatewayClient.ts:639' }}>
+
+<ApiSignature
+	tokens={[
+		'start(__namedParameters: ',
+		['GatewayClientStartOptions', '/documentation/api/plugin-gateway/interfaces/GatewayClientStartOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Loads pieces, starts the interaction endpoint, then connects gateway shards.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="__namedParameters" type={[['GatewayClientStartOptions', '/documentation/api/plugin-gateway/interfaces/GatewayClientStartOptions']]} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

@@ -1,0 +1,436 @@
+---
+title: 'Class: Emoji'
+description: "An emoji, a custom one (with an ID) or a Unicode one: @discordjs/structures' Emoji, with its identifier, image URL, and mention. (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/emojis/Emoji.ts#L13',
+		label: 'packages/plugin-gateway/src/structures/emojis/Emoji.ts:13'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+An emoji, a custom one (with an ID) or a Unicode one: `@discordjs/structures`' `Emoji`, with its identifier, image
+URL, and mention.
+
+<ApiSignature
+	tokens={[
+		'class Emoji<Data extends ',
+		['EmojiData', '/documentation/api/plugin-gateway/type-aliases/EmojiData'],
+		' = ',
+		['EmojiData', '/documentation/api/plugin-gateway/type-aliases/EmojiData'],
+		', Relations extends object = object> extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<Data, Relations>, Emoji'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[[['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'], '<Data, Relations>'], ['Emoji']]}
+	extendedBy={[
+		[['ApplicationEmoji', '/documentation/api/plugin-gateway/classes/ApplicationEmoji']],
+		[['GuildEmoji', '/documentation/api/plugin-gateway/classes/GuildEmoji']],
+		[['ReactionEmoji', '/documentation/api/plugin-gateway/classes/ReactionEmoji']]
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends ', ['EmojiData', '/documentation/api/plugin-gateway/type-aliases/EmojiData']]} defaultValue="EmojiData">
+
+The raw emoji data this structure wraps.
+
+</ApiParam>
+
+<ApiParam name="Relations" type={['extends object']} defaultValue="object">
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/emojis/Emoji.ts#L33', label: 'packages/plugin-gateway/src/structures/emojis/Emoji.ts:33' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new Emoji<Data extends ',
+		['EmojiData', '/documentation/api/plugin-gateway/type-aliases/EmojiData'],
+		' = ',
+		['EmojiData', '/documentation/api/plugin-gateway/type-aliases/EmojiData'],
+		', Relations extends object = object>(\n  data: Data,\n  relations: Relations = ...\n): ',
+		['Emoji', '/documentation/api/plugin-gateway/classes/Emoji'],
+		'<Data, Relations>'
+	]}
+/>
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Data" type={['extends ', ['EmojiData', '/documentation/api/plugin-gateway/type-aliases/EmojiData']]} defaultValue="EmojiData">
+
+The raw emoji data this structure wraps.
+
+</ApiParam>
+
+<ApiParam name="Relations" type={['extends object']} defaultValue="object">
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['Data']}>
+
+The raw emoji.
+
+</ApiParam>
+
+<ApiParam name="relations" type={['Relations']} defaultValue="...">
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### animated
+
+<ApiMember kind="accessor" signature={['get animated(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/emojis/Emoji.ts#L38', label: 'packages/plugin-gateway/src/structures/emojis/Emoji.ts:38' }}>
+
+Whether the emoji is animated
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date'], ' | null']}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/emojis/Emoji.ts#L51',
+		label: 'packages/plugin-gateway/src/structures/emojis/Emoji.ts:51'
+	}}
+/>
+
+### identifier
+
+<ApiMember kind="accessor" signature={['get identifier(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/emojis/Emoji.ts#L45', label: 'packages/plugin-gateway/src/structures/emojis/Emoji.ts:45' }}>
+
+The form reactions routes expect: `name:id` for custom emojis, the URL-encoded emoji for Unicode ones.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: (keyof Relations & string)[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['(keyof Relations & string)[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### imageURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/emojis/Emoji.ts#L59', label: 'packages/plugin-gateway/src/structures/emojis/Emoji.ts:59' }}>
+
+<ApiSignature tokens={['imageURL(options?: EmojiURLOptions): string | null']} />
+
+Gets the URL of the custom emoji's image, `null` for a Unicode emoji. Animated emojis default to a GIF.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['EmojiURLOptions']} optional>
+
+The image options.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### toString()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/emojis/Emoji.ts#L68', label: 'packages/plugin-gateway/src/structures/emojis/Emoji.ts:68' }}>
+
+<ApiSignature tokens={['toString(): string']} />
+
+The emoji as it is written in a message: `<:name:id>`, `<a:name:id>`, or the Unicode emoji itself.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['Emoji', '/documentation/api/plugin-gateway/classes/Emoji'], '<Data, Relations>']} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['Emoji', '/documentation/api/plugin-gateway/classes/Emoji'], '<Data, Relations>']} />
+
+</ApiParams>
+
+</ApiMember>

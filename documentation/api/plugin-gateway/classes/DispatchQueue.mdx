@@ -1,0 +1,157 @@
+---
+title: 'Class: DispatchQueue'
+description: 'Runs tasks in order within a partition, and partitions of the same shard concurrently. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DispatchQueue.ts#L57',
+		label: 'packages/plugin-gateway/src/util/DispatchQueue.ts:57'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Runs tasks in order within a partition, and partitions of the same shard concurrently.
+
+<ApiSignature tokens={['class DispatchQueue']} />
+
+An asynchronous cache (Redis) would otherwise let a later dispatch of a guild finish before an earlier one. Guilds
+are independent, so a slow guild does not hold the others back. Tasks must never reject: the queue has no way to
+report their errors.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor">
+
+<ApiSignature tokens={['new DispatchQueue(): ', ['DispatchQueue', '/documentation/api/plugin-gateway/classes/DispatchQueue']]} />
+
+</ApiMember>
+
+## Accessors
+
+### stats
+
+<ApiMember kind="accessor" signature={['get stats(): ', ['DispatchQueueStats', '/documentation/api/plugin-gateway/interfaces/DispatchQueueStats']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DispatchQueue.ts#L127', label: 'packages/plugin-gateway/src/util/DispatchQueue.ts:127' }}>
+
+A snapshot of the pending work.
+
+</ApiMember>
+
+## Methods
+
+### enqueue()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DispatchQueue.ts#L71', label: 'packages/plugin-gateway/src/util/DispatchQueue.ts:71' }}>
+
+<ApiSignature
+	tokens={[
+		'enqueue(\n  shardId: number,\n  partition: string | null,\n  task: () => ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Queues a task.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="shardId" type={['number']}>
+
+The shard the dispatch was received on.
+
+</ApiParam>
+
+<ApiParam name="partition" type={['string | null']}>
+
+The partition from [dispatchPartition](/documentation/api/plugin-gateway/functions/dispatchPartition), `null` for a barrier.
+
+</ApiParam>
+
+<ApiParam name="task" type={['() => ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}>
+
+The task to run once the previous task of its partition is done.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}>
+
+The task's completion.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### enqueueGuild()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DispatchQueue.ts#L110', label: 'packages/plugin-gateway/src/util/DispatchQueue.ts:110' }}>
+
+<ApiSignature
+	tokens={[
+		'enqueueGuild(guildId: string, task: () => ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Queues a task in a guild's partition, on the shard the guild's dispatches come from: a cache write the client
+makes on its own then stays in order with them. Before any dispatch of the guild, there is nothing to order it
+with, and it runs on shard 0.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="task" type={['() => ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}>
+
+The task to run once the previous task of the guild is done.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### idle()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/util/DispatchQueue.ts#L118', label: 'packages/plugin-gateway/src/util/DispatchQueue.ts:118' }}>
+
+<ApiSignature
+	tokens={['idle(): ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']}
+/>
+
+Resolves once every task queued so far has run.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>

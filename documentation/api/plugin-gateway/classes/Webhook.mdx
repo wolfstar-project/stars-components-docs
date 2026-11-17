@@ -1,0 +1,808 @@
+---
+title: 'Class: Webhook'
+description: "A webhook, an incoming one posting to a channel, a channel follower, or an application's: @discordjs/structures' Webhook, with its owner, source, and… (@wolfstar/plugin-gateway)"
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L32',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:32'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+A webhook, an incoming one posting to a channel, a channel follower, or an application's: `@discordjs/structures`'
+`Webhook`, with its owner, source, and URLs, and actions through the client.
+
+<ApiSignature
+	tokens={[
+		'class Webhook extends ',
+		['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+		'<',
+		['APIWebhook', 'https://discord-api-types.dev/api/discord-api-types-v10#APIWebhook'],
+		', ',
+		['WebhookRelations', '/documentation/api/plugin-gateway/interfaces/WebhookRelations'],
+		'>, ',
+		['MixinTypes', '/documentation/api/plugin-gateway/type-aliases/MixinTypes'],
+		'<BaseWebhook, [',
+		['WebhookMixin', '/documentation/api/plugin-gateway/classes/WebhookMixin'],
+		']>, Webhook'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['StructureMixin', '/documentation/api/plugin-gateway/classes/StructureMixin'],
+			'<',
+			['APIWebhook', 'https://discord-api-types.dev/api/discord-api-types-v10#APIWebhook'],
+			', ',
+			['WebhookRelations', '/documentation/api/plugin-gateway/interfaces/WebhookRelations'],
+			'>'
+		],
+		[
+			['MixinTypes', '/documentation/api/plugin-gateway/type-aliases/MixinTypes'],
+			'<BaseWebhook, [',
+			['WebhookMixin', '/documentation/api/plugin-gateway/classes/WebhookMixin'],
+			']>'
+		],
+		['Webhook']
+	]}
+/>
+
+`token` is only set for incoming webhooks, and only their creator (or the guild's managers) see it.
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L47', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:47' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+
+<ApiSignature
+	tokens={[
+		'new Webhook(data: ',
+		['APIWebhook', 'https://discord-api-types.dev/api/discord-api-types-v10#APIWebhook'],
+		', relations: object = {}): ',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['APIWebhook', 'https://discord-api-types.dev/api/discord-api-types-v10#APIWebhook']]}>
+
+The raw webhook.
+
+</ApiParam>
+
+<ApiParam name="relations" type={['object']} defaultValue={'{}'}>
+
+The related structures, resolved from the cache.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### \[kData\]
+
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+
+The raw API data of this structure.
+
+</ApiMember>
+
+## Accessors
+
+### channel
+
+<ApiMember kind="accessor" signature={['get channel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L68', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:68' }}>
+
+The channel the webhook posts to, from the cache: `null` when it is not cached.
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+
+The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
+the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
+
+It is not part of the structure's data, so it is neither serialized by `toJSON` nor stored in the cache.
+
+</ApiMember>
+
+### createdAt
+
+<ApiMember
+	kind="accessor"
+	signature={['get createdAt(): ', ['Date', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date']]}
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L109',
+		label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:109'
+	}}
+	inheritedFrom={[['MixinTypes.createdAt', '/documentation/api/plugin-gateway/classes/WebhookMixin#createdat']]}
+/>
+
+### createdTimestamp
+
+<ApiMember kind="accessor" signature={['get createdTimestamp(): number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L105', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:105' }}>
+
+The timestamp the webhook was created at
+
+</ApiMember>
+
+### guild
+
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L61', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:61' }}>
+
+The guild of the webhook, from the cache, like discord.js's `Webhook#guild`: `null` when it is not cached.
+
+</ApiMember>
+
+### guildId
+
+<ApiMember kind="accessor" signature={['get guildId(): string | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L54', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:54' }}>
+
+The guild id this webhook is for, if any
+
+</ApiMember>
+
+### owner
+
+<ApiMember kind="accessor" signature={['get owner(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L75', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:75' }}>
+
+The user who created the webhook, from the cache, else from the payload.
+
+</ApiMember>
+
+### sourceChannel
+
+<ApiMember kind="accessor" signature={['get sourceChannel(): ', ['AnyChannel', '/documentation/api/plugin-gateway/type-aliases/AnyChannel'], ' | ', ['Required', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#requiredtype'], '<', ['_NonNullableFields', 'https://discord-api-types.dev/api/discord-api-types-v10#_NonNullableFields'], '<', ['Pick', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype'], '<', ['APIPartialChannel', 'https://discord-api-types.dev/api/discord-api-types-v10#APIPartialChannel'], ', "id" | "name">>> | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L90', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:90' }}>
+
+The channel a channel follower webhook posts from: the cached channel, else the partial one of the payload.
+
+</ApiMember>
+
+### sourceGuild
+
+<ApiMember kind="accessor" signature={['get sourceGuild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | ', ['APIWebhookSourceGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIWebhookSourceGuild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L83', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:83' }}>
+
+The guild a channel follower webhook posts from: the cached guild, else the partial one of the payload.
+
+</ApiMember>
+
+### url
+
+<ApiMember kind="accessor" signature={['get url(): string | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L97', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:97' }}>
+
+The URL to post to, for webhooks with a token: the one Discord sent, or one built from the token.
+
+</ApiMember>
+
+## Methods
+
+### \[kClone\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+
+<ApiSignature
+	tokens={[
+		'[kClone](patch?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['APIWebhook', 'https://discord-api-types.dev/api/discord-api-types-v10#APIWebhook'],
+		'>>): this'
+	]}
+/>
+
+Creates a copy of this structure, optionally patching the copy.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="patch" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['APIWebhook', 'https://discord-api-types.dev/api/discord-api-types-v10#APIWebhook'], '>>']} optional>
+
+The data to patch the copy with.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+The copy.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### \[kPatch\]()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+
+<ApiSignature
+	tokens={[
+		'[kPatch](data: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<Data>>): this'
+	]}
+/>
+
+Patches the raw data of this structure in place, with a shallow merge.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Data>>']}>
+
+The updated data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['this']}>
+
+This structure.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### avatarURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L113', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:113' }}>
+
+<ApiSignature
+	tokens={[
+		'avatarURL(options?: ',
+		['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'],
+		'<ImageURLOptions>): string | null'
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam
+	name="options"
+	type={[['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<ImageURLOptions>']}
+	optional
+/>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L146', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:146' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(reason?: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+Deletes the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="reason" type={['string']} optional>
+
+The reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### deleteMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L105', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:105' }} inheritedFrom={[['MixinTypes.deleteMessage', '/documentation/api/plugin-gateway/classes/WebhookMixin#deletemessage']]}>
+
+<ApiSignature
+	tokens={[
+		'deleteMessage(messageId: string, options?: ',
+		['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a message sent by the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']]} optional>
+
+The thread the message is in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### dropChangedRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+
+<ApiSignature
+	tokens={[
+		'protected dropChangedRelations(\n  data: object,\n  fields: ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'],
+		'<keyof Relations & string, string>>\n): void'
+	]}
+/>
+
+Forgets the relations whose ID a patch changes, e.g. a channel's parent when the patch moves it to another
+category. A patch carrying the same ID keeps the relation.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={['object']}>
+
+The patch.
+
+</ApiParam>
+
+<ApiParam name="fields" type={[['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof Relations & string, string>>']}>
+
+The names of the relations, mapped to the raw field holding their ID.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### dropRelations()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+
+<ApiSignature tokens={['protected dropRelations(...names: ("owner" | "guild" | "channel" | "sourceGuild" | "sourceChannel")[]): void']} />
+
+Forgets resolved relations, e.g. when a patch carries fresher data for them.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="names" type={['("owner" | "guild" | "channel" | "sourceGuild" | "sourceChannel")[]']} rest>
+
+The names of the relations.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L135', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:135' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(options: ',
+		['WebhookEditOptions', '/documentation/api/plugin-gateway/interfaces/WebhookEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+Edits the webhook, with its token when it has one (then it cannot be moved to another channel).
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['WebhookEditOptions', '/documentation/api/plugin-gateway/interfaces/WebhookEditOptions']]}>
+
+The fields to edit, and the reason for the audit log.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Webhook', '/documentation/api/plugin-gateway/classes/Webhook'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### editMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L87', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:87' }} inheritedFrom={[['MixinTypes.editMessage', '/documentation/api/plugin-gateway/classes/WebhookMixin#editmessage']]}>
+
+<ApiSignature
+	tokens={[
+		'editMessage(\n  messageId: string,\n  options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['WebhookMessageEditOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageEditOptions'],
+		'>\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Edits a message sent by the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['WebhookMessageEditOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageEditOptions'], '>']}>
+
+The changes, the new content, or a [MessagePayload](/documentation/api/plugin-gateway/classes/MessagePayload), and the thread the message is in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L77', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:77' }} inheritedFrom={[['MixinTypes.fetchMessage', '/documentation/api/plugin-gateway/classes/WebhookMixin#fetchmessage']]}>
+
+<ApiSignature
+	tokens={[
+		'fetchMessage(messageId: string, options?: ',
+		['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Fetches a message sent by the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="messageId" type={['string']}>
+
+The ID of the message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']]} optional>
+
+The thread the message is in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### isApplicationCreated()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L126', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:126' }}>
+
+<ApiSignature tokens={['isApplicationCreated(): boolean']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### isChannelFollower()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L122', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:122' }}>
+
+<ApiSignature tokens={['isChannelFollower(): boolean']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### isIncoming()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/Webhook.ts#L118', label: 'packages/plugin-gateway/src/structures/webhooks/Webhook.ts:118' }}>
+
+<ApiSignature tokens={['isIncoming(): boolean']} />
+
+<ApiParams title="Returns">
+
+<ApiParam type={['boolean']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### lazyRelation()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+
+<ApiSignature
+	tokens={[
+		'protected lazyRelation<Result>(\n  name: string,\n  read: (client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		') => Result | null | undefined\n): Result | null'
+	]}
+/>
+
+Resolves a relation like discord.js's getters do: what the manager resolved when it built this structure, else a
+synchronous read of the cache. `null` when neither has it, the cache is asynchronous, or no client exists.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="Result" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="name" type={['string']}>
+
+The name of the relation.
+
+</ApiParam>
+
+<ApiParam name="read" type={['(client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'], ') => Result | null | undefined']}>
+
+Reads the related structure from the client's cache, synchronously.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['Result | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizedTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+
+<ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
+
+Gets a timestamp previously parsed by `optimizeData`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['number | null']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### optimizeTimestamp()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+
+<ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
+
+Parses a timestamp once when constructing or patching a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="key" type={['string']} />
+
+<ApiParam name="value" type={['string | null | undefined']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### send()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L51', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:51' }} inheritedFrom={[['MixinTypes.send', '/documentation/api/plugin-gateway/classes/WebhookMixin#send']]}>
+
+<ApiSignature
+	tokens={[
+		'send(options: ',
+		['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'],
+		'<',
+		['WebhookMessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageCreateOptions'],
+		'>): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+Sends a message through the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['MessagePayloadResolvable', '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable'], '<', ['WebhookMessageCreateOptions', '/documentation/api/plugin-gateway/interfaces/WebhookMessageCreateOptions'], '>']}>
+
+The message, its content, or a [MessagePayload](/documentation/api/plugin-gateway/classes/MessagePayload), and the thread to send it in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Message', '/documentation/api/plugin-gateway/classes/Message'],
+		'<boolean>>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### sendSlackMessage()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts#L65', label: 'packages/plugin-gateway/src/structures/webhooks/WebhookMixin.ts:65' }} inheritedFrom={[['MixinTypes.sendSlackMessage', '/documentation/api/plugin-gateway/classes/WebhookMixin#sendslackmessage']]}>
+
+<ApiSignature
+	tokens={[
+		'sendSlackMessage(body: unknown, options: ',
+		['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions'],
+		' = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Sends a Slack-compatible message through the webhook.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="body" type={['unknown']}>
+
+The Slack message.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['WebhookThreadOptions', '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions']]} defaultValue={'{}'}>
+
+The thread to send it in.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+
+<ApiSignature tokens={['valueOf(): string | ', ['Webhook', '/documentation/api/plugin-gateway/classes/Webhook']]} />
+
+The ID of this structure, like discord.js's `Base#valueOf`, so that structures compare and sort by ID. Structures
+without an ID (a member whose user is unknown, a voice state, ...) are their own value.
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | ', ['Webhook', '/documentation/api/plugin-gateway/classes/Webhook']]} />
+
+</ApiParams>
+
+</ApiMember>

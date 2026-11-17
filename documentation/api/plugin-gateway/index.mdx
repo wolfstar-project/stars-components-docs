@@ -1,0 +1,3813 @@
+---
+title: '@wolfstar/plugin-gateway'
+description: 'Generated API reference for @wolfstar/plugin-gateway: gateway events, cached structures, and API managers.'
+---
+
+import { ApiPackageHeader, ApiSymbolList } from '/snippets/api-reference.jsx';
+import { InstallPackage } from '/snippets/install-package.jsx';
+
+<ApiPackageHeader
+	name="@wolfstar/plugin-gateway"
+	version="0.17.0"
+	guideHref="/documentation/packages/plugin-gateway"
+	sourceHref="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway"
+/>
+
+<InstallPackage packages="@wolfstar/plugin-gateway" />
+
+<ApiSymbolList
+	symbols={[
+		{ name: 'EventGatewayListener', kind: 'namespace', href: '/documentation/api/plugin-gateway/namespaces/EventGatewayListener' },
+		{
+			name: 'GatewayEvents',
+			kind: 'enum',
+			href: '/documentation/api/plugin-gateway/enumerations/GatewayEvents',
+			summary:
+				"The name of every event a GatewayClient emits, mirroring the keys of GatewayEventMap, like @wolfstar/http-framework's own Events."
+		},
+		{
+			name: 'Action',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Action',
+			summary: 'Processes one kind of gateway dispatch around the cache write.'
+		},
+		{
+			name: 'ActionRow',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ActionRow',
+			summary:
+				"An action row, holding buttons, a select menu, or a text input: @discordjs/structures' ActionRowComponent, with its components like discord…"
+		},
+		{
+			name: 'ActionsManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ActionsManager',
+			summary: "Holds one action per handled dispatch, like discord.js's ActionsManager."
+		},
+		{
+			name: 'Activity',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Activity',
+			summary: "An activity of a user's presence: @discordjs/structures' Activity, with its timestamps, party, assets, emoji, and buttons."
+		},
+		{
+			name: 'ActivityFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ActivityFlagsBitField',
+			summary: 'The flags of a presence activity.'
+		},
+		{
+			name: 'AnnouncementChannel',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AnnouncementChannel',
+			summary: 'A guild announcement channel.'
+		},
+		{
+			name: 'AnnouncementThreadChannel',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AnnouncementThreadChannel',
+			summary: 'A thread of an announcement channel.'
+		},
+		{
+			name: 'AnonymousGuild',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AnonymousGuild',
+			summary: 'The public attributes shared by Guild and InviteGuild, i.e.'
+		},
+		{
+			name: 'Application',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Application',
+			summary: "The public attributes of an application, like discord.js's Application."
+		},
+		{
+			name: 'ApplicationCommand',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ApplicationCommand',
+			summary: "A command of the application, registered globally or in one guild, like discord.js's ApplicationCommand."
+		},
+		{
+			name: 'ApplicationCommandManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ApplicationCommandManager',
+			summary: 'Manages the application commands of the application, global or of a guild, through the API.'
+		},
+		{
+			name: 'ApplicationCommandPermissionsManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ApplicationCommandPermissionsManager',
+			summary: "Manages the permissions of application commands, like discord.js's ApplicationCommandPermissionsManager."
+		},
+		{
+			name: 'ApplicationEmoji',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ApplicationEmoji',
+			summary: 'A custom emoji owned by the application rather than by a guild, usable by the bot everywhere.'
+		},
+		{
+			name: 'ApplicationEmojiManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ApplicationEmojiManager',
+			summary: 'Manages the emojis of the application, client.application.emojis.'
+		},
+		{
+			name: 'ApplicationFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ApplicationFlagsBitField',
+			summary: 'The flags of an application.'
+		},
+		{
+			name: 'AppliedTagsMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AppliedTagsMixin',
+			summary: 'Adds the tags applied to a thread of a forum or media channel.'
+		},
+		{
+			name: 'Attachment',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Attachment',
+			summary: "A file attached to a message: @discordjs/structures' Attachment, with discord.js' aliases and helpers."
+		},
+		{
+			name: 'AttachmentBuilder',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AttachmentBuilder',
+			summary: "Builds a file to send with a message, like discord.js's AttachmentBuilder."
+		},
+		{
+			name: 'AttachmentFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AttachmentFlagsBitField',
+			summary: 'The flags of a message attachment.'
+		},
+		{
+			name: 'AutoModerationActionExecution',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AutoModerationActionExecution',
+			summary: 'An action auto moderation took on a message or a member.'
+		},
+		{
+			name: 'AutoModerationRule',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AutoModerationRule',
+			summary:
+				"An auto moderation rule of a guild: @discordjs/structures' AutoModerationRule, with its trigger, actions, and exemptions, and actions throu…"
+		},
+		{
+			name: 'AutoModerationRuleManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/AutoModerationRuleManager',
+			summary: 'Manages the auto moderation rules of one guild.'
+		},
+		{
+			name: 'BaseChannel',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/BaseChannel',
+			summary: 'A channel of a type no other structure covers yet.'
+		},
+		{
+			name: 'BaseChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/BaseChannelMixin',
+			summary:
+				"Adds what every channel shares on top of @discordjs/structures' Channel: its relations, and the REST actions every channel supports."
+		},
+		{
+			name: 'BaseInvite',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/BaseInvite',
+			summary:
+				"The base of every invite, to a guild, to a group direct message, or a friend invite: @discordjs/structures' Invite, with its channel, invit…"
+		},
+		{
+			name: 'BaseManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/BaseManager',
+			summary: "Manages the API methods of a data model, like discord.js's BaseManager."
+		},
+		{
+			name: 'CachedManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/CachedManager',
+			summary: 'Manages the API methods of a data model with a mutable cache of instances: the CachedManager of the discord.js RFC #11426.'
+		},
+		{ name: 'CategoryChannel', kind: 'class', href: '/documentation/api/plugin-gateway/classes/CategoryChannel', summary: 'A guild category.' },
+		{
+			name: 'CategoryChannelChildManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/CategoryChannelChildManager',
+			summary: "Manages the channels of one CategoryChannel, like discord.js's CategoryChannelChildManager."
+		},
+		{
+			name: 'Channel',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Channel',
+			summary: "A channel: @discordjs/structures' Channel, with what every channel type shares."
+		},
+		{
+			name: 'ChannelFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelFlagsBitField',
+			summary: 'The flags of a channel.'
+		},
+		{
+			name: 'ChannelManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelManager',
+			summary: 'Manages the channels known to the client, threads included.'
+		},
+		{
+			name: 'ChannelMessageManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelMessageManager',
+			summary: "Manages the messages of one channel: client.messages, with the channel's ID filled in."
+		},
+		{
+			name: 'ChannelOwnerMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelOwnerMixin',
+			summary: 'Adds the owner of threads and group direct messages.'
+		},
+		{
+			name: 'ChannelParentMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelParentMixin',
+			summary: 'Adds the parent (a category, or a channel for threads) and the age restriction of guild channels.'
+		},
+		{
+			name: 'ChannelPermissionMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelPermissionMixin',
+			summary: 'Adds the position and permission overwrites of guild channels other than threads.'
+		},
+		{
+			name: 'ChannelSelectMenuComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelSelectMenuComponent',
+			summary: "A select menu of channels: @discordjs/structures' ChannelSelectMenuComponent, like discord.js'."
+		},
+		{
+			name: 'ChannelSlowmodeMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelSlowmodeMixin',
+			summary: 'Adds the slowmode of channels users can send messages in.'
+		},
+		{
+			name: 'ChannelThreadManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelThreadManager',
+			summary: "Manages the threads of one channel: client.threads, with the channel's ID filled in."
+		},
+		{
+			name: 'ChannelThreadsMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelThreadsMixin',
+			summary: 'Adds the threads of the channels that can have threads.'
+		},
+		{
+			name: 'ChannelTopicMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelTopicMixin',
+			summary: 'Adds the topic of text, announcement, forum, and media channels.'
+		},
+		{
+			name: 'ChannelWebhooksMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ChannelWebhooksMixin',
+			summary: 'Adds the webhook actions of the channels that can have webhooks.'
+		},
+		{
+			name: 'CheckboxComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/CheckboxComponent',
+			summary: 'A modal component for a binary choice.'
+		},
+		{
+			name: 'CheckboxGroupComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/CheckboxGroupComponent',
+			summary: 'A modal component to pick any of its options.'
+		},
+		{
+			name: 'ClientApplication',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ClientApplication',
+			summary:
+				"The application of the bot, the entry point for everything owned by the application rather than by a guild, like discord.js's ClientApplica…"
+		},
+		{
+			name: 'ClientUser',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ClientUser',
+			summary: 'The bot user, as known to the GatewayClient: a User that can edit its profile and presence.'
+		},
+		{
+			name: 'CollectionCache',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/CollectionCache',
+			summary: "The default Cache: an in-memory Collection of structure instances, like discord.js's caches."
+		},
+		{
+			name: 'Component',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Component',
+			summary: "A component of a message or a modal: @discordjs/structures' Component, like discord.js' Component."
+		},
+		{
+			name: 'ComponentMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ComponentMixin',
+			summary: 'The members every component of this package shares, mixed into each of them.'
+		},
+		{
+			name: 'ContainerComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ContainerComponent',
+			summary:
+				"A container visually grouping components, like an embed: @discordjs/structures' ContainerComponent, with its components like discord.js'."
+		},
+		{
+			name: 'DataManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/DataManager',
+			summary: "Manages the API methods of a data model along with a collection of instances, like discord.js's DataManager."
+		},
+		{
+			name: 'DispatchAction',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/DispatchAction',
+			summary: 'An action producing one public event.'
+		},
+		{
+			name: 'DispatchQueue',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/DispatchQueue',
+			summary: 'Runs tasks in order within a partition, and partitions of the same shard concurrently.'
+		},
+		{
+			name: 'DispatchTimeoutError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/DispatchTimeoutError',
+			summary: 'Emitted as an error when a dispatch takes longer than GatewayClientOptions.dispatchTimeout to process.'
+		},
+		{ name: 'DMChannel', kind: 'class', href: '/documentation/api/plugin-gateway/classes/DMChannel', summary: 'A direct message channel.' },
+		{
+			name: 'DMChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/DMChannelMixin',
+			summary: 'Adds the recipients of direct messages.'
+		},
+		{
+			name: 'Embed',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Embed',
+			summary: "An embed of a received message: @discordjs/structures' Embed, with its nested parts and discord.js' helpers."
+		},
+		{
+			name: 'Emoji',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Emoji',
+			summary:
+				"An emoji, a custom one (with an ID) or a Unicode one: @discordjs/structures' Emoji, with its identifier, image URL, and mention."
+		},
+		{
+			name: 'Entitlement',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Entitlement',
+			summary:
+				"A user's or a guild's access to a premium offer (a SKU) of the application: @discordjs/structures' Entitlement, with its guild and user, an…"
+		},
+		{
+			name: 'EntitlementManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/EntitlementManager',
+			summary:
+				'Manages the entitlements of the application, reached through client.application.entitlements: the access users and guilds were granted to i…'
+		},
+		{
+			name: 'EntityStoreCache',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/EntityStoreCache',
+			summary:
+				'A Cache over a raw @wolfstar/plugin-cache store (in memory or Redis): the store holds raw API data, and a structure is built on every read.'
+		},
+		{
+			name: 'EventGatewayListener',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/EventGatewayListener',
+			summary: 'A Listener bound to one of the GatewayEventMap events of the GatewayClient, with strongly typed arguments.'
+		},
+		{
+			name: 'FileComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/FileComponent',
+			summary: "An attached file: @discordjs/structures' FileComponent, with its media like discord.js'."
+		},
+		{
+			name: 'FileUploadComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/FileUploadComponent',
+			summary: "A file upload field of a modal: @discordjs/structures' FileUploadComponent, like discord.js'."
+		},
+		{ name: 'ForumChannel', kind: 'class', href: '/documentation/api/plugin-gateway/classes/ForumChannel', summary: 'A guild forum channel.' },
+		{
+			name: 'GatewayClient',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GatewayClient',
+			summary:
+				'A Client that, on top of serving HTTP interactions, connects to the Discord gateway, writes every dispatch into its cache, and emits Gatewa…'
+		},
+		{
+			name: 'GatewayError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GatewayError',
+			summary: "An Error carrying a GatewayErrorCode, like discord.js's DiscordjsError."
+		},
+		{
+			name: 'GatewayRangeError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GatewayRangeError',
+			summary: "A RangeError carrying a GatewayErrorCode, like discord.js's DiscordjsRangeError."
+		},
+		{
+			name: 'GatewaySessionStoreError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GatewaySessionStoreError',
+			summary: 'Emitted as an error when GatewayClientOptions.sessionStore fails to read or write the session of a shard.'
+		},
+		{
+			name: 'GatewayTypeError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GatewayTypeError',
+			summary: "A TypeError carrying a GatewayErrorCode, like discord.js's DiscordjsTypeError."
+		},
+		{
+			name: 'GroupDMChannel',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GroupDMChannel',
+			summary: 'A group direct message channel.'
+		},
+		{
+			name: 'GroupDMInvite',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GroupDMInvite',
+			summary: 'An invite to a group direct message.'
+		},
+		{
+			name: 'GroupDMMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GroupDMMixin',
+			summary: 'Adds the fields of group direct messages.'
+		},
+		{ name: 'Guild', kind: 'class', href: '/documentation/api/plugin-gateway/classes/Guild', summary: 'A Discord guild.' },
+		{
+			name: 'GuildApplicationCommandManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildApplicationCommandManager',
+			summary:
+				"Manages the application commands of one guild, like discord.js's GuildApplicationCommandManager: an ApplicationCommandManager bound to the…"
+		},
+		{
+			name: 'GuildAuditLogsEntry',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildAuditLogsEntry',
+			summary: "An entry of a guild's audit log."
+		},
+		{ name: 'GuildBan', kind: 'class', href: '/documentation/api/plugin-gateway/classes/GuildBan', summary: 'A ban of a user from a guild.' },
+		{
+			name: 'GuildBanManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildBanManager',
+			summary: 'Manages the bans of one guild.'
+		},
+		{
+			name: 'GuildChannelInfoTimeoutError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildChannelInfoTimeoutError',
+			summary: 'Thrown by ChannelManager#requestInfo when Discord does not answer with the CHANNELINFO of the guild.'
+		},
+		{
+			name: 'GuildChannelManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildChannelManager',
+			summary: 'Manages the channels of one guild.'
+		},
+		{
+			name: 'GuildChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildChannelMixin',
+			summary: 'Adds the fields every guild channel has, threads included.'
+		},
+		{ name: 'GuildEmoji', kind: 'class', href: '/documentation/api/plugin-gateway/classes/GuildEmoji', summary: 'A custom emoji of a guild.' },
+		{
+			name: 'GuildEmojiManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildEmojiManager',
+			summary: 'Manages the custom emojis of one guild.'
+		},
+		{
+			name: 'GuildEmojiRoleManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildEmojiRoleManager',
+			summary: "Manages the roles allowed to use one custom emoji, like discord.js's GuildEmojiRoleManager."
+		},
+		{
+			name: 'GuildIntegrationManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildIntegrationManager',
+			summary: 'Manages the integrations of one guild.'
+		},
+		{ name: 'GuildInvite', kind: 'class', href: '/documentation/api/plugin-gateway/classes/GuildInvite', summary: 'An invite to a guild.' },
+		{
+			name: 'GuildInviteManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildInviteManager',
+			summary: 'Manages the invites of one guild.'
+		},
+		{
+			name: 'GuildManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildManager',
+			summary: 'Manages the Guilds known to the client.'
+		},
+		{
+			name: 'GuildMember',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildMember',
+			summary: 'A member of a Discord guild.'
+		},
+		{
+			name: 'GuildMemberFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildMemberFlagsBitField',
+			summary: 'The flags of a guild member.'
+		},
+		{
+			name: 'GuildMemberManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildMemberManager',
+			summary: 'Manages the GuildMembers known to the client.'
+		},
+		{
+			name: 'GuildMemberRoleManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildMemberRoleManager',
+			summary: "Manages the roles of one GuildMember, like discord.js's GuildMemberRoleManager."
+		},
+		{
+			name: 'GuildMembersRateLimitError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildMembersRateLimitError',
+			summary: "Thrown by GuildMemberManager#request when Discord answers with RATELIMITED instead of the members' chunks."
+		},
+		{
+			name: 'GuildMembersTimeoutError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildMembersTimeoutError',
+			summary: 'Thrown by GuildMemberManager#request when Discord stops sending the chunks of the requested members.'
+		},
+		{
+			name: 'GuildOnboarding',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildOnboarding',
+			summary: 'The onboarding of a guild: the prompts new members answer, and the channels they start in.'
+		},
+		{
+			name: 'GuildOnboardingPrompt',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildOnboardingPrompt',
+			summary: "A question of a guild's onboarding."
+		},
+		{
+			name: 'GuildOnboardingPromptOption',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildOnboardingPromptOption',
+			summary: 'An answer of an onboarding prompt, with the channels and roles it gives.'
+		},
+		{
+			name: 'GuildPreview',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildPreview',
+			summary: 'The public preview of a guild, available for discoverable guilds and the ones the bot is in.'
+		},
+		{
+			name: 'GuildScheduledEvent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildScheduledEvent',
+			summary: 'An event scheduled in a guild: in a stage or voice channel, or somewhere else.'
+		},
+		{
+			name: 'GuildScheduledEventManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildScheduledEventManager',
+			summary: 'Manages the scheduled events of one guild.'
+		},
+		{
+			name: 'GuildSoundboardSoundManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundManager',
+			summary: 'Manages the soundboard sounds of one guild.'
+		},
+		{
+			name: 'GuildSoundboardSoundsTimeoutError',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundsTimeoutError',
+			summary: 'Thrown by GuildManager#fetchSoundboardSounds when Discord does not answer with the sounds of every requested guild.'
+		},
+		{
+			name: 'GuildStickerManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildStickerManager',
+			summary: 'Manages the custom stickers of one guild.'
+		},
+		{
+			name: 'GuildTemplate',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildTemplate',
+			summary: "A guild template: a snapshot of a guild's channels, roles, and settings, to create guilds from."
+		},
+		{
+			name: 'GuildTemplateManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/GuildTemplateManager',
+			summary: 'Manages guild templates.'
+		},
+		{
+			name: 'Integration',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Integration',
+			summary: 'An integration of a guild: a bot, a Twitch or YouTube subscription, or a guild subscription.'
+		},
+		{
+			name: 'IntentsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/IntentsBitField',
+			summary: 'The gateway intents to identify with.'
+		},
+		{
+			name: 'InteractiveButtonComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/InteractiveButtonComponent',
+			summary:
+				"A button sending an interaction when clicked, of the Primary, Secondary, Success, or Danger style: @discordjs/structures' InteractiveButton…"
+		},
+		{
+			name: 'InviteGuild',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/InviteGuild',
+			summary: 'The partial guild carried by a GuildInvite.'
+		},
+		{
+			name: 'LabelComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/LabelComponent',
+			summary: "A modal component associating a label and a description with another component, like discord.js' LabelComponent."
+		},
+		{
+			name: 'LinkButtonComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/LinkButtonComponent',
+			summary:
+				"A button of the Link style, opening a URL: @discordjs/structures' LinkButtonComponent, with discord.js' ButtonComponent helpers."
+		},
+		{ name: 'MediaChannel', kind: 'class', href: '/documentation/api/plugin-gateway/classes/MediaChannel', summary: 'A guild media channel.' },
+		{
+			name: 'MediaGalleryComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MediaGalleryComponent',
+			summary: "A gallery of images and videos: @discordjs/structures' MediaGalleryComponent, with its items like discord.js'."
+		},
+		{
+			name: 'MediaGalleryItem',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MediaGalleryItem',
+			summary: "An item of a media gallery component: @discordjs/structures' MediaGalleryItem, with its media like discord.js'."
+		},
+		{
+			name: 'MentionableSelectMenuComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MentionableSelectMenuComponent',
+			summary: "A select menu of users and roles: @discordjs/structures' MentionableSelectMenuComponent, like discord.js'."
+		},
+		{
+			name: 'Message',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Message',
+			summary:
+				"The members every structure of this package has on top of @discordjs/structures' own: relations resolved from the cache, public patch/clone…"
+		},
+		{
+			name: 'MessageFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MessageFlagsBitField',
+			summary: 'The flags of a message.'
+		},
+		{
+			name: 'MessageManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MessageManager',
+			summary: 'Manages the Messages known to the client.'
+		},
+		{
+			name: 'MessageMentions',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MessageMentions',
+			summary: 'The users, roles, and channels a message mentions.'
+		},
+		{
+			name: 'MessagePayload',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MessagePayload',
+			summary:
+				"Normalizes the options of a message into the REST body and files Discord expects, like discord.js's MessagePayload: camel case options, bui…"
+		},
+		{
+			name: 'MessageReaction',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MessageReaction',
+			summary:
+				"A reaction on a message, an emoji, how many users reacted with it, and whether the bot did: @discordjs/structures' Reaction, with the messa…"
+		},
+		{
+			name: 'MultiDispatchAction',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/MultiDispatchAction',
+			summary: 'An action producing several public events from one dispatch.'
+		},
+		{
+			name: 'NullCache',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/NullCache',
+			summary: 'The Cache of an entity that is not cached: always empty, writes are dropped.'
+		},
+		{
+			name: 'NumberFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/NumberFlagsBitField',
+			summary: 'A 32-bit flags bitfield, resolving flag names to bigints and serializing to a number.'
+		},
+		{
+			name: 'PermissionOverwriteManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PermissionOverwriteManager',
+			summary: "Manages the permission overwrites of one channel, as they were in the channel's payload."
+		},
+		{
+			name: 'PermissionOverwrites',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PermissionOverwrites',
+			summary: 'A permission overwrite of a channel: what it allows and denies to a role or a member.'
+		},
+		{
+			name: 'Poll',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Poll',
+			summary: "The poll of a message: @discordjs/structures' Poll, with its answers, results, and the message it belongs to."
+		},
+		{
+			name: 'PollAnswer',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PollAnswer',
+			summary: "An answer of a Poll: @discordjs/structures' PollAnswer, with its vote count and the message it belongs to."
+		},
+		{
+			name: 'PollAnswerVoterManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PollAnswerVoterManager',
+			summary: "Manages the voters of one PollAnswer, like discord.js's PollAnswerVoterManager."
+		},
+		{
+			name: 'PremiumButtonComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PremiumButtonComponent',
+			summary: "A button of the Premium style, purchasing a SKU: @discordjs/structures' PremiumButtonComponent."
+		},
+		{
+			name: 'Presence',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Presence',
+			summary:
+				"The presence of a user in a guild, their status and activities: @discordjs/structures' Presence, with its user, member, and guild, and acti…"
+		},
+		{
+			name: 'PresenceManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PresenceManager',
+			summary: 'Manages the presences of guild members.'
+		},
+		{
+			name: 'PrivateThreadChannel',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PrivateThreadChannel',
+			summary: 'A private thread.'
+		},
+		{
+			name: 'PublicThreadChannel',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/PublicThreadChannel',
+			summary: 'A public thread.'
+		},
+		{
+			name: 'RadioGroupComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/RadioGroupComponent',
+			summary: 'A modal component to pick one of its options.'
+		},
+		{
+			name: 'ReactionEmoji',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ReactionEmoji',
+			summary: 'The emoji of a reaction or of a poll answer: a Unicode emoji, or a custom one known only by its ID and name.'
+		},
+		{
+			name: 'ReactionManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ReactionManager',
+			summary: "Manages the reactions of one message, as they were in the message's payload."
+		},
+		{
+			name: 'ReactionUserManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ReactionUserManager',
+			summary: 'Manages the users who reacted to a message with one emoji.'
+		},
+		{
+			name: 'RichPresenceAssets',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/RichPresenceAssets',
+			summary: 'The assets (images and their hover texts) of a rich presence activity.'
+		},
+		{ name: 'Role', kind: 'class', href: '/documentation/api/plugin-gateway/classes/Role', summary: 'A Discord guild role.' },
+		{
+			name: 'RoleFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/RoleFlagsBitField',
+			summary: 'The flags of a role.'
+		},
+		{
+			name: 'RoleManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/RoleManager',
+			summary: 'Manages the Roles known to the client.'
+		},
+		{
+			name: 'RoleSelectMenuComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/RoleSelectMenuComponent',
+			summary: "A select menu of roles: @discordjs/structures' RoleSelectMenuComponent, like discord.js'."
+		},
+		{
+			name: 'SectionComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/SectionComponent',
+			summary:
+				"Text displayed alongside an accessory: @discordjs/structures' SectionComponent, with its components and accessory like discord.js'."
+		},
+		{
+			name: 'SeparatorComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/SeparatorComponent',
+			summary: "Vertical padding between components: @discordjs/structures' SeparatorComponent, with Discord's defaults like discord.js'."
+		},
+		{
+			name: 'SKU',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/SKU',
+			summary: "A premium offer of the application, to subscribe to or to buy: @discordjs/structures' SKU, with its subscriptions."
+		},
+		{
+			name: 'SKUFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/SKUFlagsBitField',
+			summary: 'The flags of a SKU.'
+		},
+		{
+			name: 'SoundboardSound',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/SoundboardSound',
+			summary:
+				"A soundboard sound, one of Discord's defaults or a guild's: @discordjs/structures' SoundboardSound, with its uploader, guild, and URL, and…"
+		},
+		{ name: 'StageChannel', kind: 'class', href: '/documentation/api/plugin-gateway/classes/StageChannel', summary: 'A guild stage channel.' },
+		{
+			name: 'StageInstance',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/StageInstance',
+			summary:
+				"A live stage, the topic of a stage channel while it is open: @discordjs/structures' StageInstance, with its guild and channel, and actions…"
+		},
+		{
+			name: 'StageInstanceManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/StageInstanceManager',
+			summary: 'Manages the stage instances of one guild, keyed by the ID of their stage channel.'
+		},
+		{
+			name: 'Sticker',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Sticker',
+			summary:
+				"A sticker, a standard one from a sticker pack or a custom one of a guild: @discordjs/structures' Sticker, with its guild, uploader, and URL…"
+		},
+		{
+			name: 'StickerPack',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/StickerPack',
+			summary: "A pack of standard stickers: @discordjs/structures' StickerPack, with its stickers and banner URL."
+		},
+		{
+			name: 'StringSelectMenuComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/StringSelectMenuComponent',
+			summary: "A select menu of predefined text options: @discordjs/structures' StringSelectMenuComponent, like discord.js'."
+		},
+		{
+			name: 'Structure',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Structure',
+			summary: 'The base class of the structures @discordjs/structures has no counterpart for: its Structure, with StructureMixin mixed in.'
+		},
+		{
+			name: 'StructureMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/StructureMixin',
+			summary:
+				"The members every structure of this package has on top of @discordjs/structures' own: relations resolved from the cache, public patch/clone…"
+		},
+		{
+			name: 'Subscription',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Subscription',
+			summary: "A user's recurring purchase of a SKU: @discordjs/structures' Subscription."
+		},
+		{
+			name: 'SubscriptionManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/SubscriptionManager',
+			summary: 'Manages the subscriptions to one SKU, reached through sku.subscriptions and client.application.subscriptions.'
+		},
+		{
+			name: 'Sweepers',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Sweepers',
+			summary: "Evicts entries from the caches of instances, on a schedule or on demand, like discord.js's Sweepers."
+		},
+		{
+			name: 'SystemChannelFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/SystemChannelFlagsBitField',
+			summary: "The flags of a guild's system channel, deciding which system messages are suppressed."
+		},
+		{
+			name: 'Team',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Team',
+			summary: "A team of developers owning an application, like discord.js's Team."
+		},
+		{
+			name: 'TeamMember',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/TeamMember',
+			summary: "A member of a Team, like discord.js's TeamMember."
+		},
+		{ name: 'TextChannel', kind: 'class', href: '/documentation/api/plugin-gateway/classes/TextChannel', summary: 'A guild text channel.' },
+		{
+			name: 'TextChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/TextChannelMixin',
+			summary: 'Adds the fields and message actions of channels holding messages.'
+		},
+		{
+			name: 'TextDisplayComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/TextDisplayComponent',
+			summary: "Markdown text: @discordjs/structures' TextDisplayComponent, like discord.js'."
+		},
+		{
+			name: 'TextGuildChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/TextGuildChannelMixin',
+			summary:
+				"Adds the actions of text-based channels of a guild only: discord.js's TextBasedChannel leaves them out of direct messages, where Discord re…"
+		},
+		{
+			name: 'TextInputComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/TextInputComponent',
+			summary: "A text field of a modal: @discordjs/structures' TextInputComponent, like discord.js'."
+		},
+		{
+			name: 'ThreadChannelMemberManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ThreadChannelMemberManager',
+			summary: "Manages the members of one thread: client.threadMembers, with the thread's ID filled in."
+		},
+		{
+			name: 'ThreadChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ThreadChannelMixin',
+			summary: 'Adds the metadata of threads.'
+		},
+		{
+			name: 'ThreadManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ThreadManager',
+			summary: 'Manages the threads known to the client.'
+		},
+		{
+			name: 'ThreadMember',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ThreadMember',
+			summary: 'A member of a thread: a user who joined it, or was added to it.'
+		},
+		{
+			name: 'ThreadMemberManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ThreadMemberManager',
+			summary: 'Manages the members of every thread known to the client.'
+		},
+		{
+			name: 'ThreadOnlyChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ThreadOnlyChannelMixin',
+			summary: 'Adds the fields of forum and media channels, which only hold threads.'
+		},
+		{
+			name: 'ThumbnailComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/ThumbnailComponent',
+			summary: "A small image, used as the accessory of a section: @discordjs/structures' ThumbnailComponent, with its media like discord.js'."
+		},
+		{
+			name: 'Typing',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Typing',
+			summary: 'A user starting to type in a channel, carried by the typingStart event.'
+		},
+		{
+			name: 'UnfurledMediaItem',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/UnfurledMediaItem',
+			summary: "A media item of a thumbnail, file, or media gallery component: @discordjs/structures' UnfurledMediaItem, like discord.js'."
+		},
+		{
+			name: 'User',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/User',
+			summary: "A Discord user: @discordjs/structures' User, with CDN URLs and actions through the client."
+		},
+		{
+			name: 'UserFlagsBitField',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/UserFlagsBitField',
+			summary: 'The flags (badges) of a user.'
+		},
+		{
+			name: 'UserManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/UserManager',
+			summary: 'Manages the Users known to the client.'
+		},
+		{
+			name: 'UserSelectMenuComponent',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/UserSelectMenuComponent',
+			summary: "A select menu of users: @discordjs/structures' UserSelectMenuComponent, like discord.js'."
+		},
+		{ name: 'VoiceChannel', kind: 'class', href: '/documentation/api/plugin-gateway/classes/VoiceChannel', summary: 'A guild voice channel.' },
+		{
+			name: 'VoiceChannelMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/VoiceChannelMixin',
+			summary: 'Adds the fields of voice and stage channels.'
+		},
+		{
+			name: 'VoiceState',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/VoiceState',
+			summary:
+				"The voice state of a guild member: @discordjs/structures' VoiceState, with its member and guild, and actions through the client."
+		},
+		{
+			name: 'VoiceStateManager',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/VoiceStateManager',
+			summary: 'Manages the voice states of the members connected to voice channels.'
+		},
+		{
+			name: 'Webhook',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Webhook',
+			summary:
+				"A webhook, an incoming one posting to a channel, a channel follower, or an application's: @discordjs/structures' Webhook, with its owner, s…"
+		},
+		{ name: 'WebhookManager', kind: 'class', href: '/documentation/api/plugin-gateway/classes/WebhookManager', summary: 'Manages webhooks.' },
+		{
+			name: 'WebhookMixin',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/WebhookMixin',
+			summary: "The members shared by everything posting through a webhook's token, like discord.js's Webhook.applyToClass."
+		},
+		{
+			name: 'WelcomeScreen',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/WelcomeScreen',
+			summary: 'The screen new members of a community guild see, suggesting channels to start with.'
+		},
+		{
+			name: 'Widget',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/Widget',
+			summary: 'The public widget of a guild: its online members and voice channels.'
+		},
+		{
+			name: 'WidgetMember',
+			kind: 'class',
+			href: '/documentation/api/plugin-gateway/classes/WidgetMember',
+			summary: "A member shown by a guild's widget."
+		},
+		{
+			name: 'ActivityEmoji',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ActivityEmoji',
+			summary: 'The emoji of a custom status activity.'
+		},
+		{
+			name: 'ActivityOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ActivityOptions',
+			summary: 'An activity to set, with its type defaulting to Playing.'
+		},
+		{
+			name: 'ActivityParty',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ActivityParty',
+			summary: 'The party of an activity.'
+		},
+		{
+			name: 'ActivityTimestamps',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ActivityTimestamps',
+			summary: 'The start and end of an activity.'
+		},
+		{
+			name: 'AddOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AddOptions',
+			summary: 'The options of CachedManager.add.'
+		},
+		{
+			name: 'ApplicationCommandData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationCommandData',
+			summary: "The data to create or edit an application command with, like discord.js's ApplicationCommandData."
+		},
+		{
+			name: 'ApplicationCommandOption',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOption',
+			summary:
+				"An option of an application command or subcommand, as the API returns it with camel-cased keys, like discord.js's ApplicationCommandOption."
+		},
+		{
+			name: 'ApplicationCommandOptionChoice',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOptionChoice',
+			summary: 'A choice of an application command option, as the API returns it.'
+		},
+		{
+			name: 'ApplicationCommandOptionChoiceData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOptionChoiceData',
+			summary: 'A choice to give an application command option.'
+		},
+		{
+			name: 'ApplicationCommandOptionData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationCommandOptionData',
+			summary: "An option to give an application command or subcommand, like discord.js's ApplicationCommandOptionData."
+		},
+		{
+			name: 'ApplicationCommandPermissionsEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsEditOptions',
+			summary: 'The options to set or add permissions with.'
+		},
+		{
+			name: 'ApplicationCommandPermissionsScope',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationCommandPermissionsScope',
+			summary:
+				'Where an ApplicationCommandPermissionsManager acts: a guild and a command it is bound to, none of them for the manager of the application,…'
+		},
+		{
+			name: 'ApplicationEmojiCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationEmojiCreateOptions',
+			summary: 'The options to create an application emoji with.'
+		},
+		{
+			name: 'ApplicationEmojiEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationEmojiEditOptions',
+			summary: 'The options to edit an application emoji with.'
+		},
+		{
+			name: 'ApplicationEmojiRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationEmojiRelations',
+			summary: 'The relations of an ApplicationEmoji, resolved from the cache by client.application.emojis.'
+		},
+		{
+			name: 'ApplicationInstallParams',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationInstallParams',
+			summary: 'The install parameters of an application: the scopes and permissions it asks for when it is added.'
+		},
+		{
+			name: 'ApplicationInstallParamsOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationInstallParamsOptions',
+			summary: 'The install parameters to set, with permissions in any form a PermissionsBitField resolves.'
+		},
+		{
+			name: 'ApplicationRoleConnectionMetadata',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ApplicationRoleConnectionMetadata',
+			summary: 'A role connection metadata record of an application, with camelCased fields like discord.js.'
+		},
+		{
+			name: 'AttachmentBuilderData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AttachmentBuilderData',
+			summary: 'The optional data of an AttachmentBuilder.'
+		},
+		{
+			name: 'AttachmentBuilderSource',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AttachmentBuilderSource',
+			summary:
+				'What AttachmentBuilder.from copies: an AttachmentPayload, an AttachmentBuilder, or a received Attachment, whose attachment is its URL.'
+		},
+		{
+			name: 'AttachmentPayload',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AttachmentPayload',
+			summary: "A file described along with its attachment metadata, like discord.js's AttachmentPayload."
+		},
+		{
+			name: 'AuditLogChange',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AuditLogChange',
+			summary: "A change recorded by an audit log entry, like discord.js's AuditLogChange."
+		},
+		{
+			name: 'AutoModerationAction',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationAction',
+			summary: "An action of an auto moderation rule, like discord.js's AutoModerationAction."
+		},
+		{
+			name: 'AutoModerationActionExecutionRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationActionExecutionRelations',
+			summary: 'The relations of an AutoModerationActionExecution, resolved from the cache.'
+		},
+		{
+			name: 'AutoModerationActionMetadata',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationActionMetadata',
+			summary: "The metadata of an auto moderation action, like discord.js's AutoModerationActionMetadata."
+		},
+		{
+			name: 'AutoModerationActionOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationActionOptions',
+			summary: "An action to set on an auto moderation rule, like discord.js's AutoModerationActionOptions."
+		},
+		{
+			name: 'AutoModerationRuleCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleCreateOptions',
+			summary: 'The options to create an auto moderation rule with.'
+		},
+		{
+			name: 'AutoModerationRuleEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleEditOptions',
+			summary: 'The fields of an auto moderation rule that can be edited.'
+		},
+		{
+			name: 'AutoModerationRuleRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationRuleRelations',
+			summary: "The relations of an AutoModerationRule, resolved from the cache by the guild's rule manager."
+		},
+		{
+			name: 'AutoModerationTriggerMetadata',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AutoModerationTriggerMetadata',
+			summary: "The settings of an auto moderation rule's trigger, like discord.js's AutoModerationTriggerMetadata."
+		},
+		{
+			name: 'AvatarDecorationData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/AvatarDecorationData',
+			summary: "The avatar decoration of a user or member, like discord.js's AvatarDecorationData."
+		},
+		{
+			name: 'BanOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/BanOptions',
+			summary: 'The options to ban users with.'
+		},
+		{
+			name: 'BaseApplicationCommandPermissionsOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/BaseApplicationCommandPermissionsOptions',
+			summary: 'The options every method of the permissions manager takes to say where to act.'
+		},
+		{
+			name: 'BaseMessageOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/BaseMessageOptions',
+			summary: 'The options every message payload accepts, when creating and editing.'
+		},
+		{
+			name: 'Cache',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/Cache',
+			summary: 'The cache of a manager, as in the discord.js RFC #11426: it hands out structures.'
+		},
+		{
+			name: 'CacheConstructorOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CacheConstructorOptions',
+			summary:
+				"What a CacheConstructor receives as its third argument: how the client keys and refreshes the entity, and the entity's cacheOptions."
+		},
+		{
+			name: 'CacheEntityOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions',
+			summary: "The options of the cache of one entity, set per entity through the client's cacheOptions option."
+		},
+		{
+			name: 'CacheErrorContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CacheErrorContext',
+			summary: 'Where a cache failure reported by the cacheError event happened.'
+		},
+		{
+			name: 'CategoryCreateChannelOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CategoryCreateChannelOptions',
+			summary:
+				"The options to create a channel inside a category with: the guild channel's, minus its category and with no category type, as Discord does…"
+		},
+		{
+			name: 'ChannelInfoRequestOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ChannelInfoRequestOptions',
+			summary: 'The options to request the ephemeral info of the voice channels of a guild over the gateway with.'
+		},
+		{
+			name: 'ChannelPermissionsContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ChannelPermissionsContext',
+			summary: 'What computeChannelPermissions needs to know about a channel and whom the permissions are for.'
+		},
+		{
+			name: 'ChannelPosition',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ChannelPosition',
+			summary: "A channel's new position, for GuildChannelManager.setPositions."
+		},
+		{
+			name: 'ChannelRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ChannelRelations',
+			summary: 'The relations of a channel, resolved from the cache by client.channels and client.threads.'
+		},
+		{
+			name: 'CleanContentNames',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CleanContentNames',
+			summary: 'The names to replace mentions with in cleanContent, by ID.'
+		},
+		{
+			name: 'ClientApplicationEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ClientApplicationEditOptions',
+			summary: 'The options to edit the application with.'
+		},
+		{
+			name: 'ClientUserEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ClientUserEditOptions',
+			summary: 'The options to edit the bot user with.'
+		},
+		{
+			name: 'Collectibles',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/Collectibles',
+			summary: "The collectibles of a user or member, like discord.js's Collectibles."
+		},
+		{
+			name: 'CollectionCacheOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CollectionCacheOptions',
+			summary: 'The options of CollectionCache.'
+		},
+		{
+			name: 'CreateDMOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CreateDMOptions',
+			summary: 'The options to open a direct message channel with.'
+		},
+		{
+			name: 'CrosspostedChannel',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/CrosspostedChannel',
+			summary: "A channel a crossposted message was published in, like discord.js's CrosspostedChannel."
+		},
+		{
+			name: 'DispatchHandler',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/DispatchHandler',
+			summary: 'Describes how a gateway dispatch turns into a GatewayEventMap event.'
+		},
+		{
+			name: 'DispatchQueueStats',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/DispatchQueueStats',
+			summary: 'A snapshot of a DispatchQueue.'
+		},
+		{
+			name: 'DispatchStateCodec',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/DispatchStateCodec',
+			summary:
+				'Carries the previous state a dispatch handler reads before the cache write (DispatchHandler#before) across processes: DispatchStateCodec.se…'
+		},
+		{
+			name: 'EmbedAssetData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/EmbedAssetData',
+			summary: "An image, thumbnail, or video of an embed, like discord.js's EmbedAssetData."
+		},
+		{
+			name: 'EmbedAuthorData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/EmbedAuthorData',
+			summary: "The author of an embed, like discord.js's EmbedAuthorData."
+		},
+		{
+			name: 'EmbedFooterData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/EmbedFooterData',
+			summary: "The footer of an embed, like discord.js's EmbedFooterData."
+		},
+		{
+			name: 'EntitlementCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/EntitlementCreateOptions',
+			summary: 'The options to create a test entitlement with.'
+		},
+		{
+			name: 'EntitlementFetchOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/EntitlementFetchOptions',
+			summary: 'The options to list the entitlements of the application with.'
+		},
+		{
+			name: 'EntitlementRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/EntitlementRelations',
+			summary: 'The relations of an Entitlement, resolved from the cache.'
+		},
+		{
+			name: 'EntityStoreCacheOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/EntityStoreCacheOptions',
+			summary: 'The options of EntityStoreCache.'
+		},
+		{
+			name: 'FetchApplicationCommandOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandOptions',
+			summary: 'The options to fetch application commands with.'
+		},
+		{
+			name: 'FetchApplicationCommandPermissionsOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/FetchApplicationCommandPermissionsOptions',
+			summary: 'The options to fetch permissions with.'
+		},
+		{
+			name: 'FetchArchivedThreadsOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/FetchArchivedThreadsOptions',
+			summary: 'The options to fetch archived threads with.'
+		},
+		{
+			name: 'FetchedThreads',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/FetchedThreads',
+			summary: "Threads fetched in bulk, with the bot's membership of each."
+		},
+		{
+			name: 'FetchOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/FetchOptions',
+			summary: 'The options to fetch an entity with.'
+		},
+		{
+			name: 'FilterByLifetimeOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/FilterByLifetimeOptions',
+			summary: 'The options of Sweepers.filterByLifetime.'
+		},
+		{
+			name: 'ForumThreadCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ForumThreadCreateOptions',
+			summary: "The options to create a post of a forum or media channel with, like discord.js's GuildForumThreadCreateOptions."
+		},
+		{
+			name: 'ForwardOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ForwardOptions',
+			summary: 'The message a message forwards.'
+		},
+		{
+			name: 'GatewayCacheConfig',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GatewayCacheConfig',
+			summary: 'How the cache of the application answers, for the types of the getters reading it.'
+		},
+		{
+			name: 'GatewayClientDestroyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GatewayClientDestroyOptions',
+			summary: 'Options for disconnecting the gateway shards.'
+		},
+		{
+			name: 'GatewayClientMessageDefaults',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GatewayClientMessageDefaults',
+			summary: "The message defaults read from the client's options."
+		},
+		{
+			name: 'GatewayClientOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GatewayClientOptions',
+			summary: "The message defaults read from the client's options."
+		},
+		{
+			name: 'GatewayClientStartOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GatewayClientStartOptions',
+			summary: 'Options for loading pieces and starting both transports.'
+		},
+		{
+			name: 'GatewayEventMap',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GatewayEventMap',
+			summary: "The events a GatewayClient emits on top of the base Client's ones, and their arguments."
+		},
+		{
+			name: 'GuildAuditLogs',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildAuditLogs',
+			summary: "A page of a guild's audit log, with the entities its entries refer to."
+		},
+		{
+			name: 'GuildAuditLogsEntryRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildAuditLogsEntryRelations',
+			summary: 'The relations of a GuildAuditLogsEntry: the users of the audit log page, or of the cache.'
+		},
+		{
+			name: 'GuildAuditLogsFetchOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildAuditLogsFetchOptions',
+			summary: "The options to fetch a page of a guild's audit log with."
+		},
+		{
+			name: 'GuildBanListOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildBanListOptions',
+			summary: 'The options to list the bans of a guild with.'
+		},
+		{
+			name: 'GuildBanRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildBanRelations',
+			summary: "The relations of a GuildBan, resolved from the cache by the guild's ban manager."
+		},
+		{
+			name: 'GuildChannelCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildChannelCreateOptions',
+			summary: 'The options to create a guild channel with.'
+		},
+		{
+			name: 'GuildChannelEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildChannelEditOptions',
+			summary: 'The fields of a guild channel that can be edited.'
+		},
+		{
+			name: 'GuildEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildEditOptions',
+			summary: 'The options to edit a guild with.'
+		},
+		{
+			name: 'GuildEmojiCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildEmojiCreateOptions',
+			summary: 'The options to create an emoji with.'
+		},
+		{
+			name: 'GuildEmojiEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildEmojiEditOptions',
+			summary: 'The options to edit an emoji with.'
+		},
+		{
+			name: 'GuildEmojiRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildEmojiRelations',
+			summary: "The relations of a GuildEmoji, resolved from the cache by the guild's emoji manager."
+		},
+		{
+			name: 'GuildForumTag',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildForumTag',
+			summary: "A tag of a forum or media channel, like discord.js's GuildForumTag."
+		},
+		{
+			name: 'GuildForumTagEmoji',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildForumTagEmoji',
+			summary: "The emoji of a forum tag or a forum's default reaction: its ID for a custom emoji, its name for a unicode one."
+		},
+		{
+			name: 'GuildForumTagOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildForumTagOptions',
+			summary: "A forum tag to set: an existing one (with its ID) or a new one, like discord.js's GuildForumTagData."
+		},
+		{
+			name: 'GuildIncidentActionsOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildIncidentActionsOptions',
+			summary: 'Until when to pause invites and direct messages in a guild, at most 24 hours ahead; null resumes them.'
+		},
+		{
+			name: 'GuildMemberAddOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildMemberAddOptions',
+			summary: 'The options to add a user to a guild with, through an OAuth2 access token with the guilds.join scope.'
+		},
+		{
+			name: 'GuildMemberEditMeOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildMemberEditMeOptions',
+			summary: "The options to edit the bot's own member with."
+		},
+		{
+			name: 'GuildMemberEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildMemberEditOptions',
+			summary: 'The options to edit a member with.'
+		},
+		{
+			name: 'GuildMemberRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildMemberRelations',
+			summary: 'The relations of a GuildMember, resolved from the cache by client.members.'
+		},
+		{
+			name: 'GuildMembersRequestOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildMembersRequestOptions',
+			summary: 'The options to request the members of a guild over the gateway with.'
+		},
+		{
+			name: 'GuildOnboardingEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildOnboardingEditOptions',
+			summary: 'The options to edit an onboarding with.'
+		},
+		{
+			name: 'GuildOnboardingPromptData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildOnboardingPromptData',
+			summary: 'A question of an onboarding.'
+		},
+		{
+			name: 'GuildOnboardingPromptOptionData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildOnboardingPromptOptionData',
+			summary: 'An answer of an onboarding prompt.'
+		},
+		{
+			name: 'GuildOnboardingRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildOnboardingRelations',
+			summary:
+				'The relations of a GuildOnboarding, shared with its prompts and their options: its guild, and the channels, roles, and custom emojis its pr…'
+		},
+		{
+			name: 'GuildPermissionsContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildPermissionsContext',
+			summary: 'What computeGuildPermissions needs to know about a member of a guild.'
+		},
+		{
+			name: 'GuildPruneOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildPruneOptions',
+			summary: 'The options to prune the inactive members of a guild with.'
+		},
+		{
+			name: 'GuildRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildRelations',
+			summary: 'The relations of a Guild: its special channels, resolved from the cache by client.guilds.'
+		},
+		{
+			name: 'GuildScheduledEventCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventCreateOptions',
+			summary: 'The options to create a scheduled event with.'
+		},
+		{
+			name: 'GuildScheduledEventEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventEditOptions',
+			summary: 'The fields of a scheduled event that can be edited.'
+		},
+		{
+			name: 'GuildScheduledEventEntityMetadata',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventEntityMetadata',
+			summary: "The metadata of a scheduled event, like discord.js's GuildScheduledEventEntityMetadata."
+		},
+		{
+			name: 'GuildScheduledEventRecurrenceRule',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRecurrenceRule',
+			summary: "The recurrence rule of a scheduled event, like discord.js's GuildScheduledEventRecurrenceRule."
+		},
+		{
+			name: 'GuildScheduledEventRecurrenceRuleOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRecurrenceRuleOptions',
+			summary: "The recurrence rule to set on a scheduled event, like discord.js's GuildScheduledEventRecurrenceRuleOptions."
+		},
+		{
+			name: 'GuildScheduledEventRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventRelations',
+			summary: "The relations of a GuildScheduledEvent, resolved from the cache by the guild's event manager."
+		},
+		{
+			name: 'GuildScheduledEventSubscriber',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscriber',
+			summary: 'A user subscribed to a scheduled event.'
+		},
+		{
+			name: 'GuildScheduledEventSubscribersOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildScheduledEventSubscribersOptions',
+			summary: 'The options to fetch the subscribers of an event with.'
+		},
+		{
+			name: 'GuildSearchMessagesOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesOptions',
+			summary: 'The options of GuildManager.searchMessages, camel-cased and with the IDs as resolvables.'
+		},
+		{
+			name: 'GuildSearchMessagesResult',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesResult',
+			summary: 'The result of GuildManager.searchMessages.'
+		},
+		{
+			name: 'GuildSoundboardSoundsRequestOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildSoundboardSoundsRequestOptions',
+			summary: 'The options to request the soundboard sounds of guilds over the gateway with.'
+		},
+		{
+			name: 'GuildStickerCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildStickerCreateOptions',
+			summary: 'The options to upload a sticker with.'
+		},
+		{
+			name: 'GuildStickerEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildStickerEditOptions',
+			summary: 'The options to edit a sticker with.'
+		},
+		{
+			name: 'GuildTemplateCreateGuildOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildTemplateCreateGuildOptions',
+			summary: 'The options to create a guild from a template with.'
+		},
+		{
+			name: 'GuildTemplateCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildTemplateCreateOptions',
+			summary: 'The options to create a template with.'
+		},
+		{
+			name: 'GuildTemplateEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildTemplateEditOptions',
+			summary: 'The options to edit a template with.'
+		},
+		{
+			name: 'GuildTemplateRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildTemplateRelations',
+			summary: 'The relations of a GuildTemplate: its source guild, when cached, and its creator.'
+		},
+		{
+			name: 'GuildWelcomeScreenEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildWelcomeScreenEditOptions',
+			summary: 'The options to edit a welcome screen with.'
+		},
+		{
+			name: 'GuildWidgetSettings',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettings',
+			summary: 'The widget settings of a guild.'
+		},
+		{
+			name: 'GuildWidgetSettingsEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettingsEditOptions',
+			summary: 'The options to edit the widget settings of a guild with.'
+		},
+		{
+			name: 'HasApplicationCommandPermissionsOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/HasApplicationCommandPermissionsOptions',
+			summary: 'The options to check for a permission with.'
+		},
+		{
+			name: 'IncidentActions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/IncidentActions',
+			summary: "The incident actions of a guild, like discord.js's IncidentActions."
+		},
+		{
+			name: 'IntegrationRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/IntegrationRelations',
+			summary: "The relations of an Integration, resolved from the cache by the guild's integration manager."
+		},
+		{
+			name: 'InviteCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/InviteCreateOptions',
+			summary: 'The options to create an invite with.'
+		},
+		{
+			name: 'InviteRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/InviteRelations',
+			summary: 'The relations of an invite, resolved from the cache by client.guilds.invites().'
+		},
+		{
+			name: 'JSONEncodable',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/JSONEncodable',
+			summary: 'Anything with a toJSON method, like the builders of @discordjs/builders and the structures of this package.'
+		},
+		{
+			name: 'MakeErrorOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MakeErrorOptions',
+			summary: 'The plain information of an error, e.g.'
+		},
+		{
+			name: 'MentionsHasOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MentionsHasOptions',
+			summary: 'The options of MessageMentions.has.'
+		},
+		{
+			name: 'MessageActivity',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageActivity',
+			summary: "The Rich Presence activity of a message, like discord.js's MessageActivity."
+		},
+		{
+			name: 'MessageCall',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageCall',
+			summary: "The call a message is about, like discord.js's MessageCall."
+		},
+		{
+			name: 'MessageCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageCreateOptions',
+			summary: 'The options to send a message with.'
+		},
+		{
+			name: 'MessageEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageEditOptions',
+			summary: 'The options to edit a message with.'
+		},
+		{
+			name: 'MessageInteractionMetadata',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageInteractionMetadata',
+			summary: "The metadata of the interaction a message answers, like discord.js's MessageInteractionMetadata."
+		},
+		{
+			name: 'MessageListOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageListOptions',
+			summary: 'The options to list the messages of a channel with.'
+		},
+		{
+			name: 'MessageMentionsRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageMentionsRelations',
+			summary: 'The mentioned entities, resolved from the cache by client.messages, each by ID.'
+		},
+		{
+			name: 'MessagePayloadContext',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessagePayloadContext',
+			summary: 'The extra flags telling a MessagePayload what its target accepts.'
+		},
+		{
+			name: 'MessageReactionEventDetails',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageReactionEventDetails',
+			summary: 'What a reaction event says besides the reaction and the user.'
+		},
+		{
+			name: 'MessageReactionRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageReactionRelations',
+			summary: 'The relations of a MessageReaction: its message, and its cached custom emoji.'
+		},
+		{
+			name: 'MessageReference',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageReference',
+			summary: "What a message references: the message it replies to or forwards, like discord.js's MessageReference."
+		},
+		{
+			name: 'MessageRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageRelations',
+			summary: 'The relations of a Message, resolved from the cache by client.messages.'
+		},
+		{
+			name: 'MessageThreadCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MessageThreadCreateOptions',
+			summary: 'The options to start a thread from a message with.'
+		},
+		{
+			name: 'MultiDispatchHandler',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/MultiDispatchHandler',
+			summary: 'Describes how a gateway dispatch turns into any number of GatewayEventMap events, e.g.'
+		},
+		{
+			name: 'NameplateData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/NameplateData',
+			summary: "The nameplate of a user or member, like discord.js's NameplateData."
+		},
+		{
+			name: 'NullCacheOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/NullCacheOptions',
+			summary: 'The options of NullCache.'
+		},
+		{
+			name: 'OverwriteData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/OverwriteData',
+			summary: 'A permission overwrite to set on a channel: whom it targets, and what it allows and denies.'
+		},
+		{
+			name: 'PartialEmoji',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PartialEmoji',
+			summary: 'An emoji parsed from a string: a Unicode emoji has no id.'
+		},
+		{
+			name: 'PartialEmojiOnlyId',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PartialEmojiOnlyId',
+			summary: 'An emoji known only by its ID.'
+		},
+		{
+			name: 'PartialMessage',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PartialMessage',
+			summary:
+				"A message built from its IDs alone, like discord.js's PartialMessage: partial is true, and content, author and cleanContent may be missing."
+		},
+		{
+			name: 'PermissionOverwriteEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PermissionOverwriteEditOptions',
+			summary: 'The options of PermissionOverwriteManager.create and PermissionOverwriteManager.edit.'
+		},
+		{
+			name: 'PermissionOverwritesRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PermissionOverwritesRelations',
+			summary: 'The relations of a PermissionOverwrites: the channel it belongs to.'
+		},
+		{
+			name: 'PinnedMessage',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PinnedMessage',
+			summary: 'A pinned message, with the time it was pinned at.'
+		},
+		{
+			name: 'PollAnswerRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PollAnswerRelations',
+			summary: 'The relations of a PollAnswer: its poll, and its cached custom emoji.'
+		},
+		{
+			name: 'PollCreateData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PollCreateData',
+			summary: "A poll to create, in camel case like discord.js's PollCreateData."
+		},
+		{
+			name: 'PollRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PollRelations',
+			summary: "The relations of a Poll: the message it belongs to, and that message's channel and cached custom emojis."
+		},
+		{
+			name: 'Positioned',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/Positioned',
+			summary: 'Something Discord sorts by position and ID: a role or a guild channel.'
+		},
+		{
+			name: 'PresenceData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PresenceData',
+			summary: 'The presence to set for the bot user.'
+		},
+		{
+			name: 'PresenceRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/PresenceRelations',
+			summary: 'The relations of a Presence, resolved from the cache by client.presences.'
+		},
+		{
+			name: 'RemoveApplicationCommandPermissionsOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RemoveApplicationCommandPermissionsOptions',
+			summary: 'The options to remove permissions with.'
+		},
+		{
+			name: 'ReplyOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ReplyOptions',
+			summary: 'The message a message replies to.'
+		},
+		{
+			name: 'ResolvableData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ResolvableData',
+			summary:
+				'The data transformResolved resolves: each entry is either an ID, read from the cache, or raw API data, resolved to its cached structure or…'
+		},
+		{
+			name: 'ResolvedFile',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ResolvedFile',
+			summary: 'The contents of a resolved file, and its content type when known (e.g.'
+		},
+		{
+			name: 'ResolvedMessagePayload',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ResolvedMessagePayload',
+			summary: 'The body and files a MessagePayload resolved to, ready for @discordjs/core.'
+		},
+		{
+			name: 'RoleColors',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RoleColors',
+			summary:
+				'The colors of a role: primaryColor alone for a solid color, with secondaryColor for a gradient, and with tertiaryColor for the holographic…'
+		},
+		{
+			name: 'RoleColorsEditResolvable',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RoleColorsEditResolvable',
+			summary: 'The colors of a role to edit: see RoleColorsResolvable.'
+		},
+		{
+			name: 'RoleColorsResolvable',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RoleColorsResolvable',
+			summary:
+				'The colors of a role: primaryColor alone for a solid color, with secondaryColor for a gradient, and with tertiaryColor for the holographic…'
+		},
+		{
+			name: 'RoleEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RoleEditOptions',
+			summary: 'The options to create or edit a role with.'
+		},
+		{
+			name: 'RolePosition',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RolePosition',
+			summary: 'A role and the position to move it to.'
+		},
+		{
+			name: 'RoleSubscriptionData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RoleSubscriptionData',
+			summary: "The role subscription a message is about, like discord.js's RoleSubscriptionData."
+		},
+		{
+			name: 'RoleTagData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/RoleTagData',
+			summary: "The tags of a role, like discord.js's RoleTagData: each is only set when it applies."
+		},
+		{
+			name: 'ScopedCache',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ScopedCache',
+			summary:
+				'The cache of the manager of one channel or thread: the keyed methods of the Cache it reads, taking the ID of the entity alone instead of th…'
+		},
+		{
+			name: 'SetPositionOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SetPositionOptions',
+			summary: 'The options to move a channel or role among its siblings with.'
+		},
+		{
+			name: 'SharedClientTheme',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SharedClientTheme',
+			summary: "The custom client theme shared via a message, camel-cased like discord.js's SharedClientTheme."
+		},
+		{
+			name: 'SoundboardSoundCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SoundboardSoundCreateOptions',
+			summary: 'The options to upload a soundboard sound with.'
+		},
+		{
+			name: 'SoundboardSoundEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SoundboardSoundEditOptions',
+			summary: 'The fields of a soundboard sound that can be edited.'
+		},
+		{
+			name: 'SoundboardSoundRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SoundboardSoundRelations',
+			summary: "The relations of a SoundboardSound, resolved from the cache by the guild's soundboard manager."
+		},
+		{
+			name: 'StageInstanceCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/StageInstanceCreateOptions',
+			summary: 'The options to start a stage with.'
+		},
+		{
+			name: 'StageInstanceEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/StageInstanceEditOptions',
+			summary: 'The fields of a stage instance that can be edited.'
+		},
+		{
+			name: 'StageInstanceRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/StageInstanceRelations',
+			summary: "The relations of a StageInstance, resolved from the cache by the guild's stage instance manager."
+		},
+		{
+			name: 'StickerRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/StickerRelations',
+			summary: "The relations of a Sticker, resolved from the cache by the guild's sticker manager."
+		},
+		{
+			name: 'SubscriptionFetchOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SubscriptionFetchOptions',
+			summary: 'The options to list the subscriptions to a SKU with.'
+		},
+		{
+			name: 'SupportingResolvedData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SupportingResolvedData',
+			summary: 'The context transformResolved resolves data in.'
+		},
+		{
+			name: 'SweepableEntities',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SweepableEntities',
+			summary: 'The structures held by the caches Sweepers can sweep, by entity.'
+		},
+		{
+			name: 'SweeperFilterOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SweeperFilterOptions',
+			summary: 'Sweeps an entity with a filter, every interval seconds.'
+		},
+		{
+			name: 'SweeperLifetimeOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/SweeperLifetimeOptions',
+			summary: 'Sweeps an entity every interval seconds, evicting the entries older than lifetime seconds.'
+		},
+		{
+			name: 'TeamMemberRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/TeamMemberRelations',
+			summary: 'The relations of a TeamMember, set by its Team.'
+		},
+		{
+			name: 'TextThreadCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/TextThreadCreateOptions',
+			summary: "The options to create a thread of a text or announcement channel with, like discord.js's GuildTextThreadCreateOptions."
+		},
+		{
+			name: 'ThreadCreateBaseOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ThreadCreateBaseOptions',
+			summary: 'The options both kinds of threads are created with.'
+		},
+		{
+			name: 'ThreadMemberListOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ThreadMemberListOptions',
+			summary: 'The options to list the members of a thread with.'
+		},
+		{
+			name: 'ThreadMemberRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/ThreadMemberRelations',
+			summary: 'The relations of a ThreadMember, resolved from the cache by client.threadMembers.'
+		},
+		{
+			name: 'TransformedResolvedData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/TransformedResolvedData',
+			summary: 'The structures transformResolved resolved, by ID.'
+		},
+		{
+			name: 'TypingRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/TypingRelations',
+			summary: 'The relations of a Typing, resolved from the cache by the typingStart event.'
+		},
+		{
+			name: 'UserPrimaryGuild',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/UserPrimaryGuild',
+			summary: "The primary guild of a user, whose tag they display, like discord.js's UserPrimaryGuild."
+		},
+		{
+			name: 'VoiceStateEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/VoiceStateEditOptions',
+			summary: 'The options to edit a voice state with, only applicable in stage channels.'
+		},
+		{
+			name: 'VoiceStateRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/VoiceStateRelations',
+			summary: 'The relations of a VoiceState, resolved from the cache by client.voiceStates.'
+		},
+		{
+			name: 'WebhookCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookCreateOptions',
+			summary: 'The options to create a webhook with.'
+		},
+		{
+			name: 'WebhookDataIdWithToken',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookDataIdWithToken',
+			summary: 'The ID and token of a webhook.'
+		},
+		{
+			name: 'WebhookEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookEditOptions',
+			summary: 'The options to edit a webhook with.'
+		},
+		{
+			name: 'WebhookMessageCreateOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookMessageCreateOptions',
+			summary: 'The options to send a message through a webhook with.'
+		},
+		{
+			name: 'WebhookMessageEditOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookMessageEditOptions',
+			summary: 'The options to edit a message sent by a webhook with.'
+		},
+		{
+			name: 'WebhookMessageOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookMessageOptions',
+			summary: 'The options only webhooks accept.'
+		},
+		{
+			name: 'WebhookRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookRelations',
+			summary: 'The relations of a Webhook, resolved from the cache by client.webhooks.'
+		},
+		{
+			name: 'WebhookThreadOptions',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WebhookThreadOptions',
+			summary: "The thread a webhook message is in, for webhooks of forum and media channels, or of a thread's parent."
+		},
+		{
+			name: 'WelcomeChannel',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WelcomeChannel',
+			summary: 'A channel suggested by a welcome screen.'
+		},
+		{
+			name: 'WelcomeChannelData',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WelcomeChannelData',
+			summary: 'A channel to suggest in a welcome screen.'
+		},
+		{
+			name: 'WelcomeScreenRelations',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WelcomeScreenRelations',
+			summary: 'The relations of a WelcomeScreen: its guild, and the channels and emojis of its welcome channels, when cached.'
+		},
+		{
+			name: 'WrappedDispatch',
+			kind: 'interface',
+			href: '/documentation/api/plugin-gateway/interfaces/WrappedDispatch',
+			summary: 'The dispatch a DispatchWrapper wraps.'
+		},
+		{ name: 'ActivityFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/ActivityFlagsResolvable' },
+		{ name: 'ActivityFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/ActivityFlagsString' },
+		{
+			name: 'AllowedPartial',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AllowedPartial',
+			summary: 'The structures that can be partial, see Partialize.'
+		},
+		{
+			name: 'AnnouncementChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AnnouncementChannelResolvable',
+			summary: 'An announcement channel, or its ID.'
+		},
+		{
+			name: 'AnonymousGuildData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AnonymousGuildData',
+			summary: 'The raw fields every guild-like payload carries, from the partial guilds of invites to full guilds.'
+		},
+		{
+			name: 'AnyChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AnyChannel',
+			summary: 'Any of the channel structures ChannelManager builds.'
+		},
+		{
+			name: 'AnyComponent',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AnyComponent',
+			summary: 'Any component of this package.'
+		},
+		{
+			name: 'AnyDispatchHandler',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AnyDispatchHandler',
+			summary: 'A DispatchHandler for the dispatch of type Type, emitting any event.'
+		},
+		{
+			name: 'AnyThreadChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AnyThreadChannel',
+			summary: 'Any of the thread structures ThreadManager builds.'
+		},
+		{
+			name: 'APIAnyComponent',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/APIAnyComponent',
+			summary: 'The raw data of any component, in a message or in a modal.'
+		},
+		{
+			name: 'ApplicationCommandDataResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandDataResolvable',
+			summary: 'The data to create an application command with: camel-cased data, or raw or serializable (a builder).'
+		},
+		{
+			name: 'ApplicationCommandOptionResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandOptionResolvable',
+			summary: 'An option to give an application command: camel-cased data, or the raw API option a builder produces.'
+		},
+		{
+			name: 'ApplicationCommandPermissionIdResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandPermissionIdResolvable',
+			summary: 'Whom an application command permission targets: a channel, a role, or a user.'
+		},
+		{
+			name: 'ApplicationCommandPermissions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandPermissions',
+			summary: 'A permission of an application command: whether a role, user, or channel may use it.'
+		},
+		{
+			name: 'ApplicationCommandResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationCommandResolvable',
+			summary: 'An application command, a raw one, or its ID.'
+		},
+		{
+			name: 'ApplicationData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationData',
+			summary: 'The raw fields of an application: its ID, and any of the others.'
+		},
+		{
+			name: 'ApplicationEmojiResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationEmojiResolvable',
+			summary: 'An application emoji, or its ID.'
+		},
+		{ name: 'ApplicationFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/ApplicationFlagsResolvable' },
+		{ name: 'ApplicationFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/ApplicationFlagsString' },
+		{
+			name: 'ApplicationIntegrationTypesConfig',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationIntegrationTypesConfig',
+			summary: 'The install parameters of an application for each integration type (guild or user install).'
+		},
+		{
+			name: 'ApplicationResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ApplicationResolvable',
+			summary: "An application, an activity of one, or the application's ID."
+		},
+		{ name: 'AttachmentFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/AttachmentFlagsResolvable' },
+		{ name: 'AttachmentFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/AttachmentFlagsString' },
+		{
+			name: 'AttachmentResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AttachmentResolvable',
+			summary: 'A file to attach to a message: a RawFile of @discordjs/rest, an AttachmentPayload, anything with a toJSON returning one (e.g.'
+		},
+		{
+			name: 'AuditLogActionType',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AuditLogActionType',
+			summary: "Whether an audit log action created, deleted, or updated something, like discord.js's actionType."
+		},
+		{
+			name: 'AutoModerationRuleResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AutoModerationRuleResolvable',
+			summary: 'An auto moderation rule, or its ID.'
+		},
+		{
+			name: 'AutoModerationTriggerMetadataOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/AutoModerationTriggerMetadataOptions',
+			summary: "The trigger settings to set on an auto moderation rule, like discord.js's AutoModerationTriggerMetadataOptions."
+		},
+		{
+			name: 'Base64Resolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/Base64Resolvable',
+			summary: 'Data resolving to a base64 data URI, typically to upload an image: its contents, or the data URI itself.'
+		},
+		{
+			name: 'BufferResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/BufferResolvable',
+			summary: 'Data a file can be resolved from: its contents, a path on disk, a URL, a stream, or a blob.'
+		},
+		{
+			name: 'ButtonComponent',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ButtonComponent',
+			summary: 'A button, of any style.'
+		},
+		{
+			name: 'CacheConstructor',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/CacheConstructor',
+			summary: "A class building the Cache of an entity, as in the discord.js RFC #11426: what the client's cacheConstructor option takes."
+		},
+		{
+			name: 'CacheGuard',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/CacheGuard',
+			summary: 'Runs a store operation, reporting its failure and resolving it to a fallback or rethrowing it.'
+		},
+		{
+			name: 'CacheRead',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/CacheRead',
+			summary:
+				'What a getter computed from the cache answers: the value itself with a synchronous cache, a promise of it with an asynchronous one.'
+		},
+		{
+			name: 'CacheReadOf',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/CacheReadOf',
+			summary: 'CacheRead for a given configuration.'
+		},
+		{
+			name: 'CategoryChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/CategoryChannelResolvable',
+			summary: 'A category channel, or its ID.'
+		},
+		{
+			name: 'ChannelDataType',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ChannelDataType',
+			summary: 'The raw data of a channel of type Type.'
+		},
+		{ name: 'ChannelFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/ChannelFlagsResolvable' },
+		{ name: 'ChannelFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/ChannelFlagsString' },
+		{
+			name: 'ChannelPermissionConstant',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ChannelPermissionConstant',
+			summary: 'The ID standing for every channel in the permissions of a command: the ID of the guild minus one.'
+		},
+		{
+			name: 'ChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ChannelResolvable',
+			summary: 'A channel, or its ID.'
+		},
+		{
+			name: 'ClientStatus',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ClientStatus',
+			summary: "The status of a presence on each of the user's platforms; a missing platform means the user is offline there."
+		},
+		{
+			name: 'ColorResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ColorResolvable',
+			summary: 'A color: a number, a #rrggbb string, an RGB tuple, the name of one of the Colors, or Random.'
+		},
+		{
+			name: 'CommandOptionDataTypeResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/CommandOptionDataTypeResolvable',
+			summary: 'The type of an application command option.'
+		},
+		{
+			name: 'ComponentEmojiResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ComponentEmojiResolvable',
+			summary: 'The emoji of a component: a raw one, or a Unicode emoji / custom emoji mention to parse.'
+		},
+		{
+			name: 'ComponentInContainer',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ComponentInContainer',
+			summary: 'A component of a container.'
+		},
+		{
+			name: 'ComponentInLabel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ComponentInLabel',
+			summary: 'A component of a label.'
+		},
+		{
+			name: 'ComponentInSection',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ComponentInSection',
+			summary: 'A component of a section.'
+		},
+		{
+			name: 'ComponentOf',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ComponentOf',
+			summary: 'The component createComponent builds for some raw component data, Component for the types this package has no class for.'
+		},
+		{
+			name: 'DateResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/DateResolvable',
+			summary: 'A date: a Date, a timestamp in milliseconds, or a string Date can parse.'
+		},
+		{
+			name: 'DefaultReactionEmoji',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/DefaultReactionEmoji',
+			summary: "The default reaction of a forum or media channel, like discord.js's DefaultReactionEmoji."
+		},
+		{
+			name: 'DispatchData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/DispatchData',
+			summary: 'The data of the dispatch of type Type.'
+		},
+		{
+			name: 'DispatchEventName',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/DispatchEventName',
+			summary: 'The name of any event that comes from a dispatch, and so reaches a worker replaying the forwarded ones.'
+		},
+		{
+			name: 'DispatchWrapper',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/DispatchWrapper',
+			summary:
+				'Wraps the processing of each dispatch, for code that has to run around it rather than react to an event: a tracing span the cache and liste…'
+		},
+		{
+			name: 'EmojiData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/EmojiData',
+			summary: 'The raw fields any emoji carries: a custom emoji has an ID, a Unicode one only a name.'
+		},
+		{
+			name: 'EmojiIdentifierResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/EmojiIdentifierResolvable',
+			summary:
+				'Anything identifying an emoji: a Unicode emoji, a custom emoji mention (<a:name:id>), a name:id pair, a bare emoji ID, or any object carryi…'
+		},
+		{
+			name: 'EmojiResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/EmojiResolvable',
+			summary: "An emoji structure, or a custom emoji's ID."
+		},
+		{
+			name: 'EntitlementResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/EntitlementResolvable',
+			summary: 'An entitlement, or its ID.'
+		},
+		{
+			name: 'GatewayClientDestroyHook',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GatewayClientDestroyHook',
+			summary:
+				'Runs at the end of GatewayClient.destroy, once the shards are disconnected and every dispatch is processed: flushing what is left to export…'
+		},
+		{
+			name: 'GatewayErrorArgs',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GatewayErrorArgs',
+			summary: 'The arguments the message of Code is formatted with, none when the message is a plain string.'
+		},
+		{
+			name: 'GatewayErrorCode',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GatewayErrorCode',
+			summary: 'The code of an error thrown by this package, set as its code.'
+		},
+		{
+			name: 'GatewayEventName',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GatewayEventName',
+			summary: 'The name of any of the events listed in GatewayEventMap.'
+		},
+		{
+			name: 'GatewayEventTuple',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GatewayEventTuple',
+			summary: 'An event with its arguments, as emitted by a MultiDispatchHandler.'
+		},
+		{
+			name: 'GatewayOnlyEventName',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GatewayOnlyEventName',
+			summary: 'The events only the process that connects to Discord emits: a worker replaying forwarded dispatches never sees them.'
+		},
+		{
+			name: 'GuildArgs',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildArgs',
+			summary:
+				"The arguments of a method of a manager the client holds for every guild: they start with the guild's ID, which a manager built for one guil…"
+		},
+		{
+			name: 'GuildAuditLogsResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildAuditLogsResolvable',
+			summary: 'An audit log event to filter by, or null for every event.'
+		},
+		{
+			name: 'GuildBanData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildBanData',
+			summary: 'The raw data of a ban: the banned user, the guild, and the reason when it came from the API.'
+		},
+		{
+			name: 'GuildBanResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildBanResolvable',
+			summary: 'A ban, or the banned user.'
+		},
+		{
+			name: 'GuildBasedChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildBasedChannel',
+			summary: 'Any channel that belongs to a guild, threads included.'
+		},
+		{
+			name: 'GuildChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildChannelResolvable',
+			summary: 'A guild channel (threads included), or its ID.'
+		},
+		{
+			name: 'GuildForumTagData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildForumTagData',
+			summary: "A forum tag to set: an existing one (with its ID) or a new one, camel-cased like discord.js's GuildForumTagData or raw."
+		},
+		{
+			name: 'GuildInvitableChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildInvitableChannel',
+			summary: 'Any guild channel an invite can be created for.'
+		},
+		{
+			name: 'GuildInvitableChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildInvitableChannelResolvable',
+			summary: 'A guild channel an invite can be created for, or its ID.'
+		},
+		{
+			name: 'GuildInviteResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildInviteResolvable',
+			summary: 'A guild invite code or URL.'
+		},
+		{ name: 'GuildMemberFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/GuildMemberFlagsResolvable' },
+		{ name: 'GuildMemberFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/GuildMemberFlagsString' },
+		{
+			name: 'GuildResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildResolvable',
+			summary: "A guild, something that belongs to a guild, or the guild's ID."
+		},
+		{
+			name: 'GuildScheduledEventResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildScheduledEventResolvable',
+			summary: 'A scheduled event, or its ID.'
+		},
+		{
+			name: 'GuildTemplateResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildTemplateResolvable',
+			summary: 'A guild template code or URL.'
+		},
+		{
+			name: 'GuildTextBasedChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildTextBasedChannel',
+			summary: 'Any channel of a guild messages can be sent in: TextBasedChannel without the direct message channels.'
+		},
+		{
+			name: 'GuildTextChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildTextChannelResolvable',
+			summary: 'A text or announcement channel, or its ID.'
+		},
+		{
+			name: 'GuildVoiceChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/GuildVoiceChannelResolvable',
+			summary: 'A voice or stage channel, or its ID.'
+		},
+		{
+			name: 'HexColorString',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/HexColorString',
+			summary: 'A #rrggbb color string.'
+		},
+		{
+			name: 'IdResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/IdResolvable',
+			summary: 'Something with an ID: a structure, or the ID itself.'
+		},
+		{
+			name: 'If',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/If',
+			summary: "True when Value is true, False when it is false, and both when it is boolean, like discord.js's If."
+		},
+		{
+			name: 'ImageResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ImageResolvable',
+			summary: 'An image to upload: a data URI, or anything resolveFile reads (contents, a path, a URL, a stream, a blob).'
+		},
+		{ name: 'IntentsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/IntentsResolvable' },
+		{ name: 'IntentsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/IntentsString' },
+		{
+			name: 'InviteData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/InviteData',
+			summary:
+				'The raw data of an invite, from the REST API (APIExtendedInvite, with a nested channel and guild) or from an INVITECREATE dispatch (with ch…'
+		},
+		{
+			name: 'InviteResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/InviteResolvable',
+			summary: 'An invite code or URL.'
+		},
+		{
+			name: 'LifetimeSweepableEntityName',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/LifetimeSweepableEntityName',
+			summary: 'The entities whose sweeper can be set with a lifetime instead of a filter.'
+		},
+		{
+			name: 'MessageActionRowComponent',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageActionRowComponent',
+			summary: "A component of a message's action row."
+		},
+		{
+			name: 'MessageActionRowComponentResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageActionRowComponentResolvable',
+			summary: "A component of a message's action row, raw or serializable (a builder)."
+		},
+		{ name: 'MessageFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/MessageFlagsResolvable' },
+		{ name: 'MessageFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/MessageFlagsString' },
+		{
+			name: 'MessageMentionOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageMentionOptions',
+			summary: "The mentions a message may ping, in camel case like discord.js's MessageMentionOptions, or the raw API object."
+		},
+		{
+			name: 'MessageMentionsData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageMentionsData',
+			summary: 'The raw fields of a message the mentions are read from.'
+		},
+		{
+			name: 'MessagePayloadOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessagePayloadOptions',
+			summary: 'The options of any message payload.'
+		},
+		{
+			name: 'MessagePayloadResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessagePayloadResolvable',
+			summary: 'Anything accepted where a message payload is expected: its content, its options, or a MessagePayload.'
+		},
+		{
+			name: 'MessageReactionData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageReactionData',
+			summary: 'The raw data of a reaction, with the message it belongs to.'
+		},
+		{
+			name: 'MessageReactionResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageReactionResolvable',
+			summary: 'A reaction, or the ID or identifier of its emoji.'
+		},
+		{
+			name: 'MessageResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageResolvable',
+			summary: 'A message, or its ID.'
+		},
+		{
+			name: 'MessageSnapshot',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageSnapshot',
+			summary: "A snapshot of a forwarded message, like discord.js's MessageSnapshot: only the data Discord keeps, the rest may be null."
+		},
+		{
+			name: 'MessageTarget',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageTarget',
+			summary: 'Anything with a client, e.g.'
+		},
+		{
+			name: 'MessageTopLevelComponent',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MessageTopLevelComponent',
+			summary: 'A top-level component of a message.'
+		},
+		{
+			name: 'MixinBase',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MixinBase',
+			summary: 'Any class, abstract or not.'
+		},
+		{
+			name: 'MixinTypes',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/MixinTypes',
+			summary: 'The members Mixins add to a class extending Base, for the interface declaring them.'
+		},
+		{
+			name: 'ModalActionRowComponent',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ModalActionRowComponent',
+			summary: "A component of a modal's action row."
+		},
+		{
+			name: 'NamesById',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/NamesById',
+			summary: 'Names by ID, as a map or a plain object.'
+		},
+		{
+			name: 'NonThreadGuildBasedChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/NonThreadGuildBasedChannel',
+			summary: 'Any channel that belongs to a guild, threads excluded.'
+		},
+		{
+			name: 'OmitPartialGroupDMChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/OmitPartialGroupDMChannel',
+			summary:
+				"A structure whose channel can not be a group direct message, like discord.js's OmitPartialGroupDMChannel: what the message actions resolve…"
+		},
+		{
+			name: 'OverwriteResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/OverwriteResolvable',
+			summary: 'A permission overwrite, or the data to create one.'
+		},
+		{
+			name: 'PartialGuildMember',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PartialGuildMember',
+			summary: 'A GuildMember known to be partial, see GuildMember.isPartial.'
+		},
+		{
+			name: 'Partialize',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/Partialize',
+			summary:
+				"A structure known to be partial, like discord.js's Partialize: partial is true, the nulled keys are null, the nullable ones may be, and the…"
+		},
+		{ name: 'Partials', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/Partials', summary: 'One of the Partials.' },
+		{
+			name: 'PermissionOverwriteOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteOptions',
+			summary: 'Permissions to change in an overwrite: true allows, false denies, null falls back to the role or @everyone.'
+		},
+		{
+			name: 'PermissionOverwriteResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PermissionOverwriteResolvable',
+			summary: 'A permission overwrite, or the role or user it targets.'
+		},
+		{
+			name: 'PermissionOverwritesData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PermissionOverwritesData',
+			summary: 'The raw data of a permission overwrite, with the channel it belongs to.'
+		},
+		{
+			name: 'PermissionResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PermissionResolvable',
+			summary: 'Anything a PermissionsBitField can be built from.'
+		},
+		{
+			name: 'PermissionsString',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PermissionsString',
+			summary: 'The name of any permission.'
+		},
+		{
+			name: 'PollAnswerData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PollAnswerData',
+			summary: "The raw data of a poll answer, with its vote count from the poll's results and the message it belongs to."
+		},
+		{
+			name: 'PollData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PollData',
+			summary: 'The raw data of a poll, with the message it belongs to.'
+		},
+		{
+			name: 'PresenceResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/PresenceResolvable',
+			summary: 'A presence, or the user it belongs to.'
+		},
+		{
+			name: 'RawAPIType',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/RawAPIType',
+			summary: 'The raw API data a structure wraps.'
+		},
+		{
+			name: 'RichPresenceAssetsData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/RichPresenceAssetsData',
+			summary: "The raw assets of an activity, with the ID of the activity's application."
+		},
+		{ name: 'RoleFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/RoleFlagsResolvable' },
+		{ name: 'RoleFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/RoleFlagsString' },
+		{
+			name: 'RolePermissionConstant',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/RolePermissionConstant',
+			summary: 'The ID standing for the @everyone role in the permissions of a command: the ID of the guild.'
+		},
+		{
+			name: 'RoleResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/RoleResolvable',
+			summary: 'A role, or its ID.'
+		},
+		{
+			name: 'RoleResolvables',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/RoleResolvables',
+			summary: 'Several roles: an array of RoleResolvables, or a Collection of roles, as discord.js takes them.'
+		},
+		{
+			name: 'SelectMenuComponent',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SelectMenuComponent',
+			summary: 'A select menu, of any type.'
+		},
+		{ name: 'SKUFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/SKUFlagsResolvable' },
+		{ name: 'SKUFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/SKUFlagsString' },
+		{
+			name: 'SKUResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SKUResolvable',
+			summary: 'A SKU, or its ID.'
+		},
+		{
+			name: 'SoundboardSoundResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SoundboardSoundResolvable',
+			summary: 'A soundboard sound, or its ID.'
+		},
+		{
+			name: 'StageChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/StageChannelResolvable',
+			summary: 'A stage channel, or its ID.'
+		},
+		{
+			name: 'StageInstanceResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/StageInstanceResolvable',
+			summary: 'A stage instance, or its ID.'
+		},
+		{
+			name: 'StickerResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/StickerResolvable',
+			summary: 'A sticker, or its ID.'
+		},
+		{
+			name: 'StructureCreator',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/StructureCreator',
+			summary: 'A function building a structure out of its raw API data.'
+		},
+		{
+			name: 'SubscriptionResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SubscriptionResolvable',
+			summary: 'A subscription, or its ID.'
+		},
+		{
+			name: 'SweepableEntityName',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SweepableEntityName',
+			summary: 'The name of an entity whose cache Sweepers can sweep.'
+		},
+		{
+			name: 'SweeperOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SweeperOptions',
+			summary: 'The sweepers of the client, by entity, see GatewayClientOptions.sweepers.'
+		},
+		{
+			name: 'SweepFilter',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SweepFilter',
+			summary: 'Decides whether a sweep evicts an entry: true evicts it.'
+		},
+		{
+			name: 'SweepFilterFactory',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SweepFilterFactory',
+			summary: 'Builds the SweepFilter of one sweep, called once per sweep so that it can read the clock.'
+		},
+		{
+			name: 'SystemChannelFlagsResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/SystemChannelFlagsResolvable'
+		},
+		{ name: 'SystemChannelFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/SystemChannelFlagsString' },
+		{
+			name: 'TextBasedChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/TextBasedChannel',
+			summary: 'Any channel messages can be sent in.'
+		},
+		{
+			name: 'TextBasedChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/TextBasedChannelResolvable',
+			summary: 'A channel messages can be sent in, or its ID.'
+		},
+		{
+			name: 'TextChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/TextChannelResolvable',
+			summary: 'A text channel, or its ID.'
+		},
+		{
+			name: 'ThreadChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ThreadChannel',
+			summary: 'Any thread channel.'
+		},
+		{
+			name: 'ThreadChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ThreadChannelResolvable',
+			summary: 'A thread channel, or its ID.'
+		},
+		{
+			name: 'ThreadCreateOptions',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ThreadCreateOptions',
+			summary:
+				'The options to create a thread with: those of a thread in a text or announcement channel, or with message, those of a post in a forum or me…'
+		},
+		{
+			name: 'ThreadMemberResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/ThreadMemberResolvable',
+			summary: 'A thread member, or the user it is.'
+		},
+		{ name: 'UserFlagsResolvable', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/UserFlagsResolvable' },
+		{ name: 'UserFlagsString', kind: 'type-alias', href: '/documentation/api/plugin-gateway/type-aliases/UserFlagsString' },
+		{
+			name: 'UserResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/UserResolvable',
+			summary: "A user, something identifying one (a member, a thread member, a message by its author), or the user's ID."
+		},
+		{
+			name: 'VoiceBasedChannel',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/VoiceBasedChannel',
+			summary: 'Any channel members can connect to.'
+		},
+		{
+			name: 'VoiceChannelResolvable',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/VoiceChannelResolvable',
+			summary: 'A voice channel, or its ID.'
+		},
+		{
+			name: 'WelcomeScreenData',
+			kind: 'type-alias',
+			href: '/documentation/api/plugin-gateway/type-aliases/WelcomeScreenData',
+			summary: 'The raw data of a welcome screen, with the ID of its guild.'
+		},
+		{
+			name: 'Colors',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/Colors',
+			summary: 'Named colors accepted by resolveColor.'
+		},
+		{
+			name: 'DefaultSweeperSettings',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/DefaultSweeperSettings',
+			summary:
+				'Ready-made GatewayClientOptions.sweepers, for a bot that only needs recent messages and threads: every hour, messages untouched for 30 minu…'
+		},
+		{
+			name: 'DispatchHandlers',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/DispatchHandlers',
+			summary: 'The table mapping every supported dispatch to its event.'
+		},
+		{
+			name: 'DispatchStateCodecs',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/DispatchStateCodecs',
+			summary: 'How the state of each dispatch type that has a before travels, see DispatchStateCodec.'
+		},
+		{
+			name: 'GatewayErrorCodes',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/GatewayErrorCodes',
+			summary: "Every GatewayErrorCode, keyed by itself, like discord.js's DiscordjsErrorCodes."
+		},
+		{
+			name: 'GatewayErrorMessages',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/GatewayErrorMessages',
+			summary: "The message of every GatewayErrorCode: a string, or a function formatting the arguments passed to the error's constructor."
+		},
+		{
+			name: 'gatewayOnlyEvents',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/gatewayOnlyEvents',
+			summary: 'The GatewayOnlyEventName events, for telling them from DispatchEventName ones at runtime.'
+		},
+		{
+			name: 'GuildTemplatesPattern',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/GuildTemplatesPattern',
+			summary: "Matches guild template URLs, capturing their code, like discord.js's GuildTemplate.GuildTemplatesPattern."
+		},
+		{
+			name: 'InvitesPattern',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/InvitesPattern',
+			summary: "Matches the invite URLs Discord hands out, capturing their code, like discord.js's BaseInvite.InvitesPattern."
+		},
+		{
+			name: 'kClient',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/kClient',
+			summary: 'The symbol under which a Structure stores the client that built it, see StructureMixin.client.'
+		},
+		{
+			name: 'kClone',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/kClone',
+			summary: 'The symbol of the method cloning a Structure, shared with @discordjs/structures.'
+		},
+		{
+			name: 'kData',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/kData',
+			summary: 'The symbol under which a Structure stores its raw API data, shared with @discordjs/structures.'
+		},
+		{
+			name: 'kPatch',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/kPatch',
+			summary: "The symbol of the method patching a Structure's raw data in place, shared with @discordjs/structures."
+		},
+		{
+			name: 'kRelations',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/kRelations',
+			summary:
+				"The symbol under which a Structure stores its relations: the structures its manager resolved from the cache, like a message's author or a c…"
+		},
+		{
+			name: 'MultiDispatchHandlers',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/MultiDispatchHandlers',
+			summary: 'The table of the dispatches that turn into several events, diffed against the cache.'
+		},
+		{
+			name: 'Partials',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/Partials',
+			summary: "The structures a GatewayClient builds partially when an event concerns one it has not cached, like discord.js's Partials."
+		},
+		{
+			name: 'SweepableEntityNames',
+			kind: 'variable',
+			href: '/documentation/api/plugin-gateway/variables/SweepableEntityNames',
+			summary: 'Every SweepableEntityName.'
+		},
+		{
+			name: 'basename',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/basename',
+			summary: "Gets the name of a path or URL without its query string, like discord.js's basename."
+		},
+		{
+			name: 'cacheWithLimits',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/cacheWithLimits',
+			summary: "Builds the GatewayClientOptions.cacheOptions bounding the caches of some entities, like discord.js's Options.cacheWithLimits."
+		},
+		{
+			name: 'cleanCodeBlockContent',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/cleanCodeBlockContent',
+			summary: 'Escapes the code block fences of a string, to put it in a code block.'
+		},
+		{
+			name: 'cleanContent',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/cleanContent',
+			summary:
+				"Replaces the mentions of a string with the text they display, like discord.js's cleanContent: @name, @role, #channel, /command, and :emoji:."
+		},
+		{
+			name: 'compareRolePositions',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/compareRolePositions',
+			summary: 'Compares two roles the way Discord orders them: by position, then by ID for equal positions (older first).'
+		},
+		{
+			name: 'computeCachedPermissionsIn',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/computeCachedPermissionsIn',
+			summary: 'computePermissionsIn from the cache alone, never the API: the channel, and the parent of a thread, are read from it.'
+		},
+		{
+			name: 'computeCachedTargetPermissions',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/computeCachedTargetPermissions',
+			summary: 'computeTargetPermissions from the cache alone, never the API.'
+		},
+		{
+			name: 'computeChannelPermissions',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/computeChannelPermissions',
+			summary:
+				"Applies a channel's permission overwrites to guild-wide permissions, the way Discord does: administrators keep every permission, then the @…"
+		},
+		{
+			name: 'computeGuildPermissions',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/computeGuildPermissions',
+			summary:
+				"Computes a member's guild-wide permissions, the way Discord does before channel overwrites apply: the owner and administrators get every pe…"
+		},
+		{
+			name: 'computePermissionsIn',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/computePermissionsIn',
+			summary: 'Computes the permissions of a member or role in a channel, fetching the channel if needed.'
+		},
+		{
+			name: 'computeTargetPermissions',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/computeTargetPermissions',
+			summary: "Computes the permissions of a member or role in a channel, given the channel's overwrites."
+		},
+		{
+			name: 'createChannel',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/createChannel',
+			summary: 'Builds the channel structure matching the type of a raw channel, BaseChannel for unknown types.'
+		},
+		{
+			name: 'createComponent',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/createComponent',
+			summary:
+				"Builds the component class matching some raw component data, like discord.js' createComponent: an ActionRow for an action row, a LinkButton…"
+		},
+		{
+			name: 'createInvite',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/createInvite',
+			summary: 'Builds the invite structure matching the type of a raw invite.'
+		},
+		{
+			name: 'discordSort',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/discordSort',
+			summary:
+				"Sorts roles or guild channels the way Discord displays them, like discord.js's discordSort: by position, then by ID, ascending for channels…"
+		},
+		{
+			name: 'dispatchPartition',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/dispatchPartition',
+			summary: 'Gets the partition a dispatch is processed in: its guild, else its channel (direct messages), else null.'
+		},
+		{
+			name: 'findComponentByCustomId',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/findComponentByCustomId',
+			summary: "Finds a component by its custom ID in a component tree, like discord.js' findComponentByCustomId."
+		},
+		{
+			name: 'findName',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/findName',
+			summary: "Finds the name of a file to attach: the name of a path or URL, or of a stream's path, file.jpg otherwise."
+		},
+		{
+			name: 'flatten',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/flatten',
+			summary:
+				"Flattens an object for serialization, like discord.js's flatten: maps become the array of their keys, arrays are flattened element by eleme…"
+		},
+		{
+			name: 'getGatewayClient',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/getGatewayClient',
+			summary: "Gets the GatewayClient registered in the framework's container."
+		},
+		{
+			name: 'getSortableGroupTypes',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/getSortableGroupTypes',
+			summary:
+				'Gets the channel types sorted together with a channel type: text-like channels are listed above voice ones, and categories on their own.'
+		},
+		{
+			name: 'initStructure',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/initStructure',
+			summary: "Sets up the members StructureMixin adds, from the constructor of a structure extending one of @discordjs/structures'."
+		},
+		{
+			name: 'isDeepEqual',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/isDeepEqual',
+			summary: 'Compares two JSON-like values structurally, regardless of key order.'
+		},
+		{
+			name: 'isThreadChannelType',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/isThreadChannelType',
+			summary: 'Whether a raw channel type belongs in the thread cache.'
+		},
+		{
+			name: 'makeError',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/makeError',
+			summary: 'Makes an error from its plain information.'
+		},
+		{
+			name: 'makePlainError',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/makePlainError',
+			summary: 'Gets the plain information of an error.'
+		},
+		{
+			name: 'Mixin',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/Mixin',
+			summary: "Copies the members of every mixin onto the prototype of target, the way @discordjs/structures' Mixin does."
+		},
+		{
+			name: 'moveElementInArray',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/moveElementInArray',
+			summary: 'Moves an element of an array in place.'
+		},
+		{
+			name: 'parseEmoji',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/parseEmoji',
+			summary: 'Parses an emoji out of a string: a Unicode emoji (URL-encoded or not), a custom emoji mention (<a:name:id>), or a name:id pair.'
+		},
+		{
+			name: 'parseWebhookURL',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/parseWebhookURL',
+			summary: 'Parses a webhook URL for its ID and token.'
+		},
+		{
+			name: 'RegisterAsDispatchListener',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/RegisterAsDispatchListener',
+			summary:
+				'Like RegisterAsGatewayListener, for an event that comes from a dispatch, but the listener only runs on one process: the workers replaying t…'
+		},
+		{
+			name: 'RegisterAsGatewayListener',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/RegisterAsGatewayListener',
+			summary: 'Class decorator that binds the decorated EventGatewayListener to a gateway event, so it does not need to declare a constructor.'
+		},
+		{
+			name: 'resolveBase64',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveBase64',
+			summary: 'Resolves contents to a base64 data URI.'
+		},
+		{
+			name: 'resolveCode',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveCode',
+			summary: 'Extracts a code from a string with a pattern capturing it, or returns the string itself when it does not match.'
+		},
+		{
+			name: 'resolveColor',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveColor',
+			summary: 'Resolves a ColorResolvable to its number.'
+		},
+		{
+			name: 'resolveFile',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveFile',
+			summary: 'Resolves a BufferResolvable to its contents: reads paths from disk, downloads URLs, and drains streams.'
+		},
+		{
+			name: 'resolveGuildEmoji',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveGuildEmoji',
+			summary: "Finds a custom emoji by its ID in the cache of every guild, like discord.js's resolveGuildEmoji."
+		},
+		{
+			name: 'resolveGuildTemplateCode',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveGuildTemplateCode',
+			summary: 'Resolves a guild template URL, or code, to the code.'
+		},
+		{
+			name: 'resolveId',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveId',
+			summary: 'Gets the ID of an IdResolvable.'
+		},
+		{
+			name: 'resolveImage',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveImage',
+			summary: 'Resolves an image to the base64 data URI Discord expects for avatars, icons, banners, and the like.'
+		},
+		{
+			name: 'resolveInviteCode',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveInviteCode',
+			summary: 'Resolves an invite URL, or code, to the code.'
+		},
+		{
+			name: 'resolveOverwriteOptions',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveOverwriteOptions',
+			summary: "Applies PermissionOverwriteOptions to an overwrite's allowed and denied permissions."
+		},
+		{
+			name: 'resolvePartialEmoji',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolvePartialEmoji',
+			summary: 'Resolves an emoji from anything EmojiIdentifierResolvable, without looking it up in a cache.'
+		},
+		{
+			name: 'resolveSKUId',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/resolveSKUId',
+			summary: 'Resolves a SKU, or its ID, to its ID.'
+		},
+		{ name: 'sameOverwrites', kind: 'function', href: '/documentation/api/plugin-gateway/functions/sameOverwrites' },
+		{
+			name: 'snakeCase',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/snakeCase',
+			summary:
+				"Converts a camel-cased key to snake case, like lodash's snakeCase on the keys discord.js passes it: byNWeekday becomes bynweekday, and a ke…"
+		},
+		{
+			name: 'snowflakeTimestamp',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/snowflakeTimestamp',
+			summary: 'Gets the timestamp, in milliseconds, a snowflake was created at.'
+		},
+		{
+			name: 'toAPIOverwrite',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/toAPIOverwrite',
+			summary: "Converts an OverwriteData to the API's shape."
+		},
+		{
+			name: 'toChannelBody',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/toChannelBody',
+			summary: "Converts GuildChannelEditOptions to the API's body, without lockPermissions which needs the parent."
+		},
+		{
+			name: 'toSnakeCase',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/toSnakeCase',
+			summary: "Transforms camel-cased keys into snake-cased keys, deeply, like discord.js's toSnakeCase."
+		},
+		{
+			name: 'transformAPIAuditLogChange',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIAuditLogChange',
+			summary: 'Transforms an API audit log change to a camel-cased variant, renaming oldvalue and newvalue.'
+		},
+		{
+			name: 'transformAPIAutoModerationAction',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIAutoModerationAction',
+			summary: "Transforms an API auto moderation action to a camel-cased variant, like discord.js's transformAPIAutoModerationAction."
+		},
+		{
+			name: 'transformAPIAutoModerationRuleTriggerMetadata',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIAutoModerationRuleTriggerMetadata',
+			summary: 'Transforms an API auto moderation trigger metadata object to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIAvatarDecorationData',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIAvatarDecorationData',
+			summary: 'Transforms API avatar decoration data to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIChannelMention',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIChannelMention',
+			summary: 'Transforms an API channel mention to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIEmbedAsset',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIEmbedAsset',
+			summary: 'Transforms an API embed image, thumbnail, or video to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIEmbedAuthor',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIEmbedAuthor',
+			summary: 'Transforms an API embed author to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIEmbedFooter',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIEmbedFooter',
+			summary: 'Transforms an API embed footer to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIGuildDefaultReaction',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIGuildDefaultReaction',
+			summary: 'Transforms an API forum default reaction to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIGuildForumTag',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIGuildForumTag',
+			summary: 'Transforms an API forum tag to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIGuildScheduledEventEntityMetadata',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIGuildScheduledEventEntityMetadata',
+			summary: 'Transforms API scheduled event metadata to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIGuildScheduledEventRecurrenceRule',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIGuildScheduledEventRecurrenceRule',
+			summary: 'Transforms an API recurrence rule to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIIncidentsData',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIIncidentsData',
+			summary: "Transforms API incidents data to a camel-cased variant, like discord.js's transformAPIIncidentsData."
+		},
+		{
+			name: 'transformAPIMessageActivity',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIMessageActivity',
+			summary: 'Transforms an API message activity to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIMessageCall',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIMessageCall',
+			summary: 'Transforms an API message call to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIMessageInteractionMetadata',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIMessageInteractionMetadata',
+			summary: "Transforms API message interaction metadata to a camel-cased variant, like discord.js's transformAPIMessageInteractionMetadata."
+		},
+		{
+			name: 'transformAPIMessageReference',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIMessageReference',
+			summary: 'Transforms an API message reference to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIMessageSharedClientTheme',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIMessageSharedClientTheme',
+			summary: 'Transforms the shared client theme of a message.'
+		},
+		{
+			name: 'transformAPIRoleSubscriptionData',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIRoleSubscriptionData',
+			summary: 'Transforms API role subscription data to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIRoleTags',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIRoleTags',
+			summary: 'Transforms API role tags to a camel-cased variant.'
+		},
+		{
+			name: 'transformAPIUserPrimaryGuild',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAPIUserPrimaryGuild',
+			summary: 'Transforms an API primary guild to a camel-cased variant.'
+		},
+		{
+			name: 'transformAutoModerationAction',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAutoModerationAction',
+			summary: "Transforms a camel-cased auto moderation action to the API's shape."
+		},
+		{
+			name: 'transformAutoModerationRuleTriggerMetadata',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformAutoModerationRuleTriggerMetadata',
+			summary: "Transforms camel-cased auto moderation trigger metadata to the API's shape."
+		},
+		{
+			name: 'transformCollectibles',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformCollectibles',
+			summary: "Transforms API collectibles to a camel-cased variant, like discord.js's transformCollectibles."
+		},
+		{
+			name: 'transformGuildDefaultReaction',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformGuildDefaultReaction',
+			summary: "Transforms a camel-cased forum default reaction to the API's shape."
+		},
+		{
+			name: 'transformGuildForumTag',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformGuildForumTag',
+			summary: "Transforms a camel-cased forum tag to the API's shape."
+		},
+		{
+			name: 'transformGuildScheduledEventRecurrenceRule',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformGuildScheduledEventRecurrenceRule',
+			summary: "Transforms a camel-cased recurrence rule to the API's shape, like discord.js's transformGuildScheduledEventRecurrenceRule."
+		},
+		{
+			name: 'transformResolved',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/transformResolved',
+			summary:
+				"Resolves the users, members, roles, channels, messages, and attachments some data refers to into structures, like discord.js's transformRes…"
+		},
+		{
+			name: 'verifyString',
+			kind: 'function',
+			href: '/documentation/api/plugin-gateway/functions/verifyString',
+			summary: 'Verifies that a value is a string, throwing otherwise.'
+		}
+	]}
+/>

@@ -1,0 +1,1891 @@
+---
+title: 'Class: GuildManager'
+description: 'Manages the Guilds known to the client. (@wolfstar/plugin-gateway)'
+hidden: true
+---
+
+import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippets/api-reference.jsx';
+
+<ApiHeader
+	kind="class"
+	source={{
+		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L238',
+		label: 'packages/plugin-gateway/src/managers/GuildManager.ts:238'
+	}}
+	packageName="@wolfstar/plugin-gateway"
+	packageHref="/documentation/api/plugin-gateway"
+/>
+
+Manages the [Guild](/documentation/api/plugin-gateway/classes/Guild)s known to the client.
+
+<ApiSignature
+	tokens={[
+		'class GuildManager extends ',
+		['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+		'<"guilds", ',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		', [guildId: string]>'
+	]}
+/>
+
+<ApiHierarchy
+	extends={[
+		[
+			['CachedManager', '/documentation/api/plugin-gateway/classes/CachedManager'],
+			'<"guilds", ',
+			['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+			', [guildId: string]>'
+		]
+	]}
+/>
+
+## Constructors
+
+### Constructor
+
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L242', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:242' }}>
+
+<ApiSignature
+	tokens={[
+		'new GuildManager(client: ',
+		['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient'],
+		'): ',
+		['GuildManager', '/documentation/api/plugin-gateway/classes/GuildManager']
+	]}
+/>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="client" type={[['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+## Properties
+
+### cache
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly cache: ', ['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], '>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L142', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:142' }} inheritedFrom={[['CachedManager.cache', '/documentation/api/plugin-gateway/classes/CachedManager#cache']]}>
+
+The cache of this manager's entity.
+
+On a manager built for one guild (`guild.members`), it is the client's cache taking the ID of the entity alone.
+`get`, `has`, `set` and `delete` cost the same as on the client's; `getSize` and `clear` scan the keys of every
+guild to find the ones of this guild, unlike discord.js's per-guild collections: avoid calling them for every
+guild in a loop.
+
+**Example**
+
+```typescript
+const user = await client.users.cache.get(userId);
+```
+
+</ApiMember>
+
+### client
+
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['CachedManager.client', '/documentation/api/plugin-gateway/classes/CachedManager#client']]}>
+
+The client that instantiated this manager.
+
+</ApiMember>
+
+### name
+
+<ApiMember kind="property" badges={['protected', 'readonly']} signature={['protected readonly name: "guilds"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L147', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:147' }} inheritedFrom={[['CachedManager.name', '/documentation/api/plugin-gateway/classes/CachedManager#name']]}>
+
+The name of the entity this manager holds.
+
+</ApiMember>
+
+## Accessors
+
+### rawStore
+
+<ApiMember kind="accessor" badges={['protected']} signature={['protected get rawStore(): ', ['EntityCache', '/documentation/api/plugin-cache/interfaces/EntityCache'], '<', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], '[Name]> | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L228', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:228' }} inheritedFrom={[['CachedManager.rawStore', '/documentation/api/plugin-gateway/classes/CachedManager#rawstore']]}>
+
+The raw store of this manager's entity, or `undefined` when it is not cached.
+
+</ApiMember>
+
+## Methods
+
+### autoModerationRules()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L565', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:565' }}>
+
+<ApiSignature
+	tokens={[
+		'autoModerationRules(guildId: string): ',
+		['AutoModerationRuleManager', '/documentation/api/plugin-gateway/classes/AutoModerationRuleManager']
+	]}
+/>
+
+Gets the manager of a guild's auto moderation rules.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['AutoModerationRuleManager', '/documentation/api/plugin-gateway/classes/AutoModerationRuleManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### bans()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L556', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:556' }}>
+
+<ApiSignature tokens={['bans(guildId: string): ', ['GuildBanManager', '/documentation/api/plugin-gateway/classes/GuildBanManager']]} />
+
+Gets the manager of a guild's bans.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildBanManager', '/documentation/api/plugin-gateway/classes/GuildBanManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### cachedGuild()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L369', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:369' }} inheritedFrom={[['CachedManager.cachedGuild', '/documentation/api/plugin-gateway/classes/CachedManager#cachedguild']]}>
+
+<ApiSignature
+	tokens={[
+		'protected cachedGuild(guildId: string | null | undefined): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Gets a guild from the cache, to resolve the `guild` of a structure. Synchronous when the guild cache is.
+
+The guild does not resolve its own channel relations, see `GuildManager._getShallow`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string | null | undefined']}>
+
+The ID of the guild, if the structure belongs to one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The guild, or `null` when there is no ID or the guild is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### channels()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L749', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:749' }}>
+
+<ApiSignature tokens={['channels(guildId: string): ', ['GuildChannelManager', '/documentation/api/plugin-gateway/classes/GuildChannelManager']]} />
+
+Gets the manager of a guild's channels.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildChannelManager', '/documentation/api/plugin-gateway/classes/GuildChannelManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### commands()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L767', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:767' }}>
+
+<ApiSignature
+	tokens={[
+		'commands(guildId: string): ',
+		['GuildApplicationCommandManager', '/documentation/api/plugin-gateway/classes/GuildApplicationCommandManager']
+	]}
+/>
+
+Gets the manager of a guild's application commands.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildApplicationCommandManager', '/documentation/api/plugin-gateway/classes/GuildApplicationCommandManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### create()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L863', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:863' }}>
+
+<ApiSignature
+	tokens={[
+		'create(options: ',
+		['RESTPostAPIGuildsJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPostAPIGuildsJSONBody'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Creates a guild owned by the bot, which Discord only allows to bots in fewer than 10 guilds.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={[['RESTPostAPIGuildsJSONBody', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTPostAPIGuildsJSONBody']]}>
+
+The guild's name and initial setup.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L218', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:218' }} inheritedFrom={[['CachedManager.createCache', '/documentation/api/plugin-gateway/classes/CachedManager#createcache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected createCache(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Gets [CachedManager.cache](/documentation/api/plugin-gateway/classes/CachedManager#cache) from the client. Managers whose entity spans several caches override it.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], '>']}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### createStructure()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L246', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:246' }}>
+
+<ApiSignature
+	tokens={[
+		'protected createStructure(data: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		', "emojis" | "roles" | "stickers"> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		', keyof ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>>): ',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild']
+	]}
+/>
+
+Wraps raw data in this manager's structure: the RFC's `StructureCreator`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], ', "emojis" | "roles" | "stickers"> & ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'], ', keyof ', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], '>>']}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Guild', '/documentation/api/plugin-gateway/classes/Guild']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### delete()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L921', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:921' }}>
+
+<ApiSignature
+	tokens={[
+		'delete(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Deletes a guild the bot owns, and drops it from the cache with everything it scopes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### edit()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L874', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:874' }}>
+
+<ApiSignature
+	tokens={[
+		'edit(guildId: string, options: ',
+		['GuildEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildEditOptions'],
+		'): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Edits a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildEditOptions']]}>
+
+The changes to apply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### editOnboarding()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L515', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:515' }}>
+
+<ApiSignature
+	tokens={[
+		'editOnboarding(\n  guildId: string,\n  options: ',
+		['GuildOnboardingEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildOnboardingEditOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+Edits the onboarding of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildOnboardingEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildOnboardingEditOptions']]}>
+
+The changes to apply. The prompts replace every existing one.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### editWelcomeScreen()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L440', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:440' }}>
+
+<ApiSignature
+	tokens={[
+		'editWelcomeScreen(\n  guildId: string,\n  options: ',
+		['GuildWelcomeScreenEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWelcomeScreenEditOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+Edits the welcome screen of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildWelcomeScreenEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWelcomeScreenEditOptions']]}>
+
+The changes to apply.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### editWidgetSettings()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L479', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:479' }}>
+
+<ApiSignature
+	tokens={[
+		'editWidgetSettings(\n  guildId: string,\n  options: ',
+		['GuildWidgetSettingsEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettingsEditOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildWidgetSettings', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettings'],
+		'>'
+	]}
+/>
+
+Edits the widget settings of a guild, and patches the cached guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildWidgetSettingsEditOptions', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettingsEditOptions']]}>
+
+Whether to enable the widget, and its channel.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildWidgetSettings', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettings'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### emojis()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L758', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:758' }}>
+
+<ApiSignature tokens={['emojis(guildId: string): ', ['GuildEmojiManager', '/documentation/api/plugin-gateway/classes/GuildEmojiManager']]} />
+
+Gets the manager of a guild's custom emojis.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildEmojiManager', '/documentation/api/plugin-gateway/classes/GuildEmojiManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### fetch()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L422', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:422' }} inheritedFrom={[['CachedManager.fetch', '/documentation/api/plugin-gateway/classes/CachedManager#fetch']]}>
+
+<ApiSignature
+	tokens={[
+		'fetch(...args: [guildId: string] | [guildId: string, ',
+		['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'],
+		']): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Gets an entity from the cache, fetching it from the API (and caching it) on a cache miss.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[guildId: string] | [guildId: string, ', ['FetchOptions', '/documentation/api/plugin-gateway/interfaces/FetchOptions'], ']']} rest>
+
+The arguments identifying the entity, optionally followed by [FetchOptions](/documentation/api/plugin-gateway/interfaces/FetchOptions).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+**Example**
+
+```typescript
+await client.users.fetch(userId); // cache first
+await client.users.fetch(userId, { force: true }); // always the API
+await client.users.fetch(userId, { force: true, cache: false }); // the API, without storing the result
+```
+
+</ApiMember>
+
+### fetchAuditLogs()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L575', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:575' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchAuditLogs(\n  guildId: string,\n  options: ',
+		['GuildAuditLogsFetchOptions', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogsFetchOptions'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildAuditLogs', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogs'],
+		'>'
+	]}
+/>
+
+Fetches a page of a guild's audit log, newest first, and caches its users.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildAuditLogsFetchOptions', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogsFetchOptions']]} defaultValue={'{}'}>
+
+Which user and action to filter by, and the page.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildAuditLogs', '/documentation/api/plugin-gateway/interfaces/GuildAuditLogs'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchOnboarding()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L504', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:504' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchOnboarding(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+Fetches the onboarding of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildOnboarding', '/documentation/api/plugin-gateway/classes/GuildOnboarding'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPartials()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L846', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:846' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPartials(options: {\n    after?: string;\n    before?: string;\n    limit?: number;\n    withCounts?: boolean;\n  } = {}): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnonymousGuild', '/documentation/api/plugin-gateway/classes/AnonymousGuild'],
+		'<',
+		['AnonymousGuildData', '/documentation/api/plugin-gateway/type-aliases/AnonymousGuildData'],
+		'>[]>'
+	]}
+/>
+
+Lists the guilds the bot is in, as the partial guilds the API returns, paginated by guild ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="options" type={['{\n  after?: string;\n  before?: string;\n  limit?: number;\n  withCounts?: boolean;\n}']} defaultValue={'{}'}>
+
+How many guilds to list (up to 200), around which guild ID, and whether to include counts.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['AnonymousGuild', '/documentation/api/plugin-gateway/classes/AnonymousGuild'],
+		'<',
+		['AnonymousGuildData', '/documentation/api/plugin-gateway/type-aliases/AnonymousGuildData'],
+		'>[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchPreview()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L931', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:931' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchPreview(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildPreview', '/documentation/api/plugin-gateway/classes/GuildPreview'],
+		'>'
+	]}
+/>
+
+Fetches the public preview of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildPreview', '/documentation/api/plugin-gateway/classes/GuildPreview'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchRaw()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L972', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:972' }}>
+
+<ApiSignature
+	tokens={[
+		'protected fetchRaw(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>'
+	]}
+/>
+
+Fetches the raw data of an entity from the API.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchSoundboardSounds()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L337', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:337' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchSoundboardSounds(\n  guildIds: readonly string[],\n  options: ',
+		['GuildSoundboardSoundsRequestOptions', '/documentation/api/plugin-gateway/interfaces/GuildSoundboardSoundsRequestOptions'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'],
+		'<string, ',
+		['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'],
+		'>>>'
+	]}
+/>
+
+Requests the soundboard sounds of several guilds over the gateway, and caches them. discord.js:
+`client.guilds.fetchSoundboardSounds()`.
+
+Discord answers with one `SOUNDBOARD_SOUNDS` dispatch per guild, which also updates the cache and is emitted as
+`soundboardSounds`. The guilds are grouped by shard and each shard gets one request, so every shard of the guilds must
+be one this client runs. The replies carry no nonce, so a reply resolves every pending request waiting for its guild,
+and only the process that sent a request resolves it. A reply arriving after the request timed out is only cached.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildIds" type={['readonly string[]']}>
+
+The IDs of the guilds, repeated IDs are requested once.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildSoundboardSoundsRequestOptions', '/documentation/api/plugin-gateway/interfaces/GuildSoundboardSoundsRequestOptions']]} defaultValue={'{}'}>
+
+How long to wait for the replies.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['SoundboardSound', '/documentation/api/plugin-gateway/classes/SoundboardSound'], '>>>']}>
+
+The sounds of each guild, keyed by guild ID in the order of `guildIds` and then by sound ID, once all of them
+are cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchVanityData()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L949', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:949' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchVanityData(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['RESTGetAPIGuildVanityUrlResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTGetAPIGuildVanityUrlResult'],
+		'>'
+	]}
+/>
+
+Fetches the vanity invite code of a guild and how many times it was used.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['RESTGetAPIGuildVanityUrlResult', 'https://discord-api-types.dev/api/discord-api-types-v10#RESTGetAPIGuildVanityUrlResult'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchVoiceRegions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L940', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:940' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchVoiceRegions(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIVoiceRegion', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceRegion'],
+		'[]>'
+	]}
+/>
+
+Fetches the voice regions available to a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['APIVoiceRegion', 'https://discord-api-types.dev/api/discord-api-types-v10#APIVoiceRegion'],
+		'[]>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWelcomeScreen()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L429', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:429' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWelcomeScreen(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+Fetches the welcome screen of a guild.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['WelcomeScreen', '/documentation/api/plugin-gateway/classes/WelcomeScreen'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### fetchWidgetSettings()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L468', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:468' }}>
+
+<ApiSignature
+	tokens={[
+		'fetchWidgetSettings(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildWidgetSettings', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettings'],
+		'>'
+	]}
+/>
+
+Fetches whether the widget of a guild is enabled, and its channel.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildWidgetSettings', '/documentation/api/plugin-gateway/interfaces/GuildWidgetSettings'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### guard()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L479', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:479' }} inheritedFrom={[['CachedManager.guard', '/documentation/api/plugin-gateway/classes/CachedManager#guard']]}>
+
+<ApiSignature
+	tokens={[
+		'protected guard<T>(\n  operation: "get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep",\n  key: string | null,\n  run: () => ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>,\n  fallback: T\n): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<T>'
+	]}
+/>
+
+Runs a raw store operation, reporting its failure through `cacheError`. With the client's `cacheErrors: "miss"`,
+a failure resolves to `fallback`, otherwise it is rethrown. Synchronous when the operation is.
+
+<ApiParams title="Type Parameters">
+
+<ApiParam name="T" />
+
+</ApiParams>
+
+<ApiParams title="Parameters">
+
+<ApiParam name="operation" type={['"get" | "set" | "entries" | "keys" | "has" | "upsert" | "delete" | "clear" | "getSize" | "sweep"']} />
+
+<ApiParam name="key" type={['string | null']} />
+
+<ApiParam name="run" type={['() => ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+<ApiParam name="fallback" type={['T']} />
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<T>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### integrations()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L420', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:420' }}>
+
+<ApiSignature
+	tokens={['integrations(guildId: string): ', ['GuildIntegrationManager', '/documentation/api/plugin-gateway/classes/GuildIntegrationManager']]}
+/>
+
+Gets the manager of a guild's integrations.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildIntegrationManager', '/documentation/api/plugin-gateway/classes/GuildIntegrationManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### invites()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L785', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:785' }}>
+
+<ApiSignature tokens={['invites(guildId: string): ', ['GuildInviteManager', '/documentation/api/plugin-gateway/classes/GuildInviteManager']]} />
+
+Gets the manager of a guild's invites.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildInviteManager', '/documentation/api/plugin-gateway/classes/GuildInviteManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### iterableCache()
+
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L465', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:465' }} inheritedFrom={[['CachedManager.iterableCache', '/documentation/api/plugin-gateway/classes/CachedManager#iterablecache']]}>
+
+<ApiSignature
+	tokens={[
+		'protected iterableCache(): ',
+		['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		', "emojis" | "roles" | "stickers"> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		', keyof ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>>> | undefined'
+	]}
+/>
+
+Gets this entity's raw store when it can enumerate its entries, for the `listCached` methods.
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['IterableEntityCache', '/documentation/api/plugin-cache/interfaces/IterableEntityCache'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], ', "emojis" | "roles" | "stickers"> & ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'], ', keyof ', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], '>>> | undefined']}>
+
+The store, or `undefined` when this entity is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When the store cannot enumerate its entries.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### keyOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L250', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:250' }}>
+
+<ApiSignature
+	tokens={[
+		'keyOf(data: ',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		', "emojis" | "roles" | "stickers"> & ',
+		['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'],
+		'<',
+		['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'],
+		'<',
+		['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'],
+		', keyof ',
+		['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'],
+		'>>): string'
+	]}
+/>
+
+Gets the cache key of raw data.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="data" type={[['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], ', "emojis" | "roles" | "stickers"> & ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<', ['GatewayGuildCreateDispatchData', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayGuildCreateDispatchData'], ', keyof ', ['APIGuild', 'https://discord-api-types.dev/api/discord-api-types-v10#APIGuild'], '>>']}>
+
+The raw data.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### leave()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L911', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:911' }}>
+
+<ApiSignature
+	tokens={[
+		'leave(guildId: string): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<void>'
+	]}
+/>
+
+Makes the bot leave a guild, and drops it from the cache with everything it scopes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<void>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### members()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L803', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:803' }}>
+
+<ApiSignature
+	tokens={['members(guildId: string): ', ['GuildMemberManager', '/documentation/api/plugin-gateway/classes/GuildMemberManager'], '<true>']}
+/>
+
+Gets the manager of a guild's members.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildMemberManager', '/documentation/api/plugin-gateway/classes/GuildMemberManager'], '<true>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### presences()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L794', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:794' }}>
+
+<ApiSignature tokens={['presences(guildId: string): ', ['PresenceManager', '/documentation/api/plugin-gateway/classes/PresenceManager'], '<true>']} />
+
+Gets the manager of a guild's presences.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['PresenceManager', '/documentation/api/plugin-gateway/classes/PresenceManager'], '<true>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### refresh()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/CachedManager.ts#L441', label: 'packages/plugin-gateway/src/managers/CachedManager.ts:441' }} inheritedFrom={[['CachedManager.refresh', '/documentation/api/plugin-gateway/classes/CachedManager#refresh']]}>
+
+<ApiSignature
+	tokens={[
+		'refresh(...args: [guildId: string]): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+Fetches an entity from the API, bypassing and then updating the cache. Same as `fetch(...args, { force: true })`.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="args" type={['[guildId: string]']} rest>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolve()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L41', label: 'packages/plugin-gateway/src/managers/DataManager.ts:41' }} inheritedFrom={[['CachedManager.resolve', '/documentation/api/plugin-gateway/classes/CachedManager#resolve']]}>
+
+<ApiSignature
+	tokens={[
+		'resolve(value: string | ',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'): ',
+		['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		' | null>'
+	]}
+/>
+
+Resolves a structure or a cache key to a structure.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild']]}>
+
+A structure, returned as is, or the cache key of an entity (its ID, for managers keyed by ID).
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null>']}>
+
+The structure, or `null` if the key is not cached.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveId()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L52', label: 'packages/plugin-gateway/src/managers/DataManager.ts:52' }} inheritedFrom={[['CachedManager.resolveId', '/documentation/api/plugin-gateway/classes/CachedManager#resolveid']]}>
+
+<ApiSignature tokens={['resolveId(value: string | ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], '): string | null']} />
+
+Resolves a structure or an ID to an ID.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="value" type={['string | ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild']]}>
+
+A structure, or an ID.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string | null']}>
+
+The ID, or `null` if the value is neither.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### resolveKey()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L291', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:291' }}>
+
+<ApiSignature tokens={['resolveKey(guildId: string): string']} />
+
+Gets the cache key of an entity, the one [DataManager.cache](/documentation/api/plugin-gateway/classes/DataManager#cache) takes.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The arguments identifying the entity.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### roles()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L812', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:812' }}>
+
+<ApiSignature tokens={['roles(guildId: string): ', ['RoleManager', '/documentation/api/plugin-gateway/classes/RoleManager'], '<true>']} />
+
+Gets the manager of a guild's roles.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['RoleManager', '/documentation/api/plugin-gateway/classes/RoleManager'], '<true>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### scheduledEvents()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L300', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:300' }}>
+
+<ApiSignature
+	tokens={[
+		'scheduledEvents(guildId: string): ',
+		['GuildScheduledEventManager', '/documentation/api/plugin-gateway/classes/GuildScheduledEventManager']
+	]}
+/>
+
+Gets the manager of a guild's scheduled events.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildScheduledEventManager', '/documentation/api/plugin-gateway/classes/GuildScheduledEventManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### searchMessages()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L658', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:658' }}>
+
+<ApiSignature
+	tokens={[
+		'searchMessages(\n  guildId: string,\n  options: ',
+		['GuildSearchMessagesOptions', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesOptions'],
+		' = {}\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildSearchMessagesResult', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesResult'],
+		'>'
+	]}
+/>
+
+Searches the messages of a guild.
+
+Needs the `ReadMessageHistory` permission, and the content of the messages is empty without the `MessageContent`
+intent. Discord may return fewer messages than `limit`, and `totalResults` is approximate while messages are
+created or deleted, so do not paginate on `messages.size`: advance `offset` by `limit` until it passes
+`totalResults`.
+
+While Discord indexes the guild, the search waits the `retry_after` it answers and retries until the index is
+ready, so pass a `signal` to bound it, or `retryOnMissingIndex: false` to throw `SearchIndexNotYetAvailable`
+instead. Threads of the results are cached before their messages.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildSearchMessagesOptions', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesOptions']]} defaultValue={'{}'}>
+
+What to search for, and how.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['GuildSearchMessagesResult', '/documentation/api/plugin-gateway/interfaces/GuildSearchMessagesResult'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+<ApiParams title="Throws">
+
+<ApiParam>
+
+When an option exceeds a limit Discord documents.
+
+</ApiParam>
+
+<ApiParam>
+
+`SearchIndexNotYetAvailable` when the index is not ready and `retryOnMissingIndex` is
+`false`, with the `retryAfter` (in seconds) and the `documentsIndexed` Discord answered.
+
+</ApiParam>
+
+</ApiParams>
+
+</ApiMember>
+
+### setIncidentActions()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L959', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:959' }}>
+
+<ApiSignature
+	tokens={[
+		'setIncidentActions(\n  guildId: string,\n  options: ',
+		['GuildIncidentActionsOptions', '/documentation/api/plugin-gateway/interfaces/GuildIncidentActionsOptions'],
+		'\n): ',
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['IncidentActions', '/documentation/api/plugin-gateway/interfaces/IncidentActions'],
+		'>'
+	]}
+/>
+
+Pauses invites or direct messages in a guild for up to a day.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+<ApiParam name="options" type={[['GuildIncidentActionsOptions', '/documentation/api/plugin-gateway/interfaces/GuildIncidentActionsOptions']]}>
+
+Until when to pause each, `null` to resume.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[
+		['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'],
+		'<',
+		['IncidentActions', '/documentation/api/plugin-gateway/interfaces/IncidentActions'],
+		'>'
+	]}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### soundboardSounds()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L318', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:318' }}>
+
+<ApiSignature
+	tokens={[
+		'soundboardSounds(guildId: string): ',
+		['GuildSoundboardSoundManager', '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundManager']
+	]}
+/>
+
+Gets the manager of a guild's soundboard sounds.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildSoundboardSoundManager', '/documentation/api/plugin-gateway/classes/GuildSoundboardSoundManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### stageInstances()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L309', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:309' }}>
+
+<ApiSignature
+	tokens={['stageInstances(guildId: string): ', ['StageInstanceManager', '/documentation/api/plugin-gateway/classes/StageInstanceManager']]}
+/>
+
+Gets the manager of a guild's stage instances.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['StageInstanceManager', '/documentation/api/plugin-gateway/classes/StageInstanceManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### stickers()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L776', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:776' }}>
+
+<ApiSignature tokens={['stickers(guildId: string): ', ['GuildStickerManager', '/documentation/api/plugin-gateway/classes/GuildStickerManager']]} />
+
+Gets the manager of a guild's custom stickers.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['GuildStickerManager', '/documentation/api/plugin-gateway/classes/GuildStickerManager']]} />
+
+</ApiParams>
+
+</ApiMember>
+
+### valueOf()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/DataManager.ts#L31', label: 'packages/plugin-gateway/src/managers/DataManager.ts:31' }} inheritedFrom={[['CachedManager.valueOf', '/documentation/api/plugin-gateway/classes/CachedManager#valueof']]}>
+
+<ApiSignature
+	tokens={[
+		'valueOf(): ',
+		['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'],
+		'<',
+		['Guild', '/documentation/api/plugin-gateway/classes/Guild'],
+		'>'
+	]}
+/>
+
+The cache of the items this manager holds, like discord.js's `DataManager#valueOf`.
+
+<ApiParams title="Returns">
+
+<ApiParam
+	type={[['Cache', '/documentation/api/plugin-gateway/interfaces/Cache'], '<', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], '>']}
+/>
+
+</ApiParams>
+
+</ApiMember>
+
+### voiceStates()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L821', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:821' }}>
+
+<ApiSignature
+	tokens={['voiceStates(guildId: string): ', ['VoiceStateManager', '/documentation/api/plugin-gateway/classes/VoiceStateManager'], '<true>']}
+/>
+
+Gets the manager of a guild's voice states.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guildId" type={['string']}>
+
+The ID of the guild.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={[['VoiceStateManager', '/documentation/api/plugin-gateway/classes/VoiceStateManager'], '<true>']} />
+
+</ApiParams>
+
+</ApiMember>
+
+### widgetImageURL()
+
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-gateway/src/managers/GuildManager.ts#L831', label: 'packages/plugin-gateway/src/managers/GuildManager.ts:831' }}>
+
+<ApiSignature
+	tokens={[
+		'widgetImageURL(\n  guild: ',
+		['GuildResolvable', '/documentation/api/plugin-gateway/type-aliases/GuildResolvable'],
+		',\n  style: ',
+		['GuildWidgetStyle', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildWidgetStyle'],
+		' = GuildWidgetStyle.Shield\n): string'
+	]}
+/>
+
+Gets the URL of a guild's widget image.
+
+<ApiParams title="Parameters">
+
+<ApiParam name="guild" type={[['GuildResolvable', '/documentation/api/plugin-gateway/type-aliases/GuildResolvable']]}>
+
+The guild, or anything carrying its ID.
+
+</ApiParam>
+
+<ApiParam name="style" type={[['GuildWidgetStyle', 'https://discord-api-types.dev/api/discord-api-types-v10#GuildWidgetStyle']]} defaultValue="GuildWidgetStyle.Shield">
+
+The style of the image.
+
+</ApiParam>
+
+</ApiParams>
+
+<ApiParams title="Returns">
+
+<ApiParam type={['string']} />
+
+</ApiParams>
+
+</ApiMember>
