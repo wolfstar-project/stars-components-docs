@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L90',
+		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L90',
 		label: 'packages/plugin-sharder/src/ShardManager.ts:90'
 	}}
 	packageName="@wolfstar/plugin-sharder"
@@ -28,7 +28,7 @@ The options of a [ShardManager](/documentation/api/plugin-sharder/classes/ShardM
 
 ### clusters?
 
-<ApiMember kind="property" badges={['optional']} signature={['clusters?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L75', label: 'packages/plugin-sharder/src/ShardManager.ts:75' }} inheritedFrom={[['ShardLayoutOptions.clusters', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#clusters']]}>
+<ApiMember kind="property" badges={['optional']} signature={['clusters?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L75', label: 'packages/plugin-sharder/src/ShardManager.ts:75' }} inheritedFrom={[['ShardLayoutOptions.clusters', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#clusters']]}>
 
 How many shards to split the gateway shards across, with `shards: "auto"`.
 
@@ -42,7 +42,7 @@ os.availableParallelism();
 
 ### gatewayInformation?
 
-<ApiMember kind="property" badges={['optional']} signature={['gatewayInformation?: {\n  fetch?: () => ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GatewayInformation', '/documentation/api/plugin-sharder/interfaces/GatewayInformation'], '>;\n  ttl?: number;\n}']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L111', label: 'packages/plugin-sharder/src/ShardManager.ts:111' }}>
+<ApiMember kind="property" badges={['optional']} signature={['gatewayInformation?: {\n  fetch?: () => ', ['Promise', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise'], '<', ['GatewayInformation', '/documentation/api/plugin-sharder/interfaces/GatewayInformation'], '>;\n  ttl?: number;\n}']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L111', label: 'packages/plugin-sharder/src/ShardManager.ts:111' }}>
 
 How `GET /gateway/bot` is fetched and cached. The shards get it from the manager, so it is fetched once for all.
 
@@ -50,7 +50,7 @@ How `GET /gateway/bot` is fetched and cached. The shards get it from the manager
 
 ### identify?
 
-<ApiMember kind="property" badges={['optional']} signature={['identify?: {\n  concurrency?: number | "auto";\n  delay?: number;\n}']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L126', label: 'packages/plugin-sharder/src/ShardManager.ts:126' }}>
+<ApiMember kind="property" badges={['optional']} signature={['identify?: {\n  concurrency?: number | "auto";\n  delay?: number;\n}']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L126', label: 'packages/plugin-sharder/src/ShardManager.ts:126' }}>
 
 How the identifies of the gateway shards are paced, across every shard. See [ShardClient.identifyThrottler](/documentation/api/plugin-sharder/classes/ShardClient#identifythrottler).
 
@@ -58,7 +58,7 @@ How the identifies of the gateway shards are paced, across every shard. See [Sha
 
 ### messageHandler?
 
-<ApiMember kind="property" badges={['optional']} signature={['messageHandler?: string | ', ['MessageHandler', '/documentation/api/plugin-sharder/interfaces/MessageHandler']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L185', label: 'packages/plugin-sharder/src/ShardManager.ts:185' }}>
+<ApiMember kind="property" badges={['optional']} signature={['messageHandler?: string | ', ['MessageHandler', '/documentation/api/plugin-sharder/interfaces/MessageHandler']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L185', label: 'packages/plugin-sharder/src/ShardManager.ts:185' }}>
 
 How messages are serialized: a handler, or the name of a registered one. The shards build the same one.
 
@@ -77,14 +77,14 @@ How messages are serialized: a handler, or the name of a registered one. The sha
 	badges={['optional']}
 	signature={['ping?: ', ['ShardPingOptions', '/documentation/api/plugin-sharder/interfaces/ShardPingOptions']]}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L173',
+		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L173',
 		label: 'packages/plugin-sharder/src/ShardManager.ts:173'
 	}}
 />
 
 ### recommended?
 
-<ApiMember kind="property" badges={['optional']} signature={['recommended?: ', ['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L79', label: 'packages/plugin-sharder/src/ShardManager.ts:79' }} inheritedFrom={[['ShardLayoutOptions.recommended', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#recommended']]}>
+<ApiMember kind="property" badges={['optional']} signature={['recommended?: ', ['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L79', label: 'packages/plugin-sharder/src/ShardManager.ts:79' }} inheritedFrom={[['ShardLayoutOptions.recommended', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#recommended']]}>
 
 How Discord's recommended count is turned into the total, with `"auto"`.
 
@@ -92,7 +92,7 @@ How Discord's recommended count is turned into the total, with `"auto"`.
 
 ### requestTimeout?
 
-<ApiMember kind="property" badges={['optional']} signature={['requestTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L179', label: 'packages/plugin-sharder/src/ShardManager.ts:179' }}>
+<ApiMember kind="property" badges={['optional']} signature={['requestTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L179', label: 'packages/plugin-sharder/src/ShardManager.ts:179' }}>
 
 How long requests wait for their reply by default, in milliseconds.
 
@@ -106,7 +106,7 @@ ping.timeout;
 
 ### shardList?
 
-<ApiMember kind="property" badges={['optional']} signature={['shardList?: readonly number[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L69', label: 'packages/plugin-sharder/src/ShardManager.ts:69' }} inheritedFrom={[['ShardLayoutOptions.shardList', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#shardlist']]}>
+<ApiMember kind="property" badges={['optional']} signature={['shardList?: readonly number[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L69', label: 'packages/plugin-sharder/src/ShardManager.ts:69' }} inheritedFrom={[['ShardLayoutOptions.shardList', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#shardlist']]}>
 
 The gateway shards this manager spawns, when several managers split them. Defaults to all of them.
 
@@ -114,7 +114,7 @@ The gateway shards this manager spawns, when several managers split them. Defaul
 
 ### shards?
 
-<ApiMember kind="property" badges={['optional']} signature={['shards?: number | readonly number[] | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L60', label: 'packages/plugin-sharder/src/ShardManager.ts:60' }} inheritedFrom={[['ShardLayoutOptions.shards', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#shards']]}>
+<ApiMember kind="property" badges={['optional']} signature={['shards?: number | readonly number[] | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L60', label: 'packages/plugin-sharder/src/ShardManager.ts:60' }} inheritedFrom={[['ShardLayoutOptions.shards', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#shards']]}>
 
 The layout: a number spawns one shard per gateway shard, an array spawns one shard per entry connecting that
 many gateway shards, and `"auto"` splits the gateway shards across `clusters` shards.
@@ -145,14 +145,14 @@ new ShardManager({ shards: 'auto', clusters: 4 });
 	badges={['optional']}
 	signature={['spawn?: {\n  delay?: number;\n  readyHint?: number;\n  readyHintMargin?: number;\n  timeout?: number;\n}']}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L145',
+		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L145',
 		label: 'packages/plugin-sharder/src/ShardManager.ts:145'
 	}}
 />
 
 ### strategy?
 
-<ApiMember kind="property" badges={['optional']} signature={['strategy?: string | ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L97', label: 'packages/plugin-sharder/src/ShardManager.ts:97' }}>
+<ApiMember kind="property" badges={['optional']} signature={['strategy?: string | ', ['ChannelStrategy', '/documentation/api/plugin-sharder/interfaces/ChannelStrategy']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L97', label: 'packages/plugin-sharder/src/ShardManager.ts:97' }}>
 
 How to spawn the shards: a [ChannelStrategy](/documentation/api/plugin-sharder/interfaces/ChannelStrategy), or the name of a registered one (`"fork"`, `"cluster"`,
 `"worker"`, `"network"`), built with `strategyOptions`.
@@ -167,7 +167,7 @@ How to spawn the shards: a [ChannelStrategy](/documentation/api/plugin-sharder/i
 
 ### strategyOptions?
 
-<ApiMember kind="property" badges={['optional']} signature={['strategyOptions?: unknown']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L101', label: 'packages/plugin-sharder/src/ShardManager.ts:101' }}>
+<ApiMember kind="property" badges={['optional']} signature={['strategyOptions?: unknown']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L101', label: 'packages/plugin-sharder/src/ShardManager.ts:101' }}>
 
 The options of a strategy given by name.
 
@@ -175,7 +175,7 @@ The options of a strategy given by name.
 
 ### supervisor?
 
-<ApiMember kind="property" badges={['optional']} signature={['supervisor?: ', ['SupervisorOptions', '/documentation/api/plugin-sharder/interfaces/SupervisorOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L144', label: 'packages/plugin-sharder/src/ShardManager.ts:144' }}>
+<ApiMember kind="property" badges={['optional']} signature={['supervisor?: ', ['SupervisorOptions', '/documentation/api/plugin-sharder/interfaces/SupervisorOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L144', label: 'packages/plugin-sharder/src/ShardManager.ts:144' }}>
 
 How crashing shards are restarted.
 
@@ -183,7 +183,7 @@ How crashing shards are restarted.
 
 ### token?
 
-<ApiMember kind="property" badges={['optional']} signature={['token?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L107', label: 'packages/plugin-sharder/src/ShardManager.ts:107' }}>
+<ApiMember kind="property" badges={['optional']} signature={['token?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L107', label: 'packages/plugin-sharder/src/ShardManager.ts:107' }}>
 
 The bot token: used for `"auto"` layouts and `GET /gateway/bot`, and passed to the shards as `DISCORD_TOKEN`.
 
@@ -197,7 +197,7 @@ process.env.DISCORD_TOKEN;
 
 ### totalShards?
 
-<ApiMember kind="property" badges={['optional']} signature={['totalShards?: number | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L65', label: 'packages/plugin-sharder/src/ShardManager.ts:65' }} inheritedFrom={[['ShardLayoutOptions.totalShards', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#totalshards']]}>
+<ApiMember kind="property" badges={['optional']} signature={['totalShards?: number | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L65', label: 'packages/plugin-sharder/src/ShardManager.ts:65' }} inheritedFrom={[['ShardLayoutOptions.totalShards', '/documentation/api/plugin-sharder/interfaces/ShardLayoutOptions#totalshards']]}>
 
 The total number of gateway shards, across every manager: `"auto"` is Discord's recommendation. Defaults to the
 number of gateway shards of this manager.
@@ -206,7 +206,7 @@ number of gateway shards of this manager.
 
 ### transformers?
 
-<ApiMember kind="property" badges={['optional']} signature={['transformers?: readonly (string | ', ['MessageTransformer', '/documentation/api/plugin-sharder/interfaces/MessageTransformer'], ')[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/775d46b1424d1408340cd641b136e181dbcf011c/packages/plugin-sharder/src/ShardManager.ts#L192', label: 'packages/plugin-sharder/src/ShardManager.ts:192' }}>
+<ApiMember kind="property" badges={['optional']} signature={['transformers?: readonly (string | ', ['MessageTransformer', '/documentation/api/plugin-sharder/interfaces/MessageTransformer'], ')[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L192', label: 'packages/plugin-sharder/src/ShardManager.ts:192' }}>
 
 How serialized messages are transformed (compressed, encrypted, ...), in order: transformers, or names of
 registered ones. The shards build the same ones.
