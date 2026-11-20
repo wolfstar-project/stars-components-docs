@@ -3,10 +3,7 @@ title: 'Configuration Errors'
 description: 'Diagnostic codes for stars.config.* loading and validation failures.'
 ---
 
-Every way `stars.config.*` can fail to load or validate is a structured diagnostic exported from
-`@wolfstar/http-framework/config` as `configDiagnostics`. `@wolfstar/cli` renders these the same way as its own
-[CLI errors](/documentation/errors/cli) and exits with code `2` for all of them, except warnings such as
-`COMPATIBILITY_VERSION_EOL`.
+Every way `stars.config.*` can fail to load or validate is a structured diagnostic exported from `@wolfstar/http-framework/config` as `configDiagnostics`. `@wolfstar/cli` renders these the same way as its own [CLI errors](/api/errors/cli) and exits with code `2` for all of them, except warnings such as `COMPATIBILITY_VERSION_EOL`.
 
 ## ROOT_NOT_FOUND {#root_not_found}
 
@@ -78,8 +75,7 @@ Could not find a `tsconfig.json` in the project root.
 
 A `tsdown` config file exists but isn't used at the project's current compatibility version.
 
-**Fix:** move its options into the `tsdown` configuration option, drop the config file, or lower
-`future.compatibilityVersion` to the legacy version.
+**Fix:** move its options into the `tsdown` configuration option, drop the config file, or lower `future.compatibilityVersion` to the legacy version.
 
 ## INVALID_TYPE {#invalid_type}
 
@@ -95,33 +91,23 @@ An option was set to a value of the wrong type.
 
 ## COMPATIBILITY_VERSION_EOL {#compatibility_version_eol}
 
-`future.compatibilityVersion` is set to `3`, which is end-of-life and will be removed in the next major. This is a
-warning: the configuration still loads, and every command prints it. `stars info` shows it next to the version in
-effect.
+`future.compatibilityVersion` is set to `3`, which is end-of-life and will be removed in the next major. This is a warning: the configuration still loads, and every command prints it. `stars info` shows it next to the version in effect.
 
-**Fix:** move the options of your `tsdown.config.*` into `tsdown` in `stars.config`, delete that file, then set
-`future.compatibilityVersion` to `6` (or remove it).
+**Fix:** move the options of your `tsdown.config.*` into `tsdown` in `stars.config`, delete that file, then set `future.compatibilityVersion` to `6` (or remove it).
 
 ## UNKNOWN_OPTION {#unknown_option}
 
 The configuration contains an option name `@wolfstar/http-framework` doesn't recognize.
 
-A top-level key that is not built in is checked later. The `stars` commands report it once the modules are set up, if
-no installed module claims it as its [`meta.configKey`](/documentation/packages/kit#reading-options-from-a-config-key).
-The check also runs when `modules` is empty. `loadStarsConfig` on its own does not report such keys.
+A top-level key that is not built in is checked later. The `stars` commands report it once the modules are set up, if no installed module claims it as its [`meta.configKey`](/documentation/packages/kit#reading-options-from-a-config-key). The check also runs when `modules` is empty. `loadStarsConfig` on its own does not report such keys.
 
-**Fix:** the message lists the known options for that section. Check for a typo. For a top-level key, the list
-includes the keys claimed by installed modules. The hint asks you to check that the module is listed in `modules` and
-declares the key as its `configKey`.
+**Fix:** the message lists the known options for that section. Check for a typo. For a top-level key, the list includes the keys claimed by installed modules. The hint asks you to check that the module is listed in `modules` and declares the key as its `configKey`.
 
 ## UNKNOWN_HOOK {#unknown_hook}
 
-`hooks` contains a hook name the `stars` CLI doesn't recognize. `stars` rejects it rather than registering a hook that
-never runs.
+`hooks` contains a hook name the `stars` CLI doesn't recognize. `stars` rejects it rather than registering a hook that never runs.
 
-**Fix:** the message lists the known hooks (`config:resolved`, `env:options`, `prepare:before`, `prepare:done`,
-`builder:created`, `tsdown:options`, `build:before`, `build:done`, `dev:start`, `dev:restart`, `dev:close`). Check for
-a typo in the full name or the namespaced form.
+**Fix:** the message lists the known hooks (`config:resolved`, `env:options`, `prepare:before`, `prepare:done`, `builder:created`, `tsdown:options`, `build:before`, `build:done`, `dev:start`, `dev:restart`, `dev:close`). Check for a typo in the full name or the namespaced form.
 
 ## EXPERIMENT_REQUIRED {#experiment_required}
 
@@ -149,16 +135,13 @@ An option needs an `experimental.*` flag that isn't set.
 
 ## INVALID_PORT {#invalid_port}
 
-`stars dev` resolved a development listener port that isn't an integer from 1 to 65535. The port is read from
-`HTTP_PORT` or `PORT` in `dev.env`, the process environment, or the project's `.env` files. It is only checked when
-`stars dev` starts.
+`stars dev` resolved a development listener port that isn't an integer from 1 to 65535. The port is read from `HTTP_PORT` or `PORT` in `dev.env`, the process environment, or the project's `.env` files. It is only checked when `stars dev` starts.
 
 **Fix:** set `HTTP_PORT` or `PORT` (including `dev.env` and `.env` files) to an integer from 1 to 65535.
 
 ## ENV_EXPANSION_FAILED {#env_expansion_failed}
 
-Expanding variable references (such as `HTTP_PORT=${PORT}`) in an env file went deeper than 100 levels or produced a
-value larger than 1 MiB.
+Expanding variable references (such as `HTTP_PORT=${PORT}`) in an env file went deeper than 100 levels or produced a value larger than 1 MiB.
 
 **Fix:** simplify the environment variable references.
 
@@ -178,15 +161,12 @@ The tunnel URL isn't `https`.
 
 A `dev.tunnel` option does not apply to the rest of the tunnel configuration. This happens when:
 
-- `dev.tunnel.provider` or `dev.tunnel.domain` is set next to `dev.tunnel.url`. A URL you already serve has no tunnel
-  provider.
-- `dev.tunnel.domain` is set without `provider: 'ngrok'`. Only ngrok can bind a reserved domain, and `cloudflared` is
-  the default provider.
+- `dev.tunnel.provider` or `dev.tunnel.domain` is set next to `dev.tunnel.url`. A URL you already serve has no tunnel provider.
+- `dev.tunnel.domain` is set without `provider: 'ngrok'`. Only ngrok can bind a reserved domain, and `cloudflared` is the default provider.
 
 The message names the option and the reason.
 
-**Fix:** remove `provider` or `domain`, or remove `url` to let the CLI open the tunnel. For a reserved domain, set
-`dev.tunnel.provider` to `'ngrok'`:
+**Fix:** remove `provider` or `domain`, or remove `url` to let the CLI open the tunnel. For a reserved domain, set `dev.tunnel.provider` to `'ngrok'`:
 
 ```ts
 export default defineConfig({
@@ -196,11 +176,9 @@ export default defineConfig({
 
 ## INVALID_CHOICE {#invalid_choice}
 
-An option limited to a fixed set of values received an unknown one: `dev.layout`, `dev.logs.levels`,
-`dev.commands.refresh`, or `dev.tunnel.provider`. The message names the option path and the value it received.
+An option limited to a fixed set of values received an unknown one: `dev.layout`, `dev.logs.levels`, `dev.commands.refresh`, or `dev.tunnel.provider`. The message names the option path and the value it received.
 
-**Fix:** use one of the values the message lists. For example, `dev.layout` accepts `'auto'`, `'dashboard'`, or
-`'panel'`, and `dev.tunnel.provider` accepts `'cloudflared'` or `'ngrok'`.
+**Fix:** use one of the values the message lists. For example, `dev.layout` accepts `'auto'`, `'dashboard'`, or `'panel'`, and `dev.tunnel.provider` accepts `'cloudflared'` or `'ngrok'`.
 
 ## INVALID_TYPECHECKER {#invalid_typechecker}
 
@@ -212,8 +190,7 @@ The configured type checker is set to an unknown value.
 
 No `stars.config.*` file was found.
 
-**Fix:** pass an existing file to `--config`, or create one of the recognized config file names in the current
-directory.
+**Fix:** pass an existing file to `--config`, or create one of the recognized config file names in the current directory.
 
 ## CONFIG_LOAD_FAILED {#config_load_failed}
 

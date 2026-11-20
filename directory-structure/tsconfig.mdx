@@ -1,0 +1,41 @@
+---
+title: 'tsconfig.json'
+description: 'TypeScript configuration for Stars Components projects, including the solution-style root tsconfig and generated compiler options.'
+---
+
+TypeScript projects built with tsdown, Vite, or Vite + Nitro are generated for `future.compatibilityVersion` 6. Their root `tsconfig.json` is solution-style. It only references the two configs that `stars prepare` writes to `.stars/`:
+
+```json
+{
+	"files": [],
+	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+}
+```
+
+`.stars/tsconfig.app.json` covers the bot sources, and `.stars/tsconfig.node.json` covers the config files and scripts Node runs. The `postinstall` script runs `stars prepare`, so both files exist after you install dependencies.
+
+A bare `tsc` on the root `tsconfig.json` checks nothing, because it only references `.stars/`. The generated `README.md` and `AGENTS.md` list the `typecheck` script. Projects built with `tsc6` or `tsc7` keep their composite `tsconfig.json` and `src/tsconfig.json`, without a `typecheck` script.
+
+## Generated Compiler Options
+
+The generated compiler options combine `@sapphire/ts-config`, `@sapphire/ts-config/extra-strict`, and `@sapphire/ts-config/decorators`. The CLI loads these presets and writes their options directly into the file, so consumers do not need to install Sapphire. This enables strict checks, explicit overrides, and legacy decorators with metadata. Stars targets ES2022, skips dependency declaration checks, and stores incremental build information inside `.stars/`. Tsdown and Vite use `ESNext`/`Bundler` with `noEmit`; tsc retains Sapphire's Node16 emit settings. Project compiler options can override these defaults.
+
+Bundler builds also follow [Nitro's TypeScript configuration](https://github.com/nitrojs/nitro/blob/main/lib/tsconfig.json): forced module detection, isolated modules, verbatim module syntax, JavaScript sources, `.ts` import extensions, package.json imports, and ESNext/DOM libraries. Use `import type` and `export type` for type-only dependencies. These options apply to tsdown and Vite; tsc keeps its emit-compatible settings. Sapphire's decorator options and the ES2022 target remain in effect.
+
+## Legacy Extends Warning
+
+A root `tsconfig.json` that still extends `./.stars/tsconfig.json` gets a [`TSCONFIG_LEGACY_EXTENDS`](/api/errors/cli#tsconfig_legacy_extends) warning from `stars prepare` and `stars doctor`. Replace it with the solution-style file above, or keep `future.compatibilityVersion` at `5`.
+
+## Type Checking
+
+Switch your type-check script to [`stars typecheck`](/api/commands/typecheck), which regenerates `.stars/` and checks each project:
+
+```json
+{
+	"scripts": {
+		"typecheck": "stars typecheck"
+	}
+}
+```
+
+Run `stars prepare` (or `stars prepare --check` in CI) to confirm both generated files are up to date.

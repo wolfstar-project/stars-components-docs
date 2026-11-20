@@ -1,0 +1,25 @@
+---
+title: 'listeners'
+description: 'Store directory for Listener pieces that respond to client and framework events.'
+---
+
+Listener pieces live in `src/listeners/`. A listener subscribes to a client event. The most common use is turning errors into replies and log lines in one place.
+
+## Example
+
+```typescript
+import { ApplyOptions } from '@wolfstar/decorators';
+import { Events, Listener, type ClientEventCommandContext } from '@wolfstar/http-framework';
+
+@ApplyOptions<Listener.Options>({ event: Events.CommandError })
+export class UserListener extends Listener {
+	public run(error: unknown, context: ClientEventCommandContext) {
+		this.container.logger.error(`Failed to run ${context.command.name}`, error);
+	}
+}
+```
+
+## More
+
+- [Listeners](/guide/concepts/architecture#listeners)
+- [Client events](/documentation/packages/http-framework#client-events)

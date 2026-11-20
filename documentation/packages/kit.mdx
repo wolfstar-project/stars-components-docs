@@ -40,9 +40,7 @@ dependency without pulling in the framework or the CLI.
 
 ## When to use it
 
-- Use `modules` in `stars.config` to activate a module, such as the [`@wolfstar/plugin-*` packages](/documentation/guide/plugins).
-  You do not import `@wolfstar/kit` yourself for this, but the plugin packages list it as an optional peer, so install
-  it in the project.
+- Use `modules` in `stars.config` to activate a module, such as the [`@wolfstar/plugin-*` packages](/guide/concepts/plugins). You do not import `@wolfstar/kit` yourself for this, but the plugin packages list it as an optional peer, so install it in the project.
 - Depend on `@wolfstar/kit` when you write a package that should be installable from `stars.config`.
 
 ## Activating modules
@@ -173,9 +171,7 @@ A `configKey` must follow these rules, or the install fails with `MODULE_INVALID
 - No other installed module claims it.
 - The value under it in `stars.config`, when set, is a plain object.
 
-Modules installed through `dependencies` or `ctx.installModule` read their key too. Once every module is set up, the
-CLI reports any top-level key that no installed module claimed as
-[`UNKNOWN_OPTION`](/documentation/errors/config#unknown_option), so a misspelled key is still an error.
+Modules installed through `dependencies` or `ctx.installModule` read their key too. Once every module is set up, the CLI reports any top-level key that no installed module claimed as [`UNKNOWN_OPTION`](/api/errors/config#unknown_option), so a misspelled key is still an error.
 
 A module is installed once, by `meta.name`. When two paths install the same module, the first installation wins,
 whatever options the second one passes.
@@ -323,9 +319,7 @@ with `node --import` instead:
 node --import ./.stars/modules.mjs dist/main.js
 ```
 
-When `env` is enabled, `.stars/modules.mjs` imports `.stars/env.mjs` first, so the environment is loaded before any
-plugin is evaluated. `stars build`, `stars prepare`, and `stars info` report a
-[`MODULES_PRELOAD_REQUIRED`](/documentation/errors/cli#modules_preload_required) warning for such projects.
+When `env` is enabled, `.stars/modules.mjs` imports `.stars/env.mjs` first, so the environment is loaded before any plugin is evaluated. `stars build`, `stars prepare`, and `stars info` report a [`MODULES_PRELOAD_REQUIRED`](/api/errors/cli#modules_preload_required) warning for such projects.
 
 ## Errors
 
@@ -343,8 +337,7 @@ When a module cannot be installed, `@wolfstar/kit` throws a `ModuleError`. Its `
 | `MODULE_HOOK_INVALID`    | A `client:*` hook has an unknown name, is declared twice by the same module, or is not given by source (a function, a missing `from`, or a relative path).                                                                     |
 | `MODULE_LOCALES_INVALID` | `addLocales` got a relative path, or a directory that cannot be read.                                                                                                                                                          |
 
-The `stars` CLI reports a failing module as a [`MODULE_FAILED`](/documentation/errors/cli#module_failed) diagnostic
-and exits with code `2`.
+The `stars` CLI reports a failing module as a [`MODULE_FAILED`](/api/errors/cli#module_failed) diagnostic and exits with code `2`.
 
 ## Programmatic usage
 

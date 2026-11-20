@@ -1,10 +1,9 @@
 ---
-title: Testing Interactions
-description: Test HTTP Framework commands with Vitest fixtures and custom matchers.
+title: 'Testing Interactions'
+description: 'Test HTTP Framework commands with Vitest fixtures and custom matchers.'
 ---
 
-`@wolfstar/http-framework-test-utils` dispatches Discord interaction payloads through a testable client. Tests exercise the
-real router and command classes without opening a port or calling Discord.
+`@wolfstar/http-framework-test-utils` dispatches Discord interaction payloads through a testable client. Tests exercise the real router and command classes without opening a port or calling Discord.
 
 ## Install
 
@@ -63,14 +62,10 @@ describe('ping command', () => {
 | `toHaveJsonBody(value)`           | Strict deep equality for the parsed JSON body |
 | `result.json()` + `toMatchObject` | A partial JSON assertion                      |
 
-`toHaveJsonBody` compares every nested key. Prefer `toMatchObject` when the interaction response contains unrelated
-metadata.
+`toHaveJsonBody` compares every nested key. Prefer `toMatchObject` when the interaction response contains unrelated metadata.
 
 ## Available Fixtures
 
-The package provides fixtures for chat-input, user, and message commands; autocomplete; buttons; every select-menu
-variant; and modal submissions. Base user, guild member, message, and interaction data are also exported for composing
-custom payloads.
+The package provides fixtures for chat-input, user, and message commands; autocomplete; buttons; every select-menu variant; and modal submissions. Base user, guild member, message, and interaction data are also exported for composing custom payloads.
 
-Read the [package guide](/documentation/packages/http-framework-test-utils) for helper utilities and the
-[generated API reference](/documentation/api) for fixture types.
+Read the [package guide](/documentation/packages/http-framework-test-utils) for helper utilities and the [generated API reference](/documentation/api) for fixture types.

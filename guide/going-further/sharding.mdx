@@ -1,0 +1,728 @@
+---
+title: 'Scale Gateway Bots with plugin-sharder'
+sidebarTitle: 'Sharding'
+description: 'Spread GatewayClient shards across processes, threads, and machines with @wolfstar/plugin-sharder: layouts, messaging, supervision, and proxies.'
+---
+
+`@wolfstar/plugin-sharder` runs your [`GatewayClient`](/guide/going-further/gateway) across several processes, cluster workers, worker threads, or machines. This guide walks you through a sharded bot from the first script to a multi-machine deployment: choosing a layout, passing messages between shards, supervising crashes, pacing identifies, and securing the traffic between shards.
+
+<Tip>
+  **Prerequisites**
+
+- A working gateway bot. If you do not have one yet, start with [Build a Gateway Bot](/guide/going-further/gateway).
+- Node.js `>=20` for `@wolfstar/plugin-sharder`. `@wolfstar/plugin-gateway` itself needs Node.js `>=24.17.0`.
+- Your bot token in `DISCORD_TOKEN`, or passed to the manager as `token`.
+
+</Tip>
+
+## How sharding works
+
+A `GatewayClient` connects all of its gateway shards from one process. Once your bot grows, one process is no longer enough: a crash takes every guild offline, and a single event loop handles every dispatch. The sharder splits the gateway shards across several **shards**, and supervises them from a **manager**.
+
+<Note>
+	The package follows the [discord.js sharder RFC](https://github.com/discordjs/discord.js/issues/8084). A **shard** is what the manager spawns (a
+	process, a cluster worker, a worker thread, or a process on another machine), and one shard may connect several **gateway shards**. This guide
+	uses both terms.
+</Note>
+
+| Piece                | Runs in        | Role                                                                                           |
+| -------------------- | -------------- | ---------------------------------------------------------------------------------------------- |
+| `ShardManager`       | The manager    | Spawns and supervises the shards, paces their identifies, and carries their messages.          |
+| `ShardChannel`       | The manager    | The manager's handle on one shard: status, pings, messages, requests, and restarts.            |
+| `ShardClient`        | Each shard     | Signals the shard's status, sends messages and requests, and answers requests.                 |
+| `ShardManagerProxy`  | Other machines | Runs shards on another machine for one or several managers, and talks to other proxies.        |
+| `ChannelStrategy`    | The manager    | How shards are spawned: `"fork"` (default), `"cluster"`, `"worker"`, `"network"`, or your own. |
+| `MessageHandler`     | Both sides     | How packets are serialized: `"json"` (default), `"v8"`, `"raw"`, or your own.                  |
+| `MessageTransformer` | Both sides     | How serialized packets are transformed: `"gzip"`, `"brotli"`, or your own, such as encryption. |
+
+The sharder knows nothing about Discord's gateway protocol. A shard runs any script that uses `ShardClient`, so it works with `@wolfstar/plugin-gateway`, `@discordjs/ws`, or another library.
+
+## Install the package
+
+<CodeGroup>
+
+```bash npm
+npm install @wolfstar/plugin-sharder @wolfstar/plugin-gateway
+```
+
+```bash pnpm
+pnpm add @wolfstar/plugin-sharder @wolfstar/plugin-gateway
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-sharder @wolfstar/plugin-gateway
+```
+
+```bash bun
+bun add @wolfstar/plugin-sharder @wolfstar/plugin-gateway
+```
+
+</CodeGroup>
+
+The package depends on [`@sapphire/result`](https://www.npmjs.com/package/@sapphire/result) and re-exports its `Result`, `Ok`, and `Err`.
+
+## Shard your first bot
+
+The manager and the shards can share one script. `ShardClient.context` is `null` in the manager and set in every shard, so one `if` decides which side runs.
+
+<Steps>
+  <Step title="Start the manager">
+    In the manager branch, create a `ShardManager` and call `spawn()`. Without options, it fetches Discord's recommended shard count, splits it across one shard per CPU core, and forks the current script for each shard:
+
+    ```ts src/bot.ts
+    import { ShardClient, ShardManager } from '@wolfstar/plugin-sharder';
+
+    if (!ShardClient.context) {
+    	const manager = new ShardManager({ spawn: { delay: 0 } });
+    	manager.on('shardReady', (channel) => console.log(`Shard ${channel.id} (${channel.shards}) is ready`));
+    	await manager.spawn();
+    }
+    ```
+
+    `spawn.delay: 0` starts shards without waiting between them. This is safe because the next step lets the manager pace identifies across every process.
+
+  </Step>
+  <Step title="Connect the gateway client in each shard">
+    In the shard branch, create a `ShardClient`, then spread its `gatewayOptions` into the `GatewayClient` options. `gatewayOptions` holds the `shardIds` and `shardCount` this shard runs:
+
+    ```ts src/bot.ts
+    import { GatewayClient } from '@wolfstar/plugin-gateway';
+    import { ShardClient } from '@wolfstar/plugin-sharder';
+    import { GatewayIntentBits } from 'discord-api-types/v10';
+
+    const shard = new ShardClient();
+    const client = new GatewayClient({
+    	intents: GatewayIntentBits.Guilds,
+    	...shard.gatewayOptions,
+    	// The manager paces identifies across every process.
+    	gateway: { buildIdentifyThrottler: () => shard.identifyThrottler }
+    });
+
+    // Reuse the manager's GET /gateway/bot instead of requesting it from every process.
+    client.gateway.fetchGatewayInformation = () => shard.fetchGatewayInformation();
+    ```
+
+  </Step>
+  <Step title="Answer requests and close cleanly">
+    Register a request handler so other shards and the manager can query this shard, and a close handler so the manager can stop it gracefully:
+
+    ```ts src/bot.ts
+    const guilds = new Set<string>();
+    client.on('guildCreate', (guild) => guilds.add(guild.id));
+    client.on('guildDelete', (_guild, data) => guilds.delete(data.id));
+
+    shard.setRequestHandler((body: { type: string }) => {
+    	if (body.type === 'guildCount') return guilds.size;
+    	throw new Error(`Unknown request ${body.type}`);
+    });
+
+    shard.setCloseHandler(() => client.destroy());
+    ```
+
+  </Step>
+  <Step title="Signal readiness and connect">
+    Tell the manager the shard is ready once every gateway shard it runs has connected, then connect:
+
+    ```ts src/bot.ts
+    let pending = shard.shards.length;
+    client.on('shardReady', () => {
+    	if (--pending === 0) void shard.ready();
+    });
+
+    await client.connect();
+    ```
+
+    Until `shard.ready()` is called, the manager counts the shard as starting. Messages and requests for it wait, and a shard that is not ready within `spawn.timeout` is killed and tried again.
+
+  </Step>
+</Steps>
+
+Put together, the complete script looks like this:
+
+```ts src/bot.ts expandable
+import { GatewayClient } from '@wolfstar/plugin-gateway';
+import { ShardClient, ShardManager } from '@wolfstar/plugin-sharder';
+import { GatewayIntentBits } from 'discord-api-types/v10';
+
+if (!ShardClient.context) {
+	// Discord's recommended shard count, split across one process per CPU core, forking this script.
+	const manager = new ShardManager({ spawn: { delay: 0 } });
+	manager.on('shardReady', (channel) => console.log(`Shard ${channel.id} (${channel.shards}) is ready`));
+	await manager.spawn();
+} else {
+	const shard = new ShardClient();
+	const client = new GatewayClient({
+		intents: GatewayIntentBits.Guilds,
+		...shard.gatewayOptions,
+		gateway: { buildIdentifyThrottler: () => shard.identifyThrottler }
+	});
+	client.gateway.fetchGatewayInformation = () => shard.fetchGatewayInformation();
+
+	const guilds = new Set<string>();
+	client.on('guildCreate', (guild) => guilds.add(guild.id));
+	client.on('guildDelete', (_guild, data) => guilds.delete(data.id));
+
+	shard.setRequestHandler((body: { type: string }) => {
+		if (body.type === 'guildCount') return guilds.size;
+		throw new Error(`Unknown request ${body.type}`);
+	});
+	shard.setCloseHandler(() => client.destroy());
+
+	let pending = shard.shards.length;
+	client.on('shardReady', () => {
+		if (--pending === 0) void shard.ready();
+	});
+	await client.connect();
+}
+```
+
+<Note>
+	The manager passes its context to each shard through the `WOLFSTAR_SHARDER` environment variable, or through worker data with `WorkerStrategy`. A
+	`token` given to the manager reaches the shards as `DISCORD_TOKEN`.
+</Note>
+
+## Choose a layout
+
+The layout decides how many gateway shards run and how they are grouped into shards. Set it with these `ShardManager` options:
+
+| Option        | Default                       | Description                                                                                                                                                 |
+| ------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `shards`      | `"auto"`                      | A number of shards of one gateway shard each, an array of gateway shard counts per shard, or `"auto"` to split the gateway shards across `clusters` shards. |
+| `totalShards` | This manager's gateway shards | The total number of gateway shards across every manager. `"auto"` is Discord's recommendation.                                                              |
+| `shardList`   | All of them                   | The gateway shards this manager spawns, when several managers split them.                                                                                   |
+| `clusters`    | `os.availableParallelism()`   | How many shards to split the gateway shards across, with `shards: "auto"`.                                                                                  |
+| `recommended` | `undefined`                   | How Discord's recommended count is turned into the total with `"auto"`: `guildsPerShard` (default `1000`) and `multipleOf` (default `1`).                   |
+
+<Tabs>
+  <Tab title="One gateway shard per shard">
+    ```ts
+    // 9 shards running one gateway shard each.
+    new ShardManager({ shards: 9 });
+    ```
+  </Tab>
+  <Tab title="Explicit groups">
+    ```ts
+    // 3 shards of 3 gateway shards each: 0-2, 3-5, and 6-8.
+    new ShardManager({ shards: [3, 3, 3] });
+    ```
+  </Tab>
+  <Tab title="Automatic">
+    ```ts
+    // Discord's recommendation, split across 4 shards.
+    new ShardManager({ shards: 'auto', clusters: 4 });
+    ```
+  </Tab>
+  <Tab title="Large bot sharding">
+    ```ts
+    // Fewer guilds per gateway shard, rounded up to a multiple of 16.
+    new ShardManager({ totalShards: 'auto', recommended: { guildsPerShard: 800, multipleOf: 16 } });
+    ```
+  </Tab>
+</Tabs>
+
+An invalid layout, such as a non-positive count, throws a `RangeError`.
+
+`"auto"` needs the bot token, through `token` or `DISCORD_TOKEN`, or a custom `gatewayInformation.fetch`. The manager fetches `GET /gateway/bot` once, caches it for `gatewayInformation.ttl` (one day by default), keeps its session start limit up to date with the identifies it grants, and hands it to the shards through `shard.fetchGatewayInformation()`.
+
+The package also exports the helpers it uses, for your own tooling:
+
+```ts
+import { fetchRecommendedShardCount, shardIdForGuild } from '@wolfstar/plugin-sharder';
+
+const total = await fetchRecommendedShardCount(process.env.DISCORD_TOKEN!, { multipleOf: 16 });
+const gatewayShard = shardIdForGuild(guildId, total);
+```
+
+`manager.channelFor(shardId)` returns the channel running a gateway shard, and `manager.channelForGuild(guildId)` returns the channel running a guild.
+
+## Communicate between shards
+
+Messages are raw data, and a request is a message that waits for a reply. Shards can reach the manager, a single shard, or every shard:
+
+| From a shard                     | From the manager                 | Goes to                          |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| `shard.send(body)`               | None                             | The manager's `message` event    |
+| `shard.send(body, 2)`            | `manager.send(2, body)`          | Shard 2's `message` event        |
+| `shard.send(body, 'all')`        | `manager.broadcast(body)`        | Every shard                      |
+| `shard.request(body)`            | None                             | The manager's request handler    |
+| `shard.request(body, { to: 2 })` | `manager.request(2, body)`       | Shard 2's request handler        |
+| `shard.broadcastRequest(body)`   | `manager.broadcastRequest(body)` | Every shard, replies by shard ID |
+
+### Handle requests
+
+A request handler returns the reply. On a shard, it receives the body and `{ from, signal }`. On the manager, it receives the body and `{ channel, signal }`:
+
+```ts
+// In a shard.
+shard.setRequestHandler(async (body: { type: 'userCount' }, { signal }) => {
+	const response = await fetch('https://example.com/stats', { signal });
+	return (await response.json()).users;
+});
+
+// In the manager, for shard.request(body) without `to`.
+manager.setRequestHandler((body: { type: 'uptime' }, { channel }) => {
+	console.log(`Shard ${channel.id} asked for the uptime`);
+	return process.uptime();
+});
+```
+
+A handler that throws, or a missing handler, rejects the request on the other side with a `ShardRequestError` carrying the remote error's name (`remoteName`) and message. The `signal` aborts when the requester times out or cancels, so you can stop long work such as an HTTP request.
+
+### Broadcast requests
+
+`broadcastRequest` replaces discord.js's `broadcastEval` and `fetchClientValues`. It resolves with the reply of every shard:
+
+```ts
+const counts = await manager.broadcastRequest<number>({ type: 'guildCount' });
+const total = counts.reduce((sum, count) => sum + count, 0);
+```
+
+With `{ partial: true }`, it resolves with the outcome of every shard like `Promise.allSettled`, so the replies that arrived before a timeout or a failure are kept:
+
+```ts
+const results = await manager.broadcastRequest<number>({ type: 'guildCount' }, { partial: true, timeout: 5_000 });
+const total = results.reduce((sum, result) => sum + (result.status === 'fulfilled' ? result.value : 0), 0);
+```
+
+### Typed commands
+
+The sharder has no command format and no `eval`. `createCommandHandler` and `command` add an optional, typed layer on top of requests:
+
+```ts
+import { command, createCommandHandler, type CommandReply, type Commands } from '@wolfstar/plugin-sharder';
+
+const commands = {
+	guildCount: () => guilds.size,
+	hasGuild: (id: string) => guilds.has(id)
+} satisfies Commands;
+
+// In each shard.
+shard.setRequestHandler(createCommandHandler(commands));
+
+// In the manager.
+const counts = await manager.broadcastRequest<CommandReply<typeof commands, 'guildCount'>>(command<typeof commands>('guildCount'));
+```
+
+An unknown command rejects with a `RangeError`.
+
+### Handle failures with `Result`
+
+Every operation that can fail has a `try*` twin that resolves with a `Result` instead of rejecting: `trySend`, `tryRequest`, and `tryBroadcastRequest` on the manager, channels, and shards, and `tryControl` on shards. The error is a `ShardError`. `tryBroadcastRequest` resolves with one `Result` per shard.
+
+A request handler may return a `Result` too: `Ok` is the reply, and `Err` is the error the requester gets.
+
+```ts
+import { Result } from '@wolfstar/plugin-sharder';
+
+shard.setRequestHandler((id: string) => (guilds.has(id) ? Result.ok(id) : Result.err(new RangeError('Unknown guild'))));
+
+const reply = await manager.tryRequest(0, guildId);
+reply.match({ ok: (value) => console.log(value), err: (error) => console.error(error.message) });
+
+const counts = await manager.tryBroadcastRequest<number>({ type: 'guildCount' });
+const total = counts.reduce((sum, count) => sum + count.unwrapOr(0), 0);
+```
+
+### Timeouts and errors
+
+A request times out after its `timeout`, or after the manager's `requestTimeout`, which defaults to the ping timeout of 60 seconds. Pass `timeout` and `signal` per request:
+
+```ts
+const controller = new AbortController();
+const count = await shard.request<number>({ type: 'guildCount' }, { to: 2, timeout: 10_000, signal: controller.signal });
+```
+
+A message or request for a shard that is not ready waits for it within its timeout. When the manager does not expect a starting shard to be ready before the timeout, based on `spawn.readyHint` or the average time shards took so far, the request fails right away.
+
+| Error                      | When                                                                         | Extra properties             |
+| -------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
+| `ShardRequestError`        | The remote handler threw, returned an `Err`, or is missing.                  | `remoteName`                 |
+| `ShardRequestTimeoutError` | No reply arrived within the timeout. The other side is told to abort.        | `timeout`                    |
+| `ShardUnavailableError`    | The shard cannot be reached, for example after the supervisor gave up on it. | `channelId`                  |
+| `ShardSpawnError`          | A shard failed before it was ready.                                          | `channelId`, `code`, `cause` |
+
+`ShardError` is the union of these errors.
+
+## Supervise the shards
+
+### Shard status
+
+A shard signals its status with `ShardClient` methods, and the manager emits each change as `shardStatus`:
+
+| Status         | Set by                            | When the process stops              |
+| -------------- | --------------------------------- | ----------------------------------- |
+| `Starting`     | `new ShardClient()`               | Restarted, if the supervisor allows |
+| `Ready`        | `shard.ready()`                   | Restarted, if the supervisor allows |
+| `Disconnected` | `shard.disconnected()`            | Restarted, if the supervisor allows |
+| `Reconnecting` | `shard.reconnecting()`            | Restarted, if the supervisor allows |
+| `Exiting`      | `shard.exit()`                    | Not restarted                       |
+| `Restarting`   | `shard.restart()`                 | Always restarted                    |
+| `Idle`         | The manager, when no process runs | None                                |
+
+### Crash supervision
+
+Crashes go through a supervisor modelled on Erlang/OTP. Configure it with the `supervisor` option:
+
+| Option      | Default         | Description                                                                                                                                                                    |
+| ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `intensity` | `-1`            | How many crashes within `period` before the manager gives up on the shard. `-1` never gives up.                                                                                |
+| `period`    | `0`             | The window in milliseconds. `0` counts crashes in a row until the shard is ready again.                                                                                        |
+| `strategy`  | `"one-for-one"` | What else restarts: `"one-for-one"` restarts the crashed shard, `"one-for-all"` restarts every shard, and `"rest-for-one"` restarts the crashed shard and the shards after it. |
+
+```ts
+const manager = new ShardManager({
+	// Give up on a shard that crashes 5 times within a minute.
+	supervisor: { intensity: 5, period: 60_000 }
+});
+
+manager.on('shardGiveUp', (channel, crashes) => console.error(`Shard ${channel.id} gave up after ${crashes} crashes`));
+```
+
+A shard given up on is emitted as `shardGiveUp`. Without a listener, the manager emits `error` with a `ShardUnavailableError`. A shard that fails before it is ready is emitted as `shardError` with a `ShardSpawnError`.
+
+### Spawning and health checks
+
+Shards start one at a time, `spawn.delay` milliseconds apart. A shard that is not ready within `spawn.timeout` is killed and tried again at the end of the queue. A shard slower than the expected ready time is emitted as `shardSlowStart`.
+
+The manager pings every ready shard each `ping.interval`. A shard that stops answering for `ping.timeout` is emitted as `shardUnresponsive`, or restarted when nothing listens. `channel.ping` holds the latency and the timestamps:
+
+```ts
+manager.on('shardPing', (channel, latency) => console.debug(`Shard ${channel.id} answered in ${latency}ms`));
+manager.on('shardUnresponsive', (channel) => void manager.restart(channel.id));
+```
+
+On the shard side, `managerUnresponsive` fires when the manager stops pinging. The shard keeps running.
+
+### Restarts and resharding
+
+`manager.restart(id)` and `manager.destroy()` first ask the shard to close, which runs its close handler, and kill it past the timeout. A rolling restart spawns the new shard first and closes the old one once the new one is ready, for close to no downtime:
+
+```ts
+// Restart one shard with no gap in coverage.
+await manager.restart(3, { rolling: true });
+
+// Restart every shard, one at a time.
+await manager.restartAll({ rolling: true });
+
+// Move to a new layout, for example after your bot grew.
+await manager.reshard({ shards: 'auto' });
+```
+
+`manager.reshard(layout)` does the same for a whole new layout. When the manager dies, a process shard emits `disconnect` and exits when nothing listens. A worker thread stops with it.
+
+<Tip>
+  Combine rolling restarts with a session store from [`@wolfstar/plugin-cache`](/guide/going-further/caching#resume-sessions-across-restarts). Close the client with `client.destroy({ resumable: true })` in the close handler so the new process resumes the gateway sessions instead of identifying again.
+</Tip>
+
+## Pace identifies
+
+Discord limits how fast a bot can identify. The manager paces identifies across every process: `shard.identifyThrottler` is an `@discordjs/ws` identify throttler, and the manager grants one identify per `max_concurrency` bucket every `identify.delay` milliseconds.
+
+| Option                 | Default  | Description                                                                                         |
+| ---------------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `identify.concurrency` | `"auto"` | How many identifies run at once. `"auto"` uses Discord's `max_concurrency`, or `1` without a token. |
+| `identify.delay`       | `5_000`  | Milliseconds between identify grants.                                                               |
+
+Pass the throttler to `GatewayClient` with `gateway: { buildIdentifyThrottler: () => shard.identifyThrottler }`, as in [Shard your first bot](#shard-your-first-bot). This is what makes `spawn.delay: 0` safe.
+
+### Control single gateway shards
+
+`setShardHandler({ start, close })` lets the manager start and close single gateway shards in a shard with `manager.startShard(id)`, `manager.closeShard(id)`, and `manager.restartShard(id)`. From a shard, `shard.control()` asks the manager to start, close, or restart gateway shards or whole shards:
+
+```ts
+shard.setShardHandler({ start: (id) => connect(id), close: (id) => disconnect(id) });
+
+await shard.control({ action: 'restart', target: { shard: 12 } });
+await shard.control({ action: 'restart', target: { channel: 'all' } });
+```
+
+`connect` and `disconnect` stand for your own functions that connect and close one gateway shard.
+
+## Pick a strategy
+
+The strategy decides what a shard is. Pass a name to `strategy` with options in `strategyOptions`, or an instance. Register your own with `registerStrategy`.
+
+<Tabs>
+  <Tab title="Fork (default)">
+    Shards are child processes. Ports must differ per shard. By default, each shard runs the manager's script.
+
+    ```ts
+    import { ForkStrategy, ShardManager } from '@wolfstar/plugin-sharder';
+
+    new ShardManager({
+    	strategy: new ForkStrategy({ path: './dist/shard.js', execArgv: ['--enable-source-maps'] })
+    });
+    ```
+
+    Options: `path`, `args`, `execArgv`, and `env`.
+
+  </Tab>
+  <Tab title="Cluster">
+    Shards are `node:cluster` workers. Ports are shared and balanced across workers. By default, each shard runs the manager's script.
+
+    ```ts
+    new ShardManager({ strategy: 'cluster' });
+    ```
+
+    Options: `path`, `args`, `execArgv`, and `env`.
+
+  </Tab>
+  <Tab title="Worker">
+    Shards are worker threads named `shard <id>`. Messages are the fastest, but one crash of the process stops every shard.
+
+    ```ts
+    import { ShardManager, WorkerStrategy } from '@wolfstar/plugin-sharder';
+
+    new ShardManager({ strategy: new WorkerStrategy({ path: './dist/shard.js' }) });
+    ```
+
+    Options: `path` (required) and `worker`, the `WorkerOptions` without `workerData`.
+
+  </Tab>
+  <Tab title="Network">
+    Shards are processes of `ShardManagerProxy` instances on other machines, connected over TLS, or plain TCP on trusted networks. See [Run shards on several machines](#run-shards-on-several-machines).
+
+    Options: `port`, `host`, `token`, `id` (a random UUID by default), `tls`, `reconnectGrace` (30 seconds), and `heartbeat` (`interval` 15 seconds, `timeout` 45 seconds).
+
+  </Tab>
+</Tabs>
+
+`channel.pid`, `channel.threadId`, and `channel.host` identify where each shard runs.
+
+## Run shards on several machines
+
+The manager listens with a `NetworkStrategy`, and a `ShardManagerProxy` on each machine connects to it, spawns the shards it is given with its own strategy, and carries their messages.
+
+<Steps>
+  <Step title="Listen on the manager's machine">
+    ```ts manager.ts
+    import { readFileSync } from 'node:fs';
+    import { NetworkStrategy, ShardManager } from '@wolfstar/plugin-sharder';
+    
+    const manager = new ShardManager({
+    	strategy: new NetworkStrategy({
+    		port: 7000,
+    		token: process.env.SHARDER_TOKEN!,
+    		tls: { key: readFileSync('key.pem'), cert: readFileSync('cert.pem') }
+    	}),
+    	totalShards: 'auto',
+    	clusters: 16
+    });
+    
+    await manager.spawn();
+    ```
+  </Step>
+  <Step title="Connect a proxy on every other machine">
+    ```ts proxy.ts
+    import { readFileSync } from 'node:fs';
+    import { ForkStrategy, ShardManagerProxy } from '@wolfstar/plugin-sharder';
+    
+    const proxy = new ShardManagerProxy({
+    	managers: ['manager.internal:7000', 'manager-backup.internal:7000'],
+    	token: process.env.SHARDER_TOKEN!,
+    	tls: { ca: readFileSync('ca.pem') },
+    	capacity: 8,
+    	strategy: new ForkStrategy({ path: './dist/bot.js' })
+    });
+    
+    proxy.on('connect', (manager) => console.log(`Connected to ${manager}`));
+    await proxy.connect();
+    ```
+  </Step>
+</Steps>
+
+Spawns go to the connected proxy with the most room, and wait when every proxy is full or none is connected. A proxy that loses its manager keeps its shards (`managerLoss: "keep"`, the default) or exits them (`"exit"`), and reconnects. Back within the manager's `reconnectGrace`, it keeps its shards. Past it, they are spawned elsewhere and its stale ones are killed. Proxies that come back are not rebalanced: they take the next spawns.
+
+### Proxy modes
+
+<Tabs>
+  <Tab title="Failover (default)">
+    The proxy serves one manager at a time: the first reachable entry of `managers`. It fails over to the next one when it loses it, for example a primary and a standby manager.
+  </Tab>
+  <Tab title="All">
+    The proxy serves every manager of `managers` at once and shares its `capacity` between them, for example managers that each run part of the gateway shards with `shardList`. Each manager can have its own `token` and `tls`, and gets its own `id`, which keeps the shards of different managers apart.
+
+    ```ts
+    const proxy = new ShardManagerProxy({
+    	managers: ['north.internal:7000', 'south.internal:7000'],
+    	mode: 'all',
+    	token: process.env.SHARDER_TOKEN!,
+    	capacity: 16,
+    	strategy: new ForkStrategy({ path: './dist/bot.js' }),
+    	peer: { port: 7001, advertise: 'den.internal', tls: { key, cert }, connectTls: { ca } }
+    });
+    ```
+
+  </Tab>
+</Tabs>
+
+### Peer routing
+
+Messages and requests between two shards of the same manager and the same proxy never go through the manager (`localRouting`, on by default). With `peer`, proxies also talk to each other directly: each proxy listens for peer connections, and the manager tells every proxy which proxy runs which ready shard. The first packet to a new proxy goes through the manager while the peer connection opens. A packet for a shard that moved or is not ready goes back through the manager. A lost peer connection fails the requests waiting on it right away.
+
+### Proxy options
+
+| Option           | Default                                 | Description                                                                         |
+| ---------------- | --------------------------------------- | ----------------------------------------------------------------------------------- |
+| `managers`       | Required                                | The managers, as `"host:port"` strings or `{ host, port, token?, tls? }` objects.   |
+| `mode`           | `"failover"`                            | `"failover"` serves one manager at a time, `"all"` serves every manager.            |
+| `token`          | None                                    | The token shared with the managers' `NetworkStrategy`.                              |
+| `name`           | `${hostname}:${pid}${hostname}:${pid}`  | The proxy's name.                                                                   |
+| `capacity`       | `os.availableParallelism()`             | How many shards the proxy runs.                                                     |
+| `strategy`       | `"fork"`                                | How the proxy spawns its shards, with `strategyOptions`.                            |
+| `tls`            | `false`                                 | `true` or TLS connection options to connect to the managers over TLS.               |
+| `managerLoss`    | `"keep"`                                | Whether shards keep running (`"keep"`) or exit (`"exit"`) when the manager is lost. |
+| `reconnectDelay` | `5_000`                                 | Milliseconds between reconnection attempts.                                         |
+| `localRouting`   | `true`                                  | Routes messages between local shards without the manager.                           |
+| `peer`           | None                                    | Peer routing: `port`, `host`, `advertise`, `token`, `tls`, and `connectTls`.        |
+| `heartbeat`      | `{ interval: 15_000, timeout: 45_000 }` | The heartbeat of the connections, in milliseconds.                                  |
+
+The proxy emits `connect`, `disconnect`, `reject`, `spawn`, `exit`, `peerConnect`, `peerDisconnect`, and `error`.
+
+<Warning>
+	Use plain TCP only on trusted networks. Over any other network, set `tls` on both the `NetworkStrategy` and the proxy, and keep `SHARDER_TOKEN`
+	secret.
+</Warning>
+
+## Serialization and transformers
+
+The manager tells its shards the names of its message handler and transformers, and the shards build the same ones from the registry.
+
+| Message handler | Keeps                                            | Notes                                                                                           |
+| --------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| `"json"`        | JSON values                                      | The default.                                                                                    |
+| `"v8"`          | `Map`, `Set`, `Date`, `BigInt`, and typed arrays | Values JSON loses survive the trip.                                                             |
+| `"raw"`         | Values as they are                               | Only for channels that clone values (worker threads, process IPC). No transformers, no network. |
+
+Transformers process serialized packets. They write in their order and read in reverse, so `['gzip', 'aes']` compresses and then encrypts. They are asynchronous and receive the channel they work for in `context.channelId`. A transformer that throws while reading turns the packet into an invalid message, emitted as `shardInvalidMessage`.
+
+Implement `MessageTransformer` for your own transformer, and register it on both sides with `ShardClient.registerMessageTransformer` (or `registerMessageTransformer`). Custom message handlers work the same way with `registerMessageHandler`:
+
+```ts
+import { ShardClient, ShardManager, type ChannelData, type MessageTransformer } from '@wolfstar/plugin-sharder';
+
+class AesTransformer implements MessageTransformer {
+	public readonly name = 'aes';
+
+	public constructor(private readonly key: string) {}
+
+	public write(data: ChannelData) {
+		return encrypt(data, this.key);
+	}
+
+	public read(data: ChannelData) {
+		return decrypt(data, this.key);
+	}
+}
+
+// Run this in the manager and in every shard (and in proxies with local routing).
+ShardClient.registerMessageTransformer('aes', () => new AesTransformer(process.env.SHARDER_KEY!));
+
+const manager = new ShardManager({ messageHandler: 'v8', transformers: ['gzip', 'aes'] });
+```
+
+`encrypt` and `decrypt` stand for your own functions. Combining `"raw"` with transformers throws a `TypeError`.
+
+## Manager options reference
+
+| Option                     | Default                     | Description                                                                        |
+| -------------------------- | --------------------------- | ---------------------------------------------------------------------------------- |
+| `strategy`                 | `"fork"`                    | `"fork"`, `"cluster"`, `"worker"`, `"network"`, a registered name, or an instance. |
+| `strategyOptions`          | `undefined`                 | The options of a strategy given by name.                                           |
+| `token`                    | `process.env.DISCORD_TOKEN` | The bot token, passed to shards as `DISCORD_TOKEN`.                                |
+| `gatewayInformation.fetch` | `GET /gateway/bot`          | A custom function returning the gateway information.                               |
+| `gatewayInformation.ttl`   | `86_400_000`                | Milliseconds the gateway information is cached.                                    |
+| `identify.concurrency`     | `"auto"`                    | See [Pace identifies](#pace-identifies).                                           |
+| `identify.delay`           | `5_000`                     | See [Pace identifies](#pace-identifies).                                           |
+| `supervisor`               | See above                   | See [Crash supervision](#crash-supervision).                                       |
+| `spawn.delay`              | `5_000`                     | Milliseconds between shard spawns. `0` is safe with the identify throttler.        |
+| `spawn.timeout`            | `30_000`                    | Milliseconds a shard has to become ready.                                          |
+| `spawn.readyHint`          | Measured                    | The expected ready time. Defaults to the average of the last 20 starts.            |
+| `spawn.readyHintMargin`    | `0.1`                       | The margin added to the ready estimate.                                            |
+| `ping.interval`            | `45_000`                    | Milliseconds between pings. `-1` or `Infinity` disables them.                      |
+| `ping.timeout`             | `60_000`                    | Milliseconds without an answer before a shard is unresponsive.                     |
+| `ping.delaySinceReceived`  | `false`                     | Counts the interval from the last answer instead of the last ping.                 |
+| `requestTimeout`           | `ping.timeout`              | The default timeout of requests.                                                   |
+| `messageHandler`           | `"json"`                    | See [Serialization and transformers](#serialization-and-transformers).             |
+| `transformers`             | `[]`                        | See [Serialization and transformers](#serialization-and-transformers).             |
+
+## Manager events reference
+
+| Event                                                  | Arguments                        | Without listeners                                  |
+| ------------------------------------------------------ | -------------------------------- | -------------------------------------------------- |
+| `shardCreate`                                          | `channel`                        | None                                               |
+| `shardStatus`                                          | `channel`, `status`              | None                                               |
+| `shardReady` / `shardDisconnect` / `shardReconnecting` | `channel`                        | None                                               |
+| `shardPing`                                            | `channel`, `latency`             | None                                               |
+| `shardUnresponsive`                                    | `channel`                        | The shard is restarted.                            |
+| `shardSlowStart`                                       | `channel`, `elapsed`, `estimate` | None                                               |
+| `shardRestart` / `shardDestroy`                        | `channel`                        | None                                               |
+| `shardExit`                                            | `channel`, `code`                | None                                               |
+| `shardError`                                           | `channel`, `error`               | Emitted as `error`.                                |
+| `shardGiveUp`                                          | `channel`, `crashes`             | Emitted as `error` with a `ShardUnavailableError`. |
+| `shardInvalidMessage`                                  | `channel`, `error`               | Printed with `console.error`.                      |
+| `message`                                              | `body`, `channel`                | None                                               |
+| `error`                                                | `error`                          | None                                               |
+
+Each `ShardChannel` emits the same events for its own shard, without the `shard` prefix: `spawn`, `status`, `ready`, `disconnect`, `reconnecting`, `ping`, `unresponsive`, `slowStart`, `exit`, `destroy`, `error`, and `message`.
+
+On the shard side, `ShardClient` emits `message(body, from)`, `disconnect` (the shard exits when nothing listens), `managerUnresponsive`, `invalidMessage`, and `error`.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A shard keeps restarting before it is ready">
+    The shard did not call `shard.ready()` within `spawn.timeout` (30 seconds by default). Check that you count every gateway shard in `shard.shards` before calling it, and raise `spawn.timeout` if your shards hold many guilds. Listen to `shardSlowStart` to see how long starts take.
+  </Accordion>
+
+<Accordion title="Requests fail right away with a timeout">
+	The manager estimated that a starting shard will not be ready before the request's timeout. Raise the request's `timeout`, or send the request
+	once `shardReady` fired for that shard.
+</Accordion>
+
+<Accordion title="Shards hit the identify rate limit">
+	Pass `shard.identifyThrottler` to `GatewayClient` with `gateway.buildIdentifyThrottler`. Without it, every shard identifies on its own, and
+	`spawn.delay: 0` starts them all at once.
+</Accordion>
+
+<Accordion title="Custom transformers produce invalid messages">
+	Register the transformer under the same name in the manager, in every shard, and in proxies with local routing. Listen to `shardInvalidMessage` to
+	see the error.
+</Accordion>
+
+  <Accordion title="The manager emits an error event that crashes the process">
+    `shardError` and `shardGiveUp` fall back to `error` without listeners, and an unhandled `error` event throws. Add listeners for `shardError`, `shardGiveUp`, and `error`.
+  </Accordion>
+</AccordionGroup>
+
+## Stars module
+
+On framework 6.1 and later, list `@wolfstar/plugin-sharder/module` in `modules` in `stars.config` to add the package to the auto imports. It needs the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency:
+
+```ts stars.config.ts
+export default defineConfig({
+	modules: ['@wolfstar/plugin-sharder/module']
+});
+```
+
+The module registers no plugin and takes no options. You still construct the `ShardManager` yourself.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Build a Gateway Bot" icon="tower-broadcast" href="/guide/going-further/gateway">
+    Set up the `GatewayClient` each shard runs.
+  </Card>
+
+<Card title="Caching" icon="database" href="/guide/going-further/caching">
+	Share a Redis cache and session store across shards.
+</Card>
+
+<Card title="plugin-sharder reference" icon="book" href="/documentation/packages/plugin-sharder">
+	The package page for `@wolfstar/plugin-sharder`.
+</Card>
+
+  <Card title="plugin-broker" icon="arrows-split-up-and-left" href="/documentation/packages/plugin-broker">
+    Distribute gateway events across processes over Redis Streams.
+  </Card>
+</CardGroup>

@@ -1,0 +1,51 @@
+---
+title: '.stars'
+description: 'Generated directory that holds build artifacts, TypeScript configuration, and dev session output.'
+---
+
+The CLI writes generated TypeScript configuration, the auto imports declaration, and the dev log into a `.stars/` directory at the project root. You should add it to `.gitignore`.
+
+```gitignore
+.stars/
+```
+
+## Generated Files
+
+`stars prepare` creates the files in `.stars/`. Because the directory is generated, do not edit anything in `.stars/` by hand; keep `.stars/` ignored by Git and run `stars prepare` after installing dependencies on a fresh checkout.
+
+### TypeScript Configuration
+
+From `future.compatibilityVersion` 6, `stars prepare` writes two files:
+
+- `.stars/tsconfig.app.json` covers the bot: everything under the entry's directory plus the auto imports declaration, with the `~`/`@`/`~~`/`@@` paths and the compiler options.
+- `.stars/tsconfig.node.json` covers the files Node runs without a bundler: `stars.config.*`, `vitest.config.*`, `tsdown.config.*`, `vite.config.*`, and `scripts/**`. It uses `NodeNext` resolution, `types: ["node"]`, and no DOM library. It has no aliases, auto imports, or decorators, and leaves the entry's directory to the app project.
+
+On versions `5` and `4`, `stars prepare` writes the single `.stars/tsconfig.json`, which you extend from your project's `tsconfig.json`.
+
+### Auto Imports Declaration
+
+With the `tsdown` build tool, `stars` wires the `autoImports()` plugin into the build, so the exports of every package in `imports.presets` are usable without an `import` statement. `stars prepare` regenerates the auto imports declaration file after you install or remove a preset.
+
+### Log Files
+
+`dev.logFile` (default `.stars/dev.log`) mirrors the session's logs to disk, so you can read a run back after the terminal UI is gone. Set it to `false` to disable it. The file is truncated on every run.
+
+To keep earlier runs, set `dev.logs.dir` (for example `'logs'`). `stars dev` then also writes one file per run, `dev-<timestamp>.log`, in that directory. `dev.logs.keep` (default `10`) sets how many per-run files stay, the current run included. Older files are deleted when a run starts.
+
+### Preload Modules
+
+For `tsc` and `none` build tools, `stars prepare` and `stars build` write `.stars/modules.mjs`. It preloads the runtime plugins, pieces directories, locales, and client hooks that `tsc` and `none` builds cannot inject through the entry transform. Start the production bot with it preloaded:
+
+```bash
+node --import ./.stars/modules.mjs dist/main.js
+```
+
+When `env` is enabled, `.stars/modules.mjs` imports `.stars/env.mjs` first, so the environment is loaded before any plugin is evaluated.
+
+## Commands
+
+Use [`stars prepare`](/documentation/packages/cli#generated-typescript-configuration) to generate the files, and [`stars typecheck`](/api/commands/typecheck) to regenerate `.stars/` and type-check every project once. You can also verify the generated files without writing them by running `stars prepare --check`.
+
+## Generated TypeScript Configuration
+
+See the full reference for [Generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).

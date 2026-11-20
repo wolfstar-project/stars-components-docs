@@ -1,0 +1,249 @@
+---
+title: 'stars dev'
+description: 'Watches the sources through the configured build tool, starts the bot after the first successful build and restarts it after every following one.'
+sidebarTitle: 'stars dev'
+---
+
+## `stars dev`
+
+Watches the sources through the configured build tool (`tsdown` programmatically, configured from your `stars.config`, `tsc -b --watch`, or a plain file watcher for JavaScript projects), starts the bot after the first successful build and restarts it after every following one. Failed builds keep the previous process running and wait for the next change; a crashed bot waits for the next change or a manual restart.
+
+The bot runs as a child `node` process with `STARS_DEV=1` and `NODE_ENV=development` in its environment. When the bot enables the framework's [`hmr` option](/documentation/packages/http-framework#hot-module-reloading), `stars dev` leaves changes to pieces to the bot instead of restarting it. See [Hot reload](#hot-reload).
+
+`dev.layout` in `stars.config`, or `--layout`, picks the interactive UI:
+
+| Value              | UI                                                                                |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `'auto'` (default) | The dashboard on a terminal of at least 90×20, the panel on a smaller one         |
+| `'dashboard'`      | The full-screen dashboard                                                         |
+| `'panel'`          | The compact panel pinned to the bottom of the terminal, with the logs folded away |
+
+Press `v` to switch between the two while a session runs.
+
+## Terminal style
+
+`tui.style` in `stars.config`, or `--style`, picks the presentation by name:
+
+| Value          | Presentation                                                 |
+| -------------- | ------------------------------------------------------------ |
+| `'nuxt-style'` | The compact [panel](#panel), following Nuxt CLI's dev output |
+| `'dashboard'`  | The full-screen [dashboard](#dashboard)                      |
+| `'none'`       | [Plain mode](#plain-mode) logs                               |
+
+```ts
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	tui: { style: 'nuxt-style' },
+	dev: { portConflict: 'prompt' }
+});
+```
+
+`dev.layout` is still supported. The first setting found wins, in this order: `--style`, `--layout`, `tui.style`, then `dev.layout`. Without any of them, `stars dev` keeps the automatic choice between the dashboard and the panel. `--no-tui` and `STARS_TUI=plain` always use plain logs. An explicit `--tui` overrides `tui.style: 'none'`, but `--style none` always uses plain logs.
+
+## Startup checks
+
+Before `stars dev` creates the builder or writes generated files, it checks that:
+
+- The output, generated-file, and log directories can be written. A directory that can't be created or written, or a file in its place, fails with [`DEV_DIRECTORY_UNWRITABLE`](/api/errors/cli#dev_directory_unwritable).
+- The bot's listener port is free. A bind error other than an occupied port, such as a missing permission, fails with [`PORT_CHECK_FAILED`](/api/errors/cli#port_check_failed).
+- The listener port is an integer from 1 to 65535. An invalid value fails with [`INVALID_PORT`](/api/errors/config#invalid_port).
+
+Listener ports are only validated when `stars dev` starts, so an unrelated shell value doesn't stop `stars build`, `stars info`, or `stars doctor` from inspecting the project.
+
+The framework listener binds `HTTP_ADDRESS` (default `0.0.0.0`). Its port comes from `dev.env.HTTP_PORT` or `dev.env.PORT`, then the process's `HTTP_PORT`, then the env file's `HTTP_PORT`, then the env file's `PORT` (only when `dev.url` isn't set), or `3000`. In Nitro mode, the listener uses `NITRO_HOST`/`HOST` and `NITRO_PORT` before `PORT`.
+
+## Port conflicts
+
+When the listener port is occupied, `dev.portConflict` or `--port-conflict` decides what happens:
+
+| Value                | Behavior                                                                                                                                                  |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'prompt'` (default) | Asks whether to use the next available port, start anyway on the same port, or cancel startup. Without an interactive terminal, fails with `PORT_IN_USE`. |
+| `'next'`             | Uses the next free port, trying up to 100 higher ports. Fails with `NO_AVAILABLE_PORT` when none is free.                                                 |
+| `'error'`            | Fails right away with [`PORT_IN_USE`](/api/errors/cli#port_in_use).                                                                                       |
+| `'continue'`         | Skips the bind check and starts on the configured port.                                                                                                   |
+
+The prompt also works with plain logs on a terminal. CI, piped input, and `TERM=dumb` never wait for an answer. Cancelling creates no builder and no generated files.
+
+`--port <port>` (or `-p <port>`) sets the listener port for one session:
+
+```sh
+stars dev --port 4000
+stars dev -p 4000
+stars dev --port-conflict next
+```
+
+`--port` and a port picked from the prompt set the child process's `HTTP_PORT`, `PORT`, and `NITRO_PORT` for this session only. `stars dev` doesn't rewrite your env files or global variables. An inferred display URL follows the chosen port. An explicit `dev.url` (and `dev.health`) stays unchanged, path and query included, and its host and port are never probed as the bot's listener. For example, `dev.url: 'https://localhost/bot'` can keep pointing at a proxy on port 443 while the bot starts on 3000 or `--port 4000`.
+
+## Listen address
+
+`--host <address>` sets the address the bot listens on, like Nuxt's `--host`. It accepts an IP address or a hostname. Use it to expose the dev server on your network or to bind a specific interface:
+
+```sh
+stars dev --host 192.168.1.20
+stars dev --host
+```
+
+A bare `--host` listens on every interface (`0.0.0.0`). `stars dev` passes the address to the bot as `HTTP_ADDRESS`, and as `NITRO_HOST` and `HOST` in Nitro mode. The Vite and Nitro dev servers bind to it, and the port check probes that address. An inferred display URL follows a concrete address. A wildcard address (`0.0.0.0` or `::`) or an explicit `dev.url` leaves the display URL unchanged. An invalid address fails with [`INVALID_OPTION`](/api/errors/cli#invalid_option).
+
+Port probes release their sockets before startup, so another process can still claim a free port before the bot binds it.
+
+`--tunnel` opens the public tunnel at startup for one session, whatever `dev.tunnel` says. When `dev.tunnel` is off, `stars dev` opens a `cloudflared` quick tunnel. Otherwise it uses the `dev.tunnel` provider. `--no-tunnel` keeps the tunnel closed at startup even when `dev.tunnel` enables it. Pressing `t` still opens it later. Leave both flags out to let `dev.tunnel` decide. See [Type checking, tunnel and logs](/documentation/packages/cli#type-checking-tunnel-and-logs).
+
+## Dashboard
+
+The dashboard is the default on a TTY of at least 90×20. It is a full-screen view in the alternate buffer.
+
+```text
+ my-bot • stars v2.3.0            │ I   22:07:01        cli ● Build succeeded in 164ms
+                                  │ I   22:07:01        cli ● Starting (first build)
+ ● running                        │─────────────────────────────────────────────────────────
+ my-bot is ready!                 │ D   22:07:01   commands ● Loaded commands: 1 global, 0 guild groups
+ http    v6.1.0                   │                         │ ping
+ up      3m 35s                   │─────────────────────────────────────────────────────────
+ port    6967                     │ I   22:07:02  lifecycle ● Listening on port 6967
+ tunnel  live                     │ W   22:07:11       http ● POST / 401 in 1ms
+ logs    .stars/dev.log           │ D   22:07:31 interactions ● Processing slash:ping with ping
+                                  │ T   22:09:16        hmr ● UPDATE src/commands/ping.js
+ ▾ channels                       │ D   22:09:16        hmr ● Reloaded ping from src/commands/ping.js
+   bot cli commands hmr http      │┌────────────────────────────────────────────────────────┐
+ ▾ levels                         ││ Commands updated:                                      │
+   error warn info debug trace    ││ - ping changed                                         │
+                                  ││ Refresh commands? (y/n)                                │
+                           ● live │└────────────────────────────────────────────────────────┘
+```
+
+The sidebar shows the state of the session (`starting`, `building`, `running`, `stopped`, `error`), the framework version, the uptime, the port, the tunnel, and where the logs are written. Below that are the channel and level filters of the stream.
+
+The stream prints one line per entry: a level badge (`T D I W E`), the time, the channel, and the message with URLs, paths, names, and numbers highlighted. An entry with detail lines, such as the commands that were loaded or the paths that are watched, is shown as a block between two rules. The stack frames the bot prints after an error are folded under that error and count as one entry. The build percentage follows actual build milestones, not a timer.
+
+## Log channels
+
+Each log entry has a channel that says what it is about, so you can switch each one off:
+
+| Channel        | What logs there                                                                 |
+| -------------- | ------------------------------------------------------------------------------- |
+| `cli`          | `stars dev` itself: builds, restarts, hooks, warnings                           |
+| `build`        | The build tool and the file watcher                                             |
+| `bot`          | Everything the bot writes to stdout and stderr                                  |
+| `types`        | The type checker (`dev.typecheck`)                                              |
+| `tunnel`       | The public tunnel                                                               |
+| `lifecycle`    | The bot is listening, the pieces it loaded                                      |
+| `hmr`          | Files left to the bot's hot reload, and what it reloaded                        |
+| `commands`     | The application commands the bot registers, changes to them, redeploys          |
+| `interactions` | Each interaction: the route (`slash:ping`), the piece, how long it took, errors |
+| `http`         | Each request to the interactions endpoint, with its status (`trace` when fine)  |
+
+The last five channels come from the bot itself. `stars dev` preloads a small bridge into the bot (`node --import`) that reports its events over an IPC channel instead of guessing from stdout. The bridge needs `@wolfstar/http-framework` 6.1 or later, resolved from the project. Without it, or with a build that bundles the framework (as Vite and Nitro do), those channels stay empty and everything else works as before.
+
+A plugin can log on a channel of its own:
+
+```ts
+process.send?.({ source: 'stars:bridge', type: 'log', channel: 'gateway', level: 'info', text: 'Shard 0 ready' });
+```
+
+Entries have one of five levels: `trace`, `debug`, `info`, `warn`, and `error`. `trace` is hidden at start because it logs one line per request. `dev.logs.channels` and `dev.logs.levels` in `stars.config` choose what a session starts with. The log file always receives every entry.
+
+```ts
+export default defineConfig({
+	dev: {
+		logs: { channels: ['bot', 'commands', 'interactions'], levels: ['error', 'warn', 'info'] }
+	}
+});
+```
+
+`--channel` and `--level` override them for one session. `--channel` accepts a comma-separated list and can be repeated. `--level` shows that level and every more severe one.
+
+```sh
+stars dev --channel hmr,http --channel commands   # only these channels
+stars dev --level trace                           # this level and every more severe one
+```
+
+## Keyboard shortcuts
+
+| Key                | Action                                                           |
+| ------------------ | ---------------------------------------------------------------- |
+| `←` / `→`          | Select a channel or a level                                      |
+| `Tab`              | Switch between channels and levels                               |
+| `Space`            | Show or hide the selected one                                    |
+| `s`                | Solo: show only the selected one; press again for all            |
+| `a`                | Show every channel and level                                     |
+| `Enter`            | Fold or unfold the selected group                                |
+| `b`                | Group the stream by channel                                      |
+| `↑` / `↓`, `j`/`k` | Scroll (`PgUp`/`PgDn` by page); the footer turns to `paused`     |
+| `g` / `G`          | Jump to the top / back to live                                   |
+| `/`                | Search the stream (`Esc` clears)                                 |
+| `e`                | Jump to the last error, keeping its context                      |
+| `y` / `n`          | Answer a prompt                                                  |
+| `r` / `Ctrl+R`     | Restart the bot                                                  |
+| `d`                | Disconnect: stop the bot until the next `r`, builds keep running |
+| `o`                | Open the local URL in a browser                                  |
+| `t`                | Toggle a public tunnel (`cloudflared`, or the `dev.tunnel` one)  |
+| `i`                | Show project, versions, URLs, health, types and session info     |
+| `T`                | Pick a colour theme                                              |
+| `l`                | Browse the logs full width: select a line, copy it               |
+| `v`                | Switch between the dashboard and the panel                       |
+| `c` / `Ctrl+L`     | Clear log history                                                |
+| `h` / `?`          | Show keyboard shortcuts                                          |
+| `q` / `Ctrl+D`     | Quit; confirm with `y` while a build/restart is in flight        |
+| `Ctrl+C`           | Quit immediately from any view                                   |
+
+The channel and level keys (`←`/`→`, `Tab`, `Space`, `s`, `a`, `Enter`, `b`, `g`/`G`, `/`) only apply to the dashboard. The panel shares every other key.
+
+## Hot reload
+
+When the bot runs with the framework's `hmr` option enabled, it tells `stars dev` which directories it watches. A build that only changed pieces in those directories is then left to the bot. The process, its HTTP server, and its connections stay up, and the `hmr` channel shows what was reloaded. A piece is a file the bot loaded one from, or a new file that could be one.
+
+Any other change still restarts the bot: the entry, a shared module, a locale, or a helper next to the pieces (such as `_shared.js`, or any file no piece came from), which the bot imports once and cannot replace. A bot without `hmr`, or one that stopped its reloader, is always restarted. `stars dev` judges what a build changed by content, since a bundler such as `tsdown` rewrites its whole output on every rebuild.
+
+Set `dev.hmr: false` to always restart the bot:
+
+```ts
+export default defineConfig({
+	dev: { hmr: false }
+});
+```
+
+## Command refresh
+
+The bot reports the application commands it registers when it starts and after every hot reload. When they differ from what it reported before, `stars dev` reports the change on the `commands` channel. `dev.commands.refresh` picks what happens next:
+
+| Value                | Behaviour                                                       |
+| -------------------- | --------------------------------------------------------------- |
+| `'prompt'` (default) | Ask `Refresh commands? (y/n)` in the dev UI and redeploy on `y` |
+| `'auto'`             | Redeploy right away without asking                              |
+| `'off'`              | Only report the change                                          |
+
+```ts
+export default defineConfig({
+	dev: { commands: { refresh: 'auto' } }
+});
+```
+
+Without the interactive UI (`--no-tui`, CI), `'prompt'` only reports the change. An open question survives a restart of the bot. A `y` given while the bot is stopped or restarting is carried out once it listens again. A refresh also empties a guild whose last command was removed since the last deploy. Command refresh needs `@wolfstar/http-framework` 6.1 or later.
+
+## Panel
+
+The panel is used with `tui.style: 'nuxt-style'`, `--style nuxt-style`, `dev.layout: 'panel'`, `--layout panel`, the `v` key, or a terminal smaller than 90×20. It is a bottom-aligned panel in the normal buffer, following the layout and keyboard conventions of [Nuxt CLI's dev TUI](https://github.com/nuxt/cli/tree/b4b366eafdd9ac4d5b81b6ae7dadda35364252c9/packages/nuxt-cli/src/dev/tui). It shows a Stars wordmark, aligned URLs, a 20-cell progress bar with elapsed time, status, and shortcuts. Logs are folded away: `l` opens them and `e` jumps to the last error. Once ready, the bar gives way to diagnostics and the header reports the load time.
+
+Application output (including its banner), build-plugin output and diagnostics stay in the bounded log history and `.stars/dev.log`. tsdown's entry list and output-size table are suppressed. Closing an overlay restores the view under it without duplicating output in scrollback. `running` (`READY` in the panel) reports process state unless `dev.health` is configured; it does not certify that every application plugin loaded successfully.
+
+In the log browser (`l`): arrows or `j/k` select, `PgUp/PgDn` move a page, `g/G` go to the beginning/follow the tail, `e/w/a` filter errors/warnings/all, `c/b/r` toggle CLI/build/runtime sources, `/` searches, `x` clears, and `Enter`/`y` copies the selected line on terminals supporting OSC 52 clipboard writes. `q`, `Esc` or the view's own shortcut closes an overlay rather than quitting the session.
+
+Replace the default wordmark in `stars.config.ts` (up to four lines are displayed, clipped to the terminal width):
+
+```ts
+export default defineConfig({
+	dev: { banner: ['★ STARYL', 'Twitch notifications'] }
+});
+```
+
+`dev.banner` also accepts a string containing newlines, or `false` to hide the wordmark. Omit it for Stars branding. The dashboard shows the project's name instead of the wordmark. For the application's standalone banner outside the TUI, use `createStarsBanner` from `@wolfstar/start-banner`.
+
+## Plain mode
+
+Plain mode prints prefixed lines instead: the channel, then the message, with detail lines indented under it. The bot's own output is passed through untouched. It is selected by `--no-tui`, `--style none`, `tui.style: 'none'`, `STARS_TUI=plain`, redirected input/output, CI, `TERM=dumb`, or terminals smaller than 40×10. `STARS_TUI=1` overrides CI/size checks, never redirected streams or a dumb terminal. Both modes honour `NO_COLOR`/`FORCE_COLOR`; `STARS_REDUCED_MOTION=1` freezes the logo/spinner but keeps the elapsed clock. Both stop the bot cleanly on `SIGINT`/`SIGTERM`. `SIGUSR2` restarts the bot (not on Windows).
+
+See also [`@wolfstar/cli`](/documentation/packages/cli).

@@ -1,0 +1,114 @@
+---
+title: 'Migrating from v5 to v6'
+sidebarTitle: 'v5 to v6'
+description: 'v6 moves the utility decorators out of @wolfstar/http-framework into a new package, @wolfstar/decorators, mirroring the split between @sapphire/framework and @sapphire/decorators.'
+---
+
+v6 moves the utility decorators out of `@wolfstar/http-framework` into a new package, [`@wolfstar/decorators`](/documentation/packages/decorators), mirroring the split between `@sapphire/framework` and `@sapphire/decorators`. Their behaviour is unchanged. Only the package you import them from changes.
+
+## Changes Included in v6
+
+| Landed in                                                             | Change                                                                                       |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| [#238](https://github.com/wolfstar-project/stars-components/pull/238) | Utility decorators moved to `@wolfstar/decorators`; added to the default `imports.presets`   |
+| [#283](https://github.com/wolfstar-project/stars-components/pull/283) | `future.compatibilityVersion` 6 splits the generated tsconfig; new `stars typecheck` command |
+
+## Upgrading the Packages
+
+`@wolfstar/decorators` declares `@wolfstar/http-framework` as a peer dependency. Install it next to the framework:
+
+<CodeGroup>
+
+```bash pnpm
+pnpm add @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+```bash npm
+npm install @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+```bash yarn
+yarn add @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+```bash bun
+bun add @wolfstar/http-framework@^6 @wolfstar/decorators
+```
+
+</CodeGroup>
+
+## Moving Decorator Imports
+
+`@wolfstar/http-framework` no longer exports the following. Import them from `@wolfstar/decorators` instead:
+
+- `ApplyOptions`
+- `RequiresGuildContext` and `RequiresDMContext`
+- `RequiresUserPermissions` and `RequiresClientPermissions`
+- `Enumerable` and `EnumerableMethod`
+- `createClassDecorator`, `createMethodDecorator`, `createProxy`, and `createFunctionPrecondition`
+- The `PieceConstructor` and `ContextFallback` types
+
+The `Register*` decorators and `RestrictGuildIds` stay in `@wolfstar/http-framework`.
+
+```diff
+-import { ApplyOptions, Command, RegisterCommand, RequiresGuildContext } from '@wolfstar/http-framework';
++import { ApplyOptions, RequiresGuildContext } from '@wolfstar/decorators';
++import { Command, RegisterCommand } from '@wolfstar/http-framework';
+```
+
+## Auto Imports
+
+`@wolfstar/decorators` is now one of the default `imports.presets` in `@wolfstar/schema`. Projects that rely on the `stars` CLI's auto imports keep getting the decorators without an explicit `import` once `@wolfstar/decorators` is installed. If your `stars.config.*` sets `imports.presets` explicitly, add `'@wolfstar/decorators'` to the list. Run `stars prepare` to regenerate the auto imports declaration file.
+
+## Split TypeScript Configuration (Compatibility Version 6)
+
+`future.compatibilityVersion` 6 is the default. From this version, `stars prepare` no longer writes a single `.stars/tsconfig.json`. It writes two files instead:
+
+- `.stars/tsconfig.app.json` for the bot sources, with the aliases, auto imports, and bundler options.
+- `.stars/tsconfig.node.json` for `stars.config.*`, `vitest.config.*`, `tsdown.config.*`, `vite.config.*`, and `scripts/**`, with `NodeNext` resolution and `types: ["node"]`.
+
+Replace the root `tsconfig.json` that extends `./.stars/tsconfig.json` with a solution-style file that references both:
+
+```diff
+ {
+-	"extends": "./.stars/tsconfig.json",
+-	"compilerOptions": {
+-		"types": ["node"]
+-	}
++	"files": [],
++	"references": [{ "path": "./.stars/tsconfig.app.json" }, { "path": "./.stars/tsconfig.node.json" }]
+ }
+```
+
+Until you do, `stars prepare` and `stars doctor` print a [`TSCONFIG_LEGACY_EXTENDS`](/api/errors/cli#tsconfig_legacy_extends) warning. The new root has `files: []`, so `tsc -p tsconfig.json` checks nothing. Switch your type-check script to [`stars typecheck`](/api/commands/typecheck), which regenerates `.stars/` and checks each project:
+
+```diff
+ {
+ 	"scripts": {
+-		"typecheck": "stars prepare && tsc -p tsconfig.json --noEmit"
++		"typecheck": "stars typecheck"
+ 	}
+ }
+```
+
+Run `stars prepare` (or `stars prepare --check` in CI) to confirm both generated files are up to date.
+
+To keep the single `.stars/tsconfig.json` for now, pin the previous compatibility version:
+
+```ts
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	future: { compatibilityVersion: 5 }
+});
+```
+
+## Checklist
+
+- [ ] `@wolfstar/http-framework` upgraded to v6 and `@wolfstar/decorators` installed
+- [ ] Imports of `ApplyOptions`, `Requires*`, `Enumerable`, `EnumerableMethod`, and the decorator factories moved from `@wolfstar/http-framework` to `@wolfstar/decorators`
+- [ ] `PieceConstructor` and `ContextFallback` type imports moved to `@wolfstar/decorators`
+- [ ] `'@wolfstar/decorators'` added to a custom `imports.presets` list, if the project sets one
+- [ ] Root `tsconfig.json` references `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json`, or `future.compatibilityVersion` pinned to `5`
+- [ ] Type-check script switched to `stars typecheck`

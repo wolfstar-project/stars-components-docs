@@ -1,6 +1,6 @@
 ---
-title: Build a Command
-description: Register chat input, user, and message commands with the HTTP Framework by extending Command and applying RegisterCommand-style decorators.
+title: 'Build a Command'
+description: 'Register chat input, user, and message commands with the HTTP Framework by extending Command and applying RegisterCommand-style decorators.'
 ---
 
 Commands extend `Command` and use decorators to describe the application command Discord should register.
@@ -26,8 +26,7 @@ export class PingCommand extends Command {
 }
 ```
 
-Place the class in the command directory passed to `client.load()`. The loader discovers the class and adds its builder
-to the application-command registry.
+Place the class in the command directory passed to `client.load()`. The loader discovers the class and adds its builder to the application-command registry.
 
 ## Add Subcommands
 
@@ -52,13 +51,11 @@ export class MathCommand extends Command {
 }
 ```
 
-Subcommand groups, user context-menu commands, message context-menu commands, and guild restrictions use the matching
-registration decorators exposed by the package.
+Subcommand groups, user context-menu commands, message context-menu commands, and guild restrictions use the matching registration decorators exposed by the package.
 
 ## Restrict Who Can Run a Command
 
-Preconditions are checks that run before a command. Write one as a piece that extends `Precondition` in the
-`preconditions` directory:
+Preconditions are checks that run before a command. Write one as a piece that extends `Precondition` in the `preconditions` directory:
 
 ```typescript
 import { Precondition } from '@wolfstar/http-framework';
@@ -82,14 +79,11 @@ export class EvalCommand extends Command {
 }
 ```
 
-When a precondition denies the interaction, the framework skips the command and emits `chatInputCommandDenied` with the
-error. Reply to the user from a listener on that event. See [Preconditions](/documentation/packages/http-framework#preconditions)
-for AND/OR combinations, parallel runs, global preconditions, and interaction handlers.
+When a precondition denies the interaction, the framework skips the command and emits `chatInputCommandDenied` with the error. Reply to the user from a listener on that event. See [Preconditions](/documentation/packages/http-framework#preconditions) for AND/OR combinations, parallel runs, global preconditions, and interaction handlers.
 
 ## Publish Command Definitions
 
-To keep Discord in sync automatically, enable startup registration on the `Client`. After `listen()` runs its
-`postListen` hooks, the client compares the loaded commands with the deployed ones and writes only the differences:
+To keep Discord in sync automatically, enable startup registration on the `Client`. After `listen()` runs its `postListen` hooks, the client compares the loaded commands with the deployed ones and writes only the differences:
 
 ```typescript
 const client = new Client({
@@ -100,11 +94,7 @@ await client.load();
 await client.listen({ port: 3000 });
 ```
 
-Deployed commands the bot no longer defines are kept unless you set `removeUnknown: true`. If registration fails, the
-client logs a warning and keeps serving interactions. In sharder or broker deployments, use `when` to register from one
-process only. Bots that use `client.fetch()` instead of `listen()` call `await client.registry.sync()` after
-`client.load()`. See [Sync commands on startup](/documentation/packages/http-framework#sync-commands-on-startup) for
-every option.
+Deployed commands the bot no longer defines are kept unless you set `removeUnknown: true`. If registration fails, the client logs a warning and keeps serving interactions. In sharder or broker deployments, use `when` to register from one process only. Bots that use `client.fetch()` instead of `listen()` call `await client.registry.sync()` after `client.load()`. See [Sync commands on startup](/documentation/packages/http-framework#sync-commands-on-startup) for every option.
 
 To overwrite whole scopes instead, push the registry to Discord after loading pieces:
 
@@ -115,10 +105,8 @@ await client.registry.pushGuildRestrictedCommands();
 await client.listen({ port: 3000 });
 ```
 
-Global command changes can take time to propagate. Use guild-restricted commands while iterating when you need changes to
-appear immediately.
+Global command changes can take time to propagate. Use guild-restricted commands while iterating when you need changes to appear immediately.
 
 ## Test Before Publishing
 
-The testing package can run the same command class against a local interaction fixture without contacting Discord. See
-[Testing interactions](/documentation/guide/testing) for a complete example.
+The testing package can run the same command class against a local interaction fixture without contacting Discord. See [Testing interactions](/getting-started/testing) for a complete example.

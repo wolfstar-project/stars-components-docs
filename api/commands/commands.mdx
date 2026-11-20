@@ -1,0 +1,70 @@
+---
+title: 'stars commands'
+description: 'Lists what Discord currently has deployed, which is not necessarily what the project registers today.'
+sidebarTitle: 'stars commands'
+---
+
+## `stars commands`
+
+Lists what Discord currently has deployed, which is not necessarily what the project registers today: renamed and removed commands stay until something deletes them.
+
+```sh
+stars commands list                 # global commands
+stars commands list --guild 1234    # a guild's commands
+stars commands clean                # wizard: pick from a checklist, then confirm
+stars commands clean --name ping    # delete one, asking first
+stars commands clean --name "settings server" --yes   # remove one subcommand, the rest of /settings stays
+stars commands clean --guild 1234 --yes
+```
+
+It reads `DISCORD_TOKEN` and `DISCORD_APPLICATION_ID` (or `APPLICATION_ID`) from the environment or the project's `.env`, the same place the bot reads them from. `clean` deletes deployed commands, so on a terminal it opens a wizard (a checklist of what is deployed, then a confirmation). Anywhere else it refuses to run without `--yes` or `--name`.
+
+## Remove a subcommand or group
+
+`--name` also takes the path of a subcommand or a group: `settings server` removes the `server` subcommand (or group) of `/settings`, and `settings group sub` removes one subcommand inside a group. Use it to drop a single subcommand you no longer register without deleting the whole command. Discord has no endpoint to delete a subcommand, so `clean` fetches the deployed command, drops that entry from its `options`, and sends the command back with a `PATCH`. The parent command and its other subcommands stay. Paths under the same command share one request.
+
+```sh
+stars commands clean --name "settings server"                  # remove one subcommand, asking first
+stars commands clean --name "settings group sub" --yes         # remove a subcommand inside a group
+stars commands clean --name "settings server" --name "settings audit" --json
+```
+
+- A value that exactly matches a deployed command's name deletes that command first. This keeps context menu commands with spaces in their names, such as `Report User`, working.
+- A group left without subcommands is removed along with its last one, since Discord rejects an empty group.
+- A command cannot exist without a subcommand. Removing a command's last subcommand deletes the whole command. The confirmation says so, and `--yes` accepts it.
+- A path that matches nothing fails with [`COMMAND_NOT_FOUND`](/api/errors/cli#command_not_found).
+- The wizard still lists whole commands only. Pass `--name` to remove a subcommand or group.
+
+With `--json`, the output lists whole commands under `deleted` and subcommands or groups under `removed`:
+
+```json
+{
+	"deleted": [],
+	"removed": [{ "id": "1234567890", "path": "settings server" }]
+}
+```
+
+<Warning>`clean` reads the deployed command and writes it back. A deploy that runs between the read and the write is overwritten.</Warning>
+
+## Compare and deploy
+
+`diff` and `deploy` compare what Discord has deployed with what the project defines:
+
+```sh
+stars commands diff                 # what a deploy would add (+), change (~) and remove (-)
+stars commands diff --check         # the same, failing when anything differs (CI)
+stars commands deploy               # show the difference, ask, then overwrite the global scope
+stars commands deploy --guild 1234 --yes
+```
+
+Commands are declared with builders and decorators that only exist once the bot's modules ran, so `stars` asks the bot. It starts the built entry with the dev bridge, which loads the pieces, reports the registry, and exits before the bot listens or talks to Discord. Run `stars build` first. This needs `@wolfstar/http-framework` 6.1 or later.
+
+The bot is started the way `stars dev` starts it (the same env files, after the `env:options` hook), in the caller's `NODE_ENV`, or `development` when unset. Run `NODE_ENV=production stars commands deploy` to deploy what a production start registers. `STARS_DEV` is not set, since this is not a dev session.
+
+A command counts as changed when what the project defines no longer matches what is deployed. Fields Discord fills in on its own (`id`, `version`, defaults such as `nsfw: false`) are ignored. `diff --check` exits with code `1` and raises `COMMANDS_DIFFER` when anything differs.
+
+`deploy` uses Discord's bulk overwrite, so a deployed command the project no longer defines is deleted. That is why it asks first. Outside a terminal, or with `--json`, it refuses to run without `--yes`.
+
+To deploy on every start instead of by hand, enable `commands: { register: 'on-start' }` in the `Client` options. The bot then writes only the differences after it listens, and keeps unknown deployed commands unless `removeUnknown` is set. See [Sync commands on startup](/documentation/packages/http-framework#sync-commands-on-startup).
+
+See also [`@wolfstar/cli`](/documentation/packages/cli).

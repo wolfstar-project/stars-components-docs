@@ -1,31 +1,10 @@
 ---
 title: '@wolfstar/shared-http-pieces'
 sidebarTitle: 'shared-http-pieces'
-description: 'Changelog for @wolfstar/shared-http-pieces: shared commands and listeners.'
+description: "Changelog for @wolfstar/shared-http-pieces: The common pieces for Star Network's HTTP-only bots."
 ---
 
-Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-pieces). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
-
-## `2.2.1` (2026-11-17)
-
-### Updates
-
-- **Dependencies** — Updated `@wolfstar/plugin-i18next` to v3. ([#367](https://github.com/wolfstar-project/stars-components/pull/367))
-
-## `2.2.0` (2026-11-16)
-
-### New features
-
-- **Own `stars.config` key** — The module sets `meta.configKey` to `httpPieces`, so the `httpPieces` key of `stars.config` belongs to it and is typed in `defineConfig` through a `StarsConfig` augmentation. `httpPieces` takes no options yet. ([#375](https://github.com/wolfstar-project/stars-components/pull/375))
-
-### Updates
-
-- **New optional peer** — `@wolfstar/schema` is a new optional peer, needed only for the `StarsConfig` type.
-- **Dependencies** — Updated `@wolfstar/http-framework` to `6.6.0`.
-
-### Bug fixes
-
-- **Support server invite** — The `/info` support server button now points to the WolfStar Discord server instead of the old Skyra invite. ([#380](https://github.com/wolfstar-project/stars-components/pull/380))
+Changes to [`@wolfstar/shared-http-pieces`](https://github.com/wolfstar-project/stars-components/tree/main/packages/shared-http-pieces). This package provides shared commands and listeners for Star Network's HTTP-only bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
 ## `2.1.1` (2026-11-07)
 
@@ -127,6 +106,12 @@ Changes to [`@wolfstar/shared-http-pieces`](/documentation/packages/shared-http-
 - **Dependencies** — Updated `@wolfstar/http-framework` to `3.6.0`. ([#169](https://github.com/wolfstar-project/stars-components/pull/169), [#146](https://github.com/wolfstar-project/stars-components/pull/146))
 
 ## `2.0.0`
+
+### Updates
+
+- **Adopt i18next v25 native TypeScript types** — `@wolfstar/shared-http-pieces` removes the hand-maintained `LanguageKeys` export in favor of the generated `CustomTypeOptions` augmentation and direct `TFunction<'commands/shared'>` usage. Adds `@wolfstar/i18next-type-generator`, the CLI used to generate that augmentation from locale JSON files. ([#30](https://github.com/wolfstar-project/stars-components/pull/30))
+- **Migrate to `@wolfstar/plugin-i18next`** — Importing `@wolfstar/shared-http-pieces/register` now registers bundled locales automatically via a `preGenericsInitialization` hook that splices `localesPath` into your `Client`'s `i18n.backend.paths` before `@wolfstar/plugin-i18next` builds its handler. No consumer changes are required as long as the register entrypoint is imported before `new Client(...)`. ([#144](https://github.com/wolfstar-project/stars-components/pull/144))
+- **Typechecker switch** — `typecheck` scripts now run `golar tsc` instead of `tsc` directly. This is a dev-tooling-only change with no effect on published output. ([#151](https://github.com/wolfstar-project/stars-components/pull/151))
 
 ### Updates
 

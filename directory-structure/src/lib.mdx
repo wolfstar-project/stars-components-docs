@@ -1,0 +1,52 @@
+---
+title: 'lib'
+description: 'Shared setup, cache, and type augmentations for your bot.'
+---
+
+The `src/lib/` directory holds setup scripts, type augmentations, and optional cache configuration. The generated project creates `src/lib/setup/`, `src/lib/types/`, and — when the Cache feature is enabled — `src/lib/cache.ts`.
+
+## `{.filename} lib/setup/all.ts`
+
+`all.ts` aggregates setup imports, so the entry point only has to import one file. It typically imports `logger.ts` and any plugin `/register` entry points that need to run before the client is constructed.
+
+```typescript src/lib/setup/all.ts
+// Aggregates setup imports
+```
+
+In TypeScript projects built with tsdown or Vite, `src/lib/setup/all.ts` doesn't load the environment itself. `stars` loads `.env` (the `env` option in `stars.config.ts`) before any module of the bot runs. Projects built with `tsc`, Vite + Nitro, or JavaScript still call `setup()` from `@wolfstar/env-utilities`.
+
+Order matters in the entry point: anything with side effects — plugin `/register` imports, module augmentations, logger configuration — must be imported **before** `new Client()`, because the client reads that state while it is constructed. The entry point does this by importing `./lib/setup/all.js` first:
+
+```typescript
+import './lib/setup/all.js';
+
+import { Client } from '@wolfstar/http-framework';
+
+const client = new Client();
+```
+
+## `{.filename} lib/setup/logger.ts`
+
+`logger.ts` configures `container.logger` before the client is created. The framework provides a built-in logger by default; this file is where you override its level, add transports, or switch to a custom implementation.
+
+## `{.filename} lib/cache.ts`
+
+`src/lib/cache.ts` is only generated when the **Cache** feature is enabled during scaffolding. It sets up the gateway entity cache, in memory by default or backed by Redis when the **Redis** option is selected.
+
+## `{.filename} lib/types/augments.ts`
+
+`augments.ts` contains module augmentations (TypeScript only). For example, when varlock is enabled, it derives the `Env` interface from the generated schema types instead of declaring each variable by hand:
+
+```ts src/lib/types/augments.ts
+import type { EnvFromVarlock } from '@wolfstar/env-utilities/varlock';
+import type { CoercedEnvSchema } from '../../@types/env.js';
+
+declare module '@wolfstar/env-utilities' {
+	interface Env extends EnvFromVarlock<CoercedEnvSchema> {}
+}
+```
+
+## Read more
+
+- [`@wolfstar/create-http-framework` — generated project structure](/documentation/packages/create-http-framework)
+- [Bot Architecture — Entry Point](/guide/concepts/architecture#entry-point)

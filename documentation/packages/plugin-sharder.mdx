@@ -28,7 +28,7 @@ bun add @wolfstar/plugin-sharder
 	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder"></Card>
 </CardGroup>
 
-<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+<Tip>See the [Plugins guide](/guide/concepts/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
 
 ## Description
 
@@ -128,26 +128,8 @@ Messages are raw data, and a request is a message waiting for a reply:
 `broadcastRequest` replaces `broadcastEval` and `fetchClientValues` from discord.js. To share gateway dispatches
 between processes, pair it with [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker).
 
-## Exit and destroy hooks
+<img src="https://npmx.dev/api/registry/badge/version/@wolfstar/plugin-sharder" alt="version" />
 
-A shard stops with `process.exit`, which skips `beforeExit`, so whatever a library flushes there (traces, metrics) is
-lost. `shard.addExitHook(hook)` runs a hook first. It runs on `shard.exit()` and `shard.restart()`, after the close
-handler when the manager closes the shard, and when the manager is gone and nothing listens to `disconnect`. The hooks
-count towards the close timeout.
+<img src="https://npmx.dev/api/registry/badge/downloads/@wolfstar/plugin-sharder" alt="downloads" />
 
-`manager.addDestroyHook(hook)` runs a hook at the end of `manager.destroy()`, once the shards are closed. It also runs
-when closing a shard failed.
-
-In both, a hook that throws is reported through `error`, and the next hooks still run. Each call returns a function that
-removes the hook.
-
-```ts
-shard.addExitHook(() => metrics.flush());
-manager.addDestroyHook(() => metrics.flush());
-```
-
-To flush OpenTelemetry spans this way, see [`flushTraces()`](/documentation/packages/plugin-opentelemetry#flushtraces).
-
-[![version](https://npmx.dev/api/registry/badge/version/@wolfstar/plugin-sharder)](https://npmx.dev/package/@wolfstar/plugin-sharder)
-[![downloads](https://npmx.dev/api/registry/badge/downloads/@wolfstar/plugin-sharder)](https://npmx.dev/package/@wolfstar/plugin-sharder)
-[![license](https://img.shields.io/github/license/wolfstar-project/plugins?style=flat-square&color=informational)](https://github.com/wolfstar-project/plugins/blob/main/LICENSE)
+<img src={'https://img.shields.io/github/license/wolfstar-project/plugins?style=flat-square&color=informational'} alt="license" />

@@ -1,68 +1,44 @@
 ---
 title: '@wolfstar/kit'
 sidebarTitle: 'kit'
-description: 'Changelog for @wolfstar/kit: defineModule and the module runtime for installable Stars modules.'
+description: 'Changelog for @wolfstar/kit: defineModule and the module setup runtime for installable Stars modules.'
 ---
 
-Changes to [`@wolfstar/kit`](https://github.com/wolfstar-project/stars-components/tree/main/packages/kit). It provides `defineModule` and the setup runtime for installable Stars modules, the `@nuxt/kit` counterpart (see the [package docs](/documentation/packages/kit)). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+Changes to [`@wolfstar/kit`](https://github.com/wolfstar-project/stars-components/tree/main/packages/kit). This package implements `defineModule` and the module setup runtime, the `@nuxt/kit` counterpart for installable Stars modules. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
-## `0.3.1` (2026-10-18)
-
-### Updates
-
-- **Dependencies** — Updated `@wolfstar/schema` to `0.12.0`.
-
-## `0.3.0` (2026-10-17)
+## `0.2.0`
 
 ### New features
 
-- **`ctx.addPiecesDir(directory)`** — Modules can register a directory of pieces, with one folder per store (`commands`, `listeners`, …). The pieces are registered before the bot loads, including for `tsc` and `none` builds. `ModulesRuntime` gains `piecesDirs`, `stars info` lists them, and a relative path fails with `MODULE_PIECES_INVALID`. ([#335](https://github.com/wolfstar-project/stars-components/pull/335))
-- **Client lifecycle hooks** — `hooks` in `defineModule` accepts `client:preGenericsInitialization`, `client:preInitialization`, `client:postInitialization`, `client:preLoad`, and `client:postListen`. Give each hook by source (`{ from, export }`), a function called with `(client, clientOptions)`. `ctx.addClientHook(name, source)` does the same from `setup`. A module's hooks share one runtime plugin named after it. `ModulesRuntime` gains `clientHooks`, `stars info` lists them, and a bad hook fails with `MODULE_HOOK_INVALID`. ([#337](https://github.com/wolfstar-project/stars-components/pull/337))
-- **`ctx.addLocales(directory)`** — Modules can add a directory of locales laid out as `<language>/<namespace>.json`. The locales merge into the client's `i18n` option before `@wolfstar/plugin-i18next` builds its handler, and your project's own languages directory is kept. `ModulesRuntime` gains `locales`, `stars info` lists them, and a bad directory fails with `MODULE_LOCALES_INVALID`. ([#339](https://github.com/wolfstar-project/stars-components/pull/339))
-
-### Updates
-
-- **Dependencies** — Updated `@wolfstar/schema` to `0.11.0`.
-
-## `0.2.1` (2026-10-09)
-
-### Updates
-
-- **Dependencies** — Updated `@wolfstar/schema` to `0.10.0`.
-
-## `0.2.0` (2026-10-07)
-
-### New features
-
-- **`meta.configKey` support** — `setupModules` now merges the options your module's `setup` receives in this order: `defaults`, then `config.moduleOptions[configKey]`, then inline options (the `[name, options]` tuple or `ctx.installModule`). The claimed keys are returned as `ModulesRuntime.configKeys`. A `configKey` that is empty, a built-in `stars.config` key, claimed by another installed module, or holds anything other than a plain object fails with `MODULE_INVALID`. [#294](https://github.com/wolfstar-project/stars-components/pull/294)
+- **`meta.configKey` support** — `setupModules` now merges module options in the right order: defaults, then `config.moduleOptions[configKey]`, then the inline options from the `[name, options]` tuple or `ctx.installModule`. A `configKey` that is empty, a built-in `stars.config` key, claimed by another installed module, or holding something other than a plain object fails with `MODULE_INVALID`. The claimed keys are returned as `ModulesRuntime.configKeys` ([#294](https://github.com/wolfstar-project/stars-components/pull/294)).
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/schema` to `0.9.0`.
 
-## `0.1.3` (2026-10-06)
+## `0.1.3`
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/schema` to `0.8.0`.
 
-## `0.1.2` (2026-10-06)
+## `0.1.2`
 
 ### Updates
 
 - **Dependencies** — Updated all non-major dependencies. Updated `@wolfstar/schema` to `0.7.0` ([#253](https://github.com/wolfstar-project/stars-components/pull/253)).
 
-## `0.1.1` (2026-10-04)
+## `0.1.1`
 
 ### Updates
 
 - **Dependencies** — Updated `@wolfstar/schema` to `0.6.0`.
 
-## `0.1.0` (2026-10-02)
+## `0.1.0`
 
 ### New features
 
-- **New package** — `defineModule` and the module runtime for installable Stars modules. A module declares `meta` (name, version, and `compatibility` ranges checked against your project's `@wolfstar/http-framework` and `@wolfstar/cli`), `defaults`, `dependencies`, `hooks` and `setup(options, ctx)`. The `ctx` offers `addPlugin`, `addImports`, `hook`, `callHook` and `installModule`. `setupModules` installs each module once, dependencies first, and reports failures as `ModuleError`s. [#247](https://github.com/wolfstar-project/stars-components/pull/247)
+- **New package** — Introduced `defineModule` and the module runtime for installable Stars modules. A module declares `meta` (name, version, `compatibility` ranges checked against the project's `@wolfstar/http-framework` and `@wolfstar/cli`), `defaults`, `dependencies`, `hooks` and `setup(options, ctx)`, whose `ctx` offers `addPlugin`, `addImports`, `hook`, `callHook` and `installModule`. `setupModules` installs each module once, dependencies first, and failures are reported as `ModuleError`s ([#247](https://github.com/wolfstar-project/stars-components/pull/247)).
 
 ### Updates
 

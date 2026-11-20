@@ -1,0 +1,47 @@
+---
+title: 'locales'
+description: 'JSON translation files for i18next-powered internationalization.'
+---
+
+When the **i18n** feature is enabled during scaffolding, the generated project includes a `src/locales/` directory with an example locale resource:
+
+```text
+src/locales/
+└── en-US/
+    └── commands/
+        └── ping.json     # Example locale resource (--i18n)
+```
+
+These files are only generated when i18n is enabled. `src/locales/en-US/commands/ping.json` and `src/@types/i18next.d.ts` are only generated when **i18n** is enabled. `src/@types/i18next.d.ts` is produced by `@wolfstar/i18next-type-generator`; the CLI runs it automatically at the end of scaffolding, and it can be re-run any time locale files change.
+
+The generated `package.json` includes a `generate:i18n` script that (re)generates `src/@types/i18next.d.ts` from the JSON files under `src/locales/`:
+
+```bash
+pnpm generate:i18n
+```
+
+The CLI runs this script automatically once at the end of scaffolding; re-run it manually whenever you add or edit locale keys so the generated types stay in sync.
+
+## Directory name in production
+
+`@wolfstar/plugin-i18next` defaults to `<root>/languages` as the `defaultLanguageDirectory`. The layout itself is unchanged: one directory per language, every nested `.json` file is a namespace.
+
+```text
+languages/
+├── en-US/
+│   ├── default.json
+│   └── commands/
+│       └── ping.json
+└── es-ES/
+    ├── default.json
+    └── commands/
+        └── ping.json
+```
+
+The migration guide documents that the locales directory was renamed to `languages` when moving from `@wolfstar/http-framework-i18n` to `@wolfstar/plugin-i18next`. Either rename the directory or keep your own path via `defaultLanguageDirectory`.
+
+## Read more
+
+- [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next)
+- [`@wolfstar/i18next-backend`](https://www.npmjs.com/package/@wolfstar/i18next-backend)
+- [Migrating off `@wolfstar/http-framework-i18n` — Locales Directory Renamed to `languages`](/migration/plugin-i18next)
