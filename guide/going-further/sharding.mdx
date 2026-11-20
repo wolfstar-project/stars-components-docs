@@ -410,6 +410,8 @@ await manager.reshard({ shards: 'auto' });
 
 `manager.reshard(layout)` does the same for a whole new layout. When the manager dies, a process shard emits `disconnect` and exits when nothing listens. A worker thread stops with it.
 
+A shard stops with `process.exit`, which skips `beforeExit`. To flush traces or metrics first, add a hook with `shard.addExitHook()`, or `manager.addDestroyHook()` in the manager. See [exit and destroy hooks](/documentation/packages/plugin-sharder#exit-and-destroy-hooks).
+
 <Tip>
   Combine rolling restarts with a session store from [`@wolfstar/plugin-cache`](/guide/going-further/caching#resume-sessions-across-restarts). Close the client with `client.destroy({ resumable: true })` in the close handler so the new process resumes the gateway sessions instead of identifying again.
 </Tip>
