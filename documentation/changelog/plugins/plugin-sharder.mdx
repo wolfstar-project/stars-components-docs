@@ -6,6 +6,13 @@ description: 'Changelog for @wolfstar/plugin-sharder: multi-process and multi-ma
 
 Changes to [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder). The plugin spreads gateway shards across processes, cluster workers, worker threads, and machines. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.5.0` (2026-11-13)
+
+### New features
+
+- **Shard exit hooks** — `ShardClient#addExitHook` runs a hook before the shard stops with `process.exit`: on `exit()`, `restart()`, a close from the manager, or the manager going away. `process.exit` skips `beforeExit`, so use the hook to flush traces or metrics first. ([#287](https://github.com/wolfstar-project/plugins/pull/287))
+- **Manager destroy hooks** — `ShardManager#addDestroyHook` runs a hook at the end of `destroy()`, once the shards are closed.
+
 ## `0.4.1` (2026-11-06)
 
 ### Updates
