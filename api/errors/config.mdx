@@ -1,6 +1,6 @@
 ---
-title: "Configuration Errors"
-description: "Diagnostic codes for stars.config.* loading and validation failures."
+title: 'Configuration Errors'
+description: 'Diagnostic codes for stars.config.* loading and validation failures.'
 ---
 
 Every way `stars.config.*` can fail to load or validate is a structured diagnostic exported from `@wolfstar/http-framework/config` as `configDiagnostics`. `@wolfstar/cli` renders these the same way as its own [CLI errors](/api/errors/cli) and exits with code `2` for all of them, except warnings such as `COMPATIBILITY_VERSION_EOL`.

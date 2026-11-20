@@ -1,7 +1,7 @@
 ---
-title: "Migrating to @wolfstar/plugin-i18next"
-sidebarTitle: "plugin-i18next"
-description: "Upgrade from @wolfstar/http-framework-i18n to @wolfstar/plugin-i18next, including bootstrap, typed keys, per-guild languages, and hot module replacement."
+title: 'Migrating to @wolfstar/plugin-i18next'
+sidebarTitle: 'plugin-i18next'
+description: 'Upgrade from @wolfstar/http-framework-i18n to @wolfstar/plugin-i18next, including bootstrap, typed keys, per-guild languages, and hot module replacement.'
 ---
 
 `@wolfstar/http-framework-i18n` has been **removed** and is no longer published or maintained. Its successor is [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), an official plugin for [`@wolfstar/http-framework`](/documentation/packages/http-framework) that lives in the [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-i18next) repository. No further releases are planned for the old package.
@@ -9,24 +9,25 @@ description: "Upgrade from @wolfstar/http-framework-i18n to @wolfstar/plugin-i18
 <Warning>
   **Prerequisites**
 
-  The current `@wolfstar/plugin-i18next` release accepts `@wolfstar/http-framework` `^3.1.0`, `^5.0.0`, or `^6.0.0` as a peer, pulls in `i18next@^26`, and requires Node.js `>=22.22.0`. Framework v5 is accepted from plugin 2.1.0 and v6 from 2.1.2, so a v5 or v6 project needs at least that plugin version.
+The current `@wolfstar/plugin-i18next` release accepts `@wolfstar/http-framework` `^3.1.0`, `^5.0.0`, or `^6.0.0` as a peer, pulls in `i18next@^26`, and requires Node.js `>=22.22.0`. Framework v5 is accepted from plugin 2.1.0 and v6 from 2.1.2, so a v5 or v6 project needs at least that plugin version.
+
 </Warning>
 
 The plugin keeps the localization helpers (`getSupportedLanguageT`, `getSupportedUserLanguageT`, `applyLocalizedBuilder`, and the rest), but types keys through i18next's own `CustomTypeOptions` instead of the `T` / `FT` brands. It also replaces the manual `load()` + `init()` bootstrap with the framework's plugin lifecycle, and moves the loaded state onto `container.i18n`.
 
 ## Overview of the Changes
 
-| Area | `@wolfstar/http-framework-i18n` | `@wolfstar/plugin-i18next` |
-| --- | --- | --- |
-| Bootstrap | Manual `await load(...)` then `await init(...)` | `import '@wolfstar/plugin-i18next/register'` + `i18n` options |
-| State | Module-level sets (`loadedLocales`, …) | `container.i18n` (`InternationalizationHandler`) |
-| Locales directory | Any path passed to `load()` | `i18n.defaultLanguageDirectory`, defaults to `<root>/languages` |
-| Formatters | `addFormatters(...)` | `i18n.formatters` client option |
-| Language resolution | Interaction payload only | Interaction payload **or** `i18n.fetchLanguage` |
-| Hot reload | Not available | `i18n.hmr.enabled` |
-| Typed keys | `T` / `FT` branded keys, resolved with `resolveKey` / `resolveUserKey` | Plain key strings typed through `CustomTypeOptions`, resolved with `getSupportedLanguageT` / `getSupportedUserLanguageT` |
-| `i18next` | `^22.5.1` | `^26` |
-| Relationship to client | Standalone module | Framework plugin, peer of `@wolfstar/http-framework` `^3.1.0`, `^5.0.0`, or `^6.0.0` |
+| Area                   | `@wolfstar/http-framework-i18n`                                        | `@wolfstar/plugin-i18next`                                                                                               |
+| ---------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Bootstrap              | Manual `await load(...)` then `await init(...)`                        | `import '@wolfstar/plugin-i18next/register'` + `i18n` options                                                            |
+| State                  | Module-level sets (`loadedLocales`, …)                                 | `container.i18n` (`InternationalizationHandler`)                                                                         |
+| Locales directory      | Any path passed to `load()`                                            | `i18n.defaultLanguageDirectory`, defaults to `<root>/languages`                                                          |
+| Formatters             | `addFormatters(...)`                                                   | `i18n.formatters` client option                                                                                          |
+| Language resolution    | Interaction payload only                                               | Interaction payload **or** `i18n.fetchLanguage`                                                                          |
+| Hot reload             | Not available                                                          | `i18n.hmr.enabled`                                                                                                       |
+| Typed keys             | `T` / `FT` branded keys, resolved with `resolveKey` / `resolveUserKey` | Plain key strings typed through `CustomTypeOptions`, resolved with `getSupportedLanguageT` / `getSupportedUserLanguageT` |
+| `i18next`              | `^22.5.1`                                                              | `^26`                                                                                                                    |
+| Relationship to client | Standalone module                                                      | Framework plugin, peer of `@wolfstar/http-framework` `^3.1.0`, `^5.0.0`, or `^6.0.0`                                     |
 
 ## Swapping the Dependency
 
@@ -100,7 +101,8 @@ await client.load();
 ```
 
 <Tip>
-  The plugin registers a `preLoad` hook that awaits `container.i18n.init()` **before** the stores load, so command builders can still be localized at registration time — the ordering the manual `await init()` used to guarantee.
+	The plugin registers a `preLoad` hook that awaits `container.i18n.init()` **before** the stores load, so command builders can still be localized
+	at registration time — the ordering the manual `await init()` used to guarantee.
 </Tip>
 
 ## Locales Directory Renamed to `languages`
@@ -135,15 +137,17 @@ languages/
 The branded-key helpers were replaced by i18next's native TypeScript support. Keys are plain strings, typed through the `CustomTypeOptions` augmentation that [`@wolfstar/i18next-type-generator`](https://www.npmjs.com/package/@wolfstar/i18next-type-generator) generates from your locale files. See [Typed keys](/documentation/packages/plugin-i18next#typed-keys) for the setup.
 
 <Warning>
-  `@wolfstar/plugin-i18next` 2.0.x does not export `T`, `FT`, `resolveKey`, or `resolveUserKey`. A find-and-replace of the module specifier fails at load time with `SyntaxError: The requested module '@wolfstar/plugin-i18next' does not provide an export named 'T'`. From 2.1.0, the plugin exports them again as deprecated compatibility shims with the old names and signatures, so the rename works, but plan to move off them.
+	`@wolfstar/plugin-i18next` 2.0.x does not export `T`, `FT`, `resolveKey`, or `resolveUserKey`. A find-and-replace of the module specifier fails at
+	load time with `SyntaxError: The requested module '@wolfstar/plugin-i18next' does not provide an export named 'T'`. From 2.1.0, the plugin exports
+	them again as deprecated compatibility shims with the old names and signatures, so the rename works, but plan to move off them.
 </Warning>
 
-| Old helper | Replacement |
-| --- | --- |
-| `T(key)` / `FT<Args>(key)` | The key string itself, typed by the generated augmentation |
-| `resolveKey(target, key, options)` | `getSupportedLanguageT(target, key, options)` |
-| `resolveUserKey(target, key, options)` | `getSupportedUserLanguageT(target, key, options)` |
-| `TypedT` / `TypedFT` | `ParseKeys` from `i18next` |
+| Old helper                             | Replacement                                                |
+| -------------------------------------- | ---------------------------------------------------------- |
+| `T(key)` / `FT<Args>(key)`             | The key string itself, typed by the generated augmentation |
+| `resolveKey(target, key, options)`     | `getSupportedLanguageT(target, key, options)`              |
+| `resolveUserKey(target, key, options)` | `getSupportedUserLanguageT(target, key, options)`          |
+| `TypedT` / `TypedFT`                   | `ParseKeys` from `i18next`                                 |
 
 ```diff
 -import { FT, T, resolveKey, resolveUserKey } from '@wolfstar/http-framework-i18n';
@@ -160,17 +164,17 @@ The branded-key helpers were replaced by i18next's native TypeScript support. Ke
 
 ## Removed APIs
 
-| Removed | Replacement |
-| --- | --- |
-| `load(directory)` | `i18n.defaultLanguageDirectory` client option |
-| `init(options)` | Handled by the plugin's `preLoad` hook; raw options go to `i18n.i18next` |
-| `addFormatters(...formatters)` | `i18n.formatters` client option |
-| `getT(locale)` | `container.i18n.getT(locale)` |
-| `loadedLocales` | `container.i18n.languages` (a `Map<string, TFunction>`) |
-| `loadedNamespaces` | `container.i18n.namespaces` |
-| `loadedPaths` | Derived from `i18n.defaultLanguageDirectory`; extra paths via `i18n.backend` |
-| `loadedFormatters` | `container.i18n.options.formatters` |
-| `Formatter` | `I18nextFormatter` |
+| Removed                        | Replacement                                                                  |
+| ------------------------------ | ---------------------------------------------------------------------------- |
+| `load(directory)`              | `i18n.defaultLanguageDirectory` client option                                |
+| `init(options)`                | Handled by the plugin's `preLoad` hook; raw options go to `i18n.i18next`     |
+| `addFormatters(...formatters)` | `i18n.formatters` client option                                              |
+| `getT(locale)`                 | `container.i18n.getT(locale)`                                                |
+| `loadedLocales`                | `container.i18n.languages` (a `Map<string, TFunction>`)                      |
+| `loadedNamespaces`             | `container.i18n.namespaces`                                                  |
+| `loadedPaths`                  | Derived from `i18n.defaultLanguageDirectory`; extra paths via `i18n.backend` |
+| `loadedFormatters`             | `container.i18n.options.formatters`                                          |
+| `Formatter`                    | `I18nextFormatter`                                                           |
 
 ```diff
 -import { getT, loadedLocales } from '@wolfstar/http-framework-i18n';
@@ -184,13 +188,13 @@ The branded-key helpers were replaced by i18next's native TypeScript support. Ke
 
 ## New APIs
 
-| Added | What it does |
-| --- | --- |
-| `fetchLanguage(target)` | Resolves the language through `container.i18n.fetchLanguage`, with fallbacks |
-| `fetchT(target)` | `getT` over the result of `fetchLanguage` |
+| Added                   | What it does                                                                            |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| `fetchLanguage(target)` | Resolves the language through `container.i18n.fetchLanguage`, with fallbacks            |
+| `fetchT(target)`        | `getT` over the result of `fetchLanguage`                                               |
 | `fetchKey(target, key)` | Asynchronous counterpart of `getSupportedLanguageT`, honouring the `fetchLanguage` hook |
-| `createLocalizedChoice` | Localized `APIApplicationCommandOptionChoice` for `setChoices` |
-| `container.i18n` | The `InternationalizationHandler` instance |
+| `createLocalizedChoice` | Localized `APIApplicationCommandOptionChoice` for `setChoices`                          |
+| `container.i18n`        | The `InternationalizationHandler` instance                                              |
 
 ## Per-Guild Languages
 

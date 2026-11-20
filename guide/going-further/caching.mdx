@@ -1,7 +1,7 @@
 ---
-title: "Cache Discord Entities with plugin-cache"
-sidebarTitle: "Caching"
-description: "Pick, bound, and tune the entity cache behind GatewayClient: in-memory stores, Redis with TTL and compression, cache policies, custom stores, and sessions."
+title: 'Cache Discord Entities with plugin-cache'
+sidebarTitle: 'Caching'
+description: 'Pick, bound, and tune the entity cache behind GatewayClient: in-memory stores, Redis with TTL and compression, cache policies, custom stores, and sessions.'
 ---
 
 `@wolfstar/plugin-cache` stores the Discord entities your [`GatewayClient`](/guide/going-further/gateway) receives, so managers such as `client.guilds` and `client.members` answer from the cache instead of the REST API. This guide helps you choose between the in-memory and Redis stores, decide what to cache and for how long, keep memory bounded, survive restarts, and handle cache failures.
@@ -9,10 +9,10 @@ description: "Pick, bound, and tune the entity cache behind GatewayClient: in-me
 <Tip>
   **Prerequisites**
 
-  - A gateway bot built with `@wolfstar/plugin-gateway`. If you do not have one yet, start with [Build a Gateway Bot](/guide/going-further/gateway).
-  - Node.js `>=20` for `@wolfstar/plugin-cache`. `@wolfstar/plugin-gateway` itself needs Node.js `>=24.17.0`.
-  - For the Redis store: a reachable Redis server and the [`ioredis`](https://github.com/redis/ioredis) client.
-</Tip>
+- A gateway bot built with `@wolfstar/plugin-gateway`. If you do not have one yet, start with [Build a Gateway Bot](/guide/going-further/gateway).
+- Node.js `>=20` for `@wolfstar/plugin-cache`. `@wolfstar/plugin-gateway` itself needs Node.js `>=24.17.0`.
+- For the Redis store: a reachable Redis server and the [`ioredis`](https://github.com/redis/ioredis) client.
+    </Tip>
 
 ## How the cache works
 
@@ -35,16 +35,16 @@ The `GatewayClient` writes every dispatch into the cache before it emits the mat
 
 The `CacheEntityName` type, and the `CacheEntityNames` constant, list every entity kind a cache can hold:
 
-| Entity kinds |  |  |
-| --- | --- | --- |
+| Entity kinds                    |                   |                       |
+| ------------------------------- | ----------------- | --------------------- |
 | `applicationCommandPermissions` | `auditLogEntries` | `autoModerationRules` |
-| `bans` | `channels` | `emojis` |
-| `entitlements` | `guilds` | `integrations` |
-| `invites` | `members` | `messages` |
-| `presences` | `roles` | `scheduledEvents` |
-| `soundboardSounds` | `stageInstances` | `stickers` |
-| `subscriptions` | `threadMembers` | `threads` |
-| `users` | `voiceStates` |  |
+| `bans`                          | `channels`        | `emojis`              |
+| `entitlements`                  | `guilds`          | `integrations`        |
+| `invites`                       | `members`         | `messages`            |
+| `presences`                     | `roles`           | `scheduledEvents`     |
+| `soundboardSounds`              | `stageInstances`  | `stickers`            |
+| `subscriptions`                 | `threadMembers`   | `threads`             |
+| `users`                         | `voiceStates`     |                       |
 
 Guilds are stored without their `roles`, `emojis`, and `stickers` arrays, which live in their own stores.
 
@@ -52,12 +52,12 @@ Guilds are stored without their `roles`, `emojis`, and `stickers` arrays, which 
 
 `GatewayClient` supports four cache modes. Pick one with the client options:
 
-| Mode | Option | Where data lives | Reads | Best for |
-| --- | --- | --- | --- | --- |
-| Structure cache (default) | none, or `cacheConstructor` | Process memory, as structure instances patched in place | Synchronous | Small and medium bots on one process |
-| In-memory store | `cache: createInMemoryCache()` | Process memory, as raw data in `Map`s | Synchronous | Bounding memory with LRU limits and TTLs |
-| Redis store | `cache: createRedisCache({ redis })` | Redis, as raw data | Asynchronous | Large bots, several processes, and resuming sessions after restarts |
-| No cache | `cache: null` | Nowhere | Every `fetch` hits the API | Interaction-heavy bots that rarely read state |
+| Mode                      | Option                               | Where data lives                                        | Reads                      | Best for                                                            |
+| ------------------------- | ------------------------------------ | ------------------------------------------------------- | -------------------------- | ------------------------------------------------------------------- |
+| Structure cache (default) | none, or `cacheConstructor`          | Process memory, as structure instances patched in place | Synchronous                | Small and medium bots on one process                                |
+| In-memory store           | `cache: createInMemoryCache()`       | Process memory, as raw data in `Map`s                   | Synchronous                | Bounding memory with LRU limits and TTLs                            |
+| Redis store               | `cache: createRedisCache({ redis })` | Redis, as raw data                                      | Asynchronous               | Large bots, several processes, and resuming sessions after restarts |
+| No cache                  | `cache: null`                        | Nowhere                                                 | Every `fetch` hits the API | Interaction-heavy bots that rarely read state                       |
 
 ```ts src/bot.ts
 import { createInMemoryCache, createRedisCache } from '@wolfstar/plugin-cache';
@@ -72,7 +72,8 @@ new GatewayClient({ intents, cache: null }); // nothing is cached
 With a store (`cache` or `makeCache`), each read builds a new structure from the raw data. With the default structure cache, the cached instance is patched in place by later dispatches, as in discord.js.
 
 <Note>
-  The structure cache options (`cacheConstructor`, `cacheOptions`, and `sweepers`) and the store options (`cache` and `makeCache`) exclude each other. Combining them throws when you construct the client. With `cache: null`, the structure cache options are ignored.
+	The structure cache options (`cacheConstructor`, `cacheOptions`, and `sweepers`) and the store options (`cache` and `makeCache`) exclude each
+	other. Combining them throws when you construct the client. With `cache: null`, the structure cache options are ignored.
 </Note>
 
 ## Install the package
@@ -126,7 +127,7 @@ bun add ioredis msgpackr
 The default `CollectionCache` keeps every entity the gateway sends until a dispatch such as `MESSAGE_DELETE` or `GUILD_DELETE` removes it. Nothing expires, so messages, users, and presences grow for as long as the process runs.
 
 <Warning>
-  On a bot in many guilds, an unbounded default cache is the most common cause of memory growth. Set limits before you go to production.
+	On a bot in many guilds, an unbounded default cache is the most common cause of memory growth. Set limits before you go to production.
 </Warning>
 
 ### Limit each entity with cacheOptions
@@ -192,7 +193,10 @@ client.sweepers.sweepMessages(600);
 import { CollectionCache, type CacheConstructorOptions, type RawAPIType, type StructureCreator, type StructureMixin } from '@wolfstar/plugin-gateway';
 import type { CacheEntityName } from '@wolfstar/plugin-cache';
 
-export class BoundedCache<Value extends StructureMixin<object>, Raw extends RawAPIType<Value> = RawAPIType<Value>> extends CollectionCache<Value, Raw> {
+export class BoundedCache<Value extends StructureMixin<object>, Raw extends RawAPIType<Value> = RawAPIType<Value>> extends CollectionCache<
+	Value,
+	Raw
+> {
 	public constructor(creator: StructureCreator<Value, Raw>, name: CacheEntityName, options: CacheConstructorOptions<Value, Raw>) {
 		super(creator, name, { ...options, maxSize: options.maxSize ?? 10_000 });
 	}
@@ -231,16 +235,17 @@ const client = new GatewayClient({
 });
 ```
 
-| Option | Default | Description |
-| --- | --- | --- |
-| `entities` | Every entity kind | The entity kinds to cache. Every other one gets no store. |
-| `maxSize` | `Infinity` | Maximum entries per store before the least recently used ones are evicted. A number for every store, or an object per entity kind. |
-| `ttl` | None | Default time-to-live of the entries, in **milliseconds**. A number for every store, or an object per entity kind. |
-| `sweepInterval` | `null` | How often, in milliseconds, every store drops its expired entries. `null` disables the timer. |
-| `policies` | None | Per-entity `filter` and `ttl` rules. See [Choose what to cache](#choose-what-to-cache). |
+| Option          | Default           | Description                                                                                                                        |
+| --------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `entities`      | Every entity kind | The entity kinds to cache. Every other one gets no store.                                                                          |
+| `maxSize`       | `Infinity`        | Maximum entries per store before the least recently used ones are evicted. A number for every store, or an object per entity kind. |
+| `ttl`           | None              | Default time-to-live of the entries, in **milliseconds**. A number for every store, or an object per entity kind.                  |
+| `sweepInterval` | `null`            | How often, in milliseconds, every store drops its expired entries. `null` disables the timer.                                      |
+| `policies`      | None              | Per-entity `filter` and `ttl` rules. See [Choose what to cache](#choose-what-to-cache).                                            |
 
 <Note>
-  Without `sweepInterval`, an expired entry is only dropped when something reads it, so it still takes memory until then. The sweep timer is `unref`'d, so it never keeps the process alive. Call `dispose()` on a `MemoryEntityCache` to stop it.
+	Without `sweepInterval`, an expired entry is only dropped when something reads it, so it still takes memory until then. The sweep timer is
+	`unref`'d, so it never keeps the process alive. Call `dispose()` on a `MemoryEntityCache` to stop it.
 </Note>
 
 A `get` counts as a use for the least-recently-used order. Invalid `maxSize`, `ttl`, or `sweepInterval` values throw a `RangeError`.
@@ -272,9 +277,9 @@ The Redis store keeps the cache outside the process. Several processes can share
     ```ts src/cache.ts
     import { createRedisCache } from '@wolfstar/plugin-cache';
     import { Redis } from 'ioredis';
-    
+
     export const redis = new Redis(process.env.REDIS_URL!);
-    
+
     export const cache = createRedisCache({
     	redis,
     	prefix: 'my-bot:cache',
@@ -283,6 +288,7 @@ The Redis store keeps the cache outside the process. Several processes can share
     	ttl: { messages: 60 * 60, presences: 10 * 60, users: 24 * 60 * 60 }
     });
     ```
+
   </Step>
   <Step title="Pass it to the client">
     ```ts src/bot.ts
@@ -307,36 +313,38 @@ The Redis store keeps the cache outside the process. Several processes can share
     		asynchronous: true;
     	}
     }
-    
+
     export {};
     ```
 
     <Warning>
       Without the declaration, the getters are typed as plain values. A promise is always truthy, so `if (member.kickable)` passes for every member.
     </Warning>
+
   </Step>
   <Step title="Await your reads">
     Every `manager.cache` method now returns a promise. `await` works with every store, so code that always awaits keeps working if you switch back to memory:
 
     ```ts src/listeners/automod.ts
     import { EventGatewayListener, type Message } from '@wolfstar/plugin-gateway';
-    
+
     export class AutomodListener extends EventGatewayListener<'messageCreate'> {
     	public constructor(context: EventGatewayListener.LoaderContext) {
     		super(context, { event: 'messageCreate' });
     	}
-    
+
     	public override async run(message: Message) {
     		if (!message.guildId) return;
-    
+
     		const member = await this.container.gatewayClient.guilds.members(message.guildId).cache.get(message.author.id);
     		if (!member) return;
-    
+
     		if ((await member.permissions).has('ManageMessages')) return;
     		// ...
     	}
     }
     ```
+
   </Step>
 </Steps>
 
@@ -344,21 +352,22 @@ Relation getters such as `message.guild`, `member.voice`, and `channel.parent` s
 
 ### Redis options
 
-| Option | Default | Description |
-| --- | --- | --- |
-| `redis` | Required | The client to use. Must implement `RedisClientLike`. |
-| `prefix` | `"wolfstar:cache"` | Prefix of every key. Entries live at `<prefix>:<entity>:<key>`. Exported as `DefaultRedisCachePrefix`. |
-| `compression` | `"none"` | `"gzip"`, `"brotli"`, or `"none"`. |
-| `compressionThreshold` | `1024` | Minimum serialized size, in bytes, for a value to be compressed. |
-| `codec` | `jsonCodec()` | Encodes and decodes values before compression. |
-| `legacyCodecs` | `[]` | Former `codec` values still tagging stored entries. |
-| `ttl` | `{}` | Time-to-live in **seconds**, per entity kind. Omitted ones never expire. |
-| `indexGuilds` | `true` | Keep one index per guild for guild-scoped entity kinds. |
-| `entities` | Every entity kind | The entity kinds to cache. |
-| `policies` | None | Per-entity `filter` and `ttl` rules. |
+| Option                 | Default            | Description                                                                                            |
+| ---------------------- | ------------------ | ------------------------------------------------------------------------------------------------------ |
+| `redis`                | Required           | The client to use. Must implement `RedisClientLike`.                                                   |
+| `prefix`               | `"wolfstar:cache"` | Prefix of every key. Entries live at `<prefix>:<entity>:<key>`. Exported as `DefaultRedisCachePrefix`. |
+| `compression`          | `"none"`           | `"gzip"`, `"brotli"`, or `"none"`.                                                                     |
+| `compressionThreshold` | `1024`             | Minimum serialized size, in bytes, for a value to be compressed.                                       |
+| `codec`                | `jsonCodec()`      | Encodes and decodes values before compression.                                                         |
+| `legacyCodecs`         | `[]`               | Former `codec` values still tagging stored entries.                                                    |
+| `ttl`                  | `{}`               | Time-to-live in **seconds**, per entity kind. Omitted ones never expire.                               |
+| `indexGuilds`          | `true`             | Keep one index per guild for guild-scoped entity kinds.                                                |
+| `entities`             | Every entity kind  | The entity kinds to cache.                                                                             |
+| `policies`             | None               | Per-entity `filter` and `ttl` rules.                                                                   |
 
 <Warning>
-  Units differ between stores. The Redis `ttl` option is in **seconds**, while the in-memory `ttl` option and every policy `ttl` are in **milliseconds**.
+	Units differ between stores. The Redis `ttl` option is in **seconds**, while the in-memory `ttl` option and every policy `ttl` are in
+	**milliseconds**.
 </Warning>
 
 ### What Redis stores
@@ -418,7 +427,8 @@ With `indexGuilds` (on by default), the entity kinds that hold guild data (chann
 The price is one more index write per write, and a read before each delete. When the transaction exposes `pexpire` (`ioredis` does), the guild indexes of an entity kind with a `ttl` expire with their entries.
 
 <Note>
-  Entries written while `indexGuilds` was off are not indexed. If you turn it on for a populated cache, those entries stay behind on `GUILD_DELETE` until they expire or you clear the cache.
+	Entries written while `indexGuilds` was off are not indexed. If you turn it on for a populated cache, those entries stay behind on `GUILD_DELETE`
+	until they expire or you clear the cache.
 </Note>
 
 ## Choose what to cache
@@ -505,7 +515,8 @@ const cache = createCache({
 ```
 
 <Note>
-  Mixing synchronous and asynchronous stores makes some managers synchronous and others asynchronous. Check `manager.cache.synchronous`, or always `await` reads.
+	Mixing synchronous and asynchronous stores makes some managers synchronous and others asynchronous. Check `manager.cache.synchronous`, or always
+	`await` reads.
 </Note>
 
 ### Cache nothing
@@ -542,17 +553,17 @@ const rawMember = await client.cache?.members?.get(memberKey(guildId, userId));
 
 Most entities are keyed by their ID. Entities scoped to a guild or a channel use the key helpers the package exports:
 
-| Helper | Key of |
-| --- | --- |
-| `memberKey(guildId, userId)` | `members` |
-| `messageKey(channelId, messageId)` | `messages` |
-| `roleKey`, `emojiKey`, `stickerKey`, `banKey`, `integrationKey`, `scheduledEventKey`, `soundboardSoundKey`, `autoModerationRuleKey` | The matching guild-scoped entity |
-| `presenceKey`, `voiceStateKey` | `presences` and `voiceStates`, by guild and user |
-| `stageInstanceKey(guildId, channelId)` | `stageInstances` |
-| `threadMemberKey(threadId, userId)` | `threadMembers` |
-| `inviteKey(guildId, code)` | `invites`. Pass `null` as `guildId` for invites without a guild. |
-| `applicationCommandPermissionsKey(applicationId, guildId, commandId)` | `applicationCommandPermissions` |
-| `guildScopedKey` | The generic helper behind the guild-scoped keys |
+| Helper                                                                                                                              | Key of                                                           |
+| ----------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `memberKey(guildId, userId)`                                                                                                        | `members`                                                        |
+| `messageKey(channelId, messageId)`                                                                                                  | `messages`                                                       |
+| `roleKey`, `emojiKey`, `stickerKey`, `banKey`, `integrationKey`, `scheduledEventKey`, `soundboardSoundKey`, `autoModerationRuleKey` | The matching guild-scoped entity                                 |
+| `presenceKey`, `voiceStateKey`                                                                                                      | `presences` and `voiceStates`, by guild and user                 |
+| `stageInstanceKey(guildId, channelId)`                                                                                              | `stageInstances`                                                 |
+| `threadMemberKey(threadId, userId)`                                                                                                 | `threadMembers`                                                  |
+| `inviteKey(guildId, code)`                                                                                                          | `invites`. Pass `null` as `guildId` for invites without a guild. |
+| `applicationCommandPermissionsKey(applicationId, guildId, commandId)`                                                               | `applicationCommandPermissions`                                  |
+| `guildScopedKey`                                                                                                                    | The generic helper behind the guild-scoped keys                  |
 
 ### Fill gaps before synchronous getters
 
@@ -577,12 +588,13 @@ Without a session store, every deploy or crash identifies every shard again. It 
     ```ts src/cache.ts
     import { createRedisCache, createRedisSessionStore } from '@wolfstar/plugin-cache';
     import { Redis } from 'ioredis';
-    
+
     const redis = new Redis(process.env.REDIS_URL!);
-    
+
     export const cache = createRedisCache({ redis, prefix: 'my-bot:cache' });
     export const sessionStore = createRedisSessionStore({ redis, prefix: 'my-bot:sessions' });
     ```
+
   </Step>
   <Step title="Pass both to the client">
     ```ts src/bot.ts
@@ -598,6 +610,7 @@ Without a session store, every deploy or crash identifies every shard again. It 
     ```
 
     Pair the session store with a persistent cache. A resumed session only replays missed events, not guilds, so a process that resumes with an empty in-memory cache never gets its guilds back.
+
   </Step>
   <Step title="Shut down resumably">
     By default, `destroy()` closes connections with code `1000`, which makes Discord invalidate the sessions. With `resumable: true`, shards close with code `4200` and their sessions stay stored:
@@ -608,14 +621,15 @@ Without a session store, every deploy or crash identifies every shard again. It 
     	process.exit(0);
     });
     ```
+
   </Step>
 </Steps>
 
-| Option | Default | Description |
-| --- | --- | --- |
-| `redis` | Required | The client to use. Needs `get`, `set`, and `del`. |
+| Option   | Default               | Description                                                                                                       |
+| -------- | --------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `redis`  | Required              | The client to use. Needs `get`, `set`, and `del`.                                                                 |
 | `prefix` | `"wolfstar:sessions"` | Prefix of every key. Sessions live at `<prefix>:<shardId>` as JSON. Exported as `DefaultRedisSessionStorePrefix`. |
-| `ttl` | `600` | Seconds a session is kept after its last write. `null` keeps it until it is dropped. |
+| `ttl`    | `600`                 | Seconds a session is kept after its last write. `null` keeps it until it is dropped.                              |
 
 Discord only lets a session be resumed for a while after its connection closes. The `ttl` spares a restart the attempt to resume a session long gone, and keeps Redis tidy. Each write pushes the expiration back, and the gateway writes on every dispatch, so only a shard that receives no dispatch for longer than the `ttl` identifies on the next restart.
 
@@ -641,10 +655,10 @@ interface GatewaySessionStore {
 
 A remote store can fail: Redis restarts, the network drops, or a value cannot be decoded. Two options decide what happens, and both report the error.
 
-| Option | Applies to | `"miss"` / `"skip"` (default) | Alternative |
-| --- | --- | --- | --- |
-| `cacheErrors` | Manager reads and writes, such as `cache.get` and `fetch` | Treat the failure as a cache miss, falling back to the API or to the data at hand | `"throw"` rejects with the error |
-| `cacheFailure` | Dispatches written by the gateway | Drop the event, so listeners never see state the cache does not hold | `"emitUncached"` emits the event built from the payload alone, with `null` as the previous state |
+| Option         | Applies to                                                | `"miss"` / `"skip"` (default)                                                     | Alternative                                                                                      |
+| -------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `cacheErrors`  | Manager reads and writes, such as `cache.get` and `fetch` | Treat the failure as a cache miss, falling back to the API or to the data at hand | `"throw"` rejects with the error                                                                 |
+| `cacheFailure` | Dispatches written by the gateway                         | Drop the event, so listeners never see state the cache does not hold              | `"emitUncached"` emits the event built from the payload alone, with `null` as the previous state |
 
 Manager failures are emitted as `cacheError`, with a context that names the store, the key, and the operation. Dispatch failures are reported through the `error` event, or the logger when nothing listens to it:
 
@@ -670,7 +684,8 @@ The Redis store distinguishes three cases:
 - Connection errors are not wrapped. They propagate as the client throws them.
 
 <Tip>
-  Choose `cacheFailure: "emitUncached"` when missing an event is worse than handling a `null` previous state, for example for moderation logs. Keep the default `"skip"` when listeners rely on cached state.
+	Choose `cacheFailure: "emitUncached"` when missing an event is worse than handling a `null` previous state, for example for moderation logs. Keep
+	the default `"skip"` when listeners rely on cached state.
 </Tip>
 
 ## Use the cache without GatewayClient
@@ -708,7 +723,8 @@ const guild = await cache.guilds?.get(guildId);
 Without `onError`, failures are logged with `console.error('Failed to cache gateway dispatch', error)`. Pass the bot's user ID as `clientUserId` so reactions and poll votes set the `me` and `me_voted` flags of cached messages.
 
 <Warning>
-  `attachCacheToGateway` writes each dispatch as soon as it arrives and does not queue them. With an asynchronous store, two writes for the same entity can land out of order. `GatewayClient` orders dispatches per guild, so prefer it when you use Redis.
+	`attachCacheToGateway` writes each dispatch as soon as it arrives and does not queue them. With an asynchronous store, two writes for the same
+	entity can land out of order. `GatewayClient` orders dispatches per guild, so prefer it when you use Redis.
 </Warning>
 
 ### Apply dispatches yourself
@@ -735,18 +751,21 @@ import { applyCacheOperations, createCacheOperations } from '@wolfstar/plugin-ca
 const operations = createCacheOperations(payload, { clientUserId: botId });
 
 // Never write presences, whatever the store holds.
-await applyCacheOperations(cache, operations.filter((operation) => operation.store !== 'presences'));
+await applyCacheOperations(
+	cache,
+	operations.filter((operation) => operation.store !== 'presences')
+);
 ```
 
 Each `CacheOperation` is one of:
 
-| Type | Fields | Effect |
-| --- | --- | --- |
-| `upsert` | `store`, `key`, `raw`, `merge?` | Writes `raw`, shallow-merged onto the existing value when `merge` is set |
-| `update` | `store`, `key`, `update(value)` | Computes the new value from the cached one. Nothing is written when the key is not cached |
-| `delete` | `store`, `key` | Deletes one entry |
-| `deletePrefix` | `store`, `prefix`, `guildId?` | Deletes every entry whose key starts with `prefix` |
-| `deleteWhere` | `store`, `predicate(value)`, `guildId?` | Deletes every entry the predicate matches |
+| Type           | Fields                                  | Effect                                                                                    |
+| -------------- | --------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `upsert`       | `store`, `key`, `raw`, `merge?`         | Writes `raw`, shallow-merged onto the existing value when `merge` is set                  |
+| `update`       | `store`, `key`, `update(value)`         | Computes the new value from the cached one. Nothing is written when the key is not cached |
+| `delete`       | `store`, `key`                          | Deletes one entry                                                                         |
+| `deletePrefix` | `store`, `prefix`, `guildId?`           | Deletes every entry whose key starts with `prefix`                                        |
+| `deleteWhere`  | `store`, `predicate(value)`, `guildId?` | Deletes every entry the predicate matches                                                 |
 
 `applyCacheOperations` runs operations in order, skips stores the cache does not hold, and skips the scans of `deletePrefix` and `deleteWhere` on stores that cannot enumerate their entries. `createCacheOperations` ignores `INTERACTION_CREATE`. A reaction or vote on a message the cache does not hold is ignored, since there is nothing to count it into.
 
@@ -861,29 +880,33 @@ Keep these rules in mind:
     The default structure cache never expires entries. Add `cacheOptions` limits with `cacheWithLimits` and enable `sweepers` (for example `DefaultSweeperSettings`), or switch to `createInMemoryCache` with `maxSize` and `ttl`. Leave out entity kinds you never read, such as `presences`, and filter bots with a `users` policy.
   </Accordion>
 
-  <Accordion title="Constructing the client throws about cache options">
-    `cacheConstructor`, `cacheOptions`, and `sweepers` only apply to the default structure cache. Combining them with `cache` or `makeCache` throws. With a store, use the store's `maxSize` and `ttl`, or policy `ttl`s, instead.
-  </Accordion>
+<Accordion title="Constructing the client throws about cache options">
+	`cacheConstructor`, `cacheOptions`, and `sweepers` only apply to the default structure cache. Combining them with `cache` or `makeCache` throws.
+	With a store, use the store's `maxSize` and `ttl`, or policy `ttl`s, instead.
+</Accordion>
 
-  <Accordion title="if (member.kickable) is always true">
-    You use an asynchronous store, such as Redis, without the `GatewayCacheConfig` declaration. The getter returns a promise, which is always truthy. Add the declaration from [Use the Redis store](#use-the-redis-store) and `await` the getter.
-  </Accordion>
+<Accordion title="if (member.kickable) is always true">
+	You use an asynchronous store, such as Redis, without the `GatewayCacheConfig` declaration. The getter returns a promise, which is always truthy.
+	Add the declaration from [Use the Redis store](#use-the-redis-store) and `await` the getter.
+</Accordion>
 
-  <Accordion title="A getter throws GuildUncached or GuildMemberUncached">
-    The getter needs an entity your cache does not hold, because it is filtered, evicted, or not cached at all. Fetch the guild, the bot's member, and its roles first, as shown in [Fill gaps before synchronous getters](#fill-gaps-before-synchronous-getters).
-  </Accordion>
+<Accordion title="A getter throws GuildUncached or GuildMemberUncached">
+	The getter needs an entity your cache does not hold, because it is filtered, evicted, or not cached at all. Fetch the guild, the bot's member, and
+	its roles first, as shown in [Fill gaps before synchronous getters](#fill-gaps-before-synchronous-getters).
+</Accordion>
 
   <Accordion title="Entries never expire in Redis">
     Check the units: the Redis `ttl` option is in seconds, so `ttl: { messages: 3_600_000 }` keeps messages for more than 41 days. Policy `ttl`s, on the other hand, are in milliseconds.
   </Accordion>
 
-  <Accordion title="CacheValueError after changing the codec">
-    You switched away from a non-default codec. Add the old codec to `legacyCodecs` so existing entries can still be decoded, or clear the cache.
-  </Accordion>
+<Accordion title="CacheValueError after changing the codec">
+	You switched away from a non-default codec. Add the old codec to `legacyCodecs` so existing entries can still be decoded, or clear the cache.
+</Accordion>
 
-  <Accordion title="Entries of a deleted guild stay in Redis">
-    Entries written while `indexGuilds` was off are not indexed by guild. They stay until they expire or you clear the cache. Set a `ttl` on large entity kinds such as `messages` so leftovers expire on their own.
-  </Accordion>
+<Accordion title="Entries of a deleted guild stay in Redis">
+	Entries written while `indexGuilds` was off are not indexed by guild. They stay until they expire or you clear the cache. Set a `ttl` on large
+	entity kinds such as `messages` so leftovers expire on their own.
+</Accordion>
 
   <Accordion title="A restarted process identifies instead of resuming">
     Check that you shut down with `client.destroy({ resumable: true })`, that the restart happens before the session store `ttl` runs out, and that `error` reports no `GatewaySessionStoreError`. A plain `destroy()` invalidates the sessions.
@@ -909,13 +932,13 @@ The module registers no plugin and takes no options. You still create the cache 
     Set up a GatewayClient, listeners, managers, and production shutdown.
   </Card>
 
-  <Card title="Scale with plugin-sharder" icon="arrows-split-up-and-left" href="/guide/going-further/sharding">
-    Spread shards across processes and machines that share one Redis cache.
-  </Card>
+<Card title="Scale with plugin-sharder" icon="arrows-split-up-and-left" href="/guide/going-further/sharding">
+	Spread shards across processes and machines that share one Redis cache.
+</Card>
 
-  <Card title="plugin-cache reference" icon="book" href="/documentation/packages/plugin-cache">
-    Package overview, installation, and Redis options.
-  </Card>
+<Card title="plugin-cache reference" icon="book" href="/documentation/packages/plugin-cache">
+	Package overview, installation, and Redis options.
+</Card>
 
   <Card title="plugin-gateway reference" icon="book-open" href="/documentation/packages/plugin-gateway">
     Every client option, manager, structure, event, and error.

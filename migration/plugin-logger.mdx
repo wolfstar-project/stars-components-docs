@@ -1,7 +1,7 @@
 ---
-title: "Migrating to @wolfstar/plugin-logger"
-sidebarTitle: "plugin-logger"
-description: "Replace @wolfstar/logger with @wolfstar/plugin-logger, which provides the same framework logger interface through the plugin lifecycle and adds support for multiple transports."
+title: 'Migrating to @wolfstar/plugin-logger'
+sidebarTitle: 'plugin-logger'
+description: 'Replace @wolfstar/logger with @wolfstar/plugin-logger, which provides the same framework logger interface through the plugin lifecycle and adds support for multiple transports.'
 ---
 
 `@wolfstar/logger` has been removed and is no longer published or maintained. Replace it with [`@wolfstar/plugin-logger`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-logger), which provides the same framework logger interface through the plugin lifecycle and adds support for multiple transports.
@@ -9,22 +9,23 @@ description: "Replace @wolfstar/logger with @wolfstar/plugin-logger, which provi
 <Warning>
   **Prerequisites**
 
-  `@wolfstar/plugin-logger` requires Node.js 20 or newer and `@wolfstar/http-framework@^3.4.0`.
+`@wolfstar/plugin-logger` requires Node.js 20 or newer and `@wolfstar/http-framework@^3.4.0`.
+
 </Warning>
 
 If console output is all you need, `@wolfstar/http-framework` already provides `container.logger`; remove the old package without installing the plugin. Install `@wolfstar/plugin-logger` when you need transport configuration, Sentry integration, or a Consola, Evlog, or Winston backend.
 
 ## Overview of the Changes
 
-| Area | `@wolfstar/logger` | `@wolfstar/plugin-logger` |
-| --- | --- | --- |
-| Setup | Construct `Logger` directly | Configure `logger` when constructing `Client` |
-| Logger access | Keep the constructed instance | Use `container.logger` |
-| `LogLevel` import | `@wolfstar/logger` | `@wolfstar/http-framework` |
-| Output | Built-in console output | One or more configurable transports |
-| Colours | Re-exported helpers from `colorette` | No colour-helper re-exports |
-| Optional backends | Not available | Sentry, Consola, Evlog, and Winston |
-| Custom logger | Construct and manage it in application code | `logger.instance` remains supported and is never overwritten |
+| Area              | `@wolfstar/logger`                          | `@wolfstar/plugin-logger`                                    |
+| ----------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| Setup             | Construct `Logger` directly                 | Configure `logger` when constructing `Client`                |
+| Logger access     | Keep the constructed instance               | Use `container.logger`                                       |
+| `LogLevel` import | `@wolfstar/logger`                          | `@wolfstar/http-framework`                                   |
+| Output            | Built-in console output                     | One or more configurable transports                          |
+| Colours           | Re-exported helpers from `colorette`        | No colour-helper re-exports                                  |
+| Optional backends | Not available                               | Sentry, Consola, Evlog, and Winston                          |
+| Custom logger     | Construct and manage it in application code | `logger.instance` remains supported and is never overwritten |
 
 The `ILogger` methods and level ordering are unchanged: existing `trace`, `debug`, `info`, `warn`, `error`, and `fatal` calls can keep their arguments.
 
@@ -122,12 +123,12 @@ const client = new Client({
 
 Each transport can have its own minimum `level`; messages below it are skipped for that destination. The Sentry SDK and alternative logger backends are not installed automatically.
 
-| Backend | Install | Transport import |
-| --- | --- | --- |
-| Sentry | `@sentry/node` | `@wolfstar/plugin-logger` |
-| Consola | `consola` | `@wolfstar/plugin-logger/consola` |
-| Evlog | `evlog` | `@wolfstar/plugin-logger/evlog` |
-| Winston | `winston` | `@wolfstar/plugin-logger/winston` |
+| Backend | Install        | Transport import                  |
+| ------- | -------------- | --------------------------------- |
+| Sentry  | `@sentry/node` | `@wolfstar/plugin-logger`         |
+| Consola | `consola`      | `@wolfstar/plugin-logger/consola` |
+| Evlog   | `evlog`        | `@wolfstar/plugin-logger/evlog`   |
+| Winston | `winston`      | `@wolfstar/plugin-logger/winston` |
 
 For example, a Winston transport is configured with the Winston logger instance you already own:
 

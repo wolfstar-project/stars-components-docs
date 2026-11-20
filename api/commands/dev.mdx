@@ -1,7 +1,7 @@
 ---
-title: "stars dev"
-description: "Watches the sources through the configured build tool, starts the bot after the first successful build and restarts it after every following one."
-sidebarTitle: "stars dev"
+title: 'stars dev'
+description: 'Watches the sources through the configured build tool, starts the bot after the first successful build and restarts it after every following one.'
+sidebarTitle: 'stars dev'
 ---
 
 ## `stars dev`
@@ -12,11 +12,11 @@ The bot runs as a child `node` process with `STARS_DEV=1` and `NODE_ENV=developm
 
 `dev.layout` in `stars.config`, or `--layout`, picks the interactive UI:
 
-| Value | UI |
-| --- | --- |
-| `'auto'` (default) | The dashboard on a terminal of at least 90×20, the panel on a smaller one |
-| `'dashboard'` | The full-screen dashboard |
-| `'panel'` | The compact panel pinned to the bottom of the terminal, with the logs folded away |
+| Value              | UI                                                                                |
+| ------------------ | --------------------------------------------------------------------------------- |
+| `'auto'` (default) | The dashboard on a terminal of at least 90×20, the panel on a smaller one         |
+| `'dashboard'`      | The full-screen dashboard                                                         |
+| `'panel'`          | The compact panel pinned to the bottom of the terminal, with the logs folded away |
 
 Press `v` to switch between the two while a session runs.
 
@@ -24,11 +24,11 @@ Press `v` to switch between the two while a session runs.
 
 `tui.style` in `stars.config`, or `--style`, picks the presentation by name:
 
-| Value | Presentation |
-| --- | --- |
+| Value          | Presentation                                                 |
+| -------------- | ------------------------------------------------------------ |
 | `'nuxt-style'` | The compact [panel](#panel), following Nuxt CLI's dev output |
-| `'dashboard'` | The full-screen [dashboard](#dashboard) |
-| `'none'` | [Plain mode](#plain-mode) logs |
+| `'dashboard'`  | The full-screen [dashboard](#dashboard)                      |
+| `'none'`       | [Plain mode](#plain-mode) logs                               |
 
 ```ts
 // stars.config.ts
@@ -58,12 +58,12 @@ The framework listener binds `HTTP_ADDRESS` (default `0.0.0.0`). Its port comes 
 
 When the listener port is occupied, `dev.portConflict` or `--port-conflict` decides what happens:
 
-| Value | Behavior |
-| --- | --- |
+| Value                | Behavior                                                                                                                                                  |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `'prompt'` (default) | Asks whether to use the next available port, start anyway on the same port, or cancel startup. Without an interactive terminal, fails with `PORT_IN_USE`. |
-| `'next'` | Uses the next free port, trying up to 100 higher ports. Fails with `NO_AVAILABLE_PORT` when none is free. |
-| `'error'` | Fails right away with [`PORT_IN_USE`](/api/errors/cli#port_in_use). |
-| `'continue'` | Skips the bind check and starts on the configured port. |
+| `'next'`             | Uses the next free port, trying up to 100 higher ports. Fails with `NO_AVAILABLE_PORT` when none is free.                                                 |
+| `'error'`            | Fails right away with [`PORT_IN_USE`](/api/errors/cli#port_in_use).                                                                                       |
+| `'continue'`         | Skips the bind check and starts on the configured port.                                                                                                   |
 
 The prompt also works with plain logs on a terminal. CI, piped input, and `TERM=dumb` never wait for an answer. Cancelling creates no builder and no generated files.
 
@@ -123,18 +123,18 @@ The stream prints one line per entry: a level badge (`T D I W E`), the time, the
 
 Each log entry has a channel that says what it is about, so you can switch each one off:
 
-| Channel | What logs there |
-| --- | --- |
-| `cli` | `stars dev` itself: builds, restarts, hooks, warnings |
-| `build` | The build tool and the file watcher |
-| `bot` | Everything the bot writes to stdout and stderr |
-| `types` | The type checker (`dev.typecheck`) |
-| `tunnel` | The public tunnel |
-| `lifecycle` | The bot is listening, the pieces it loaded |
-| `hmr` | Files left to the bot's hot reload, and what it reloaded |
-| `commands` | The application commands the bot registers, changes to them, redeploys |
+| Channel        | What logs there                                                                 |
+| -------------- | ------------------------------------------------------------------------------- |
+| `cli`          | `stars dev` itself: builds, restarts, hooks, warnings                           |
+| `build`        | The build tool and the file watcher                                             |
+| `bot`          | Everything the bot writes to stdout and stderr                                  |
+| `types`        | The type checker (`dev.typecheck`)                                              |
+| `tunnel`       | The public tunnel                                                               |
+| `lifecycle`    | The bot is listening, the pieces it loaded                                      |
+| `hmr`          | Files left to the bot's hot reload, and what it reloaded                        |
+| `commands`     | The application commands the bot registers, changes to them, redeploys          |
 | `interactions` | Each interaction: the route (`slash:ping`), the piece, how long it took, errors |
-| `http` | Each request to the interactions endpoint, with its status (`trace` when fine) |
+| `http`         | Each request to the interactions endpoint, with its status (`trace` when fine)  |
 
 The last five channels come from the bot itself. `stars dev` preloads a small bridge into the bot (`node --import`) that reports its events over an IPC channel instead of guessing from stdout. The bridge needs `@wolfstar/http-framework` 6.1 or later, resolved from the project. Without it, or with a build that bundles the framework (as Vite and Nitro do), those channels stay empty and everything else works as before.
 
@@ -163,32 +163,32 @@ stars dev --level trace                           # this level and every more se
 
 ## Keyboard shortcuts
 
-| Key | Action |
-| --- | --- |
-| `←` / `→` | Select a channel or a level |
-| `Tab` | Switch between channels and levels |
-| `Space` | Show or hide the selected one |
-| `s` | Solo: show only the selected one; press again for all |
-| `a` | Show every channel and level |
-| `Enter` | Fold or unfold the selected group |
-| `b` | Group the stream by channel |
-| `↑` / `↓`, `j`/`k` | Scroll (`PgUp`/`PgDn` by page); the footer turns to `paused` |
-| `g` / `G` | Jump to the top / back to live |
-| `/` | Search the stream (`Esc` clears) |
-| `e` | Jump to the last error, keeping its context |
-| `y` / `n` | Answer a prompt |
-| `r` / `Ctrl+R` | Restart the bot |
-| `d` | Disconnect: stop the bot until the next `r`, builds keep running |
-| `o` | Open the local URL in a browser |
-| `t` | Toggle a public tunnel (`cloudflared`, or the `dev.tunnel` one) |
-| `i` | Show project, versions, URLs, health, types and session info |
-| `T` | Pick a colour theme |
-| `l` | Browse the logs full width: select a line, copy it |
-| `v` | Switch between the dashboard and the panel |
-| `c` / `Ctrl+L` | Clear log history |
-| `h` / `?` | Show keyboard shortcuts |
-| `q` / `Ctrl+D` | Quit; confirm with `y` while a build/restart is in flight |
-| `Ctrl+C` | Quit immediately from any view |
+| Key                | Action                                                           |
+| ------------------ | ---------------------------------------------------------------- |
+| `←` / `→`          | Select a channel or a level                                      |
+| `Tab`              | Switch between channels and levels                               |
+| `Space`            | Show or hide the selected one                                    |
+| `s`                | Solo: show only the selected one; press again for all            |
+| `a`                | Show every channel and level                                     |
+| `Enter`            | Fold or unfold the selected group                                |
+| `b`                | Group the stream by channel                                      |
+| `↑` / `↓`, `j`/`k` | Scroll (`PgUp`/`PgDn` by page); the footer turns to `paused`     |
+| `g` / `G`          | Jump to the top / back to live                                   |
+| `/`                | Search the stream (`Esc` clears)                                 |
+| `e`                | Jump to the last error, keeping its context                      |
+| `y` / `n`          | Answer a prompt                                                  |
+| `r` / `Ctrl+R`     | Restart the bot                                                  |
+| `d`                | Disconnect: stop the bot until the next `r`, builds keep running |
+| `o`                | Open the local URL in a browser                                  |
+| `t`                | Toggle a public tunnel (`cloudflared`, or the `dev.tunnel` one)  |
+| `i`                | Show project, versions, URLs, health, types and session info     |
+| `T`                | Pick a colour theme                                              |
+| `l`                | Browse the logs full width: select a line, copy it               |
+| `v`                | Switch between the dashboard and the panel                       |
+| `c` / `Ctrl+L`     | Clear log history                                                |
+| `h` / `?`          | Show keyboard shortcuts                                          |
+| `q` / `Ctrl+D`     | Quit; confirm with `y` while a build/restart is in flight        |
+| `Ctrl+C`           | Quit immediately from any view                                   |
 
 The channel and level keys (`←`/`→`, `Tab`, `Space`, `s`, `a`, `Enter`, `b`, `g`/`G`, `/`) only apply to the dashboard. The panel shares every other key.
 
@@ -210,11 +210,11 @@ export default defineConfig({
 
 The bot reports the application commands it registers when it starts and after every hot reload. When they differ from what it reported before, `stars dev` reports the change on the `commands` channel. `dev.commands.refresh` picks what happens next:
 
-| Value | Behaviour |
-| --- | --- |
+| Value                | Behaviour                                                       |
+| -------------------- | --------------------------------------------------------------- |
 | `'prompt'` (default) | Ask `Refresh commands? (y/n)` in the dev UI and redeploy on `y` |
-| `'auto'` | Redeploy right away without asking |
-| `'off'` | Only report the change |
+| `'auto'`             | Redeploy right away without asking                              |
+| `'off'`              | Only report the change                                          |
 
 ```ts
 export default defineConfig({

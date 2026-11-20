@@ -1,7 +1,7 @@
 ---
-title: "@wolfstar/schema"
-sidebarTitle: "schema"
-description: "Changelog for @wolfstar/schema: typed stars.config.* schema and loader shared by @wolfstar/http-framework and @wolfstar/cli."
+title: '@wolfstar/schema'
+sidebarTitle: 'schema'
+description: 'Changelog for @wolfstar/schema: typed stars.config.* schema and loader shared by @wolfstar/http-framework and @wolfstar/cli.'
 ---
 
 Changes to [`@wolfstar/schema`](https://github.com/wolfstar-project/stars-components/tree/main/packages/schema). This package defines the typed `stars.config.*` schema, the loader, and shared configuration types used by `@wolfstar/http-framework` and `@wolfstar/cli`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
@@ -132,9 +132,9 @@ Changes to [`@wolfstar/schema`](https://github.com/wolfstar-project/stars-compon
 ### Updates
 
 - **Decorators split into new package** — Moved the utility decorators out of `@wolfstar/http-framework` into a new package, [`@wolfstar/decorators`](/documentation/changelog/stars-components/decorators), mirroring the split between `@sapphire/framework` and `@sapphire/decorators`.
-  - **Breaking (`@wolfstar/http-framework`):** `ApplyOptions`, `RequiresGuildContext`, `RequiresDMContext`, `RequiresUserPermissions`, `RequiresClientPermissions`, `Enumerable`, `EnumerableMethod`, `createClassDecorator`, `createMethodDecorator`, `createProxy`, `createFunctionPrecondition`, and the `PieceConstructor`/`ContextFallback` types are no longer exported by the framework. Install `@wolfstar/decorators` and import them from there instead; their behaviour is unchanged. The `Register*` decorators and `RestrictGuildIds` stay in the framework.
-  - `@wolfstar/decorators` declares `@wolfstar/http-framework` as a peer dependency.
-  - `@wolfstar/schema` now includes `@wolfstar/decorators` in the default `imports.presets`, so projects using the `stars` CLI's auto imports keep getting the decorators without an explicit import once the package is installed ([#238](https://github.com/wolfstar-project/stars-components/pull/238)).
+    - **Breaking (`@wolfstar/http-framework`):** `ApplyOptions`, `RequiresGuildContext`, `RequiresDMContext`, `RequiresUserPermissions`, `RequiresClientPermissions`, `Enumerable`, `EnumerableMethod`, `createClassDecorator`, `createMethodDecorator`, `createProxy`, `createFunctionPrecondition`, and the `PieceConstructor`/`ContextFallback` types are no longer exported by the framework. Install `@wolfstar/decorators` and import them from there instead; their behaviour is unchanged. The `Register*` decorators and `RestrictGuildIds` stay in the framework.
+    - `@wolfstar/decorators` declares `@wolfstar/http-framework` as a peer dependency.
+    - `@wolfstar/schema` now includes `@wolfstar/decorators` in the default `imports.presets`, so projects using the `stars` CLI's auto imports keep getting the decorators without an explicit import once the package is installed ([#238](https://github.com/wolfstar-project/stars-components/pull/238)).
 
 ## `0.2.1`
 

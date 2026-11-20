@@ -1,6 +1,6 @@
 ---
-title: "Testing Interactions"
-description: "Test HTTP Framework commands with Vitest fixtures and custom matchers."
+title: 'Testing Interactions'
+description: 'Test HTTP Framework commands with Vitest fixtures and custom matchers.'
 ---
 
 `@wolfstar/http-framework-test-utils` dispatches Discord interaction payloads through a testable client. Tests exercise the real router and command classes without opening a port or calling Discord.
@@ -55,12 +55,12 @@ describe('ping command', () => {
 
 ## Choose the Right Assertion
 
-| Matcher | Use it for |
-| --- | --- |
-| `toHaveStatus(code)` | HTTP response status |
-| `toHaveBody(body)` | Exact serialized body |
-| `toHaveJsonBody(value)` | Strict deep equality for the parsed JSON body |
-| `result.json()` + `toMatchObject` | A partial JSON assertion |
+| Matcher                           | Use it for                                    |
+| --------------------------------- | --------------------------------------------- |
+| `toHaveStatus(code)`              | HTTP response status                          |
+| `toHaveBody(body)`                | Exact serialized body                         |
+| `toHaveJsonBody(value)`           | Strict deep equality for the parsed JSON body |
+| `result.json()` + `toMatchObject` | A partial JSON assertion                      |
 
 `toHaveJsonBody` compares every nested key. Prefer `toMatchObject` when the interaction response contains unrelated metadata.
 

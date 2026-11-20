@@ -1,6 +1,6 @@
 ---
-title: "preconditions"
-description: "Store directory for Precondition pieces that gate commands and interaction handlers."
+title: 'preconditions'
+description: 'Store directory for Precondition pieces that gate commands and interaction handlers.'
 ---
 
 Precondition pieces live in `src/preconditions/`. A precondition is a check that runs before a chat input or context menu command, before the autocomplete of a command, and before an interaction handler. When a precondition denies the interaction, the framework skips the method and emits the error on a `*Denied` event.

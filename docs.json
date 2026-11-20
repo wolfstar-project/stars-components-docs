@@ -43,109 +43,97 @@
 		"options": ["copy", "view", "chatgpt", "claude", "perplexity", "mcp", "cursor", "vscode"],
 		"display": "header"
 	},
-  "navigation": {
-    "tabs": [
+	"navigation": {
+		"tabs": [
 			{
 				"tab": "Docs",
 				"icon": "book-open",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "getting-started/introduction",
-              "getting-started/installation",
-              "getting-started/features",
-              "getting-started/commands",
-              "getting-started/environment",
-              "getting-started/testing"
-            ]
-          },
-          {
-            "group": "Directory Structure",
-            "pages": [
-              "directory-structure/index",
-              "directory-structure/stars",
-              {
-                "group": "src",
-                "icon": "folder",
-                "pages": [
-                  "directory-structure/src/commands",
-                  "directory-structure/src/interaction-handlers",
-                  "directory-structure/src/listeners",
-                  "directory-structure/src/preconditions",
-                  "directory-structure/src/lib",
-                  "directory-structure/src/locales",
-                  "directory-structure/src/main"
-                ]
-              },
-              "directory-structure/tests",
-              "directory-structure/env",
-              "directory-structure/stars-config",
-              "directory-structure/tsconfig"
-            ]
-          },
-          {
-            "group": "Guide",
-            "pages": [
-              {
-                "group": "Concepts",
-                "pages": [
-                  "guide/concepts/architecture",
-                  "guide/concepts/plugins"
-                ]
-              },
-              {
-                "group": "Going Further",
-                "pages": [
-                  "guide/going-further/gateway",
-                  "guide/going-further/caching",
-                  "guide/going-further/sharding"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Community",
-            "pages": [
-              "community/contributing"
-            ]
-          },
-          {
-            "group": "Migration",
-            "pages": [
-              "migration/overview",
-              "migration/v6",
-              "migration/v5",
-              "migration/v4",
-              "migration/plugin-i18next",
-              "migration/plugin-logger"
-            ]
-          }
-        ]
+				"groups": [
+					{
+						"group": "Getting Started",
+						"pages": [
+							"getting-started/introduction",
+							"getting-started/installation",
+							"getting-started/features",
+							"getting-started/commands",
+							"getting-started/environment",
+							"getting-started/testing"
+						]
+					},
+					{
+						"group": "Directory Structure",
+						"pages": [
+							"directory-structure/index",
+							"directory-structure/stars",
+							{
+								"group": "src",
+								"icon": "folder",
+								"pages": [
+									"directory-structure/src/commands",
+									"directory-structure/src/interaction-handlers",
+									"directory-structure/src/listeners",
+									"directory-structure/src/preconditions",
+									"directory-structure/src/lib",
+									"directory-structure/src/locales",
+									"directory-structure/src/main"
+								]
+							},
+							"directory-structure/tests",
+							"directory-structure/env",
+							"directory-structure/stars-config",
+							"directory-structure/tsconfig"
+						]
+					},
+					{
+						"group": "Guide",
+						"pages": [
+							{
+								"group": "Concepts",
+								"pages": ["guide/concepts/architecture", "guide/concepts/plugins"]
+							},
+							{
+								"group": "Going Further",
+								"pages": ["guide/going-further/gateway", "guide/going-further/caching", "guide/going-further/sharding"]
+							}
+						]
+					},
+					{
+						"group": "Community",
+						"pages": ["community/contributing"]
+					},
+					{
+						"group": "Migration",
+						"pages": [
+							"migration/overview",
+							"migration/v6",
+							"migration/v5",
+							"migration/v4",
+							"migration/plugin-i18next",
+							"migration/plugin-logger"
+						]
+					}
+				]
 			},
-      {
+			{
 				"tab": "API",
 				"icon": "code",
-        "groups": [
-          {
-            "group": "Commands",
-            "pages": [
-              "api/commands/codegen",
-              "api/commands/commands",
-              "api/commands/completions",
-              "api/commands/dev",
-              "api/commands/doctor",
-              "api/commands/info",
-              "api/commands/typecheck"
-            ]
-          },
-          {
-            "group": "Errors",
-            "pages": [
-              "api/errors/cli",
-              "api/errors/config"
-            ]
-          },
+				"groups": [
+					{
+						"group": "Commands",
+						"pages": [
+							"api/commands/codegen",
+							"api/commands/commands",
+							"api/commands/completions",
+							"api/commands/dev",
+							"api/commands/doctor",
+							"api/commands/info",
+							"api/commands/typecheck"
+						]
+					},
+					{
+						"group": "Errors",
+						"pages": ["api/errors/cli", "api/errors/config"]
+					},
 					{
 						"group": "Core framework",
 						"root": "documentation/api/index",
@@ -255,91 +243,89 @@
 						]
 					}
 				]
-      },
-      {
-        "tab": "Changelog",
-        "icon": "list",
-        "groups": [
-          {
-            "group": "Overview",
-            "pages": [
-              "documentation/changelog/index"
-            ]
-          },
-          {
-            "group": "Stars Components",
-            "pages": [
-              {
-                "group": "Core Framework",
-                "pages": [
-                  "documentation/changelog/stars-components/http-framework",
-                  "documentation/changelog/stars-components/decorators",
-                  "documentation/changelog/stars-components/kit",
-                  "documentation/changelog/stars-components/cli",
-                  "documentation/changelog/stars-components/schema",
-                  "documentation/changelog/stars-components/vite-server",
-                  "documentation/changelog/stars-components/nitro-server",
-                  "documentation/changelog/stars-components/create-http-framework",
-                  "documentation/changelog/stars-components/i18next-backend",
-                  "documentation/changelog/stars-components/i18next-type-generator",
-                  "documentation/changelog/stars-components/http-framework-test-utils",
-                  "documentation/changelog/stars-components/http-framework-utilities"
-                ]
-              },
-              {
-                "group": "Infrastructure",
-                "pages": [
-                  "documentation/changelog/stars-components/env-utilities",
-                  "documentation/changelog/stars-components/safe-fetch",
-                  "documentation/changelog/stars-components/start-banner"
-                ]
-              },
-              {
-                "group": "Shared Pieces",
-                "pages": [
-                  "documentation/changelog/stars-components/shared-http-pieces",
-                  "documentation/changelog/stars-components/shared-influx-pieces"
-                ]
-              },
-              {
-                "group": "Platform Helpers",
-                "pages": [
-                  "documentation/changelog/stars-components/discord-utilities",
-                  "documentation/changelog/stars-components/influx-utilities",
-                  "documentation/changelog/stars-components/reddit-helpers",
-                  "documentation/changelog/stars-components/twitch-helpers",
-                  "documentation/changelog/stars-components/weather-helpers"
-                ]
-              },
-              {
-                "group": "Tooling",
-                "pages": [
-                  "documentation/changelog/stars-components/eslint-config",
-                  "documentation/changelog/stars-components/eslint-plugin-http-framework",
-                  "documentation/changelog/stars-components/oxfmt-config",
-                  "documentation/changelog/stars-components/oxlint-config",
-                  "documentation/changelog/stars-components/prettier-config"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Plugins",
-            "pages": [
-              "documentation/changelog/plugins/plugin-api",
-              "documentation/changelog/plugins/plugin-broker",
-              "documentation/changelog/plugins/plugin-cache",
-              "documentation/changelog/plugins/plugin-gateway",
-              "documentation/changelog/plugins/plugin-i18next",
-              "documentation/changelog/plugins/plugin-logger",
-              "documentation/changelog/plugins/plugin-opentelemetry",
-              "documentation/changelog/plugins/plugin-scheduled-tasks",
-              "documentation/changelog/plugins/plugin-sharder",
-              "documentation/changelog/plugins/plugin-subcommands-advanced"
-            ]
-          }
-        ]
-      }
+			},
+			{
+				"tab": "Changelog",
+				"icon": "list",
+				"groups": [
+					{
+						"group": "Overview",
+						"pages": ["documentation/changelog/index"]
+					},
+					{
+						"group": "Stars Components",
+						"pages": [
+							{
+								"group": "Core Framework",
+								"pages": [
+									"documentation/changelog/stars-components/http-framework",
+									"documentation/changelog/stars-components/decorators",
+									"documentation/changelog/stars-components/kit",
+									"documentation/changelog/stars-components/cli",
+									"documentation/changelog/stars-components/schema",
+									"documentation/changelog/stars-components/vite-server",
+									"documentation/changelog/stars-components/nitro-server",
+									"documentation/changelog/stars-components/create-http-framework",
+									"documentation/changelog/stars-components/i18next-backend",
+									"documentation/changelog/stars-components/i18next-type-generator",
+									"documentation/changelog/stars-components/http-framework-test-utils",
+									"documentation/changelog/stars-components/http-framework-utilities"
+								]
+							},
+							{
+								"group": "Infrastructure",
+								"pages": [
+									"documentation/changelog/stars-components/env-utilities",
+									"documentation/changelog/stars-components/safe-fetch",
+									"documentation/changelog/stars-components/start-banner"
+								]
+							},
+							{
+								"group": "Shared Pieces",
+								"pages": [
+									"documentation/changelog/stars-components/shared-http-pieces",
+									"documentation/changelog/stars-components/shared-influx-pieces"
+								]
+							},
+							{
+								"group": "Platform Helpers",
+								"pages": [
+									"documentation/changelog/stars-components/discord-utilities",
+									"documentation/changelog/stars-components/influx-utilities",
+									"documentation/changelog/stars-components/reddit-helpers",
+									"documentation/changelog/stars-components/twitch-helpers",
+									"documentation/changelog/stars-components/weather-helpers"
+								]
+							},
+							{
+								"group": "Tooling",
+								"pages": [
+									"documentation/changelog/stars-components/eslint-config",
+									"documentation/changelog/stars-components/eslint-plugin-http-framework",
+									"documentation/changelog/stars-components/oxfmt-config",
+									"documentation/changelog/stars-components/oxlint-config",
+									"documentation/changelog/stars-components/prettier-config"
+								]
+							}
+						]
+					},
+					{
+						"group": "Plugins",
+						"pages": [
+							"documentation/changelog/plugins/plugin-api",
+							"documentation/changelog/plugins/plugin-broker",
+							"documentation/changelog/plugins/plugin-cache",
+							"documentation/changelog/plugins/plugin-gateway",
+							"documentation/changelog/plugins/plugin-i18next",
+							"documentation/changelog/plugins/plugin-logger",
+							"documentation/changelog/plugins/plugin-opentelemetry",
+							"documentation/changelog/plugins/plugin-scheduled-tasks",
+							"documentation/changelog/plugins/plugin-sharder",
+							"documentation/changelog/plugins/plugin-subcommands-advanced"
+						]
+					}
+				]
+			}
 		]
 	},
 	"redirects": [
@@ -374,120 +360,120 @@
 		{
 			"source": "/quickstart",
 			"destination": "/getting-started/installation"
-    },
-    {
-      "source": "/getting-started",
-      "destination": "/getting-started/introduction"
-    },
-    {
-      "source": "/migration",
-      "destination": "/migration/overview"
-    },
+		},
+		{
+			"source": "/getting-started",
+			"destination": "/getting-started/introduction"
+		},
+		{
+			"source": "/migration",
+			"destination": "/migration/overview"
+		},
 		{
 			"source": "/guide",
 			"destination": "/getting-started/introduction"
-    },
-    {
-      "source": "/guide/features",
-      "destination": "/getting-started/features"
-    },
-    {
-      "source": "/guide/why",
-      "destination": "/getting-started/introduction"
-    },
-    {
-      "source": "/guide/architecture",
-      "destination": "/guide/concepts/architecture"
-    },
-    {
-      "source": "/guide/commands",
-      "destination": "/getting-started/commands"
-    },
-    {
-      "source": "/guide/environment",
-      "destination": "/getting-started/environment"
-    },
-    {
-      "source": "/guide/plugins",
-      "destination": "/guide/concepts/plugins"
-    },
-    {
-      "source": "/guide/testing",
-      "destination": "/getting-started/testing"
-    },
-    {
-      "source": "/guide/migration",
-      "destination": "/migration/overview"
-    },
-    {
-      "source": "/guide/contributing",
-      "destination": "/community/contributing"
-    },
-    {
-      "source": "/documentation/guide",
-      "destination": "/getting-started/introduction"
-    },
-    {
-      "source": "/documentation/guide/index",
-      "destination": "/getting-started/introduction"
-    },
-    {
-      "source": "/documentation/guide/features",
-      "destination": "/getting-started/features"
-    },
-    {
-      "source": "/documentation/guide/why",
-      "destination": "/getting-started/introduction"
-    },
-    {
-      "source": "/documentation/guide/architecture",
-      "destination": "/guide/concepts/architecture"
-    },
-    {
-      "source": "/documentation/guide/commands",
-      "destination": "/getting-started/commands"
-    },
-    {
-      "source": "/documentation/guide/environment",
-      "destination": "/getting-started/environment"
-    },
-    {
-      "source": "/documentation/guide/plugins",
-      "destination": "/guide/concepts/plugins"
-    },
-    {
-      "source": "/documentation/guide/testing",
-      "destination": "/getting-started/testing"
-    },
-    {
-      "source": "/documentation/guide/gateway",
-      "destination": "/guide/going-further/gateway"
-    },
-    {
-      "source": "/documentation/guide/caching",
-      "destination": "/guide/going-further/caching"
-    },
-    {
-      "source": "/documentation/guide/sharding",
-      "destination": "/guide/going-further/sharding"
-    },
-    {
-      "source": "/documentation/guide/migration",
-      "destination": "/migration/overview"
-    },
-    {
-      "source": "/documentation/guide/contributing",
-      "destination": "/community/contributing"
-    },
-    {
-      "source": "/documentation/errors/cli",
-      "destination": "/api/errors/cli"
-    },
-    {
-      "source": "/documentation/errors/config",
-      "destination": "/api/errors/config"
-    },
-    {
+		},
+		{
+			"source": "/guide/features",
+			"destination": "/getting-started/features"
+		},
+		{
+			"source": "/guide/why",
+			"destination": "/getting-started/introduction"
+		},
+		{
+			"source": "/guide/architecture",
+			"destination": "/guide/concepts/architecture"
+		},
+		{
+			"source": "/guide/commands",
+			"destination": "/getting-started/commands"
+		},
+		{
+			"source": "/guide/environment",
+			"destination": "/getting-started/environment"
+		},
+		{
+			"source": "/guide/plugins",
+			"destination": "/guide/concepts/plugins"
+		},
+		{
+			"source": "/guide/testing",
+			"destination": "/getting-started/testing"
+		},
+		{
+			"source": "/guide/migration",
+			"destination": "/migration/overview"
+		},
+		{
+			"source": "/guide/contributing",
+			"destination": "/community/contributing"
+		},
+		{
+			"source": "/documentation/guide",
+			"destination": "/getting-started/introduction"
+		},
+		{
+			"source": "/documentation/guide/index",
+			"destination": "/getting-started/introduction"
+		},
+		{
+			"source": "/documentation/guide/features",
+			"destination": "/getting-started/features"
+		},
+		{
+			"source": "/documentation/guide/why",
+			"destination": "/getting-started/introduction"
+		},
+		{
+			"source": "/documentation/guide/architecture",
+			"destination": "/guide/concepts/architecture"
+		},
+		{
+			"source": "/documentation/guide/commands",
+			"destination": "/getting-started/commands"
+		},
+		{
+			"source": "/documentation/guide/environment",
+			"destination": "/getting-started/environment"
+		},
+		{
+			"source": "/documentation/guide/plugins",
+			"destination": "/guide/concepts/plugins"
+		},
+		{
+			"source": "/documentation/guide/testing",
+			"destination": "/getting-started/testing"
+		},
+		{
+			"source": "/documentation/guide/gateway",
+			"destination": "/guide/going-further/gateway"
+		},
+		{
+			"source": "/documentation/guide/caching",
+			"destination": "/guide/going-further/caching"
+		},
+		{
+			"source": "/documentation/guide/sharding",
+			"destination": "/guide/going-further/sharding"
+		},
+		{
+			"source": "/documentation/guide/migration",
+			"destination": "/migration/overview"
+		},
+		{
+			"source": "/documentation/guide/contributing",
+			"destination": "/community/contributing"
+		},
+		{
+			"source": "/documentation/errors/cli",
+			"destination": "/api/errors/cli"
+		},
+		{
+			"source": "/documentation/errors/config",
+			"destination": "/api/errors/config"
+		},
+		{
 			"source": "/packages",
 			"destination": "/documentation/packages"
 		},
@@ -498,103 +484,103 @@
 		{
 			"source": "/api",
 			"destination": "/documentation/api"
-    },
-    {
-      "source": "/api/http-framework-i18n/:slug*",
-      "destination": "/documentation/api/plugin-i18next"
-    },
-    {
-      "source": "/api/logger/:slug*",
-      "destination": "/documentation/packages/plugin-logger"
-    },
-    {
-      "source": "/api/decorators/:slug*",
-      "destination": "/documentation/api/decorators/:slug*"
-    },
-    {
-      "source": "/api/discord-utilities/:slug*",
-      "destination": "/documentation/api/discord-utilities/:slug*"
-    },
-    {
-      "source": "/api/env-utilities/:slug*",
-      "destination": "/documentation/api/env-utilities/:slug*"
-    },
-    {
-      "source": "/api/http-framework/:slug*",
-      "destination": "/documentation/api/http-framework/:slug*"
-    },
-    {
-      "source": "/api/http-framework-test-utils/:slug*",
-      "destination": "/documentation/api/http-framework-test-utils/:slug*"
-    },
-    {
-      "source": "/api/http-framework-utilities/:slug*",
-      "destination": "/documentation/api/http-framework-utilities/:slug*"
-    },
-    {
-      "source": "/api/i18next-backend/:slug*",
-      "destination": "/documentation/api/i18next-backend/:slug*"
-    },
-    {
-      "source": "/api/influx-utilities/:slug*",
-      "destination": "/documentation/api/influx-utilities/:slug*"
-    },
-    {
-      "source": "/api/kit/:slug*",
-      "destination": "/documentation/api/kit/:slug*"
-    },
-    {
-      "source": "/api/nitro-server/:slug*",
-      "destination": "/documentation/api/nitro-server/:slug*"
-    },
-    {
-      "source": "/api/plugin-api/:slug*",
-      "destination": "/documentation/api/plugin-api/:slug*"
-    },
-    {
-      "source": "/api/plugin-i18next/:slug*",
-      "destination": "/documentation/api/plugin-i18next/:slug*"
-    },
-    {
-      "source": "/api/plugin-subcommands-advanced/:slug*",
-      "destination": "/documentation/api/plugin-subcommands-advanced/:slug*"
-    },
-    {
-      "source": "/api/reddit-helpers/:slug*",
-      "destination": "/documentation/api/reddit-helpers/:slug*"
-    },
-    {
-      "source": "/api/safe-fetch/:slug*",
-      "destination": "/documentation/api/safe-fetch/:slug*"
-    },
-    {
-      "source": "/api/schema/:slug*",
-      "destination": "/documentation/api/schema/:slug*"
-    },
-    {
-      "source": "/api/shared-http-pieces/:slug*",
-      "destination": "/documentation/api/shared-http-pieces/:slug*"
-    },
-    {
-      "source": "/api/shared-influx-pieces/:slug*",
-      "destination": "/documentation/api/shared-influx-pieces/:slug*"
-    },
-    {
-      "source": "/api/start-banner/:slug*",
-      "destination": "/documentation/api/start-banner/:slug*"
-    },
-    {
-      "source": "/api/twitch-helpers/:slug*",
-      "destination": "/documentation/api/twitch-helpers/:slug*"
-    },
-    {
-      "source": "/api/vite-server/:slug*",
-      "destination": "/documentation/api/vite-server/:slug*"
-    },
-    {
-      "source": "/api/weather-helpers/:slug*",
-      "destination": "/documentation/api/weather-helpers/:slug*"
-    }
-  ],
+		},
+		{
+			"source": "/api/http-framework-i18n/:slug*",
+			"destination": "/documentation/api/plugin-i18next"
+		},
+		{
+			"source": "/api/logger/:slug*",
+			"destination": "/documentation/packages/plugin-logger"
+		},
+		{
+			"source": "/api/decorators/:slug*",
+			"destination": "/documentation/api/decorators/:slug*"
+		},
+		{
+			"source": "/api/discord-utilities/:slug*",
+			"destination": "/documentation/api/discord-utilities/:slug*"
+		},
+		{
+			"source": "/api/env-utilities/:slug*",
+			"destination": "/documentation/api/env-utilities/:slug*"
+		},
+		{
+			"source": "/api/http-framework/:slug*",
+			"destination": "/documentation/api/http-framework/:slug*"
+		},
+		{
+			"source": "/api/http-framework-test-utils/:slug*",
+			"destination": "/documentation/api/http-framework-test-utils/:slug*"
+		},
+		{
+			"source": "/api/http-framework-utilities/:slug*",
+			"destination": "/documentation/api/http-framework-utilities/:slug*"
+		},
+		{
+			"source": "/api/i18next-backend/:slug*",
+			"destination": "/documentation/api/i18next-backend/:slug*"
+		},
+		{
+			"source": "/api/influx-utilities/:slug*",
+			"destination": "/documentation/api/influx-utilities/:slug*"
+		},
+		{
+			"source": "/api/kit/:slug*",
+			"destination": "/documentation/api/kit/:slug*"
+		},
+		{
+			"source": "/api/nitro-server/:slug*",
+			"destination": "/documentation/api/nitro-server/:slug*"
+		},
+		{
+			"source": "/api/plugin-api/:slug*",
+			"destination": "/documentation/api/plugin-api/:slug*"
+		},
+		{
+			"source": "/api/plugin-i18next/:slug*",
+			"destination": "/documentation/api/plugin-i18next/:slug*"
+		},
+		{
+			"source": "/api/plugin-subcommands-advanced/:slug*",
+			"destination": "/documentation/api/plugin-subcommands-advanced/:slug*"
+		},
+		{
+			"source": "/api/reddit-helpers/:slug*",
+			"destination": "/documentation/api/reddit-helpers/:slug*"
+		},
+		{
+			"source": "/api/safe-fetch/:slug*",
+			"destination": "/documentation/api/safe-fetch/:slug*"
+		},
+		{
+			"source": "/api/schema/:slug*",
+			"destination": "/documentation/api/schema/:slug*"
+		},
+		{
+			"source": "/api/shared-http-pieces/:slug*",
+			"destination": "/documentation/api/shared-http-pieces/:slug*"
+		},
+		{
+			"source": "/api/shared-influx-pieces/:slug*",
+			"destination": "/documentation/api/shared-influx-pieces/:slug*"
+		},
+		{
+			"source": "/api/start-banner/:slug*",
+			"destination": "/documentation/api/start-banner/:slug*"
+		},
+		{
+			"source": "/api/twitch-helpers/:slug*",
+			"destination": "/documentation/api/twitch-helpers/:slug*"
+		},
+		{
+			"source": "/api/vite-server/:slug*",
+			"destination": "/documentation/api/vite-server/:slug*"
+		},
+		{
+			"source": "/api/weather-helpers/:slug*",
+			"destination": "/documentation/api/weather-helpers/:slug*"
+		}
+	],
 	"description": "Build own star network"
 }

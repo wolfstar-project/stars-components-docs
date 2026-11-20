@@ -6,21 +6,21 @@ Package source lives in those repos. This repo only holds the documentation cont
 
 ## Repository layout
 
-| Path | Content |
-| --- | --- |
-| `docs.json` | Mintlify site config: theme, colors, navigation tabs and groups |
-| `index.mdx` | Custom landing page (styled by `style.css`) |
-| `getting-started/` | Introduction, installation, features, commands, environment, testing |
-| `directory-structure/` | One page per file or directory of a Stars project |
-| `guide/` | Hand-written guides: `concepts/` (architecture, plugins) and `going-further/` (gateway, caching, sharding) |
-| `community/` | Contributing guide |
-| `migration/` | Upgrade guides, one page per major version or plugin |
-| `api/commands/` | One page per `stars` CLI command |
-| `api/errors/` | CLI and configuration error reference |
-| `documentation/packages/` | One landing page per package |
-| `documentation/api/` | Generated API reference, one folder per package. Do not edit by hand |
-| `documentation/changelog/` | Weekly changelog |
-| `logo/`, `favicon.svg` | Brand assets |
+| Path                       | Content                                                                                                    |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `docs.json`                | Mintlify site config: theme, colors, navigation tabs and groups                                            |
+| `index.mdx`                | Custom landing page (styled by `style.css`)                                                                |
+| `getting-started/`         | Introduction, installation, features, commands, environment, testing                                       |
+| `directory-structure/`     | One page per file or directory of a Stars project                                                          |
+| `guide/`                   | Hand-written guides: `concepts/` (architecture, plugins) and `going-further/` (gateway, caching, sharding) |
+| `community/`               | Contributing guide                                                                                         |
+| `migration/`               | Upgrade guides, one page per major version or plugin                                                       |
+| `api/commands/`            | One page per `stars` CLI command                                                                           |
+| `api/errors/`              | CLI and configuration error reference                                                                      |
+| `documentation/packages/`  | One landing page per package                                                                               |
+| `documentation/api/`       | Generated API reference, one folder per package. Do not edit by hand                                       |
+| `documentation/changelog/` | Weekly changelog                                                                                           |
+| `logo/`, `favicon.svg`     | Brand assets                                                                                               |
 
 A new page is only visible once it is listed in the `navigation` section of `docs.json`.
 

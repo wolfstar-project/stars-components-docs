@@ -1,7 +1,7 @@
 ---
-title: "stars doctor"
-description: "Checks what a project needs before stars dev can do its job, and says what to do about each problem."
-sidebarTitle: "stars doctor"
+title: 'stars doctor'
+description: 'Checks what a project needs before stars dev can do its job, and says what to do about each problem.'
+sidebarTitle: 'stars doctor'
 ---
 
 ## `stars doctor`
@@ -51,13 +51,13 @@ stars doctor --json
 
 The `varlock` check compares the project's varlock setup with `env.loader` in `stars.config`:
 
-| Status | When | Fix |
-| --- | --- | --- |
-| `ok` | The environment is loaded through varlock | None |
-| `warn` | A schema and an installed `varlock` are found, but `stars.config` does not set `env.loader` | Run `stars doctor --fix` |
-| `warn` | A schema is found, but `varlock` is not installed, so the bot loads the dotenv files | Install `varlock`, or remove the `.env.schema` |
-| `warn` | A schema is found, but `env.loader` is `'node'` or `'dotenv'`, so the schema is not used | Set `env.loader` to `'varlock'`, or remove the schema |
-| `error` | `env.loader` is `'varlock'`, but `varlock` is not installed | Install `varlock` |
+| Status  | When                                                                                        | Fix                                                   |
+| ------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `ok`    | The environment is loaded through varlock                                                   | None                                                  |
+| `warn`  | A schema and an installed `varlock` are found, but `stars.config` does not set `env.loader` | Run `stars doctor --fix`                              |
+| `warn`  | A schema is found, but `varlock` is not installed, so the bot loads the dotenv files        | Install `varlock`, or remove the `.env.schema`        |
+| `warn`  | A schema is found, but `env.loader` is `'node'` or `'dotenv'`, so the schema is not used    | Set `env.loader` to `'varlock'`, or remove the schema |
+| `error` | `env.loader` is `'varlock'`, but `varlock` is not installed                                 | Install `varlock`                                     |
 
 A project that sets `env.path` without `env.loader: 'varlock'` is not checked, because the runtime only picks varlock by itself when no `env.path` is set.
 

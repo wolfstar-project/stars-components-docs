@@ -1,20 +1,20 @@
 ---
-title: "CLI Errors"
-description: "Every diagnostic code the stars CLI can raise on its own, with the reason it fired, the fix, and the exit code each command returns."
+title: 'CLI Errors'
+description: 'Every diagnostic code the stars CLI can raise on its own, with the reason it fired, the fix, and the exit code each command returns.'
 ---
 
 The `stars` CLI reports every failure as a structured diagnostic: a stable code, a short explanation of why it happened, and — when there's something you can do about it — a concrete fix. This page documents every code `@wolfstar/cli` can raise on its own; `stars.config.*` loading and validation errors are documented separately under [Configuration Errors](/api/errors/config).
 
 ## Exit codes
 
-| Exit code | Meaning |
-| --- | --- |
-| `0` | Success |
-| `1` | Generic error |
-| `2` | Invalid `stars.config.*` (any [configuration error](/api/errors/config)) or `MODULE_FAILED` |
-| `3` | `BUILD_FAILED` |
-| `130` | Interrupted (`Ctrl+C`) |
-| `143` | Terminated |
+| Exit code | Meaning                                                                                     |
+| --------- | ------------------------------------------------------------------------------------------- |
+| `0`       | Success                                                                                     |
+| `1`       | Generic error                                                                               |
+| `2`       | Invalid `stars.config.*` (any [configuration error](/api/errors/config)) or `MODULE_FAILED` |
+| `3`       | `BUILD_FAILED`                                                                              |
+| `130`     | Interrupted (`Ctrl+C`)                                                                      |
+| `143`     | Terminated                                                                                  |
 
 ## PREPARE_OUTDATED {#prepare_outdated}
 

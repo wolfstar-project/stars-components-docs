@@ -1,6 +1,6 @@
 ---
-title: "Plugins"
-description: "Optional @wolfstar/http-framework extensions maintained in the wolfstar-project/plugins repository."
+title: 'Plugins'
+description: 'Optional @wolfstar/http-framework extensions maintained in the wolfstar-project/plugins repository.'
 ---
 
 Plugins are opt-in extensions for [`@wolfstar/http-framework`](/documentation/packages/http-framework). They live outside this repository, in [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins), and release on their own schedule. Adding one never bumps the core framework, and the framework has no required dependency on any of them.
@@ -8,23 +8,24 @@ Plugins are opt-in extensions for [`@wolfstar/http-framework`](/documentation/pa
 <Tip>
   **Prerequisites**
 
-  Every plugin requires `@wolfstar/http-framework@^3.1.0` or newer as a peer dependency.
+Every plugin requires `@wolfstar/http-framework@^3.1.0` or newer as a peer dependency.
+
 </Tip>
 
 ## Available plugins
 
-| Plugin | What it does |
-| --- | --- |
-| [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) | i18next-powered internationalization for interactions |
-| [`@wolfstar/plugin-api`](/documentation/packages/plugin-api) | Standalone REST API server alongside interaction handling |
-| [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway) | Gateway events, cached structures, and API managers |
-| [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker) | Distributes gateway events across processes over Redis Streams |
-| [`@wolfstar/plugin-cache`](/documentation/packages/plugin-cache) | Discord entity cache, in memory or in Redis |
-| [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger) | Pluggable logging with swappable transports |
-| [`@wolfstar/plugin-opentelemetry`](/documentation/packages/plugin-opentelemetry) | OpenTelemetry tracing with one span per interaction |
-| [`@wolfstar/plugin-scheduled-tasks`](/documentation/packages/plugin-scheduled-tasks) | Schedules one-off and repeated tasks, backed by BullMQ |
-| [`@wolfstar/plugin-sharder`](/documentation/packages/plugin-sharder) | Spreads gateway shards across processes and machines |
-| [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) | Modularizes slash subcommands into separate command classes |
+| Plugin                                                                                         | What it does                                                   |
+| ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next)                           | i18next-powered internationalization for interactions          |
+| [`@wolfstar/plugin-api`](/documentation/packages/plugin-api)                                   | Standalone REST API server alongside interaction handling      |
+| [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway)                           | Gateway events, cached structures, and API managers            |
+| [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker)                             | Distributes gateway events across processes over Redis Streams |
+| [`@wolfstar/plugin-cache`](/documentation/packages/plugin-cache)                               | Discord entity cache, in memory or in Redis                    |
+| [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger)                             | Pluggable logging with swappable transports                    |
+| [`@wolfstar/plugin-opentelemetry`](/documentation/packages/plugin-opentelemetry)               | OpenTelemetry tracing with one span per interaction            |
+| [`@wolfstar/plugin-scheduled-tasks`](/documentation/packages/plugin-scheduled-tasks)           | Schedules one-off and repeated tasks, backed by BullMQ         |
+| [`@wolfstar/plugin-sharder`](/documentation/packages/plugin-sharder)                           | Spreads gateway shards across processes and machines           |
+| [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) | Modularizes slash subcommands into separate command classes    |
 
 Browse the [source on GitHub](https://github.com/wolfstar-project/plugins/tree/main/packages) or the generated [API reference](/documentation/api) for the full surface of each one.
 
@@ -67,17 +68,17 @@ export default defineConfig({
 
 Each module declares its key through [`meta.configKey`](/documentation/packages/kit#reading-options-from-a-config-key):
 
-| Package | `stars.config` key |
-| --- | --- |
-| `@wolfstar/plugin-api` | `api` |
-| `@wolfstar/plugin-broker` | `broker` |
-| `@wolfstar/plugin-cache` | `cache` |
-| `@wolfstar/plugin-gateway` | `gateway` |
-| `@wolfstar/plugin-i18next` | `i18n` |
-| `@wolfstar/plugin-logger` | `logger` |
-| `@wolfstar/plugin-opentelemetry` | `opentelemetry` |
-| `@wolfstar/plugin-scheduled-tasks` | `scheduledTasks` |
-| `@wolfstar/plugin-sharder` | `sharder` |
+| Package                                 | `stars.config` key    |
+| --------------------------------------- | --------------------- |
+| `@wolfstar/plugin-api`                  | `api`                 |
+| `@wolfstar/plugin-broker`               | `broker`              |
+| `@wolfstar/plugin-cache`                | `cache`               |
+| `@wolfstar/plugin-gateway`              | `gateway`             |
+| `@wolfstar/plugin-i18next`              | `i18n`                |
+| `@wolfstar/plugin-logger`               | `logger`              |
+| `@wolfstar/plugin-opentelemetry`        | `opentelemetry`       |
+| `@wolfstar/plugin-scheduled-tasks`      | `scheduledTasks`      |
+| `@wolfstar/plugin-sharder`              | `sharder`             |
 | `@wolfstar/plugin-subcommands-advanced` | `subcommandsAdvanced` |
 
 The `cache`, `gateway`, `sharder`, and `subcommandsAdvanced` keys take no options yet. They only reserve the name.
@@ -126,7 +127,8 @@ await client.load();
 `@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway`, and `@wolfstar/plugin-sharder` are libraries you use directly, not through `/register`. They have no hooks to install, so their `/register` entry is a no-op, and releases before `plugin-cache` 0.3.0, `plugin-gateway` 0.2.0, and `plugin-sharder` 0.1.1 ship none. Import their classes from the package root and construct them yourself.
 
 <Warning>
-  Use one activation path per plugin. The module, the `./plugin` factory, and `/register` install the same hooks, so combining them installs the hooks twice. The CLI skips its injected `/register` import for packages listed in `modules`.
+	Use one activation path per plugin. The module, the `./plugin` factory, and `/register` install the same hooks, so combining them installs the
+	hooks twice. The CLI skips its injected `/register` import for packages listed in `modules`.
 </Warning>
 
 ### Registering only modules

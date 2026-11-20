@@ -1,23 +1,24 @@
 ---
-title: "Migrating from v4 to v5"
-sidebarTitle: "v4 to v5"
+title: 'Migrating from v4 to v5'
+sidebarTitle: 'v4 to v5'
 description: "v5 is a small, mostly opt-in release. The only breaking change to the framework's public API is the removal of the previously-unannounced `@wolfstar/http-framework/fetch` submodule, replaced by a `fetch()` method on `Client` itself."
 ---
 
 <Info>
   **Current releases**
 
-  The v5 build defaults are stable in `@wolfstar/http-framework@5.0.0`. The matching developer tooling is `@wolfstar/cli@1.0.0`.
+The v5 build defaults are stable in `@wolfstar/http-framework@5.0.0`. The matching developer tooling is `@wolfstar/cli@1.0.0`.
+
 </Info>
 
 v5 is a small, mostly opt-in release. The only breaking change to the framework's public API is the removal of the previously-unannounced `@wolfstar/http-framework/fetch` submodule, replaced by a `fetch()` method on `Client` itself. Everything else is either purely additive (`experimental.enableNitro`) or an internal error-handling change (`nostics` diagnostics) that only matters to code that caught `ConfigError`/`CliError` by name.
 
 ## Changes Included in v5
 
-| Landed in | Change |
-| --- | --- |
+| Landed in                                                             | Change                                                                                                                |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | [#207](https://github.com/wolfstar-project/stars-components/pull/207) | `Client#fetch`, the Fetch-based counterpart of `listen()`; `experimental.enableNitro` builds and serves through Nitro |
-| [#205](https://github.com/wolfstar-project/stars-components/pull/205) | `ConfigError`/`CliError` replaced by `nostics` `Diagnostic`s (`configDiagnostics`/`cliDiagnostics`) |
+| [#205](https://github.com/wolfstar-project/stars-components/pull/205) | `ConfigError`/`CliError` replaced by `nostics` `Diagnostic`s (`configDiagnostics`/`cliDiagnostics`)                   |
 
 ## Upgrading the Packages
 
@@ -93,19 +94,20 @@ Install `vite` and `nitro` as `devDependencies`. `stars build` now produces `bui
 <Warning>
   **The entry's default export changes**
 
-  The generated Nitro server entry imports the entry file's **default export** and calls `.fetch(request)` on it -- the entry must export the already-`load()`ed `Client` instance, not call `listen()`:
+The generated Nitro server entry imports the entry file's **default export** and calls `.fetch(request)` on it -- the entry must export the already-`load()`ed `Client` instance, not call `listen()`:
 
-  ```typescript
-  import { Client } from '@wolfstar/http-framework';
-  
-  const client = new Client({
-  	discordToken: process.env.DISCORD_TOKEN,
-  	discordPublicKey: process.env.DISCORD_PUBLIC_KEY
-  });
-  await client.load();
-  
-  export default client;
-  ```
+```typescript
+import { Client } from '@wolfstar/http-framework';
+
+const client = new Client({
+	discordToken: process.env.DISCORD_TOKEN,
+	discordPublicKey: process.env.DISCORD_PUBLIC_KEY
+});
+await client.load();
+
+export default client;
+```
+
 </Warning>
 
 Vite's native `resolve.tsconfigPaths` is turned on automatically under Nitro (see [Nitro's import alias guide](https://nitro.build/examples/import-alias)), so a project's own `tsconfig.json#paths`/package.json `imports` aliases -- including the ones `stars prepare`'s generated `.stars/tsconfig.json` adds -- keep working without a `vite-tsconfig-paths` plugin.
