@@ -24,13 +24,10 @@ bun add @wolfstar/http-framework
 </CodeGroup>
 
 <CardGroup cols={2}>
-	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework"></Card>
-	<Card
-		title="Source"
-		icon="github"
-		horizontal
-		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework"
-	></Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/http-framework">
+	</Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework">
+	</Card>
 </CardGroup>
 
 ## Description
@@ -119,11 +116,7 @@ interface Args {
 }
 ```
 
-Instead of a hand-written `Args`, you can let `stars codegen` type the options from the builder. Set
-`codegen: { commands: true }` in `stars.config`, run `stars build`, then `stars codegen` (see
-[Typed command options](/documentation/packages/cli#typed-command-options)). The CLI writes a `CommandOptionsRegistry`
-entry per command path, and `Command.OptionsOf` reads it. A renamed option, a flipped `required`, or a changed type then
-stops compiling:
+Instead of a hand-written `Args`, you can let `stars codegen` type the options from the builder. Set `codegen: { commands: true }` in `stars.config`, run `stars build`, then `stars codegen` (see [Typed command options](/api/commands/codegen#typed-command-options)). The CLI writes a `CommandOptionsRegistry` entry per command path, and `Command.OptionsOf` reads it. A renamed option, a flipped `required`, or a changed type then stops compiling:
 
 ```typescript
 @RegisterSubcommand(buildSubcommandBuilders('add', 'Adds the first number to the second number'))
@@ -195,7 +188,7 @@ import { ApplyOptions, RequiresGuildContext } from '@wolfstar/decorators';
 import { Command, RegisterCommand } from '@wolfstar/http-framework';
 ```
 
-See the [migration guide](/documentation/guide/migration#v6) to move existing imports.
+See the [migration guide](/migration/v6) to move existing imports.
 
 ### Client
 
@@ -714,10 +707,7 @@ export default defineConfig({
 });
 ```
 
-With the `hmr` option of the `Client` enabled, a change that only touches pieces is left to the bot. `stars dev` does
-not restart it, and the `hmr` channel of the dev UI shows what was reloaded. The bot itself feeds the channels that
-report what happens inside it (`hmr`, `commands`, `interactions`, `http`, `lifecycle`). See
-[`stars dev`](/documentation/packages/cli#stars-dev).
+With the `hmr` option of the `Client` enabled, a change that only touches pieces is left to the bot. `stars dev` does not restart it, and the `hmr` channel of the dev UI shows what was reloaded. The bot itself feeds the channels that report what happens inside it (`hmr`, `commands`, `interactions`, `http`, `lifecycle`). See [`stars dev`](/api/commands/dev).
 
 `tunnel.updateEndpoint` writes the public URL to the Discord application's `interactions_endpoint_url`; it is opt-in
 because it edits a live application, and needs `DISCORD_TOKEN` in the environment or the project's `.env`. `tunnel.provider: 'ngrok'` opens the tunnel through
@@ -796,10 +786,7 @@ into the project's own `vite.config.*`, the way `vite: {}` in a Nuxt config is.
 
 ### Compatibility version
 
-`future.compatibilityVersion` selects the build-default generation. Version 6 is the default, and versions 5 and 4
-remain supported. Version 7 is an opt-in preview. Version 3 is end-of-life. It still works for projects that have a standalone `tsdown.config.*`, but every
-command prints a [`COMPATIBILITY_VERSION_EOL`](/documentation/errors/config#compatibility_version_eol) warning, and
-the next major removes it.
+`future.compatibilityVersion` selects the build-default generation. Version 6 is the default, and versions 5 and 4 remain supported. Version 7 is an opt-in preview. Version 3 is end-of-life. It still works for projects that have a standalone `tsdown.config.*`, but every command prints a [`COMPATIBILITY_VERSION_EOL`](/api/errors/config#compatibility_version_eol) warning, and the next major removes it.
 
 ```typescript
 export default defineConfig({
@@ -861,9 +848,7 @@ export default defineConfig({
 | `debug`    | `boolean`                         | `false`                   |
 | `encoding` | `string`                          | `'utf8'`                  |
 
-- `env: false` turns the registration off. `env: true` turns it on with the defaults. Setting any option also opts
-  in, which requires `@wolfstar/env-utilities` in the project's dependencies
-  ([`ENV_REQUIRES_ENV_UTILITIES`](/documentation/errors/config#env_requires_env_utilities)).
+- `env: false` turns the registration off. `env: true` turns it on with the defaults. Setting any option also opts in, which requires `@wolfstar/env-utilities` in the project's dependencies ([`ENV_REQUIRES_ENV_UTILITIES`](/api/errors/config#env_requires_env_utilities)).
 - `enabled: false` turns the registration off while keeping the options, for example for `stars dev`'s port lookup.
 - Without an `env` block, registration is on from compatibility version 5 when the project depends on
   `@wolfstar/env-utilities`. It stays off with `experimental.enableNitro`, because serverless presets have no `.env`
@@ -918,9 +903,7 @@ export default defineConfig({
 
 `dev:restart` receives `'initial'`, `'build'`, `'manual'`, or `'crash'` as its `reason`.
 
-Hooks run in the CLI process, never in the bot. Use `env:options` to change what the bot receives. An unknown hook
-name fails with [`UNKNOWN_HOOK`](/documentation/errors/config#unknown_hook) rather than registering a hook that never
-runs. In `stars dev`, a hook that throws is logged and the watcher keeps going. In `stars build`, it fails the build.
+Hooks run in the CLI process, never in the bot. Use `env:options` to change what the bot receives. An unknown hook name fails with [`UNKNOWN_HOOK`](/api/errors/config#unknown_hook) rather than registering a hook that never runs. In `stars dev`, a hook that throws is logged and the watcher keeps going. In `stars build`, it fails the build.
 
 `stars build` and `stars dev` run them in the same order: `config:resolved` → `env:options` → `builder:created` →
 `prepare:before` → `prepare:done`, then `build:before` → `build:done` for each build. `stars dev` adds `dev:start` once
@@ -963,7 +946,7 @@ Invalid options raise a `ConfigError` with a stable `code`, the offending option
 an actionable `hint`. See the [`@wolfstar/cli` README](/documentation/packages/cli#configuration) for the full option reference and how the
 `stars` commands (`dev`, `build`, `info`, `codegen`, `prepare`, `commands`) use it.
 
-See [Configuration Errors](/documentation/errors/config) for every `stars.config.*` diagnostic code.
+See [Configuration Errors](/api/errors/config) for every `stars.config.*` diagnostic code.
 
 ### ApplicationCommandRegistry
 
@@ -995,9 +978,7 @@ the differences: it creates missing commands with `POST`, updates changed comman
 with `DELETE` only when `removeUnknown` is enabled. When nothing differs, the client logs `Commands: N up to date`.
 Otherwise it logs the number of created, updated, and removed commands.
 
-If a Discord API call fails, the client logs a warning and keeps listening. The bot serves interactions with the commands
-that are already deployed. The client skips startup registration when `STARS_COMMANDS_DUMP=1` is set, which is how
-[`stars commands`](/documentation/packages/cli#stars-commands) reads the registry without touching Discord.
+If a Discord API call fails, the client logs a warning and keeps listening. The bot serves interactions with the commands that are already deployed. The client skips startup registration when `STARS_COMMANDS_DUMP=1` is set, which is how [`stars commands`](/api/commands/commands) reads the registry without touching Discord.
 
 `commands` accepts these options:
 
@@ -1012,10 +993,7 @@ that are already deployed. The client skips startup registration when `STARS_COM
 Unknown deployed commands are kept by default. As a result, removing or renaming a local command leaves its previous
 definition deployed. Enable `removeUnknown` only when this bot owns every command in the selected scopes.
 
-Without `guildIds`, global commands go to the global scope and guild-restricted commands go to their guilds. With
-`guildIds`, only those guilds are synchronized. Global-only fields such as `contexts` and `integration_types` are left
-out of guild writes. The registry does not discover guilds that no longer have restricted commands. Pass their IDs in
-`guildIds`, or clean them with [`stars commands clean`](/documentation/packages/cli#stars-commands).
+Without `guildIds`, global commands go to the global scope and guild-restricted commands go to their guilds. With `guildIds`, only those guilds are synchronized. Global-only fields such as `contexts` and `integration_types` are left out of guild writes. The registry does not discover guilds that no longer have restricted commands. Pass their IDs in `guildIds`, or clean them with [`stars commands clean`](/api/commands/commands).
 
 <Warning>
 The framework takes no distributed lock. In sharder or broker deployments, and across separate replicas, enable

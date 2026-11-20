@@ -1,0 +1,19 @@
+---
+title: "stars completions"
+description: "Prints a shell completion script for bash, zsh, or fish."
+sidebarTitle: "stars completions"
+---
+
+## `stars completions`
+
+Prints a shell completion script for bash, zsh, or fish. Add it to your shell's startup file:
+
+```sh
+eval "$(stars completions bash)"      # ~/.bashrc
+eval "$(stars completions zsh)"       # ~/.zshrc
+stars completions fish | source       # ~/.config/fish/config.fish
+```
+
+The script is generated from the commands the CLI registers. It completes every command, subcommand, and flag that `--help` lists, with their short forms (`-c`) and the `--no-` form of flags that are on by default (`--no-tui`).
+
+See also [`@wolfstar/cli`](/documentation/packages/cli).

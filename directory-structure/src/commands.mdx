@@ -1,0 +1,35 @@
+---
+title: "commands"
+description: "Store directory for Command pieces that handle slash commands, context-menu commands, and autocomplete."
+---
+
+Command pieces live in `src/commands/`. Each class extends `Command` and describes its Discord definition with decorators, and the framework discovers them when `client.load()` runs.
+
+## Example
+
+```typescript
+import { Command, RegisterCommand } from '@wolfstar/http-framework';
+import { MessageFlags } from 'discord-api-types/v10';
+
+@RegisterCommand((builder) =>
+	builder //
+		.setName('ping')
+		.setDescription('Replies with pong!')
+)
+export class PingCommand extends Command {
+	public override chatInputRun(interaction: Command.ChatInputInteraction) {
+		return interaction.reply({
+			content: 'Pong!',
+			flags: MessageFlags.Ephemeral
+		});
+	}
+}
+```
+
+Place the class in the command directory passed to `client.load()`. The loader discovers the class and adds its builder to the application-command registry.
+
+## More
+
+- [Build a Command](/getting-started/commands)
+- [Commands and the Registry](/guide/concepts/architecture#commands-and-the-registry)
+- [stars commands](/api/commands/commands)

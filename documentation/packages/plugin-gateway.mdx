@@ -24,11 +24,13 @@ bun add @wolfstar/plugin-gateway @wolfstar/plugin-cache
 </CodeGroup>
 
 <CardGroup cols={2}>
-	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-gateway"></Card>
-	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway"></Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/plugin-gateway">
+	</Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway">
+	</Card>
 </CardGroup>
 
-<Tip>See the [Plugins guide](/documentation/guide/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
+<Tip>See the [Plugins guide](/guide/concepts/plugins) for how plugins from wolfstar-project/plugins fit alongside the core framework.</Tip>
 
 ## Description
 
@@ -186,32 +188,6 @@ each. These are guilds the bot left while disconnected, or while the process was
 does not replay those removals. Each drop also emits `dispatch` as a `GUILD_DELETE` (with `s: 0` and no `raw`), so a
 process replaying this client's dispatches sees these deletions too. This is best effort: a failure, such as an
 unreachable cache or an unknown shard count, is reported through `error`, and the remaining guilds are kept.
-
-### Wrapping dispatches and shutting down
-
-`client.addDispatchWrapper(wrapper)` runs code around the processing of each dispatch received from Discord. Use it for
-what an event cannot do, such as a tracing span that the cache writes and listeners become children of, or an
-`AsyncLocalStorage` store they can read. The wrapper gets `{ payload, shardId, partition }` and a `run` function. Call
-`run` once, and return or await it. `run` rejects when the processing fails, and the client still reports the failure
-through `error`. Wrappers nest in the order you add them, the first one outermost. Dispatches replayed with
-`replayDispatch` are not wrapped.
-
-`client.addDestroyHook(hook)` runs a hook at the end of every `client.destroy()`, once the shards are disconnected and
-every dispatch is processed. It also runs when disconnecting failed. Use it to flush what is left to export before the
-process exits. A hook that throws is reported through `error`, and the next hooks still run.
-
-Both methods return a function that removes what they added.
-
-```ts
-import { AsyncLocalStorage } from 'node:async_hooks';
-
-const dispatchContext = new AsyncLocalStorage<{ type: string; shardId: number }>();
-client.addDispatchWrapper(({ payload, shardId }, run) => dispatchContext.run({ type: payload.t, shardId }, run));
-client.addDestroyHook(() => metrics.flush());
-```
-
-[`@wolfstar/plugin-opentelemetry`](/documentation/packages/plugin-opentelemetry) uses both to open a span per dispatch
-and flush its traces on `destroy()`.
 
 ### The `clientReady` event
 

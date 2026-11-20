@@ -1,0 +1,42 @@
+---
+title: "preconditions"
+description: "Store directory for Precondition pieces that gate commands and interaction handlers."
+---
+
+Precondition pieces live in `src/preconditions/`. A precondition is a check that runs before a chat input or context menu command, before the autocomplete of a command, and before an interaction handler. When a precondition denies the interaction, the framework skips the method and emits the error on a `*Denied` event.
+
+## Write a precondition
+
+Create a class that extends `Precondition` in the `preconditions` directory, and the client loads it into the `preconditions` store. Implement `chatInputRun`, `contextMenuRun`, `autocompleteRun`, and/or `interactionHandlerRun`. Return `this.ok()` to accept, or `this.error(...)` to deny with a `PreconditionError` for the piece.
+
+```typescript
+import { Precondition } from '@wolfstar/http-framework';
+
+export class UserPrecondition extends Precondition {
+	public override chatInputRun(interaction: Precondition.ChatInputInteraction) {
+		return interaction.user.id === process.env.OWNER_ID ? this.ok() : this.error({ message: 'Only the owner can use this command.' });
+	}
+}
+```
+
+## Apply preconditions to a command
+
+List the preconditions a command needs in the `preconditions` option of `Command.Options`:
+
+```typescript
+import { err, ok } from '@sapphire/result';
+import { Command, PreconditionError, type PreconditionFunction } from '@wolfstar/http-framework';
+
+const NotOnMonday: PreconditionFunction = () => (new Date().getDay() === 1 ? err(new PreconditionError({ precondition: 'NotOnMonday' })) : ok());
+
+export class UserCommand extends Command {
+	public constructor(context: Command.LoaderContext, options: Command.Options) {
+		super(context, { ...options, preconditions: ['UserPrecondition', { name: 'Role', context: { roleId: '737141877803057244' } }, NotOnMonday] });
+	}
+}
+```
+
+## More
+
+- [Preconditions](/documentation/packages/http-framework#preconditions)
+- [@wolfstar/decorators](/documentation/packages/decorators)

@@ -1,18 +1,15 @@
 ---
-title: '@wolfstar/http-framework-i18n'
-description: 'Removed. @wolfstar/http-framework-i18n is no longer published or maintained. Use @wolfstar/plugin-i18next instead.'
+title: "@wolfstar/http-framework-i18n"
+description: "Removed. @wolfstar/http-framework-i18n is no longer published or maintained. Use @wolfstar/plugin-i18next instead."
 ---
 
 <Warning>
-	**This package has been removed.** `@wolfstar/http-framework-i18n` is no longer published or maintained, and its source is no longer part of the
-	stars-components repository. Use [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) instead.
+  **This package has been removed.** `@wolfstar/http-framework-i18n` is no longer published or maintained, and its source is no longer part of the stars-components repository. Use [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) instead.
 </Warning>
 
 ## Replacement
 
-[`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) is an official plugin for
-[`@wolfstar/http-framework`](/documentation/packages/http-framework). It provides the same HTTP-interaction helpers, such as
-`getSupportedLanguageT` and `applyLocalizedBuilder`, through `container.i18n` and the plugin lifecycle.
+[`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) is an official plugin for [`@wolfstar/http-framework`](/documentation/packages/http-framework). It provides the same HTTP-interaction helpers, such as `getSupportedLanguageT` and `applyLocalizedBuilder`, through `container.i18n` and the plugin lifecycle.
 
 Remove the old package and install the plugin:
 
@@ -21,5 +18,4 @@ pnpm remove @wolfstar/http-framework-i18n
 pnpm add @wolfstar/plugin-i18next
 ```
 
-Follow the [migration guide](/documentation/guide/migration#i18next) to replace `init`, `load`, and `addFormatters` calls
-and update your imports.
+Follow the [migration guide](/migration/plugin-i18next) to replace `init`, `load`, and `addFormatters` calls and update your imports.

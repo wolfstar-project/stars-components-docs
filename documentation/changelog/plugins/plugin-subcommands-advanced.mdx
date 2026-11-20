@@ -4,19 +4,7 @@ sidebarTitle: 'plugin-subcommands-advanced'
 description: 'Changelog for @wolfstar/plugin-subcommands-advanced: advanced subcommand builders.'
 ---
 
-Changes to [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced). For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
-
-## `3.0.2` (2026-11-13)
-
-### Bug fixes
-
-- **Subcommand piece preconditions run** — A subcommand piece registered with `RegisterAsSubcommand` or `RegisterAsSubcommandGroup` now runs its `preconditions` option before its `chatInputRun`, after the preconditions of the parent. A denial emits `chatInputCommandDenied` and the subcommand does not run. Before, the option was ignored and the subcommand ran for everybody. This needs `@wolfstar/http-framework` 6.3.0 or later. On an older framework the option does not exist and nothing changes. ([#282](https://github.com/wolfstar-project/plugins/pull/282))
-
-## `3.0.1` (2026-11-06)
-
-### Updates
-
-- **Dependencies** — Updated third-party dependencies. ([#272](https://github.com/wolfstar-project/plugins/pull/272))
+Changes to [`@wolfstar/plugin-subcommands-advanced`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-subcommands-advanced). The plugin lets you build modular slash subcommands as separate command classes for `@wolfstar/http-framework`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
 ## `3.0.0` (2026-11-02)
 

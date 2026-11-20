@@ -24,8 +24,10 @@ bun add @wolfstar/schema
 </CodeGroup>
 
 <CardGroup cols={2}>
-	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/schema"></Card>
-	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/schema"></Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/schema">
+	</Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/schema">
+	</Card>
 </CardGroup>
 
 ## Description
@@ -78,9 +80,7 @@ const config = await loadStarsConfig({ cwd: process.cwd() });
 console.log(config.entry, config.build.output);
 ```
 
-`loadStarsConfig` discovers the config file, applies the built-in defaults, validates every option, and resolves all
-paths to absolute ones. Invalid options raise a diagnostic whose `code`, `path`, `sources`, and `hint` describe the
-problem — see [Configuration Errors](/documentation/errors/config) for the full catalog.
+`loadStarsConfig` discovers the config file, applies the built-in defaults, validates every option, and resolves all paths to absolute ones. Invalid options raise a diagnostic whose `code`, `path`, `sources`, and `hint` describe the problem — see [Configuration Errors](/api/errors/config) for the full catalog.
 
 ### Top-level module keys
 
@@ -100,9 +100,7 @@ const config = await loadStarsConfig({ cwd: process.cwd() });
 assertModuleOptionsClaimed(config, []);
 ```
 
-It throws [`UNKNOWN_OPTION`](/documentation/errors/config#unknown_option) for the first unclaimed key. Both helpers are
-also exported by `@wolfstar/http-framework/config`. After the CLI sets up the modules, `config.runtime.configKeys`
-lists the keys they claimed.
+It throws [`UNKNOWN_OPTION`](/api/errors/config#unknown_option) for the first unclaimed key. Both helpers are also exported by `@wolfstar/http-framework/config`. After the CLI sets up the modules, `config.runtime.configKeys` lists the keys they claimed.
 
 For type-only imports of the input and resolved shapes:
 
@@ -138,10 +136,7 @@ const config = await loadStarsConfig({ cwd: process.cwd() });
 const modulesOnly = config.future.compatibilityVersion >= MODULES_ONLY_VERSION;
 ```
 
-On version 7, the `stars` commands warn with
-[`PLUGINS_NOT_REGISTERED`](/documentation/errors/cli#plugins_not_registered) about an installed plugin that no module
-covers. Below version 7, `stars info` lists those plugins in a **by name** row and `stars doctor` in a `plugins` check.
-See [Registering only modules](/documentation/guide/plugins#registering-only-modules) for how to move a project over.
+On version 7, the `stars` commands warn with [`PLUGINS_NOT_REGISTERED`](/api/errors/cli#plugins_not_registered) about an installed plugin that no module covers. Below version 7, `stars info` lists those plugins in a **by name** row and `stars doctor` in a `plugins` check. See [Registering only modules](/guide/concepts/plugins#registering-only-modules) for how to move a project over.
 
 ### Default auto imports presets
 
@@ -159,11 +154,7 @@ console.log(config.imports.presets);
 
 ### Environment and hooks
 
-`StarsConfig` includes `env` and `hooks`. `env` accepts `true`, `false`, or the setup options of
-`@wolfstar/env-utilities` (`path`, `env`, `prefix`, `loader`, `debug`, `encoding`) plus `enabled`. `hooks` accepts the
-`stars` CLI lifecycle hooks, keyed by full name (`'build:done'`) or nested under their namespace
-(`{ build: { done() {} } }`), as a function or an array of functions. `loadStarsConfig` flattens `hooks` to full names
-and raises [`UNKNOWN_HOOK`](/documentation/errors/config#unknown_hook) for a name it does not recognize.
+`StarsConfig` includes `env` and `hooks`. `env` accepts `true`, `false`, or the setup options of `@wolfstar/env-utilities` (`path`, `env`, `prefix`, `loader`, `debug`, `encoding`) plus `enabled`. `hooks` accepts the `stars` CLI lifecycle hooks, keyed by full name (`'build:done'`) or nested under their namespace (`{ build: { done() {} } }`), as a function or an array of functions. `loadStarsConfig` flattens `hooks` to full names and raises [`UNKNOWN_HOOK`](/api/errors/config#unknown_hook) for a name it does not recognize.
 
 ```typescript
 // stars.config.ts
@@ -237,9 +228,7 @@ export default defineConfig({
 });
 ```
 
-The log file always receives every entry, whatever `dev.logs.channels` and `dev.logs.levels` say. `dev.commands.refresh`
-and the bot-side log channels need `@wolfstar/http-framework` 6.1 or later. See
-[`stars dev`](/documentation/packages/cli#stars-dev) for how each option behaves.
+The log file always receives every entry, whatever `dev.logs.channels` and `dev.logs.levels` say. `dev.commands.refresh` and the bot-side log channels need `@wolfstar/http-framework` 6.1 or later. See [`stars dev`](/api/commands/dev) for how each option behaves.
 
 ### TUI options
 
@@ -258,12 +247,9 @@ export default defineConfig({
 });
 ```
 
-`--style` and `--layout` on the command line take priority over `tui.style`, which takes priority over `dev.layout`. See
-[Terminal style](/documentation/packages/cli#terminal-style).
+`--style` and `--layout` on the command line take priority over `tui.style`, which takes priority over `dev.layout`. See [Terminal style](/api/commands/dev#terminal-style).
 
-An unknown value for `tui.style`, `dev.layout`, `dev.portConflict`, `dev.logs.levels`, or `dev.commands.refresh` raises the
-[`INVALID_CHOICE`](/documentation/errors/config#invalid_choice) diagnostic. The package also exports `LOG_LEVELS` (every
-level, from the most verbose to the most severe) and `DEFAULT_LOG_LEVELS` (the levels shown by default):
+An unknown value for `tui.style`, `dev.layout`, `dev.portConflict`, `dev.logs.levels`, or `dev.commands.refresh` raises the [`INVALID_CHOICE`](/api/errors/config#invalid_choice) diagnostic. The package also exports `LOG_LEVELS` (every level, from the most verbose to the most severe) and `DEFAULT_LOG_LEVELS` (the levels shown by default):
 
 ```typescript
 import { DEFAULT_LOG_LEVELS, LOG_LEVELS, type StarsLogLevel } from '@wolfstar/schema';

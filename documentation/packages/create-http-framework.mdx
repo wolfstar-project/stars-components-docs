@@ -24,13 +24,10 @@ bun add @wolfstar/create-http-framework
 </CodeGroup>
 
 <CardGroup cols={2}>
-	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/create-http-framework"></Card>
-	<Card
-		title="Source"
-		icon="github"
-		horizontal
-		href="https://github.com/wolfstar-project/stars-components/tree/main/packages/create-http-framework"
-	></Card>
+	<Card title="npm" icon="npm" horizontal href="https://npmx.dev/package/@wolfstar/create-http-framework">
+	</Card>
+	<Card title="Source" icon="github" horizontal href="https://github.com/wolfstar-project/stars-components/tree/main/packages/create-http-framework">
+	</Card>
 </CardGroup>
 
 ## Description
@@ -103,7 +100,7 @@ create-http-framework my-discord-bot --no-interactive
 
 ## Generated project structure
 
-```
+```text
 my-discord-bot/
 ├── src/
 │   ├── commands/
@@ -164,7 +161,7 @@ root `tsconfig.json` is solution-style. It only references the two configs that 
 Node runs. See [Generated TypeScript configuration](/documentation/packages/cli#generated-typescript-configuration).
 The `postinstall` script runs `stars prepare`, so both files exist after you install dependencies.
 
-These projects also get a `typecheck` script that runs [`stars typecheck`](/documentation/packages/cli#stars-typecheck):
+These projects also get a `typecheck` script that runs [`stars typecheck`](/api/commands/typecheck):
 
 ```bash
 npm run typecheck

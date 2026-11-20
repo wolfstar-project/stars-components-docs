@@ -1,23 +1,10 @@
 ---
-title: '@wolfstar/plugin-sharder'
-sidebarTitle: 'plugin-sharder'
-description: 'Changelog for @wolfstar/plugin-sharder: multi-process and multi-machine sharding for @wolfstar/plugin-gateway.'
+title: "@wolfstar/plugin-sharder"
+sidebarTitle: "plugin-sharder"
+description: "Changelog for @wolfstar/plugin-sharder: multi-process sharding for @wolfstar/plugin-gateway, spawning shards as processes, cluster workers, or worker threads."
 ---
 
 Changes to [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-sharder). The plugin spreads gateway shards across processes, cluster workers, worker threads, and machines. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
-
-## `0.5.0` (2026-11-13)
-
-### New features
-
-- **Shard exit hooks** — `ShardClient#addExitHook` runs a hook before the shard stops with `process.exit`: on `exit()`, `restart()`, a close from the manager, or the manager going away. `process.exit` skips `beforeExit`, so use the hook to flush traces or metrics first. ([#287](https://github.com/wolfstar-project/plugins/pull/287))
-- **Manager destroy hooks** — `ShardManager#addDestroyHook` runs a hook at the end of `destroy()`, once the shards are closed.
-
-## `0.4.1` (2026-11-06)
-
-### Updates
-
-- **Dependencies** — Updated third-party dependencies. ([#272](https://github.com/wolfstar-project/plugins/pull/272))
 
 ## `0.4.0` (2026-11-02)
 
@@ -51,10 +38,6 @@ Changes to [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plug
 
 ## `0.2.1` (2026-10-06)
 
-### Updates
-
-- **Spawn errors are reported** — When a strategy throws in `spawn`, you now get a `ShardSpawnError` (carrying the cause) through `shardError` on every attempt, instead of a silent retry. ([#217](https://github.com/wolfstar-project/plugins/pull/217))
-
 ### Bug fixes
 
 - **Cluster strategy options** — Fixes `ClusterStrategy` throwing `Array.prototype.some called on null or undefined` when `execArgv` or `args` are not given: only the given options are passed to `cluster.setupPrimary`, so Node keeps its defaults. A strategy throwing in `spawn` is now reported as a `ShardSpawnError` through `shardError` on every attempt, instead of being retried silently. ([#217](https://github.com/wolfstar-project/plugins/pull/217))
@@ -63,17 +46,21 @@ Changes to [`@wolfstar/plugin-sharder`](https://github.com/wolfstar-project/plug
 
 ### New features
 
-- **`/module` entrypoint** — Adds `@wolfstar/plugin-sharder/module`. List it in `modules` in `stars.config` to add the package to the auto imports. It needs the optional `@wolfstar/kit` peer. The main entrypoint is unchanged. ([#190](https://github.com/wolfstar-project/plugins/pull/190))
+- **`@wolfstar/plugin-sharder/module`** — Adds a `/module` subpath export. List it in `modules` in `stars.config` to add the package to the auto imports. It needs the optional `@wolfstar/kit` peer; the main entrypoint is unchanged. ([#190](https://github.com/wolfstar-project/plugins/pull/190))
 
 ## `0.1.1`
 
 ### Bug fixes
+
+- **Cluster strategy options** — Fixes `ClusterStrategy` throwing `Array.prototype.some called on null or undefined` when `execArgv` or `args` are not given: only the given options are passed to `cluster.setupPrimary`, so Node keeps its defaults. A strategy throwing in `spawn` is now reported as a `ShardSpawnError` through `shardError` on every attempt, instead of being retried silently. ([#217](https://github.com/wolfstar-project/plugins/pull/217))
 
 - **`./register` export** — Adds a no-op `./register` subpath export. The Stars CLI build imports `<name>/register` for every `@wolfstar/plugin-*` dependency of a project, so the package crashed consumers at startup with `ERR_PACKAGE_PATH_NOT_EXPORTED`. The entrypoint is a no-op: the package has no `@wolfstar/http-framework` `Plugin` hook to register. ([#123](https://github.com/wolfstar-project/plugins/pull/123))
 
 ## `0.1.0`
 
 ### New features
+
+- **`./register` export** — Adds a no-op `./register` subpath export. The Stars CLI build imports `<name>/register` for every `@wolfstar/plugin-*` dependency of a project, so the package crashed consumers at startup with `ERR_PACKAGE_PATH_NOT_EXPORTED`. The entrypoint is a no-op: the package has no `@wolfstar/http-framework` `Plugin` hook to register. ([#123](https://github.com/wolfstar-project/plugins/pull/123))
 
 - **New package** — `@wolfstar/plugin-sharder` implements discord.js's sharder RFC ([discordjs/discord.js#8084](https://github.com/discordjs/discord.js/issues/8084)). ([#112](https://github.com/wolfstar-project/plugins/pull/112))
 - **`ShardManager`** — Spawns shards as child processes, cluster workers, worker threads, or on other machines through `ShardManagerProxy` (`NetworkStrategy`, over TLS). It lays gateway shards out automatically, paces identifies across every process, and restarts or reshards with rolling spawns. ([#112](https://github.com/wolfstar-project/plugins/pull/112))

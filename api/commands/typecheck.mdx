@@ -1,0 +1,33 @@
+---
+title: "stars typecheck"
+description: "Type-checks the project once, the way nuxt typecheck does."
+sidebarTitle: "stars typecheck"
+---
+
+## `stars typecheck`
+
+Type-checks the project once, the way `nuxt typecheck` does. `stars typecheck` first regenerates `.stars/` (the same work as `stars prepare`), then runs the project's checker once on each project. The checker is `dev.typecheck.checker`: `golar` or `tsc`.
+
+```sh
+stars typecheck
+```
+
+From `future.compatibilityVersion` 6, the projects are:
+
+- `.stars/tsconfig.app.json` and `.stars/tsconfig.node.json` for `tsdown` and `vite` builds.
+- The project's own tsconfig plus `.stars/tsconfig.node.json` for `tsc` and `none` builds.
+- Only the configured tsconfig when `dev.typecheck.tsconfig` is set.
+
+On versions 5 and below, `stars typecheck` checks the single tsconfig. Use it instead of `tsc -p tsconfig.json`: a solution-style root `tsconfig.json` has `files: []`, so a bare `tsc -p` on it checks nothing. Use it as the project's `typecheck` script:
+
+```json
+{
+	"scripts": {
+		"typecheck": "stars typecheck"
+	}
+}
+```
+
+`stars typecheck` exits with `1` and the [`TYPECHECK_FAILED`](/api/errors/cli#typecheck_failed) diagnostic when any project has type errors. It lists the failing projects. `stars info` lists the projects it checks on the `typechecks` row.
+
+See also [`@wolfstar/cli`](/documentation/packages/cli).

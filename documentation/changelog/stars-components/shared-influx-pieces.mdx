@@ -1,32 +1,10 @@
 ---
-title: '@wolfstar/shared-influx-pieces'
-sidebarTitle: 'shared-influx-pieces'
+title: "@wolfstar/shared-influx-pieces"
+sidebarTitle: "shared-influx-pieces"
 description: "Changelog for @wolfstar/shared-influx-pieces: The influx pieces for Star Network's HTTP-only bots."
 ---
 
 Changes to [`@wolfstar/shared-influx-pieces`](https://github.com/wolfstar-project/stars-components/tree/main/packages/shared-influx-pieces). This package provides shared influx pieces for Star Network's HTTP-only bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
-
-## `1.3.0` (2026-11-16)
-
-### New features
-
-- **Own `stars.config` key** — The module sets `meta.configKey` to `influxPieces`, so the `influxPieces` key of `stars.config` belongs to it and is typed in `defineConfig` through a `StarsConfig` augmentation. `influxPieces` takes no options yet. ([#375](https://github.com/wolfstar-project/stars-components/pull/375))
-
-### Updates
-
-- **New optional peer** — `@wolfstar/schema` is a new optional peer, needed only for the `StarsConfig` type.
-- **Dependencies** — Updated `@wolfstar/http-framework` to `6.6.0`.
-
-## `1.2.0` (2026-10-17)
-
-### New features
-
-- **`/module` entry** — List `@wolfstar/shared-influx-pieces/module` in `modules` in `stars.config` instead of importing `/register`. It registers a `@wolfstar/shared-influx-pieces/plugin` plugin that creates `container.influx` when the credentials are set. `@wolfstar/kit` is an optional peer dependency. ([#341](https://github.com/wolfstar-project/stars-components/pull/341))
-
-### Updates
-
-- **`@wolfstar/http-framework` range** — The published peer range is now `^6.4.0`. npm still listed `^6.0.0`. ([#332](https://github.com/wolfstar-project/stars-components/pull/332))
-- **Dependencies** — Updated `@wolfstar/http-framework` to `6.5.0`.
 
 ## `1.1.10`
 

@@ -1,0 +1,16 @@
+---
+title: "stars info"
+description: "Prints the resolved configuration and environment."
+sidebarTitle: "stars info"
+---
+
+## `stars info`
+
+Prints the resolved configuration and environment. Pass `--json` for scripts. Besides the build, codegen, env, hooks, and experimental flags, the output lists:
+
+- **Dev**: the `dev` options in effect, including the log file, the per-run log directory and how many files it keeps, the layout, the channels and levels the dev UI starts with, the command refresh mode, and whether changes are left to the bot's hot reload.
+- **Modules**: the installed modules and what they registered: runtime plugins, pieces directories, locales, and client hooks. Below compatibility version 7, a **by name** row lists the `@wolfstar/plugin-*` packages activated through their `/register` import because no module covers them.
+
+The tunnel row names the configured provider and domain, for example `ngrok quick tunnel on bot.ngrok.app`.
+
+See also [`@wolfstar/cli`](/documentation/packages/cli).

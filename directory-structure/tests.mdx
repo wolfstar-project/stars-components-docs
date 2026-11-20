@@ -1,0 +1,49 @@
+---
+title: "tests"
+description: "Directory for Vitest interaction tests using @wolfstar/http-framework-test-utils."
+---
+
+The `@wolfstar/create-http-framework` scaffolder generates `tests/ping.test.ts`, `vitest.config.ts`, and `vitest.setup.ts` when the **Testing** optional feature is selected. `@wolfstar/http-framework-test-utils` dispatches Discord interaction payloads through a testable client, exercising the real router and command classes without opening a port or calling Discord.
+
+## Example test
+
+```typescript
+import { ChatInputApplicationCommandInteractionData, createTestHarness } from '@wolfstar/http-framework-test-utils';
+import { describe, expect, it } from 'vitest';
+
+describe('ping command', () => {
+	it('replies with Pong', async () => {
+		const { client, runner } = createTestHarness();
+		await client.load();
+
+		const result = await runner.run({
+			...ChatInputApplicationCommandInteractionData,
+			data: {
+				id: '0',
+				name: 'ping',
+				type: 1,
+				options: []
+			}
+		});
+
+		expect(result).toHaveStatus(200);
+		expect(result.json()).toMatchObject({
+			type: 4,
+			data: { content: 'Pong!' }
+		});
+	});
+});
+```
+
+## Generated test files
+
+When **Testing** is enabled, the scaffolder produces:
+
+- `tests/ping.test.ts` -- example test for the generated ping command.
+- `vitest.config.ts` -- Vitest configuration.
+- `vitest.setup.ts` -- setup file that registers the package's custom matchers.
+
+## Learn more
+
+- [Testing Interactions guide](/getting-started/testing)
+- [`@wolfstar/http-framework-test-utils` package guide](/documentation/packages/http-framework-test-utils)

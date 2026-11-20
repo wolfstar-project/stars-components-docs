@@ -1,0 +1,15 @@
+---
+title: "interaction-handlers"
+description: "Store directory for InteractionHandler pieces that respond to buttons, select menus, and modal submissions."
+---
+
+InteractionHandler pieces live in `src/interaction-handlers/`. They run when a component (button or select menu) or modal submit arrives. Each handler is a class in the `interaction-handlers` store.
+
+The client emits `interactionHandler*` events (`interactionHandlerRun`, `interactionHandlerSuccess`, `interactionHandlerError`, `interactionHandlerDenied`, `interactionHandlerFinish`) at each step. A denied handler emits `interactionHandlerDenied` with the error instead of `interactionHandlerError`.
+
+Interaction handlers support the `preconditions` option via `InteractionHandler.Options`, with the same semantics as commands. Configure them with the `@ApplyOptions` decorator from [`@wolfstar/decorators`](/documentation/packages/decorators).
+
+## More
+
+- [Pieces](/guide/concepts/architecture#pieces)
+- [Client events](/documentation/packages/http-framework#client-events)

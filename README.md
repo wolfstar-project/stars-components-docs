@@ -1,22 +1,26 @@
 # Stars Components docs
 
-Documentation site for [Stars Components](https://github.com/wolfstar-project/stars-components) and the
-[plugins](https://github.com/wolfstar-project/plugins) built on it, hosted on [Mintlify](https://mintlify.com).
+Documentation site for [Stars Components](https://github.com/wolfstar-project/stars-components) and the [plugins](https://github.com/wolfstar-project/plugins) built on it, hosted on [Mintlify](https://mintlify.com).
 
 Package source lives in those repos. This repo only holds the documentation content and site configuration.
 
 ## Repository layout
 
-| Path                       | Content                                                                                         |
-| -------------------------- | ----------------------------------------------------------------------------------------------- |
-| `docs.json`                | Mintlify site config: theme, colors, navigation tabs and groups                                 |
-| `index.mdx`                | Custom landing page (styled by `style.css`)                                                     |
-| `documentation/guide/`     | Hand-written guides: features, architecture, commands, environment, plugins, testing, migration |
-| `documentation/packages/`  | One landing page per package                                                                    |
-| `documentation/api/`       | Generated API reference, one folder per package. Do not edit by hand                            |
-| `documentation/errors/`    | CLI and configuration error reference                                                           |
-| `documentation/changelog/` | Weekly changelog                                                                                |
-| `logo/`, `favicon.svg`     | Brand assets                                                                                    |
+| Path | Content |
+| --- | --- |
+| `docs.json` | Mintlify site config: theme, colors, navigation tabs and groups |
+| `index.mdx` | Custom landing page (styled by `style.css`) |
+| `getting-started/` | Introduction, installation, features, commands, environment, testing |
+| `directory-structure/` | One page per file or directory of a Stars project |
+| `guide/` | Hand-written guides: `concepts/` (architecture, plugins) and `going-further/` (gateway, caching, sharding) |
+| `community/` | Contributing guide |
+| `migration/` | Upgrade guides, one page per major version or plugin |
+| `api/commands/` | One page per `stars` CLI command |
+| `api/errors/` | CLI and configuration error reference |
+| `documentation/packages/` | One landing page per package |
+| `documentation/api/` | Generated API reference, one folder per package. Do not edit by hand |
+| `documentation/changelog/` | Weekly changelog |
+| `logo/`, `favicon.svg` | Brand assets |
 
 A new page is only visible once it is listed in the `navigation` section of `docs.json`.
 
@@ -42,8 +46,7 @@ pnpm install
 pnpm lint       # oxlint + oxfmt for JSON and Markdown files
 ```
 
-Commit messages and pull request titles follow [Conventional Commits](https://www.conventionalcommits.org). See
-[CONTRIBUTING.md](.github/CONTRIBUTING.md) for the full workflow.
+Commit messages and pull request titles follow [Conventional Commits](https://www.conventionalcommits.org). See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the full workflow.
 
 ## Deployment
 

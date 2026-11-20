@@ -1,0 +1,187 @@
+---
+title: "Plugins"
+description: "Optional @wolfstar/http-framework extensions maintained in the wolfstar-project/plugins repository."
+---
+
+Plugins are opt-in extensions for [`@wolfstar/http-framework`](/documentation/packages/http-framework). They live outside this repository, in [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins), and release on their own schedule. Adding one never bumps the core framework, and the framework has no required dependency on any of them.
+
+<Tip>
+  **Prerequisites**
+
+  Every plugin requires `@wolfstar/http-framework@^3.1.0` or newer as a peer dependency.
+</Tip>
+
+## Available plugins
+
+| Plugin | What it does |
+| --- | --- |
+| [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next) | i18next-powered internationalization for interactions |
+| [`@wolfstar/plugin-api`](/documentation/packages/plugin-api) | Standalone REST API server alongside interaction handling |
+| [`@wolfstar/plugin-gateway`](/documentation/packages/plugin-gateway) | Gateway events, cached structures, and API managers |
+| [`@wolfstar/plugin-broker`](/documentation/packages/plugin-broker) | Distributes gateway events across processes over Redis Streams |
+| [`@wolfstar/plugin-cache`](/documentation/packages/plugin-cache) | Discord entity cache, in memory or in Redis |
+| [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger) | Pluggable logging with swappable transports |
+| [`@wolfstar/plugin-opentelemetry`](/documentation/packages/plugin-opentelemetry) | OpenTelemetry tracing with one span per interaction |
+| [`@wolfstar/plugin-scheduled-tasks`](/documentation/packages/plugin-scheduled-tasks) | Schedules one-off and repeated tasks, backed by BullMQ |
+| [`@wolfstar/plugin-sharder`](/documentation/packages/plugin-sharder) | Spreads gateway shards across processes and machines |
+| [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced) | Modularizes slash subcommands into separate command classes |
+
+Browse the [source on GitHub](https://github.com/wolfstar-project/plugins/tree/main/packages) or the generated [API reference](/documentation/api) for the full surface of each one.
+
+## Installing a plugin
+
+<CodeGroup>
+
+```bash pnpm
+pnpm add @wolfstar/plugin-i18next
+```
+
+```bash npm
+npm install @wolfstar/plugin-i18next
+```
+
+```bash yarn
+yarn add @wolfstar/plugin-i18next
+```
+
+```bash bun
+bun add @wolfstar/plugin-i18next
+```
+
+</CodeGroup>
+
+### Activating a plugin with `modules`
+
+On `@wolfstar/http-framework` 6.1 and later, every plugin ships a `./module` entry. List it in `modules` in `stars.config`, and the [`stars` CLI](/documentation/packages/cli) installs it while it loads the project. Set the module's options under its own top-level key of `stars.config`. The module entries need the optional [`@wolfstar/kit`](/documentation/packages/kit) peer dependency at `^0.2.0 || ^0.3.0`, so install it next to the plugin.
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+import '@wolfstar/plugin-i18next/module';
+
+export default defineConfig({
+	modules: ['@wolfstar/plugin-i18next/module'],
+	i18n: { defaultLanguageDirectory: './languages' }
+});
+```
+
+Each module declares its key through [`meta.configKey`](/documentation/packages/kit#reading-options-from-a-config-key):
+
+| Package | `stars.config` key |
+| --- | --- |
+| `@wolfstar/plugin-api` | `api` |
+| `@wolfstar/plugin-broker` | `broker` |
+| `@wolfstar/plugin-cache` | `cache` |
+| `@wolfstar/plugin-gateway` | `gateway` |
+| `@wolfstar/plugin-i18next` | `i18n` |
+| `@wolfstar/plugin-logger` | `logger` |
+| `@wolfstar/plugin-opentelemetry` | `opentelemetry` |
+| `@wolfstar/plugin-scheduled-tasks` | `scheduledTasks` |
+| `@wolfstar/plugin-sharder` | `sharder` |
+| `@wolfstar/plugin-subcommands-advanced` | `subcommandsAdvanced` |
+
+The `cache`, `gateway`, `sharder`, and `subcommandsAdvanced` keys take no options yet. They only reserve the name.
+
+The `[specifier, options]` tuple of `modules` still works. Its options are merged over the key, so they win.
+
+The optional [`@wolfstar/schema`](/documentation/packages/schema) peer dependency types each key in `defineConfig`. TypeScript only loads that type once the module is imported, so import the module in `stars.config.ts`.
+
+The CLI writes module options into the built entry, so they must be JSON-serialisable. Set anything else, such as functions, client instances, or per-process values, through the plugin's `ClientOptions` key. Each plugin merges that key over the module options.
+
+What a module does depends on the plugin:
+
+- `plugin-i18next`, `plugin-api`, `plugin-logger`, `plugin-broker`, `plugin-opentelemetry`, and `plugin-subcommands-advanced` register their runtime plugin in the bot.
+- `plugin-cache`, `plugin-gateway`, and `plugin-sharder` are libraries. Their module only adds the package to the auto imports, and takes no options. You still construct their classes yourself.
+
+### Without the `stars` CLI
+
+Plugins that register hooks also ship a `./plugin` entry: a [`definePlugin`](/documentation/packages/http-framework#plugins) factory. Pass it to the `plugins` client option:
+
+```typescript
+import { Client } from '@wolfstar/http-framework';
+import i18nPlugin from '@wolfstar/plugin-i18next/plugin';
+
+const client = new Client({
+	plugins: [i18nPlugin({ defaultName: 'en-US' })]
+});
+await client.load();
+```
+
+### The `/register` fallback
+
+The side-effecting `/register` entry point still works on framework v3, v5, and v6. Import it **before** the client is created, with configuration passed as a client option:
+
+```typescript
+import '@wolfstar/plugin-i18next/register';
+import { Client } from '@wolfstar/http-framework';
+
+const client = new Client({
+	i18n: {
+		defaultLanguageDirectory: new URL('languages', import.meta.url).pathname
+	}
+});
+await client.load();
+```
+
+`@wolfstar/plugin-cache`, `@wolfstar/plugin-gateway`, and `@wolfstar/plugin-sharder` are libraries you use directly, not through `/register`. They have no hooks to install, so their `/register` entry is a no-op, and releases before `plugin-cache` 0.3.0, `plugin-gateway` 0.2.0, and `plugin-sharder` 0.1.1 ship none. Import their classes from the package root and construct them yourself.
+
+<Warning>
+  Use one activation path per plugin. The module, the `./plugin` factory, and `/register` install the same hooks, so combining them installs the hooks twice. The CLI skips its injected `/register` import for packages listed in `modules`.
+</Warning>
+
+### Registering only modules
+
+By default, the `stars` CLI activates every installed `@wolfstar/plugin-*` package that is not a module by injecting its `/register` import. Set `future.compatibilityVersion: 7` to let `stars.config` alone decide what registers. Only the packages in `modules`, and the modules they install, are then registered:
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({
+	future: { compatibilityVersion: 7 },
+	modules: ['@wolfstar/plugin-i18next/module', '@wolfstar/plugin-logger/module']
+});
+```
+
+Version 7 is opt-in and not the default. On it, the CLI warns with [`PLUGINS_NOT_REGISTERED`](/api/errors/cli#plugins_not_registered) about an installed plugin that no module covers. List that plugin in `modules`, import it in the bot yourself, or go back to version `6`. Below version 7, `stars info` (the **by name** row) and `stars doctor` (the `plugins` check) list the plugins still registered through `/register`.
+
+Check each plugin's package page for its exact entry points and options. See [`@wolfstar/plugin-i18next`](/documentation/packages/plugin-i18next), [`@wolfstar/plugin-api`](/documentation/packages/plugin-api), [`@wolfstar/plugin-logger`](/documentation/packages/plugin-logger), and [`@wolfstar/plugin-subcommands-advanced`](/documentation/packages/plugin-subcommands-advanced).
+
+## Coming from `@wolfstar/http-framework-i18n`?
+
+That package has been removed. Its replacement is `@wolfstar/plugin-i18next`. Follow the [migration guide](/migration/plugin-i18next).
+
+## Writing your own plugin
+
+A plugin has two parts:
+
+1. A runtime plugin, defined with [`definePlugin`](/documentation/packages/http-framework#plugins) from `@wolfstar/http-framework`. It names itself and implements the client lifecycle hooks it needs, each called with `(client, options)`.
+2. A module, defined with [`defineModule`](/documentation/packages/kit) from `@wolfstar/kit`. It lets projects activate the plugin from `modules` in `stars.config`, and registers the runtime plugin by source.
+
+```typescript
+// src/plugin.ts
+import { definePlugin } from '@wolfstar/http-framework';
+
+export default definePlugin((options: { greeting?: string } = {}) => ({
+	name: 'my-plugin',
+	postListen(client) {
+		client.logger.info(options.greeting ?? 'Listening');
+	}
+}));
+```
+
+```typescript
+// src/module.ts
+import { defineModule } from '@wolfstar/kit';
+
+export default defineModule<{ greeting?: string }>({
+	meta: { name: 'my-plugin', compatibility: { framework: '>=6.1.0' } },
+	setup(options, ctx) {
+		ctx.addPlugin({ from: new URL('./plugin.js', import.meta.url), options });
+	}
+});
+```
+
+Expose both files as package entries, such as `./plugin` and `./module`. Projects that use the `stars` CLI list `my-plugin/module` in `modules`. Other projects pass the `./plugin` factory to the `plugins` client option.
+
+Read an existing plugin's source, such as [`plugin-i18next`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-i18next), as a template, and open a pull request against [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) to have it added to this list.

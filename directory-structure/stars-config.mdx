@@ -1,0 +1,39 @@
+---
+title: "stars.config.ts"
+description: "Typed project configuration for the stars CLI, consumed by the framework and the CLI at build and dev time."
+---
+
+The typed project configuration consumed by the `stars` CLI lives in `@wolfstar/schema` and is re-exported by `@wolfstar/http-framework/config`. Most projects should import `defineConfig` from there rather than depending on `@wolfstar/schema` directly.
+
+```typescript
+// stars.config.ts
+import { defineConfig } from '@wolfstar/http-framework/config';
+
+export default defineConfig({});
+```
+
+A base project configures nothing at all -- that is a complete build. The defaults cover the entry's directory, one output file per source file, ESM on Node, `build.outDir`, sourcemaps, unbundled dependencies, and Nuxt's `~`/`@`/`~~`/`@@` alias prefixes.
+
+## Top-level options
+
+| Option | Description |
+| --- | --- |
+| `root` | Project root, resolved against the config file. |
+| `entry` | The bot's entry file. |
+| `build` | Build tool, output directory, and TypeScript configuration. |
+| `dev` | Dev server URL, banner, type checker, tunnel, log files, layout, and command refresh behaviour. |
+| `codegen` | Code generators for i18next types and typed command options. |
+| `env` | Environment loader options mirrored from `@wolfstar/env-utilities`. |
+| `hooks` | CLI lifecycle hooks run with `hookable`. |
+| `modules` | Installable modules such as `@wolfstar/plugin-*` packages. |
+| `tsdown` / `vite` | Overrides for the bundler options. |
+| `imports` | Auto-import presets. |
+| `future` | Compatibility version and opt-in flags. |
+| `experimental` | Opt-in booleans such as `enableVite` and `enableNitro`. |
+
+Invalid options raise a `ConfigError` with a stable code, the offending option path, and an actionable hint. See [Configuration Errors](/api/errors/config) for every diagnostic code.
+
+## Learn more
+
+- [`@wolfstar/http-framework` package guide](/documentation/packages/http-framework)
+- [`@wolfstar/schema` package guide](/documentation/packages/schema)

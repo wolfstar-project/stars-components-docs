@@ -1,0 +1,81 @@
+---
+title: "stars doctor"
+description: "Checks what a project needs before stars dev can do its job, and says what to do about each problem."
+sidebarTitle: "stars doctor"
+---
+
+## `stars doctor`
+
+Checks what a project needs before `stars dev` can do its job, and says what to do about each problem:
+
+```text
+stars doctor v2.3.0
+  ✔ node        Node.js v24.19.0
+  ✔ config      stars.config.ts
+  ✔ framework   @wolfstar/http-framework v6.1.0
+  ✔ entry       src/main.ts (tsdown)
+  ✖ token       DISCORD_TOKEN is not set
+                → Set DISCORD_TOKEN in the environment or in the project .env file.
+  ⚠ port        Something already listens on http://localhost:3000
+                → Stop it, or set another HTTP_PORT, unless it is this bot running.
+  ℹ tunnel      No tunnel: Discord cannot reach a bot on localhost
+                → Set `dev.tunnel: true` for a cloudflared quick tunnel (`{ provider: 'ngrok' }` for ngrok), or press t in `stars dev`.
+  ⚠ prepare     Out of date: .stars/tsconfig.app.json, .stars/tsconfig.node.json
+                → Run `stars prepare`.
+
+  1 error(s), 2 warning(s)
+```
+
+It covers:
+
+- The Node.js version, and the project's `engines.node`.
+- The configuration and its warnings.
+- The framework, and whether it is recent enough for the dev bridge.
+- The entry and the build output.
+- `DISCORD_TOKEN`, `DISCORD_PUBLIC_KEY`, and the application id.
+- Whether the dev port is free.
+- The tunnel. With `provider: 'ngrok'`, it warns when `@ngrok/ngrok` is not installed in the project or when `NGROK_AUTHTOKEN` is not set.
+- Whether `.stars/` is stale. It names each generated file that is out of date.
+- Whether the root `tsconfig.json` still extends `./.stars/tsconfig.json` ([`TSCONFIG_LEGACY_EXTENDS`](/api/errors/cli#tsconfig_legacy_extends)).
+- Whether a [varlock](https://varlock.dev) `.env.schema` and `env.loader` agree (the `varlock` check).
+- The plugins registered by name. Below compatibility version 7, the `plugins` check lists the `@wolfstar/plugin-*` packages activated through `/register`. On version 7, the config check warns with [`PLUGINS_NOT_REGISTERED`](/api/errors/cli#plugins_not_registered) about any of them left out.
+
+`--online` also asks Discord whether the token works and where the application sends its interactions. `stars doctor` changes nothing unless you pass `--fix`. `--json` prints `{ ok, checks }` for scripts. The exit code is `1` when a check fails, with the `DOCTOR_FAILED` diagnostic.
+
+```sh
+stars doctor --online
+stars doctor --json
+```
+
+## The `varlock` check
+
+The `varlock` check compares the project's varlock setup with `env.loader` in `stars.config`:
+
+| Status | When | Fix |
+| --- | --- | --- |
+| `ok` | The environment is loaded through varlock | None |
+| `warn` | A schema and an installed `varlock` are found, but `stars.config` does not set `env.loader` | Run `stars doctor --fix` |
+| `warn` | A schema is found, but `varlock` is not installed, so the bot loads the dotenv files | Install `varlock`, or remove the `.env.schema` |
+| `warn` | A schema is found, but `env.loader` is `'node'` or `'dotenv'`, so the schema is not used | Set `env.loader` to `'varlock'`, or remove the schema |
+| `error` | `env.loader` is `'varlock'`, but `varlock` is not installed | Install `varlock` |
+
+A project that sets `env.path` without `env.loader: 'varlock'` is not checked, because the runtime only picks varlock by itself when no `env.path` is set.
+
+## Fix the configuration
+
+`--fix` fixes what `stars doctor` can fix. Today that is a project where varlock loads the environment but `stars.config` does not set `env.loader`. `stars doctor --fix` adds `env: { loader: 'varlock' }`:
+
+- Without a `stars.config`, it creates `stars.config.ts` the way `@wolfstar/create-http-framework` scaffolds it.
+- With a literal `defineConfig({ ... })` or exported object, it edits that object.
+- With a configuration it cannot edit safely (a spread, a function, or an `env` that is not a literal), it changes nothing and prints the line to add by hand.
+
+`stars doctor --fix` asks before it writes. Pass `--yes` (`-y`) to answer for scripts. It never writes in CI, with `--json` unless you pass `--yes`, or without a terminal to ask in.
+
+```sh
+stars doctor --fix
+stars doctor --fix --yes
+```
+
+`stars prepare`, `stars build`, `stars dev`, and `stars info` only report this case, with the [`VARLOCK_LOADER_IMPLICIT`](/api/errors/cli#varlock_loader_implicit) and [`VARLOCK_NOT_INSTALLED`](/api/errors/cli#varlock_not_installed) warnings.
+
+See also [`@wolfstar/cli`](/documentation/packages/cli).
