@@ -6,6 +6,12 @@ description: 'Changelog for @wolfstar/twitch-helpers: very basic Twitch helper f
 
 Changes to [`@wolfstar/twitch-helpers`](https://github.com/wolfstar-project/stars-components/tree/main/packages/twitch-helpers). This package provides very basic Twitch helper functions used across several Star bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `2.0.9` (2026-10-18)
+
+### Bug fixes
+
+- **EventSub secret and callback** — `setVariables` no longer swaps the EventSub secret and callback. Before, the secret was sent to Twitch as the webhook callback, and the callback URL was used to sign and verify notifications. ([#345](https://github.com/wolfstar-project/stars-components/pull/345))
+
 ## `2.0.8`
 
 ### Updates
