@@ -655,6 +655,8 @@ export function isModerator(member: GuildMember) {
 
     `destroy` disconnects every shard and stops the sweepers, but leaves the HTTP server to you. Calling it again while it runs waits for the first call. Without `resumable`, the shards close with code `1000` and Discord ends the sessions.
 
+    To flush traces or metrics once the shards are disconnected, add a hook with `client.addDestroyHook()`. See [wrapping dispatches and shutting down](/documentation/packages/plugin-gateway#wrapping-dispatches-and-shutting-down).
+
   </Step>
   <Step title="Watch slow dispatches">
     `dispatchTimeout` (30 seconds by default) reports a `DispatchTimeoutError` when a dispatch takes too long, usually because a listener awaits something slow. Fix the listener rather than raising the limit. Set it to `null` to disable the check.
