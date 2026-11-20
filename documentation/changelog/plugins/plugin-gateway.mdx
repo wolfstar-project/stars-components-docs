@@ -6,6 +6,17 @@ description: 'Changelog for @wolfstar/plugin-gateway: gateway events, Discord st
 
 Changes to [`@wolfstar/plugin-gateway`](https://github.com/wolfstar-project/plugins/tree/main/packages/plugin-gateway). The plugin extends the `@wolfstar/http-framework` client with Discord gateway events, structures, and API managers. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `0.17.0` (2026-11-13)
+
+### New features
+
+- **Dispatch wrappers** — `GatewayClient#addDispatchWrapper` runs code around the processing of each dispatch received from Discord, such as a tracing span or an `AsyncLocalStorage` store that the cache writes and listeners run in. ([#285](https://github.com/wolfstar-project/plugins/pull/285))
+- **Destroy hooks** — `GatewayClient#addDestroyHook` runs a hook at the end of every `destroy()`, once the shards are disconnected and the dispatches processed, so you can flush what is left before the process exits.
+
+### Bug fixes
+
+- **Hooks from `postInitialization`** — `addDispatchWrapper` and `addDestroyHook` now work when a plugin calls them from `postInitialization`, which runs before the fields of `GatewayClient` are initialized. They used to throw a `TypeError` about a private member there. ([#288](https://github.com/wolfstar-project/plugins/pull/288))
+
 ## `0.16.3` (2026-11-06)
 
 ### Updates
