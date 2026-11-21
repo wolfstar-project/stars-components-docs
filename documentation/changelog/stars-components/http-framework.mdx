@@ -6,6 +6,21 @@ description: 'Changelog for @wolfstar/http-framework: a Sapphire-inspired framew
 
 Changes to [`@wolfstar/http-framework`](https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework). It provides routing, commands, hot module reloading, and the `stars` CLI for Discord HTTP bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `6.6.0` (2026-11-16)
+
+### New features
+
+- **Modal submit fields** — `ModalSubmitInteraction#fields` is a `ModalInteractionOptionResolver` from `@wolfstar/discord-utilities` that reads submitted text inputs, selects, and uploaded files by custom ID. ([#373](https://github.com/wolfstar-project/stars-components/pull/373))
+- **Resolved select data** — `MessageComponentInteraction#resolved` and the new `MessageComponentResolved` type return the raw `resolved` data of user, role, channel, and mentionable selects, typed per variant. They return `null` for buttons and string selects. ([#372](https://github.com/wolfstar-project/stars-components/pull/372))
+- **Typed command accessors** — Command interactions gain `ChatInputCommandInteraction#options`, `AutocompleteInteraction#options` and `#focused`, `UserContextMenuCommandInteraction#targetId`, `#targetUser`, and `#targetMember`, and `MessageContextMenuCommandInteraction#targetId` and `#targetMessage`. They resolve the payload the same way as the arguments a command handler receives. The raw `data` is unchanged. ([#371](https://github.com/wolfstar-project/stars-components/pull/371))
+- **`inDM()`** — `BaseInteraction#inDM()` and the `InDM` type join `inGuild()` and `InGuild`. `inDM()` narrows the guild fields and `member` to `undefined`. ([#370](https://github.com/wolfstar-project/stars-components/pull/370))
+
+### Updates
+
+- **`inGuild()` narrows `user`** — `inGuild()` now also narrows `user` to the member's user, and `BaseInteraction#user` no longer relies on a non-null assertion.
+- **New `@wolfstar/discord-utilities` dependency** — `@wolfstar/http-framework` now depends on `@wolfstar/discord-utilities`, and its `discord-api-types` range is raised to `^0.38.30` to match that package's peer range.
+- **Dependencies** — Updated `chokidar` to v6 and `@wolfstar/cli` to `2.12.1`. ([#354](https://github.com/wolfstar-project/stars-components/pull/354))
+
 ## `6.5.1` (2026-10-18)
 
 ### Updates
