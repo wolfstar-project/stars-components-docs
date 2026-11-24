@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 <ApiHeader
 	kind="class"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L49',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L49',
 		label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:49'
 	}}
 	packageName="@wolfstar/plugin-gateway"
@@ -35,7 +35,7 @@ must not under-report. The other `fetch*` methods fall back to the API when a ro
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L58', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:58' }}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L58', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:58' }}>
 
 <ApiSignature
 	tokens={[
@@ -62,7 +62,7 @@ The member.
 
 ### client
 
-<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
+<ApiMember kind="property" badges={['readonly']} signature={['readonly client: ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/BaseManager.ts#L10', label: 'packages/plugin-gateway/src/managers/BaseManager.ts:10' }} inheritedFrom={[['BaseManager.client', '/documentation/api/plugin-gateway/classes/BaseManager#client']]}>
 
 The client that instantiated this manager.
 
@@ -70,7 +70,7 @@ The client that instantiated this manager.
 
 ### member
 
-<ApiMember kind="property" badges={['readonly']} signature={['readonly member: ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L53', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:53' }}>
+<ApiMember kind="property" badges={['readonly']} signature={['readonly member: ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L53', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:53' }}>
 
 The member these roles belong to.
 
@@ -80,7 +80,7 @@ The member these roles belong to.
 
 ### botRole
 
-<ApiMember kind="accessor" signature={['get botRole(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L150', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:150' }}>
+<ApiMember kind="accessor" signature={['get botRole(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L150', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:150' }}>
 
 The role Discord manages for the member, when the member is a bot and the role is cached.
 
@@ -88,7 +88,7 @@ The role Discord manages for the member, when the member is a bot and the role i
 
 ### cache
 
-<ApiMember kind="accessor" signature={['get cache(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L103', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:103' }}>
+<ApiMember kind="accessor" signature={['get cache(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Collection', 'https://discord.js.org/docs/packages/collection/stable/Collection:Class'], '<string, ', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<"">>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L103', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:103' }}>
 
 The member's roles held in the cache, by ID, `@everyone` included. Roles that are not cached are skipped, without
 an error: use [GuildMemberRoleManager.fetch](/documentation/api/plugin-gateway/classes/GuildMemberRoleManager#fetch) to get them all.
@@ -97,7 +97,7 @@ an error: use [GuildMemberRoleManager.fetch](/documentation/api/plugin-gateway/c
 
 ### color
 
-<ApiMember kind="accessor" signature={['get color(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L129', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:129' }}>
+<ApiMember kind="accessor" signature={['get color(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L129', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:129' }}>
 
 The highest cached role giving the member a color, if any.
 
@@ -105,7 +105,7 @@ The highest cached role giving the member a color, if any.
 
 ### guild
 
-<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L66', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:66' }}>
+<ApiMember kind="accessor" signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L66', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:66' }}>
 
 The member's guild, from the cache: `null` when it is not cached.
 
@@ -117,14 +117,14 @@ The member's guild, from the cache: `null` when it is not cached.
 	kind="accessor"
 	signature={['get guildId(): string']}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L70',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L70',
 		label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:70'
 	}}
 />
 
 ### highest
 
-<ApiMember kind="accessor" signature={['get highest(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L115', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:115' }}>
+<ApiMember kind="accessor" signature={['get highest(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L115', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:115' }}>
 
 The member's highest cached role. `null` when none of their roles is cached, `@everyone` included.
 
@@ -136,7 +136,7 @@ for an answer that is right on a cache miss, or `await member.roles.fetch()` bef
 
 ### hoist
 
-<ApiMember kind="accessor" signature={['get hoist(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L122', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:122' }}>
+<ApiMember kind="accessor" signature={['get hoist(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L122', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:122' }}>
 
 The cached role the member is displayed under in the member list, if any.
 
@@ -144,7 +144,7 @@ The cached role the member is displayed under in the member list, if any.
 
 ### icon
 
-<ApiMember kind="accessor" signature={['get icon(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L136', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:136' }}>
+<ApiMember kind="accessor" signature={['get icon(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L136', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:136' }}>
 
 The highest cached role giving the member an icon, if any.
 
@@ -152,7 +152,7 @@ The highest cached role giving the member an icon, if any.
 
 ### ids
 
-<ApiMember kind="accessor" signature={['get ids(): readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L95', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:95' }}>
+<ApiMember kind="accessor" signature={['get ids(): readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L95', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:95' }}>
 
 The IDs of the member's roles, `@everyone` excluded.
 
@@ -160,7 +160,7 @@ The IDs of the member's roles, `@everyone` excluded.
 
 ### partial
 
-<ApiMember kind="accessor" signature={['get partial(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L77', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:77' }}>
+<ApiMember kind="accessor" signature={['get partial(): boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L77', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:77' }}>
 
 Whether the member is partial, see [GuildMember.partial](/documentation/api/plugin-gateway/classes/GuildMember#partial). The roles of a partial member are not known.
 
@@ -168,7 +168,7 @@ Whether the member is partial, see [GuildMember.partial](/documentation/api/plug
 
 ### premiumSubscriberRole
 
-<ApiMember kind="accessor" signature={['get premiumSubscriberRole(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L143', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:143' }}>
+<ApiMember kind="accessor" signature={['get premiumSubscriberRole(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<', ['Role', '/documentation/api/plugin-gateway/classes/Role'], '<""> | null>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L143', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:143' }}>
 
 The server booster role, if the member has it and it is cached.
 
@@ -176,7 +176,7 @@ The server booster role, if the member has it and it is cached.
 
 ### userId
 
-<ApiMember kind="accessor" signature={['get userId(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L86', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:86' }}>
+<ApiMember kind="accessor" signature={['get userId(): string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L86', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:86' }}>
 
 The ID of the member's user.
 
@@ -186,7 +186,7 @@ The ID of the member's user.
 
 ### add()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L244', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:244' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L244', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:244' }}>
 
 <ApiSignature
 	tokens={[
@@ -237,7 +237,7 @@ The updated member.
 
 ### clone()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L299', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:299' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L299', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:299' }}>
 
 <ApiSignature tokens={['clone(): ', ['GuildMemberRoleManager', '/documentation/api/plugin-gateway/classes/GuildMemberRoleManager']]} />
 
@@ -253,7 +253,7 @@ Creates another manager of the same member's roles.
 
 ### fetch()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L157', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:157' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L157', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:157' }}>
 
 <ApiSignature
 	tokens={[
@@ -284,7 +284,7 @@ Fetches the member's roles, `@everyone` included, highest first.
 
 ### fetchBotRole()
 
-<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L229', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:229' }}>
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L229', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:229' }}>
 
 <ApiSignature
 	tokens={[
@@ -322,7 +322,7 @@ Fetches the role Discord manages for the member, when the member is a bot.
 
 ### fetchColor()
 
-<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L199', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:199' }}>
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L199', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:199' }}>
 
 <ApiSignature
 	tokens={[
@@ -360,7 +360,7 @@ Fetches the highest role giving the member a color, if any.
 
 ### fetchHighest()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L179', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:179' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L179', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:179' }}>
 
 <ApiSignature
 	tokens={[
@@ -395,7 +395,7 @@ role than the member's real one. With a complete cache it makes no request.
 
 ### fetchHoist()
 
-<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L189', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:189' }}>
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L189', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:189' }}>
 
 <ApiSignature
 	tokens={[
@@ -433,7 +433,7 @@ Fetches the role the member is displayed under in the member list, if any.
 
 ### fetchIcon()
 
-<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L209', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:209' }}>
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L209', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:209' }}>
 
 <ApiSignature
 	tokens={[
@@ -471,7 +471,7 @@ Fetches the highest role giving the member an icon, if any.
 
 ### fetchPremiumSubscriberRole()
 
-<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L219', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:219' }}>
+<ApiMember kind="method" badges={['deprecated']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L219', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:219' }}>
 
 <ApiSignature
 	tokens={[
@@ -509,7 +509,7 @@ Fetches the server booster role, if the member has it.
 
 ### remove()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L268', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:268' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L268', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:268' }}>
 
 <ApiSignature
 	tokens={[
@@ -560,7 +560,7 @@ The updated member.
 
 ### set()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L292', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:292' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts#L292', label: 'packages/plugin-gateway/src/managers/GuildMemberRoleManager.ts:292' }}>
 
 <ApiSignature
 	tokens={[

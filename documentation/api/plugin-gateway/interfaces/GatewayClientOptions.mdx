@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L86',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L86',
 		label: 'packages/plugin-gateway/src/GatewayClient.ts:86'
 	}}
 	packageName="@wolfstar/plugin-gateway"
@@ -33,7 +33,7 @@ The message defaults read from the client's options.
 
 ### allowedMentions?
 
-<ApiMember kind="property" badges={['optional']} signature={['allowedMentions?: ', ['MessageMentionOptions', '/documentation/api/plugin-gateway/type-aliases/MessageMentionOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L647', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:647' }} inheritedFrom={[['GatewayClientMessageDefaults.allowedMentions', '/documentation/api/plugin-gateway/interfaces/GatewayClientMessageDefaults#allowedmentions']]}>
+<ApiMember kind="property" badges={['optional']} signature={['allowedMentions?: ', ['MessageMentionOptions', '/documentation/api/plugin-gateway/type-aliases/MessageMentionOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L647', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:647' }} inheritedFrom={[['GatewayClientMessageDefaults.allowedMentions', '/documentation/api/plugin-gateway/interfaces/GatewayClientMessageDefaults#allowedmentions']]}>
 
 The mentions every message may ping, unless it sets its own.
 
@@ -41,7 +41,7 @@ The mentions every message may ping, unless it sets its own.
 
 ### cache?
 
-<ApiMember kind="property" badges={['optional']} signature={['cache?: ', ['Cache', '/documentation/api/plugin-cache/interfaces/Cache'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L187', label: 'packages/plugin-gateway/src/GatewayClient.ts:187' }}>
+<ApiMember kind="property" badges={['optional']} signature={['cache?: ', ['Cache', '/documentation/api/plugin-cache/interfaces/Cache'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L187', label: 'packages/plugin-gateway/src/GatewayClient.ts:187' }}>
 
 A `@wolfstar/plugin-cache` cache (in memory or Redis) whose raw stores back the managers, instead of the
 in-memory caches of instances built by [GatewayClientOptions.cacheConstructor](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cacheconstructor): structures are then built
@@ -61,7 +61,7 @@ undefined;
 
 ### cacheConstructor?
 
-<ApiMember kind="property" badges={['optional']} signature={['cacheConstructor?: ', ['CacheConstructor', '/documentation/api/plugin-gateway/type-aliases/CacheConstructor']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L125', label: 'packages/plugin-gateway/src/GatewayClient.ts:125' }}>
+<ApiMember kind="property" badges={['optional']} signature={['cacheConstructor?: ', ['CacheConstructor', '/documentation/api/plugin-gateway/type-aliases/CacheConstructor']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L125', label: 'packages/plugin-gateway/src/GatewayClient.ts:125' }}>
 
 Builds the cache of each entity, the one its managers expose as `manager.cache`: the `cacheConstructor` of the
 discord.js RFC #11426. The caches hold structure instances, which dispatches patch in place.
@@ -91,7 +91,7 @@ CollectionCache;
 
 ### cacheErrors?
 
-<ApiMember kind="property" badges={['optional']} signature={['cacheErrors?: "miss" | "throw"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L239', label: 'packages/plugin-gateway/src/GatewayClient.ts:239' }}>
+<ApiMember kind="property" badges={['optional']} signature={['cacheErrors?: "miss" | "throw"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L239', label: 'packages/plugin-gateway/src/GatewayClient.ts:239' }}>
 
 What the managers do when a cache read or write fails, e.g. while Redis is unreachable. A `cacheError` event is
 emitted either way.
@@ -111,7 +111,7 @@ Dispatches follow [GatewayClientOptions.cacheFailure](/documentation/api/plugin-
 
 ### cacheFailure?
 
-<ApiMember kind="property" badges={['optional']} signature={['cacheFailure?: "skip" | "emitUncached"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L277', label: 'packages/plugin-gateway/src/GatewayClient.ts:277' }}>
+<ApiMember kind="property" badges={['optional']} signature={['cacheFailure?: "skip" | "emitUncached"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L277', label: 'packages/plugin-gateway/src/GatewayClient.ts:277' }}>
 
 What to do with a dispatch whose cache read or write fails, e.g. while Redis is unreachable. The error is always
 reported through the `error` event (or the logger when nobody listens to it).
@@ -129,7 +129,7 @@ reported through the `error` event (or the logger when nobody listens to it).
 
 ### cacheOptions?
 
-<ApiMember kind="property" badges={['optional']} signature={['cacheOptions?: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], ', ', ['CacheEntityOptions', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions'], '>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L150', label: 'packages/plugin-gateway/src/GatewayClient.ts:150' }}>
+<ApiMember kind="property" badges={['optional']} signature={['cacheOptions?: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Record', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#recordtype'], '<keyof ', ['CacheEntityTypes', '/documentation/api/plugin-cache/interfaces/CacheEntityTypes'], ', ', ['CacheEntityOptions', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions'], '>>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L150', label: 'packages/plugin-gateway/src/GatewayClient.ts:150' }}>
 
 The options of the cache of each entity, passed to [GatewayClientOptions.cacheConstructor](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#cacheconstructor) (the default
 `CollectionCache` included) next to `keyOf` and `refresh`. `maxSize` bounds the amount of entries of an entity,
@@ -162,7 +162,7 @@ const client = new GatewayClient({
 
 ### dispatchTimeout?
 
-<ApiMember kind="property" badges={['optional']} signature={['dispatchTimeout?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L284', label: 'packages/plugin-gateway/src/GatewayClient.ts:284' }}>
+<ApiMember kind="property" badges={['optional']} signature={['dispatchTimeout?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L284', label: 'packages/plugin-gateway/src/GatewayClient.ts:284' }}>
 
 The time, in milliseconds, after which a dispatch still being processed is reported as a `DispatchTimeoutError`
 through the `error` event. The dispatch is not cancelled. `null` disables the check.
@@ -177,7 +177,7 @@ through the `error` event. The dispatch is not cancelled. `null` disables the ch
 
 ### failIfNotExists?
 
-<ApiMember kind="property" badges={['optional']} signature={['failIfNotExists?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L653', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:653' }} inheritedFrom={[['GatewayClientMessageDefaults.failIfNotExists', '/documentation/api/plugin-gateway/interfaces/GatewayClientMessageDefaults#failifnotexists']]}>
+<ApiMember kind="property" badges={['optional']} signature={['failIfNotExists?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/messages/MessagePayload.ts#L653', label: 'packages/plugin-gateway/src/structures/messages/MessagePayload.ts:653' }} inheritedFrom={[['GatewayClientMessageDefaults.failIfNotExists', '/documentation/api/plugin-gateway/interfaces/GatewayClientMessageDefaults#failifnotexists']]}>
 
 Whether replies fail when the message they reply to no longer exists, unless they set it themselves.
 
@@ -191,7 +191,7 @@ true;
 
 ### gateway?
 
-<ApiMember kind="property" badges={['optional']} signature={['gateway?: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<OptionalWebSocketManagerOptions, "token" | "shardCount" | "shardIds">>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L244', label: 'packages/plugin-gateway/src/GatewayClient.ts:244' }}>
+<ApiMember kind="property" badges={['optional']} signature={['gateway?: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<', ['Omit', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype'], '<OptionalWebSocketManagerOptions, "token" | "shardCount" | "shardIds">>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L244', label: 'packages/plugin-gateway/src/GatewayClient.ts:244' }}>
 
 Additional options for the underlying `@discordjs/ws` `WebSocketManager`, e.g. `compression` or
 `initialPresence`.
@@ -200,7 +200,7 @@ Additional options for the underlying `@discordjs/ws` `WebSocketManager`, e.g. `
 
 ### intents
 
-<ApiMember kind="property" signature={['intents: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L90', label: 'packages/plugin-gateway/src/GatewayClient.ts:90' }}>
+<ApiMember kind="property" signature={['intents: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L90', label: 'packages/plugin-gateway/src/GatewayClient.ts:90' }}>
 
 The gateway intents to identify with, e.g. `GatewayIntentBits.Guilds | GatewayIntentBits.GuildMessages`.
 
@@ -208,7 +208,7 @@ The gateway intents to identify with, e.g. `GatewayIntentBits.Guilds | GatewayIn
 
 ### makeCache?
 
-<ApiMember kind="property" badges={['optional']} signature={['makeCache?: ', ['CacheFactory', '/documentation/api/plugin-cache/type-aliases/CacheFactory']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L207', label: 'packages/plugin-gateway/src/GatewayClient.ts:207' }}>
+<ApiMember kind="property" badges={['optional']} signature={['makeCache?: ', ['CacheFactory', '/documentation/api/plugin-cache/type-aliases/CacheFactory']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L207', label: 'packages/plugin-gateway/src/GatewayClient.ts:207' }}>
 
 Creates the raw `@wolfstar/plugin-cache` store of each entity kind, `null` or `undefined` not to cache it. Called
 once per entity kind when the client is constructed, and takes precedence over
@@ -237,7 +237,7 @@ const client = new GatewayClient({
 
 ### partials?
 
-<ApiMember kind="property" badges={['optional']} signature={['partials?: readonly ', ['Partials', '/documentation/api/plugin-gateway/type-aliases/Partials'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L291', label: 'packages/plugin-gateway/src/GatewayClient.ts:291' }}>
+<ApiMember kind="property" badges={['optional']} signature={['partials?: readonly ', ['Partials', '/documentation/api/plugin-gateway/type-aliases/Partials'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L291', label: 'packages/plugin-gateway/src/GatewayClient.ts:291' }}>
 
 The structures to build partially when an event concerns one that is not cached, like discord.js's `partials`,
 e.g. `[Partials.Message, Partials.User]`. See [Partials](/documentation/api/plugin-gateway/variables/Partials).
@@ -252,7 +252,7 @@ e.g. `[Partials.Message, Partials.User]`. See [Partials](/documentation/api/plug
 
 ### policies?
 
-<ApiMember kind="property" badges={['optional']} signature={['policies?: ', ['CachePolicies', '/documentation/api/plugin-cache/type-aliases/CachePolicies']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L226', label: 'packages/plugin-gateway/src/GatewayClient.ts:226' }}>
+<ApiMember kind="property" badges={['optional']} signature={['policies?: ', ['CachePolicies', '/documentation/api/plugin-cache/type-aliases/CachePolicies']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L226', label: 'packages/plugin-gateway/src/GatewayClient.ts:226' }}>
 
 The policies deciding which entries get cached, and for how long, per entity kind, see `withPolicy`. They apply to
 every write, from dispatches as well as from the managers: an entry its `filter` rejects is not cached, and the
@@ -279,7 +279,7 @@ policies: { users: { filter: (user) => !user.bot }, messages: { ttl: () => 3_600
 
 ### sessionStore?
 
-<ApiMember kind="property" badges={['optional']} signature={['sessionStore?: ', ['GatewaySessionStore', '/documentation/api/plugin-cache/interfaces/GatewaySessionStore']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L260', label: 'packages/plugin-gateway/src/GatewayClient.ts:260' }}>
+<ApiMember kind="property" badges={['optional']} signature={['sessionStore?: ', ['GatewaySessionStore', '/documentation/api/plugin-cache/interfaces/GatewaySessionStore']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L260', label: 'packages/plugin-gateway/src/GatewayClient.ts:260' }}>
 
 Where to keep the shards' sessions, e.g. `createRedisSessionStore` from `@wolfstar/plugin-cache`, so a restarted
 process resumes them instead of identifying again: no identify quota spent, the dispatches missed meanwhile
@@ -302,7 +302,7 @@ undefined;
 
 ### sessionStoreTimeout?
 
-<ApiMember kind="property" badges={['optional']} signature={['sessionStoreTimeout?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L267', label: 'packages/plugin-gateway/src/GatewayClient.ts:267' }}>
+<ApiMember kind="property" badges={['optional']} signature={['sessionStoreTimeout?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L267', label: 'packages/plugin-gateway/src/GatewayClient.ts:267' }}>
 
 The time, in milliseconds, after which a shard stops waiting for [GatewayClientOptions.sessionStore](/documentation/api/plugin-gateway/interfaces/GatewayClientOptions#sessionstore) to read
 its session, and identifies instead. `null` waits forever.
@@ -317,7 +317,7 @@ its session, and identifies instead. `null` waits forever.
 
 ### shardCount?
 
-<ApiMember kind="property" badges={['optional']} signature={['shardCount?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L96', label: 'packages/plugin-gateway/src/GatewayClient.ts:96' }}>
+<ApiMember kind="property" badges={['optional']} signature={['shardCount?: number | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L96', label: 'packages/plugin-gateway/src/GatewayClient.ts:96' }}>
 
 The total number of shards across every process, `null` to use the amount recommended by Discord.
 
@@ -331,7 +331,7 @@ null;
 
 ### shardIds?
 
-<ApiMember kind="property" badges={['optional']} signature={['shardIds?: number[] | ShardRange | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L102', label: 'packages/plugin-gateway/src/GatewayClient.ts:102' }}>
+<ApiMember kind="property" badges={['optional']} signature={['shardIds?: number[] | ShardRange | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L102', label: 'packages/plugin-gateway/src/GatewayClient.ts:102' }}>
 
 The IDs of the shards this client manages, `null` to manage all of them.
 
@@ -345,7 +345,7 @@ null;
 
 ### sweepers?
 
-<ApiMember kind="property" badges={['optional']} signature={['sweepers?: ', ['SweeperOptions', '/documentation/api/plugin-gateway/type-aliases/SweeperOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L174', label: 'packages/plugin-gateway/src/GatewayClient.ts:174' }}>
+<ApiMember kind="property" badges={['optional']} signature={['sweepers?: ', ['SweeperOptions', '/documentation/api/plugin-gateway/type-aliases/SweeperOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L174', label: 'packages/plugin-gateway/src/GatewayClient.ts:174' }}>
 
 Evicts entries from the caches of instances on a schedule, like discord.js's `sweepers` option: each entity has
 its own sweeper, evicting what a `filter` selects or what outlived a `lifetime`, every `interval` seconds. See
@@ -377,7 +377,7 @@ sweepers: {
 
 ### waitGuildTimeout?
 
-<ApiMember kind="property" badges={['optional']} signature={['waitGuildTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/GatewayClient.ts#L305', label: 'packages/plugin-gateway/src/GatewayClient.ts:305' }}>
+<ApiMember kind="property" badges={['optional']} signature={['waitGuildTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/GatewayClient.ts#L305', label: 'packages/plugin-gateway/src/GatewayClient.ts:305' }}>
 
 How long, in milliseconds, the client waits for every guild `READY` listed as initially unavailable to become
 available (its `GUILD_CREATE`) before emitting `clientReady` anyway, like discord.js's `waitGuildTimeout`.

@@ -9,7 +9,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L139',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L139',
 		label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:139'
 	}}
 	packageName="@wolfstar/plugin-gateway"
@@ -25,7 +25,7 @@ requested.
 
 ### limit?
 
-<ApiMember kind="property" badges={['optional']} signature={['limit?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L151', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:151' }}>
+<ApiMember kind="property" badges={['optional']} signature={['limit?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L151', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:151' }}>
 
 How many members to match with `query`, `0` for no limit (only with an empty `query`).
 
@@ -39,7 +39,7 @@ How many members to match with `query`, `0` for no limit (only with an empty `qu
 
 ### nonce?
 
-<ApiMember kind="property" badges={['optional']} signature={['nonce?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L169', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:169' }}>
+<ApiMember kind="property" badges={['optional']} signature={['nonce?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L169', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:169' }}>
 
 The nonce identifying the request's chunks, up to 32 bytes.
 
@@ -53,7 +53,7 @@ A random one.
 
 ### presences?
 
-<ApiMember kind="property" badges={['optional']} signature={['presences?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L163', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:163' }}>
+<ApiMember kind="property" badges={['optional']} signature={['presences?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L163', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:163' }}>
 
 Whether to also receive (and cache) the members' presences. Needs the `GuildPresences` intent.
 
@@ -67,7 +67,7 @@ false;
 
 ### query?
 
-<ApiMember kind="property" badges={['optional']} signature={['query?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L145', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:145' }}>
+<ApiMember kind="property" badges={['optional']} signature={['query?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L145', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:145' }}>
 
 The prefix of the usernames and nicknames to match, `""` for every member. Exclusive with `userIds`.
 
@@ -81,7 +81,7 @@ The prefix of the usernames and nicknames to match, `""` for every member. Exclu
 
 ### time?
 
-<ApiMember kind="property" badges={['optional']} signature={['time?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L175', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:175' }}>
+<ApiMember kind="property" badges={['optional']} signature={['time?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L175', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:175' }}>
 
 How long to wait for each chunk, in milliseconds, before rejecting with a `GuildMembersTimeoutError`.
 
@@ -95,7 +95,7 @@ How long to wait for each chunk, in milliseconds, before rejecting with a `Guild
 
 ### userIds?
 
-<ApiMember kind="property" badges={['optional']} signature={['userIds?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L157', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:157' }}>
+<ApiMember kind="property" badges={['optional']} signature={['userIds?: readonly string[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/managers/GuildMemberManager.ts#L157', label: 'packages/plugin-gateway/src/managers/GuildMemberManager.ts:157' }}>
 
 The IDs of the users to request, up to 100. Exclusive with `query`. The ones that are not members are left out of
 the result, and listed in the `not_found` of the `guildMembersChunk` data. An empty array is ignored, like omitting

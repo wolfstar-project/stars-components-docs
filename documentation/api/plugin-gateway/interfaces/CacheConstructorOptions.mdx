@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L241',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L241',
 		label: 'packages/plugin-gateway/src/util/cache.ts:241'
 	}}
 	packageName="@wolfstar/plugin-gateway"
@@ -50,7 +50,7 @@ the entity's `cacheOptions`.
 
 ### keepOverLimit?
 
-<ApiMember kind="property" badges={['optional']} signature={['keepOverLimit?: (value: any, key: string, cache: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, any>) => boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L234', label: 'packages/plugin-gateway/src/util/cache.ts:234' }} inheritedFrom={[['CacheEntityOptions.keepOverLimit', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions#keepoverlimit']]}>
+<ApiMember kind="property" badges={['optional']} signature={['keepOverLimit?: (value: any, key: string, cache: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, any>) => boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L234', label: 'packages/plugin-gateway/src/util/cache.ts:234' }} inheritedFrom={[['CacheEntityOptions.keepOverLimit', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions#keepoverlimit']]}>
 
 Decides which entries `maxSize` never evicts, like discord.js's `LimitedCollection#keepOverLimit`: called with
 the oldest entries in turn, the first one it answers `false` for is evicted. When it answers `true` for all of
@@ -66,7 +66,7 @@ undefined;
 
 ### keyOf
 
-<ApiMember kind="property" signature={['keyOf: (data: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>) => string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L249', label: 'packages/plugin-gateway/src/util/cache.ts:249' }}>
+<ApiMember kind="property" signature={['keyOf: (data: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>) => string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L249', label: 'packages/plugin-gateway/src/util/cache.ts:249' }}>
 
 Gets the cache key of raw data. [Cache.add](/documentation/api/plugin-gateway/interfaces/Cache#add) must store under it: most entities are not keyed by their
 `id` alone (a member is keyed by its guild and user, a message by its channel and ID, ...).
@@ -75,7 +75,7 @@ Gets the cache key of raw data. [Cache.add](/documentation/api/plugin-gateway/in
 
 ### maxSize?
 
-<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L226', label: 'packages/plugin-gateway/src/util/cache.ts:226' }} inheritedFrom={[['CacheEntityOptions.maxSize', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions#maxsize']]}>
+<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L226', label: 'packages/plugin-gateway/src/util/cache.ts:226' }} inheritedFrom={[['CacheEntityOptions.maxSize', '/documentation/api/plugin-gateway/interfaces/CacheEntityOptions#maxsize']]}>
 
 The maximum amount of entries the cache holds, the oldest one being evicted when a new one would exceed it. `0`
 holds nothing.
@@ -90,7 +90,7 @@ Infinity;
 
 ### refresh
 
-<ApiMember kind="property" signature={['refresh: (value: Value) => Value']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L255', label: 'packages/plugin-gateway/src/util/cache.ts:255' }}>
+<ApiMember kind="property" signature={['refresh: (value: Value) => Value']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L255', label: 'packages/plugin-gateway/src/util/cache.ts:255' }}>
 
 Resolves the relations of an instance again (e.g. `member.voice`), and returns that same instance. Call it on
 what [Cache.get](/documentation/api/plugin-gateway/interfaces/Cache#get) and [Cache.add](/documentation/api/plugin-gateway/interfaces/Cache#add) hand out, or long-lived instances keep the relations of the day
