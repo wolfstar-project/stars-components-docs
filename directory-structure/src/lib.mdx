@@ -3,7 +3,7 @@ title: 'lib'
 description: 'Shared setup, cache, and type augmentations for your bot.'
 ---
 
-The `src/lib/` directory holds setup scripts, type augmentations, and optional cache configuration. The generated project creates `src/lib/setup/`, `src/lib/types/`, and — when the Cache feature is enabled — `src/lib/cache.ts`.
+The `src/lib/` directory holds setup scripts, type augmentations, and optional cache configuration. The generated project creates `src/lib/setup/`, `src/lib/types/`, and, when the Cache feature is enabled, `src/lib/cache.ts`.
 
 ## `{.filename} lib/setup/all.ts`
 
@@ -15,7 +15,7 @@ The `src/lib/` directory holds setup scripts, type augmentations, and optional c
 
 In TypeScript projects built with tsdown or Vite, `src/lib/setup/all.ts` doesn't load the environment itself. `stars` loads `.env` (the `env` option in `stars.config.ts`) before any module of the bot runs. Projects built with `tsc`, Vite + Nitro, or JavaScript still call `setup()` from `@wolfstar/env-utilities`.
 
-Order matters in the entry point: anything with side effects — plugin `/register` imports, module augmentations, logger configuration — must be imported **before** `new Client()`, because the client reads that state while it is constructed. The entry point does this by importing `./lib/setup/all.js` first:
+Order matters in the entry point: anything with side effects (plugin `/register` imports, module augmentations, logger configuration) must be imported **before** `new Client()`, because the client reads that state while it is constructed. The entry point does this by importing `./lib/setup/all.js` first:
 
 ```typescript
 import './lib/setup/all.js';

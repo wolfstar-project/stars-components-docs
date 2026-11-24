@@ -5,7 +5,7 @@ description: 'Create and run a Discord bot with the WolfStar HTTP Framework. The
 
 Stars Components is a set of focused TypeScript packages powering the Star Network. The core of it is [`@wolfstar/http-framework`](/documentation/packages/http-framework): an HTTP-first framework for Discord applications that answers interactions over a webhook endpoint instead of holding a gateway connection open.
 
-Around it sit optional packages for internationalization, environment parsing, logging, metrics, platform helpers, and interaction testing. Adopt one of them on its own, or combine them into a complete bot stack — see [Features](/getting-started/features) for the full picture and [Why Stars Components](/getting-started/introduction) for the reasoning behind it.
+Around it sit optional packages for internationalization, environment parsing, logging, metrics, platform helpers, and interaction testing. Adopt one of them on its own, or combine them into a complete bot stack. See [Features](/getting-started/features) for the full picture and [Why Stars Components](/getting-started/introduction) for the reasoning behind it.
 
 <Tip>
   **Prerequisites**
@@ -54,7 +54,7 @@ Services  │
 
 Adopting [`@wolfstar/safe-fetch`](/documentation/packages/safe-fetch) or [`@wolfstar/env-utilities`](/documentation/packages/env-utilities) in an existing service costs one dependency and no framework buy-in. See [Bot Architecture](/guide/concepts/architecture) for how a bot is put together.
 
-The split goes further than one repository. Optional `@wolfstar/http-framework` extensions — a REST API server, i18n, modular subcommands — live in their own [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) repository and release independently of the core framework, so picking one up never bumps `@wolfstar/http-framework` itself. See the [Plugins](/guide/concepts/plugins) guide.
+The split goes further than one repository. Optional `@wolfstar/http-framework` extensions (a REST API server, i18n, modular subcommands) live in their own [`wolfstar-project/plugins`](https://github.com/wolfstar-project/plugins) repository and release independently of the core framework, so picking one up never bumps `@wolfstar/http-framework` itself. See the [Plugins](/guide/concepts/plugins) guide.
 
 ## Types as the Contract
 

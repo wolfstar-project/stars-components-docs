@@ -78,7 +78,7 @@ const config = await loadStarsConfig({ cwd: process.cwd() });
 console.log(config.entry, config.build.output);
 ```
 
-`loadStarsConfig` discovers the config file, applies the built-in defaults, validates every option, and resolves all paths to absolute ones. Invalid options raise a diagnostic whose `code`, `path`, `sources`, and `hint` describe the problem — see [Configuration Errors](/api/errors/config) for the full catalog.
+`loadStarsConfig` discovers the config file, applies the built-in defaults, validates every option, and resolves all paths to absolute ones. Invalid options raise a diagnostic whose `code`, `path`, `sources`, and `hint` describe the problem. See [Configuration Errors](/api/errors/config) for the full catalog.
 
 ### Top-level module keys
 
