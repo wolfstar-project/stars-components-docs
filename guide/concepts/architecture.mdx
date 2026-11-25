@@ -50,7 +50,7 @@ await client.registry.pushGlobalCommands();
 await client.listen({ port: 3000 });
 ```
 
-Order matters here. Anything with side effects — plugin `/register` imports, module augmentations, logger configuration — must be imported **before** `new Client()`, because the client reads that state while it is constructed. See [Configuring the Client](/getting-started/installation#configuring-the-client) for how `client.load()` finds your stores.
+Order matters here. Anything with side effects (plugin `/register` imports, module augmentations, logger configuration) must be imported **before** `new Client()`, because the client reads that state while it is constructed. See [Configuring the Client](/getting-started/installation#configuring-the-client) for how `client.load()` finds your stores.
 
 ## Pieces
 
