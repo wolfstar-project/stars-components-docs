@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L124',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L124',
 		label: 'packages/plugin-cache/src/lib/types.ts:124'
 	}}
 	packageName="@wolfstar/plugin-cache"
@@ -36,7 +36,7 @@ store may not be able to do it cheaply.
 
 ### synchronous?
 
-<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly synchronous?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L133', label: 'packages/plugin-cache/src/lib/types.ts:133' }}>
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly synchronous?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L133', label: 'packages/plugin-cache/src/lib/types.ts:133' }}>
 
 Whether every method returns its result synchronously, never a promise. Optional: a cache without it is treated
 as asynchronous, which is always safe.
@@ -50,7 +50,7 @@ know they can read the cache without awaiting it, e.g. `@wolfstar/plugin-gateway
 
 ### clear()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L151', label: 'packages/plugin-cache/src/lib/types.ts:151' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L151', label: 'packages/plugin-cache/src/lib/types.ts:151' }}>
 
 <ApiSignature tokens={['clear(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
 
@@ -64,7 +64,7 @@ know they can read the cache without awaiting it, e.g. `@wolfstar/plugin-gateway
 
 ### delete()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L150', label: 'packages/plugin-cache/src/lib/types.ts:150' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L150', label: 'packages/plugin-cache/src/lib/types.ts:150' }}>
 
 <ApiSignature tokens={['delete(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
 
@@ -84,7 +84,7 @@ know they can read the cache without awaiting it, e.g. `@wolfstar/plugin-gateway
 
 ### deleteGuild()
 
-<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L160', label: 'packages/plugin-cache/src/lib/types.ts:160' }}>
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L160', label: 'packages/plugin-cache/src/lib/types.ts:160' }}>
 
 <ApiSignature
 	tokens={['deleteGuild(guildId: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number | null>']}
@@ -117,7 +117,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### get()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L134', label: 'packages/plugin-cache/src/lib/types.ts:134' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L134', label: 'packages/plugin-cache/src/lib/types.ts:134' }}>
 
 <ApiSignature tokens={['get(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Raw | undefined>']} />
 
@@ -137,7 +137,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### getSize()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L152', label: 'packages/plugin-cache/src/lib/types.ts:152' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L152', label: 'packages/plugin-cache/src/lib/types.ts:152' }}>
 
 <ApiSignature tokens={['getSize(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
 
@@ -151,7 +151,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### has()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L149', label: 'packages/plugin-cache/src/lib/types.ts:149' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L149', label: 'packages/plugin-cache/src/lib/types.ts:149' }}>
 
 <ApiSignature tokens={['has(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
 
@@ -171,7 +171,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### set()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L135', label: 'packages/plugin-cache/src/lib/types.ts:135' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L135', label: 'packages/plugin-cache/src/lib/types.ts:135' }}>
 
 <ApiSignature
 	tokens={[
@@ -203,7 +203,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### upsert()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L144', label: 'packages/plugin-cache/src/lib/types.ts:144' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L144', label: 'packages/plugin-cache/src/lib/types.ts:144' }}>
 
 <ApiSignature
 	tokens={[

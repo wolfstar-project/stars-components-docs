@@ -9,7 +9,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L11',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L11',
 		label: 'packages/plugin-broker/src/BrokerConsumer.ts:11'
 	}}
 	packageName="@wolfstar/plugin-broker"
@@ -22,7 +22,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 
 ### batchSize?
 
-<ApiMember kind="property" badges={['optional']} signature={['batchSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L34', label: 'packages/plugin-broker/src/BrokerConsumer.ts:34' }}>
+<ApiMember kind="property" badges={['optional']} signature={['batchSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L34', label: 'packages/plugin-broker/src/BrokerConsumer.ts:34' }}>
 
 The maximum number of entries read per `XREADGROUP` (or claimed per `XAUTOCLAIM`) call.
 
@@ -36,7 +36,7 @@ The maximum number of entries read per `XREADGROUP` (or claimed per `XAUTOCLAIM`
 
 ### block?
 
-<ApiMember kind="property" badges={['optional']} signature={['block?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L40', label: 'packages/plugin-broker/src/BrokerConsumer.ts:40' }}>
+<ApiMember kind="property" badges={['optional']} signature={['block?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L40', label: 'packages/plugin-broker/src/BrokerConsumer.ts:40' }}>
 
 How long, in milliseconds, a read blocks for new entries before returning empty.
 
@@ -50,7 +50,7 @@ How long, in milliseconds, a read blocks for new entries before returning empty.
 
 ### claimIdle?
 
-<ApiMember kind="property" badges={['optional']} signature={['claimIdle?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L60', label: 'packages/plugin-broker/src/BrokerConsumer.ts:60' }}>
+<ApiMember kind="property" badges={['optional']} signature={['claimIdle?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L60', label: 'packages/plugin-broker/src/BrokerConsumer.ts:60' }}>
 
 Claims (`XAUTOCLAIM`) the entries any consumer of the group left pending for longer than this many milliseconds,
 e.g. one that crashed and never restarted under the same name, and handles them as redeliveries. Checked at most
@@ -67,7 +67,7 @@ above the slowest listener's run time, not just above how fast a crash should be
 
 ### codec?
 
-<ApiMember kind="property" badges={['optional']} signature={['codec?: ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L46', label: 'packages/plugin-broker/src/BrokerConsumer.ts:46' }}>
+<ApiMember kind="property" badges={['optional']} signature={['codec?: ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L46', label: 'packages/plugin-broker/src/BrokerConsumer.ts:46' }}>
 
 The codec used to decode payloads. Must match the producer's.
 
@@ -81,7 +81,7 @@ jsonCodec();
 
 ### consumer
 
-<ApiMember kind="property" signature={['consumer: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L28', label: 'packages/plugin-broker/src/BrokerConsumer.ts:28' }}>
+<ApiMember kind="property" signature={['consumer: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L28', label: 'packages/plugin-broker/src/BrokerConsumer.ts:28' }}>
 
 A name stable across restarts, so a crashed consumer's pending entries are reclaimed by its own restart rather
 than left for another consumer to claim, see [BrokerConsumerOptions.claimIdle](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#claimidle).
@@ -90,7 +90,7 @@ than left for another consumer to claim, see [BrokerConsumerOptions.claimIdle](/
 
 ### deadLetterStream?
 
-<ApiMember kind="property" badges={['optional']} signature={['deadLetterStream?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L77', label: 'packages/plugin-broker/src/BrokerConsumer.ts:77' }}>
+<ApiMember kind="property" badges={['optional']} signature={['deadLetterStream?: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L77', label: 'packages/plugin-broker/src/BrokerConsumer.ts:77' }}>
 
 The Redis key of the stream the entries exceeding [BrokerConsumerOptions.maxDeliveries](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#maxdeliveries) are moved to. Each
 dead-lettered entry keeps its `event` and `payload` fields, plus the original `id`, `stream`, `group`,
@@ -102,7 +102,7 @@ dead-lettered entry keeps its `event` and `payload` fields, plus the original `i
 
 ### group
 
-<ApiMember kind="property" signature={['group: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L23', label: 'packages/plugin-broker/src/BrokerConsumer.ts:23' }}>
+<ApiMember kind="property" signature={['group: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L23', label: 'packages/plugin-broker/src/BrokerConsumer.ts:23' }}>
 
 The consumer group. Created on [BrokerConsumer.start](/documentation/api/plugin-broker/classes/BrokerConsumer#start) if it does not exist yet.
 
@@ -110,7 +110,7 @@ The consumer group. Created on [BrokerConsumer.start](/documentation/api/plugin-
 
 ### maxDeliveries?
 
-<ApiMember kind="property" badges={['optional']} signature={['maxDeliveries?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L69', label: 'packages/plugin-broker/src/BrokerConsumer.ts:69' }}>
+<ApiMember kind="property" badges={['optional']} signature={['maxDeliveries?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L69', label: 'packages/plugin-broker/src/BrokerConsumer.ts:69' }}>
 
 The number of times an entry can be delivered: past it, the entry is moved to
 [BrokerConsumerOptions.deadLetterStream](/documentation/api/plugin-broker/interfaces/BrokerConsumerOptions#deadletterstream) instead of being handed to the listeners again. Left unset, a
@@ -122,7 +122,7 @@ Deliveries are counted by Redis (the `XPENDING` delivery counter), so they add u
 
 ### redis
 
-<ApiMember kind="property" signature={['redis: ', ['BrokerRedisClientLike', '/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L15', label: 'packages/plugin-broker/src/BrokerConsumer.ts:15' }}>
+<ApiMember kind="property" signature={['redis: ', ['BrokerRedisClientLike', '/documentation/api/plugin-broker/interfaces/BrokerRedisClientLike']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L15', label: 'packages/plugin-broker/src/BrokerConsumer.ts:15' }}>
 
 The Redis client to use, e.g. an [`ioredis`](https://github.com/redis/ioredis) instance.
 
@@ -130,7 +130,7 @@ The Redis client to use, e.g. an [`ioredis`](https://github.com/redis/ioredis) i
 
 ### shutdownSignals?
 
-<ApiMember kind="property" badges={['optional']} signature={['shutdownSignals?: readonly Signals[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L88', label: 'packages/plugin-broker/src/BrokerConsumer.ts:88' }}>
+<ApiMember kind="property" badges={['optional']} signature={['shutdownSignals?: readonly Signals[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L88', label: 'packages/plugin-broker/src/BrokerConsumer.ts:88' }}>
 
 The process signals that stop the consumer (see [BrokerConsumer.stop](/documentation/api/plugin-broker/classes/BrokerConsumer#stop)) while it runs. Once it has stopped,
 the signal is raised again if nothing else listens to it, so the process still terminates as it would have
@@ -146,7 +146,7 @@ shutdownSignals: ['SIGTERM', 'SIGINT'];
 
 ### stream
 
-<ApiMember kind="property" signature={['stream: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-broker/src/BrokerConsumer.ts#L19', label: 'packages/plugin-broker/src/BrokerConsumer.ts:19' }}>
+<ApiMember kind="property" signature={['stream: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-broker/src/BrokerConsumer.ts#L19', label: 'packages/plugin-broker/src/BrokerConsumer.ts:19' }}>
 
 The Redis key of the stream to read from.
 

@@ -9,7 +9,7 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L90',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L90',
 		label: 'packages/plugin-cache/src/lib/redis.ts:90'
 	}}
 	packageName="@wolfstar/plugin-cache"
@@ -28,7 +28,7 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 
 ### codec?
 
-<ApiMember kind="property" badges={['optional']} signature={['codec?: ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L131', label: 'packages/plugin-cache/src/lib/redis.ts:131' }}>
+<ApiMember kind="property" badges={['optional']} signature={['codec?: ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L131', label: 'packages/plugin-cache/src/lib/redis.ts:131' }}>
 
 The codec used to encode and decode values.
 
@@ -47,7 +47,7 @@ jsonCodec();
 
 ### compression?
 
-<ApiMember kind="property" badges={['optional']} signature={['compression?: ', ['RedisCacheCompression', '/documentation/api/plugin-cache/type-aliases/RedisCacheCompression']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L104', label: 'packages/plugin-cache/src/lib/redis.ts:104' }}>
+<ApiMember kind="property" badges={['optional']} signature={['compression?: ', ['RedisCacheCompression', '/documentation/api/plugin-cache/type-aliases/RedisCacheCompression']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L104', label: 'packages/plugin-cache/src/lib/redis.ts:104' }}>
 
 The compression algorithm to use.
 
@@ -61,7 +61,7 @@ The compression algorithm to use.
 
 ### compressionThreshold?
 
-<ApiMember kind="property" badges={['optional']} signature={['compressionThreshold?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L110', label: 'packages/plugin-cache/src/lib/redis.ts:110' }}>
+<ApiMember kind="property" badges={['optional']} signature={['compressionThreshold?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L110', label: 'packages/plugin-cache/src/lib/redis.ts:110' }}>
 
 The minimum size, in bytes, a serialized value must reach to be compressed. Small payloads rarely benefit from it.
 
@@ -75,7 +75,7 @@ The minimum size, in bytes, a serialized value must reach to be compressed. Smal
 
 ### guildOf?
 
-<ApiMember kind="property" badges={['optional']} signature={['guildOf?: (key: string, value?: Raw) => string | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L119', label: 'packages/plugin-cache/src/lib/redis.ts:119' }}>
+<ApiMember kind="property" badges={['optional']} signature={['guildOf?: (key: string, value?: Raw) => string | undefined']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L119', label: 'packages/plugin-cache/src/lib/redis.ts:119' }}>
 
 Resolves the guild an entry belongs to, indexing the entries by guild so [RedisEntityCache.deleteGuild](/documentation/api/plugin-cache/classes/RedisEntityCache#deleteguild)
 does not have to scan the whole cache. Entries it resolves no guild for are not indexed. Without it, nothing is
@@ -88,7 +88,7 @@ read back.
 
 ### legacyCodecs?
 
-<ApiMember kind="property" badges={['optional']} signature={['legacyCodecs?: readonly ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L140', label: 'packages/plugin-cache/src/lib/redis.ts:140' }}>
+<ApiMember kind="property" badges={['optional']} signature={['legacyCodecs?: readonly ', ['CacheCodec', '/documentation/api/plugin-cache/interfaces/CacheCodec'], '[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L140', label: 'packages/plugin-cache/src/lib/redis.ts:140' }}>
 
 Former [RedisEntityCacheOptions.codec](/documentation/api/plugin-cache/interfaces/RedisEntityCacheOptions#codec) values this cache's entries may still be tagged with, tried in
 order (after the current `codec`) before falling back to `jsonCodec()`. Required to keep reading entries
@@ -100,7 +100,7 @@ Only used for decoding: entries are always written with the current `codec`.
 
 ### prefix
 
-<ApiMember kind="property" signature={['prefix: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L94', label: 'packages/plugin-cache/src/lib/redis.ts:94' }}>
+<ApiMember kind="property" signature={['prefix: string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L94', label: 'packages/plugin-cache/src/lib/redis.ts:94' }}>
 
 The prefix of every Redis key owned by this entity cache.
 
@@ -108,7 +108,7 @@ The prefix of every Redis key owned by this entity cache.
 
 ### ttl?
 
-<ApiMember kind="property" badges={['optional']} signature={['ttl?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/redis.ts#L98', label: 'packages/plugin-cache/src/lib/redis.ts:98' }}>
+<ApiMember kind="property" badges={['optional']} signature={['ttl?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/redis.ts#L98', label: 'packages/plugin-cache/src/lib/redis.ts:98' }}>
 
 The time-to-live of every entry, in seconds. Entries never expire when omitted.
 

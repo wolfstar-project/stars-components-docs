@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/util/requests.ts#L28',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/util/requests.ts#L28',
 		label: 'packages/plugin-sharder/src/util/requests.ts:28'
 	}}
 	packageName="@wolfstar/plugin-sharder"
@@ -28,7 +28,7 @@ The options of a broadcast request.
 
 ### partial?
 
-<ApiMember kind="property" badges={['optional']} signature={['partial?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/util/requests.ts#L33', label: 'packages/plugin-sharder/src/util/requests.ts:33' }}>
+<ApiMember kind="property" badges={['optional']} signature={['partial?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/util/requests.ts#L33', label: 'packages/plugin-sharder/src/util/requests.ts:33' }}>
 
 Whether to resolve with the outcome of every shard, like `Promise.allSettled`, rather than rejecting on the first
 failure: the replies that came before a timeout or an abort are kept.
@@ -37,7 +37,7 @@ failure: the replies that came before a timeout or an abort are kept.
 
 ### signal?
 
-<ApiMember kind="property" badges={['optional']} signature={['signal?: AbortSignal']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/util/requests.ts#L22', label: 'packages/plugin-sharder/src/util/requests.ts:22' }} inheritedFrom={[['RequestOptions.signal', '/documentation/api/plugin-sharder/interfaces/RequestOptions#signal']]}>
+<ApiMember kind="property" badges={['optional']} signature={['signal?: AbortSignal']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/util/requests.ts#L22', label: 'packages/plugin-sharder/src/util/requests.ts:22' }} inheritedFrom={[['RequestOptions.signal', '/documentation/api/plugin-sharder/interfaces/RequestOptions#signal']]}>
 
 Aborts the request: dropped from the queue if it waits for a shard to be ready, and aborted on the other side
 otherwise, whose handler gets an aborted `signal`.
@@ -46,7 +46,7 @@ otherwise, whose handler gets an aborted `signal`.
 
 ### timeout?
 
-<ApiMember kind="property" badges={['optional']} signature={['timeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/util/requests.ts#L17', label: 'packages/plugin-sharder/src/util/requests.ts:17' }} inheritedFrom={[['RequestOptions.timeout', '/documentation/api/plugin-sharder/interfaces/RequestOptions#timeout']]}>
+<ApiMember kind="property" badges={['optional']} signature={['timeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/util/requests.ts#L17', label: 'packages/plugin-sharder/src/util/requests.ts:17' }} inheritedFrom={[['RequestOptions.timeout', '/documentation/api/plugin-sharder/interfaces/RequestOptions#timeout']]}>
 
 How long to wait for the reply, in milliseconds. Defaults to the manager's `requestTimeout`.
 

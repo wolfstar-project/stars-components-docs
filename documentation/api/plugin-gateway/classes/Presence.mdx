@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 <ApiHeader
 	kind="class"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L30',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L30',
 		label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:30'
 	}}
 	packageName="@wolfstar/plugin-gateway"
@@ -49,7 +49,7 @@ member, and guild, and actions through the client.
 
 ### Constructor
 
-<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L44', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:44' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
+<ApiMember kind="constructor" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L44', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:44' }} inheritedFrom={[['StructureMixin.constructor', '/documentation/api/plugin-gateway/classes/StructureMixin#constructor']]}>
 
 <ApiSignature
 	tokens={[
@@ -84,7 +84,7 @@ The user, member, and guild as resolved from the cache, by `client.presences`.
 
 ### \[kData\]
 
-<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
+<ApiMember kind="property" badges={['protected']} signature={['protected [kData]: ', ['Readonly', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#readonlytype'], '<Data>']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L82', label: 'packages/plugin-gateway/src/structures/Structure.ts:82' }} inheritedFrom={[['StructureMixin.[kData]', '/documentation/api/plugin-gateway/classes/StructureMixin#kdata']]}>
 
 The raw API data of this structure.
 
@@ -98,14 +98,14 @@ The raw API data of this structure.
 	kind="accessor"
 	signature={['get activities(): ', ['Activity', '/documentation/api/plugin-gateway/classes/Activity'], '[]']}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L64',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L64',
 		label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:64'
 	}}
 />
 
 ### client
 
-<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
+<ApiMember kind="accessor" signature={['get client(): ', ['GatewayClient', '/documentation/api/plugin-gateway/classes/GatewayClient']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L108', label: 'packages/plugin-gateway/src/structures/Structure.ts:108' }} inheritedFrom={[['StructureMixin.client', '/documentation/api/plugin-gateway/classes/StructureMixin#client']]}>
 
 The client that instantiated this structure, like discord.js's `Base#client`: the one whose manager built it, or
 the most recently constructed [GatewayClient](/documentation/api/plugin-gateway/classes/GatewayClient) for structures built by hand from a raw payload.
@@ -116,7 +116,7 @@ It is not part of the structure's data, so it is neither serialized by `toJSON` 
 
 ### clientStatus
 
-<ApiMember kind="accessor" signature={['get clientStatus(): ', ['GatewayPresenceClientStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceClientStatus'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L71', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:71' }}>
+<ApiMember kind="accessor" signature={['get clientStatus(): ', ['GatewayPresenceClientStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#GatewayPresenceClientStatus'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L71', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:71' }}>
 
 The status of the user on each of their platforms, `null` when the payload did not include it.
 
@@ -128,7 +128,7 @@ The status of the user on each of their platforms, `null` when the payload did n
 	kind="accessor"
 	signature={['get guild(): ', ['Guild', '/documentation/api/plugin-gateway/classes/Guild'], ' | null']}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L88',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L88',
 		label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:88'
 	}}
 />
@@ -139,7 +139,7 @@ The status of the user on each of their platforms, `null` when the payload did n
 	kind="accessor"
 	signature={['get guildId(): string']}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L53',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L53',
 		label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:53'
 	}}
 />
@@ -150,14 +150,14 @@ The status of the user on each of their platforms, `null` when the payload did n
 	kind="accessor"
 	signature={['get member(): ', ['GuildMember', '/documentation/api/plugin-gateway/classes/GuildMember'], ' | null']}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L82',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L82',
 		label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:82'
 	}}
 />
 
 ### status
 
-<ApiMember kind="accessor" signature={['get status(): ', ['PresenceUpdateReceiveStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#PresenceUpdateReceiveStatus']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L60', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:60' }}>
+<ApiMember kind="accessor" signature={['get status(): ', ['PresenceUpdateReceiveStatus', 'https://discord-api-types.dev/api/discord-api-types-v10#PresenceUpdateReceiveStatus']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L60', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:60' }}>
 
 The status of the user, `offline` when the payload did not include it.
 
@@ -165,7 +165,7 @@ The status of the user, `offline` when the payload did not include it.
 
 ### user
 
-<ApiMember kind="accessor" signature={['get user(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L78', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:78' }}>
+<ApiMember kind="accessor" signature={['get user(): ', ['User', '/documentation/api/plugin-gateway/classes/User'], ' | null']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L78', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:78' }}>
 
 The user, from the cache. Presence payloads only carry the user's changed fields.
 
@@ -177,7 +177,7 @@ The user, from the cache. Presence payloads only carry the user's changed fields
 	kind="accessor"
 	signature={['get userId(): string']}
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L49',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L49',
 		label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:49'
 	}}
 />
@@ -186,7 +186,7 @@ The user, from the cache. Presence payloads only carry the user's changed fields
 
 ### \[kClone\]()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L156', label: 'packages/plugin-gateway/src/structures/Structure.ts:156' }} inheritedFrom={[['StructureMixin.[kClone]', '/documentation/api/plugin-gateway/classes/StructureMixin#kclone']]}>
 
 <ApiSignature
 	tokens={[
@@ -226,7 +226,7 @@ The copy.
 
 ### \[kPatch\]()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L141', label: 'packages/plugin-gateway/src/structures/Structure.ts:141' }} inheritedFrom={[['StructureMixin.[kPatch]', '/documentation/api/plugin-gateway/classes/StructureMixin#kpatch']]}>
 
 <ApiSignature
 	tokens={[
@@ -264,7 +264,7 @@ This structure.
 
 ### dropChangedRelations()
 
-<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L195', label: 'packages/plugin-gateway/src/structures/Structure.ts:195' }} inheritedFrom={[['StructureMixin.dropChangedRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#dropchangedrelations']]}>
 
 <ApiSignature
 	tokens={[
@@ -299,7 +299,7 @@ The names of the relations, mapped to the raw field holding their ID.
 
 ### dropRelations()
 
-<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L182', label: 'packages/plugin-gateway/src/structures/Structure.ts:182' }} inheritedFrom={[['StructureMixin.dropRelations', '/documentation/api/plugin-gateway/classes/StructureMixin#droprelations']]}>
 
 <ApiSignature tokens={['protected dropRelations(...names: ("user" | "guild" | "member")[]): void']} />
 
@@ -319,7 +319,7 @@ The names of the relations.
 
 ### equals()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L105', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:105' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L105', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:105' }}>
 
 <ApiSignature tokens={['equals(presence: ', ['Presence', '/documentation/api/plugin-gateway/classes/Presence'], ' | null | undefined): boolean']} />
 
@@ -345,7 +345,7 @@ The presence to compare with.
 
 ### fetchMember()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L92', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:92' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L92', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:92' }}>
 
 <ApiSignature
 	tokens={[
@@ -374,7 +374,7 @@ The presence to compare with.
 
 ### fetchUser()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/presences/Presence.ts#L96', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:96' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/presences/Presence.ts#L96', label: 'packages/plugin-gateway/src/structures/presences/Presence.ts:96' }}>
 
 <ApiSignature
 	tokens={[
@@ -403,7 +403,7 @@ The presence to compare with.
 
 ### lazyRelation()
 
-<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L128', label: 'packages/plugin-gateway/src/structures/Structure.ts:128' }} inheritedFrom={[['StructureMixin.lazyRelation', '/documentation/api/plugin-gateway/classes/StructureMixin#lazyrelation']]}>
 
 <ApiSignature
 	tokens={[
@@ -448,7 +448,7 @@ Reads the related structure from the client's cache, synchronously.
 
 ### optimizedTimestamp()
 
-<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L173', label: 'packages/plugin-gateway/src/structures/Structure.ts:173' }} inheritedFrom={[['StructureMixin.optimizedTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizedtimestamp']]}>
 
 <ApiSignature tokens={['protected optimizedTimestamp(key: string): number | null']} />
 
@@ -470,7 +470,7 @@ Gets a timestamp previously parsed by `optimizeData`.
 
 ### optimizeTimestamp()
 
-<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
+<ApiMember kind="method" badges={['protected']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L166', label: 'packages/plugin-gateway/src/structures/Structure.ts:166' }} inheritedFrom={[['StructureMixin.optimizeTimestamp', '/documentation/api/plugin-gateway/classes/StructureMixin#optimizetimestamp']]}>
 
 <ApiSignature tokens={['protected optimizeTimestamp(key: string, value: string | null | undefined): void']} />
 
@@ -488,7 +488,7 @@ Parses a timestamp once when constructing or patching a structure.
 
 ### valueOf()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/structures/Structure.ts#L116', label: 'packages/plugin-gateway/src/structures/Structure.ts:116' }} inheritedFrom={[['StructureMixin.valueOf', '/documentation/api/plugin-gateway/classes/StructureMixin#valueof']]}>
 
 <ApiSignature tokens={['valueOf(): string | ', ['Presence', '/documentation/api/plugin-gateway/classes/Presence']]} />
 

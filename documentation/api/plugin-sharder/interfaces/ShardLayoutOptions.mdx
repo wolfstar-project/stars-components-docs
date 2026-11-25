@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L44',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/ShardManager.ts#L44',
 		label: 'packages/plugin-sharder/src/ShardManager.ts:44'
 	}}
 	packageName="@wolfstar/plugin-sharder"
@@ -26,7 +26,7 @@ How the gateway shards are laid out across shards.
 
 ### clusters?
 
-<ApiMember kind="property" badges={['optional']} signature={['clusters?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L75', label: 'packages/plugin-sharder/src/ShardManager.ts:75' }}>
+<ApiMember kind="property" badges={['optional']} signature={['clusters?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/ShardManager.ts#L75', label: 'packages/plugin-sharder/src/ShardManager.ts:75' }}>
 
 How many shards to split the gateway shards across, with `shards: "auto"`.
 
@@ -40,7 +40,7 @@ os.availableParallelism();
 
 ### recommended?
 
-<ApiMember kind="property" badges={['optional']} signature={['recommended?: ', ['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L79', label: 'packages/plugin-sharder/src/ShardManager.ts:79' }}>
+<ApiMember kind="property" badges={['optional']} signature={['recommended?: ', ['RecommendedShardCountOptions', '/documentation/api/plugin-sharder/interfaces/RecommendedShardCountOptions']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/ShardManager.ts#L79', label: 'packages/plugin-sharder/src/ShardManager.ts:79' }}>
 
 How Discord's recommended count is turned into the total, with `"auto"`.
 
@@ -48,7 +48,7 @@ How Discord's recommended count is turned into the total, with `"auto"`.
 
 ### shardList?
 
-<ApiMember kind="property" badges={['optional']} signature={['shardList?: readonly number[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L69', label: 'packages/plugin-sharder/src/ShardManager.ts:69' }}>
+<ApiMember kind="property" badges={['optional']} signature={['shardList?: readonly number[]']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/ShardManager.ts#L69', label: 'packages/plugin-sharder/src/ShardManager.ts:69' }}>
 
 The gateway shards this manager spawns, when several managers split them. Defaults to all of them.
 
@@ -56,7 +56,7 @@ The gateway shards this manager spawns, when several managers split them. Defaul
 
 ### shards?
 
-<ApiMember kind="property" badges={['optional']} signature={['shards?: number | readonly number[] | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L60', label: 'packages/plugin-sharder/src/ShardManager.ts:60' }}>
+<ApiMember kind="property" badges={['optional']} signature={['shards?: number | readonly number[] | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/ShardManager.ts#L60', label: 'packages/plugin-sharder/src/ShardManager.ts:60' }}>
 
 The layout: a number spawns one shard per gateway shard, an array spawns one shard per entry connecting that
 many gateway shards, and `"auto"` splits the gateway shards across `clusters` shards.
@@ -82,7 +82,7 @@ new ShardManager({ shards: 'auto', clusters: 4 });
 
 ### totalShards?
 
-<ApiMember kind="property" badges={['optional']} signature={['totalShards?: number | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-sharder/src/ShardManager.ts#L65', label: 'packages/plugin-sharder/src/ShardManager.ts:65' }}>
+<ApiMember kind="property" badges={['optional']} signature={['totalShards?: number | "auto"']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-sharder/src/ShardManager.ts#L65', label: 'packages/plugin-sharder/src/ShardManager.ts:65' }}>
 
 The total number of gateway shards, across every manager: `"auto"` is Discord's recommendation. Defaults to the
 number of gateway shards of this manager.

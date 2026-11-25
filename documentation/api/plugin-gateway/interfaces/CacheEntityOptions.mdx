@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiSignature } from '/snippets/api-
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L219',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L219',
 		label: 'packages/plugin-gateway/src/util/cache.ts:219'
 	}}
 	packageName="@wolfstar/plugin-gateway"
@@ -26,7 +26,7 @@ The options of the cache of one entity, set per entity through the client's `cac
 
 ### keepOverLimit?
 
-<ApiMember kind="property" badges={['optional']} signature={['keepOverLimit?: (value: any, key: string, cache: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, any>) => boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L234', label: 'packages/plugin-gateway/src/util/cache.ts:234' }}>
+<ApiMember kind="property" badges={['optional']} signature={['keepOverLimit?: (value: any, key: string, cache: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, any>) => boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L234', label: 'packages/plugin-gateway/src/util/cache.ts:234' }}>
 
 Decides which entries `maxSize` never evicts, like discord.js's `LimitedCollection#keepOverLimit`: called with
 the oldest entries in turn, the first one it answers `false` for is evicted. When it answers `true` for all of
@@ -42,7 +42,7 @@ undefined;
 
 ### maxSize?
 
-<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/cache.ts#L226', label: 'packages/plugin-gateway/src/util/cache.ts:226' }}>
+<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/cache.ts#L226', label: 'packages/plugin-gateway/src/util/cache.ts:226' }}>
 
 The maximum amount of entries the cache holds, the oldest one being evicted when a new one would exceed it. `0`
 holds nothing.

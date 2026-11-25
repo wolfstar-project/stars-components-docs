@@ -9,7 +9,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L161',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L161',
 		label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:161'
 	}}
 	packageName="@wolfstar/plugin-logger"
@@ -22,7 +22,7 @@ import { ApiHeader, ApiMember, ApiSignature } from '/snippets/api-reference.jsx'
 
 ### breadcrumbLevel?
 
-<ApiMember kind="property" badges={['optional']} signature={['breadcrumbLevel?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L181', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:181' }}>
+<ApiMember kind="property" badges={['optional']} signature={['breadcrumbLevel?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L181', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:181' }}>
 
 The lowest `LogLevel` recorded as a breadcrumb, for entries below [level](/documentation/api/plugin-logger/interfaces/SentryTransportOptions#level). Needs a
 client exposing `addBreadcrumb`.
@@ -37,7 +37,7 @@ undefined; // no breadcrumbs
 
 ### client
 
-<ApiMember kind="property" signature={['client: ', ['SentryClientLike', '/documentation/api/plugin-logger/interfaces/SentryClientLike']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L166', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:166' }}>
+<ApiMember kind="property" signature={['client: ', ['SentryClientLike', '/documentation/api/plugin-logger/interfaces/SentryClientLike']]} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L166', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:166' }}>
 
 The Sentry client entries are reported to. A Sentry SDK's module namespace satisfies this
 shape, as does a manually built `Scope`.
@@ -46,7 +46,7 @@ shape, as does a manually built `Scope`.
 
 ### flushTimeout?
 
-<ApiMember kind="property" badges={['optional']} signature={['flushTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L196', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:196' }}>
+<ApiMember kind="property" badges={['optional']} signature={['flushTimeout?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L196', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:196' }}>
 
 How long, in milliseconds, [SentryTransport.close](/documentation/api/plugin-logger/classes/SentryTransport#close) waits for the client to flush.
 
@@ -60,7 +60,7 @@ How long, in milliseconds, [SentryTransport.close](/documentation/api/plugin-log
 
 ### level?
 
-<ApiMember kind="property" badges={['optional']} signature={['level?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L173', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:173' }}>
+<ApiMember kind="property" badges={['optional']} signature={['level?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L173', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:173' }}>
 
 The lowest `LogLevel` reported as an issue.
 
@@ -74,7 +74,7 @@ LogLevel.Error;
 
 ### logLevel?
 
-<ApiMember kind="property" badges={['optional']} signature={['logLevel?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L189', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:189' }}>
+<ApiMember kind="property" badges={['optional']} signature={['logLevel?: LogLevel']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-logger/src/lib/transports/SentryTransport.ts#L189', label: 'packages/plugin-logger/src/lib/transports/SentryTransport.ts:189' }}>
 
 The lowest `LogLevel` sent to Sentry Logs, regardless of [level](/documentation/api/plugin-logger/interfaces/SentryTransportOptions#level). Needs a client
 exposing `logger`, and Sentry initialised with `enableLogs: true`.

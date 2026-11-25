@@ -9,7 +9,7 @@ import { ApiHeader, ApiHierarchy, ApiMember, ApiParam, ApiParams, ApiSignature }
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L171',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L171',
 		label: 'packages/plugin-cache/src/lib/types.ts:171'
 	}}
 	packageName="@wolfstar/plugin-cache"
@@ -44,7 +44,7 @@ skipped for stores without them.
 
 ### synchronous?
 
-<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly synchronous?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L133', label: 'packages/plugin-cache/src/lib/types.ts:133' }} inheritedFrom={[['EntityCache.synchronous', '/documentation/api/plugin-cache/interfaces/EntityCache#synchronous']]}>
+<ApiMember kind="property" badges={['readonly', 'optional']} signature={['readonly synchronous?: boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L133', label: 'packages/plugin-cache/src/lib/types.ts:133' }} inheritedFrom={[['EntityCache.synchronous', '/documentation/api/plugin-cache/interfaces/EntityCache#synchronous']]}>
 
 Whether every method returns its result synchronously, never a promise. Optional: a cache without it is treated
 as asynchronous, which is always safe.
@@ -58,7 +58,7 @@ know they can read the cache without awaiting it, e.g. `@wolfstar/plugin-gateway
 
 ### clear()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L151', label: 'packages/plugin-cache/src/lib/types.ts:151' }} inheritedFrom={[['EntityCache.clear', '/documentation/api/plugin-cache/interfaces/EntityCache#clear']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L151', label: 'packages/plugin-cache/src/lib/types.ts:151' }} inheritedFrom={[['EntityCache.clear', '/documentation/api/plugin-cache/interfaces/EntityCache#clear']]}>
 
 <ApiSignature tokens={['clear(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<void>']} />
 
@@ -72,7 +72,7 @@ know they can read the cache without awaiting it, e.g. `@wolfstar/plugin-gateway
 
 ### delete()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L150', label: 'packages/plugin-cache/src/lib/types.ts:150' }} inheritedFrom={[['EntityCache.delete', '/documentation/api/plugin-cache/interfaces/EntityCache#delete']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L150', label: 'packages/plugin-cache/src/lib/types.ts:150' }} inheritedFrom={[['EntityCache.delete', '/documentation/api/plugin-cache/interfaces/EntityCache#delete']]}>
 
 <ApiSignature tokens={['delete(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
 
@@ -92,7 +92,7 @@ know they can read the cache without awaiting it, e.g. `@wolfstar/plugin-gateway
 
 ### deleteGuild()
 
-<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L160', label: 'packages/plugin-cache/src/lib/types.ts:160' }} inheritedFrom={[['EntityCache.deleteGuild', '/documentation/api/plugin-cache/interfaces/EntityCache#deleteguild']]}>
+<ApiMember kind="method" badges={['optional']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L160', label: 'packages/plugin-cache/src/lib/types.ts:160' }} inheritedFrom={[['EntityCache.deleteGuild', '/documentation/api/plugin-cache/interfaces/EntityCache#deleteguild']]}>
 
 <ApiSignature
 	tokens={['deleteGuild(guildId: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number | null>']}
@@ -125,7 +125,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### entries()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L174', label: 'packages/plugin-cache/src/lib/types.ts:174' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L174', label: 'packages/plugin-cache/src/lib/types.ts:174' }}>
 
 <ApiSignature tokens={['entries(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<[key: string, value: Raw][]>']} />
 
@@ -139,7 +139,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### get()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L134', label: 'packages/plugin-cache/src/lib/types.ts:134' }} inheritedFrom={[['EntityCache.get', '/documentation/api/plugin-cache/interfaces/EntityCache#get']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L134', label: 'packages/plugin-cache/src/lib/types.ts:134' }} inheritedFrom={[['EntityCache.get', '/documentation/api/plugin-cache/interfaces/EntityCache#get']]}>
 
 <ApiSignature tokens={['get(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Raw | undefined>']} />
 
@@ -159,7 +159,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### getSize()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L152', label: 'packages/plugin-cache/src/lib/types.ts:152' }} inheritedFrom={[['EntityCache.getSize', '/documentation/api/plugin-cache/interfaces/EntityCache#getsize']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L152', label: 'packages/plugin-cache/src/lib/types.ts:152' }} inheritedFrom={[['EntityCache.getSize', '/documentation/api/plugin-cache/interfaces/EntityCache#getsize']]}>
 
 <ApiSignature tokens={['getSize(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<number>']} />
 
@@ -173,7 +173,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### has()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L149', label: 'packages/plugin-cache/src/lib/types.ts:149' }} inheritedFrom={[['EntityCache.has', '/documentation/api/plugin-cache/interfaces/EntityCache#has']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L149', label: 'packages/plugin-cache/src/lib/types.ts:149' }} inheritedFrom={[['EntityCache.has', '/documentation/api/plugin-cache/interfaces/EntityCache#has']]}>
 
 <ApiSignature tokens={['has(key: string): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<boolean>']} />
 
@@ -193,7 +193,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### keys()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L172', label: 'packages/plugin-cache/src/lib/types.ts:172' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L172', label: 'packages/plugin-cache/src/lib/types.ts:172' }}>
 
 <ApiSignature tokens={['keys(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<string[]>']} />
 
@@ -207,7 +207,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### set()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L135', label: 'packages/plugin-cache/src/lib/types.ts:135' }} inheritedFrom={[['EntityCache.set', '/documentation/api/plugin-cache/interfaces/EntityCache#set']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L135', label: 'packages/plugin-cache/src/lib/types.ts:135' }} inheritedFrom={[['EntityCache.set', '/documentation/api/plugin-cache/interfaces/EntityCache#set']]}>
 
 <ApiSignature
 	tokens={[
@@ -239,7 +239,7 @@ The amount of deleted entries, or `null` when this cache does not index its entr
 
 ### upsert()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L144', label: 'packages/plugin-cache/src/lib/types.ts:144' }} inheritedFrom={[['EntityCache.upsert', '/documentation/api/plugin-cache/interfaces/EntityCache#upsert']]}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L144', label: 'packages/plugin-cache/src/lib/types.ts:144' }} inheritedFrom={[['EntityCache.upsert', '/documentation/api/plugin-cache/interfaces/EntityCache#upsert']]}>
 
 <ApiSignature
 	tokens={[
@@ -293,7 +293,7 @@ The entry before and after the upsert.
 
 ### values()
 
-<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-cache/src/lib/types.ts#L173', label: 'packages/plugin-cache/src/lib/types.ts:173' }}>
+<ApiMember kind="method" source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-cache/src/lib/types.ts#L173', label: 'packages/plugin-cache/src/lib/types.ts:173' }}>
 
 <ApiSignature tokens={['values(): ', ['Awaitable', '/documentation/api/plugin-cache/type-aliases/Awaitable'], '<Raw[]>']} />
 

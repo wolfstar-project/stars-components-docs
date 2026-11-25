@@ -9,7 +9,7 @@ import { ApiHeader, ApiMember, ApiParam, ApiParams, ApiSignature } from '/snippe
 <ApiHeader
 	kind="interface"
 	source={{
-		url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/CollectionCache.ts#L9',
+		url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/CollectionCache.ts#L9',
 		label: 'packages/plugin-gateway/src/util/CollectionCache.ts:9'
 	}}
 	packageName="@wolfstar/plugin-gateway"
@@ -32,7 +32,7 @@ The options of [CollectionCache](/documentation/api/plugin-gateway/classes/Colle
 
 ### keepOverLimit?
 
-<ApiMember kind="property" badges={['optional']} signature={['keepOverLimit?: (value: Value, key: string, cache: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, Value>) => boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/CollectionCache.ts#L32', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:32' }}>
+<ApiMember kind="property" badges={['optional']} signature={['keepOverLimit?: (value: Value, key: string, cache: ', ['Map', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map'], '<string, Value>) => boolean']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/CollectionCache.ts#L32', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:32' }}>
 
 Decides which entries `maxSize` never evicts: the oldest one it answers `false` for is evicted instead. When it
 answers `true` for every entry, the cache grows past `maxSize`.
@@ -41,7 +41,7 @@ answers `true` for every entry, the cache grows past `maxSize`.
 
 ### keyOf?
 
-<ApiMember kind="property" badges={['optional']} signature={['keyOf?: (data: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>) => string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/CollectionCache.ts#L15', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:15' }}>
+<ApiMember kind="property" badges={['optional']} signature={['keyOf?: (data: ', ['Partial', 'https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype'], '<Raw>) => string']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/CollectionCache.ts#L15', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:15' }}>
 
 Gets the key of raw data, for [CollectionCache.add](/documentation/api/plugin-gateway/classes/CollectionCache#add).
 
@@ -55,7 +55,7 @@ Gets the key of raw data, for [CollectionCache.add](/documentation/api/plugin-ga
 
 ### maxSize?
 
-<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/CollectionCache.ts#L27', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:27' }}>
+<ApiMember kind="property" badges={['optional']} signature={['maxSize?: number']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/CollectionCache.ts#L27', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:27' }}>
 
 The maximum amount of entries, the oldest one being evicted when a new one would exceed it. `0` holds nothing:
 `add` still builds the structure, without keeping it.
@@ -70,7 +70,7 @@ Infinity;
 
 ### refresh?
 
-<ApiMember kind="property" badges={['optional']} signature={['refresh?: (value: Value) => Value']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/5bb3b6c632bbc7d73534213f6634e9fd02ee1c15/packages/plugin-gateway/src/util/CollectionCache.ts#L20', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:20' }}>
+<ApiMember kind="property" badges={['optional']} signature={['refresh?: (value: Value) => Value']} source={{ url: 'https://github.com/wolfstar-project/plugins/blob/e92aba58265993929cc64df3a7c9948a05850e13/packages/plugin-gateway/src/util/CollectionCache.ts#L20', label: 'packages/plugin-gateway/src/util/CollectionCache.ts:20' }}>
 
 Called with an instance every time it is read with `get` or updated with `add`, to bring what it holds besides
 its data (its relations) up to date. It returns the instance to hand out.
