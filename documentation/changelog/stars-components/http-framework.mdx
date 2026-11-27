@@ -6,6 +6,16 @@ description: 'Changelog for @wolfstar/http-framework: a Sapphire-inspired framew
 
 Changes to [`@wolfstar/http-framework`](https://github.com/wolfstar-project/stars-components/tree/main/packages/http-framework). It provides routing, commands, hot module reloading, and the `stars` CLI for Discord HTTP bots. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
 
+## `6.6.1` (2026-11-22)
+
+### Updates
+
+- **Dependencies** — Updated `@sapphire/utilities` to v4 and `@wolfstar/cli` to `2.12.2`. ([#393](https://github.com/wolfstar-project/stars-components/pull/393))
+
+### Bug fixes
+
+- **`Command#registry` return type** — `Command#registry` now has an explicit return type, so newer TypeScript builds no longer report it as an implicit `any` (TS7023). ([#396](https://github.com/wolfstar-project/stars-components/pull/396))
+
 ## `6.6.0` (2026-11-16)
 
 ### New features

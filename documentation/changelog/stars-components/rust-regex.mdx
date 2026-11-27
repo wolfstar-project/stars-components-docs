@@ -1,0 +1,20 @@
+---
+title: '@wolfstar/rust-regex'
+sidebarTitle: 'rust-regex'
+description: 'Changelog for @wolfstar/rust-regex: a transpiler from Rust regex patterns, the flavour Discord AutoMod uses, to JavaScript RegExp.'
+---
+
+Changes to [`@wolfstar/rust-regex`](https://github.com/wolfstar-project/stars-components/tree/main/packages/rust-regex). It transpiles regular expressions written for the Rust `regex` crate, the flavour Discord uses, into JavaScript `RegExp`. For the weekly summary across all packages, see the [changelog overview](/documentation/changelog/index).
+
+## `0.1.1` (2026-11-25)
+
+### Bug fixes
+
+- **Comments in verbose mode** — Under `(?x)`, `#` comments inside character classes and counted repetitions are now ignored, as the Rust `regex` crate does. ([#395](https://github.com/wolfstar-project/stars-components/pull/395))
+- **Nest limit** — A chain of repetitions or class operations deeper than the nest limit now fails with a `RustRegexError` (`invalid_syntax`) instead of a native `RangeError`.
+
+## `0.1.0` (2026-11-22)
+
+### New features
+
+- **New package** — `@wolfstar/rust-regex` transpiles regular expressions written for the Rust `regex` crate, the flavour Discord uses for AutoMod, into the source and flags of an equivalent JavaScript `RegExp`. Patterns that Rust would reject, and patterns that JavaScript cannot express, fail with a typed `RustRegexError`. See [`@wolfstar/rust-regex`](/documentation/packages/rust-regex). ([#394](https://github.com/wolfstar-project/stars-components/pull/394))
